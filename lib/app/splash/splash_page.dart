@@ -85,7 +85,7 @@ class _SplashPageState extends State<SplashPage> {
     timer = Timer(
       const Duration(seconds: 2),
       () => Navigator.pushNamedAndRemoveUntil(
-          context, '/counter', (route) => false),
+          context, '/sign_up', (route) => false),
     );
   }
 }
