@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yuno/app/splash/splash_page.dart';
-import 'package:yuno/auth/presentation/sign_up_page.dart';
+import 'package:yuno/auth/view/sign_up_page.dart';
 import 'package:yuno/counter/view/counter_page.dart';
 
 Route Function(RouteSettings) get routes => (RouteSettings settings) {
