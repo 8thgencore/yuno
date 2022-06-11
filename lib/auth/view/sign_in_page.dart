@@ -3,14 +3,14 @@ import 'package:yuno/auth/widgets/custom_rounded_button.dart';
 import 'package:yuno/auth/widgets/custom_text_field.dart';
 import 'package:yuno/utils/colors.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+class SignInPage extends StatefulWidget {
+  const SignInPage({Key? key}) : super(key: key);
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<SignInPage> createState() => _SignUpPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _SignUpPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,6 +18,7 @@ class _SignUpPageState extends State<SignUpPage> {
       body: Align(
         alignment: Alignment.bottomCenter,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
           children: const [
             Expanded(child: TopInfoWidget()),
             BottomWidget(),
@@ -29,9 +30,7 @@ class _SignUpPageState extends State<SignUpPage> {
 }
 
 class TopInfoWidget extends StatelessWidget {
-  const TopInfoWidget({
-    Key? key,
-  }) : super(key: key);
+  const TopInfoWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +40,7 @@ class TopInfoWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: const [
           Text(
-            'Hey, Welcome!',
+            'Welcome Back!',
             style: TextStyle(
               color: Colors.white,
               fontSize: 24,
@@ -51,9 +50,9 @@ class TopInfoWidget extends StatelessWidget {
           SizedBox(height: 12),
           Center(
             child: Text(
-              'Welcome to Yuno! Enter all the details\n'
-              'below to continue enjoying all Yuno\n'
-              'amazing features.',
+              'Login to your account by entering your email\n'
+              'and password below, we are really happy\n'
+              'to see you come back!',
               style: TextStyle(color: Colors.white, fontSize: 14),
               textAlign: TextAlign.center,
             ),
@@ -89,30 +88,26 @@ class BottomWidget extends StatelessWidget {
               hintText: 'Enter your email address',
               obscureText: false,
             ),
-            const SizedBox(height: 10),
-            CustomTextField(
-              onTap: () {},
-              prefixIcon: Icons.person_outline_outlined,
-              hintText: 'Create your username',
-              obscureText: false,
-            ),
-            const SizedBox(height: 10),
-            CustomTextField(
-              onTap: () {},
-              prefixIcon: Icons.lock_outline,
-              hintText: 'Create your password',
-              obscureText: true,
-            ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 20),
             CustomTextField(
               onTap: () {},
               prefixIcon: Icons.lock_outline,
               hintText: 'Confirm your password',
               obscureText: true,
             ),
-            const SizedBox(height: 10),
+            TextButton(
+              child: const Align(
+                alignment: Alignment.topRight,
+                child: Text(
+                  'Forgot Password?',
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+              onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                  context, '/splash', (route) => false),
+            ),
             CustomRoundedButton(
-              textButton: 'Sign Me Up!',
+              textButton: 'Login',
               onPressed: () {},
               textColor: Colors.grey,
               buttonColor: Colors.black.withOpacity(0.1),
@@ -123,15 +118,16 @@ class BottomWidget extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('Already have an account?'),
+                  const Text("Doesn't have an account yet?"),
                   TextButton(
-                    child: const Text('Login'),
+                    child: const Text('Sign Up'),
                     onPressed: () => Navigator.pushNamedAndRemoveUntil(
-                        context, '/sign_in', (route) => false),
+                        context, '/sign_up', (route) => false),
                   ),
                 ],
               ),
             ),
+            const SizedBox(height: 10),
           ],
         ),
       ),
