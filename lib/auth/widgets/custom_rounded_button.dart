@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
 class CustomRoundedButton extends StatelessWidget {
-  final String textButton;
-  final Color textColor;
-  final Color buttonColor;
-  final Function onPressed;
-
   const CustomRoundedButton({
-    Key? key,
     required this.textButton,
     required this.textColor,
     required this.buttonColor,
     required this.onPressed,
-  }) : super(key: key);
+    super.key,
+  });
+
+  final String textButton;
+  final Color textColor;
+  final Color buttonColor;
+  final Function onPressed;
 
   @override
   Widget build(BuildContext context) {

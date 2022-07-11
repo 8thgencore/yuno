@@ -1,25 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:yuno/utils/colors.dart';
+import 'package:yuno/resources/resources.dart';
 
 class CustomTextField extends StatelessWidget {
+  const CustomTextField({
+    required this.onTap,
+    required this.hintText,
+    required this.obscureText,
+    required this.prefixIcon,
+    super.key,
+  });
+
   final VoidCallback onTap;
   final String hintText;
   final bool obscureText;
   final IconData prefixIcon;
 
-  const CustomTextField({
-    Key? key,
-    required this.onTap,
-    required this.hintText,
-    required this.obscureText,
-    required this.prefixIcon,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      cursorColor: primaryColor,
+      cursorColor: AppColors.primaryColor,
       obscureText: obscureText,
       decoration: InputDecoration(
         fillColor: Colors.white,
@@ -29,7 +29,7 @@ class CustomTextField extends StatelessWidget {
           borderSide: BorderSide.none,
         ),
         hintText: hintText,
-        hintStyle: const TextStyle(color: Colors.grey),
+        hintStyle: AppTypography.r14g,
         labelText: hintText,
         labelStyle: const TextStyle(color: Colors.grey),
         prefixIcon: Icon(prefixIcon, color: Colors.grey),

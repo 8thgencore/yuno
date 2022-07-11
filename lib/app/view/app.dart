@@ -7,8 +7,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:yuno/counter/counter.dart';
+import 'package:yuno/auth/view/sign_up_page.dart';
 import 'package:yuno/l10n/l10n.dart';
+import 'package:yuno/resources/colors.dart';
 import 'package:yuno/routes/routes.dart';
 
 class App extends StatefulWidget {
@@ -23,7 +24,7 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
+        appBarTheme: const AppBarTheme(color: AppColors.primaryColor),
         colorScheme: ColorScheme.fromSwatch(
           accentColor: const Color(0xFF13B9FF),
         ),
@@ -36,7 +37,7 @@ class _AppState extends State<App> {
       onGenerateRoute: routes,
       initialRoute: '/splash',
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const CounterPage(),
+      home: const SignUpPage(),
     );
   }
 }
