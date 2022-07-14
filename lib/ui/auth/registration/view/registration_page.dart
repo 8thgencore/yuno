@@ -3,19 +3,19 @@ import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/auth/widgets/custom_rounded_button.dart';
 import 'package:yuno/ui/auth/widgets/custom_text_field.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+class RegistrationPage extends StatefulWidget {
+  const RegistrationPage({super.key});
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<RegistrationPage> createState() => _RegistrationPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _RegistrationPageState extends State<RegistrationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(toolbarHeight: 0, elevation: 0),
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.primary100,
       body: SafeArea(
         child: Stack(
           children: [
@@ -38,7 +38,7 @@ class _TopInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
-      color: AppColors.primaryColor,
+      color: AppColors.primary100,
       child: Column(
         children: [
           const SizedBox(height: 90),
@@ -65,50 +65,50 @@ class _BottomWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
-      color: AppColors.primaryColor,
+      color: AppColors.primary100,
       child: Container(
         padding: const EdgeInsets.only(top: 20, left: 24, right: 24),
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
-          color: AppColors.background,
+          color: AppColors.screen100,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            CustomTextField(
-              onTap: () {},
-              prefixIcon: Icons.mail_outline_outlined,
-              hintText: 'Enter your email address',
-              obscureText: false,
-            ),
-            const SizedBox(height: 10),
-            CustomTextField(
-              onTap: () {},
-              prefixIcon: Icons.person_outline_outlined,
-              hintText: 'Create your username',
-              obscureText: false,
-            ),
-            const SizedBox(height: 10),
-            CustomTextField(
-              onTap: () {},
-              prefixIcon: Icons.lock_outline,
-              hintText: 'Create your password',
-              obscureText: true,
-            ),
-            const SizedBox(height: 10),
-            CustomTextField(
-              onTap: () {},
-              prefixIcon: Icons.lock_outline,
-              hintText: 'Confirm your password',
-              obscureText: true,
-            ),
+            // CustomTextField(
+            //   onTap: () {},
+            //   prefixIcon: Icons.mail_outline_outlined,
+            //   labelText: 'Enter your email address',
+            //   obscureText: false,
+            // ),
+            // const SizedBox(height: 10),
+            // CustomTextField(
+            //   onTap: () {},
+            //   prefixIcon: Icons.person_outline_outlined,
+            //   labelText: 'Create your username',
+            //   obscureText: false,
+            // ),
+            // const SizedBox(height: 10),
+            // CustomTextField(
+            //   onTap: () {},
+            //   prefixIcon: Icons.lock_outline,
+            //   labelText: 'Create your password',
+            //   obscureText: true,
+            // ),
+            // const SizedBox(height: 10),
+            // CustomTextField(
+            //   onTap: () {},
+            //   prefixIcon: Icons.lock_outline,
+            //   labelText: 'Confirm your password',
+            //   obscureText: true,
+            // ),
             const SizedBox(height: 10),
             CustomRoundedButton(
               textButton: 'Sign Me Up!',
               onPressed: () {},
-              textColor: Colors.grey,
-              buttonColor: Colors.black.withOpacity(0.1),
+              textColor: AppColors.grey100,
+              buttonColor: AppColors.dark10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -118,7 +118,10 @@ class _BottomWidget extends StatelessWidget {
                   style: AppTypography.r14d,
                 ),
                 TextButton(
-                  child: const Text('Login'),
+                  child: const Text(
+                    'Login',
+                    style: TextStyle(color: AppColors.primary100),
+                  ),
                   onPressed: () => Navigator.pushNamedAndRemoveUntil(
                     context,
                     '/sign_in',

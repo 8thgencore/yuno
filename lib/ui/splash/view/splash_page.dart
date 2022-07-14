@@ -34,7 +34,7 @@ class _SplashPageState extends State<SplashPage> {
     _deviceHeight = MediaQuery.of(context).size.height;
     _deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.white100,
       body: Stack(
         alignment: Alignment.center,
         children: [
@@ -48,14 +48,14 @@ class _SplashPageState extends State<SplashPage> {
                 const Text(
                   'yuno.',
                   style: TextStyle(
-                    color: AppColors.primaryTextColor,
+                    color: AppColors.dark100,
                     fontSize: 26,
                     fontWeight: FontWeight.w700,
                     decoration: TextDecoration.none,
                   ),
                 ),
                 SizedBox(height: _deviceHeight * 0.4),
-                const CircularProgressIndicator(color: AppColors.primaryColor),
+                const CircularProgressIndicator(color: AppColors.primary100),
                 const SizedBox(height: 20),
                 Text(
                   'The Coolest Task Manager App',
@@ -79,7 +79,10 @@ class _SplashPageState extends State<SplashPage> {
     timer = Timer(
       const Duration(seconds: 2),
       () => Navigator.pushNamedAndRemoveUntil(
-          context, '/sign_up', (route) => false),
+        context,
+        '/sign_up',
+        (route) => false,
+      ),
     );
   }
 }

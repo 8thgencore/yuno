@@ -5,25 +5,25 @@ abstract class AppTypography {
   const AppTypography._();
 
   static TextStyle b24l = const TextStyle(
-    color: Colors.white,
+    color: AppColors.white100,
     fontSize: 24,
     fontWeight: FontWeight.w600,
   );
 
   static TextStyle r14l = const TextStyle(
-    color: Colors.white,
+    color: AppColors.white100,
     fontSize: 14,
     fontWeight: FontWeight.w400,
   );
 
   static TextStyle r14g = const TextStyle(
-    color: AppColors.secondaryTextColor,
+    color: AppColors.grey80,
     fontSize: 14,
     fontWeight: FontWeight.w400,
   );
 
   static TextStyle r14d = const TextStyle(
-    color: AppColors.primaryTextColor,
+    color: AppColors.dark100,
     fontSize: 14,
     fontWeight: FontWeight.w400,
   );
