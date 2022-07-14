@@ -1,16 +1,8 @@
-// Copyright (c) 2022, Very Good Ventures
-// https://verygood.ventures
-//
-// Use of this source code is governed by an MIT-style
-// license that can be found in the LICENSE file or at
-// https://opensource.org/licenses/MIT.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:yuno/auth/view/sign_up_page.dart';
-import 'package:yuno/l10n/l10n.dart';
-import 'package:yuno/resources/colors.dart';
+import 'package:yuno/resources/resources.dart';
 import 'package:yuno/routes/routes.dart';
+import 'package:yuno/ui/auth/view/sign_up_page.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -28,15 +20,15 @@ class _AppState extends State<App> {
         colorScheme: ColorScheme.fromSwatch(
           accentColor: const Color(0xFF13B9FF),
         ),
-        fontFamily: 'Poppins',
+        fontFamily: FontFamily.poppins,
       ),
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-      ],
+      // localizationsDelegates: const [
+      //   AppLocalizations.delegate,
+      //   GlobalMaterialLocalizations.delegate,
+      // ],
       onGenerateRoute: routes,
       initialRoute: '/splash',
-      supportedLocales: AppLocalizations.supportedLocales,
+      // supportedLocales: AppLocalizations.supportedLocales,
       home: const SignUpPage(),
     );
   }

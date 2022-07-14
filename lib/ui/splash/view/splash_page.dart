@@ -1,9 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:yuno/resources/colors.dart';
 import 'package:yuno/resources/resources.dart';
-import 'package:yuno/utils/images.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -46,7 +44,7 @@ class _SplashPageState extends State<SplashPage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 const SizedBox(height: 94),
-                Image.asset(logo, width: 70, height: 70),
+                Image.asset(Assets.images.logo.path, width: 70, height: 70),
                 const Text(
                   'yuno.',
                   style: TextStyle(
@@ -59,7 +57,7 @@ class _SplashPageState extends State<SplashPage> {
                 SizedBox(height: _deviceHeight * 0.4),
                 const CircularProgressIndicator(color: AppColors.primaryColor),
                 const SizedBox(height: 20),
-                 Text(
+                Text(
                   'The Coolest Task Manager App',
                   style: AppTypography.r14d,
                 ),
@@ -70,7 +68,7 @@ class _SplashPageState extends State<SplashPage> {
           Positioned(
             bottom: 0,
             left: 0,
-            child: Image.asset(bottomOrnament),
+            child: Image.asset(Assets.images.splashOrnament.path),
           ),
         ],
       ),

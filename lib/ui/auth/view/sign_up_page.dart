@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:yuno/auth/widgets/custom_rounded_button.dart';
-import 'package:yuno/auth/widgets/custom_text_field.dart';
-import 'package:yuno/resources/colors.dart';
 import 'package:yuno/resources/resources.dart';
+import 'package:yuno/ui/auth/widgets/custom_rounded_button.dart';
+import 'package:yuno/ui/auth/widgets/custom_text_field.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -21,7 +20,7 @@ class _SignUpPageState extends State<SignUpPage> {
         child: Stack(
           children: [
             const _TopInfoWidget(),
-            Image.asset('assets/images/sign_ornament.png'),
+            Image.asset(Assets.images.signOrnament.path),
             const Align(
               alignment: Alignment.bottomCenter,
               child: _BottomWidget(),
@@ -111,23 +110,22 @@ class _BottomWidget extends StatelessWidget {
               textColor: Colors.grey,
               buttonColor: Colors.black.withOpacity(0.1),
             ),
-            Container(
-              // padding: EdgeInsets.all(8),
-              alignment: Alignment.centerRight,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Already have an account?',
-                    style: AppTypography.r14d,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Already have an account?',
+                  style: AppTypography.r14d,
+                ),
+                TextButton(
+                  child: const Text('Login'),
+                  onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    '/sign_in',
+                    (route) => false,
                   ),
-                  TextButton(
-                    child: const Text('Login'),
-                    onPressed: () => Navigator.pushNamedAndRemoveUntil(
-                        context, '/sign_in', (route) => false),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),

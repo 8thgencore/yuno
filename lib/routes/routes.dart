@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:yuno/app/splash/splash_page.dart';
-import 'package:yuno/auth/view/sign_in_page.dart';
-import 'package:yuno/auth/view/sign_up_page.dart';
+import 'package:yuno/ui/auth/view/sign_in_page.dart';
+import 'package:yuno/ui/auth/view/sign_up_page.dart';
+import 'package:yuno/ui/splash/view/splash_page.dart';
 
 Route Function(RouteSettings) get routes {
   return (RouteSettings settings) {
