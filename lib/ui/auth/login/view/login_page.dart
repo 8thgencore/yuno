@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/auth/login/bloc/login_bloc.dart';
 import 'package:yuno/ui/auth/login/model/models.dart';
-import 'package:yuno/ui/auth/login/model/request_error.dart';
 import 'package:yuno/ui/auth/widgets/custom_rounded_button.dart';
 import 'package:yuno/ui/auth/widgets/custom_text_field.dart';
 import 'package:yuno/ui/home/view/home_page.dart';
@@ -17,7 +16,7 @@ class LoginPage extends StatelessWidget {
       create: (context) => LoginBloc(),
       child: Scaffold(
         appBar: AppBar(toolbarHeight: 0, elevation: 0),
-        backgroundColor: AppColors.white100,
+        backgroundColor: AppColors.screen100,
         body: const SafeArea(
           child: _LoginPageWidget(),
         ),
@@ -68,37 +67,31 @@ class _LoginPageWidgetState extends State<_LoginPageWidget> {
         children: [
           const _TopInfoWidget(),
           Image.asset(Assets.images.signOrnament.path, fit: BoxFit.cover),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(
-                  height: 116,
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Container(
+                height: 116,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+                  color: AppColors.dark100,
+                ),
+                child: const _FingerprintWidget(),
+              ),
+              ColoredBox(
+                color: AppColors.dark100,
+                child: Container(
+                  padding: const EdgeInsets.only(top: 20, left: 24, right: 24),
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(30),
                     ),
-                    color: AppColors.dark100,
+                    color: AppColors.screen100,
                   ),
-                  child: const _FingerprintWidget(),
+                  child: const _BottomWidget(),
                 ),
-                ColoredBox(
-                  color: AppColors.dark100,
-                  child: Container(
-                    padding:
-                        const EdgeInsets.only(top: 20, left: 24, right: 24),
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(30),
-                      ),
-                      color: AppColors.screen100,
-                    ),
-                    child: const _BottomWidget(),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),
@@ -188,16 +181,13 @@ class _BottomWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _EmailTextField(),
+        const _EmailTextField(),
         const SizedBox(height: 20),
-        _PasswordTextField(),
+        const _PasswordTextField(),
         TextButton(
           child: Align(
             alignment: Alignment.topRight,
-            child: Text(
-              'Forgot Password?',
-              style: AppTypography.r14d,
-            ),
+            child: Text('Forgot Password?', style: AppTypography.r14d),
           ),
           onPressed: () => Navigator.pushNamedAndRemoveUntil(
             context,
@@ -205,7 +195,7 @@ class _BottomWidget extends StatelessWidget {
             (route) => false,
           ),
         ),
-        _LoginButton(),
+        const _LoginButton(),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -240,10 +230,8 @@ class _EmailTextField extends StatelessWidget {
       selector: (state) => state.emailError,
       builder: (context, emailError) {
         return CustomTextField(
-          onTap: () {},
           prefixIcon: Icons.mail_outline_outlined,
           labelText: 'Enter your email address',
-          obscureText: false,
           onChanged: (text) =>
               context.read<LoginBloc>().add(LoginEmailChanged(text)),
           keyboardType: TextInputType.emailAddress,
@@ -268,7 +256,6 @@ class _PasswordTextField extends StatelessWidget {
       selector: (state) => state.passwordError,
       builder: (context, passwordError) {
         return CustomTextField(
-          onTap: () {},
           prefixIcon: Icons.lock_outline,
           labelText: 'Confirm your password',
           obscureText: true,

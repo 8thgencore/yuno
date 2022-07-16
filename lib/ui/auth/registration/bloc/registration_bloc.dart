@@ -15,15 +15,16 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
       RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
 
   RegistrationBloc() : super(RegistrationState.initial()) {
-    on<RegistrationRegistrationButtonClicked>(_registrationButtonClicked);
+    on<RegistrationButtonClicked>(_registrationButtonClicked);
     on<RegistrationEmailChanged>(_emailChanged);
     on<RegistrationNicknameChanged>(_nicknameChanged);
     on<RegistrationPasswordChanged>(_passwordChanged);
+    on<RegistrationPasswordConfirmChanged>(_passwordConfirmChanged);
     on<RegistrationRequestErrorShowed>(_requestErrorShowed);
   }
 
   FutureOr<void> _registrationButtonClicked(
-    RegistrationRegistrationButtonClicked event,
+    RegistrationButtonClicked event,
     Emitter<RegistrationState> emit,
   ) async {
     if (state.allFieldsValid) {
@@ -33,6 +34,7 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
         password: state.password,
         passwordConfirm: state.passwordConfirm,
       );
+      print("response: $response");
       if (response == null) {
         emit(state.copyWith(registered: true));
       } else {
@@ -92,9 +94,9 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     final newNickname = event.nickname;
     emit(
       state.copyWith(
-        email: newNickname,
-        emailValid: newNickname.length >= 3,
-        emailError: EmailError.noError,
+        nickname: newNickname,
+        nicknameValid: newNickname.length >= 3,
+        nicknameError: NicknameError.noError,
       ),
     );
   }
@@ -104,14 +106,27 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     Emitter<RegistrationState> emit,
   ) {
     final newPassword = event.password;
-    final newPasswordConform = event.passwordConfirm;
     emit(
       state.copyWith(
-        email: newPassword,
+        password: newPassword,
         passwordValid: _passwordRegexp.hasMatch(newPassword),
         passwordError: PasswordError.noError,
-        passwordConfirm: newPasswordConform,
-        passwordConfirmed: newPassword == newPasswordConform,
+        passwordConfirmed: newPassword == state.passwordConfirm,
+      ),
+    );
+  }
+
+  FutureOr<void> _passwordConfirmChanged(
+    RegistrationPasswordConfirmChanged event,
+    Emitter<RegistrationState> emit,
+  ) {
+    final newPasswordConfirm = event.password;
+    emit(
+      state.copyWith(
+        passwordConfirm: newPasswordConfirm,
+        passwordValid: _passwordRegexp.hasMatch(newPasswordConfirm),
+        passwordError: PasswordError.noError,
+        passwordConfirmed: newPasswordConfirm == state.password,
       ),
     );
   }

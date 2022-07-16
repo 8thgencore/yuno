@@ -23,17 +23,25 @@ class RegistrationNicknameChanged extends RegistrationEvent {
 }
 
 class RegistrationPasswordChanged extends RegistrationEvent {
-  const RegistrationPasswordChanged(this.password, this.passwordConfirm);
+  const RegistrationPasswordChanged(this.password);
 
   final String password;
-  final String passwordConfirm;
 
   @override
-  List<Object?> get props => [password, passwordConfirm];
+  List<Object?> get props => [password];
 }
 
-class RegistrationRegistrationButtonClicked extends RegistrationEvent {
-  const RegistrationRegistrationButtonClicked();
+class RegistrationPasswordConfirmChanged extends RegistrationEvent {
+  const RegistrationPasswordConfirmChanged(this.password);
+
+  final String password;
+
+  @override
+  List<Object?> get props => [password];
+}
+
+class RegistrationButtonClicked extends RegistrationEvent {
+  const RegistrationButtonClicked();
 
   @override
   List<Object?> get props => [];

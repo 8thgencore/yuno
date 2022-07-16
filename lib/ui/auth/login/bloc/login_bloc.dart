@@ -83,7 +83,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     final newPassword = event.password;
     emit(
       state.copyWith(
-        email: newPassword,
+        password: newPassword,
         passwordValid: _passwordRegexp.hasMatch(newPassword),
         passwordError: PasswordError.noError,
         authenticated: false,

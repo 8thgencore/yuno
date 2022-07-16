@@ -31,7 +31,7 @@ class RegistrationState extends Equatable {
     required this.requestError,
   });
 
-  bool get allFieldsValid => emailValid && passwordValid;
+  bool get allFieldsValid => emailValid && nicknameValid && passwordValid;
 
   factory RegistrationState.initial() => const RegistrationState(
         email: '',
@@ -86,9 +86,9 @@ class RegistrationState extends Equatable {
         email,
         emailError,
         emailValid,
-        email,
-        emailError,
-        emailValid,
+        nickname,
+        nicknameError,
+        nicknameValid,
         password,
         passwordError,
         passwordValid,

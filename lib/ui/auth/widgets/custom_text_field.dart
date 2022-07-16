@@ -4,20 +4,20 @@ import 'package:yuno/resources/resources.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
-    required this.onTap,
     required this.labelText,
-    required this.obscureText,
     required this.prefixIcon,
     required this.onChanged,
     required this.keyboardType,
     required this.textColor,
     required this.prefixIconColor,
+    this.obscureText = false,
+    this.onTap,
     super.key,
   });
 
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final String labelText;
-  final bool obscureText;
+  final bool? obscureText;
   final IconData prefixIcon;
   final Function(String) onChanged;
   final TextInputType keyboardType;
@@ -35,7 +35,7 @@ class CustomTextField extends StatelessWidget {
         style: TextStyle(color: textColor),
         autocorrect: false,
         cursorColor: AppColors.primary100,
-        obscureText: obscureText,
+        obscureText: obscureText!,
         onChanged: onChanged,
         keyboardType: keyboardType,
         decoration: InputDecoration(
