@@ -26,23 +26,26 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      style: TextStyle(color: textColor),
-      autocorrect: false,
-      cursorColor: AppColors.primary100,
-      obscureText: obscureText,
-      onChanged: onChanged,
-      keyboardType: keyboardType,
-      decoration: InputDecoration(
-        fillColor: Colors.white,
-        filled: true,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide.none,
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
+        color: AppColors.white100,
+      ),
+      child: TextFormField(
+        style: TextStyle(color: textColor),
+        autocorrect: false,
+        cursorColor: AppColors.primary100,
+        obscureText: obscureText,
+        onChanged: onChanged,
+        keyboardType: keyboardType,
+        decoration: InputDecoration(
+          fillColor: Colors.transparent,
+          filled: true,
+          border: const UnderlineInputBorder(borderSide: BorderSide.none),
+          labelText: labelText,
+          labelStyle: AppTypography.r14g.copyWith(height: 1),
+          prefixIcon: Icon(prefixIcon, color: prefixIconColor),
         ),
-        labelText: labelText,
-        labelStyle: AppTypography.r14g,
-        prefixIcon: Icon(prefixIcon, color: prefixIconColor),
       ),
     );
   }

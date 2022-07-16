@@ -69,15 +69,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     emit(
       state.copyWith(
         email: newEmail,
-        emailValid: _emailValid(newEmail),
+        emailValid: EmailValidator.validate(newEmail),
         emailError: EmailError.noError,
         authenticated: false,
       ),
     );
-  }
-
-  bool _emailValid(final String email) {
-    return EmailValidator.validate(email);
   }
 
   FutureOr<void> _passwordChanged(
@@ -88,15 +84,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     emit(
       state.copyWith(
         email: newPassword,
-        passwordValid: _passwordValid(newPassword),
+        passwordValid: _passwordRegexp.hasMatch(newPassword),
         passwordError: PasswordError.noError,
         authenticated: false,
       ),
     );
-  }
-
-  bool _passwordValid(final String password) {
-    return _passwordRegexp.hasMatch(password);
   }
 
   FutureOr<void> _requestErrorShowed(
@@ -110,12 +102,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   void onEvent(LoginEvent event) {
     debugPrint('Login Bloc. Event happened: $event');
     super.onEvent(event);
-  }
-
-  @override
-  void onTransition(Transition<LoginEvent, LoginState> transition) {
-    debugPrint('Login Bloc. Transition happened: $transition');
-    super.onTransition(transition);
   }
 }
 
