@@ -1,1 +1,0 @@
-enum PasswordError { noError, wrongPassword }

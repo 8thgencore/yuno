@@ -5,7 +5,7 @@
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import
+// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal
 
 import 'package:flutter/widgets.dart';
 
@@ -67,6 +67,28 @@ class $AssetsFontsGen {
 
   /// File path: assets/fonts/Poppins-ThinItalic.ttf
   String get poppinsThinItalic => 'assets/fonts/Poppins-ThinItalic.ttf';
+
+  /// List of all assets
+  List<String> get values => [
+        poppinsBlack,
+        poppinsBlackItalic,
+        poppinsBold,
+        poppinsBoldItalic,
+        poppinsExtraBold,
+        poppinsExtraBoldItalic,
+        poppinsExtraLight,
+        poppinsExtraLightItalic,
+        poppinsItalic,
+        poppinsLight,
+        poppinsLightItalic,
+        poppinsMedium,
+        poppinsMediumItalic,
+        poppinsRegular,
+        poppinsSemiBold,
+        poppinsSemiBoldItalic,
+        poppinsThin,
+        poppinsThinItalic
+      ];
 }
 
 class $AssetsImagesGen {
@@ -86,6 +108,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/splash_ornament.png
   AssetGenImage get splashOrnament =>
       const AssetGenImage('assets/images/splash_ornament.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values =>
+      [fingerprint, logo, signOrnament, splashOrnament];
 }
 
 class Assets {
@@ -152,6 +178,8 @@ class AssetGenImage {
       cacheHeight: cacheHeight,
     );
   }
+
+  ImageProvider provider() => AssetImage(_assetName);
 
   String get path => _assetName;
 

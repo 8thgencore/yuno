@@ -13,15 +13,6 @@ class RegistrationEmailChanged extends RegistrationEvent {
   List<Object?> get props => [email];
 }
 
-class RegistrationNicknameChanged extends RegistrationEvent {
-  const RegistrationNicknameChanged(this.nickname);
-
-  final String nickname;
-
-  @override
-  List<Object?> get props => [nickname];
-}
-
 class RegistrationPasswordChanged extends RegistrationEvent {
   const RegistrationPasswordChanged(this.password);
 
@@ -31,24 +22,54 @@ class RegistrationPasswordChanged extends RegistrationEvent {
   List<Object?> get props => [password];
 }
 
-class RegistrationPasswordConfirmChanged extends RegistrationEvent {
-  const RegistrationPasswordConfirmChanged(this.password);
+class RegistrationPasswordConfirmationChanged extends RegistrationEvent {
+  const RegistrationPasswordConfirmationChanged(this.passwordConfirmation);
 
-  final String password;
+  final String passwordConfirmation;
 
   @override
-  List<Object?> get props => [password];
+  List<Object?> get props => [passwordConfirmation];
 }
 
-class RegistrationButtonClicked extends RegistrationEvent {
-  const RegistrationButtonClicked();
+class RegistrationNameChanged extends RegistrationEvent {
+  const RegistrationNameChanged(this.name);
+
+  final String name;
+
+  @override
+  List<Object?> get props => [name];
+}
+
+class RegistrationEmailFocusLost extends RegistrationEvent {
+  const RegistrationEmailFocusLost();
 
   @override
   List<Object?> get props => [];
 }
 
-class RegistrationRequestErrorShowed extends RegistrationEvent {
-  const RegistrationRequestErrorShowed();
+class RegistrationPasswordFocusLost extends RegistrationEvent {
+  const RegistrationPasswordFocusLost();
+
+  @override
+  List<Object?> get props => [];
+}
+
+class RegistrationPasswordConfirmationFocusLost extends RegistrationEvent {
+  const RegistrationPasswordConfirmationFocusLost();
+
+  @override
+  List<Object?> get props => [];
+}
+
+class RegistrationNameFocusLost extends RegistrationEvent {
+  const RegistrationNameFocusLost();
+
+  @override
+  List<Object?> get props => [];
+}
+
+class RegistrationCreateAccount extends RegistrationEvent {
+  const RegistrationCreateAccount();
 
   @override
   List<Object?> get props => [];

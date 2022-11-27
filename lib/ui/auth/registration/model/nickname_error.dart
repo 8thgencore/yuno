@@ -1,1 +1,0 @@
-enum NicknameError { noError, exist }

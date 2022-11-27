@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/auth/login/bloc/login_bloc.dart';
-import 'package:yuno/ui/auth/login/model/models.dart';
 import 'package:yuno/ui/auth/widgets/custom_rounded_button.dart';
 import 'package:yuno/ui/auth/widgets/custom_text_field.dart';
 import 'package:yuno/ui/home/view/home_page.dart';
@@ -39,26 +38,10 @@ class _LoginPageWidgetState extends State<_LoginPageWidget> {
       listeners: [
         BlocListener<LoginBloc, LoginState>(
           listener: (context, state) {
-            if (state.authenticated) {
+            if (state is LoginCompleted) {
               Navigator.of(context).push<void>(
                 MaterialPageRoute(builder: (_) => const HomePage()),
               );
-            }
-          },
-        ),
-        BlocListener<LoginBloc, LoginState>(
-          listener: (context, state) {
-            if (state.requestError != RequestError.noError) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: const Text(
-                    'Произошла ошибка',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  backgroundColor: Colors.red[900],
-                ),
-              );
-              context.read<LoginBloc>().add(const LoginRequestErrorShowed());
             }
           },
         ),
@@ -67,31 +50,32 @@ class _LoginPageWidgetState extends State<_LoginPageWidget> {
         children: [
           const _TopInfoWidget(),
           Image.asset(Assets.images.signOrnament.path, fit: BoxFit.cover),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Container(
-                height: 116,
+          Positioned(
+            bottom: 0,
+            child: Container(
+              height: 412,
+              width: MediaQuery.of(context).size.width,
+              alignment: Alignment.topCenter,
+              padding: const EdgeInsets.only(top: 20, left: 24, right: 24),
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+                color: AppColors.dark100,
+              ),
+              child: const _FingerprintWidget(),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: SingleChildScrollView(
+              child: Container(
+                padding: const EdgeInsets.only(top: 20, left: 24, right: 24),
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
-                  color: AppColors.dark100,
+                  color: AppColors.screen100,
                 ),
-                child: const _FingerprintWidget(),
+                child: const _BottomWidget(),
               ),
-              ColoredBox(
-                color: AppColors.dark100,
-                child: Container(
-                  padding: const EdgeInsets.only(top: 20, left: 24, right: 24),
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(30),
-                    ),
-                    color: AppColors.screen100,
-                  ),
-                  child: const _BottomWidget(),
-                ),
-              ),
-            ],
+            ),
           ),
         ],
       ),
@@ -108,7 +92,7 @@ class _TopInfoWidget extends StatelessWidget {
       color: AppColors.primary100,
       child: Column(
         children: [
-          const SizedBox(height: 90),
+          const SizedBox(height: 80),
           Text('Welcome Back!', style: AppTypography.b24l),
           const SizedBox(height: 12),
           Center(
@@ -155,17 +139,12 @@ class _FingerprintWidget extends StatelessWidget {
         ElevatedButton(
           onPressed: () {},
           style: ElevatedButton.styleFrom(
-            primary: AppColors.white100,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),
-            ),
+            backgroundColor: AppColors.white100,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           ),
           child: const Text(
             'Set Up',
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
-              color: AppColors.primary100,
-            ),
+            style: TextStyle(fontWeight: FontWeight.w600, color: AppColors.primary100),
           ),
         ),
         const SizedBox(width: 0),
@@ -226,21 +205,18 @@ class _EmailTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<LoginBloc, LoginState, EmailError>(
-      selector: (state) => state.emailError,
-      builder: (context, emailError) {
+    return BlocBuilder<LoginBloc, LoginState>(
+      buildWhen: (_, current) => current is LoginFieldsInfo,
+      builder: (context, state) {
+        final fieldsInfo = state as LoginFieldsInfo;
+        final error = fieldsInfo.emailError;
         return CustomTextField(
           prefixIcon: Icons.mail_outline_outlined,
           labelText: 'Enter your email address',
-          onChanged: (text) =>
-              context.read<LoginBloc>().add(LoginEmailChanged(text)),
+          onChanged: (text) => context.read<LoginBloc>().add(LoginEmailChanged(text)),
           keyboardType: TextInputType.emailAddress,
-          textColor: emailError == EmailError.noError
-              ? AppColors.dark100
-              : AppColors.error100,
-          prefixIconColor: emailError == EmailError.noError
-              ? AppColors.grey60
-              : AppColors.error100,
+          textColor: error == null ? AppColors.dark100 : AppColors.error100,
+          prefixIconColor: error == null ? AppColors.grey60 : AppColors.error100,
         );
       },
     );
@@ -252,22 +228,19 @@ class _PasswordTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<LoginBloc, LoginState, PasswordError>(
-      selector: (state) => state.passwordError,
-      builder: (context, passwordError) {
+    return BlocBuilder<LoginBloc, LoginState>(
+      buildWhen: (_, current) => current is LoginFieldsInfo,
+      builder: (context, state) {
+        final fieldsInfo = state as LoginFieldsInfo;
+        final error = fieldsInfo.passwordError;
         return CustomTextField(
           prefixIcon: Icons.lock_outline,
           labelText: 'Confirm your password',
           obscureText: true,
-          onChanged: (text) =>
-              context.read<LoginBloc>().add(LoginPasswordChanged(text)),
+          onChanged: (text) => context.read<LoginBloc>().add(LoginPasswordChanged(text)),
           keyboardType: TextInputType.visiblePassword,
-          textColor: passwordError == PasswordError.noError
-              ? AppColors.dark100
-              : AppColors.error100,
-          prefixIconColor: passwordError == PasswordError.noError
-              ? AppColors.grey60
-              : AppColors.error100,
+          textColor: error == null ? AppColors.dark100 : AppColors.error100,
+          prefixIconColor: error == null ? AppColors.grey60 : AppColors.error100,
         );
       },
     );
@@ -280,17 +253,17 @@ class _LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocSelector<LoginBloc, LoginState, bool>(
-      selector: (state) => state.allFieldsValid,
-      builder: (context, fieldsValid) {
+      selector: (state) => state is LoginInProgress,
+      builder: (context, inProgress) {
         return CustomRoundedButton(
           textButton: 'Login',
           onPressed: () {
-            return fieldsValid
-                ? context.read<LoginBloc>().add(const LoginLoginButtonClicked())
-                : null;
+            return inProgress ? null : context.read<LoginBloc>().add(const LoginAuthAccount());
           },
-          textColor: fieldsValid ? AppColors.white100 : AppColors.grey100,
-          buttonColor: fieldsValid ? AppColors.primary100 : AppColors.dark10,
+          textColor: AppColors.white100,
+          buttonColor: AppColors.primary100,
+          // textColor: inProgress ? AppColors.white100 : AppColors.grey100,
+          // buttonColor: inProgress ? AppColors.primary100 : AppColors.dark10,
         );
       },
     );

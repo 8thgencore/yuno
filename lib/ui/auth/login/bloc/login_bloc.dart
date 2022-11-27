@@ -5,97 +5,83 @@ import 'package:bloc/bloc.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:yuno/ui/auth/login/model/models.dart';
-import 'package:yuno/ui/auth/login/model/request_error.dart';
+import 'package:yuno/data/model/request_error.dart';
+import 'package:yuno/ui/auth/login/model/errors.dart';
 
 part 'login_event.dart';
 
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  static final _passwordRegexp =
-      RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
-
-  LoginBloc() : super(LoginState.initial()) {
-    on<LoginLoginButtonClicked>(_loginButtonClicked);
-    on<LoginEmailChanged>(_emailChanged);
-    on<LoginPasswordChanged>(_passwordChanged);
-    on<LoginRequestErrorShowed>(_requestErrorShowed);
+  LoginBloc() : super(const LoginFieldsInfo()) {
+    on<LoginEmailChanged>(_onEmailChanged);
+    on<LoginEmailFocusLost>(_onEmailFocusLost);
+    on<LoginPasswordChanged>(_onPasswordChanged);
+    on<LoginPasswordFocusLost>(_onPasswordFocusLost);
+    on<LoginAuthAccount>(_onLoginAccount);
   }
 
-  FutureOr<void> _loginButtonClicked(
-    LoginLoginButtonClicked event,
-    Emitter<LoginState> emit,
+  static final _passwordRegexp = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
+
+  String _email = '';
+  bool _highlightEmailError = false;
+  LoginEmailError? _emailError = LoginEmailError.empty;
+
+  String _password = '';
+  bool _highlightPasswordError = false;
+  LoginPasswordError? _passwordError = LoginPasswordError.empty;
+
+  FutureOr<void> _onEmailChanged(
+    final LoginEmailChanged event,
+    final Emitter<LoginState> emit,
+  ) {
+    _email = event.email;
+    _emailError = _validateEmail();
+    emit(_calculateFieldsInfo());
+  }
+
+  FutureOr<void> _onEmailFocusLost(
+    final LoginEmailFocusLost event,
+    final Emitter<LoginState> emit,
+  ) {
+    _highlightEmailError = true;
+    emit(_calculateFieldsInfo());
+  }
+
+  FutureOr<void> _onPasswordChanged(
+    final LoginPasswordChanged event,
+    final Emitter<LoginState> emit,
+  ) {
+    _password = event.password;
+    _passwordError = _validatePassword();
+    emit(_calculateFieldsInfo());
+  }
+
+  FutureOr<void> _onPasswordFocusLost(
+    final LoginPasswordFocusLost event,
+    final Emitter<LoginState> emit,
+  ) {
+    _highlightPasswordError = true;
+    emit(_calculateFieldsInfo());
+  }
+
+  FutureOr<void> _onLoginAccount(
+    final LoginAuthAccount event,
+    final Emitter<LoginState> emit,
   ) async {
-    if (state.allFieldsValid) {
-      final response = await _login(
-        email: state.email,
-        password: state.password,
-      );
-      if (response == null) {
-        emit(state.copyWith(authenticated: true));
-      } else {
-        switch (response) {
-          case LoginError.emailNotExist:
-            emit(state.copyWith(emailError: EmailError.notExist));
-            break;
-          case LoginError.wrongPassword:
-            emit(state.copyWith(passwordError: PasswordError.wrongPassword));
-            break;
-          case LoginError.other:
-            emit(state.copyWith(requestError: RequestError.unknown));
-            break;
-        }
-      }
+    _highlightEmailError = true;
+    _highlightPasswordError = true;
+    emit(_calculateFieldsInfo());
+    final haveError = _emailError != null || _passwordError != null;
+    if (haveError) {
+      return;
     }
-  }
-
-  Future<LoginError?> _login({
-    required final String email,
-    required final String password,
-  }) async {
+    emit(const LoginInProgress());
     final successfulResponse = Random().nextBool();
     if (successfulResponse) {
-      return null;
+      emit(const LoginCompleted());
     }
-    return LoginError.values[Random().nextInt(LoginError.values.length)];
-  }
-
-  FutureOr<void> _emailChanged(
-    LoginEmailChanged event,
-    Emitter<LoginState> emit,
-  ) {
-    final newEmail = event.email;
-    emit(
-      state.copyWith(
-        email: newEmail,
-        emailValid: EmailValidator.validate(newEmail),
-        emailError: EmailError.noError,
-        authenticated: false,
-      ),
-    );
-  }
-
-  FutureOr<void> _passwordChanged(
-    LoginPasswordChanged event,
-    Emitter<LoginState> emit,
-  ) {
-    final newPassword = event.password;
-    emit(
-      state.copyWith(
-        password: newPassword,
-        passwordValid: _passwordRegexp.hasMatch(newPassword),
-        passwordError: PasswordError.noError,
-        authenticated: false,
-      ),
-    );
-  }
-
-  FutureOr<void> _requestErrorShowed(
-    LoginRequestErrorShowed event,
-    Emitter<LoginState> emit,
-  ) {
-    emit(state.copyWith(requestError: RequestError.noError));
+    emit(LoginError(RequestError.values[Random().nextInt(RequestError.values.length)]));
   }
 
   @override
@@ -103,6 +89,34 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     debugPrint('Login Bloc. Event happened: $event');
     super.onEvent(event);
   }
-}
 
-enum LoginError { emailNotExist, wrongPassword, other }
+  LoginFieldsInfo _calculateFieldsInfo() {
+    return LoginFieldsInfo(
+      emailError: _highlightEmailError ? _emailError : null,
+      passwordError: _highlightPasswordError ? _passwordError : null,
+    );
+  }
+
+  LoginEmailError? _validateEmail() {
+    if (_email.isEmpty) {
+      return LoginEmailError.empty;
+    }
+    if (!EmailValidator.validate(_email)) {
+      return LoginEmailError.invalid;
+    }
+    return null;
+  }
+
+  LoginPasswordError? _validatePassword() {
+    if (_password.isEmpty) {
+      return LoginPasswordError.empty;
+    }
+    if (_password.length < 6) {
+      return LoginPasswordError.tooShort;
+    }
+    if (_passwordRegexp.hasMatch(_password)) {
+      return LoginPasswordError.wrongSymbols;
+    }
+    return null;
+  }
+}

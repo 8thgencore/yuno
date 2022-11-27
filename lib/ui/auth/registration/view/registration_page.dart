@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/auth/login/view/login_page.dart';
 import 'package:yuno/ui/auth/registration/bloc/registration_bloc.dart';
-import 'package:yuno/ui/auth/registration/model/models.dart';
 import 'package:yuno/ui/auth/widgets/custom_rounded_button.dart';
 import 'package:yuno/ui/auth/widgets/custom_text_field.dart';
 
@@ -34,28 +33,10 @@ class _RegistrationPageWidget extends StatelessWidget {
       listeners: [
         BlocListener<RegistrationBloc, RegistrationState>(
           listener: (context, state) {
-            if (state.registered) {
+            if (state is RegistrationCompleted) {
               Navigator.of(context).push<void>(
                 MaterialPageRoute(builder: (_) => const LoginPage()),
               );
-            }
-          },
-        ),
-        BlocListener<RegistrationBloc, RegistrationState>(
-          listener: (context, state) {
-            if (state.requestError != RequestError.noError) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: const Text(
-                    'Произошла ошибка',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  backgroundColor: Colors.red[900],
-                ),
-              );
-              context
-                  .read<RegistrationBloc>()
-                  .add(const RegistrationRequestErrorShowed());
             }
           },
         ),
@@ -66,7 +47,7 @@ class _RegistrationPageWidget extends StatelessWidget {
           Image.asset(Assets.images.signOrnament.path),
           const Align(
             alignment: Alignment.bottomCenter,
-            child: _BottomWidget(),
+            child: SingleChildScrollView(child: _BottomWidget()),
           ),
         ],
       ),
@@ -83,7 +64,7 @@ class _TopInfoWidget extends StatelessWidget {
       color: AppColors.primary100,
       child: Column(
         children: [
-          const SizedBox(height: 90),
+          const SizedBox(height: 80),
           Text('Hey, Welcome!', style: AppTypography.b24l),
           const SizedBox(height: 12),
           Center(
@@ -159,22 +140,18 @@ class _EmailTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<RegistrationBloc, RegistrationState, EmailError>(
-      selector: (state) => state.emailError,
-      builder: (context, emailError) {
+    return BlocBuilder<RegistrationBloc, RegistrationState>(
+      buildWhen: (_, current) => current is RegistrationFieldsInfo,
+      builder: (context, state) {
+        final fieldsInfo = state as RegistrationFieldsInfo;
+        final error = fieldsInfo.emailError;
         return CustomTextField(
           prefixIcon: Icons.mail_outline_outlined,
           labelText: 'Enter your email address',
-          onChanged: (text) => context
-              .read<RegistrationBloc>()
-              .add(RegistrationEmailChanged(text)),
+          onChanged: (text) => context.read<RegistrationBloc>().add(RegistrationEmailChanged(text)),
           keyboardType: TextInputType.emailAddress,
-          textColor: emailError == EmailError.noError
-              ? AppColors.dark100
-              : AppColors.error100,
-          prefixIconColor: emailError == EmailError.noError
-              ? AppColors.grey60
-              : AppColors.error100,
+          textColor: error == null ? AppColors.dark100 : AppColors.error100,
+          prefixIconColor: error == null ? AppColors.grey60 : AppColors.error100,
         );
       },
     );
@@ -186,22 +163,18 @@ class _NicknameTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<RegistrationBloc, RegistrationState, NicknameError>(
-      selector: (state) => state.nicknameError,
-      builder: (context, nicknameError) {
+    return BlocBuilder<RegistrationBloc, RegistrationState>(
+      buildWhen: (_, current) => current is RegistrationFieldsInfo,
+      builder: (context, state) {
+        final fieldsInfo = state as RegistrationFieldsInfo;
+        final error = fieldsInfo.nameError;
         return CustomTextField(
           prefixIcon: Icons.person_outline_outlined,
           labelText: 'Create your username',
-          onChanged: (text) => context
-              .read<RegistrationBloc>()
-              .add(RegistrationNicknameChanged(text)),
+          onChanged: (text) => context.read<RegistrationBloc>().add(RegistrationNameChanged(text)),
           keyboardType: TextInputType.name,
-          textColor: nicknameError == NicknameError.noError
-              ? AppColors.dark100
-              : AppColors.error100,
-          prefixIconColor: nicknameError == NicknameError.noError
-              ? AppColors.grey60
-              : AppColors.error100,
+          textColor: error == null ? AppColors.dark100 : AppColors.error100,
+          prefixIconColor: error == null ? AppColors.grey60 : AppColors.error100,
         );
       },
     );
@@ -213,23 +186,20 @@ class _PasswordTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<RegistrationBloc, RegistrationState, PasswordError>(
-      selector: (state) => state.passwordError,
-      builder: (context, passwordError) {
+    return BlocBuilder<RegistrationBloc, RegistrationState>(
+      buildWhen: (_, current) => current is RegistrationFieldsInfo,
+      builder: (context, state) {
+        final fieldsInfo = state as RegistrationFieldsInfo;
+        final error = fieldsInfo.passwordError;
         return CustomTextField(
           prefixIcon: Icons.lock_outline,
           labelText: 'Confirm your password',
           obscureText: true,
-          onChanged: (text) => context
-              .read<RegistrationBloc>()
-              .add(RegistrationPasswordChanged(text)),
+          onChanged: (text) =>
+              context.read<RegistrationBloc>().add(RegistrationPasswordChanged(text)),
           keyboardType: TextInputType.visiblePassword,
-          textColor: passwordError == PasswordError.noError
-              ? AppColors.dark100
-              : AppColors.error100,
-          prefixIconColor: passwordError == PasswordError.noError
-              ? AppColors.grey60
-              : AppColors.error100,
+          textColor: error == null ? AppColors.dark100 : AppColors.error100,
+          prefixIconColor: error == null ? AppColors.grey60 : AppColors.error100,
         );
       },
     );
@@ -241,23 +211,20 @@ class _PasswordTextConfirmField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<RegistrationBloc, RegistrationState, PasswordError>(
-      selector: (state) => state.passwordError,
-      builder: (context, passwordError) {
+    return BlocBuilder<RegistrationBloc, RegistrationState>(
+      buildWhen: (_, current) => current is RegistrationFieldsInfo,
+      builder: (context, state) {
+        final fieldsInfo = state as RegistrationFieldsInfo;
+        final error = fieldsInfo.passwordConfirmError;
         return CustomTextField(
           prefixIcon: Icons.lock_outline,
           labelText: 'Create your password',
           obscureText: true,
-          onChanged: (text) => context
-              .read<RegistrationBloc>()
-              .add(RegistrationPasswordConfirmChanged(text)),
+          onChanged: (text) =>
+              context.read<RegistrationBloc>().add(RegistrationPasswordConfirmationChanged(text)),
           keyboardType: TextInputType.visiblePassword,
-          textColor: passwordError == PasswordError.noError
-              ? AppColors.dark100
-              : AppColors.error100,
-          prefixIconColor: passwordError == PasswordError.noError
-              ? AppColors.grey60
-              : AppColors.error100,
+          textColor: error == null ? AppColors.dark100 : AppColors.error100,
+          prefixIconColor: error == null ? AppColors.grey60 : AppColors.error100,
         );
       },
     );
@@ -270,19 +237,19 @@ class _RegistrationButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocSelector<RegistrationBloc, RegistrationState, bool>(
-      selector: (state) => state.allFieldsValid,
-      builder: (context, fieldsValid) {
+      selector: (state) => state is RegistrationInProgress,
+      builder: (context, inProgress) {
         return CustomRoundedButton(
           textButton: 'Sign Me Up!',
           onPressed: () {
-            return fieldsValid
-                ? context
-                    .read<RegistrationBloc>()
-                    .add(const RegistrationButtonClicked())
-                : null;
+            return inProgress
+                ? null
+                : context.read<RegistrationBloc>().add(const RegistrationCreateAccount());
           },
-          textColor: fieldsValid ? AppColors.white100 : AppColors.grey100,
-          buttonColor: fieldsValid ? AppColors.primary100 : AppColors.dark10,
+          textColor: AppColors.white100,
+          buttonColor: AppColors.primary100,
+          // textColor: inProgress ? AppColors.white100 : AppColors.grey100,
+          // buttonColor: inProgress ? AppColors.primary100 : AppColors.dark10,
         );
       },
     );
