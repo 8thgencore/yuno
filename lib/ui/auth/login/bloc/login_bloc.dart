@@ -4,7 +4,6 @@ import 'dart:math';
 import 'package:bloc/bloc.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:yuno/data/model/request_error.dart';
 import 'package:yuno/ui/auth/login/model/errors.dart';
 
@@ -73,6 +72,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     _highlightPasswordError = true;
     emit(_calculateFieldsInfo());
     final haveError = _emailError != null || _passwordError != null;
+    emit(const LoginError(RequestError.invalid));
+
     if (haveError) {
       return;
     }
@@ -82,12 +83,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       emit(const LoginCompleted());
     }
     emit(LoginError(RequestError.values[Random().nextInt(RequestError.values.length)]));
-  }
-
-  @override
-  void onEvent(LoginEvent event) {
-    debugPrint('Login Bloc. Event happened: $event');
-    super.onEvent(event);
   }
 
   LoginFieldsInfo _calculateFieldsInfo() {

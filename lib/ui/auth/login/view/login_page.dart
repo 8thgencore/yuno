@@ -4,7 +4,6 @@ import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/auth/login/bloc/login_bloc.dart';
 import 'package:yuno/ui/auth/widgets/custom_rounded_button.dart';
 import 'package:yuno/ui/auth/widgets/custom_text_field.dart';
-import 'package:yuno/ui/home/view/home_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -15,7 +14,7 @@ class LoginPage extends StatelessWidget {
       create: (context) => LoginBloc(),
       child: Scaffold(
         appBar: AppBar(toolbarHeight: 0, elevation: 0),
-        backgroundColor: AppColors.screen100,
+        backgroundColor: AppColors.primary100,
         body: const SafeArea(
           child: _LoginPageWidget(),
         ),
@@ -32,65 +31,54 @@ class _LoginPageWidget extends StatefulWidget {
 }
 
 class _LoginPageWidgetState extends State<_LoginPageWidget> {
+  static const double credWidgetH = 312;
+  static const double fingerprintWidgetH = 100;
+  static const double errorWidgetH = 110;
+
   @override
   Widget build(BuildContext context) {
-    return MultiBlocListener(
-      listeners: [
-        BlocListener<LoginBloc, LoginState>(
-          listener: (context, state) {
-            if (state is LoginCompleted) {
-              Navigator.of(context).push<void>(
-                MaterialPageRoute(builder: (_) => const HomePage()),
-              );
-            }
-          },
-        ),
-      ],
+    return BlocListener<LoginBloc, LoginState>(
+      listener: (context, state) {
+        if (state is LoginCompleted) {
+          Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+        }
+      },
       child: Stack(
         children: [
-          const _TopInfoWidget(),
-          Image.asset(Assets.images.signOrnament.path, fit: BoxFit.cover),
-          Positioned(
-            bottom: 0,
-            child: Container(
-              height: 312 + 100 + 110,
-              width: MediaQuery.of(context).size.width,
-              alignment: Alignment.topCenter,
-              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
-                color: AppColors.error100,
-              ),
-              child: Column(
+          BlocSelector<LoginBloc, LoginState, bool>(
+            selector: (state) => state is LoginError,
+            builder: (context, isError) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'Password or Email Invalid',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: AppColors.white100,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  SizedBox(height: 4),
-                  Text(
-                    'Seems like you’ve entered wrong combination of email and password, please try again.',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: AppColors.white100,
-                      fontWeight: FontWeight.w400,
-                      height: 22 / 14,
-                    ),
+                  const SizedBox(),
+                  const _TopInfoWidget(),
+                  SizedBox(
+                    height: isError
+                        ? (credWidgetH + fingerprintWidgetH + errorWidgetH)
+                        : (credWidgetH + fingerprintWidgetH),
                   ),
                 ],
-              ),
-            ),
+              );
+            },
           ),
-          Positioned(
-            bottom: 0,
+          Image.asset(Assets.images.signOrnament.path, fit: BoxFit.cover),
+          BlocSelector<LoginBloc, LoginState, bool>(
+            selector: (state) => state is LoginError,
+            builder: (context, isError) {
+              return isError
+                  ? const Align(
+                      alignment: Alignment.bottomCenter,
+                      child: _ErrorWidget(height: credWidgetH + fingerprintWidgetH + errorWidgetH),
+                    )
+                  : const SizedBox();
+            },
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
             child: Container(
-              height: 312 + 100,
-              width: MediaQuery.of(context).size.width,
+              height: credWidgetH + fingerprintWidgetH,
+              width: double.infinity,
               alignment: Alignment.topCenter,
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
               decoration: const BoxDecoration(
@@ -100,18 +88,45 @@ class _LoginPageWidgetState extends State<_LoginPageWidget> {
               child: const _FingerprintWidget(),
             ),
           ),
-          Align(
+          const Align(
             alignment: Alignment.bottomCenter,
             child: SingleChildScrollView(
-              child: Container(
-                padding: const EdgeInsets.only(top: 20, left: 24, right: 24),
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
-                  color: AppColors.screen100,
-                ),
-                child: const _BottomWidget(),
-              ),
+              child: _BottomWidget(),
             ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ErrorWidget extends StatelessWidget {
+  const _ErrorWidget({required this.height});
+
+  final double height;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height,
+      width: double.infinity,
+      alignment: Alignment.topCenter,
+      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+        color: AppColors.error100,
+      ),
+      child: Column(
+        children: [
+          Text(
+            'Password or Email Invalid',
+            style: AppTypography.b16l,
+          ),
+          const SizedBox(height: 4),
+          Text(
+            'Seems like you’ve entered wrong combination of email and password, please try again.',
+            textAlign: TextAlign.center,
+            style: AppTypography.r14l.copyWith(height: 22 / 14),
           ),
         ],
       ),
@@ -124,21 +139,18 @@ class _TopInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ColoredBox(
-      color: AppColors.primary100,
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
       child: Column(
         children: [
-          const SizedBox(height: 80),
           Text('Welcome Back!', style: AppTypography.b24l),
           const SizedBox(height: 12),
-          Center(
-            child: Text(
-              'Login to your account by entering your email\n'
-              'and password below, we are really happy\n'
-              'to see you come back!',
-              style: AppTypography.r14l.copyWith(height: 2),
-              textAlign: TextAlign.center,
-            ),
+          Text(
+            'Login to your account by entering your email\n'
+            'and password below, we are really happy\n'
+            'to see you come back!',
+            style: AppTypography.r14l.copyWith(height: 2),
+            textAlign: TextAlign.center,
           ),
         ],
       ),
@@ -192,44 +204,53 @@ class _BottomWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const _EmailTextField(),
-        const SizedBox(height: 20),
-        const _PasswordTextField(),
-        TextButton(
-          child: Align(
-            alignment: Alignment.topRight,
-            child: Text('Forgot Password?', style: AppTypography.r14d),
-          ),
-          onPressed: () => Navigator.pushNamedAndRemoveUntil(
-            context,
-            '/splash',
-            (route) => false,
-          ),
-        ),
-        const _LoginButton(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Doesn't have an account yet?",
-              style: AppTypography.r14d,
-            ),
-            TextButton(
-              child: Text(
-                'Sign Up',
-                style: AppTypography.r14d.copyWith(color: AppColors.primary100),
+    return Container(
+      padding: const EdgeInsets.only(top: 20, left: 24, right: 24),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+        color: AppColors.screen100,
+      ),
+      child: Column(
+        children: [
+          const _EmailTextField(),
+          const SizedBox(height: 20),
+          const _PasswordTextField(),
+          Row(
+            children: [
+              const Spacer(),
+              TextButton(
+                child: Text('Forgot Password?', style: AppTypography.r14d),
+                onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  '/splash',
+                  (route) => false,
+                ),
               ),
-              onPressed: () => Navigator.pushNamedAndRemoveUntil(
-                context,
-                '/sign_up',
-                (route) => false,
+            ],
+          ),
+          const _LoginButton(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Doesn't have an account yet?",
+                style: AppTypography.r14d,
               ),
-            ),
-          ],
-        ),
-      ],
+              TextButton(
+                child: Text(
+                  'Sign Up',
+                  style: AppTypography.r14d.copyWith(color: AppColors.primary100),
+                ),
+                onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  '/sign_up',
+                  (route) => false,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

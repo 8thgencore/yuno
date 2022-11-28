@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yuno/ui/auth/login/view/login_page.dart';
 import 'package:yuno/ui/auth/registration/view/registration_page.dart';
+import 'package:yuno/ui/home/view/home_page.dart';
 import 'package:yuno/ui/splash/view/splash_page.dart';
 
 Route Function(RouteSettings) get routes {
@@ -23,6 +24,12 @@ Route Function(RouteSettings) get routes {
       case '/sign_in':
         route = MaterialPageRoute<dynamic>(
           builder: (_) => const LoginPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+        break;
+      case '/home':
+        route = MaterialPageRoute<dynamic>(
+          builder: (_) => const HomePage(),
           settings: RouteSettings(name: settings.name),
         );
         break;

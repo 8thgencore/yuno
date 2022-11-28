@@ -10,6 +10,12 @@ abstract class AppTypography {
     fontWeight: FontWeight.w600,
   );
 
+  static TextStyle b16l = const TextStyle(
+    color: AppColors.white100,
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+  );
+
   static TextStyle r14l = const TextStyle(
     color: AppColors.white100,
     fontSize: 14,
