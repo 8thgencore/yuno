@@ -53,10 +53,46 @@ class _LoginPageWidgetState extends State<_LoginPageWidget> {
           Positioned(
             bottom: 0,
             child: Container(
-              height: 412,
+              height: 312 + 100 + 110,
               width: MediaQuery.of(context).size.width,
               alignment: Alignment.topCenter,
-              padding: const EdgeInsets.only(top: 20, left: 24, right: 24),
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+                color: AppColors.error100,
+              ),
+              child: Column(
+                children: [
+                  Text(
+                    'Password or Email Invalid',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: AppColors.white100,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(height: 4),
+                  Text(
+                    'Seems like you’ve entered wrong combination of email and password, please try again.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: AppColors.white100,
+                      fontWeight: FontWeight.w400,
+                      height: 22 / 14,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 0,
+            child: Container(
+              height: 312 + 100,
+              width: MediaQuery.of(context).size.width,
+              alignment: Alignment.topCenter,
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
                 color: AppColors.dark100,
@@ -118,7 +154,6 @@ class _FingerprintWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const SizedBox(width: 0),
         Container(
           height: 60,
           width: 60,
@@ -147,7 +182,6 @@ class _FingerprintWidget extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.w600, color: AppColors.primary100),
           ),
         ),
-        const SizedBox(width: 0),
       ],
     );
   }
