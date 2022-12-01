@@ -23,17 +23,12 @@ class LoginPage extends StatelessWidget {
   }
 }
 
-class _LoginPageWidget extends StatefulWidget {
+class _LoginPageWidget extends StatelessWidget {
   const _LoginPageWidget({super.key});
 
-  @override
-  State<_LoginPageWidget> createState() => _LoginPageWidgetState();
-}
-
-class _LoginPageWidgetState extends State<_LoginPageWidget> {
-  static const double credWidgetH = 312;
+  static const double _credWidgetH = 312;
   static const double fingerprintWidgetH = 100;
-  static const double errorWidgetH = 110;
+  static const double errorWidgetH = 106;
 
   @override
   Widget build(BuildContext context) {
@@ -55,21 +50,24 @@ class _LoginPageWidgetState extends State<_LoginPageWidget> {
                   const _TopInfoWidget(),
                   SizedBox(
                     height: isError
-                        ? (credWidgetH + fingerprintWidgetH + errorWidgetH)
-                        : (credWidgetH + fingerprintWidgetH),
+                        ? (_credWidgetH + fingerprintWidgetH + errorWidgetH)
+                        : (_credWidgetH + fingerprintWidgetH),
                   ),
                 ],
               );
             },
           ),
-          Image.asset(Assets.images.signOrnament.path, fit: BoxFit.cover),
+          SizedBox(
+            width: double.infinity,
+            child: Image.asset(Assets.images.signOrnament.path, fit: BoxFit.cover),
+          ),
           BlocSelector<LoginBloc, LoginState, bool>(
             selector: (state) => state is LoginError,
             builder: (context, isError) {
               return isError
                   ? const Align(
                       alignment: Alignment.bottomCenter,
-                      child: _ErrorWidget(height: credWidgetH + fingerprintWidgetH + errorWidgetH),
+                      child: _ErrorWidget(height: _credWidgetH + fingerprintWidgetH + errorWidgetH),
                     )
                   : const SizedBox();
             },
@@ -77,7 +75,7 @@ class _LoginPageWidgetState extends State<_LoginPageWidget> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: credWidgetH + fingerprintWidgetH,
+              height: _credWidgetH + fingerprintWidgetH,
               width: double.infinity,
               alignment: Alignment.topCenter,
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
@@ -90,9 +88,7 @@ class _LoginPageWidgetState extends State<_LoginPageWidget> {
           ),
           const Align(
             alignment: Alignment.bottomCenter,
-            child: SingleChildScrollView(
-              child: _BottomWidget(),
-            ),
+            child: SingleChildScrollView(child: _BottomWidget()),
           ),
         ],
       ),
@@ -107,29 +103,44 @@ class _ErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height,
-      width: double.infinity,
-      alignment: Alignment.topCenter,
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
-        color: AppColors.error100,
-      ),
-      child: Column(
-        children: [
-          Text(
-            'Password or Email Invalid',
-            style: AppTypography.b16l,
+    return Stack(
+      children: [
+        Container(
+          height: height,
+          width: double.infinity,
+          alignment: Alignment.topCenter,
+          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+            color: AppColors.error100,
           ),
-          const SizedBox(height: 4),
-          Text(
-            'Seems like you’ve entered wrong combination of email and password, please try again.',
-            textAlign: TextAlign.center,
-            style: AppTypography.r14l.copyWith(height: 22 / 14),
+          child: Column(
+            children: [
+              Text(
+                'Password or Email Invalid',
+                style: AppTypography.b16l,
+              ),
+              const SizedBox(height: 4),
+              Text(
+                'Seems like you’ve entered wrong combination of email and password, please try again.',
+                textAlign: TextAlign.center,
+                style: AppTypography.r14l.copyWith(height: 22 / 14),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+        Positioned(
+          top: 16 - 10,
+          right: 24 - 10,
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () => context.read<LoginBloc>().add(const LoginCloseError()),
+            child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                child: Icon(Icons.close, color: AppColors.white80, size: 20)),
+          ),
+        )
+      ],
     );
   }
 }

@@ -42,3 +42,10 @@ class LoginAuthAccount extends LoginEvent {
   @override
   List<Object?> get props => [];
 }
+
+class LoginCloseError extends LoginEvent {
+  const LoginCloseError();
+
+  @override
+  List<Object?> get props => [];
+}

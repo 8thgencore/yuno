@@ -74,3 +74,10 @@ class RegistrationCreateAccount extends RegistrationEvent {
   @override
   List<Object?> get props => [];
 }
+
+class RegistrationCloseError extends RegistrationEvent {
+  const RegistrationCloseError();
+
+  @override
+  List<Object?> get props => [];
+}

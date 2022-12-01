@@ -21,6 +21,7 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     on<RegistrationNameChanged>(_onNameChanged);
     on<RegistrationNameFocusLost>(_onNameFocusLost);
     on<RegistrationCreateAccount>(_onCreateAccount);
+    on<RegistrationCloseError>(_onCloseError);
   }
 
   static final _passwordRegexp = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
@@ -124,6 +125,7 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
         _passwordError != null ||
         _passwordConfirmationError != null ||
         _nameError != null;
+    emit(const RegistrationError(RequestError.invalid));
     if (haveError) {
       return;
     }
@@ -153,6 +155,13 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
   //   return response;
   // }
 
+  FutureOr<void> _onCloseError(
+    final RegistrationCloseError event,
+    final Emitter<RegistrationState> emit,
+  ) {
+    emit(_calculateFieldsInfo());
+  }
+
   RegistrationFieldsInfo _calculateFieldsInfo() {
     return RegistrationFieldsInfo(
       emailError: _highlightEmailError ? _emailError : null,
@@ -166,7 +175,6 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     if (_email.isEmpty) {
       return RegistrationEmailError.empty;
     }
-
     if (!EmailValidator.validate(_email)) {
       return RegistrationEmailError.invalid;
     }

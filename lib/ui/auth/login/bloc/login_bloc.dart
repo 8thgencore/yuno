@@ -18,6 +18,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginPasswordChanged>(_onPasswordChanged);
     on<LoginPasswordFocusLost>(_onPasswordFocusLost);
     on<LoginAuthAccount>(_onLoginAccount);
+    on<LoginCloseError>(_onCloseError);
   }
 
   static final _passwordRegexp = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
@@ -73,7 +74,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     emit(_calculateFieldsInfo());
     final haveError = _emailError != null || _passwordError != null;
     emit(const LoginError(RequestError.invalid));
-
     if (haveError) {
       return;
     }
@@ -83,6 +83,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       emit(const LoginCompleted());
     }
     emit(LoginError(RequestError.values[Random().nextInt(RequestError.values.length)]));
+  }
+
+  FutureOr<void> _onCloseError(
+    final LoginCloseError event,
+    final Emitter<LoginState> emit,
+  ) {
+    emit(_calculateFieldsInfo());
   }
 
   LoginFieldsInfo _calculateFieldsInfo() {

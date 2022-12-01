@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yuno/resources/resources.dart';
-import 'package:yuno/ui/auth/login/view/login_page.dart';
 import 'package:yuno/ui/auth/registration/bloc/registration_bloc.dart';
 import 'package:yuno/ui/auth/widgets/custom_rounded_button.dart';
 import 'package:yuno/ui/auth/widgets/custom_text_field.dart';
@@ -15,7 +14,7 @@ class RegistrationPage extends StatelessWidget {
       create: (context) => RegistrationBloc(),
       child: Scaffold(
         appBar: AppBar(toolbarHeight: 0, elevation: 0),
-        backgroundColor: AppColors.screen100,
+        backgroundColor: AppColors.primary100,
         body: const SafeArea(
           child: _RegistrationPageWidget(),
         ),
@@ -27,24 +26,49 @@ class RegistrationPage extends StatelessWidget {
 class _RegistrationPageWidget extends StatelessWidget {
   const _RegistrationPageWidget({super.key});
 
+  static const double _credWidgetH = 448;
+  static const double errorWidgetH = 85;
+
   @override
   Widget build(BuildContext context) {
-    return MultiBlocListener(
-      listeners: [
-        BlocListener<RegistrationBloc, RegistrationState>(
-          listener: (context, state) {
-            if (state is RegistrationCompleted) {
-              Navigator.of(context).push<void>(
-                MaterialPageRoute(builder: (_) => const LoginPage()),
-              );
-            }
-          },
-        ),
-      ],
+    return BlocListener<RegistrationBloc, RegistrationState>(
+      listener: (context, state) {
+        if (state is RegistrationCompleted) {
+          Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+        }
+      },
       child: Stack(
         children: [
-          const _TopInfoWidget(),
-          Image.asset(Assets.images.signOrnament.path),
+          BlocSelector<RegistrationBloc, RegistrationState, bool>(
+            selector: (state) => state is RegistrationError,
+            builder: (context, isError) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const SizedBox(),
+                  const _TopInfoWidget(),
+                  SizedBox(
+                    height: isError ? (_credWidgetH + errorWidgetH) : _credWidgetH,
+                  ),
+                ],
+              );
+            },
+          ),
+          SizedBox(
+            width: double.infinity,
+            child: Image.asset(Assets.images.signOrnament.path, fit: BoxFit.cover),
+          ),
+          BlocSelector<RegistrationBloc, RegistrationState, bool>(
+            selector: (state) => state is RegistrationError,
+            builder: (context, isError) {
+              return isError
+                  ? const Align(
+                      alignment: Alignment.bottomCenter,
+                      child: _ErrorWidget(height: _credWidgetH + errorWidgetH),
+                    )
+                  : const SizedBox();
+            },
+          ),
           const Align(
             alignment: Alignment.bottomCenter,
             child: SingleChildScrollView(child: _BottomWidget()),
@@ -55,16 +79,64 @@ class _RegistrationPageWidget extends StatelessWidget {
   }
 }
 
+class _ErrorWidget extends StatelessWidget {
+  const _ErrorWidget({required this.height});
+
+  final double height;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Container(
+          height: height,
+          width: double.infinity,
+          alignment: Alignment.topCenter,
+          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+            color: AppColors.error100,
+          ),
+          child: Column(
+            children: [
+              Text(
+                'Username Already Taken',
+                style: AppTypography.b16l,
+              ),
+              const SizedBox(height: 4),
+              Text(
+                'Please enter and try another username',
+                textAlign: TextAlign.center,
+                style: AppTypography.r14l.copyWith(height: 22 / 14),
+              ),
+            ],
+          ),
+        ),
+        Positioned(
+          top: 16 - 10,
+          right: 24 - 10,
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () => context.read<RegistrationBloc>().add(const RegistrationCloseError()),
+            child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                child: Icon(Icons.close, color: AppColors.white80, size: 20)),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class _TopInfoWidget extends StatelessWidget {
   const _TopInfoWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ColoredBox(
-      color: AppColors.primary100,
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
       child: Column(
         children: [
-          const SizedBox(height: 80),
           Text('Hey, Welcome!', style: AppTypography.b24l),
           const SizedBox(height: 12),
           Center(
@@ -87,49 +159,46 @@ class _BottomWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ColoredBox(
-      color: AppColors.primary100,
-      child: Container(
-        padding: const EdgeInsets.only(top: 20, left: 24, right: 24),
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
-          color: AppColors.screen100,
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            const _EmailTextField(),
-            const SizedBox(height: 20),
-            const _NicknameTextField(),
-            const SizedBox(height: 20),
-            const _PasswordTextField(),
-            const SizedBox(height: 20),
-            const _PasswordTextConfirmField(),
-            const SizedBox(height: 30),
-            const _RegistrationButton(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Already have an account?',
-                  style: AppTypography.r14d,
+    return Container(
+      padding: const EdgeInsets.only(top: 20, left: 24, right: 24),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+        color: AppColors.screen100,
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          const _EmailTextField(),
+          const SizedBox(height: 20),
+          const _NicknameTextField(),
+          const SizedBox(height: 20),
+          const _PasswordTextField(),
+          const SizedBox(height: 20),
+          const _PasswordTextConfirmField(),
+          const SizedBox(height: 30),
+          const _RegistrationButton(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Already have an account?',
+                style: AppTypography.r14d,
+              ),
+              TextButton(
+                child: const Text(
+                  'Login',
+                  style: TextStyle(color: AppColors.primary100),
                 ),
-                TextButton(
-                  child: const Text(
-                    'Login',
-                    style: TextStyle(color: AppColors.primary100),
-                  ),
-                  onPressed: () => Navigator.pushNamedAndRemoveUntil(
-                    context,
-                    '/sign_in',
-                    (route) => false,
-                  ),
+                onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  '/sign_in',
+                  (route) => false,
                 ),
-              ],
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
