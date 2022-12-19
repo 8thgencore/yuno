@@ -3,7 +3,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:equatable/equatable.dart';
-import 'package:yuno/data/model/request_error.dart';
+import 'package:yuno/api/auth/models/i_auth_register.dart';
+import 'package:yuno/domain/repository/auth_repository.dart';
 import 'package:yuno/ui/auth/registration/model/errors.dart';
 
 part 'registration_event.dart';
@@ -11,7 +12,7 @@ part 'registration_event.dart';
 part 'registration_state.dart';
 
 class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
-  RegistrationBloc() : super(const RegistrationFieldsInfo()) {
+  RegistrationBloc(this.authRepository) : super(const RegistrationFieldsInfo()) {
     on<RegistrationEmailChanged>(_onEmailChanged);
     on<RegistrationEmailFocusLost>(_onEmailFocusLost);
     on<RegistrationPasswordChanged>(_onPasswordChanged);
@@ -23,6 +24,8 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     on<RegistrationCreateAccount>(_onCreateAccount);
     on<RegistrationCloseError>(_onCloseError);
   }
+
+  final AuthRepository authRepository;
 
   static final _passwordRegexp = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
 
@@ -116,6 +119,7 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     final RegistrationCreateAccount event,
     final Emitter<RegistrationState> emit,
   ) async {
+    emit(const RegistrationInProgress());
     _highlightEmailError = true;
     _highlightPasswordError = true;
     _highlightPasswordConfirmationError = true;
@@ -125,35 +129,24 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
         _passwordError != null ||
         _passwordConfirmationError != null ||
         _nameError != null;
-    emit(const RegistrationError(RequestError.invalid));
     if (haveError) {
       return;
     }
     emit(const RegistrationInProgress());
-    await Future<void>.delayed(const Duration(seconds: 2));
-    emit(const RegistrationCompleted());
-    // final response = await _register();
-    // if (response.isRight) {
-    //   final userWithTokens = response.right;
-    //   await userRepository.setItem(userWithTokens.user);
-    //   await tokenRepository.setItem(userWithTokens.token);
-    //   await refreshTokenRepository.setItem(userWithTokens.refreshToken);
-    //   emit(const RegistrationCompleted());
-    // } else {
-    //   //TODO hangle error
-    // }
+    final result = await authRepository.register(
+      body: IAuthRegister(
+        email: _email,
+        username: _name,
+        password: _password,
+      ),
+    );
+    if (result != null) {
+      emit(RegistrationError(result.toString()));
+    } else {
+      emit(const RegistrationCompleted());
+    }
   }
 
-  // Future<Either<ApiError, UserWithTokensDto>> _register() async {
-  //   final response = await unauthorizedApiService.register(
-  //     email: _email,
-  //     password: _password,
-  //     name: _name,
-  //     avatarUrl: _avatarBuilder(_avatarKey),
-  //   );
-  //   //TODO errors
-  //   return response;
-  // }
 
   FutureOr<void> _onCloseError(
     final RegistrationCloseError event,

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yuno/app/di/service_locator.dart';
+import 'package:yuno/domain/repository/auth_repository.dart';
 import 'package:yuno/resources/resources.dart';
+import 'package:yuno/routes/routes.dart';
 import 'package:yuno/ui/auth/registration/bloc/registration_bloc.dart';
 import 'package:yuno/ui/auth/widgets/custom_rounded_button.dart';
 import 'package:yuno/ui/auth/widgets/custom_text_field.dart';
@@ -11,7 +14,7 @@ class RegistrationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => RegistrationBloc(),
+      create: (context) => RegistrationBloc(sl.get<AuthRepository>()),
       child: Scaffold(
         appBar: AppBar(toolbarHeight: 0, elevation: 0),
         backgroundColor: AppColors.primary100,
@@ -27,14 +30,14 @@ class _RegistrationPageWidget extends StatelessWidget {
   const _RegistrationPageWidget({super.key});
 
   static const double _credWidgetH = 448;
-  static const double errorWidgetH = 85;
+  static const double errorWidgetH = 86;
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<RegistrationBloc, RegistrationState>(
       listener: (context, state) {
         if (state is RegistrationCompleted) {
-          Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+          Navigator.pushNamedAndRemoveUntil(context, RoutesPage.login, (route) => false);
         }
       },
       child: Stack(
@@ -97,19 +100,25 @@ class _ErrorWidget extends StatelessWidget {
             borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
             color: AppColors.error100,
           ),
-          child: Column(
-            children: [
-              Text(
-                'Username Already Taken',
-                style: AppTypography.b16l,
-              ),
-              const SizedBox(height: 4),
-              Text(
-                'Please enter and try another username',
-                textAlign: TextAlign.center,
-                style: AppTypography.r14l.copyWith(height: 22 / 14),
-              ),
-            ],
+          child: BlocBuilder<RegistrationBloc, RegistrationState>(
+            buildWhen: (_, current ) => current is RegistrationError,
+            builder: (context, state) {
+              final error = state as RegistrationError;
+              return Column(
+                children: [
+                  Text(
+                    'Error from server',
+                    style: AppTypography.b16l,
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    error.requestError,
+                    textAlign: TextAlign.center,
+                    style: AppTypography.r14l.copyWith(height: 22 / 14),
+                  ),
+                ],
+              );
+            },
           ),
         ),
         Positioned(
@@ -192,7 +201,7 @@ class _BottomWidget extends StatelessWidget {
                 ),
                 onPressed: () => Navigator.pushNamedAndRemoveUntil(
                   context,
-                  '/sign_in',
+                  RoutesPage.login,
                   (route) => false,
                 ),
               ),

@@ -15,19 +15,19 @@ Route Function(RouteSettings) get routes {
       //     settings: RouteSettings(name: settings.name),
       //   );
       //   break;
-      case '/sign_up':
+      case RoutesPage.register:
         route = MaterialPageRoute<dynamic>(
           builder: (_) => const RegistrationPage(),
           settings: RouteSettings(name: settings.name),
         );
         break;
-      case '/sign_in':
+      case RoutesPage.login:
         route = MaterialPageRoute<dynamic>(
           builder: (_) => const LoginPage(),
           settings: RouteSettings(name: settings.name),
         );
         break;
-      case '/home':
+      case RoutesPage.home:
         route = MaterialPageRoute<dynamic>(
           builder: (_) => const HomePage(),
           settings: RouteSettings(name: settings.name),
@@ -43,4 +43,13 @@ Route Function(RouteSettings) get routes {
 
     return route;
   };
+}
+
+abstract class RoutesPage {
+  const RoutesPage._();
+
+  static const splash = '/splash';
+  static const register = '/register';
+  static const login = '/login';
+  static const home = '/home';
 }

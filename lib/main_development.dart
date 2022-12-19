@@ -6,8 +6,11 @@
 // https://opensource.org/licenses/MIT.
 
 import 'package:yuno/app/app.dart';
+import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/bootstrap.dart';
 
 void main() {
+  initServiceLocator();
+
   bootstrap(() => const App());
 }

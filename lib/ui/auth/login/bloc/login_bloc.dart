@@ -1,10 +1,11 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:bloc/bloc.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:equatable/equatable.dart';
-import 'package:yuno/data/model/request_error.dart';
+import 'package:yuno/api/auth/models/i_auth_login.dart';
+import 'package:yuno/app/di/service_locator.dart';
+import 'package:yuno/domain/repository/auth_repository.dart';
 import 'package:yuno/ui/auth/login/model/errors.dart';
 
 part 'login_event.dart';
@@ -12,7 +13,7 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc() : super(const LoginFieldsInfo()) {
+  LoginBloc(this.authRepository) : super(const LoginFieldsInfo()) {
     on<LoginEmailChanged>(_onEmailChanged);
     on<LoginEmailFocusLost>(_onEmailFocusLost);
     on<LoginPasswordChanged>(_onPasswordChanged);
@@ -20,6 +21,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginAuthAccount>(_onLoginAccount);
     on<LoginCloseError>(_onCloseError);
   }
+
+  final AuthRepository authRepository;
 
   static final _passwordRegexp = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
 
@@ -69,20 +72,26 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     final LoginAuthAccount event,
     final Emitter<LoginState> emit,
   ) async {
+    emit(const LoginInProgress());
     _highlightEmailError = true;
     _highlightPasswordError = true;
     emit(_calculateFieldsInfo());
     final haveError = _emailError != null || _passwordError != null;
-    emit(const LoginError(RequestError.invalid));
     if (haveError) {
       return;
     }
     emit(const LoginInProgress());
-    final successfulResponse = Random().nextBool();
-    if (successfulResponse) {
+    final result = await authRepository.login(
+          body: IAuthLogin(
+            email: _email,
+            password: _password,
+          ),
+        );
+    if (result != null) {
+      emit(LoginError(result.toString()));
+    } else {
       emit(const LoginCompleted());
     }
-    emit(LoginError(RequestError.values[Random().nextInt(RequestError.values.length)]));
   }
 
   FutureOr<void> _onCloseError(

@@ -43,7 +43,7 @@ class RegistrationCompleted extends RegistrationState {
 class RegistrationError extends RegistrationState {
   const RegistrationError(this.requestError);
 
-  final RequestError requestError;
+  final String requestError;
 
   @override
   List<Object?> get props => [requestError];

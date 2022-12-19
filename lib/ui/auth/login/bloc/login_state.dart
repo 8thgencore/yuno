@@ -34,7 +34,7 @@ class LoginCompleted extends LoginState {
 class LoginError extends LoginState {
   const LoginError(this.requestError);
 
-  final RequestError requestError;
+  final String requestError;
 
   @override
   List<Object?> get props => [requestError];

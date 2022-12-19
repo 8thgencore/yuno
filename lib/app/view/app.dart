@@ -27,7 +27,7 @@ class _AppState extends State<App> {
       //   GlobalMaterialLocalizations.delegate,
       // ],
       onGenerateRoute: routes,
-      initialRoute: '/splash',
+      initialRoute: RoutesPage.splash,
       // supportedLocales: AppLocalizations.supportedLocales,
       home: const RegistrationPage(),
     );

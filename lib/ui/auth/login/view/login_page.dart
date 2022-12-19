@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yuno/app/di/service_locator.dart';
+import 'package:yuno/domain/repository/auth_repository.dart';
 import 'package:yuno/resources/resources.dart';
+import 'package:yuno/routes/routes.dart';
 import 'package:yuno/ui/auth/login/bloc/login_bloc.dart';
 import 'package:yuno/ui/auth/widgets/custom_rounded_button.dart';
 import 'package:yuno/ui/auth/widgets/custom_text_field.dart';
@@ -11,7 +14,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LoginBloc(),
+      create: (context) => LoginBloc(sl.get<AuthRepository>()),
       child: Scaffold(
         appBar: AppBar(toolbarHeight: 0, elevation: 0),
         backgroundColor: AppColors.primary100,
@@ -28,14 +31,14 @@ class _LoginPageWidget extends StatelessWidget {
 
   static const double _credWidgetH = 312;
   static const double fingerprintWidgetH = 100;
-  static const double errorWidgetH = 106;
+  static const double errorWidgetH = 86;
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state is LoginCompleted) {
-          Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+          Navigator.pushNamedAndRemoveUntil(context, RoutesPage.home, (route) => false);
         }
       },
       child: Stack(
@@ -114,19 +117,26 @@ class _ErrorWidget extends StatelessWidget {
             borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
             color: AppColors.error100,
           ),
-          child: Column(
-            children: [
-              Text(
-                'Password or Email Invalid',
-                style: AppTypography.b16l,
-              ),
-              const SizedBox(height: 4),
-              Text(
-                'Seems like you’ve entered wrong combination of email and password, please try again.',
-                textAlign: TextAlign.center,
-                style: AppTypography.r14l.copyWith(height: 22 / 14),
-              ),
-            ],
+          child: BlocBuilder<LoginBloc, LoginState>(
+            buildWhen: (_, current) => current is LoginError,
+            builder: (context, state) {
+              final error = state as LoginError;
+              return Column(
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Error from server',
+                    style: AppTypography.b16l,
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    error.requestError,
+                    textAlign: TextAlign.center,
+                    style: AppTypography.r14l.copyWith(height: 22 / 14),
+                  ),
+                ],
+              );
+            },
           ),
         ),
         Positioned(
@@ -233,7 +243,7 @@ class _BottomWidget extends StatelessWidget {
                 child: Text('Forgot Password?', style: AppTypography.r14d),
                 onPressed: () => Navigator.pushNamedAndRemoveUntil(
                   context,
-                  '/splash',
+                  RoutesPage.splash,
                   (route) => false,
                 ),
               ),
@@ -254,7 +264,7 @@ class _BottomWidget extends StatelessWidget {
                 ),
                 onPressed: () => Navigator.pushNamedAndRemoveUntil(
                   context,
-                  '/sign_up',
+                  RoutesPage.register,
                   (route) => false,
                 ),
               ),
@@ -318,20 +328,20 @@ class _LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<LoginBloc, LoginState, bool>(
-      selector: (state) => state is LoginInProgress,
-      builder: (context, inProgress) {
+    // return BlocSelector<LoginBloc, LoginState, bool>(
+    //   selector: (state) => state is LoginInProgress,
+    //   builder: (context, inProgress) {
         return CustomRoundedButton(
           textButton: 'Login',
           onPressed: () {
-            return inProgress ? null : context.read<LoginBloc>().add(const LoginAuthAccount());
+            context.read<LoginBloc>().add(const LoginAuthAccount());
           },
           textColor: AppColors.white100,
           buttonColor: AppColors.primary100,
           // textColor: inProgress ? AppColors.white100 : AppColors.grey100,
           // buttonColor: inProgress ? AppColors.primary100 : AppColors.dark10,
         );
-      },
-    );
+      // },
+    // );
   }
 }

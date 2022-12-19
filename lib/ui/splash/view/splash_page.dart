@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:yuno/resources/resources.dart';
+import 'package:yuno/routes/routes.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -80,7 +81,7 @@ class _SplashPageState extends State<SplashPage> {
       const Duration(seconds: 2),
       () => Navigator.pushNamedAndRemoveUntil(
         context,
-        '/sign_up',
+        RoutesPage.login,
         (route) => false,
       ),
     );
