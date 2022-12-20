@@ -40,7 +40,7 @@ dev_dependencies:
   json_serializable: ^6.5.4
   mocktail: ^0.3.0
   retrofit_generator: ^4.2.0
-  swagger_parser: ^0.4.1
+  swagger_parser: ^0.5.0
 
 flutter:
   uses-material-design: true

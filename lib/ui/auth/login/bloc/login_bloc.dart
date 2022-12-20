@@ -34,6 +34,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   bool _highlightPasswordError = false;
   LoginPasswordError? _passwordError = LoginPasswordError.empty;
 
+  bool _highlightServerError = false;
+  String? _serverError;
+
   FutureOr<void> _onEmailChanged(
     final LoginEmailChanged event,
     final Emitter<LoginState> emit,
@@ -72,7 +75,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     final LoginAuthAccount event,
     final Emitter<LoginState> emit,
   ) async {
-    emit(const LoginInProgress());
     _highlightEmailError = true;
     _highlightPasswordError = true;
     emit(_calculateFieldsInfo());
@@ -80,7 +82,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     if (haveError) {
       return;
     }
+
     emit(const LoginInProgress());
+
     final result = await authRepository.login(
           body: IAuthLogin(
             email: _email,
@@ -88,7 +92,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           ),
         );
     if (result != null) {
-      emit(LoginError(result.toString()));
+      _serverError = result.toString();
+      _highlightServerError = true;
+      emit(_calculateFieldsInfo());
     } else {
       emit(const LoginCompleted());
     }
@@ -98,6 +104,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     final LoginCloseError event,
     final Emitter<LoginState> emit,
   ) {
+    _highlightServerError = false;
     emit(_calculateFieldsInfo());
   }
 
@@ -105,6 +112,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     return LoginFieldsInfo(
       emailError: _highlightEmailError ? _emailError : null,
       passwordError: _highlightPasswordError ? _passwordError : null,
+      serverError: _highlightServerError ? _serverError : null,
     );
   }
 

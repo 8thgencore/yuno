@@ -63,7 +63,7 @@ class _Client implements Client {
   }
 
   @override
-  Future<IGetResponsePaginatedIUserReadWithoutProjects> getUserList({
+  Future<IGetResponsePaginatedIRoleRead> getUserList({
     page = 1,
     size = 50,
   }) async {
@@ -76,7 +76,7 @@ class _Client implements Client {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IGetResponsePaginatedIUserReadWithoutProjects>(Options(
+        _setStreamType<IGetResponsePaginatedIRoleRead>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -88,20 +88,19 @@ class _Client implements Client {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value =
-        IGetResponsePaginatedIUserReadWithoutProjects.fromJson(_result.data!);
+    final value = IGetResponsePaginatedIRoleRead.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<IGetResponsePaginatedIUserReadWithoutProjects> getUserListByCreatedAt({
+  Future<IGetResponsePaginatedIRoleRead> getUserListByCreatedAt({
     order = OrderType.asc,
     page = 1,
     size = 50,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'order': order?.type,
+      r'order': order?.toJson(),
       r'page': page,
       r'size': size,
     };
@@ -109,7 +108,7 @@ class _Client implements Client {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IGetResponsePaginatedIUserReadWithoutProjects>(Options(
+        _setStreamType<IGetResponsePaginatedIRoleRead>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -121,8 +120,7 @@ class _Client implements Client {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value =
-        IGetResponsePaginatedIUserReadWithoutProjects.fromJson(_result.data!);
+    final value = IGetResponsePaginatedIRoleRead.fromJson(_result.data!);
     return value;
   }
 

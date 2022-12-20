@@ -43,16 +43,18 @@ class _LoginPageWidget extends StatelessWidget {
       },
       child: Stack(
         children: [
-          BlocSelector<LoginBloc, LoginState, bool>(
-            selector: (state) => state is LoginError,
-            builder: (context, isError) {
+          BlocBuilder<LoginBloc, LoginState>(
+            buildWhen: (_, current) => current is LoginFieldsInfo,
+            builder: (context, state) {
+              final fieldsInfo = state as LoginFieldsInfo;
+              final error = fieldsInfo.serverError;
               return Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const SizedBox(),
                   const _TopInfoWidget(),
                   SizedBox(
-                    height: isError
+                    height: error != null
                         ? (_credWidgetH + fingerprintWidgetH + errorWidgetH)
                         : (_credWidgetH + fingerprintWidgetH),
                   ),
@@ -64,13 +66,18 @@ class _LoginPageWidget extends StatelessWidget {
             width: double.infinity,
             child: Image.asset(Assets.images.signOrnament.path, fit: BoxFit.cover),
           ),
-          BlocSelector<LoginBloc, LoginState, bool>(
-            selector: (state) => state is LoginError,
-            builder: (context, isError) {
-              return isError
-                  ? const Align(
+          BlocBuilder<LoginBloc, LoginState>(
+            buildWhen: (_, current) => current is LoginFieldsInfo,
+            builder: (context, state) {
+              final fieldsInfo = state as LoginFieldsInfo;
+              final error = fieldsInfo.serverError;
+              return error != null
+                  ? Align(
                       alignment: Alignment.bottomCenter,
-                      child: _ErrorWidget(height: _credWidgetH + fingerprintWidgetH + errorWidgetH),
+                      child: _ErrorWidget(
+                        height: _credWidgetH + fingerprintWidgetH + errorWidgetH,
+                        error: error,
+                      ),
                     )
                   : const SizedBox();
             },
@@ -100,9 +107,13 @@ class _LoginPageWidget extends StatelessWidget {
 }
 
 class _ErrorWidget extends StatelessWidget {
-  const _ErrorWidget({required this.height});
+  const _ErrorWidget({
+    required this.height,
+    required this.error,
+  });
 
   final double height;
+  final String error;
 
   @override
   Widget build(BuildContext context) {
@@ -117,26 +128,19 @@ class _ErrorWidget extends StatelessWidget {
             borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
             color: AppColors.error100,
           ),
-          child: BlocBuilder<LoginBloc, LoginState>(
-            buildWhen: (_, current) => current is LoginError,
-            builder: (context, state) {
-              final error = state as LoginError;
-              return Column(
-                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Error from server',
-                    style: AppTypography.b16l,
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    error.requestError,
-                    textAlign: TextAlign.center,
-                    style: AppTypography.r14l.copyWith(height: 22 / 14),
-                  ),
-                ],
-              );
-            },
+          child: Column(
+            children: [
+              Text(
+                'Error from server',
+                style: AppTypography.b16l,
+              ),
+              const SizedBox(height: 4),
+              Text(
+                error,
+                textAlign: TextAlign.center,
+                style: AppTypography.r14l.copyWith(height: 22 / 14),
+              ),
+            ],
           ),
         ),
         Positioned(
@@ -331,17 +335,18 @@ class _LoginButton extends StatelessWidget {
     // return BlocSelector<LoginBloc, LoginState, bool>(
     //   selector: (state) => state is LoginInProgress,
     //   builder: (context, inProgress) {
-        return CustomRoundedButton(
-          textButton: 'Login',
-          onPressed: () {
-            context.read<LoginBloc>().add(const LoginAuthAccount());
-          },
-          textColor: AppColors.white100,
-          buttonColor: AppColors.primary100,
-          // textColor: inProgress ? AppColors.white100 : AppColors.grey100,
-          // buttonColor: inProgress ? AppColors.primary100 : AppColors.dark10,
-        );
-      // },
+    return CustomRoundedButton(
+      textButton: 'Login',
+      onPressed: () {
+        FocusManager.instance.primaryFocus?.unfocus();
+        context.read<LoginBloc>().add(const LoginAuthAccount());
+      },
+      textColor: AppColors.white100,
+      buttonColor: AppColors.primary100,
+      // textColor: inProgress ? AppColors.white100 : AppColors.grey100,
+      // buttonColor: inProgress ? AppColors.primary100 : AppColors.dark10,
+    );
+    // },
     // );
   }
 }

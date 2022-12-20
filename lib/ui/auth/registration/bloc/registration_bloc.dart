@@ -46,6 +46,9 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
   bool _highlightNameError = false;
   RegistrationNameError? _nameError = RegistrationNameError.empty;
 
+  bool _highlightServerError = false;
+  String? _serverError;
+
   FutureOr<void> _onEmailChanged(
     final RegistrationEmailChanged event,
     final Emitter<RegistrationState> emit,
@@ -119,7 +122,6 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     final RegistrationCreateAccount event,
     final Emitter<RegistrationState> emit,
   ) async {
-    emit(const RegistrationInProgress());
     _highlightEmailError = true;
     _highlightPasswordError = true;
     _highlightPasswordConfirmationError = true;
@@ -132,7 +134,9 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     if (haveError) {
       return;
     }
+
     emit(const RegistrationInProgress());
+
     final result = await authRepository.register(
       body: IAuthRegister(
         email: _email,
@@ -141,8 +145,11 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
       ),
     );
     if (result != null) {
-      emit(RegistrationError(result.toString()));
+      _serverError = result.toString();
+      _highlightServerError = true;
+      emit(_calculateFieldsInfo());
     } else {
+      _highlightServerError = false;
       emit(const RegistrationCompleted());
     }
   }
@@ -152,6 +159,7 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     final RegistrationCloseError event,
     final Emitter<RegistrationState> emit,
   ) {
+    _highlightServerError = false;
     emit(_calculateFieldsInfo());
   }
 
@@ -161,6 +169,7 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
       passwordError: _highlightPasswordError ? _passwordError : null,
       passwordConfirmError: _highlightPasswordConfirmationError ? _passwordConfirmationError : null,
       nameError: _highlightNameError ? _nameError : null,
+      serverError: _highlightServerError ? _serverError : null,
     );
   }
 

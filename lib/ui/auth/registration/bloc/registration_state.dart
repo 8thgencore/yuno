@@ -10,12 +10,14 @@ class RegistrationFieldsInfo extends RegistrationState {
     this.passwordError,
     this.passwordConfirmError,
     this.nameError,
+    this.serverError,
   });
 
   final RegistrationEmailError? emailError;
   final RegistrationPasswordError? passwordError;
   final RegistrationPasswordConfirmError? passwordConfirmError;
   final RegistrationNameError? nameError;
+  final String? serverError;
 
   @override
   List<Object?> get props => [
@@ -23,6 +25,7 @@ class RegistrationFieldsInfo extends RegistrationState {
         passwordError,
         passwordConfirmError,
         nameError,
+        serverError,
       ];
 }
 
@@ -38,13 +41,4 @@ class RegistrationCompleted extends RegistrationState {
 
   @override
   List<Object?> get props => [];
-}
-
-class RegistrationError extends RegistrationState {
-  const RegistrationError(this.requestError);
-
-  final String requestError;
-
-  @override
-  List<Object?> get props => [requestError];
 }

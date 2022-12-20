@@ -42,16 +42,18 @@ class _RegistrationPageWidget extends StatelessWidget {
       },
       child: Stack(
         children: [
-          BlocSelector<RegistrationBloc, RegistrationState, bool>(
-            selector: (state) => state is RegistrationError,
-            builder: (context, isError) {
+          BlocBuilder<RegistrationBloc, RegistrationState>(
+            buildWhen: (_, current) => current is RegistrationFieldsInfo,
+            builder: (context, state) {
+              final fieldsInfo = state as RegistrationFieldsInfo;
+              final error = fieldsInfo.serverError;
               return Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const SizedBox(),
                   const _TopInfoWidget(),
                   SizedBox(
-                    height: isError ? (_credWidgetH + errorWidgetH) : _credWidgetH,
+                    height: error != null ? (_credWidgetH + errorWidgetH) : _credWidgetH,
                   ),
                 ],
               );
@@ -61,16 +63,29 @@ class _RegistrationPageWidget extends StatelessWidget {
             width: double.infinity,
             child: Image.asset(Assets.images.signOrnament.path, fit: BoxFit.cover),
           ),
-          BlocSelector<RegistrationBloc, RegistrationState, bool>(
-            selector: (state) => state is RegistrationError,
-            builder: (context, isError) {
-              return isError
-                  ? const Align(
+          BlocBuilder<RegistrationBloc, RegistrationState>(
+            buildWhen: (_, current) => current is RegistrationFieldsInfo,
+            builder: (context, state) {
+              final fieldsInfo = state as RegistrationFieldsInfo;
+              final error = fieldsInfo.serverError;
+              return error != null
+                  ? Align(
                       alignment: Alignment.bottomCenter,
-                      child: _ErrorWidget(height: _credWidgetH + errorWidgetH),
+                      child: _ErrorWidget(
+                        height: _credWidgetH + errorWidgetH,
+                        error: error,
+                      ),
                     )
                   : const SizedBox();
             },
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              height: 100,
+              width: double.infinity,
+              color: AppColors.screen100,
+            ),
           ),
           const Align(
             alignment: Alignment.bottomCenter,
@@ -83,9 +98,13 @@ class _RegistrationPageWidget extends StatelessWidget {
 }
 
 class _ErrorWidget extends StatelessWidget {
-  const _ErrorWidget({required this.height});
+  const _ErrorWidget({
+    required this.height,
+    required this.error,
+  });
 
   final double height;
+  final String error;
 
   @override
   Widget build(BuildContext context) {
@@ -100,25 +119,19 @@ class _ErrorWidget extends StatelessWidget {
             borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
             color: AppColors.error100,
           ),
-          child: BlocBuilder<RegistrationBloc, RegistrationState>(
-            buildWhen: (_, current ) => current is RegistrationError,
-            builder: (context, state) {
-              final error = state as RegistrationError;
-              return Column(
-                children: [
-                  Text(
-                    'Error from server',
-                    style: AppTypography.b16l,
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    error.requestError,
-                    textAlign: TextAlign.center,
-                    style: AppTypography.r14l.copyWith(height: 22 / 14),
-                  ),
-                ],
-              );
-            },
+          child: Column(
+            children: [
+              Text(
+                'Error from server',
+                style: AppTypography.b16l,
+              ),
+              const SizedBox(height: 4),
+              Text(
+                error,
+                textAlign: TextAlign.center,
+                style: AppTypography.r14l.copyWith(height: 22 / 14),
+              ),
+            ],
           ),
         ),
         Positioned(
@@ -320,6 +333,7 @@ class _RegistrationButton extends StatelessWidget {
         return CustomRoundedButton(
           textButton: 'Sign Me Up!',
           onPressed: () {
+            FocusManager.instance.primaryFocus?.unfocus();
             return inProgress
                 ? null
                 : context.read<RegistrationBloc>().add(const RegistrationCreateAccount());

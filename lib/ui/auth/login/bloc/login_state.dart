@@ -8,13 +8,15 @@ class LoginFieldsInfo extends LoginState {
   const LoginFieldsInfo({
     this.emailError,
     this.passwordError,
+    this.serverError,
   });
 
   final LoginEmailError? emailError;
   final LoginPasswordError? passwordError;
+  final String? serverError;
 
   @override
-  List<Object?> get props => [emailError, passwordError];
+  List<Object?> get props => [emailError, passwordError, serverError];
 }
 
 class LoginInProgress extends LoginState {
@@ -31,11 +33,3 @@ class LoginCompleted extends LoginState {
   List<Object?> get props => [];
 }
 
-class LoginError extends LoginState {
-  const LoginError(this.requestError);
-
-  final String requestError;
-
-  @override
-  List<Object?> get props => [requestError];
-}

@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:yuno/api/role/models/i_get_response_paginated_i_role_read.dart';
 import 'package:yuno/api/user/models/i_delete_response_base_i_user_read.dart';
 import 'package:yuno/api/user/models/i_get_response_base_i_user_read.dart';
-import 'package:yuno/api/user/models/i_get_response_paginated_i_user_read_without_projects.dart';
 import 'package:yuno/api/user/models/i_put_response_base_i_user_read.dart';
 import 'package:yuno/api/user/models/i_user_update.dart';
 
@@ -22,13 +22,13 @@ abstract class Client {
   });
 
   @GET('/api/v1/user/list')
-  Future<IGetResponsePaginatedIUserReadWithoutProjects> getUserList({
+  Future<IGetResponsePaginatedIRoleRead> getUserList({
     @Query('page') int? page = 1,
     @Query('size') int? size = 50,
   });
 
   @GET('/api/v1/user/list/by_created_at')
-  Future<IGetResponsePaginatedIUserReadWithoutProjects> getUserListByCreatedAt({
+  Future<IGetResponsePaginatedIRoleRead> getUserListByCreatedAt({
     @Query('order') OrderType? order = OrderType.asc,
     @Query('page') int? page = 1,
     @Query('size') int? size = 50,
