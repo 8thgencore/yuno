@@ -138,7 +138,7 @@ class _ErrorWidget extends StatelessWidget {
               Text(
                 error,
                 textAlign: TextAlign.center,
-                style: AppTypography.r14l.copyWith(height: 22 / 14),
+                style: AppTypography.l14l.copyWith(height: 22 / 14),
               ),
             ],
           ),
@@ -174,7 +174,7 @@ class _TopInfoWidget extends StatelessWidget {
             'Login to your account by entering your email\n'
             'and password below, we are really happy\n'
             'to see you come back!',
-            style: AppTypography.r14l.copyWith(height: 2),
+            style: AppTypography.l14l.copyWith(height: 2),
             textAlign: TextAlign.center,
           ),
         ],
@@ -205,7 +205,7 @@ class _FingerprintWidget extends StatelessWidget {
         ),
         Text(
           'New! Fingerprint\nFast-Login',
-          style: AppTypography.r14l,
+          style: AppTypography.l14l,
         ),
         const SizedBox(width: 10),
         ElevatedButton(
@@ -244,7 +244,7 @@ class _BottomWidget extends StatelessWidget {
             children: [
               const Spacer(),
               TextButton(
-                child: Text('Forgot Password?', style: AppTypography.r14d),
+                child: Text('Forgot Password?', style: AppTypography.l14d),
                 onPressed: () => Navigator.pushNamedAndRemoveUntil(
                   context,
                   RoutesPage.splash,
@@ -259,12 +259,12 @@ class _BottomWidget extends StatelessWidget {
             children: [
               Text(
                 "Doesn't have an account yet?",
-                style: AppTypography.r14d,
+                style: AppTypography.l14d,
               ),
               TextButton(
                 child: Text(
                   'Sign Up',
-                  style: AppTypography.r14d.copyWith(color: AppColors.primary100),
+                  style: AppTypography.l14d.copyWith(color: AppColors.primary100),
                 ),
                 onPressed: () => Navigator.pushNamedAndRemoveUntil(
                   context,

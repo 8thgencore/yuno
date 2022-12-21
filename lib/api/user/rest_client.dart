@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:yuno/api/role/models/i_get_response_paginated_i_role_read.dart';
+import 'package:yuno/api/shared_models/i_order_enum.dart';
 import 'package:yuno/api/user/models/i_delete_response_base_i_user_read.dart';
 import 'package:yuno/api/user/models/i_get_response_base_i_user_read.dart';
 import 'package:yuno/api/user/models/i_put_response_base_i_user_read.dart';
@@ -29,7 +29,7 @@ abstract class Client {
 
   @GET('/api/v1/user/list/by_created_at')
   Future<IGetResponsePaginatedIRoleRead> getUserListByCreatedAt({
-    @Query('order') OrderType? order = OrderType.asc,
+    @Query('order') IOrderEnum? order = IOrderEnum.asc,
     @Query('page') int? page = 1,
     @Query('size') int? size = 50,
   });
@@ -49,15 +49,4 @@ abstract class Client {
   Future<IDeleteResponseBaseIUserRead> deleteUserUserId({
     @Path('user_id') required String userId,
   });
-}
-
-enum OrderType{
-  @JsonValue('asc')
-  asc('asc'),
-  @JsonValue('desc')
-  desc('desc');
-
-  const OrderType(this.type);
-
-  final String type;
 }

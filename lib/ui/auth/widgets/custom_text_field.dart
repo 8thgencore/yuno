@@ -43,7 +43,7 @@ class CustomTextField extends StatelessWidget {
           filled: true,
           border: const UnderlineInputBorder(borderSide: BorderSide.none),
           labelText: labelText,
-          labelStyle: AppTypography.r14g.copyWith(height: 1),
+          labelStyle: AppTypography.l14g.copyWith(height: 1),
           prefixIcon: Icon(prefixIcon, color: prefixIconColor),
         ),
       ),

@@ -94,7 +94,7 @@ class _Client implements Client {
 
   @override
   Future<IGetResponsePaginatedIRoleRead> getUserListByCreatedAt({
-    order = OrderType.asc,
+    order = IOrderEnum.asc,
     page = 1,
     size = 50,
   }) async {

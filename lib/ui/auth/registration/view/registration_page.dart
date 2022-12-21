@@ -79,14 +79,6 @@ class _RegistrationPageWidget extends StatelessWidget {
                   : const SizedBox();
             },
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: 100,
-              width: double.infinity,
-              color: AppColors.screen100,
-            ),
-          ),
           const Align(
             alignment: Alignment.bottomCenter,
             child: SingleChildScrollView(child: _BottomWidget()),
@@ -129,7 +121,7 @@ class _ErrorWidget extends StatelessWidget {
               Text(
                 error,
                 textAlign: TextAlign.center,
-                style: AppTypography.r14l.copyWith(height: 22 / 14),
+                style: AppTypography.l14l.copyWith(height: 22 / 14),
               ),
             ],
           ),
@@ -166,7 +158,7 @@ class _TopInfoWidget extends StatelessWidget {
               'Welcome to Yuno! Enter all the details\n'
               'below to continue enjoying all Yuno\n'
               'amazing features.',
-              style: AppTypography.r14l.copyWith(height: 2),
+              style: AppTypography.l14l.copyWith(height: 2),
               textAlign: TextAlign.center,
             ),
           ),
@@ -205,7 +197,7 @@ class _BottomWidget extends StatelessWidget {
             children: [
               Text(
                 'Already have an account?',
-                style: AppTypography.r14d,
+                style: AppTypography.l14d,
               ),
               TextButton(
                 child: const Text(

@@ -60,7 +60,7 @@ class _SplashPageState extends State<SplashPage> {
                 const SizedBox(height: 20),
                 Text(
                   'The Coolest Task Manager App',
-                  style: AppTypography.r14d,
+                  style: AppTypography.l14d,
                 ),
                 SizedBox(height: _deviceHeight * 0.2),
               ],
