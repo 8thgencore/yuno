@@ -9,7 +9,7 @@ import 'package:yuno/ui/auth/widgets/custom_rounded_button.dart';
 import 'package:yuno/ui/auth/widgets/custom_text_field.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  const LoginPage();
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class LoginPage extends StatelessWidget {
 }
 
 class _LoginPageWidget extends StatelessWidget {
-  const _LoginPageWidget({super.key});
+  const _LoginPageWidget();
 
   static const double _credWidgetH = 312;
   static const double fingerprintWidgetH = 100;
@@ -38,7 +38,7 @@ class _LoginPageWidget extends StatelessWidget {
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state is LoginCompleted) {
-          Navigator.pushNamedAndRemoveUntil(context, RoutesPage.home, (route) => false);
+          Navigator.pushNamedAndRemoveUntil(context, RoutesPage.profile, (route) => false);
         }
       },
       child: Stack(
@@ -160,7 +160,7 @@ class _ErrorWidget extends StatelessWidget {
 }
 
 class _TopInfoWidget extends StatelessWidget {
-  const _TopInfoWidget({super.key});
+  const _TopInfoWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -184,7 +184,7 @@ class _TopInfoWidget extends StatelessWidget {
 }
 
 class _FingerprintWidget extends StatelessWidget {
-  const _FingerprintWidget({super.key});
+  const _FingerprintWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -225,7 +225,7 @@ class _FingerprintWidget extends StatelessWidget {
 }
 
 class _BottomWidget extends StatelessWidget {
-  const _BottomWidget({super.key});
+  const _BottomWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -281,7 +281,7 @@ class _BottomWidget extends StatelessWidget {
 }
 
 class _EmailTextField extends StatelessWidget {
-  const _EmailTextField({super.key});
+  const _EmailTextField();
 
   @override
   Widget build(BuildContext context) {
@@ -304,7 +304,7 @@ class _EmailTextField extends StatelessWidget {
 }
 
 class _PasswordTextField extends StatelessWidget {
-  const _PasswordTextField({super.key});
+  const _PasswordTextField();
 
   @override
   Widget build(BuildContext context) {
@@ -328,7 +328,7 @@ class _PasswordTextField extends StatelessWidget {
 }
 
 class _LoginButton extends StatelessWidget {
-  const _LoginButton({super.key});
+  const _LoginButton();
 
   @override
   Widget build(BuildContext context) {

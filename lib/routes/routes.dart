@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:yuno/ui/auth/login/view/login_page.dart';
 import 'package:yuno/ui/auth/registration/view/registration_page.dart';
-import 'package:yuno/ui/home/view/home_page.dart';
+import 'package:yuno/ui/home/edit_profile/view/edit_profile_page.dart';
+import 'package:yuno/ui/home/profile/view/profile_page.dart';
 import 'package:yuno/ui/splash/view/splash_page.dart';
 
 Route Function(RouteSettings) get routes {
@@ -27,12 +28,18 @@ Route Function(RouteSettings) get routes {
           settings: RouteSettings(name: settings.name),
         );
         break;
-      case RoutesPage.home:
+      case RoutesPage.profile:
         route = MaterialPageRoute<dynamic>(
-          builder: (_) => const HomePage(),
+          builder: (_) => const ProfilePage(),
           settings: RouteSettings(name: settings.name),
         );
         break;
+        case RoutesPage.profileEdit:
+      route = MaterialPageRoute<dynamic>(
+        builder: (_) => const ProfileEditPage(),
+        settings: RouteSettings(name: settings.name),
+      );
+      break;
       default:
         route = MaterialPageRoute<dynamic>(
           builder: (_) => const SplashPage(),
@@ -52,4 +59,6 @@ abstract class RoutesPage {
   static const register = '/register';
   static const login = '/login';
   static const home = '/home';
+  static const profile = '/profile';
+  static const profileEdit = '/profile/edit';
 }
