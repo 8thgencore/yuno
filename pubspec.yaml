@@ -33,6 +33,10 @@ dependencies:
   # DI
   get_it: ^7.2.0
 
+  # UI
+  flutter_svg: ^1.1.6
+  cached_network_image: ^3.2.3
+
 dev_dependencies:
   build_runner: ^2.3.3
   flutter_gen_runner: ^5.1.0+1
@@ -40,14 +44,15 @@ dev_dependencies:
   json_serializable: ^6.5.4
   mocktail: ^0.3.0
   retrofit_generator: ^4.2.0
-  swagger_parser: ^0.5.0
+  swagger_parser: ^0.5.1
 
 flutter:
   uses-material-design: true
   generate: true
   assets:
-    - assets/images/
     - assets/fonts/
+    - assets/images/
+    - assets/svg/
   fonts:
     - family: Poppins
       fonts:
@@ -64,6 +69,8 @@ flutter:
 
 flutter_gen:
   output: lib/resources/
+  integrations:
+    flutter_svg: true
 
 swagger_parser:
   json_path: assets/swagger.json # Required. Sets the json path directory for api definition. This is just a suggestion for path

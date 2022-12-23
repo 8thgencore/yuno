@@ -12,7 +12,13 @@ abstract class AppTypography {
 
   static TextStyle b22d = const TextStyle(
     color: AppColors.dark100,
-    fontSize: 24,
+    fontSize: 22,
+    fontWeight: FontWeight.w600,
+  );
+
+  static TextStyle b18d = const TextStyle(
+    color: AppColors.dark100,
+    fontSize: 18,
     fontWeight: FontWeight.w600,
   );
 
@@ -25,6 +31,12 @@ abstract class AppTypography {
   static TextStyle r16d = const TextStyle(
     color: AppColors.dark100,
     fontSize: 16,
+    fontWeight: FontWeight.w500,
+  );
+
+  static TextStyle r14d = const TextStyle(
+    color: AppColors.dark100,
+    fontSize: 14,
     fontWeight: FontWeight.w500,
   );
 

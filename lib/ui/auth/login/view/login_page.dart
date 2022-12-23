@@ -9,7 +9,7 @@ import 'package:yuno/ui/auth/widgets/custom_rounded_button.dart';
 import 'package:yuno/ui/auth/widgets/custom_text_field.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage();
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class LoginPage extends StatelessWidget {
 class _LoginPageWidget extends StatelessWidget {
   const _LoginPageWidget();
 
-  static const double _credWidgetH = 312;
+  static const double _credWidgetH = 298;
   static const double fingerprintWidgetH = 100;
   static const double errorWidgetH = 86;
 

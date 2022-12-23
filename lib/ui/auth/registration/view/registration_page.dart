@@ -27,9 +27,9 @@ class RegistrationPage extends StatelessWidget {
 }
 
 class _RegistrationPageWidget extends StatelessWidget {
-  const _RegistrationPageWidget({super.key});
+  const _RegistrationPageWidget();
 
-  static const double _credWidgetH = 448;
+  static const double _credWidgetH = 434;
   static const double errorWidgetH = 86;
 
   @override
@@ -143,7 +143,7 @@ class _ErrorWidget extends StatelessWidget {
 }
 
 class _TopInfoWidget extends StatelessWidget {
-  const _TopInfoWidget({super.key});
+  const _TopInfoWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -169,7 +169,7 @@ class _TopInfoWidget extends StatelessWidget {
 }
 
 class _BottomWidget extends StatelessWidget {
-  const _BottomWidget({super.key});
+  const _BottomWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -219,7 +219,7 @@ class _BottomWidget extends StatelessWidget {
 }
 
 class _EmailTextField extends StatelessWidget {
-  const _EmailTextField({super.key});
+  const _EmailTextField();
 
   @override
   Widget build(BuildContext context) {
@@ -242,7 +242,7 @@ class _EmailTextField extends StatelessWidget {
 }
 
 class _NicknameTextField extends StatelessWidget {
-  const _NicknameTextField({super.key});
+  const _NicknameTextField();
 
   @override
   Widget build(BuildContext context) {
@@ -265,7 +265,7 @@ class _NicknameTextField extends StatelessWidget {
 }
 
 class _PasswordTextField extends StatelessWidget {
-  const _PasswordTextField({super.key});
+  const _PasswordTextField();
 
   @override
   Widget build(BuildContext context) {
@@ -290,7 +290,7 @@ class _PasswordTextField extends StatelessWidget {
 }
 
 class _PasswordTextConfirmField extends StatelessWidget {
-  const _PasswordTextConfirmField({super.key});
+  const _PasswordTextConfirmField();
 
   @override
   Widget build(BuildContext context) {
@@ -315,7 +315,7 @@ class _PasswordTextConfirmField extends StatelessWidget {
 }
 
 class _RegistrationButton extends StatelessWidget {
-  const _RegistrationButton({super.key});
+  const _RegistrationButton();
 
   @override
   Widget build(BuildContext context) {

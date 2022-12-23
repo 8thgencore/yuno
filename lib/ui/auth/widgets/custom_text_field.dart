@@ -5,24 +5,24 @@ import 'package:yuno/resources/resources.dart';
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     required this.labelText,
-    required this.prefixIcon,
-    required this.onChanged,
     required this.keyboardType,
     required this.textColor,
-    required this.prefixIconColor,
+    this.prefixIcon,
+    this.prefixIconColor,
     this.obscureText = false,
+    this.onChanged,
     this.onTap,
     super.key,
   });
 
-  final VoidCallback? onTap;
   final String labelText;
-  final bool? obscureText;
-  final IconData prefixIcon;
-  final Function(String) onChanged;
   final TextInputType keyboardType;
   final Color textColor;
-  final Color prefixIconColor;
+  final IconData? prefixIcon;
+  final Color? prefixIconColor;
+  final bool? obscureText;
+  final Function(String)? onChanged;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -32,19 +32,20 @@ class CustomTextField extends StatelessWidget {
         color: AppColors.white100,
       ),
       child: TextFormField(
-        style: TextStyle(color: textColor),
+        style: AppTypography.r14d.copyWith(color: textColor),
         autocorrect: false,
         cursorColor: AppColors.primary100,
         obscureText: obscureText!,
         onChanged: onChanged,
         keyboardType: keyboardType,
         decoration: InputDecoration(
+          contentPadding: const EdgeInsets.fromLTRB(20.0, 10, 20, 10),
           fillColor: Colors.transparent,
           filled: true,
           border: const UnderlineInputBorder(borderSide: BorderSide.none),
           labelText: labelText,
           labelStyle: AppTypography.l14g.copyWith(height: 1),
-          prefixIcon: Icon(prefixIcon, color: prefixIconColor),
+          prefixIcon: prefixIcon != null ? Icon(prefixIcon, color: prefixIconColor) : null,
         ),
       ),
     );
