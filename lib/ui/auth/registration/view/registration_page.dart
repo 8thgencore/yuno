@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/domain/repository/auth_repository.dart';
@@ -168,8 +169,61 @@ class _TopInfoWidget extends StatelessWidget {
   }
 }
 
-class _BottomWidget extends StatelessWidget {
+class _BottomWidget extends StatefulWidget {
   const _BottomWidget();
+
+  @override
+  State<_BottomWidget> createState() => _BottomWidgetState();
+}
+
+class _BottomWidgetState extends State<_BottomWidget> {
+  late final FocusNode _emailFocusNode;
+  late final FocusNode _usernameFocusNode;
+  late final FocusNode _passwordFocusNode;
+  late final FocusNode _passwordConfirmationFocusNode;
+
+  @override
+  void initState() {
+    super.initState();
+    _emailFocusNode = FocusNode();
+    _usernameFocusNode = FocusNode();
+    _passwordFocusNode = FocusNode();
+    _passwordConfirmationFocusNode = FocusNode();
+
+    SchedulerBinding.instance.addPostFrameCallback((_) => _addFocusLostHandlers());
+  }
+
+  void _addFocusLostHandlers() {
+    _emailFocusNode.addListener(() {
+      if (!_emailFocusNode.hasFocus) {
+        context.read<RegistrationBloc>().add(const RegistrationEmailFocusLost());
+      }
+    });
+    _passwordFocusNode.addListener(() {
+      if (!_passwordFocusNode.hasFocus) {
+        context.read<RegistrationBloc>().add(const RegistrationPasswordFocusLost());
+      }
+    });
+    _passwordConfirmationFocusNode.addListener(() {
+      if (!_passwordConfirmationFocusNode.hasFocus) {
+        context.read<RegistrationBloc>().add(const RegistrationPasswordConfirmationFocusLost());
+      }
+    });
+    _usernameFocusNode.addListener(() {
+      if (!_usernameFocusNode.hasFocus) {
+        context.read<RegistrationBloc>().add(const RegistrationNameFocusLost());
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _emailFocusNode.dispose();
+    _usernameFocusNode.dispose();
+    _passwordFocusNode.dispose();
+    _passwordConfirmationFocusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -183,13 +237,22 @@ class _BottomWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          const _EmailTextField(),
+          _EmailTextField(
+            emailFocusNode: _emailFocusNode,
+            usernameFocusNode: _usernameFocusNode,
+          ),
           const SizedBox(height: 20),
-          const _NicknameTextField(),
+          _NicknameTextField(
+            usernameFocusNode: _usernameFocusNode,
+            passwordFocusNode: _passwordFocusNode,
+          ),
           const SizedBox(height: 20),
-          const _PasswordTextField(),
+          _PasswordTextField(
+            passwordFocusNode: _passwordFocusNode,
+            passwordConfirmationFocusNode: _passwordConfirmationFocusNode,
+          ),
           const SizedBox(height: 20),
-          const _PasswordTextConfirmField(),
+          _PasswordTextConfirmField(passwordConfirmationFocusNode: _passwordConfirmationFocusNode),
           const SizedBox(height: 30),
           const _RegistrationButton(),
           Row(
@@ -219,7 +282,14 @@ class _BottomWidget extends StatelessWidget {
 }
 
 class _EmailTextField extends StatelessWidget {
-  const _EmailTextField();
+  const _EmailTextField({
+    required FocusNode emailFocusNode,
+    required FocusNode usernameFocusNode,
+  })  : _emailFocusNode = emailFocusNode,
+        _usernameFocusNode = usernameFocusNode;
+
+  final FocusNode _emailFocusNode;
+  final FocusNode _usernameFocusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -229,8 +299,8 @@ class _EmailTextField extends StatelessWidget {
         final fieldsInfo = state as RegistrationFieldsInfo;
         final error = fieldsInfo.emailError;
         return CustomTextField(
+          focusNode: _emailFocusNode,
           labelText: 'Enter your email address',
-          onChanged: (text) => context.read<RegistrationBloc>().add(RegistrationEmailChanged(text)),
           keyboardType: TextInputType.emailAddress,
           textColor: error == null ? AppColors.dark100 : AppColors.error100,
           prefixIcon: IconButton(
@@ -240,6 +310,8 @@ class _EmailTextField extends StatelessWidget {
             ),
             onPressed: () {},
           ),
+          onChanged: (text) => context.read<RegistrationBloc>().add(RegistrationEmailChanged(text)),
+          onSubmitted: (_) => _usernameFocusNode.requestFocus(),
         );
       },
     );
@@ -247,7 +319,14 @@ class _EmailTextField extends StatelessWidget {
 }
 
 class _NicknameTextField extends StatelessWidget {
-  const _NicknameTextField();
+  const _NicknameTextField({
+    required FocusNode usernameFocusNode,
+    required FocusNode passwordFocusNode,
+  })  : _usernameFocusNode = usernameFocusNode,
+        _passwordFocusNode = passwordFocusNode;
+
+  final FocusNode _usernameFocusNode;
+  final FocusNode _passwordFocusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -257,8 +336,8 @@ class _NicknameTextField extends StatelessWidget {
         final fieldsInfo = state as RegistrationFieldsInfo;
         final error = fieldsInfo.nameError;
         return CustomTextField(
+          focusNode: _usernameFocusNode,
           labelText: 'Create your username',
-          onChanged: (text) => context.read<RegistrationBloc>().add(RegistrationNameChanged(text)),
           keyboardType: TextInputType.name,
           textColor: error == null ? AppColors.dark100 : AppColors.error100,
           prefixIcon: IconButton(
@@ -268,6 +347,8 @@ class _NicknameTextField extends StatelessWidget {
             ),
             onPressed: () {},
           ),
+          onChanged: (text) => context.read<RegistrationBloc>().add(RegistrationNameChanged(text)),
+          onSubmitted: (_) => _passwordFocusNode.requestFocus(),
         );
       },
     );
@@ -275,7 +356,14 @@ class _NicknameTextField extends StatelessWidget {
 }
 
 class _PasswordTextField extends StatefulWidget {
-  const _PasswordTextField();
+  const _PasswordTextField({
+    required FocusNode passwordFocusNode,
+    required FocusNode passwordConfirmationFocusNode,
+  })  : _passwordFocusNode = passwordFocusNode,
+        _passwordConfirmationFocusNode = passwordConfirmationFocusNode;
+
+  final FocusNode _passwordFocusNode;
+  final FocusNode _passwordConfirmationFocusNode;
 
   @override
   State<_PasswordTextField> createState() => _PasswordTextFieldState();
@@ -292,10 +380,9 @@ class _PasswordTextFieldState extends State<_PasswordTextField> {
         final fieldsInfo = state as RegistrationFieldsInfo;
         final error = fieldsInfo.passwordError;
         return CustomTextField(
+          focusNode: widget._passwordFocusNode,
           labelText: 'Confirm your password',
           obscureText: _isObscure,
-          onChanged: (text) =>
-              context.read<RegistrationBloc>().add(RegistrationPasswordChanged(text)),
           keyboardType: TextInputType.visiblePassword,
           textColor: error == null ? AppColors.dark100 : AppColors.error100,
           prefixIcon: IconButton(
@@ -314,6 +401,9 @@ class _PasswordTextFieldState extends State<_PasswordTextField> {
               setState(() => _isObscure = !_isObscure);
             },
           ),
+          onChanged: (text) =>
+              context.read<RegistrationBloc>().add(RegistrationPasswordChanged(text)),
+          onSubmitted: (_) => widget._passwordConfirmationFocusNode.requestFocus(),
         );
       },
     );
@@ -321,7 +411,11 @@ class _PasswordTextFieldState extends State<_PasswordTextField> {
 }
 
 class _PasswordTextConfirmField extends StatefulWidget {
-  const _PasswordTextConfirmField();
+  const _PasswordTextConfirmField({
+    required FocusNode passwordConfirmationFocusNode,
+  }) : _passwordConfirmationFocusNode = passwordConfirmationFocusNode;
+
+  final FocusNode _passwordConfirmationFocusNode;
 
   @override
   State<_PasswordTextConfirmField> createState() => _PasswordTextConfirmFieldState();
@@ -338,10 +432,9 @@ class _PasswordTextConfirmFieldState extends State<_PasswordTextConfirmField> {
         final fieldsInfo = state as RegistrationFieldsInfo;
         final error = fieldsInfo.passwordConfirmError;
         return CustomTextField(
+          focusNode: widget._passwordConfirmationFocusNode,
           labelText: 'Create your password',
           obscureText: _isObscure,
-          onChanged: (text) =>
-              context.read<RegistrationBloc>().add(RegistrationPasswordConfirmationChanged(text)),
           keyboardType: TextInputType.visiblePassword,
           textColor: error == null ? AppColors.dark100 : AppColors.error100,
           prefixIcon: IconButton(
@@ -360,6 +453,12 @@ class _PasswordTextConfirmFieldState extends State<_PasswordTextConfirmField> {
               setState(() => _isObscure = !_isObscure);
             },
           ),
+          onChanged: (text) =>
+              context.read<RegistrationBloc>().add(RegistrationPasswordConfirmationChanged(text)),
+          onSubmitted: (_) {
+            FocusManager.instance.primaryFocus?.unfocus();
+            context.read<RegistrationBloc>().add(const RegistrationCreateAccount());
+          },
         );
       },
     );

@@ -11,7 +11,9 @@ class CustomTextField extends StatelessWidget {
     this.suffixIcon,
     this.obscureText = false,
     this.onChanged,
+    this.onSubmitted,
     this.onTap,
+    this.focusNode,
     super.key,
   });
 
@@ -22,7 +24,9 @@ class CustomTextField extends StatelessWidget {
   final Widget? suffixIcon;
   final bool? obscureText;
   final Function(String)? onChanged;
+  final Function(String)? onSubmitted;
   final VoidCallback? onTap;
+  final FocusNode? focusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +35,14 @@ class CustomTextField extends StatelessWidget {
         borderRadius: BorderRadius.circular(30),
         color: AppColors.white100,
       ),
-      child: TextFormField(
+      child: TextField(
+        focusNode: focusNode,
         style: AppTypography.r14d.copyWith(color: textColor),
         autocorrect: false,
         cursorColor: AppColors.primary100,
         obscureText: obscureText!,
         onChanged: onChanged,
+        onSubmitted: onSubmitted,
         keyboardType: keyboardType,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.fromLTRB(20.0, 10, 20, 10),

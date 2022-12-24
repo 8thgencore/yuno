@@ -106,6 +106,30 @@ class _LoginPageWidget extends StatelessWidget {
   }
 }
 
+class _TopInfoWidget extends StatelessWidget {
+  const _TopInfoWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: Column(
+        children: [
+          Text('Welcome Back!', style: AppTypography.b24l),
+          const SizedBox(height: 12),
+          Text(
+            'Login to your account by entering your email\n'
+            'and password below, we are really happy\n'
+            'to see you come back!',
+            style: AppTypography.l14l.copyWith(height: 2),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class _ErrorWidget extends StatelessWidget {
   const _ErrorWidget({
     required this.height,
@@ -159,30 +183,6 @@ class _ErrorWidget extends StatelessWidget {
   }
 }
 
-class _TopInfoWidget extends StatelessWidget {
-  const _TopInfoWidget();
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width,
-      child: Column(
-        children: [
-          Text('Welcome Back!', style: AppTypography.b24l),
-          const SizedBox(height: 12),
-          Text(
-            'Login to your account by entering your email\n'
-            'and password below, we are really happy\n'
-            'to see you come back!',
-            style: AppTypography.l14l.copyWith(height: 2),
-            textAlign: TextAlign.center,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 class _FingerprintWidget extends StatelessWidget {
   const _FingerprintWidget();
 
@@ -224,8 +224,30 @@ class _FingerprintWidget extends StatelessWidget {
   }
 }
 
-class _BottomWidget extends StatelessWidget {
+class _BottomWidget extends StatefulWidget {
   const _BottomWidget();
+
+  @override
+  State<_BottomWidget> createState() => _BottomWidgetState();
+}
+
+class _BottomWidgetState extends State<_BottomWidget> {
+  late final FocusNode _emailFocusNode;
+  late final FocusNode _passwordFocusNode;
+
+  @override
+  void initState() {
+    super.initState();
+    _emailFocusNode = FocusNode();
+    _passwordFocusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    _emailFocusNode.dispose();
+    _passwordFocusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -237,9 +259,12 @@ class _BottomWidget extends StatelessWidget {
       ),
       child: Column(
         children: [
-          const _EmailTextField(),
+          _EmailTextField(
+            emailFocusNode: _emailFocusNode,
+            passwordFocusNode: _passwordFocusNode,
+          ),
           const SizedBox(height: 20),
-          const _PasswordTextField(),
+          _PasswordTextField(passwordFocusNode: _passwordFocusNode),
           Row(
             children: [
               const Spacer(),
@@ -281,7 +306,14 @@ class _BottomWidget extends StatelessWidget {
 }
 
 class _EmailTextField extends StatelessWidget {
-  const _EmailTextField();
+  const _EmailTextField({
+    required FocusNode emailFocusNode,
+    required FocusNode passwordFocusNode,
+  })  : _emailFocusNode = emailFocusNode,
+        _passwordFocusNode = passwordFocusNode;
+
+  final FocusNode _emailFocusNode;
+  final FocusNode _passwordFocusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -291,8 +323,8 @@ class _EmailTextField extends StatelessWidget {
         final fieldsInfo = state as LoginFieldsInfo;
         final error = fieldsInfo.emailError;
         return CustomTextField(
+          focusNode: _emailFocusNode,
           labelText: 'Enter your email address',
-          onChanged: (text) => context.read<LoginBloc>().add(LoginEmailChanged(text)),
           keyboardType: TextInputType.emailAddress,
           textColor: error == null ? AppColors.dark100 : AppColors.error100,
           prefixIcon: IconButton(
@@ -302,6 +334,8 @@ class _EmailTextField extends StatelessWidget {
             ),
             onPressed: () {},
           ),
+          onChanged: (text) => context.read<LoginBloc>().add(LoginEmailChanged(text)),
+          onSubmitted: (_) => _passwordFocusNode.requestFocus(),
         );
       },
     );
@@ -309,7 +343,11 @@ class _EmailTextField extends StatelessWidget {
 }
 
 class _PasswordTextField extends StatefulWidget {
-  const _PasswordTextField();
+  const _PasswordTextField({
+    required FocusNode passwordFocusNode,
+  }) : _passwordFocusNode = passwordFocusNode;
+
+  final FocusNode _passwordFocusNode;
 
   @override
   State<_PasswordTextField> createState() => _PasswordTextFieldState();
@@ -326,11 +364,16 @@ class _PasswordTextFieldState extends State<_PasswordTextField> {
         final fieldsInfo = state as LoginFieldsInfo;
         final error = fieldsInfo.passwordError;
         return CustomTextField(
+          focusNode: widget._passwordFocusNode,
           labelText: 'Confirm your password',
           obscureText: _isObscure,
-          onChanged: (text) => context.read<LoginBloc>().add(LoginPasswordChanged(text)),
           keyboardType: TextInputType.visiblePassword,
           textColor: error == null ? AppColors.dark100 : AppColors.error100,
+          onChanged: (text) => context.read<LoginBloc>().add(LoginPasswordChanged(text)),
+          onSubmitted: (_) {
+            FocusManager.instance.primaryFocus?.unfocus();
+            context.read<LoginBloc>().add(const LoginAuthAccount());
+          },
           prefixIcon: IconButton(
             icon: Assets.svg.lock.svg(
               height: 26,
