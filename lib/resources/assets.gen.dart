@@ -128,6 +128,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/email.svg
   SvgGenImage get email => const SvgGenImage('assets/svg/email.svg');
 
+  /// File path: assets/svg/eye-on.svg
+  SvgGenImage get eyeOn => const SvgGenImage('assets/svg/eye-on.svg');
+
   /// File path: assets/svg/lock.svg
   SvgGenImage get lock => const SvgGenImage('assets/svg/lock.svg');
 
@@ -152,6 +155,7 @@ class $AssetsSvgGen {
         backArrow,
         edit,
         email,
+        eyeOn,
         lock,
         logout,
         project,

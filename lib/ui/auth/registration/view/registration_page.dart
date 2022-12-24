@@ -229,12 +229,17 @@ class _EmailTextField extends StatelessWidget {
         final fieldsInfo = state as RegistrationFieldsInfo;
         final error = fieldsInfo.emailError;
         return CustomTextField(
-          prefixIcon: Icons.mail_outline_outlined,
           labelText: 'Enter your email address',
           onChanged: (text) => context.read<RegistrationBloc>().add(RegistrationEmailChanged(text)),
           keyboardType: TextInputType.emailAddress,
           textColor: error == null ? AppColors.dark100 : AppColors.error100,
-          prefixIconColor: error == null ? AppColors.grey60 : AppColors.error100,
+          prefixIcon: IconButton(
+            icon: Assets.svg.email.svg(
+              height: 26,
+              color: error == null ? AppColors.grey60 : AppColors.error100,
+            ),
+            onPressed: () {},
+          ),
         );
       },
     );
@@ -252,20 +257,32 @@ class _NicknameTextField extends StatelessWidget {
         final fieldsInfo = state as RegistrationFieldsInfo;
         final error = fieldsInfo.nameError;
         return CustomTextField(
-          prefixIcon: Icons.person_outline_outlined,
           labelText: 'Create your username',
           onChanged: (text) => context.read<RegistrationBloc>().add(RegistrationNameChanged(text)),
           keyboardType: TextInputType.name,
           textColor: error == null ? AppColors.dark100 : AppColors.error100,
-          prefixIconColor: error == null ? AppColors.grey60 : AppColors.error100,
+          prefixIcon: IconButton(
+            icon: Assets.svg.user.svg(
+              height: 26,
+              color: error == null ? AppColors.grey60 : AppColors.error100,
+            ),
+            onPressed: () {},
+          ),
         );
       },
     );
   }
 }
 
-class _PasswordTextField extends StatelessWidget {
+class _PasswordTextField extends StatefulWidget {
   const _PasswordTextField();
+
+  @override
+  State<_PasswordTextField> createState() => _PasswordTextFieldState();
+}
+
+class _PasswordTextFieldState extends State<_PasswordTextField> {
+  bool _isObscure = true;
 
   @override
   Widget build(BuildContext context) {
@@ -275,22 +292,43 @@ class _PasswordTextField extends StatelessWidget {
         final fieldsInfo = state as RegistrationFieldsInfo;
         final error = fieldsInfo.passwordError;
         return CustomTextField(
-          prefixIcon: Icons.lock_outline,
           labelText: 'Confirm your password',
-          obscureText: true,
+          obscureText: _isObscure,
           onChanged: (text) =>
               context.read<RegistrationBloc>().add(RegistrationPasswordChanged(text)),
           keyboardType: TextInputType.visiblePassword,
           textColor: error == null ? AppColors.dark100 : AppColors.error100,
-          prefixIconColor: error == null ? AppColors.grey60 : AppColors.error100,
+          prefixIcon: IconButton(
+            icon: Assets.svg.lock.svg(
+              height: 26,
+              color: error == null ? AppColors.grey60 : AppColors.error100,
+            ),
+            onPressed: () {},
+          ),
+          suffixIcon: IconButton(
+            icon: Icon(
+              _isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+              color: AppColors.grey40,
+            ),
+            onPressed: () {
+              setState(() => _isObscure = !_isObscure);
+            },
+          ),
         );
       },
     );
   }
 }
 
-class _PasswordTextConfirmField extends StatelessWidget {
+class _PasswordTextConfirmField extends StatefulWidget {
   const _PasswordTextConfirmField();
+
+  @override
+  State<_PasswordTextConfirmField> createState() => _PasswordTextConfirmFieldState();
+}
+
+class _PasswordTextConfirmFieldState extends State<_PasswordTextConfirmField> {
+  bool _isObscure = true;
 
   @override
   Widget build(BuildContext context) {
@@ -300,14 +338,28 @@ class _PasswordTextConfirmField extends StatelessWidget {
         final fieldsInfo = state as RegistrationFieldsInfo;
         final error = fieldsInfo.passwordConfirmError;
         return CustomTextField(
-          prefixIcon: Icons.lock_outline,
           labelText: 'Create your password',
-          obscureText: true,
+          obscureText: _isObscure,
           onChanged: (text) =>
               context.read<RegistrationBloc>().add(RegistrationPasswordConfirmationChanged(text)),
           keyboardType: TextInputType.visiblePassword,
           textColor: error == null ? AppColors.dark100 : AppColors.error100,
-          prefixIconColor: error == null ? AppColors.grey60 : AppColors.error100,
+          prefixIcon: IconButton(
+            icon: Assets.svg.lock.svg(
+              height: 26,
+              color: error == null ? AppColors.grey60 : AppColors.error100,
+            ),
+            onPressed: () {},
+          ),
+          suffixIcon: IconButton(
+            icon: Icon(
+              _isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+              color: AppColors.grey40,
+            ),
+            onPressed: () {
+              setState(() => _isObscure = !_isObscure);
+            },
+          ),
         );
       },
     );

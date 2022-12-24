@@ -8,7 +8,7 @@ class CustomTextField extends StatelessWidget {
     required this.keyboardType,
     required this.textColor,
     this.prefixIcon,
-    this.prefixIconColor,
+    this.suffixIcon,
     this.obscureText = false,
     this.onChanged,
     this.onTap,
@@ -18,8 +18,8 @@ class CustomTextField extends StatelessWidget {
   final String labelText;
   final TextInputType keyboardType;
   final Color textColor;
-  final IconData? prefixIcon;
-  final Color? prefixIconColor;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
   final bool? obscureText;
   final Function(String)? onChanged;
   final VoidCallback? onTap;
@@ -45,7 +45,8 @@ class CustomTextField extends StatelessWidget {
           border: const UnderlineInputBorder(borderSide: BorderSide.none),
           labelText: labelText,
           labelStyle: AppTypography.l14g.copyWith(height: 1),
-          prefixIcon: prefixIcon != null ? Icon(prefixIcon, color: prefixIconColor) : null,
+          prefixIcon: prefixIcon,
+          suffixIcon: suffixIcon,
         ),
       ),
     );

@@ -51,30 +51,26 @@ class _ProfileContentWidget extends StatelessWidget {
           const Spacer(),
           ProfileButtonWidget(
             text: 'Edit Profile',
-            icon: Icons.access_alarms_outlined,
-            colorIcon: AppColors.primary100,
+            icon: Assets.svg.edit.svg(height: 28, color: AppColors.primary100),
             onPressed: () => Navigator.pushNamed(
               context,
               RoutesPage.profileEdit,
             ),
           ),
           const SizedBox(height: 16),
-          const ProfileButtonWidget(
+          ProfileButtonWidget(
             text: 'Change Password',
-            icon: Icons.access_alarms_outlined,
-            colorIcon: AppColors.secondary100,
+            icon: Assets.svg.lock.svg(height: 28, color: AppColors.secondary100),
           ),
           const SizedBox(height: 16),
-          const ProfileButtonWidget(
+          ProfileButtonWidget(
             text: 'Projects You Are In',
-            icon: Icons.access_alarms_outlined,
-            colorIcon: AppColors.primary100,
+            icon: Assets.svg.project.svg(height: 28, color: AppColors.primary100),
           ),
           const SizedBox(height: 16),
           ProfileButtonWidget(
             text: 'Logout',
-            icon: Icons.access_alarms_outlined,
-            colorIcon: AppColors.secondary100,
+            icon: Assets.svg.logout.svg(height: 28, color: AppColors.secondary100),
             onPressed: () => context.read<ProfileBloc>().add(const ProfileEvent.logout()),
           ),
           const Spacer(),
@@ -164,13 +160,11 @@ class ProfileButtonWidget extends StatelessWidget {
   const ProfileButtonWidget({
     super.key,
     required this.icon,
-    required this.colorIcon,
     required this.text,
     this.onPressed,
   });
 
-  final IconData icon;
-  final Color colorIcon;
+  final Widget icon;
   final String text;
   final VoidCallback? onPressed;
 
@@ -189,7 +183,7 @@ class ProfileButtonWidget extends StatelessWidget {
       ),
       icon: Padding(
         padding: const EdgeInsets.only(right: 6.0),
-        child: Icon(icon, size: 28, color: colorIcon),
+        child: icon,
       ),
       label: Text(text),
     );

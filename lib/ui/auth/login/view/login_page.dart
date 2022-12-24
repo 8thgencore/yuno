@@ -291,20 +291,32 @@ class _EmailTextField extends StatelessWidget {
         final fieldsInfo = state as LoginFieldsInfo;
         final error = fieldsInfo.emailError;
         return CustomTextField(
-          prefixIcon: Icons.mail_outline_outlined,
           labelText: 'Enter your email address',
           onChanged: (text) => context.read<LoginBloc>().add(LoginEmailChanged(text)),
           keyboardType: TextInputType.emailAddress,
           textColor: error == null ? AppColors.dark100 : AppColors.error100,
-          prefixIconColor: error == null ? AppColors.grey60 : AppColors.error100,
+          prefixIcon: IconButton(
+            icon: Assets.svg.email.svg(
+              height: 26,
+              color: error == null ? AppColors.grey60 : AppColors.error100,
+            ),
+            onPressed: () {},
+          ),
         );
       },
     );
   }
 }
 
-class _PasswordTextField extends StatelessWidget {
+class _PasswordTextField extends StatefulWidget {
   const _PasswordTextField();
+
+  @override
+  State<_PasswordTextField> createState() => _PasswordTextFieldState();
+}
+
+class _PasswordTextFieldState extends State<_PasswordTextField> {
+  bool _isObscure = true;
 
   @override
   Widget build(BuildContext context) {
@@ -314,13 +326,27 @@ class _PasswordTextField extends StatelessWidget {
         final fieldsInfo = state as LoginFieldsInfo;
         final error = fieldsInfo.passwordError;
         return CustomTextField(
-          prefixIcon: Icons.lock_outline,
           labelText: 'Confirm your password',
-          obscureText: true,
+          obscureText: _isObscure,
           onChanged: (text) => context.read<LoginBloc>().add(LoginPasswordChanged(text)),
           keyboardType: TextInputType.visiblePassword,
           textColor: error == null ? AppColors.dark100 : AppColors.error100,
-          prefixIconColor: error == null ? AppColors.grey60 : AppColors.error100,
+          prefixIcon: IconButton(
+            icon: Assets.svg.lock.svg(
+              height: 26,
+              color: error == null ? AppColors.grey60 : AppColors.error100,
+            ),
+            onPressed: () {},
+          ),
+          suffixIcon: IconButton(
+            icon: Icon(
+              _isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+              color: AppColors.grey40,
+            ),
+            onPressed: () {
+              setState(() => _isObscure = !_isObscure);
+            },
+          ),
         );
       },
     );

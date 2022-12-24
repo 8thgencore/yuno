@@ -106,7 +106,6 @@ class _FirstNameTextField extends StatelessWidget {
       // onChanged: (text) => context.read<LoginBloc>().add(LoginEmailChanged(text)),
       keyboardType: TextInputType.emailAddress,
       textColor: AppColors.dark100,
-      prefixIconColor: AppColors.grey60,
     );
   }
 }
@@ -121,7 +120,6 @@ class _LastNameTextField extends StatelessWidget {
       // onChanged: (text) => context.read<LoginBloc>().add(LoginEmailChanged(text)),
       keyboardType: TextInputType.emailAddress,
       textColor: AppColors.dark100,
-      prefixIconColor: AppColors.grey60,
     );
   }
 }
@@ -136,7 +134,6 @@ class _UsernameTextField extends StatelessWidget {
       // onChanged: (text) => context.read<LoginBloc>().add(LoginEmailChanged(text)),
       keyboardType: TextInputType.emailAddress,
       textColor: AppColors.dark100,
-      prefixIconColor: AppColors.grey60,
     );
   }
 }
@@ -151,7 +148,6 @@ class _EmailTextField extends StatelessWidget {
       // onChanged: (text) => context.read<LoginBloc>().add(LoginEmailChanged(text)),
       keyboardType: TextInputType.emailAddress,
       textColor: AppColors.dark100,
-      prefixIconColor: AppColors.grey60,
     );
   }
 }
@@ -166,7 +162,6 @@ class _RoleTextField extends StatelessWidget {
       // onChanged: (text) => context.read<LoginBloc>().add(LoginEmailChanged(text)),
       keyboardType: TextInputType.emailAddress,
       textColor: AppColors.dark100,
-      prefixIconColor: AppColors.grey60,
     );
   }
 }
