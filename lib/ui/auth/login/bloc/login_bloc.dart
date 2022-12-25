@@ -4,8 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:equatable/equatable.dart';
 import 'package:yuno/api/auth/models/i_auth_login.dart';
-import 'package:yuno/app/di/service_locator.dart';
-import 'package:yuno/domain/repository/auth_repository.dart';
+import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/ui/auth/login/model/errors.dart';
 
 part 'login_event.dart';
@@ -13,7 +12,7 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc(this.authRepository) : super(const LoginFieldsInfo()) {
+  LoginBloc(this.apiAuthRepository) : super(const LoginFieldsInfo()) {
     on<LoginEmailChanged>(_onEmailChanged);
     on<LoginEmailFocusLost>(_onEmailFocusLost);
     on<LoginPasswordChanged>(_onPasswordChanged);
@@ -22,7 +21,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginCloseError>(_onCloseError);
   }
 
-  final AuthRepository authRepository;
+  final ApiAuthRepository apiAuthRepository;
 
   static final _passwordRegexp = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
 
@@ -85,7 +84,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
     emit(const LoginInProgress());
 
-    final result = await authRepository.login(
+    final result = await apiAuthRepository.login(
           body: IAuthLogin(
             email: _email,
             password: _password,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yuno/app/di/service_locator.dart';
-import 'package:yuno/domain/repository/auth_repository.dart';
+import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/routes/routes.dart';
 import 'package:yuno/ui/auth/registration/bloc/registration_bloc.dart';
@@ -15,7 +15,7 @@ class RegistrationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => RegistrationBloc(sl.get<AuthRepository>()),
+      create: (context) => RegistrationBloc(sl.get<ApiAuthRepository>()),
       child: Scaffold(
         appBar: AppBar(toolbarHeight: 0, elevation: 0),
         backgroundColor: AppColors.primary100,

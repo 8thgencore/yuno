@@ -10,9 +10,11 @@ class CustomTextField extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.obscureText = false,
+    this.enabled = true,
     this.onChanged,
     this.onSubmitted,
     this.onTap,
+    this.controller,
     this.focusNode,
     super.key,
   });
@@ -23,9 +25,11 @@ class CustomTextField extends StatelessWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final bool? obscureText;
+  final bool? enabled;
   final Function(String)? onChanged;
   final Function(String)? onSubmitted;
   final VoidCallback? onTap;
+  final TextEditingController? controller;
   final FocusNode? focusNode;
 
   @override
@@ -36,7 +40,9 @@ class CustomTextField extends StatelessWidget {
         color: AppColors.white100,
       ),
       child: TextField(
+        controller: controller,
         focusNode: focusNode,
+        enabled: enabled,
         style: AppTypography.r14d.copyWith(color: textColor),
         autocorrect: false,
         cursorColor: AppColors.primary100,

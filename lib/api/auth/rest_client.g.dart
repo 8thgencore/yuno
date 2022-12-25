@@ -8,12 +8,12 @@ part of 'rest_client.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _UserClient implements UserClient {
-  _UserClient(
+class _AuthClient implements AuthClient {
+  _AuthClient(
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://185.144.29.33:8070/api/v1/user';
+    baseUrl ??= 'http://185.144.29.33:8070/api/v1/auth';
   }
 
   final Dio _dio;
@@ -21,185 +21,123 @@ class _UserClient implements UserClient {
   String? baseUrl;
 
   @override
-  Future<IGetResponseBaseIUserRead> getUser() async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IGetResponseBaseIUserRead>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = IGetResponseBaseIUserRead.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
-  Future<IUserRead> postUser({required body}) async {
+  Future<IPostResponseBaseToken> postAuthLogin({required body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<IUserRead>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<IPostResponseBaseToken>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '',
+              '/login',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = IUserRead.fromJson(_result.data!);
+    final value = IPostResponseBaseToken.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<IGetResponsePaginatedIRoleRead> getUserList({
-    page = 1,
-    size = 50,
-  }) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'page': page,
-      r'size': size,
-    };
-    queryParameters.removeWhere((k, v) => v == null);
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IGetResponsePaginatedIRoleRead>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/list',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = IGetResponsePaginatedIRoleRead.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
-  Future<IGetResponsePaginatedIRoleRead> getUserListByCreatedAt({
-    order = IOrderEnum.asc,
-    page = 1,
-    size = 50,
-  }) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'order': order?.toJson(),
-      r'page': page,
-      r'size': size,
-    };
-    queryParameters.removeWhere((k, v) => v == null);
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IGetResponsePaginatedIRoleRead>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/list/by_created_at',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = IGetResponsePaginatedIRoleRead.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
-  Future<IGetResponseBaseIUserRead> getUserUserId({required userId}) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IGetResponseBaseIUserRead>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/${userId}',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = IGetResponseBaseIUserRead.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
-  Future<IPutResponseBaseIUserRead> putUserUserId({
-    required userId,
-    required body,
-  }) async {
+  Future<IPostResponseBaseIUserRead> postAuthRegister({required body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IPutResponseBaseIUserRead>(Options(
-      method: 'PUT',
+        _setStreamType<IPostResponseBaseIUserRead>(Options(
+      method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/${userId}',
+              '/register',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = IPutResponseBaseIUserRead.fromJson(_result.data!);
+    final value = IPostResponseBaseIUserRead.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<IDeleteResponseBaseIUserRead> deleteUserUserId(
-      {required userId}) async {
+  Future<IPostResponseBaseToken> postAuthChangePassword({required body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IDeleteResponseBaseIUserRead>(Options(
-      method: 'DELETE',
+        _setStreamType<IPostResponseBaseToken>(Options(
+      method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/${userId}',
+              '/change-password',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = IDeleteResponseBaseIUserRead.fromJson(_result.data!);
+    final value = IPostResponseBaseToken.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<TokenRead> postAuthToken({required body}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<TokenRead>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/token',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = TokenRead.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<IPostResponseBaseTokenRead> postAuthRefreshToken(
+      {required body}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<IPostResponseBaseTokenRead>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/refresh-token',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = IPostResponseBaseTokenRead.fromJson(_result.data!);
     return value;
   }
 

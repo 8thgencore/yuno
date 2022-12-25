@@ -5,47 +5,50 @@ import 'package:yuno/api/shared_models/i_order_enum.dart';
 import 'package:yuno/api/user/models/i_delete_response_base_i_user_read.dart';
 import 'package:yuno/api/user/models/i_get_response_base_i_user_read.dart';
 import 'package:yuno/api/user/models/i_put_response_base_i_user_read.dart';
+import 'package:yuno/api/user/models/i_user_create.dart';
+import 'package:yuno/api/user/models/i_user_read.dart';
 import 'package:yuno/api/user/models/i_user_update.dart';
+import 'package:yuno/resources/constants.dart';
 
 part 'rest_client.g.dart';
 
-@RestApi()
-abstract class Client {
-  factory Client(Dio dio, {required String baseUrl}) = _Client;
+@RestApi(baseUrl: '$baseUrl/user')
+abstract class UserClient {
+  factory UserClient(Dio dio, { String baseUrl}) = _UserClient;
 
-  @GET('/api/v1/user')
+  @GET('')
   Future<IGetResponseBaseIUserRead> getUser();
 
-  @POST('/api/v1/user')
-  Future<void> postUser({
-    @Body() required Null body,
+  @POST('')
+  Future<IUserRead> postUser({
+    @Body() required IUserCreate body,
   });
 
-  @GET('/api/v1/user/list')
+  @GET('/list')
   Future<IGetResponsePaginatedIRoleRead> getUserList({
     @Query('page') int? page = 1,
     @Query('size') int? size = 50,
   });
 
-  @GET('/api/v1/user/list/by_created_at')
+  @GET('/list/by_created_at')
   Future<IGetResponsePaginatedIRoleRead> getUserListByCreatedAt({
     @Query('order') IOrderEnum? order = IOrderEnum.asc,
     @Query('page') int? page = 1,
     @Query('size') int? size = 50,
   });
 
-  @GET('/api/v1/user/{user_id}')
+  @GET('/{user_id}')
   Future<IGetResponseBaseIUserRead> getUserUserId({
     @Path('user_id') required String userId,
   });
 
-  @PUT('/api/v1/user/{user_id}')
+  @PUT('/{user_id}')
   Future<IPutResponseBaseIUserRead> putUserUserId({
     @Path('user_id') required String userId,
     @Body() required IUserUpdate body,
   });
 
-  @DELETE('/api/v1/user/{user_id}')
+  @DELETE('/{user_id}')
   Future<IDeleteResponseBaseIUserRead> deleteUserUserId({
     @Path('user_id') required String userId,
   });

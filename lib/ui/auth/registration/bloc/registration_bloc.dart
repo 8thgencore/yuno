@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:equatable/equatable.dart';
 import 'package:yuno/api/auth/models/i_auth_register.dart';
-import 'package:yuno/domain/repository/auth_repository.dart';
+import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/ui/auth/registration/model/errors.dart';
 
 part 'registration_event.dart';
@@ -12,7 +12,7 @@ part 'registration_event.dart';
 part 'registration_state.dart';
 
 class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
-  RegistrationBloc(this.authRepository) : super(const RegistrationFieldsInfo()) {
+  RegistrationBloc(this.apiAuthRepository) : super(const RegistrationFieldsInfo()) {
     on<RegistrationEmailChanged>(_onEmailChanged);
     on<RegistrationEmailFocusLost>(_onEmailFocusLost);
     on<RegistrationPasswordChanged>(_onPasswordChanged);
@@ -25,7 +25,7 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     on<RegistrationCloseError>(_onCloseError);
   }
 
-  final AuthRepository authRepository;
+  final ApiAuthRepository apiAuthRepository;
 
   static final _passwordRegexp = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
 
@@ -137,7 +137,7 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
 
     emit(const RegistrationInProgress());
 
-    final result = await authRepository.register(
+    final result = await apiAuthRepository.register(
       body: IAuthRegister(
         email: _email,
         username: _name,

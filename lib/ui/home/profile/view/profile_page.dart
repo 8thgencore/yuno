@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yuno/app/di/service_locator.dart';
+import 'package:yuno/data/repository/refresh_token_repository.dart';
 import 'package:yuno/data/repository/user_repository.dart';
 import 'package:yuno/domain/logout_interactor.dart';
+import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/routes/routes.dart';
 import 'package:yuno/ui/home/profile/bloc/profile_bloc.dart';
@@ -16,6 +18,8 @@ class ProfilePage extends StatelessWidget {
       create: (context) => ProfileBloc(
         userRepository: sl.get<UserRepository>(),
         logoutInteractor: sl.get<LogoutInteractor>(),
+        apiAuthRepository: sl.get<ApiAuthRepository>(),
+        refreshTokenRepository: sl.get<RefreshTokenRepository>(),
       )..add(const ProfileEvent.started()),
       child: BlocListener<ProfileBloc, ProfileState>(
         listener: (context, state) {

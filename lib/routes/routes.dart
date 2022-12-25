@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yuno/ui/auth/login/view/login_page.dart';
 import 'package:yuno/ui/auth/registration/view/registration_page.dart';
-import 'package:yuno/ui/home/edit_profile/view/edit_profile_page.dart';
+import 'package:yuno/ui/home/edit_profile/view/profile_edit_page.dart';
 import 'package:yuno/ui/home/profile/view/profile_page.dart';
 import 'package:yuno/ui/splash/view/splash_page.dart';
 

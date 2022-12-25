@@ -3,6 +3,7 @@ import 'package:retrofit/retrofit.dart';
 import 'package:yuno/api/auth/models/i_auth_login.dart';
 import 'package:yuno/api/auth/models/i_auth_register.dart';
 import 'package:yuno/api/auth/models/i_auth_token.dart';
+import 'package:yuno/api/auth/models/i_post_response_base_token_read.dart';
 import 'package:yuno/api/auth/models/token_read.dart';
 import 'package:yuno/api/user/models/i_post_response_base_i_user_read.dart';
 import 'package:yuno/resources/constants.dart';
@@ -37,7 +38,7 @@ abstract class AuthClient {
   });
 
   @POST('/refresh-token')
-  Future<void> postAuthRefreshToken({
+  Future<IPostResponseBaseTokenRead> postAuthRefreshToken({
     @Body() required RefreshToken body,
   });
 }
