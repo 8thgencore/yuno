@@ -21,11 +21,11 @@ IUserUpdate _$IUserUpdateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$IUserUpdate {
   @JsonKey(name: 'first_name')
-  String? get firstName => throw _privateConstructorUsedError;
+  String get firstName => throw _privateConstructorUsedError;
   @JsonKey(name: 'last_name')
-  String? get lastName => throw _privateConstructorUsedError;
-  String? get username => throw _privateConstructorUsedError;
-  String? get email => throw _privateConstructorUsedError;
+  String get lastName => throw _privateConstructorUsedError;
+  String get username => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
   String? get birthdate => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
   @JsonKey(name: 'role_id')
@@ -44,10 +44,10 @@ abstract class $IUserUpdateCopyWith<$Res> {
       _$IUserUpdateCopyWithImpl<$Res, IUserUpdate>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'first_name') String? firstName,
-      @JsonKey(name: 'last_name') String? lastName,
-      String? username,
-      String? email,
+      {@JsonKey(name: 'first_name') String firstName,
+      @JsonKey(name: 'last_name') String lastName,
+      String username,
+      String email,
       String? birthdate,
       String? phone,
       @JsonKey(name: 'role_id') String? roleId});
@@ -66,31 +66,31 @@ class _$IUserUpdateCopyWithImpl<$Res, $Val extends IUserUpdate>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? firstName = freezed,
-    Object? lastName = freezed,
-    Object? username = freezed,
-    Object? email = freezed,
+    Object? firstName = null,
+    Object? lastName = null,
+    Object? username = null,
+    Object? email = null,
     Object? birthdate = freezed,
     Object? phone = freezed,
     Object? roleId = freezed,
   }) {
     return _then(_value.copyWith(
-      firstName: freezed == firstName
+      firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastName: freezed == lastName
+              as String,
+      lastName: null == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      username: freezed == username
+              as String,
+      username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String?,
-      email: freezed == email
+              as String,
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       birthdate: freezed == birthdate
           ? _value.birthdate
           : birthdate // ignore: cast_nullable_to_non_nullable
@@ -116,10 +116,10 @@ abstract class _$$_IUserUpdateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'first_name') String? firstName,
-      @JsonKey(name: 'last_name') String? lastName,
-      String? username,
-      String? email,
+      {@JsonKey(name: 'first_name') String firstName,
+      @JsonKey(name: 'last_name') String lastName,
+      String username,
+      String email,
       String? birthdate,
       String? phone,
       @JsonKey(name: 'role_id') String? roleId});
@@ -136,31 +136,31 @@ class __$$_IUserUpdateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? firstName = freezed,
-    Object? lastName = freezed,
-    Object? username = freezed,
-    Object? email = freezed,
+    Object? firstName = null,
+    Object? lastName = null,
+    Object? username = null,
+    Object? email = null,
     Object? birthdate = freezed,
     Object? phone = freezed,
     Object? roleId = freezed,
   }) {
     return _then(_$_IUserUpdate(
-      firstName: freezed == firstName
+      firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastName: freezed == lastName
+              as String,
+      lastName: null == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      username: freezed == username
+              as String,
+      username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String?,
-      email: freezed == email
+              as String,
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       birthdate: freezed == birthdate
           ? _value.birthdate
           : birthdate // ignore: cast_nullable_to_non_nullable
@@ -181,10 +181,10 @@ class __$$_IUserUpdateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_IUserUpdate implements _IUserUpdate {
   const _$_IUserUpdate(
-      {@JsonKey(name: 'first_name') this.firstName,
-      @JsonKey(name: 'last_name') this.lastName,
-      this.username,
-      this.email,
+      {@JsonKey(name: 'first_name') required this.firstName,
+      @JsonKey(name: 'last_name') required this.lastName,
+      required this.username,
+      required this.email,
       this.birthdate,
       this.phone,
       @JsonKey(name: 'role_id') this.roleId});
@@ -194,14 +194,14 @@ class _$_IUserUpdate implements _IUserUpdate {
 
   @override
   @JsonKey(name: 'first_name')
-  final String? firstName;
+  final String firstName;
   @override
   @JsonKey(name: 'last_name')
-  final String? lastName;
+  final String lastName;
   @override
-  final String? username;
+  final String username;
   @override
-  final String? email;
+  final String email;
   @override
   final String? birthdate;
   @override
@@ -254,10 +254,10 @@ class _$_IUserUpdate implements _IUserUpdate {
 
 abstract class _IUserUpdate implements IUserUpdate {
   const factory _IUserUpdate(
-      {@JsonKey(name: 'first_name') final String? firstName,
-      @JsonKey(name: 'last_name') final String? lastName,
-      final String? username,
-      final String? email,
+      {@JsonKey(name: 'first_name') required final String firstName,
+      @JsonKey(name: 'last_name') required final String lastName,
+      required final String username,
+      required final String email,
       final String? birthdate,
       final String? phone,
       @JsonKey(name: 'role_id') final String? roleId}) = _$_IUserUpdate;
@@ -267,14 +267,14 @@ abstract class _IUserUpdate implements IUserUpdate {
 
   @override
   @JsonKey(name: 'first_name')
-  String? get firstName;
+  String get firstName;
   @override
   @JsonKey(name: 'last_name')
-  String? get lastName;
+  String get lastName;
   @override
-  String? get username;
+  String get username;
   @override
-  String? get email;
+  String get email;
   @override
   String? get birthdate;
   @override

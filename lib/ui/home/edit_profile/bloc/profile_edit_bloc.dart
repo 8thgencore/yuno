@@ -30,15 +30,13 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
   final ApiUserRepository apiUserRepository;
   final UserRepository userRepository;
 
-  String _firstName = '';
+  IUserRead? _user;
 
-  String _lastName = '';
+  ProfileEditFieldsInfo? _profileEditFieldsInfo;
 
-  String _nickname = '';
   bool _highlightNicknameError = false;
   ProfileEditNicknameError? _nicknameError = ProfileEditNicknameError.empty;
 
-  String _email = '';
   bool _highlightEmailError = false;
   ProfileEditEmailError? _emailError = ProfileEditEmailError.empty;
 
@@ -53,6 +51,9 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
     try {
       final user = await apiUserRepository.getData();
       if (user is IUserRead) {
+        _user = user;
+        _emailError = _validateEmail();
+        _nicknameError = _validateNickname();
         emit(ProfileEditState.loaded(user));
       } else {
         emit(ProfileEditState.failure(user.toString()));
@@ -73,15 +74,28 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
     if (haveError) {
       return;
     }
-    emit(const ProfileEditState.loading());
-    // emit(ProfileEditState.loaded(user));
+
+    final result = await apiUserRepository.updateDataById(
+      firstName: _user!.firstName,
+      lastName: _user!.lastName,
+      email: _user!.email,
+      username: _user!.username,
+    );
+    if (result != null) {
+      _serverError = result.toString();
+      _highlightServerError = true;
+      emit(_calculateFieldsInfo());
+    } else {
+      _highlightServerError = false;
+      emit(ProfileEditState.loaded(_user!));
+    }
   }
 
   FutureOr<void> _onFirstNameChanged(
     _FirstNameChangedEvent event,
     Emitter<ProfileEditState> emit,
   ) async {
-    _firstName = event.text;
+    _user = _user!.copyWith(firstName: event.text);
     emit(_calculateFieldsInfo());
   }
 
@@ -89,7 +103,7 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
     _LastNameChangedEvent event,
     Emitter<ProfileEditState> emit,
   ) async {
-    _lastName = event.text;
+    _user = _user!.copyWith(lastName: event.text);
     emit(_calculateFieldsInfo());
   }
 
@@ -97,7 +111,7 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
     _NicknameChangedEvent event,
     Emitter<ProfileEditState> emit,
   ) async {
-    _nickname = event.text;
+    _user = _user!.copyWith(username: event.text);
     _nicknameError = _validateNickname();
     emit(_calculateFieldsInfo());
   }
@@ -106,7 +120,7 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
     _EmailChangedEvent event,
     Emitter<ProfileEditState> emit,
   ) async {
-    _email = event.text;
+    _user = _user!.copyWith(email: event.text);
     _emailError = _validateEmail();
     emit(_calculateFieldsInfo());
   }
@@ -120,20 +134,20 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
   }
 
   ProfileEditEmailError? _validateEmail() {
-    if (_email.isEmpty) {
+    if (_user!.email.isEmpty) {
       return ProfileEditEmailError.empty;
     }
-    if (!EmailValidator.validate(_email)) {
+    if (!EmailValidator.validate(_user!.email)) {
       return ProfileEditEmailError.invalid;
     }
     return null;
   }
 
   ProfileEditNicknameError? _validateNickname() {
-    if (_nickname.isEmpty) {
+    if (_user!.username.isEmpty) {
       return ProfileEditNicknameError.empty;
     }
-    if (_nickname.length < 3) {
+    if (_user!.username.length < 3) {
       return ProfileEditNicknameError.tooShort;
     }
     return null;

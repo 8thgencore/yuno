@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:equatable/equatable.dart';
-import 'package:yuno/api/auth/models/i_auth_login.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/ui/auth/login/model/errors.dart';
 
@@ -76,20 +75,17 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   ) async {
     _highlightEmailError = true;
     _highlightPasswordError = true;
+
     emit(_calculateFieldsInfo());
     final haveError = _emailError != null || _passwordError != null;
     if (haveError) {
       return;
     }
-
     emit(const LoginInProgress());
-
     final result = await apiAuthRepository.login(
-          body: IAuthLogin(
-            email: _email,
-            password: _password,
-          ),
-        );
+      email: _email,
+      password: _password,
+    );
     if (result != null) {
       _serverError = result.toString();
       _highlightServerError = true;

@@ -21,12 +21,23 @@ class ApiAuthRepository {
   final TokenRepository tokenRepository;
   final RefreshTokenRepository refreshTokenRepository;
 
-  Future<dynamic> register({required IAuthRegister body}) async {
+  Future<dynamic> register({
+    required String email,
+    required String username,
+    required String password,
+  }) async {
     try {
-      final response = await authClient.postAuthRegister(body: body);
+      final response = await authClient.postAuthRegister(
+        body: IAuthRegister(
+          email: email,
+          username: username,
+          password: password,
+        ),
+      );
 
       final user = response.data;
       await userRepository.setItem(user);
+
       return null;
     } on DioError catch (e) {
       if (e.response?.statusCode != 201) {
@@ -37,11 +48,19 @@ class ApiAuthRepository {
     }
   }
 
-  Future<dynamic> login({required IAuthLogin body}) async {
+  Future<dynamic> login({
+    required String email,
+    required String password,
+  }) async {
     try {
-      final response = await authClient.postAuthLogin(body: body);
-      final data = response.data;
+      final response = await authClient.postAuthLogin(
+        body: IAuthLogin(
+          email: email,
+          password: password,
+        ),
+      );
 
+      final data = response.data;
       await userRepository.setItem(data.user);
       await tokenRepository.setItem(data.accessToken);
       await refreshTokenRepository.setItem(data.refreshToken);

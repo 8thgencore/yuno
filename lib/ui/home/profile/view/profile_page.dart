@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yuno/app/di/service_locator.dart';
@@ -22,14 +23,13 @@ class ProfilePage extends StatelessWidget {
         refreshTokenRepository: sl.get<RefreshTokenRepository>(),
       )..add(const ProfileEvent.started()),
       child: BlocListener<ProfileBloc, ProfileState>(
+        listenWhen: (_, current) => current == const ProfileState.logout(),
         listener: (context, state) {
-          if (state == const ProfileState.logout()) {
-            Navigator.pushNamedAndRemoveUntil(
-              context,
-              RoutesPage.login,
-              (route) => false,
-            );
-          }
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            RoutesPage.login,
+            (route) => false,
+          );
         },
         child: const Scaffold(
           backgroundColor: AppColors.screen100,
@@ -145,8 +145,9 @@ class AvatarWidget extends StatelessWidget {
                 border: Border.all(color: Colors.white, width: 4),
               ),
               child: ClipOval(
-                child: Image.network(
-                  'https://images.unsplash.com/photo-1661961111184-11317b40adb2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80',
+                child: CachedNetworkImage(
+                  imageUrl:
+                      'https://images.unsplash.com/photo-1661961111184-11317b40adb2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80',
                   height: 120,
                   width: 120,
                   fit: BoxFit.cover,

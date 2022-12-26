@@ -34,16 +34,30 @@ class ApiUserRepository {
   }
 
   Future<dynamic> updateDataById({
-    required String id,
-    required IUserUpdate body,
+    required String firstName,
+    required String lastName,
+    required String email,
+    required String username,
   }) async {
     try {
-      final response = await userClient.putUserUserId(userId: id, body: body);
-      final user = response.data;
+      final user = await userRepository.getItem();
+      if (user != null) {
+        final response = await userClient.putUserUserId(
+          userId: user.id,
+          body: IUserUpdate(
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            username: username,
+          ),
+        );
 
-      await userRepository.setItem(user);
+        final data = response.data;
+        await userRepository.setItem(data);
 
-      return null;
+        return null;
+      }
+      return 'Could not get user data';
     } on DioError catch (e) {
       if (e.response?.statusCode != 200) {
         return HTTPValidationError.fromJson(e.response?.data as Map<String, dynamic>).detail;

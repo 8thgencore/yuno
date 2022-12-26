@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yuno/app/di/service_locator.dart';
-import 'package:yuno/data/repository/user_repository.dart';
-import 'package:yuno/domain/repository/api_user_repository.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/auth/widgets/custom_rounded_button.dart';
 import 'package:yuno/ui/auth/widgets/custom_text_field.dart';
@@ -13,26 +10,20 @@ class ProfileEditPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ProfileEditBloc(
-        apiUserRepository: sl.get<ApiUserRepository>(),
-        userRepository: sl.get<UserRepository>(),
-      )..add(const ProfileEditEvent.started()),
-      child: Scaffold(
-        backgroundColor: AppColors.screen100,
-        body: const SafeArea(child: _ProfileEditContentWidget()),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: Padding(
-          padding: const EdgeInsets.only(left: 15, right: 15),
-          child: CustomRoundedButton(
-            textButton: 'Save Changes',
-            onPressed: () {
-              FocusManager.instance.primaryFocus?.unfocus();
-              context.read<ProfileEditBloc>().add(const ProfileEditEvent.saved());
-            },
-            textColor: AppColors.white100,
-            buttonColor: AppColors.primary100,
-          ),
+    return Scaffold(
+      backgroundColor: AppColors.screen100,
+      body: const SafeArea(child: _ProfileEditContentWidget()),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(left: 15, right: 15),
+        child: CustomRoundedButton(
+          textButton: 'Save Changes',
+          onPressed: () {
+            FocusManager.instance.primaryFocus?.unfocus();
+            context.read<ProfileEditBloc>().add(const ProfileEditEvent.saved());
+          },
+          textColor: AppColors.white100,
+          buttonColor: AppColors.primary100,
         ),
       ),
     );
@@ -90,39 +81,41 @@ class _ListTextFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileEditBloc, ProfileEditState>(
-      builder: (context, state) => state.maybeWhen(
-        loading: () => Container(
-          alignment: Alignment.center,
-          padding: const EdgeInsets.symmetric(vertical: 100),
-          child: const CircularProgressIndicator(),
-        ),
-        loaded: (user) => Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 14),
-              child: _FirstNameTextField(text: user.firstName),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 14),
-              child: _LastNameTextField(text: user.lastName),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 14),
-              child: _UsernameTextField(text: user.username),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 14),
-              child: _EmailTextField(text: user.email),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 14),
-              child: _RoleTextField(text: user.role?.name ?? ''),
-            ),
-            const SizedBox(height: 90),
-          ],
-        ),
-        orElse: () => const SizedBox.shrink(),
-      ),
+      builder: (context, state) {
+        return state.maybeWhen(
+          loading: () => Container(
+            alignment: Alignment.center,
+            padding: const EdgeInsets.symmetric(vertical: 100),
+            child: const CircularProgressIndicator(),
+          ),
+          loaded: (user) => Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 14),
+                child: _FirstNameTextField(text: user.firstName),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 14),
+                child: _LastNameTextField(text: user.lastName),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 14),
+                child: _UsernameTextField(text: user.username),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 14),
+                child: _EmailTextField(text: user.email),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 14),
+                child: _RoleTextField(text: user.role?.name ?? ''),
+              ),
+              const SizedBox(height: 90),
+            ],
+          ),
+          orElse: () => const SizedBox(width: double.infinity),
+        );
+      },
     );
   }
 }
@@ -139,7 +132,8 @@ class _FirstNameTextField extends StatelessWidget {
       labelText: 'First Name',
       keyboardType: TextInputType.emailAddress,
       textColor: AppColors.dark100,
-
+      onChanged: (text) =>
+          context.read<ProfileEditBloc>().add(ProfileEditEvent.firstNameChanged(text)),
     );
   }
 }
@@ -192,8 +186,7 @@ class _EmailTextField extends StatelessWidget {
       labelText: 'Email',
       keyboardType: TextInputType.emailAddress,
       textColor: AppColors.dark100,
-      onChanged: (text) =>
-          context.read<ProfileEditBloc>().add(ProfileEditEvent.emailChanged(text)),
+      onChanged: (text) => context.read<ProfileEditBloc>().add(ProfileEditEvent.emailChanged(text)),
     );
   }
 }

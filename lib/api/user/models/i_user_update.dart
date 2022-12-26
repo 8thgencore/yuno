@@ -8,11 +8,11 @@ part 'i_user_update.g.dart';
 class IUserUpdate with _$IUserUpdate {
   const factory IUserUpdate({
     @JsonKey(name: 'first_name')
-    String? firstName,
+    required String firstName,
     @JsonKey(name: 'last_name')
-    String? lastName,
-    String? username,
-    String? email,
+    required String lastName,
+    required String username,
+    required String email,
     String? birthdate,
     String? phone,
     @JsonKey(name: 'role_id')

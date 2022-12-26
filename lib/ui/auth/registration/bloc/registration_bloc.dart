@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:equatable/equatable.dart';
-import 'package:yuno/api/auth/models/i_auth_register.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/ui/auth/registration/model/errors.dart';
 
@@ -138,11 +137,9 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     emit(const RegistrationInProgress());
 
     final result = await apiAuthRepository.register(
-      body: IAuthRegister(
-        email: _email,
-        username: _name,
-        password: _password,
-      ),
+      email: _email,
+      username: _name,
+      password: _password,
     );
     if (result != null) {
       _serverError = result.toString();
@@ -153,7 +150,6 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
       emit(const RegistrationCompleted());
     }
   }
-
 
   FutureOr<void> _onCloseError(
     final RegistrationCloseError event,
