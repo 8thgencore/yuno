@@ -990,6 +990,9 @@ mixin _$ProfileEditState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(ProfileEditEmailError? emailError,
+            ProfileEditNicknameError? nicknameError, String? serverError)
+        fieldsInfo,
     required TResult Function() loading,
     required TResult Function(IUserRead user) loaded,
     required TResult Function(Object error) failure,
@@ -998,6 +1001,9 @@ mixin _$ProfileEditState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(ProfileEditEmailError? emailError,
+            ProfileEditNicknameError? nicknameError, String? serverError)?
+        fieldsInfo,
     TResult? Function()? loading,
     TResult? Function(IUserRead user)? loaded,
     TResult? Function(Object error)? failure,
@@ -1006,6 +1012,9 @@ mixin _$ProfileEditState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(ProfileEditEmailError? emailError,
+            ProfileEditNicknameError? nicknameError, String? serverError)?
+        fieldsInfo,
     TResult Function()? loading,
     TResult Function(IUserRead user)? loaded,
     TResult Function(Object error)? failure,
@@ -1015,6 +1024,7 @@ mixin _$ProfileEditState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
+    required TResult Function(_FieldsInfoState value) fieldsInfo,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_LoadedState value) loaded,
     required TResult Function(_FailureState value) failure,
@@ -1023,6 +1033,7 @@ mixin _$ProfileEditState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
+    TResult? Function(_FieldsInfoState value)? fieldsInfo,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_LoadedState value)? loaded,
     TResult? Function(_FailureState value)? failure,
@@ -1031,6 +1042,7 @@ mixin _$ProfileEditState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_FieldsInfoState value)? fieldsInfo,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_LoadedState value)? loaded,
     TResult Function(_FailureState value)? failure,
@@ -1096,6 +1108,9 @@ class _$_InitialState implements _InitialState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(ProfileEditEmailError? emailError,
+            ProfileEditNicknameError? nicknameError, String? serverError)
+        fieldsInfo,
     required TResult Function() loading,
     required TResult Function(IUserRead user) loaded,
     required TResult Function(Object error) failure,
@@ -1107,6 +1122,9 @@ class _$_InitialState implements _InitialState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(ProfileEditEmailError? emailError,
+            ProfileEditNicknameError? nicknameError, String? serverError)?
+        fieldsInfo,
     TResult? Function()? loading,
     TResult? Function(IUserRead user)? loaded,
     TResult? Function(Object error)? failure,
@@ -1118,6 +1136,9 @@ class _$_InitialState implements _InitialState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(ProfileEditEmailError? emailError,
+            ProfileEditNicknameError? nicknameError, String? serverError)?
+        fieldsInfo,
     TResult Function()? loading,
     TResult Function(IUserRead user)? loaded,
     TResult Function(Object error)? failure,
@@ -1133,6 +1154,7 @@ class _$_InitialState implements _InitialState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
+    required TResult Function(_FieldsInfoState value) fieldsInfo,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_LoadedState value) loaded,
     required TResult Function(_FailureState value) failure,
@@ -1144,6 +1166,7 @@ class _$_InitialState implements _InitialState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
+    TResult? Function(_FieldsInfoState value)? fieldsInfo,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_LoadedState value)? loaded,
     TResult? Function(_FailureState value)? failure,
@@ -1155,6 +1178,7 @@ class _$_InitialState implements _InitialState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_FieldsInfoState value)? fieldsInfo,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_LoadedState value)? loaded,
     TResult Function(_FailureState value)? failure,
@@ -1169,6 +1193,194 @@ class _$_InitialState implements _InitialState {
 
 abstract class _InitialState implements ProfileEditState {
   const factory _InitialState() = _$_InitialState;
+}
+
+/// @nodoc
+abstract class _$$_FieldsInfoStateCopyWith<$Res> {
+  factory _$$_FieldsInfoStateCopyWith(
+          _$_FieldsInfoState value, $Res Function(_$_FieldsInfoState) then) =
+      __$$_FieldsInfoStateCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {ProfileEditEmailError? emailError,
+      ProfileEditNicknameError? nicknameError,
+      String? serverError});
+}
+
+/// @nodoc
+class __$$_FieldsInfoStateCopyWithImpl<$Res>
+    extends _$ProfileEditStateCopyWithImpl<$Res, _$_FieldsInfoState>
+    implements _$$_FieldsInfoStateCopyWith<$Res> {
+  __$$_FieldsInfoStateCopyWithImpl(
+      _$_FieldsInfoState _value, $Res Function(_$_FieldsInfoState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? emailError = freezed,
+    Object? nicknameError = freezed,
+    Object? serverError = freezed,
+  }) {
+    return _then(_$_FieldsInfoState(
+      emailError: freezed == emailError
+          ? _value.emailError
+          : emailError // ignore: cast_nullable_to_non_nullable
+              as ProfileEditEmailError?,
+      nicknameError: freezed == nicknameError
+          ? _value.nicknameError
+          : nicknameError // ignore: cast_nullable_to_non_nullable
+              as ProfileEditNicknameError?,
+      serverError: freezed == serverError
+          ? _value.serverError
+          : serverError // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_FieldsInfoState implements _FieldsInfoState {
+  const _$_FieldsInfoState(
+      {required this.emailError,
+      required this.nicknameError,
+      required this.serverError});
+
+  @override
+  final ProfileEditEmailError? emailError;
+  @override
+  final ProfileEditNicknameError? nicknameError;
+  @override
+  final String? serverError;
+
+  @override
+  String toString() {
+    return 'ProfileEditState.fieldsInfo(emailError: $emailError, nicknameError: $nicknameError, serverError: $serverError)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FieldsInfoState &&
+            (identical(other.emailError, emailError) ||
+                other.emailError == emailError) &&
+            (identical(other.nicknameError, nicknameError) ||
+                other.nicknameError == nicknameError) &&
+            (identical(other.serverError, serverError) ||
+                other.serverError == serverError));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, emailError, nicknameError, serverError);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_FieldsInfoStateCopyWith<_$_FieldsInfoState> get copyWith =>
+      __$$_FieldsInfoStateCopyWithImpl<_$_FieldsInfoState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(ProfileEditEmailError? emailError,
+            ProfileEditNicknameError? nicknameError, String? serverError)
+        fieldsInfo,
+    required TResult Function() loading,
+    required TResult Function(IUserRead user) loaded,
+    required TResult Function(Object error) failure,
+  }) {
+    return fieldsInfo(emailError, nicknameError, serverError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(ProfileEditEmailError? emailError,
+            ProfileEditNicknameError? nicknameError, String? serverError)?
+        fieldsInfo,
+    TResult? Function()? loading,
+    TResult? Function(IUserRead user)? loaded,
+    TResult? Function(Object error)? failure,
+  }) {
+    return fieldsInfo?.call(emailError, nicknameError, serverError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(ProfileEditEmailError? emailError,
+            ProfileEditNicknameError? nicknameError, String? serverError)?
+        fieldsInfo,
+    TResult Function()? loading,
+    TResult Function(IUserRead user)? loaded,
+    TResult Function(Object error)? failure,
+    required TResult orElse(),
+  }) {
+    if (fieldsInfo != null) {
+      return fieldsInfo(emailError, nicknameError, serverError);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_FieldsInfoState value) fieldsInfo,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_LoadedState value) loaded,
+    required TResult Function(_FailureState value) failure,
+  }) {
+    return fieldsInfo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_FieldsInfoState value)? fieldsInfo,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_LoadedState value)? loaded,
+    TResult? Function(_FailureState value)? failure,
+  }) {
+    return fieldsInfo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_FieldsInfoState value)? fieldsInfo,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_LoadedState value)? loaded,
+    TResult Function(_FailureState value)? failure,
+    required TResult orElse(),
+  }) {
+    if (fieldsInfo != null) {
+      return fieldsInfo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FieldsInfoState implements ProfileEditState {
+  const factory _FieldsInfoState(
+      {required final ProfileEditEmailError? emailError,
+      required final ProfileEditNicknameError? nicknameError,
+      required final String? serverError}) = _$_FieldsInfoState;
+
+  ProfileEditEmailError? get emailError;
+  ProfileEditNicknameError? get nicknameError;
+  String? get serverError;
+  @JsonKey(ignore: true)
+  _$$_FieldsInfoStateCopyWith<_$_FieldsInfoState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1210,6 +1422,9 @@ class _$_LoadingState implements _LoadingState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(ProfileEditEmailError? emailError,
+            ProfileEditNicknameError? nicknameError, String? serverError)
+        fieldsInfo,
     required TResult Function() loading,
     required TResult Function(IUserRead user) loaded,
     required TResult Function(Object error) failure,
@@ -1221,6 +1436,9 @@ class _$_LoadingState implements _LoadingState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(ProfileEditEmailError? emailError,
+            ProfileEditNicknameError? nicknameError, String? serverError)?
+        fieldsInfo,
     TResult? Function()? loading,
     TResult? Function(IUserRead user)? loaded,
     TResult? Function(Object error)? failure,
@@ -1232,6 +1450,9 @@ class _$_LoadingState implements _LoadingState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(ProfileEditEmailError? emailError,
+            ProfileEditNicknameError? nicknameError, String? serverError)?
+        fieldsInfo,
     TResult Function()? loading,
     TResult Function(IUserRead user)? loaded,
     TResult Function(Object error)? failure,
@@ -1247,6 +1468,7 @@ class _$_LoadingState implements _LoadingState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
+    required TResult Function(_FieldsInfoState value) fieldsInfo,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_LoadedState value) loaded,
     required TResult Function(_FailureState value) failure,
@@ -1258,6 +1480,7 @@ class _$_LoadingState implements _LoadingState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
+    TResult? Function(_FieldsInfoState value)? fieldsInfo,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_LoadedState value)? loaded,
     TResult? Function(_FailureState value)? failure,
@@ -1269,6 +1492,7 @@ class _$_LoadingState implements _LoadingState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_FieldsInfoState value)? fieldsInfo,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_LoadedState value)? loaded,
     TResult Function(_FailureState value)? failure,
@@ -1360,6 +1584,9 @@ class _$_LoadedState implements _LoadedState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(ProfileEditEmailError? emailError,
+            ProfileEditNicknameError? nicknameError, String? serverError)
+        fieldsInfo,
     required TResult Function() loading,
     required TResult Function(IUserRead user) loaded,
     required TResult Function(Object error) failure,
@@ -1371,6 +1598,9 @@ class _$_LoadedState implements _LoadedState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(ProfileEditEmailError? emailError,
+            ProfileEditNicknameError? nicknameError, String? serverError)?
+        fieldsInfo,
     TResult? Function()? loading,
     TResult? Function(IUserRead user)? loaded,
     TResult? Function(Object error)? failure,
@@ -1382,6 +1612,9 @@ class _$_LoadedState implements _LoadedState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(ProfileEditEmailError? emailError,
+            ProfileEditNicknameError? nicknameError, String? serverError)?
+        fieldsInfo,
     TResult Function()? loading,
     TResult Function(IUserRead user)? loaded,
     TResult Function(Object error)? failure,
@@ -1397,6 +1630,7 @@ class _$_LoadedState implements _LoadedState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
+    required TResult Function(_FieldsInfoState value) fieldsInfo,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_LoadedState value) loaded,
     required TResult Function(_FailureState value) failure,
@@ -1408,6 +1642,7 @@ class _$_LoadedState implements _LoadedState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
+    TResult? Function(_FieldsInfoState value)? fieldsInfo,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_LoadedState value)? loaded,
     TResult? Function(_FailureState value)? failure,
@@ -1419,6 +1654,7 @@ class _$_LoadedState implements _LoadedState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_FieldsInfoState value)? fieldsInfo,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_LoadedState value)? loaded,
     TResult Function(_FailureState value)? failure,
@@ -1503,6 +1739,9 @@ class _$_FailureState implements _FailureState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(ProfileEditEmailError? emailError,
+            ProfileEditNicknameError? nicknameError, String? serverError)
+        fieldsInfo,
     required TResult Function() loading,
     required TResult Function(IUserRead user) loaded,
     required TResult Function(Object error) failure,
@@ -1514,6 +1753,9 @@ class _$_FailureState implements _FailureState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(ProfileEditEmailError? emailError,
+            ProfileEditNicknameError? nicknameError, String? serverError)?
+        fieldsInfo,
     TResult? Function()? loading,
     TResult? Function(IUserRead user)? loaded,
     TResult? Function(Object error)? failure,
@@ -1525,6 +1767,9 @@ class _$_FailureState implements _FailureState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(ProfileEditEmailError? emailError,
+            ProfileEditNicknameError? nicknameError, String? serverError)?
+        fieldsInfo,
     TResult Function()? loading,
     TResult Function(IUserRead user)? loaded,
     TResult Function(Object error)? failure,
@@ -1540,6 +1785,7 @@ class _$_FailureState implements _FailureState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
+    required TResult Function(_FieldsInfoState value) fieldsInfo,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_LoadedState value) loaded,
     required TResult Function(_FailureState value) failure,
@@ -1551,6 +1797,7 @@ class _$_FailureState implements _FailureState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
+    TResult? Function(_FieldsInfoState value)? fieldsInfo,
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_LoadedState value)? loaded,
     TResult? Function(_FailureState value)? failure,
@@ -1562,6 +1809,7 @@ class _$_FailureState implements _FailureState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_FieldsInfoState value)? fieldsInfo,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_LoadedState value)? loaded,
     TResult Function(_FailureState value)? failure,
