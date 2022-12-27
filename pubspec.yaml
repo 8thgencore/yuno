@@ -7,20 +7,23 @@ environment:
   sdk: ">=2.17.0 <3.0.0"
 
 dependencies:
-  bloc: ^8.1.0
-  dartz: ^0.10.1
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.1
   flutter_gen: ^5.1.0+1
   flutter_localizations:
     sdk: flutter
+  dartz: ^0.10.1
   intl: ^0.17.0
   equatable: ^2.0.5
   email_validator: ^2.1.17
   json_annotation: ^4.7.0
   freezed_annotation: ^2.2.0
   rxdart: ^0.27.7
+
+  # State manager
+  bloc: ^8.1.0
+  flutter_bloc: ^8.1.1
+  bloc_concurrency: ^0.2.0
 
   # Network
   dio: ^4.0.6

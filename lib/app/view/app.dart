@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/routes/routes.dart';
-import 'package:yuno/ui/auth/registration/view/registration_page.dart';
+import 'package:yuno/ui/pages/auth/registration/view/registration_page.dart';
 
 class App extends StatefulWidget {
   const App({super.key});

@@ -3,12 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/data/repository/user_repository.dart';
 import 'package:yuno/domain/repository/api_user_repository.dart';
-import 'package:yuno/ui/auth/login/view/login_page.dart';
-import 'package:yuno/ui/auth/registration/view/registration_page.dart';
-import 'package:yuno/ui/home/edit_profile/bloc/profile_edit_bloc.dart';
-import 'package:yuno/ui/home/edit_profile/view/profile_edit_page.dart';
-import 'package:yuno/ui/home/profile/view/profile_page.dart';
-import 'package:yuno/ui/splash/view/splash_page.dart';
+import 'package:yuno/ui/pages/auth/login/view/login_page.dart';
+import 'package:yuno/ui/pages/auth/registration/view/registration_page.dart';
+import 'package:yuno/ui/pages/home/edit_profile/bloc/profile_edit_bloc.dart';
+import 'package:yuno/ui/pages/home/edit_profile/view/profile_edit_page.dart';
+import 'package:yuno/ui/pages/home/profile/view/profile_page.dart';
+import 'package:yuno/ui/pages/splash/view/splash_page.dart';
 
 Route Function(RouteSettings) get routes {
   return (RouteSettings settings) {
