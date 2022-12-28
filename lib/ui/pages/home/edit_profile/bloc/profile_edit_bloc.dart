@@ -102,15 +102,15 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
     if (result != null) {
       _serverError = result.toString();
       emit(state.copyWith(
-        status: ProfileEditStatus.loaded,
+        status: ProfileEditStatus.failure,
         serverError: _serverError,
       ));
-      _highlightServerError = true;
-      _calculateFieldsInfo(emit);
+      // _highlightServerError = true;
+      // _calculateFieldsInfo(emit);
     } else {
       _highlightServerError = false;
+      emit(state.copyWith(status: ProfileEditStatus.success));
     }
-    emit(state.copyWith(status: ProfileEditStatus.success));
   }
 
   FutureOr<void> _onFirstNameChanged(

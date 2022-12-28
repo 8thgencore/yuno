@@ -1,19 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/home/edit_profile/bloc/profile_edit_bloc.dart';
 import 'package:yuno/ui/widgets/custom_rounded_button.dart';
 import 'package:yuno/ui/widgets/custom_text_field.dart';
+import 'package:yuno/ui/widgets/toast_widget.dart';
 
-class ProfileEditPage extends StatelessWidget {
+class ProfileEditPage extends StatefulWidget {
   const ProfileEditPage({super.key});
+
+  @override
+  State<ProfileEditPage> createState() => _ProfileEditPageState();
+}
+
+class _ProfileEditPageState extends State<ProfileEditPage> {
+  late FToast fToast;
+
+  @override
+  void initState() {
+    super.initState();
+    fToast = FToast();
+    fToast.init(context);
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<ProfileEditBloc, ProfileEditState>(
       listener: (context, state) {
         if (state.status == ProfileEditStatus.success) {
+          final FToast fToast = FToast();
+          fToast.showToast(
+            child: const ToastWidget(
+              text: 'User information has been successfully updated',
+              type: ToastType.success,
+            ),
+            gravity: ToastGravity.TOP,
+          );
           // sl.get<ProfileBloc>().add(const ProfileEvent.update());
+        } else if (state.status == ProfileEditStatus.failure) {
+          final FToast fToast = FToast();
+          fToast.showToast(
+            child: ToastWidget(
+              text: state.serverError ?? 'Server Error',
+              type: ToastType.failure,
+            ),
+            gravity: ToastGravity.TOP,
+          );
         }
       },
       child: Scaffold(

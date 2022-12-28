@@ -1,13 +1,11 @@
-// Copyright (c) 2022, Very Good Ventures
-// https://verygood.ventures
-//
-// Use of this source code is governed by an MIT-style
-// license that can be found in the LICENSE file or at
-// https://opensource.org/licenses/MIT.
-
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:yuno/app/app.dart';
+import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/bootstrap.dart';
 
-void main() {
+Future<void> main() async {
+  await dotenv.load();
+  initServiceLocator();
+
   bootstrap(() => const App());
 }
