@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:yuno/api/shared_models/http_validation_error.dart';
 import 'package:yuno/api/user/models/i_user_update.dart';
 import 'package:yuno/api/user/rest_client.dart';
+import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/data/repository/token_repository.dart';
 import 'package:yuno/data/repository/user_repository.dart';
 
@@ -25,9 +25,7 @@ class ApiUserRepository {
 
       return user;
     } on DioError catch (e) {
-      if (e.response?.statusCode != 201) {
-        return HTTPValidationError.fromJson(e.response?.data as Map<String, dynamic>).detail;
-      }
+      return dioErrorInterceptor(e);
     } on Object {
       return 'Something error';
     }
@@ -49,6 +47,9 @@ class ApiUserRepository {
             lastName: lastName,
             email: email,
             username: username,
+            birthdate: user.birthdate,
+            phone: user.phone,
+            roleId: user.roleId,
           ),
         );
 
@@ -59,11 +60,10 @@ class ApiUserRepository {
       }
       return 'Could not get user data';
     } on DioError catch (e) {
-      if (e.response?.statusCode != 200) {
-        return HTTPValidationError.fromJson(e.response?.data as Map<String, dynamic>).detail;
-      }
+      return dioErrorInterceptor(e);
     } on Object {
       return 'Something error';
     }
   }
 }
+

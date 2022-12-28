@@ -48,13 +48,9 @@ class _ProfileContentWidget extends StatelessWidget {
             text: 'Edit Profile',
             icon: Assets.svg.edit.svg(height: 28, color: AppColors.primary100),
             onPressed: () async {
-              // TODO
-              final tmp = await Navigator.pushNamed(
-                context,
-                RoutesPage.profileEdit,
-              );
-              if (tmp == true) {
-                sl.get<ProfileBloc>().add(const ProfileEvent.update());
+              final isUpdate = await Navigator.pushNamed(context, RoutesPage.profileEdit);
+              if (isUpdate == true) {
+                context.read<ProfileBloc>().add(const ProfileEvent.update());
               }
             },
           ),

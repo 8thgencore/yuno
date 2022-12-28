@@ -21,6 +21,7 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
     required this.userRepository,
   }) : super(
           const ProfileEditState(
+            status: ProfileEditStatus.initial,
             firstName: '',
             lastName: '',
             username: '',
@@ -58,7 +59,7 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
     _StartedEvent event,
     Emitter<ProfileEditState> emit,
   ) async {
-    emit(state.copyWith(status: ProfileEditStatus.initial));
+    emit(state.copyWith(status: ProfileEditStatus.loading));
     try {
       final user = await apiUserRepository.getData();
       if (user is IUserRead) {
@@ -85,28 +86,29 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
     _SavedEvent event,
     Emitter<ProfileEditState> emit,
   ) async {
+    emit(state.copyWith(status: ProfileEditStatus.loading));
     _highlightEmailError = true;
     _highlightNicknameError = true;
     _calculateFieldsInfo(emit);
-
     final haveError = _emailError != null || _nicknameError != null;
     if (haveError) {
+      emit(state.copyWith(status: ProfileEditStatus.loaded));
       return;
     }
+
     final result = await apiUserRepository.updateDataById(
       firstName: _user!.firstName,
       lastName: _user!.lastName,
       email: _user!.email,
       username: _user!.username,
     );
+    // await Future.delayed(Duration(seconds: 3));
     if (result != null) {
       _serverError = result.toString();
       emit(state.copyWith(
         status: ProfileEditStatus.failure,
         serverError: _serverError,
       ));
-      // _highlightServerError = true;
-      // _calculateFieldsInfo(emit);
     } else {
       _highlightServerError = false;
       emit(state.copyWith(status: ProfileEditStatus.success));
@@ -145,7 +147,6 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
 
   void _calculateFieldsInfo(Emitter<ProfileEditState> emit) {
     emit(state.copyWith(
-      status: ProfileEditStatus.loaded,
       firstName: _user!.firstName,
       lastName: _user!.lastName,
       email: _user!.email,

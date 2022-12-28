@@ -35,6 +35,7 @@ dependencies:
   flutter_svg: ^1.1.6
   cached_network_image: ^3.2.3
   fluttertoast: ^8.1.2
+  loader_overlay: ^2.1.0
 
   # Utils
   flutter_dotenv: ^5.0.2

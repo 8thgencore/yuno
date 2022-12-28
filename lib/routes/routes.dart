@@ -7,6 +7,7 @@ import 'package:yuno/ui/pages/auth/login/view/login_page.dart';
 import 'package:yuno/ui/pages/auth/registration/view/registration_page.dart';
 import 'package:yuno/ui/pages/home/edit_profile/bloc/profile_edit_bloc.dart';
 import 'package:yuno/ui/pages/home/edit_profile/view/profile_edit_page.dart';
+import 'package:yuno/ui/pages/home/profile/bloc/profile_bloc.dart';
 import 'package:yuno/ui/pages/home/profile/view/profile_page.dart';
 import 'package:yuno/ui/pages/splash/view/splash_page.dart';
 
@@ -41,11 +42,16 @@ Route Function(RouteSettings) get routes {
         break;
       case RoutesPage.profileEdit:
         route = MaterialPageRoute<dynamic>(
-          builder: (_) => BlocProvider(
-            create: (context) => ProfileEditBloc(
-              apiUserRepository: sl.get<ApiUserRepository>(),
-              userRepository: sl.get<UserRepository>(),
-            )..add(const ProfileEditEvent.started()),
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              // BlocProvider(create: (context) => sl.get<ProfileBloc>()),
+              BlocProvider(
+                create: (context) => ProfileEditBloc(
+                  apiUserRepository: sl.get<ApiUserRepository>(),
+                  userRepository: sl.get<UserRepository>(),
+                )..add(const ProfileEditEvent.started()),
+              ),
+            ],
             child: const ProfileEditPage(),
           ),
           settings: RouteSettings(name: settings.name),

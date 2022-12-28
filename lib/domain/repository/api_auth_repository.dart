@@ -3,7 +3,7 @@ import 'package:yuno/api/auth/models/i_auth_login.dart';
 import 'package:yuno/api/auth/models/i_auth_register.dart';
 import 'package:yuno/api/auth/models/refresh_token.dart';
 import 'package:yuno/api/auth/rest_client.dart';
-import 'package:yuno/api/shared_models/http_validation_error.dart';
+import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/data/repository/refresh_token_repository.dart';
 import 'package:yuno/data/repository/token_repository.dart';
 import 'package:yuno/data/repository/user_repository.dart';
@@ -40,9 +40,7 @@ class ApiAuthRepository {
 
       return null;
     } on DioError catch (e) {
-      if (e.response?.statusCode != 201) {
-        return HTTPValidationError.fromJson(e.response?.data as Map<String, dynamic>).detail;
-      }
+      return dioErrorInterceptor(e);
     } on Object {
       return 'Something error';
     }
@@ -67,9 +65,7 @@ class ApiAuthRepository {
 
       return null;
     } on DioError catch (e) {
-      if (e.response?.statusCode != 200) {
-        return HTTPValidationError.fromJson(e.response?.data as Map<String, dynamic>).detail;
-      }
+      return dioErrorInterceptor(e);
     } on Object {
       return 'Something error';
     }
@@ -84,9 +80,7 @@ class ApiAuthRepository {
 
       return null;
     } on DioError catch (e) {
-      if (e.response?.statusCode != 200) {
-        return HTTPValidationError.fromJson(e.response?.data as Map<String, dynamic>).detail;
-      }
+      return dioErrorInterceptor(e);
     } on Object {
       return 'Something error';
     }

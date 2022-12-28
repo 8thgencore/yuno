@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:yuno/api/shared_models/http_validation_error.dart';
 import 'package:yuno/data/http/authorization_interceptor.dart';
+import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/resources/constants.dart';
 
 class DioBuilder {
@@ -16,16 +18,18 @@ class DioBuilder {
 
   DioBuilder() {
     if (kDebugMode) {
-      _dio.interceptors.add(
-        PrettyDioLogger(
-          request: true,
-          requestHeader: true,
-          requestBody: true,
-          responseHeader: true,
-          responseBody: true,
-          error: true,
-        ),
-      );
+      _dio.interceptors.addAll([
+        // CustomErrorInterceptor(),
+        if (kDebugMode)
+          PrettyDioLogger(
+            request: true,
+            requestHeader: true,
+            requestBody: true,
+            responseHeader: true,
+            responseBody: true,
+            error: true,
+          ),
+      ]);
     }
   }
 
@@ -36,3 +40,4 @@ class DioBuilder {
     return this;
   }
 }
+

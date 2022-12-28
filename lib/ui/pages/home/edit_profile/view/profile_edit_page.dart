@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/home/edit_profile/bloc/profile_edit_bloc.dart';
 import 'package:yuno/ui/widgets/custom_rounded_button.dart';
@@ -28,41 +29,57 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
   Widget build(BuildContext context) {
     return BlocListener<ProfileEditBloc, ProfileEditState>(
       listener: (context, state) {
-        if (state.status == ProfileEditStatus.success) {
-          final FToast fToast = FToast();
-          fToast.showToast(
-            child: const ToastWidget(
-              text: 'User information has been successfully updated',
-              type: ToastType.success,
-            ),
-            gravity: ToastGravity.TOP,
-          );
-          // sl.get<ProfileBloc>().add(const ProfileEvent.update());
-        } else if (state.status == ProfileEditStatus.failure) {
-          final FToast fToast = FToast();
-          fToast.showToast(
-            child: ToastWidget(
-              text: state.serverError ?? 'Server Error',
-              type: ToastType.failure,
-            ),
-            gravity: ToastGravity.TOP,
-          );
+        final FToast fToast = FToast();
+        switch (state.status) {
+          case ProfileEditStatus.initial:
+            break;
+          case ProfileEditStatus.loading:
+            context.loaderOverlay.show();
+            break;
+          case ProfileEditStatus.loaded:
+            context.loaderOverlay.hide();
+            break;
+          case ProfileEditStatus.success:
+            context.loaderOverlay.hide();
+            fToast.showToast(
+              child: const ToastWidget(
+                text: 'User information has been successfully updated',
+                type: ToastType.success,
+              ),
+              gravity: ToastGravity.TOP,
+            );
+            break;
+          case ProfileEditStatus.failure:
+            context.loaderOverlay.hide();
+            fToast.showToast(
+              child: ToastWidget(
+                text: state.serverError ?? 'Server Error',
+                type: ToastType.failure,
+              ),
+              gravity: ToastGravity.TOP,
+            );
+            break;
         }
       },
-      child: Scaffold(
-        backgroundColor: AppColors.screen100,
-        body: const SafeArea(child: _ProfileEditContentWidget()),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: Padding(
-          padding: const EdgeInsets.only(left: 15, right: 15),
-          child: CustomRoundedButton(
-            textButton: 'Save Changes',
-            onPressed: () {
-              FocusManager.instance.primaryFocus?.unfocus();
-              context.read<ProfileEditBloc>().add(const ProfileEditEvent.saved());
-            },
-            textColor: AppColors.white100,
-            buttonColor: AppColors.primary100,
+      child: LoaderOverlay(
+        child: Scaffold(
+          backgroundColor: AppColors.screen100,
+          body: const SafeArea(child: _ProfileEditContentWidget()),
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+          floatingActionButton: Padding(
+            padding: const EdgeInsets.only(left: 15, right: 15),
+            child: CustomRoundedButton(
+              textButton: 'Save Changes',
+              onPressed: () {
+                final currentNode = FocusScope.of(context);
+                if (currentNode.focusedChild != null && !currentNode.hasPrimaryFocus) {
+                  FocusManager.instance.primaryFocus?.unfocus();
+                }
+                context.read<ProfileEditBloc>().add(const ProfileEditEvent.saved());
+              },
+              textColor: AppColors.white100,
+              buttonColor: AppColors.primary100,
+            ),
           ),
         ),
       ),
@@ -251,7 +268,7 @@ class _RoleTextField extends StatelessWidget {
         return CustomTextField(
           controller: TextEditingController(text: state.role),
           labelText: 'Role',
-          textColor: AppColors.dark100,
+          textColor: AppColors.dark60,
           enabled: false,
         );
       },
