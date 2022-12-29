@@ -12,9 +12,7 @@ class _AuthClient implements AuthClient {
   _AuthClient(
     this._dio, {
     this.baseUrl,
-  }) {
-    baseUrl ??= 'http://185.144.29.33:8070/api/v1/auth';
-  }
+  });
 
   final Dio _dio;
 
@@ -35,7 +33,7 @@ class _AuthClient implements AuthClient {
     )
             .compose(
               _dio.options,
-              '/login',
+              '/auth/login',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -59,7 +57,7 @@ class _AuthClient implements AuthClient {
     )
             .compose(
               _dio.options,
-              '/register',
+              '/auth/register',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -83,7 +81,7 @@ class _AuthClient implements AuthClient {
     )
             .compose(
               _dio.options,
-              '/change-password',
+              '/auth/change-password',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -107,7 +105,7 @@ class _AuthClient implements AuthClient {
     )
             .compose(
               _dio.options,
-              '/token',
+              '/auth/token',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -132,7 +130,7 @@ class _AuthClient implements AuthClient {
     )
             .compose(
               _dio.options,
-              '/refresh-token',
+              '/auth/refresh-token',
               queryParameters: queryParameters,
               data: _data,
             )

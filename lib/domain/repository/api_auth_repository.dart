@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:yuno/api/auth/models/i_auth_change_password.dart';
 import 'package:yuno/api/auth/models/i_auth_login.dart';
 import 'package:yuno/api/auth/models/i_auth_register.dart';
 import 'package:yuno/api/auth/models/refresh_token.dart';
@@ -77,6 +78,31 @@ class ApiAuthRepository {
       final data = response.data;
 
       await tokenRepository.setItem(data.accessToken);
+
+      return null;
+    } on DioError catch (e) {
+      return dioErrorInterceptor(e);
+    } on Object {
+      return 'Something error';
+    }
+  }
+
+  Future<dynamic> changePassword({
+    required String currentPassword,
+    required String newPassword,
+  }) async {
+    try {
+      final response = await authClient.postAuthChangePassword(
+        body: IAuthChangePassword(
+          current: currentPassword,
+          newvalue: newPassword,
+        ),
+      );
+
+      final data = response.data;
+      await userRepository.setItem(data.user);
+      await tokenRepository.setItem(data.accessToken);
+      await refreshTokenRepository.setItem(data.refreshToken);
 
       return null;
     } on DioError catch (e) {

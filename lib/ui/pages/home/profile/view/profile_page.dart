@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yuno/app/di/service_locator.dart';
+import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/resources/resources.dart';
-import 'package:yuno/routes/routes.dart';
 import 'package:yuno/ui/pages/home/profile/bloc/profile_bloc.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -58,6 +58,7 @@ class _ProfileContentWidget extends StatelessWidget {
           ProfileButtonWidget(
             text: 'Change Password',
             icon: Assets.svg.lock.svg(height: 28, color: AppColors.secondary100),
+            onPressed: () => Navigator.pushNamed(context, RoutesPage.profileChangePassword),
           ),
           const SizedBox(height: 16),
           ProfileButtonWidget(

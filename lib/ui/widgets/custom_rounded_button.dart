@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yuno/resources/resources.dart';
 
 class CustomRoundedButton extends StatelessWidget {
   const CustomRoundedButton({
@@ -23,16 +24,16 @@ class CustomRoundedButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(30),
         color: buttonColor,
       ),
-      child: TextButton(
+      child: ElevatedButton(
         onPressed: () => onPressed(),
-        child: Text(
-          textButton,
-          style: TextStyle(
-            color: textColor,
-            fontWeight: FontWeight.w600,
-            fontSize: 16,
+        style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30),
           ),
+          backgroundColor: buttonColor,
+          textStyle: AppTypography.b16l.copyWith(color: textColor),
         ),
+        child: Text(textButton),
       ),
     );
   }

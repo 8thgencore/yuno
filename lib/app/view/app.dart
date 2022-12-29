@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/resources/resources.dart';
-import 'package:yuno/routes/routes.dart';
 import 'package:yuno/ui/pages/auth/registration/view/registration_page.dart';
 
 class App extends StatefulWidget {

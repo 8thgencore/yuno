@@ -12,9 +12,7 @@ class _UserClient implements UserClient {
   _UserClient(
     this._dio, {
     this.baseUrl,
-  }) {
-    baseUrl ??= 'http://185.144.29.33:8070/api/v1/user';
-  }
+  });
 
   final Dio _dio;
 
@@ -34,7 +32,7 @@ class _UserClient implements UserClient {
     )
             .compose(
               _dio.options,
-              '',
+              '/user',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -58,7 +56,7 @@ class _UserClient implements UserClient {
     )
             .compose(
               _dio.options,
-              '',
+              '/user',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -88,7 +86,7 @@ class _UserClient implements UserClient {
     )
             .compose(
               _dio.options,
-              '/list',
+              '/user/list',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -120,7 +118,7 @@ class _UserClient implements UserClient {
     )
             .compose(
               _dio.options,
-              '/list/by_created_at',
+              '/user/list/by_created_at',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -143,7 +141,7 @@ class _UserClient implements UserClient {
     )
             .compose(
               _dio.options,
-              '/${userId}',
+              '/user/${userId}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -170,7 +168,7 @@ class _UserClient implements UserClient {
     )
             .compose(
               _dio.options,
-              '/${userId}',
+              '/user/${userId}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -194,7 +192,7 @@ class _UserClient implements UserClient {
     )
             .compose(
               _dio.options,
-              '/${userId}',
+              '/user/${userId}',
               queryParameters: queryParameters,
               data: _data,
             )

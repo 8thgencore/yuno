@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yuno/app/di/service_locator.dart';
+import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/data/repository/token_repository.dart';
 import 'package:yuno/resources/resources.dart';
-import 'package:yuno/routes/routes.dart';
 import 'package:yuno/ui/pages/splash/bloc/splash_bloc.dart';
 
 class SplashPage extends StatefulWidget {

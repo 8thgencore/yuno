@@ -114,7 +114,7 @@ class _ProfileEditContentWidget extends StatelessWidget {
         ),
         Expanded(
           child: Container(
-            padding: const EdgeInsets.only(top: 4, left: 24, right: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 24),
             decoration: const BoxDecoration(
               color: AppColors.white60,
               borderRadius: BorderRadius.only(
@@ -139,6 +139,7 @@ class _ListTextFieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: const [
+        SizedBox(height: 14),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 14),
           child: _FirstNameTextField(),
