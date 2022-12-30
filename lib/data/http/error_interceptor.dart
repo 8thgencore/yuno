@@ -11,7 +11,6 @@ class CustomErrorInterceptor extends Interceptor {
 
 dynamic dioErrorInterceptor(DioError e) {
   if (e.response?.statusCode != 200) {
-    print("ERROR: ${e}");
     if (e.response?.data is Map<String, dynamic>) {
       return HTTPValidationError.fromJson(e.response?.data as Map<String, dynamic>).detail;
     } else {

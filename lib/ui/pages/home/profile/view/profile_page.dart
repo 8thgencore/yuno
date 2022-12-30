@@ -85,7 +85,10 @@ class _HeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileBloc, ProfileState>(
       builder: (context, state) => state.maybeWhen(
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const SizedBox(
+          height: 255,
+          child: Center(child: CircularProgressIndicator()),
+        ),
         loaded: (user) => Column(
           children: [
             const AvatarWidget(),

@@ -12,12 +12,14 @@ import 'package:yuno/data/repository/user_repository.dart';
 class ApiAuthRepository {
   ApiAuthRepository({
     required this.authClient,
+    required this.authPasswordClient,
     required this.userRepository,
     required this.tokenRepository,
     required this.refreshTokenRepository,
   });
 
   final AuthClient authClient;
+  final AuthPasswordClient authPasswordClient;
   final UserRepository userRepository;
   final TokenRepository tokenRepository;
   final RefreshTokenRepository refreshTokenRepository;
@@ -92,7 +94,7 @@ class ApiAuthRepository {
     required String newPassword,
   }) async {
     try {
-      final response = await authClient.postAuthChangePassword(
+      final response = await authPasswordClient.postAuthChangePassword(
         body: IAuthChangePassword(
           current: currentPassword,
           newvalue: newPassword,

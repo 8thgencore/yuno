@@ -6,14 +6,16 @@ class CustomRoundedButton extends StatelessWidget {
     required this.textButton,
     required this.textColor,
     required this.buttonColor,
-    required this.onPressed,
+    this.disabledBackgroundColor,
+    this.onPressed,
     super.key,
   });
 
   final String textButton;
   final Color textColor;
   final Color buttonColor;
-  final Function onPressed;
+  final Color? disabledBackgroundColor;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +27,11 @@ class CustomRoundedButton extends StatelessWidget {
         color: buttonColor,
       ),
       child: ElevatedButton(
-        onPressed: () => onPressed(),
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30),
-          ),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           backgroundColor: buttonColor,
+          disabledBackgroundColor:  disabledBackgroundColor,
           textStyle: AppTypography.b16l.copyWith(color: textColor),
         ),
         child: Text(textButton),

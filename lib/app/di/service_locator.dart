@@ -78,6 +78,9 @@ void _setApiRelatedClasses() {
   sl.registerLazySingleton<AuthClient>(
     () => AuthClient(sl.get<Dio>(instanceName: _notAuthorizedDio)),
   );
+  sl.registerLazySingleton<AuthPasswordClient>(
+    () => AuthPasswordClient(sl.get<Dio>(instanceName: _authorizedDio)),
+  );
   sl.registerLazySingleton<UserClient>(
     () => UserClient(sl.get<Dio>(instanceName: _authorizedDio)),
   );
@@ -85,6 +88,7 @@ void _setApiRelatedClasses() {
   sl.registerLazySingleton<ApiAuthRepository>(
     () => ApiAuthRepository(
       authClient: sl.get<AuthClient>(),
+      authPasswordClient: sl.get<AuthPasswordClient>(),
       userRepository: sl.get<UserRepository>(),
       tokenRepository: sl.get<TokenRepository>(),
       refreshTokenRepository: sl.get<RefreshTokenRepository>(),

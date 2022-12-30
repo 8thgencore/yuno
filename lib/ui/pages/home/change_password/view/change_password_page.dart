@@ -1,36 +1,91 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/home/change_password/bloc/change_password_bloc.dart';
 import 'package:yuno/ui/widgets/custom_rounded_button.dart';
 import 'package:yuno/ui/widgets/custom_text_field.dart';
+import 'package:yuno/ui/widgets/toast_widget.dart';
 
-class ChangePasswordPage extends StatelessWidget {
+class ChangePasswordPage extends StatefulWidget {
   const ChangePasswordPage({super.key});
 
+  @override
+  State<ChangePasswordPage> createState() => _ChangePasswordPageState();
+}
+
+class _ChangePasswordPageState extends State<ChangePasswordPage> {
+  late FToast fToast;
+
+  @override
+  void initState() {
+    super.initState();
+    fToast = FToast();
+    fToast.init(context);
+  }
+
   Widget build(BuildContext context) {
-    return LoaderOverlay(
-      child: Scaffold(
-        backgroundColor: AppColors.screen100,
-        body: const SafeArea(child: _ChangePasswordContentWidget()),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: Padding(
-          padding: const EdgeInsets.only(left: 15, right: 15),
-          child: CustomRoundedButton(
-            textButton: 'Change Password',
-            onPressed: () {
-              final currentNode = FocusScope.of(context);
-              if (currentNode.focusedChild != null && !currentNode.hasPrimaryFocus) {
-                FocusManager.instance.primaryFocus?.unfocus();
-              }
-              context.read<ChangePasswordBloc>().add(const ChangePasswordEvent.saved());
-            },
-            textColor: AppColors.white100,
-            buttonColor: AppColors.primary100,
+    return BlocConsumer<ChangePasswordBloc, ChangePasswordState>(
+      listener: (context, state) {
+        switch (state.status) {
+          case ChangePasswordStatus.initial:
+            break;
+          case ChangePasswordStatus.loading:
+            context.loaderOverlay.show();
+            break;
+          case ChangePasswordStatus.loaded:
+            context.loaderOverlay.hide();
+            break;
+          case ChangePasswordStatus.success:
+            context.loaderOverlay.hide();
+            fToast.showToast(
+              child: const ToastWidget(
+                text: 'Password has been successfully updated',
+                type: ToastType.success,
+              ),
+              gravity: ToastGravity.TOP,
+            );
+            break;
+          case ChangePasswordStatus.failure:
+            context.loaderOverlay.hide();
+            fToast.showToast(
+              child: ToastWidget(
+                text: state.serverError ?? 'Server Error',
+                type: ToastType.failure,
+              ),
+              gravity: ToastGravity.TOP,
+            );
+            break;
+        }
+      },
+      builder: (context, state) {
+        return LoaderOverlay(
+          child: Scaffold(
+            backgroundColor: AppColors.screen100,
+            body: const SafeArea(child: _ChangePasswordContentWidget()),
+            floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+            floatingActionButton: Padding(
+              padding: const EdgeInsets.only(left: 15, right: 15),
+              child: CustomRoundedButton(
+                textButton: 'Change Password',
+                onPressed: state.isValid
+                    ? () {
+                        final currentNode = FocusScope.of(context);
+                        if (currentNode.focusedChild != null && !currentNode.hasPrimaryFocus) {
+                          FocusManager.instance.primaryFocus?.unfocus();
+                        }
+                        context.read<ChangePasswordBloc>().add(const ChangePasswordEvent.saved());
+                      }
+                    : null,
+                textColor: AppColors.white100,
+                disabledBackgroundColor: AppColors.dark10,
+                buttonColor: state.isValid ? AppColors.primary100 : Colors.transparent,
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
@@ -106,60 +161,149 @@ class _ListTextFieldWidget extends StatelessWidget {
   }
 }
 
-class _CurrentPasswordTextField extends StatelessWidget {
+class _CurrentPasswordTextField extends StatefulWidget {
   const _CurrentPasswordTextField();
 
   @override
+  State<_CurrentPasswordTextField> createState() => _CurrentPasswordTextFieldState();
+}
+
+class _CurrentPasswordTextFieldState extends State<_CurrentPasswordTextField> {
+  late TextEditingController controller;
+  bool _isObscure = true;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = TextEditingController();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return CustomTextField(
+      controller: controller,
       labelText: 'Current Password',
       keyboardType: TextInputType.text,
       textColor: AppColors.dark100,
-      obscureText: true,
-      // prefixIcon: IconButton(
-      //   icon: Assets.svg.lock.svg(
-      //     height: 26,
-      //     color: error == null ? AppColors.grey60 : AppColors.error100,
-      //   ),
-      //   onPressed: () {},
-      // ),
-      onChanged: (text) => context.read<ChangePasswordBloc>().add(
-            ChangePasswordEvent.currentPasswordChanged(text),
-          ),
+      obscureText: _isObscure,
+      prefixIcon: IconButton(
+        icon: Assets.svg.lock.svg(
+          height: 26,
+          color: controller.text.isEmpty ? AppColors.grey40 : AppColors.primary100,
+        ),
+        onPressed: () {},
+      ),
+      suffixIcon: IconButton(
+        icon: Icon(
+          _isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+          color: AppColors.grey40,
+        ),
+        onPressed: () {
+          setState(() => _isObscure = !_isObscure);
+        },
+      ),
+      onChanged: (text) {
+        context.read<ChangePasswordBloc>().add(ChangePasswordEvent.currentPasswordChanged(text));
+        setState(() {});
+      },
     );
   }
 }
 
-class _NewPasswordTextField extends StatelessWidget {
+class _NewPasswordTextField extends StatefulWidget {
   const _NewPasswordTextField();
 
   @override
-  Widget build(BuildContext context) {
-    return CustomTextField(
-      labelText: 'New Password',
-      keyboardType: TextInputType.text,
-      textColor: AppColors.dark100,
-      obscureText: true,
-      onChanged: (text) => context.read<ChangePasswordBloc>().add(
-            ChangePasswordEvent.newPasswordChanged(text),
-          ),
-    );
-  }
+  State<_NewPasswordTextField> createState() => _NewPasswordTextFieldState();
 }
 
-class _ConfirmNewPasswordTextField extends StatelessWidget {
-  const _ConfirmNewPasswordTextField();
+class _NewPasswordTextFieldState extends State<_NewPasswordTextField> {
+  late TextEditingController controller;
+  bool _isObscure = true;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) {
     return CustomTextField(
+      controller: controller,
+      labelText: 'New Password',
+      keyboardType: TextInputType.text,
+      textColor: AppColors.dark100,
+      obscureText: _isObscure,
+      prefixIcon: IconButton(
+        icon: Assets.svg.lock.svg(
+          height: 26,
+          color: controller.text.isEmpty ? AppColors.grey40 : AppColors.primary100,
+        ),
+        onPressed: () {},
+      ),
+      suffixIcon: IconButton(
+        icon: Icon(
+          _isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+          color: AppColors.grey40,
+        ),
+        onPressed: () {
+          setState(() => _isObscure = !_isObscure);
+        },
+      ),
+      onChanged: (text) {
+        context.read<ChangePasswordBloc>().add(ChangePasswordEvent.newPasswordChanged(text));
+        setState(() {});
+      },
+    );
+  }
+}
+
+class _ConfirmNewPasswordTextField extends StatefulWidget {
+  const _ConfirmNewPasswordTextField();
+
+  @override
+  State<_ConfirmNewPasswordTextField> createState() => _ConfirmNewPasswordTextFieldState();
+}
+
+class _ConfirmNewPasswordTextFieldState extends State<_ConfirmNewPasswordTextField> {
+  late TextEditingController controller;
+  bool _isObscure = true;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = TextEditingController();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomTextField(
+      controller: controller,
       labelText: 'Confirm New Password',
       keyboardType: TextInputType.text,
       textColor: AppColors.dark100,
-      obscureText: true,
-      onChanged: (text) => context.read<ChangePasswordBloc>().add(
-            ChangePasswordEvent.confirmNewPasswordChanged(text),
-          ),
+      obscureText: _isObscure,
+      prefixIcon: IconButton(
+        icon: Assets.svg.lock.svg(
+          height: 26,
+          color: controller.text.isEmpty ? AppColors.grey40 : AppColors.primary100,
+        ),
+        onPressed: () {},
+      ),
+      suffixIcon: IconButton(
+        icon: Icon(
+          _isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+          color: AppColors.grey40,
+        ),
+        onPressed: () {
+          setState(() => _isObscure = !_isObscure);
+        },
+      ),
+      onChanged: (text) {
+        context.read<ChangePasswordBloc>().add(ChangePasswordEvent.confirmNewPasswordChanged(text));
+        setState(() {});
+      },
     );
   }
 }

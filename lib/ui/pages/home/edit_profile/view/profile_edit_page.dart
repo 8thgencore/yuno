@@ -29,7 +29,6 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
   Widget build(BuildContext context) {
     return BlocListener<ProfileEditBloc, ProfileEditState>(
       listener: (context, state) {
-        final FToast fToast = FToast();
         switch (state.status) {
           case ProfileEditStatus.initial:
             break;

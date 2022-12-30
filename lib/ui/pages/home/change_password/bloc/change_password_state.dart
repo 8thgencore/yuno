@@ -15,8 +15,11 @@ class ChangePasswordState with _$ChangePasswordState {
     required String currentPassword,
     required String newPassword,
     required String confirmNewPassword,
-    ChangePasswordError? newPasswordError,
-    ChangePasswordConfirmError? confirmPasswordError,
+    @Default(false) bool isCurrentPasswordMoreLength,
+    @Default(false) bool isNewPasswordMoreLength,
+    @Default(false) bool isPasswordHaveNumber,
+    @Default(false) bool isPasswordConfirm,
+    @Default(false) bool isValid,
     String? serverError,
   }) = _ChangePasswordState;
 }
