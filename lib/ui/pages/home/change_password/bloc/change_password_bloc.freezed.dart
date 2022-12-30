@@ -846,7 +846,7 @@ mixin _$ChangePasswordState {
   ChangePasswordStatus get status => throw _privateConstructorUsedError;
   String get currentPassword => throw _privateConstructorUsedError;
   String get newPassword => throw _privateConstructorUsedError;
-  String get confirmNewPassword => throw _privateConstructorUsedError;
+  String get newPasswordConfirm => throw _privateConstructorUsedError;
   bool get isCurrentPasswordMoreLength => throw _privateConstructorUsedError;
   bool get isNewPasswordMoreLength => throw _privateConstructorUsedError;
   bool get isPasswordHaveNumber => throw _privateConstructorUsedError;
@@ -869,7 +869,7 @@ abstract class $ChangePasswordStateCopyWith<$Res> {
       {ChangePasswordStatus status,
       String currentPassword,
       String newPassword,
-      String confirmNewPassword,
+      String newPasswordConfirm,
       bool isCurrentPasswordMoreLength,
       bool isNewPasswordMoreLength,
       bool isPasswordHaveNumber,
@@ -894,7 +894,7 @@ class _$ChangePasswordStateCopyWithImpl<$Res, $Val extends ChangePasswordState>
     Object? status = null,
     Object? currentPassword = null,
     Object? newPassword = null,
-    Object? confirmNewPassword = null,
+    Object? newPasswordConfirm = null,
     Object? isCurrentPasswordMoreLength = null,
     Object? isNewPasswordMoreLength = null,
     Object? isPasswordHaveNumber = null,
@@ -915,9 +915,9 @@ class _$ChangePasswordStateCopyWithImpl<$Res, $Val extends ChangePasswordState>
           ? _value.newPassword
           : newPassword // ignore: cast_nullable_to_non_nullable
               as String,
-      confirmNewPassword: null == confirmNewPassword
-          ? _value.confirmNewPassword
-          : confirmNewPassword // ignore: cast_nullable_to_non_nullable
+      newPasswordConfirm: null == newPasswordConfirm
+          ? _value.newPasswordConfirm
+          : newPasswordConfirm // ignore: cast_nullable_to_non_nullable
               as String,
       isCurrentPasswordMoreLength: null == isCurrentPasswordMoreLength
           ? _value.isCurrentPasswordMoreLength
@@ -959,7 +959,7 @@ abstract class _$$_ChangePasswordStateCopyWith<$Res>
       {ChangePasswordStatus status,
       String currentPassword,
       String newPassword,
-      String confirmNewPassword,
+      String newPasswordConfirm,
       bool isCurrentPasswordMoreLength,
       bool isNewPasswordMoreLength,
       bool isPasswordHaveNumber,
@@ -982,7 +982,7 @@ class __$$_ChangePasswordStateCopyWithImpl<$Res>
     Object? status = null,
     Object? currentPassword = null,
     Object? newPassword = null,
-    Object? confirmNewPassword = null,
+    Object? newPasswordConfirm = null,
     Object? isCurrentPasswordMoreLength = null,
     Object? isNewPasswordMoreLength = null,
     Object? isPasswordHaveNumber = null,
@@ -1003,9 +1003,9 @@ class __$$_ChangePasswordStateCopyWithImpl<$Res>
           ? _value.newPassword
           : newPassword // ignore: cast_nullable_to_non_nullable
               as String,
-      confirmNewPassword: null == confirmNewPassword
-          ? _value.confirmNewPassword
-          : confirmNewPassword // ignore: cast_nullable_to_non_nullable
+      newPasswordConfirm: null == newPasswordConfirm
+          ? _value.newPasswordConfirm
+          : newPasswordConfirm // ignore: cast_nullable_to_non_nullable
               as String,
       isCurrentPasswordMoreLength: null == isCurrentPasswordMoreLength
           ? _value.isCurrentPasswordMoreLength
@@ -1042,7 +1042,7 @@ class _$_ChangePasswordState implements _ChangePasswordState {
       {this.status = ChangePasswordStatus.initial,
       required this.currentPassword,
       required this.newPassword,
-      required this.confirmNewPassword,
+      required this.newPasswordConfirm,
       this.isCurrentPasswordMoreLength = false,
       this.isNewPasswordMoreLength = false,
       this.isPasswordHaveNumber = false,
@@ -1058,7 +1058,7 @@ class _$_ChangePasswordState implements _ChangePasswordState {
   @override
   final String newPassword;
   @override
-  final String confirmNewPassword;
+  final String newPasswordConfirm;
   @override
   @JsonKey()
   final bool isCurrentPasswordMoreLength;
@@ -1079,7 +1079,7 @@ class _$_ChangePasswordState implements _ChangePasswordState {
 
   @override
   String toString() {
-    return 'ChangePasswordState(status: $status, currentPassword: $currentPassword, newPassword: $newPassword, confirmNewPassword: $confirmNewPassword, isCurrentPasswordMoreLength: $isCurrentPasswordMoreLength, isNewPasswordMoreLength: $isNewPasswordMoreLength, isPasswordHaveNumber: $isPasswordHaveNumber, isPasswordConfirm: $isPasswordConfirm, isValid: $isValid, serverError: $serverError)';
+    return 'ChangePasswordState(status: $status, currentPassword: $currentPassword, newPassword: $newPassword, newPasswordConfirm: $newPasswordConfirm, isCurrentPasswordMoreLength: $isCurrentPasswordMoreLength, isNewPasswordMoreLength: $isNewPasswordMoreLength, isPasswordHaveNumber: $isPasswordHaveNumber, isPasswordConfirm: $isPasswordConfirm, isValid: $isValid, serverError: $serverError)';
   }
 
   @override
@@ -1092,8 +1092,8 @@ class _$_ChangePasswordState implements _ChangePasswordState {
                 other.currentPassword == currentPassword) &&
             (identical(other.newPassword, newPassword) ||
                 other.newPassword == newPassword) &&
-            (identical(other.confirmNewPassword, confirmNewPassword) ||
-                other.confirmNewPassword == confirmNewPassword) &&
+            (identical(other.newPasswordConfirm, newPasswordConfirm) ||
+                other.newPasswordConfirm == newPasswordConfirm) &&
             (identical(other.isCurrentPasswordMoreLength,
                     isCurrentPasswordMoreLength) ||
                 other.isCurrentPasswordMoreLength ==
@@ -1116,7 +1116,7 @@ class _$_ChangePasswordState implements _ChangePasswordState {
       status,
       currentPassword,
       newPassword,
-      confirmNewPassword,
+      newPasswordConfirm,
       isCurrentPasswordMoreLength,
       isNewPasswordMoreLength,
       isPasswordHaveNumber,
@@ -1137,7 +1137,7 @@ abstract class _ChangePasswordState implements ChangePasswordState {
       {final ChangePasswordStatus status,
       required final String currentPassword,
       required final String newPassword,
-      required final String confirmNewPassword,
+      required final String newPasswordConfirm,
       final bool isCurrentPasswordMoreLength,
       final bool isNewPasswordMoreLength,
       final bool isPasswordHaveNumber,
@@ -1152,7 +1152,7 @@ abstract class _ChangePasswordState implements ChangePasswordState {
   @override
   String get newPassword;
   @override
-  String get confirmNewPassword;
+  String get newPasswordConfirm;
   @override
   bool get isCurrentPasswordMoreLength;
   @override

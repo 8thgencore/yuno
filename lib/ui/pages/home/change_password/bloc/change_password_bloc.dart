@@ -17,7 +17,7 @@ class ChangePasswordBloc extends Bloc<ChangePasswordEvent, ChangePasswordState> 
           const ChangePasswordState(
             currentPassword: '',
             newPassword: '',
-            confirmNewPassword: '',
+            newPasswordConfirm: '',
           ),
         ) {
     on<ChangePasswordEvent>(
@@ -73,7 +73,7 @@ class ChangePasswordBloc extends Bloc<ChangePasswordEvent, ChangePasswordState> 
       newPassword: event.text,
       isNewPasswordMoreLength: isPasswordMoreLength,
       isPasswordHaveNumber: isPasswordHaveNumber,
-      isPasswordConfirm: _isPasswordConfirm(state.currentPassword, event.text),
+      isPasswordConfirm: _isPasswordConfirm(state.newPasswordConfirm, event.text),
     ));
     _isValid(emit);
   }
@@ -84,7 +84,7 @@ class ChangePasswordBloc extends Bloc<ChangePasswordEvent, ChangePasswordState> 
   ) async {
     emit(state.copyWith(
       status: ChangePasswordStatus.loaded,
-      confirmNewPassword: event.text,
+      newPasswordConfirm: event.text,
       isPasswordConfirm: _isPasswordConfirm(state.newPassword, event.text),
     ));
     _isValid(emit);
@@ -96,14 +96,17 @@ class ChangePasswordBloc extends Bloc<ChangePasswordEvent, ChangePasswordState> 
   ) async {
     emit(state.copyWith(status: ChangePasswordStatus.loading));
     try {
-      final confirm = await apiAuthRepository.changePassword(
+      final result = await apiAuthRepository.changePassword(
         currentPassword: state.currentPassword,
         newPassword: state.newPassword,
       );
-      if (confirm == null) {
-        emit(state.copyWith(status: ChangePasswordStatus.success));
+      if (result != null) {
+        emit(state.copyWith(
+          status: ChangePasswordStatus.failure,
+          serverError: result.toString(),
+        ));
       } else {
-        emit(state.copyWith(status: ChangePasswordStatus.failure));
+        emit(state.copyWith(status: ChangePasswordStatus.success));
       }
     } on Exception catch (_) {
       emit(state.copyWith(status: ChangePasswordStatus.failure));

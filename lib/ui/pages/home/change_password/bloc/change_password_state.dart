@@ -14,7 +14,7 @@ class ChangePasswordState with _$ChangePasswordState {
     @Default(ChangePasswordStatus.initial) ChangePasswordStatus status,
     required String currentPassword,
     required String newPassword,
-    required String confirmNewPassword,
+    required String newPasswordConfirm,
     @Default(false) bool isCurrentPasswordMoreLength,
     @Default(false) bool isNewPasswordMoreLength,
     @Default(false) bool isPasswordHaveNumber,

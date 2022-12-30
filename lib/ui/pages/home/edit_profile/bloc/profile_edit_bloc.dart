@@ -52,9 +52,6 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
   bool _highlightEmailError = false;
   ProfileEditEmailError? _emailError;
 
-  bool _highlightServerError = false;
-  String? _serverError;
-
   FutureOr<void> _onProfileLoaded(
     _StartedEvent event,
     Emitter<ProfileEditState> emit,
@@ -104,13 +101,11 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
     );
     // await Future.delayed(Duration(seconds: 3));
     if (result != null) {
-      _serverError = result.toString();
       emit(state.copyWith(
         status: ProfileEditStatus.failure,
-        serverError: _serverError,
+        serverError: result.toString(),
       ));
     } else {
-      _highlightServerError = false;
       emit(state.copyWith(status: ProfileEditStatus.success));
     }
   }
@@ -153,7 +148,6 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
       username: _user!.username,
       emailError: _highlightEmailError ? _emailError : null,
       nicknameError: _highlightNicknameError ? _nicknameError : null,
-      serverError: _highlightServerError ? _serverError : null,
     ));
   }
 
