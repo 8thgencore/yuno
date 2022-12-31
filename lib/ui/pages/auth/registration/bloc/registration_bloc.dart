@@ -135,6 +135,7 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     }
 
     emit(const RegistrationInProgress());
+    await Future.delayed(Duration(seconds: 3));
 
     final result = await apiAuthRepository.register(
       email: _email,

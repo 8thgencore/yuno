@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
@@ -15,11 +16,13 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => LoginBloc(sl.get<ApiAuthRepository>()),
-      child: Scaffold(
-        appBar: AppBar(toolbarHeight: 0, elevation: 0),
-        backgroundColor: AppColors.primary100,
-        body: const SafeArea(
-          child: _LoginPageWidget(),
+      child: LoaderOverlay(
+        child: Scaffold(
+          appBar: AppBar(toolbarHeight: 0, elevation: 0),
+          backgroundColor: AppColors.primary100,
+          body: const SafeArea(
+            child: _LoginPageWidget(),
+          ),
         ),
       ),
     );
@@ -38,7 +41,12 @@ class _LoginPageWidget extends StatelessWidget {
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state is LoginCompleted) {
+          context.loaderOverlay.hide();
           Navigator.pushNamedAndRemoveUntil(context, RoutesPage.profile, (route) => false);
+        } else if (state is LoginInProgress) {
+          context.loaderOverlay.show();
+        } else if (state is LoginFieldsInfo) {
+          context.loaderOverlay.hide();
         }
       },
       child: Stack(

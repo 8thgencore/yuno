@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
@@ -16,11 +19,13 @@ class RegistrationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => RegistrationBloc(sl.get<ApiAuthRepository>()),
-      child: Scaffold(
-        appBar: AppBar(toolbarHeight: 0, elevation: 0),
-        backgroundColor: AppColors.primary100,
-        body: const SafeArea(
-          child: _RegistrationPageWidget(),
+      child: LoaderOverlay(
+        child: Scaffold(
+          appBar: AppBar(toolbarHeight: 0, elevation: 0),
+          backgroundColor: AppColors.primary100,
+          body: const SafeArea(
+            child: _RegistrationPageWidget(),
+          ),
         ),
       ),
     );
@@ -38,7 +43,13 @@ class _RegistrationPageWidget extends StatelessWidget {
     return BlocListener<RegistrationBloc, RegistrationState>(
       listener: (context, state) {
         if (state is RegistrationCompleted) {
+          context.loaderOverlay.hide();
           Navigator.pushNamedAndRemoveUntil(context, RoutesPage.login, (route) => false);
+        } else if (state is RegistrationInProgress) {
+          log('Registration in progress');
+          context.loaderOverlay.show();
+        } else if (state is RegistrationFieldsInfo) {
+          context.loaderOverlay.hide();
         }
       },
       child: Stack(
