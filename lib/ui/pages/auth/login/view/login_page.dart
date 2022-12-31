@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/di/service_locator.dart';
@@ -16,11 +17,11 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => LoginBloc(sl.get<ApiAuthRepository>()),
-      child: LoaderOverlay(
+      child: const LoaderOverlay(
         child: Scaffold(
-          appBar: AppBar(toolbarHeight: 0, elevation: 0),
+          // appBar: AppBar(toolbarHeight: 0, elevation: 0),
           backgroundColor: AppColors.primary100,
-          body: const SafeArea(
+          body: SafeArea(
             child: _LoginPageWidget(),
           ),
         ),

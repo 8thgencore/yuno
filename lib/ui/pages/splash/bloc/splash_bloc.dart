@@ -21,7 +21,6 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   ) async {
     await Future.delayed(const Duration(seconds: 2));
     final token = await tokenRepository.getItem();
-    print("TOKEK: $token");
     if (token == null || token.isEmpty) {
       emit(const SplashUnauthorized());
     } else {

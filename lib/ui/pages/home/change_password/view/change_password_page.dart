@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:loader_overlay/loader_overlay.dart';
@@ -155,8 +156,69 @@ class _ListTextFieldWidget extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 14),
           child: _ConfirmNewPasswordTextField(),
         ),
+        SizedBox(height: 22),
+        _ListRoundCheckWidget(),
         SizedBox(height: 90),
       ],
+    );
+  }
+}
+
+class _ListRoundCheckWidget extends StatelessWidget {
+  const _ListRoundCheckWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ChangePasswordBloc, ChangePasswordState>(
+      builder: (context, state) {
+        return Column(
+          children: [
+            Row(
+              children: [
+                Assets.svg.roundCheck.svg(
+                  height: 26,
+                  color: state.isNewPasswordMoreLength ? AppColors.primary100 : AppColors.grey40,
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  'Must be 6 characters or longer',
+                  style: AppTypography.l14d,
+                )
+              ],
+            ),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Assets.svg.roundCheck.svg(
+                  height: 26,
+                  color: state.isPasswordHaveNumber ? AppColors.primary100 : AppColors.grey40,
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  'Must contains at least 1 number',
+                  style: AppTypography.l14d,
+                )
+              ],
+            ),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Assets.svg.roundCheck.svg(
+                  height: 26,
+                  color: state.isPasswordConfirm ? AppColors.primary100 : AppColors.grey40,
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  'The password must match',
+                  style: AppTypography.l14d,
+                )
+              ],
+            ),
+          ],
+        );
+      },
     );
   }
 }

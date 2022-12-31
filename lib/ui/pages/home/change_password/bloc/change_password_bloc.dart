@@ -130,7 +130,7 @@ class ChangePasswordBloc extends Bloc<ChangePasswordEvent, ChangePasswordState> 
   }
 
   bool _isPasswordConfirm(String firstPassword, String secondPassword) =>
-      firstPassword == secondPassword;
+      firstPassword == secondPassword && firstPassword.isNotEmpty;
 
   void _isValid(Emitter<ChangePasswordState> emit) {
     if (state.isCurrentPasswordMoreLength &
