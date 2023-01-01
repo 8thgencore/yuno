@@ -15,7 +15,7 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        // appBarTheme: const AppBarTheme(color: AppColors.primary100),
+        appBarTheme: const AppBarTheme(color: AppColors.primary100),
         // colorScheme: ColorScheme.fromSwatch(
         //   accentColor: const Color(0xFF13B9FF),
         // ),

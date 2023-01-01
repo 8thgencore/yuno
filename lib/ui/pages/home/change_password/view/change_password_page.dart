@@ -81,7 +81,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                     : null,
                 textColor: AppColors.white100,
                 disabledBackgroundColor: AppColors.dark10,
-                buttonColor: state.isValid ? AppColors.primary100 : Colors.transparent,
+                buttonColor: state.isValid ? AppColors.primary100 : AppColors.white100,
               ),
             ),
           ),
