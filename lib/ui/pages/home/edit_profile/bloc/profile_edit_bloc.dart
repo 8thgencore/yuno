@@ -58,7 +58,7 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
   ) async {
     emit(state.copyWith(status: ProfileEditStatus.loading));
     try {
-      final user = await apiUserRepository.getData();
+      final user = await userRepository.getItem();
       if (user is IUserRead) {
         _user = user;
         _emailError = _validateEmail();

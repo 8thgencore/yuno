@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yuno/api/user/models/i_image_media_read.dart';
 import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/resources/resources.dart';
@@ -91,7 +92,7 @@ class _HeaderWidget extends StatelessWidget {
         ),
         loaded: (user) => Column(
           children: [
-            const AvatarWidget(),
+            AvatarWidget(image: user.image),
             const SizedBox(height: 20),
             if (user.firstName == '' && user.lastName == '')
               Text(user.username, style: AppTypography.b22d)
@@ -115,7 +116,12 @@ class _HeaderWidget extends StatelessWidget {
 }
 
 class AvatarWidget extends StatelessWidget {
-  const AvatarWidget({super.key});
+  const AvatarWidget({
+    this.image,
+    super.key,
+  });
+
+  final IImageMediaRead? image;
 
   @override
   Widget build(BuildContext context) {
@@ -139,15 +145,29 @@ class AvatarWidget extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 color: AppColors.white100,
-                border: Border.all(color: Colors.white, width: 4),
+                border: Border.all(color: AppColors.white100, width: 4),
               ),
               child: ClipOval(
-                child: CachedNetworkImage(
-                  imageUrl:
-                      'https://images.unsplash.com/photo-1661961111184-11317b40adb2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80',
-                  height: 120,
-                  width: 120,
-                  fit: BoxFit.cover,
+                child: Stack(
+                  children: [
+                    buildImage(image: image),
+                    Positioned(
+                      left: 44,
+                      bottom: 8,
+                      child: Container(
+                        width: 36,
+                        height: 36,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: AppColors.white60,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Assets.svg.pencil.svg(),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ),
             ),
@@ -155,6 +175,19 @@ class AvatarWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget buildImage({IImageMediaRead? image}) {
+    if (image != null) {
+      return CachedNetworkImage(
+        imageUrl: image.media.link ?? '',
+        height: 128,
+        width: 128,
+        fit: BoxFit.fill,
+      );
+    } else {
+      return Assets.images.avatar.image(height: 120, fit: BoxFit.cover);
+    }
   }
 }
 

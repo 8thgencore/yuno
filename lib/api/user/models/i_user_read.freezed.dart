@@ -32,6 +32,7 @@ mixin _$IUserRead {
   @JsonKey(name: 'role_id')
   String? get roleId => throw _privateConstructorUsedError;
   IRoleRead? get role => throw _privateConstructorUsedError;
+  IImageMediaRead? get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,9 +54,11 @@ abstract class $IUserReadCopyWith<$Res> {
       String? birthdate,
       String? phone,
       @JsonKey(name: 'role_id') String? roleId,
-      IRoleRead? role});
+      IRoleRead? role,
+      IImageMediaRead? image});
 
   $IRoleReadCopyWith<$Res>? get role;
+  $IImageMediaReadCopyWith<$Res>? get image;
 }
 
 /// @nodoc
@@ -80,6 +83,7 @@ class _$IUserReadCopyWithImpl<$Res, $Val extends IUserRead>
     Object? phone = freezed,
     Object? roleId = freezed,
     Object? role = freezed,
+    Object? image = freezed,
   }) {
     return _then(_value.copyWith(
       firstName: null == firstName
@@ -118,6 +122,10 @@ class _$IUserReadCopyWithImpl<$Res, $Val extends IUserRead>
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
               as IRoleRead?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as IImageMediaRead?,
     ) as $Val);
   }
 
@@ -130,6 +138,18 @@ class _$IUserReadCopyWithImpl<$Res, $Val extends IUserRead>
 
     return $IRoleReadCopyWith<$Res>(_value.role!, (value) {
       return _then(_value.copyWith(role: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $IImageMediaReadCopyWith<$Res>? get image {
+    if (_value.image == null) {
+      return null;
+    }
+
+    return $IImageMediaReadCopyWith<$Res>(_value.image!, (value) {
+      return _then(_value.copyWith(image: value) as $Val);
     });
   }
 }
@@ -150,10 +170,13 @@ abstract class _$$_IUserReadCopyWith<$Res> implements $IUserReadCopyWith<$Res> {
       String? birthdate,
       String? phone,
       @JsonKey(name: 'role_id') String? roleId,
-      IRoleRead? role});
+      IRoleRead? role,
+      IImageMediaRead? image});
 
   @override
   $IRoleReadCopyWith<$Res>? get role;
+  @override
+  $IImageMediaReadCopyWith<$Res>? get image;
 }
 
 /// @nodoc
@@ -176,6 +199,7 @@ class __$$_IUserReadCopyWithImpl<$Res>
     Object? phone = freezed,
     Object? roleId = freezed,
     Object? role = freezed,
+    Object? image = freezed,
   }) {
     return _then(_$_IUserRead(
       firstName: null == firstName
@@ -214,6 +238,10 @@ class __$$_IUserReadCopyWithImpl<$Res>
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
               as IRoleRead?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as IImageMediaRead?,
     ));
   }
 }
@@ -230,7 +258,8 @@ class _$_IUserRead implements _IUserRead {
       this.birthdate,
       this.phone,
       @JsonKey(name: 'role_id') this.roleId,
-      this.role});
+      this.role,
+      this.image});
 
   factory _$_IUserRead.fromJson(Map<String, dynamic> json) =>
       _$$_IUserReadFromJson(json);
@@ -256,10 +285,12 @@ class _$_IUserRead implements _IUserRead {
   final String? roleId;
   @override
   final IRoleRead? role;
+  @override
+  final IImageMediaRead? image;
 
   @override
   String toString() {
-    return 'IUserRead(firstName: $firstName, lastName: $lastName, username: $username, email: $email, id: $id, birthdate: $birthdate, phone: $phone, roleId: $roleId, role: $role)';
+    return 'IUserRead(firstName: $firstName, lastName: $lastName, username: $username, email: $email, id: $id, birthdate: $birthdate, phone: $phone, roleId: $roleId, role: $role, image: $image)';
   }
 
   @override
@@ -279,13 +310,14 @@ class _$_IUserRead implements _IUserRead {
                 other.birthdate == birthdate) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.roleId, roleId) || other.roleId == roleId) &&
-            (identical(other.role, role) || other.role == role));
+            (identical(other.role, role) || other.role == role) &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, firstName, lastName, username,
-      email, id, birthdate, phone, roleId, role);
+      email, id, birthdate, phone, roleId, role, image);
 
   @JsonKey(ignore: true)
   @override
@@ -311,7 +343,8 @@ abstract class _IUserRead implements IUserRead {
       final String? birthdate,
       final String? phone,
       @JsonKey(name: 'role_id') final String? roleId,
-      final IRoleRead? role}) = _$_IUserRead;
+      final IRoleRead? role,
+      final IImageMediaRead? image}) = _$_IUserRead;
 
   factory _IUserRead.fromJson(Map<String, dynamic> json) =
       _$_IUserRead.fromJson;
@@ -337,6 +370,8 @@ abstract class _IUserRead implements IUserRead {
   String? get roleId;
   @override
   IRoleRead? get role;
+  @override
+  IImageMediaRead? get image;
   @override
   @JsonKey(ignore: true)
   _$$_IUserReadCopyWith<_$_IUserRead> get copyWith =>

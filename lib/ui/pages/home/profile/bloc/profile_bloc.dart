@@ -8,6 +8,7 @@ import 'package:yuno/data/repository/refresh_token_repository.dart';
 import 'package:yuno/data/repository/user_repository.dart';
 import 'package:yuno/domain/logout_interactor.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
+import 'package:yuno/domain/repository/api_user_repository.dart';
 
 part 'profile_bloc.freezed.dart';
 part 'profile_event.dart';
@@ -16,6 +17,7 @@ part 'profile_state.dart';
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ProfileBloc({
     required this.apiAuthRepository,
+    required this.apiUserRepository,
     required this.userRepository,
     required this.refreshTokenRepository,
     required this.logoutInteractor,
@@ -26,6 +28,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   }
 
   final ApiAuthRepository apiAuthRepository;
+  final ApiUserRepository apiUserRepository;
   final UserRepository userRepository;
   final RefreshTokenRepository refreshTokenRepository;
   final LogoutInteractor logoutInteractor;
@@ -34,6 +37,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       Emitter<ProfileState> emit,) async {
     emit(const ProfileState.initial());
     try {
+      await apiUserRepository.getData();
       final user = await userRepository.getItem();
       final refreshToken = await refreshTokenRepository.getItem();
       if (user == null || refreshToken == null) {

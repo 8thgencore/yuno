@@ -18,6 +18,9 @@ _$_IUserRead _$$_IUserReadFromJson(Map<String, dynamic> json) => _$_IUserRead(
       role: json['role'] == null
           ? null
           : IRoleRead.fromJson(json['role'] as Map<String, dynamic>),
+      image: json['image'] == null
+          ? null
+          : IImageMediaRead.fromJson(json['image'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_IUserReadToJson(_$_IUserRead instance) =>
@@ -31,4 +34,5 @@ Map<String, dynamic> _$$_IUserReadToJson(_$_IUserRead instance) =>
       'phone': instance.phone,
       'role_id': instance.roleId,
       'role': instance.role,
+      'image': instance.image,
     };

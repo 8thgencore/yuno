@@ -113,9 +113,10 @@ void _setApiRelatedClasses() {
 void _setupBlocs() {
   sl.registerFactory(
     () => ProfileBloc(
+      apiAuthRepository: sl.get<ApiAuthRepository>(),
+      apiUserRepository: sl.get<ApiUserRepository>(),
       userRepository: sl.get<UserRepository>(),
       refreshTokenRepository: sl.get<RefreshTokenRepository>(),
-      apiAuthRepository: sl.get<ApiAuthRepository>(),
       logoutInteractor: sl.get<LogoutInteractor>(),
     ),
   );

@@ -96,6 +96,9 @@ class $AssetsFontsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/avatar.jpg
+  AssetGenImage get avatar => const AssetGenImage('assets/images/avatar.jpg');
+
   /// File path: assets/images/fingerprint.png
   AssetGenImage get fingerprint =>
       const AssetGenImage('assets/images/fingerprint.png');
@@ -113,7 +116,7 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values =>
-      [fingerprint, logo, signOrnament, splashOrnament];
+      [avatar, fingerprint, logo, signOrnament, splashOrnament];
 }
 
 class $AssetsSvgGen {
@@ -137,6 +140,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/logout.svg
   SvgGenImage get logout => const SvgGenImage('assets/svg/logout.svg');
 
+  /// File path: assets/svg/pencil.svg
+  SvgGenImage get pencil => const SvgGenImage('assets/svg/pencil.svg');
+
   /// File path: assets/svg/project.svg
   SvgGenImage get project => const SvgGenImage('assets/svg/project.svg');
 
@@ -158,6 +164,7 @@ class $AssetsSvgGen {
         eyeOn,
         lock,
         logout,
+        pencil,
         project,
         roundCheck,
         roundExclamation,
