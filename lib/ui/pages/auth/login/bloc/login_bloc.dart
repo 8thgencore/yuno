@@ -81,7 +81,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     if (haveError) {
       return;
     }
+
     emit(const LoginInProgress());
+
     final result = await apiAuthRepository.login(
       email: _email,
       password: _password,

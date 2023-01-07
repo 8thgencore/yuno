@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/di/service_locator.dart';
@@ -416,7 +415,10 @@ class _LoginButton extends StatelessWidget {
     return CustomRoundedButton(
       textButton: 'Login',
       onPressed: () {
-        FocusManager.instance.primaryFocus?.unfocus();
+        final currentNode = FocusScope.of(context);
+        if (currentNode.focusedChild != null && !currentNode.hasPrimaryFocus) {
+          FocusManager.instance.primaryFocus?.unfocus();
+        }
         context.read<LoginBloc>().add(const LoginAuthAccount());
       },
       textColor: AppColors.white100,

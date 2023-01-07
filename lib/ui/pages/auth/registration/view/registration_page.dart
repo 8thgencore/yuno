@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/di/service_locator.dart';
@@ -46,7 +43,6 @@ class _RegistrationPageWidget extends StatelessWidget {
           context.loaderOverlay.hide();
           Navigator.pushNamedAndRemoveUntil(context, RoutesPage.login, (route) => false);
         } else if (state is RegistrationInProgress) {
-          log('Registration in progress');
           context.loaderOverlay.show();
         } else if (state is RegistrationFieldsInfo) {
           context.loaderOverlay.hide();
@@ -145,8 +141,9 @@ class _ErrorWidget extends StatelessWidget {
             behavior: HitTestBehavior.opaque,
             onTap: () => context.read<RegistrationBloc>().add(const RegistrationCloseError()),
             child: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                child: Icon(Icons.close, color: AppColors.white80, size: 20)),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: Icon(Icons.close, color: AppColors.white80, size: 20),
+            ),
           ),
         ),
       ],
@@ -201,7 +198,8 @@ class _BottomWidgetState extends State<_BottomWidget> {
     _passwordFocusNode = FocusNode();
     _passwordConfirmationFocusNode = FocusNode();
 
-    SchedulerBinding.instance.addPostFrameCallback((_) => _addFocusLostHandlers());
+    // TODO(8thgencore): called BLoC event, how solve?
+    // SchedulerBinding.instance.addPostFrameCallback((_) => _addFocusLostHandlers());
   }
 
   void _addFocusLostHandlers() {
@@ -487,7 +485,10 @@ class _RegistrationButton extends StatelessWidget {
         return CustomRoundedButton(
           textButton: 'Sign Me Up!',
           onPressed: () {
-            FocusManager.instance.primaryFocus?.unfocus();
+            final currentNode = FocusScope.of(context);
+            if (currentNode.focusedChild != null && !currentNode.hasPrimaryFocus) {
+              FocusManager.instance.primaryFocus?.unfocus();
+            }
             return inProgress
                 ? null
                 : context.read<RegistrationBloc>().add(const RegistrationCreateAccount());
