@@ -186,7 +186,7 @@ class AvatarWidget extends StatelessWidget {
         fit: BoxFit.fill,
       );
     } else {
-      return Assets.images.avatar.image(height: 120, fit: BoxFit.cover);
+      return Assets.images.avatar.image(height: 128, fit: BoxFit.cover);
     }
   }
 }

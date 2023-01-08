@@ -11,7 +11,9 @@ import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/domain/repository/api_user_repository.dart';
 
 part 'profile_bloc.freezed.dart';
+
 part 'profile_event.dart';
+
 part 'profile_state.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
@@ -33,9 +35,11 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final RefreshTokenRepository refreshTokenRepository;
   final LogoutInteractor logoutInteractor;
 
-  FutureOr<void> _onProfileLoaded(_StartedEvent event,
-      Emitter<ProfileState> emit,) async {
-    emit(const ProfileState.initial());
+  FutureOr<void> _onProfileLoaded(
+    _StartedEvent event,
+    Emitter<ProfileState> emit,
+  ) async {
+    emit(const ProfileState.loading());
     try {
       await apiUserRepository.getData();
       final user = await userRepository.getItem();
@@ -63,7 +67,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     _UpdateEvent event,
     Emitter<ProfileState> emit,
   ) async {
-    emit(const ProfileState.initial());
+    emit(const ProfileState.loading());
     try {
       final user = await userRepository.getItem();
       if (user == null) {
@@ -79,8 +83,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     emit(const ProfileState.logout());
   }
 
-  FutureOr<void> _onLogoutPushed(_LogoutEvent event,
-      Emitter<ProfileState> emit,) async {
+  FutureOr<void> _onLogoutPushed(
+    _LogoutEvent event,
+    Emitter<ProfileState> emit,
+  ) async {
     await logoutInteractor.logout();
     _logout(emit);
   }
