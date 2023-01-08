@@ -202,7 +202,10 @@ class _UserClient implements UserClient {
   }
 
   @override
-  Future<void> postUserImage({required file}) async {
+  Future<IGetResponseBaseIUserRead> postUserImage({
+    required file,
+    required imageFile,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -211,20 +214,29 @@ class _UserClient implements UserClient {
       'file',
       jsonEncode(file),
     ));
-    await _dio.fetch<void>(_setStreamType<void>(Options(
+    _data.files.add(MapEntry(
+      'image_file',
+      MultipartFile.fromFileSync(
+        imageFile.path,
+        filename: imageFile.path.split(Platform.pathSeparator).last,
+      ),
+    ));
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<IGetResponseBaseIUserRead>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
       contentType: 'multipart/form-data',
     )
-        .compose(
-          _dio.options,
-          '/user/image',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
+            .compose(
+              _dio.options,
+              '/user/image',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = IGetResponseBaseIUserRead.fromJson(_result.data!);
+    return value;
   }
 
   @override

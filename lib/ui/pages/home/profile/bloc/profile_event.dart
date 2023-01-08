@@ -6,5 +6,7 @@ class ProfileEvent with _$ProfileEvent {
 
   const factory ProfileEvent.update() = _UpdateEvent;
 
+  const factory ProfileEvent.loadImage(PlatformFile file) = _LoadImageEvent;
+
   const factory ProfileEvent.logout() = _LogoutEvent;
 }

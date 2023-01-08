@@ -20,6 +20,7 @@ mixin _$ProfileEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() update,
+    required TResult Function(PlatformFile file) loadImage,
     required TResult Function() logout,
   }) =>
       throw _privateConstructorUsedError;
@@ -27,6 +28,7 @@ mixin _$ProfileEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? update,
+    TResult? Function(PlatformFile file)? loadImage,
     TResult? Function()? logout,
   }) =>
       throw _privateConstructorUsedError;
@@ -34,6 +36,7 @@ mixin _$ProfileEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? update,
+    TResult Function(PlatformFile file)? loadImage,
     TResult Function()? logout,
     required TResult orElse(),
   }) =>
@@ -42,6 +45,7 @@ mixin _$ProfileEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
     required TResult Function(_UpdateEvent value) update,
+    required TResult Function(_LoadImageEvent value) loadImage,
     required TResult Function(_LogoutEvent value) logout,
   }) =>
       throw _privateConstructorUsedError;
@@ -49,6 +53,7 @@ mixin _$ProfileEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
     TResult? Function(_UpdateEvent value)? update,
+    TResult? Function(_LoadImageEvent value)? loadImage,
     TResult? Function(_LogoutEvent value)? logout,
   }) =>
       throw _privateConstructorUsedError;
@@ -56,6 +61,7 @@ mixin _$ProfileEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
     TResult Function(_UpdateEvent value)? update,
+    TResult Function(_LoadImageEvent value)? loadImage,
     TResult Function(_LogoutEvent value)? logout,
     required TResult orElse(),
   }) =>
@@ -120,6 +126,7 @@ class _$_StartedEvent implements _StartedEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() update,
+    required TResult Function(PlatformFile file) loadImage,
     required TResult Function() logout,
   }) {
     return started();
@@ -130,6 +137,7 @@ class _$_StartedEvent implements _StartedEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? update,
+    TResult? Function(PlatformFile file)? loadImage,
     TResult? Function()? logout,
   }) {
     return started?.call();
@@ -140,6 +148,7 @@ class _$_StartedEvent implements _StartedEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? update,
+    TResult Function(PlatformFile file)? loadImage,
     TResult Function()? logout,
     required TResult orElse(),
   }) {
@@ -154,6 +163,7 @@ class _$_StartedEvent implements _StartedEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
     required TResult Function(_UpdateEvent value) update,
+    required TResult Function(_LoadImageEvent value) loadImage,
     required TResult Function(_LogoutEvent value) logout,
   }) {
     return started(this);
@@ -164,6 +174,7 @@ class _$_StartedEvent implements _StartedEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
     TResult? Function(_UpdateEvent value)? update,
+    TResult? Function(_LoadImageEvent value)? loadImage,
     TResult? Function(_LogoutEvent value)? logout,
   }) {
     return started?.call(this);
@@ -174,6 +185,7 @@ class _$_StartedEvent implements _StartedEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
     TResult Function(_UpdateEvent value)? update,
+    TResult Function(_LoadImageEvent value)? loadImage,
     TResult Function(_LogoutEvent value)? logout,
     required TResult orElse(),
   }) {
@@ -228,6 +240,7 @@ class _$_UpdateEvent implements _UpdateEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() update,
+    required TResult Function(PlatformFile file) loadImage,
     required TResult Function() logout,
   }) {
     return update();
@@ -238,6 +251,7 @@ class _$_UpdateEvent implements _UpdateEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? update,
+    TResult? Function(PlatformFile file)? loadImage,
     TResult? Function()? logout,
   }) {
     return update?.call();
@@ -248,6 +262,7 @@ class _$_UpdateEvent implements _UpdateEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? update,
+    TResult Function(PlatformFile file)? loadImage,
     TResult Function()? logout,
     required TResult orElse(),
   }) {
@@ -262,6 +277,7 @@ class _$_UpdateEvent implements _UpdateEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
     required TResult Function(_UpdateEvent value) update,
+    required TResult Function(_LoadImageEvent value) loadImage,
     required TResult Function(_LogoutEvent value) logout,
   }) {
     return update(this);
@@ -272,6 +288,7 @@ class _$_UpdateEvent implements _UpdateEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
     TResult? Function(_UpdateEvent value)? update,
+    TResult? Function(_LoadImageEvent value)? loadImage,
     TResult? Function(_LogoutEvent value)? logout,
   }) {
     return update?.call(this);
@@ -282,6 +299,7 @@ class _$_UpdateEvent implements _UpdateEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
     TResult Function(_UpdateEvent value)? update,
+    TResult Function(_LoadImageEvent value)? loadImage,
     TResult Function(_LogoutEvent value)? logout,
     required TResult orElse(),
   }) {
@@ -294,6 +312,151 @@ class _$_UpdateEvent implements _UpdateEvent {
 
 abstract class _UpdateEvent implements ProfileEvent {
   const factory _UpdateEvent() = _$_UpdateEvent;
+}
+
+/// @nodoc
+abstract class _$$_LoadImageEventCopyWith<$Res> {
+  factory _$$_LoadImageEventCopyWith(
+          _$_LoadImageEvent value, $Res Function(_$_LoadImageEvent) then) =
+      __$$_LoadImageEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({PlatformFile file});
+}
+
+/// @nodoc
+class __$$_LoadImageEventCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$_LoadImageEvent>
+    implements _$$_LoadImageEventCopyWith<$Res> {
+  __$$_LoadImageEventCopyWithImpl(
+      _$_LoadImageEvent _value, $Res Function(_$_LoadImageEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? file = null,
+  }) {
+    return _then(_$_LoadImageEvent(
+      null == file
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as PlatformFile,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_LoadImageEvent implements _LoadImageEvent {
+  const _$_LoadImageEvent(this.file);
+
+  @override
+  final PlatformFile file;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.loadImage(file: $file)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_LoadImageEvent &&
+            (identical(other.file, file) || other.file == file));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, file);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LoadImageEventCopyWith<_$_LoadImageEvent> get copyWith =>
+      __$$_LoadImageEventCopyWithImpl<_$_LoadImageEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() update,
+    required TResult Function(PlatformFile file) loadImage,
+    required TResult Function() logout,
+  }) {
+    return loadImage(file);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? update,
+    TResult? Function(PlatformFile file)? loadImage,
+    TResult? Function()? logout,
+  }) {
+    return loadImage?.call(file);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? update,
+    TResult Function(PlatformFile file)? loadImage,
+    TResult Function()? logout,
+    required TResult orElse(),
+  }) {
+    if (loadImage != null) {
+      return loadImage(file);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StartedEvent value) started,
+    required TResult Function(_UpdateEvent value) update,
+    required TResult Function(_LoadImageEvent value) loadImage,
+    required TResult Function(_LogoutEvent value) logout,
+  }) {
+    return loadImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_StartedEvent value)? started,
+    TResult? Function(_UpdateEvent value)? update,
+    TResult? Function(_LoadImageEvent value)? loadImage,
+    TResult? Function(_LogoutEvent value)? logout,
+  }) {
+    return loadImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_StartedEvent value)? started,
+    TResult Function(_UpdateEvent value)? update,
+    TResult Function(_LoadImageEvent value)? loadImage,
+    TResult Function(_LogoutEvent value)? logout,
+    required TResult orElse(),
+  }) {
+    if (loadImage != null) {
+      return loadImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadImageEvent implements ProfileEvent {
+  const factory _LoadImageEvent(final PlatformFile file) = _$_LoadImageEvent;
+
+  PlatformFile get file;
+  @JsonKey(ignore: true)
+  _$$_LoadImageEventCopyWith<_$_LoadImageEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -336,6 +499,7 @@ class _$_LogoutEvent implements _LogoutEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() update,
+    required TResult Function(PlatformFile file) loadImage,
     required TResult Function() logout,
   }) {
     return logout();
@@ -346,6 +510,7 @@ class _$_LogoutEvent implements _LogoutEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? update,
+    TResult? Function(PlatformFile file)? loadImage,
     TResult? Function()? logout,
   }) {
     return logout?.call();
@@ -356,6 +521,7 @@ class _$_LogoutEvent implements _LogoutEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? update,
+    TResult Function(PlatformFile file)? loadImage,
     TResult Function()? logout,
     required TResult orElse(),
   }) {
@@ -370,6 +536,7 @@ class _$_LogoutEvent implements _LogoutEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
     required TResult Function(_UpdateEvent value) update,
+    required TResult Function(_LoadImageEvent value) loadImage,
     required TResult Function(_LogoutEvent value) logout,
   }) {
     return logout(this);
@@ -380,6 +547,7 @@ class _$_LogoutEvent implements _LogoutEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
     TResult? Function(_UpdateEvent value)? update,
+    TResult? Function(_LoadImageEvent value)? loadImage,
     TResult? Function(_LogoutEvent value)? logout,
   }) {
     return logout?.call(this);
@@ -390,6 +558,7 @@ class _$_LogoutEvent implements _LogoutEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
     TResult Function(_UpdateEvent value)? update,
+    TResult Function(_LoadImageEvent value)? loadImage,
     TResult Function(_LogoutEvent value)? logout,
     required TResult orElse(),
   }) {
@@ -410,7 +579,7 @@ mixin _$ProfileState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(IUserRead user) loaded,
+    required TResult Function(IUserRead user, String? error) loaded,
     required TResult Function() logout,
     required TResult Function(Object error) failure,
   }) =>
@@ -419,7 +588,7 @@ mixin _$ProfileState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(IUserRead user)? loaded,
+    TResult? Function(IUserRead user, String? error)? loaded,
     TResult? Function()? logout,
     TResult? Function(Object error)? failure,
   }) =>
@@ -428,7 +597,7 @@ mixin _$ProfileState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(IUserRead user)? loaded,
+    TResult Function(IUserRead user, String? error)? loaded,
     TResult Function()? logout,
     TResult Function(Object error)? failure,
     required TResult orElse(),
@@ -522,7 +691,7 @@ class _$_InitialState extends _InitialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(IUserRead user) loaded,
+    required TResult Function(IUserRead user, String? error) loaded,
     required TResult Function() logout,
     required TResult Function(Object error) failure,
   }) {
@@ -534,7 +703,7 @@ class _$_InitialState extends _InitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(IUserRead user)? loaded,
+    TResult? Function(IUserRead user, String? error)? loaded,
     TResult? Function()? logout,
     TResult? Function(Object error)? failure,
   }) {
@@ -546,7 +715,7 @@ class _$_InitialState extends _InitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(IUserRead user)? loaded,
+    TResult Function(IUserRead user, String? error)? loaded,
     TResult Function()? logout,
     TResult Function(Object error)? failure,
     required TResult orElse(),
@@ -643,7 +812,7 @@ class _$_LoadingState extends _LoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(IUserRead user) loaded,
+    required TResult Function(IUserRead user, String? error) loaded,
     required TResult Function() logout,
     required TResult Function(Object error) failure,
   }) {
@@ -655,7 +824,7 @@ class _$_LoadingState extends _LoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(IUserRead user)? loaded,
+    TResult? Function(IUserRead user, String? error)? loaded,
     TResult? Function()? logout,
     TResult? Function(Object error)? failure,
   }) {
@@ -667,7 +836,7 @@ class _$_LoadingState extends _LoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(IUserRead user)? loaded,
+    TResult Function(IUserRead user, String? error)? loaded,
     TResult Function()? logout,
     TResult Function(Object error)? failure,
     required TResult orElse(),
@@ -730,7 +899,7 @@ abstract class _$$_LoadedStateCopyWith<$Res> {
           _$_LoadedState value, $Res Function(_$_LoadedState) then) =
       __$$_LoadedStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({IUserRead user});
+  $Res call({IUserRead user, String? error});
 
   $IUserReadCopyWith<$Res> get user;
 }
@@ -747,12 +916,17 @@ class __$$_LoadedStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? user = null,
+    Object? error = freezed,
   }) {
     return _then(_$_LoadedState(
       null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as IUserRead,
+      freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -768,14 +942,16 @@ class __$$_LoadedStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LoadedState extends _LoadedState {
-  const _$_LoadedState(this.user) : super._();
+  const _$_LoadedState(this.user, this.error) : super._();
 
   @override
   final IUserRead user;
+  @override
+  final String? error;
 
   @override
   String toString() {
-    return 'ProfileState.loaded(user: $user)';
+    return 'ProfileState.loaded(user: $user, error: $error)';
   }
 
   @override
@@ -783,11 +959,12 @@ class _$_LoadedState extends _LoadedState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoadedState &&
-            (identical(other.user, user) || other.user == user));
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user);
+  int get hashCode => Object.hash(runtimeType, user, error);
 
   @JsonKey(ignore: true)
   @override
@@ -800,11 +977,11 @@ class _$_LoadedState extends _LoadedState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(IUserRead user) loaded,
+    required TResult Function(IUserRead user, String? error) loaded,
     required TResult Function() logout,
     required TResult Function(Object error) failure,
   }) {
-    return loaded(user);
+    return loaded(user, error);
   }
 
   @override
@@ -812,11 +989,11 @@ class _$_LoadedState extends _LoadedState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(IUserRead user)? loaded,
+    TResult? Function(IUserRead user, String? error)? loaded,
     TResult? Function()? logout,
     TResult? Function(Object error)? failure,
   }) {
-    return loaded?.call(user);
+    return loaded?.call(user, error);
   }
 
   @override
@@ -824,13 +1001,13 @@ class _$_LoadedState extends _LoadedState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(IUserRead user)? loaded,
+    TResult Function(IUserRead user, String? error)? loaded,
     TResult Function()? logout,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(user);
+      return loaded(user, error);
     }
     return orElse();
   }
@@ -877,10 +1054,12 @@ class _$_LoadedState extends _LoadedState {
 }
 
 abstract class _LoadedState extends ProfileState {
-  const factory _LoadedState(final IUserRead user) = _$_LoadedState;
+  const factory _LoadedState(final IUserRead user, final String? error) =
+      _$_LoadedState;
   const _LoadedState._() : super._();
 
   IUserRead get user;
+  String? get error;
   @JsonKey(ignore: true)
   _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -926,7 +1105,7 @@ class _$_LogoutState extends _LogoutState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(IUserRead user) loaded,
+    required TResult Function(IUserRead user, String? error) loaded,
     required TResult Function() logout,
     required TResult Function(Object error) failure,
   }) {
@@ -938,7 +1117,7 @@ class _$_LogoutState extends _LogoutState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(IUserRead user)? loaded,
+    TResult? Function(IUserRead user, String? error)? loaded,
     TResult? Function()? logout,
     TResult? Function(Object error)? failure,
   }) {
@@ -950,7 +1129,7 @@ class _$_LogoutState extends _LogoutState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(IUserRead user)? loaded,
+    TResult Function(IUserRead user, String? error)? loaded,
     TResult Function()? logout,
     TResult Function(Object error)? failure,
     required TResult orElse(),
@@ -1071,7 +1250,7 @@ class _$_FailureState extends _FailureState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(IUserRead user) loaded,
+    required TResult Function(IUserRead user, String? error) loaded,
     required TResult Function() logout,
     required TResult Function(Object error) failure,
   }) {
@@ -1083,7 +1262,7 @@ class _$_FailureState extends _FailureState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(IUserRead user)? loaded,
+    TResult? Function(IUserRead user, String? error)? loaded,
     TResult? Function()? logout,
     TResult? Function(Object error)? failure,
   }) {
@@ -1095,7 +1274,7 @@ class _$_FailureState extends _FailureState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(IUserRead user)? loaded,
+    TResult Function(IUserRead user, String? error)? loaded,
     TResult Function()? logout,
     TResult Function(Object error)? failure,
     required TResult orElse(),

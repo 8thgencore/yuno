@@ -58,8 +58,9 @@ abstract class UserClient {
 
   @MultiPart()
   @POST('/user/image')
-  Future<void> postUserImage({
+  Future<IGetResponseBaseIUserRead> postUserImage({
     @Part() required IImageUpload file,
+    @Part(name: 'image_file') required File imageFile,
   });
 
   @MultiPart()

@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:yuno/api/user/models/i_image_upload.dart';
 import 'package:yuno/api/user/models/i_user_update.dart';
 import 'package:yuno/api/user/rest_client.dart';
 import 'package:yuno/data/http/error_interceptor.dart';
@@ -65,5 +69,27 @@ class ApiUserRepository {
       return 'Something error';
     }
   }
-}
 
+  Future<dynamic> loadImage({
+    required PlatformFile file,
+  }) async {
+    try {
+      final response = await userClient.postUserImage(
+        file: const IImageUpload(
+          title: '',
+          description: '',
+        ),
+        imageFile: File(file.path!),
+      );
+
+      final user = response.data;
+      await userRepository.setItem(user);
+
+      return user;
+    } on DioError catch (e) {
+      return dioErrorInterceptor(e);
+    } on Object {
+      return 'Something error';
+    }
+  }
+}

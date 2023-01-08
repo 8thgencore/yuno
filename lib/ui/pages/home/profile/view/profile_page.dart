@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yuno/api/user/models/i_image_media_read.dart';
@@ -90,7 +91,17 @@ class _HeaderWidget extends StatelessWidget {
           height: 255,
           child: Center(child: CircularProgressIndicator()),
         ),
-        loaded: (user) => Column(
+        loaded: (user, error) {
+          if (error != null) {
+            // fToast.showToast(
+            //   child: ToastWidget(
+            //     text: error,
+            //     type: ToastType.failure,
+            //   ),
+            //   gravity: ToastGravity.TOP,
+            // );
+          }
+          return Column(
           children: [
             AvatarWidget(image: user.image),
             const SizedBox(height: 20),
@@ -108,7 +119,8 @@ class _HeaderWidget extends StatelessWidget {
               child: Text(user.email, style: AppTypography.l12d),
             ),
           ],
-        ),
+        );
+        },
         orElse: () => const SizedBox.shrink(),
       ),
     );
@@ -151,21 +163,10 @@ class AvatarWidget extends StatelessWidget {
                 child: Stack(
                   children: [
                     buildImage(image: image),
-                    Positioned(
+                    const Positioned(
                       left: 44,
                       bottom: 8,
-                      child: Container(
-                        width: 36,
-                        height: 36,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: AppColors.white60,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Assets.svg.pencil.svg(),
-                        ),
-                      ),
+                      child: _EditAvatarWidget(),
                     )
                   ],
                 ),
@@ -183,11 +184,51 @@ class AvatarWidget extends StatelessWidget {
         imageUrl: image.media.link ?? '',
         height: 128,
         width: 128,
-        fit: BoxFit.fill,
+        fit: BoxFit.cover,
       );
     } else {
       return Assets.images.avatar.image(height: 128, fit: BoxFit.cover);
     }
+  }
+}
+
+class _EditAvatarWidget extends StatefulWidget {
+  const _EditAvatarWidget();
+
+  @override
+  State<_EditAvatarWidget> createState() => _EditAvatarWidgetState();
+}
+
+class _EditAvatarWidgetState extends State<_EditAvatarWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () async {
+        final FilePickerResult? result = await FilePicker.platform.pickFiles(
+          type: FileType.image,
+        );
+        if (result != null) {
+          if (!mounted) {
+            return;
+          }
+          context.read<ProfileBloc>().add(ProfileEvent.loadImage(result.files.first));
+        } else {
+          // logger.warning("Error upload image");
+        }
+      },
+      child: Container(
+        width: 36,
+        height: 36,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: AppColors.white60,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Assets.svg.pencil.svg(),
+        ),
+      ),
+    );
   }
 }
 

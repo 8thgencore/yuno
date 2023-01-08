@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:yuno/api/auth/models/refresh_token.dart';
 import 'package:yuno/api/user/models/i_user_read.dart';
@@ -26,6 +27,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   }) : super(const ProfileState.initial()) {
     on<_StartedEvent>(_onProfileLoaded);
     on<_UpdateEvent>(_onProfileUpdated);
+    on<_LoadImageEvent>(_onLoadImage);
     on<_LogoutEvent>(_onLogoutPushed);
   }
 
@@ -34,6 +36,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final UserRepository userRepository;
   final RefreshTokenRepository refreshTokenRepository;
   final LogoutInteractor logoutInteractor;
+
+  IUserRead? _user;
+
 
   FutureOr<void> _onProfileLoaded(
     _StartedEvent event,
@@ -48,6 +53,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         _logout(emit);
         return;
       }
+      _user = user;
 
       final refreshTokenResponse = await apiAuthRepository.refreshToken(
         body: RefreshToken(refreshToken: refreshToken),
@@ -57,7 +63,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         return;
       }
 
-      emit(ProfileState.loaded(user));
+      emit(ProfileState.loaded(user, null));
     } on Exception catch (e) {
       emit(ProfileState.failure(e));
     }
@@ -73,7 +79,25 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       if (user == null) {
         return;
       }
-      emit(ProfileState.loaded(user));
+      _user = user;
+
+      emit(ProfileState.loaded(user, null));
+    } on Exception catch (e) {
+      emit(ProfileState.failure(e));
+    }
+  }
+
+  FutureOr<void> _onLoadImage(
+    _LoadImageEvent event,
+    Emitter<ProfileState> emit,
+  ) async {
+    try {
+      final user = await apiUserRepository.loadImage(file: event.file);
+      if (user is IUserRead) {
+        emit(ProfileState.loaded(user, null));
+        return;
+      }
+      emit(ProfileState.loaded(_user!, 'Error from server. Try again'));
     } on Exception catch (e) {
       emit(ProfileState.failure(e));
     }
