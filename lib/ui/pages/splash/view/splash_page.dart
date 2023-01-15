@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
+import 'package:go_router_flow/go_router_flow.dart';
 import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/data/repository/token_repository.dart';
@@ -51,13 +51,9 @@ class _SplashPageWidgetState extends State<_SplashPageWidget> {
     return BlocListener<SplashBloc, SplashState>(
       listener: (context, state) {
         if (state is SplashUnauthorized) {
-          context.goNamed(Routes.login);
-
-        // Navigator.pushNamedAndRemoveUntil(context, RoutesPage.login, (route) => false);
+          context.goNamed(RouteName.login);
         } else if (state is SplashAuthorized) {
-        context.goNamed(Routes.profile);
-
-        // Navigator.pushNamedAndRemoveUntil(context, RoutesPage.profile, (route) => false);
+          context.goNamed(RouteName.profile);
         }
       },
       child: Scaffold(

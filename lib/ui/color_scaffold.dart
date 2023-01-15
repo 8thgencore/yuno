@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:go_router_flow/go_router_flow.dart';
 import 'package:yuno/app/routes/routes.dart';
 
 class ColorsScaffold extends StatefulWidget {
@@ -16,10 +16,10 @@ class _ColorsScaffoldState extends State<ColorsScaffold> {
   Widget build(BuildContext context) {
     final selectedIndex = () {
       final location = GoRouter.of(context).location;
-      if (location.startsWith('/profile')) {
+      if (location.startsWith(RoutePath.profile)) {
         return 0;
       }
-      if (location.startsWith('/profile')) {
+      if (location.startsWith(RoutePath.splash)) {
         return 1;
       }
       return 2;
@@ -34,15 +34,14 @@ class _ColorsScaffoldState extends State<ColorsScaffold> {
             context.pop();
             return;
           }
-
           final routeName = () {
             if (index == 0) {
-              return Routes.profile;
+              return RouteName.profile;
             }
             if (index == 1) {
-              return Routes.profile;
+              return RouteName.profile;
             }
-            return Routes.profile;
+            return RouteName.profile;
           }();
 
           context.goNamed(routeName);

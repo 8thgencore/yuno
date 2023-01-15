@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
+import 'package:go_router_flow/go_router_flow.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/routes.dart';
@@ -33,7 +33,7 @@ class LoginPage extends StatelessWidget {
 class _LoginPageWidget extends StatelessWidget {
   const _LoginPageWidget();
 
-  static const double _credWidgetH = 298;
+  static const double _credWidgetH = 306;
   static const double fingerprintWidgetH = 100;
   static const double errorWidgetH = 86;
 
@@ -43,9 +43,7 @@ class _LoginPageWidget extends StatelessWidget {
       listener: (context, state) {
         if (state is LoginCompleted) {
           context.loaderOverlay.hide();
-          context.goNamed(Routes.profile);
-
-        // Navigator.pushNamedAndRemoveUntil(context, RoutesPage.profile, (route) => false);
+          context.goNamed(RouteName.profile);
         } else if (state is LoginInProgress) {
           context.loaderOverlay.show();
         } else if (state is LoginFieldsInfo) {
@@ -281,7 +279,7 @@ class _BottomWidgetState extends State<_BottomWidget> {
               const Spacer(),
               TextButton(
                 child: Text('Forgot Password?', style: AppTypography.l14d),
-                onPressed:() => context.goNamed(Routes.splash),
+                onPressed: () => context.goNamed(RouteName.splash),
                 // onPressed: () => Navigator.pushNamedAndRemoveUntil(
                 //   context,
                 //   RoutesPage.splash,
@@ -303,7 +301,7 @@ class _BottomWidgetState extends State<_BottomWidget> {
                   'Sign Up',
                   style: AppTypography.l14d.copyWith(color: AppColors.primary100),
                 ),
-                onPressed:() => context.goNamed(Routes.register),
+                onPressed: () => context.goNamed(RouteName.register),
                 //
                 // onPressed: () => Navigator.pushNamedAndRemoveUntil(
                 //   context,

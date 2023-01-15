@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:go_router_flow/go_router_flow.dart';
+// import 'package:go_router/go_router.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/home/edit_profile/bloc/profile_edit_bloc.dart';
@@ -100,7 +102,7 @@ class _ProfileEditContentWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               GestureDetector(
-                onTap: () => Navigator.maybePop(context, true),
+                onTap: () => context.pop(true),
                 child: Assets.svg.backArrow.svg(),
               ),
               const SizedBox(height: 12),
