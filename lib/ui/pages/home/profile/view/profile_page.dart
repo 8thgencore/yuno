@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:yuno/api/user/models/i_image_media_read.dart';
 import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/routes.dart';
@@ -18,11 +19,13 @@ class ProfilePage extends StatelessWidget {
       child: BlocListener<ProfileBloc, ProfileState>(
         listenWhen: (_, current) => current == const ProfileState.logout(),
         listener: (context, state) {
-          Navigator.pushNamedAndRemoveUntil(
-            context,
-            RoutesPage.login,
-            (route) => false,
-          );
+          context.goNamed(Routes.login);
+
+          // Navigator.pushNamedAndRemoveUntil(
+          //   context,
+          //   RoutesPage.login,
+          //   (route) => false,
+          // );
         },
         child: const Scaffold(
           backgroundColor: AppColors.screen100,
@@ -50,17 +53,21 @@ class _ProfileContentWidget extends StatelessWidget {
             text: 'Edit Profile',
             icon: Assets.svg.edit.svg(height: 28, color: AppColors.primary100),
             onPressed: () async {
-              final isUpdate = await Navigator.pushNamed(context, RoutesPage.profileEdit);
-              if (isUpdate == true) {
-                context.read<ProfileBloc>().add(const ProfileEvent.update());
-              }
+              // context.goNamed(Routes.profileEdit);
+              context.goNamed(Routes.profileEdit);
+              // final isUpdate =   context.goNamed(Routes.profileEdit);
+              // if (isUpdate == true) {
+              //   context.read<ProfileBloc>().add(const ProfileEvent.update());
+              // }
             },
           ),
           const SizedBox(height: 16),
           ProfileButtonWidget(
             text: 'Change Password',
             icon: Assets.svg.lock.svg(height: 28, color: AppColors.secondary100),
-            onPressed: () => Navigator.pushNamed(context, RoutesPage.profileChangePassword),
+            onPressed:() => context.goNamed(Routes.profileChangePassword),
+
+            // onPressed: () => Navigator.pushNamed(context, RoutesPage.profileChangePassword),
           ),
           const SizedBox(height: 16),
           ProfileButtonWidget(

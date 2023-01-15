@@ -25,8 +25,11 @@ dependencies:
   pretty_dio_logger: ^1.1.1
   retrofit: ^3.3.1
 
+  # Routers
+  go_router: ^6.0.1
+
   # Local
-  shared_preferences: ^2.0.15
+  shared_preferences: ^2.0.16
 
   # DI
   get_it: ^7.2.0
@@ -43,7 +46,7 @@ dependencies:
   email_validator: ^2.1.17
   json_annotation: ^4.7.0
   freezed_annotation: ^2.2.0
-  file_picker: ^5.2.4
+  file_picker: ^5.2.5
 
 dev_dependencies:
   build_runner: ^2.3.3
@@ -52,7 +55,7 @@ dev_dependencies:
   json_serializable: ^6.5.4
   mocktail: ^0.3.0
   retrofit_generator: ^4.2.0
-  swagger_parser: ^0.6.2
+  swagger_parser: ^0.6.3
 
 flutter:
   uses-material-design: true

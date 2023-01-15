@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/routes.dart';
@@ -41,7 +42,9 @@ class _RegistrationPageWidget extends StatelessWidget {
       listener: (context, state) {
         if (state is RegistrationCompleted) {
           context.loaderOverlay.hide();
-          Navigator.pushNamedAndRemoveUntil(context, RoutesPage.login, (route) => false);
+          context.goNamed(Routes.login);
+
+        // Navigator.pushNamedAndRemoveUntil(context, RoutesPage.login, (route) => false);
         } else if (state is RegistrationInProgress) {
           context.loaderOverlay.show();
         } else if (state is RegistrationFieldsInfo) {
@@ -276,11 +279,13 @@ class _BottomWidgetState extends State<_BottomWidget> {
                   'Login',
                   style: TextStyle(color: AppColors.primary100),
                 ),
-                onPressed: () => Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  RoutesPage.login,
-                  (route) => false,
-                ),
+                onPressed:() => context.goNamed(Routes.login),
+
+                // onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                //   context,
+                //   RoutesPage.login,
+                //   (route) => false,
+                // ),
               ),
             ],
           ),

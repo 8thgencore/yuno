@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/routes.dart';
@@ -42,7 +43,9 @@ class _LoginPageWidget extends StatelessWidget {
       listener: (context, state) {
         if (state is LoginCompleted) {
           context.loaderOverlay.hide();
-          Navigator.pushNamedAndRemoveUntil(context, RoutesPage.profile, (route) => false);
+          context.goNamed(Routes.profile);
+
+        // Navigator.pushNamedAndRemoveUntil(context, RoutesPage.profile, (route) => false);
         } else if (state is LoginInProgress) {
           context.loaderOverlay.show();
         } else if (state is LoginFieldsInfo) {
@@ -278,11 +281,12 @@ class _BottomWidgetState extends State<_BottomWidget> {
               const Spacer(),
               TextButton(
                 child: Text('Forgot Password?', style: AppTypography.l14d),
-                onPressed: () => Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  RoutesPage.splash,
-                  (route) => false,
-                ),
+                onPressed:() => context.goNamed(Routes.splash),
+                // onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                //   context,
+                //   RoutesPage.splash,
+                //   (route) => false,
+                // ),
               ),
             ],
           ),
@@ -299,11 +303,13 @@ class _BottomWidgetState extends State<_BottomWidget> {
                   'Sign Up',
                   style: AppTypography.l14d.copyWith(color: AppColors.primary100),
                 ),
-                onPressed: () => Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  RoutesPage.register,
-                  (route) => false,
-                ),
+                onPressed:() => context.goNamed(Routes.register),
+                //
+                // onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                //   context,
+                //   RoutesPage.register,
+                //   (route) => false,
+                // ),
               ),
             ],
           ),
