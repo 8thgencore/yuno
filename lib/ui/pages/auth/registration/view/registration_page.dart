@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router_flow/go_router_flow.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/routes.dart';
@@ -32,7 +33,7 @@ class RegistrationPage extends StatelessWidget {
 class _RegistrationPageWidget extends StatelessWidget {
   const _RegistrationPageWidget();
 
-  static const double _credWidgetH = 434;
+  static const double _credWidgetH = 444;
   static const double errorWidgetH = 86;
 
   @override
@@ -41,7 +42,9 @@ class _RegistrationPageWidget extends StatelessWidget {
       listener: (context, state) {
         if (state is RegistrationCompleted) {
           context.loaderOverlay.hide();
-          Navigator.pushNamedAndRemoveUntil(context, RoutesPage.login, (route) => false);
+          context.goNamed(RouteName.login);
+
+        // Navigator.pushNamedAndRemoveUntil(context, RoutesPage.login, (route) => false);
         } else if (state is RegistrationInProgress) {
           context.loaderOverlay.show();
         } else if (state is RegistrationFieldsInfo) {
@@ -276,11 +279,7 @@ class _BottomWidgetState extends State<_BottomWidget> {
                   'Login',
                   style: TextStyle(color: AppColors.primary100),
                 ),
-                onPressed: () => Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  RoutesPage.login,
-                  (route) => false,
-                ),
+                onPressed:() => context.goNamed(RouteName.login),
               ),
             ],
           ),

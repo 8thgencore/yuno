@@ -2,11 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router_flow/go_router_flow.dart';
 import 'package:yuno/api/user/models/i_image_media_read.dart';
 import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/resources/resources.dart';
-import 'package:yuno/ui/pages/home/profile/bloc/profile_bloc.dart';
+import 'package:yuno/ui/pages/main/profile_pages/profile/bloc/profile_bloc.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -18,11 +19,7 @@ class ProfilePage extends StatelessWidget {
       child: BlocListener<ProfileBloc, ProfileState>(
         listenWhen: (_, current) => current == const ProfileState.logout(),
         listener: (context, state) {
-          Navigator.pushNamedAndRemoveUntil(
-            context,
-            RoutesPage.login,
-            (route) => false,
-          );
+          context.goNamed(RouteName.login);
         },
         child: const Scaffold(
           backgroundColor: AppColors.screen100,
@@ -50,17 +47,19 @@ class _ProfileContentWidget extends StatelessWidget {
             text: 'Edit Profile',
             icon: Assets.svg.edit.svg(height: 28, color: AppColors.primary100),
             onPressed: () async {
-              final isUpdate = await Navigator.pushNamed(context, RoutesPage.profileEdit);
-              if (isUpdate == true) {
-                context.read<ProfileBloc>().add(const ProfileEvent.update());
-              }
+              final bool? result = await context.pushNamed<bool>(RouteName.profileEdit);
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                if (result ?? false) {
+                  context.read<ProfileBloc>().add(const ProfileEvent.update());
+                }
+              });
             },
           ),
           const SizedBox(height: 16),
           ProfileButtonWidget(
             text: 'Change Password',
             icon: Assets.svg.lock.svg(height: 28, color: AppColors.secondary100),
-            onPressed: () => Navigator.pushNamed(context, RoutesPage.profileChangePassword),
+            onPressed: () => context.goNamed(RouteName.profileChangePassword),
           ),
           const SizedBox(height: 16),
           ProfileButtonWidget(
@@ -102,24 +101,24 @@ class _HeaderWidget extends StatelessWidget {
             // );
           }
           return Column(
-          children: [
-            AvatarWidget(image: user.image),
-            const SizedBox(height: 20),
-            if (user.firstName == '' && user.lastName == '')
-              Text(user.username, style: AppTypography.b22d)
-            else
-              Text('${user.firstName} ${user.lastName}', style: AppTypography.b22d),
-            const SizedBox(height: 12),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 22),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(32),
-                color: AppColors.white100,
+            children: [
+              AvatarWidget(image: user.image),
+              const SizedBox(height: 20),
+              if (user.firstName == '' && user.lastName == '')
+                Text(user.username, style: AppTypography.b22d)
+              else
+                Text('${user.firstName} ${user.lastName}', style: AppTypography.b22d),
+              const SizedBox(height: 12),
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 22),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(32),
+                  color: AppColors.white100,
+                ),
+                child: Text(user.email, style: AppTypography.l12d),
               ),
-              child: Text(user.email, style: AppTypography.l12d),
-            ),
-          ],
-        );
+            ],
+          );
         },
         orElse: () => const SizedBox.shrink(),
       ),

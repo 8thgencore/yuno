@@ -190,6 +190,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.2"
+  convex_bottom_bar:
+    dependency: "direct main"
+    description:
+      name: convex_bottom_bar
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.1.0+1"
   coverage:
     dependency: transitive
     description:
@@ -259,7 +266,7 @@ packages:
       name: file_picker
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.2.4"
+    version: "5.2.5"
   fixnum:
     dependency: transitive
     description:
@@ -387,6 +394,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.2"
+  go_router_flow:
+    dependency: "direct main"
+    description:
+      name: go_router_flow
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "6.0.0"
   graphs:
     dependency: transitive
     description:
@@ -694,7 +708,7 @@ packages:
       name: shared_preferences
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.15"
+    version: "2.0.16"
   shared_preferences_android:
     dependency: transitive
     description:
@@ -702,10 +716,10 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.14"
-  shared_preferences_ios:
+  shared_preferences_foundation:
     dependency: transitive
     description:
-      name: shared_preferences_ios
+      name: shared_preferences_foundation
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
@@ -716,13 +730,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.2"
-  shared_preferences_macos:
-    dependency: transitive
-    description:
-      name: shared_preferences_macos
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.4"
   shared_preferences_platform_interface:
     dependency: transitive
     description:
@@ -860,7 +867,7 @@ packages:
       name: swagger_parser
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.2"
+    version: "0.6.3"
   synchronized:
     dependency: transitive
     description:

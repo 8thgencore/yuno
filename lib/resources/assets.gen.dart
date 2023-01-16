@@ -125,6 +125,13 @@ class $AssetsSvgGen {
   /// File path: assets/svg/back_arrow.svg
   SvgGenImage get backArrow => const SvgGenImage('assets/svg/back_arrow.svg');
 
+  /// File path: assets/svg/calendar.svg
+  SvgGenImage get calendar => const SvgGenImage('assets/svg/calendar.svg');
+
+  /// File path: assets/svg/calendar_filled.svg
+  SvgGenImage get calendarFilled =>
+      const SvgGenImage('assets/svg/calendar_filled.svg');
+
   /// File path: assets/svg/edit.svg
   SvgGenImage get edit => const SvgGenImage('assets/svg/edit.svg');
 
@@ -133,6 +140,12 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/eye-on.svg
   SvgGenImage get eyeOn => const SvgGenImage('assets/svg/eye-on.svg');
+
+  /// File path: assets/svg/grid.svg
+  SvgGenImage get grid => const SvgGenImage('assets/svg/grid.svg');
+
+  /// File path: assets/svg/grid_filled.svg
+  SvgGenImage get gridFilled => const SvgGenImage('assets/svg/grid_filled.svg');
 
   /// File path: assets/svg/lock.svg
   SvgGenImage get lock => const SvgGenImage('assets/svg/lock.svg');
@@ -153,22 +166,39 @@ class $AssetsSvgGen {
   SvgGenImage get roundExclamation =>
       const SvgGenImage('assets/svg/round_exclamation.svg');
 
+  /// File path: assets/svg/stats.svg
+  SvgGenImage get stats => const SvgGenImage('assets/svg/stats.svg');
+
+  /// File path: assets/svg/stats_filled.svg
+  SvgGenImage get statsFilled =>
+      const SvgGenImage('assets/svg/stats_filled.svg');
+
   /// File path: assets/svg/user.svg
   SvgGenImage get user => const SvgGenImage('assets/svg/user.svg');
+
+  /// File path: assets/svg/user_filled.svg
+  SvgGenImage get userFilled => const SvgGenImage('assets/svg/user_filled.svg');
 
   /// List of all assets
   List<SvgGenImage> get values => [
         backArrow,
+        calendar,
+        calendarFilled,
         edit,
         email,
         eyeOn,
+        grid,
+        gridFilled,
         lock,
         logout,
         pencil,
         project,
         roundCheck,
         roundExclamation,
-        user
+        stats,
+        statsFilled,
+        user,
+        userFilled
       ];
 }
 
