@@ -280,11 +280,6 @@ class _BottomWidgetState extends State<_BottomWidget> {
               TextButton(
                 child: Text('Forgot Password?', style: AppTypography.l14d),
                 onPressed: () => context.goNamed(RouteName.splash),
-                // onPressed: () => Navigator.pushNamedAndRemoveUntil(
-                //   context,
-                //   RoutesPage.splash,
-                //   (route) => false,
-                // ),
               ),
             ],
           ),
@@ -302,12 +297,6 @@ class _BottomWidgetState extends State<_BottomWidget> {
                   style: AppTypography.l14d.copyWith(color: AppColors.primary100),
                 ),
                 onPressed: () => context.goNamed(RouteName.register),
-                //
-                // onPressed: () => Navigator.pushNamedAndRemoveUntil(
-                //   context,
-                //   RoutesPage.register,
-                //   (route) => false,
-                // ),
               ),
             ],
           ),

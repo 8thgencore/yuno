@@ -7,14 +7,17 @@ import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/data/repository/user_repository.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/domain/repository/api_user_repository.dart';
-import 'package:yuno/ui/color_scaffold.dart';
 import 'package:yuno/ui/pages/auth/login/view/login_page.dart';
 import 'package:yuno/ui/pages/auth/registration/view/registration_page.dart';
-import 'package:yuno/ui/pages/home/change_password/bloc/change_password_bloc.dart';
-import 'package:yuno/ui/pages/home/change_password/view/change_password_page.dart';
-import 'package:yuno/ui/pages/home/edit_profile/bloc/profile_edit_bloc.dart';
-import 'package:yuno/ui/pages/home/edit_profile/view/profile_edit_page.dart';
-import 'package:yuno/ui/pages/home/profile/view/profile_page.dart';
+import 'package:yuno/ui/pages/main/calendar/view/statistics_page.dart';
+import 'package:yuno/ui/pages/main/home/view/home_page.dart';
+import 'package:yuno/ui/pages/main/main_scaffold.dart';
+import 'package:yuno/ui/pages/main/profile_pages/change_password/bloc/change_password_bloc.dart';
+import 'package:yuno/ui/pages/main/profile_pages/change_password/view/change_password_page.dart';
+import 'package:yuno/ui/pages/main/profile_pages/edit_profile/bloc/profile_edit_bloc.dart';
+import 'package:yuno/ui/pages/main/profile_pages/edit_profile/view/profile_edit_page.dart';
+import 'package:yuno/ui/pages/main/profile_pages/profile/view/profile_page.dart';
+import 'package:yuno/ui/pages/main/statistics/view/statistics_page.dart';
 import 'package:yuno/ui/pages/splash/view/splash_page.dart';
 
 mixin RouterMixin on State<App> {
@@ -34,10 +37,23 @@ mixin RouterMixin on State<App> {
           builder: (context, state) => const SplashPage(),
         ),
         ShellRoute(
-          builder: (_, __, child) {
-            return ColorsScaffold(child: child);
-          },
+          builder: (_, __, child) => MainScaffold(child: child),
           routes: [
+            GoRoute(
+              name: RouteName.home,
+              path: RoutePath.home,
+              builder: (_, __) => const HomePage(),
+            ),
+            GoRoute(
+              name: RouteName.calendar,
+              path: RoutePath.calendar,
+              builder: (_, __) => const CalendarPage(),
+            ),
+            GoRoute(
+              name: RouteName.statistics,
+              path: RoutePath.statistics,
+              builder: (_, __) => const StatisticsPage(),
+            ),
             GoRoute(
               name: RouteName.profile,
               path: RoutePath.profile,
@@ -68,32 +84,11 @@ mixin RouterMixin on State<App> {
                 ),
               ],
             ),
-            // GoRoute(
-            //   name: RouteName.register,
-            //   path: RoutePath.register,
-            //   builder: (_, __) => RegistrationPage(),
-            //   routes: [
-            //     // ColorDetailView.getRoute(
-            //     //   Colors.green,
-            //     // ),
-            //   ],
-            // ),
-            // GoRoute(
-            //   name: RouteName.login,
-            //   path: RoutePath.login,
-            //   builder: (_, __) => LoginPage(),
-            //   routes: [
-            //     // ColorDetailView.getRoute(
-            //     //   Colors.blue,
-            //     // ),
-            //   ],
-            // ),
           ],
         ),
         GoRoute(
           name: RouteName.login,
           path: RoutePath.login,
-          // parentNavigatorKey: rootNavigatorKey,
           builder: (context, state) => const LoginPage(),
         ),
         GoRoute(
@@ -101,64 +96,6 @@ mixin RouterMixin on State<App> {
           path: RoutePath.register,
           builder: (context, state) => const RegistrationPage(),
         ),
-        // ShellRoute(
-        //   builder: (context, state, child) {
-        //     return HomeScaffold(
-        //       child: child,
-        //     );
-        //   },
-        //   routes: [
-        //     GoRoute(
-        //       name: Routes.home,
-        //       path: '/',
-        //       builder: (_, __) => const HomeView(),
-        //     ),
-        //     GoRoute(
-        //       name: Routes.product,
-        //       path: '/product/:id',
-        //       builder: (_, state) {
-        //         final id = state.params['id']!;
-        //         return ProductView(
-        //           id: int.parse(id),
-        //         );
-        //       },
-        //       redirect: (context, state) => authGuard(
-        //         context: context,
-        //         state: state,
-        //         callbackURL: '/product/${state.params['id']}',
-        //       ),
-        //     ),
-        //   ],
-        // ),
-        // GoRoute(
-        //   name: Routes.signIn,
-        //   path: '/sign-in',
-        //   parentNavigatorKey: rootNavigatorKey,
-        //   builder: (_, state) {
-        //     final callbackURL = state.queryParams['callbackURL'];
-        //     return SignInView(
-        //       callbackURL: callbackURL ?? '/',
-        //     );
-        //   },
-        //   redirect: (context, state) {
-        //     final isSignedIn = context.read<SessionController>().isSignedIn;
-        //     if (isSignedIn) {
-        //       return '/';
-        //     }
-        //     return null;
-        //   },
-        // ),
-        // GoRoute(
-        //   name: Routes.profile,
-        //   path: '/profile',
-        //   parentNavigatorKey: rootNavigatorKey,
-        //   builder: (_, __) => const ProfileView(),
-        //   redirect: (context, state) => authGuard(
-        //     context: context,
-        //     state: state,
-        //     callbackURL: '/profile',
-        //   ),
-        // ),
       ],
     );
     return _router!;
