@@ -26,14 +26,12 @@ mixin RouterMixin on State<App> {
     _router ??= GoRouter(
       initialLocation: RoutePath.splash,
       navigatorKey: rootNavigatorKey,
-      errorBuilder: (_, state) => SplashPage(
-          // goRouterState: state,
-          ),
+      errorBuilder: (_, state) => const SplashPage(),
       routes: [
         GoRoute(
           name: RouteName.splash,
           path: RoutePath.splash,
-          builder: (context, state) => SplashPage(),
+          builder: (context, state) => const SplashPage(),
         ),
         ShellRoute(
           builder: (_, __, child) {
@@ -43,27 +41,29 @@ mixin RouterMixin on State<App> {
             GoRoute(
               name: RouteName.profile,
               path: RoutePath.profile,
-              builder: (_, __) => ProfilePage(),
+              builder: (_, __) => const ProfilePage(),
               routes: [
                 GoRoute(
                   name: RouteName.profileEdit,
                   path: RoutePath.profileEdit,
+                  parentNavigatorKey: rootNavigatorKey,
                   builder: (context, state) => BlocProvider(
                     create: (context) => ProfileEditBloc(
                       apiUserRepository: sl.get<ApiUserRepository>(),
                       userRepository: sl.get<UserRepository>(),
                     )..add(const ProfileEditEvent.started()),
-                    child: ProfileEditPage(),
+                    child: const ProfileEditPage(),
                   ),
                 ),
                 GoRoute(
                   name: RouteName.profileChangePassword,
                   path: RoutePath.profileChangePassword,
+                  parentNavigatorKey: rootNavigatorKey,
                   builder: (context, state) => BlocProvider(
                     create: (context) => ChangePasswordBloc(
                       apiAuthRepository: sl.get<ApiAuthRepository>(),
                     ),
-                    child: ChangePasswordPage(),
+                    child: const ChangePasswordPage(),
                   ),
                 ),
               ],
@@ -94,12 +94,12 @@ mixin RouterMixin on State<App> {
           name: RouteName.login,
           path: RoutePath.login,
           // parentNavigatorKey: rootNavigatorKey,
-          builder: (context, state) => LoginPage(),
+          builder: (context, state) => const LoginPage(),
         ),
         GoRoute(
           name: RouteName.register,
           path: RoutePath.register,
-          builder: (context, state) => RegistrationPage(),
+          builder: (context, state) => const RegistrationPage(),
         ),
         // ShellRoute(
         //   builder: (context, state, child) {
