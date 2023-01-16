@@ -280,12 +280,6 @@ class _BottomWidgetState extends State<_BottomWidget> {
                   style: TextStyle(color: AppColors.primary100),
                 ),
                 onPressed:() => context.goNamed(RouteName.login),
-
-                // onPressed: () => Navigator.pushNamedAndRemoveUntil(
-                //   context,
-                //   RoutesPage.login,
-                //   (route) => false,
-                // ),
               ),
             ],
           ),

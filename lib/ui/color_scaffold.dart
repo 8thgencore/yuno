@@ -1,6 +1,9 @@
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:yuno/app/routes/routes.dart';
+import 'package:yuno/resources/colors.dart';
+import 'package:yuno/resources/resources.dart';
 
 class ColorsScaffold extends StatefulWidget {
   const ColorsScaffold({super.key, required this.child});
@@ -27,48 +30,34 @@ class _ColorsScaffoldState extends State<ColorsScaffold> {
 
     return Scaffold(
       body: widget.child,
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: selectedIndex,
-        onDestinationSelected: (index) {
-          if (index == selectedIndex && context.canPop()) {
-            context.pop();
-            return;
-          }
-          final routeName = () {
-            if (index == 0) {
-              return RouteName.profile;
-            }
-            if (index == 1) {
-              return RouteName.profile;
-            }
-            return RouteName.profile;
-          }();
-
-          context.goNamed(routeName);
-        },
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(
-              Icons.reddit,
-              color: Colors.red,
-            ),
-            label: 'Red',
+      bottomNavigationBar: ConvexAppBar(
+        height: 70,
+        cornerRadius: 25,
+        style: TabStyle.fixedCircle,
+        color: AppColors.primary100,
+        activeColor: AppColors.primary100,
+        backgroundColor: AppColors.white100,
+        shadowColor: AppColors.white100,
+        items: [
+          TabItem(
+            activeIcon: Assets.svg.gridFilled.svg(),
+            icon: Assets.svg.grid.svg(color: AppColors.dark20),
           ),
-          NavigationDestination(
-            icon: Icon(
-              Icons.reddit,
-              color: Colors.green,
-            ),
-            label: 'Green',
+          TabItem(
+            activeIcon: Assets.svg.calendarFilled.svg(),
+            icon: Assets.svg.calendar.svg(color: AppColors.dark20),
           ),
-          NavigationDestination(
-            icon: Icon(
-              Icons.reddit,
-              color: Colors.blue,
-            ),
-            label: 'Blue',
+          const TabItem(icon: Icons.add),
+          TabItem(
+            activeIcon: Assets.svg.statsFilled.svg(),
+            icon: Assets.svg.stats.svg(color: AppColors.dark20),
+          ),
+          TabItem(
+            activeIcon: Assets.svg.userFilled.svg(),
+            icon: Assets.svg.user.svg(color: AppColors.dark20),
           ),
         ],
+        onTap: (int i) => print('click index=$i'),
       ),
     );
   }

@@ -15,7 +15,7 @@ dependencies:
   intl: ^0.17.0
   rxdart: ^0.27.7
 
-  # State manager
+  # State management
   bloc: ^8.1.0
   flutter_bloc: ^8.1.1
   bloc_concurrency: ^0.2.0
@@ -26,7 +26,7 @@ dependencies:
   retrofit: ^3.3.1
 
   # Routers
-#  go_router: ^6.0.1
+  # go_router: ^6.0.1
   go_router_flow: ^6.0.0
 
   # Local
@@ -40,6 +40,7 @@ dependencies:
   cached_network_image: ^3.2.3
   fluttertoast: ^8.1.2
   loader_overlay: ^2.1.0
+  convex_bottom_bar: ^3.1.0+1
 
   # Utils
   flutter_dotenv: ^5.0.2
