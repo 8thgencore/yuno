@@ -147,6 +147,10 @@ class $AssetsSvgGen {
   /// File path: assets/svg/grid_filled.svg
   SvgGenImage get gridFilled => const SvgGenImage('assets/svg/grid_filled.svg');
 
+  /// File path: assets/svg/home_top_ornament.svg
+  SvgGenImage get homeTopOrnament =>
+      const SvgGenImage('assets/svg/home_top_ornament.svg');
+
   /// File path: assets/svg/lock.svg
   SvgGenImage get lock => const SvgGenImage('assets/svg/lock.svg');
 
@@ -189,6 +193,7 @@ class $AssetsSvgGen {
         eyeOn,
         grid,
         gridFilled,
+        homeTopOrnament,
         lock,
         logout,
         pencil,

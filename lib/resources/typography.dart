@@ -22,6 +22,18 @@ abstract class AppTypography {
     fontWeight: FontWeight.w600,
   );
 
+  static TextStyle b18l = const TextStyle(
+    color: AppColors.white100,
+    fontSize: 18,
+    fontWeight: FontWeight.w600,
+  );
+
+  static TextStyle l18l = const TextStyle(
+    color: AppColors.white100,
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+  );
+
   static TextStyle b16l = const TextStyle(
     color: AppColors.white100,
     fontSize: 16,
