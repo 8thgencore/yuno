@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:yuno/resources/resources.dart';
+import 'package:yuno/ui/widgets/avatar_stacked.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -16,7 +18,7 @@ class HomePage extends StatelessWidget {
 }
 
 class _HomeContentWidget extends StatelessWidget {
-  const _HomeContentWidget({super.key});
+  const _HomeContentWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class _HomeContentWidget extends StatelessWidget {
           _TopCardWidget(),
           SizedBox(height: 18),
           _ProjectsListWidget(),
-          SizedBox(height: 10),
+          SizedBox(height: 36),
           _CheckListWidget(),
           SizedBox(height: 18),
         ],
@@ -36,9 +38,7 @@ class _HomeContentWidget extends StatelessWidget {
 }
 
 class _TopCardWidget extends StatelessWidget {
-  const _TopCardWidget({
-    super.key,
-  });
+  const _TopCardWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +85,41 @@ class _TopCardWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(18),
                   color: AppColors.white100,
                 ),
+                child: Row(
+                  children: [
+                    Container(
+                      height: 46,
+                      width: 4,
+                      decoration: BoxDecoration(
+                        color: AppColors.secondary100,
+                        borderRadius: BorderRadius.circular(2),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Canoz Homescreen Update',
+                            style: AppTypography.b16d,
+                            overflow: TextOverflow.fade,
+                            softWrap: false,
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            'Today, 4:00 PM',
+                            style: AppTypography.l12g,
+                            overflow: TextOverflow.fade,
+                            softWrap: false,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Icon(Icons.arrow_forward_ios, color: AppColors.grey80),
+                  ],
+                ),
               )
             ],
           )
@@ -95,14 +130,10 @@ class _TopCardWidget extends StatelessWidget {
 }
 
 class _ProjectsListWidget extends StatelessWidget {
-  const _ProjectsListWidget({
-    super.key,
-  });
+  const _ProjectsListWidget();
 
   @override
   Widget build(BuildContext context) {
-    final List<String> listItems = <String>['Item1', 'Item2', 'Item3', 'Item4', 'Item5'];
-    final List<int> colorCodes = <int>[600, 500, 400, 300, 100];
     return Column(
       children: [
         Padding(
@@ -115,19 +146,16 @@ class _ProjectsListWidget extends StatelessWidget {
             ],
           ),
         ),
-        Container(
+        const SizedBox(height: 18),
+        SizedBox(
           height: 164,
           child: ListView.builder(
+            // key: GlobalKey(),
             scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-            itemCount: listItems.length,
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            itemCount: 6,
             itemBuilder: (BuildContext context, int index) {
-              return Container(
-                width: 160,
-                margin: const EdgeInsets.symmetric(horizontal: 12),
-                color: Colors.pink[colorCodes[index]],
-                child: Center(child: Text(listItems[index])),
-              );
+              return const _ProjectCardWidget();
             },
           ),
         ),
@@ -136,13 +164,122 @@ class _ProjectsListWidget extends StatelessWidget {
   }
 }
 
-class _CheckListWidget extends StatelessWidget {
-  const _CheckListWidget({super.key});
+class _ProjectCardWidget extends StatelessWidget {
+  const _ProjectCardWidget();
 
   @override
   Widget build(BuildContext context) {
-    final List<String> listItems = <String>['Item1', 'Item2', 'Item3', 'Item4', 'Item5'];
-    final List<int> colorCodes = <int>[600, 500, 400, 300, 100];
+    return Stack(
+      children: [
+        Container(
+          height: 150,
+          width: 222,
+          margin: const EdgeInsets.symmetric(horizontal: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          decoration: BoxDecoration(
+            color: AppColors.white80,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    height: 46,
+                    width: 4,
+                    decoration: BoxDecoration(
+                      color: AppColors.secondary100,
+                      borderRadius: BorderRadius.circular(2),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: 160,
+                        child: Text(
+                          'Rando Mobile Ap22222',
+                          style: AppTypography.b16d,
+                          overflow: TextOverflow.fade,
+                          softWrap: false,
+                        ),
+                      ),
+                      Text(
+                        'Mobile App Redesign',
+                        style: AppTypography.l12g,
+                        overflow: TextOverflow.fade,
+                        softWrap: false,
+                      ),
+                    ],
+                  )
+                ],
+              ),
+              const SizedBox(height: 16),
+              const AvatarStacked(
+                urlImages: [
+                  'https://images.unsplash.com/photo-1554151228-14d9def656e4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=633&q=80',
+                  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+                  'https://images.unsplash.com/photo-1616766098956-c81f12114571?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+                ],
+              ),
+            ],
+          ),
+        ),
+        const Positioned(
+          left: 24,
+          bottom: 0,
+          child: LinearPercentIndicatorWidget(percent: 0.62),
+        ),
+      ],
+    );
+  }
+}
+
+class LinearPercentIndicatorWidget extends StatelessWidget {
+  const LinearPercentIndicatorWidget({
+    super.key,
+    required this.percent,
+  });
+
+  final double percent;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 30,
+      width: 200,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: AppColors.white100,
+      ),
+      child: Row(
+        children: [
+          LinearPercentIndicator(
+            // width: MediaQuery.of(context).size.width - 50,
+            width: 168,
+            lineHeight: 8,
+            percent: percent,
+            barRadius: const Radius.circular(16),
+            progressColor: AppColors.primary100,
+            backgroundColor: AppColors.dark10,
+          ),
+          Text(
+            '${(percent * 100).round()}%',
+            style: AppTypography.r10d,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _CheckListWidget extends StatelessWidget {
+  const _CheckListWidget();
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -152,17 +289,45 @@ class _CheckListWidget extends StatelessWidget {
         ),
         ListView.builder(
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
-          itemCount: listItems.length,
+          itemCount: 5,
           itemBuilder: (BuildContext context, int index) {
             return Container(
-              key: GlobalObjectKey(listItems[index]),
               height: 80,
               margin: const EdgeInsets.symmetric(vertical: 10),
-              color: Colors.pink[colorCodes[index]],
-              child: Center(
-                child: Text(listItems[index]),
+              padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 20),
+              decoration: BoxDecoration(
+                color: AppColors.white100,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Icon Design',
+                          style: AppTypography.b16d,
+                          overflow: TextOverflow.fade,
+                          softWrap: false,
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          'Canoz Mobile App',
+                          style: AppTypography.l12g,
+                          overflow: TextOverflow.fade,
+                          softWrap: false,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Checkbox(
+                    value: true,
+                    onChanged: (b) {},
+                  ),
+                ],
               ),
             );
           },

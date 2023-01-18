@@ -41,6 +41,7 @@ dependencies:
   fluttertoast: ^8.1.2
   loader_overlay: ^2.1.0
   convex_bottom_bar: ^3.1.0+1
+  percent_indicator: ^4.2.2
 
   # Utils
   flutter_dotenv: ^5.0.2

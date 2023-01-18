@@ -100,6 +100,7 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
       username: _user!.username,
     );
     // await Future.delayed(Duration(seconds: 3));
+    emit(state.copyWith(status: ProfileEditStatus.loaded));
     if (result != null) {
       emit(state.copyWith(
         status: ProfileEditStatus.failure,
