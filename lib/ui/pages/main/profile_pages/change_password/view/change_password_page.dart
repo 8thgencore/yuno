@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/profile_pages/change_password/bloc/change_password_bloc.dart';
 import 'package:yuno/ui/widgets/custom_rounded_button.dart';
@@ -125,8 +126,10 @@ class _ChangePasswordContentWidget extends StatelessWidget {
                 topRight: Radius.circular(20.0),
               ),
             ),
-            child: const SingleChildScrollView(
-              child: _ListTextFieldWidget(),
+            child: removeScrollingGlow(
+              child: const SingleChildScrollView(
+                child: _ListTextFieldWidget(),
+              ),
             ),
           ),
         ),

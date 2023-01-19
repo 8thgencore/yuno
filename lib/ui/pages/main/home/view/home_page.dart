@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/widgets/avatar_stacked.dart';
 
@@ -22,16 +23,18 @@ class _HomeContentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: const [
-          _TopCardWidget(),
-          SizedBox(height: 18),
-          _ProjectsListWidget(),
-          SizedBox(height: 36),
-          _CheckListWidget(),
-          SizedBox(height: 18),
-        ],
+    return removeScrollingGlow(
+      child: SingleChildScrollView(
+        child: Column(
+          children: const [
+            _TopCardWidget(),
+            SizedBox(height: 18),
+            _ProjectsListWidget(),
+            SizedBox(height: 36),
+            _CheckListWidget(),
+            SizedBox(height: 18),
+          ],
+        ),
       ),
     );
   }
@@ -153,7 +156,7 @@ class _ProjectsListWidget extends StatelessWidget {
             // key: GlobalKey(),
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(horizontal: 12),
-            itemCount: 6,
+            itemCount: 4,
             itemBuilder: (BuildContext context, int index) {
               return const _ProjectCardWidget();
             },
@@ -293,46 +296,71 @@ class _CheckListWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
           itemCount: 5,
           itemBuilder: (BuildContext context, int index) {
-            return Container(
-              height: 80,
-              margin: const EdgeInsets.symmetric(vertical: 10),
-              padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 20),
-              decoration: BoxDecoration(
-                color: AppColors.white100,
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Icon Design',
-                          style: AppTypography.b16d,
-                          overflow: TextOverflow.fade,
-                          softWrap: false,
-                        ),
-                        const SizedBox(height: 6),
-                        Text(
-                          'Canoz Mobile App',
-                          style: AppTypography.l12g,
-                          overflow: TextOverflow.fade,
-                          softWrap: false,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Checkbox(
-                    value: true,
-                    onChanged: (b) {},
-                  ),
-                ],
-              ),
-            );
+            return const TaskCardWidget();
           },
         ),
       ],
+    );
+  }
+}
+
+class TaskCardWidget extends StatefulWidget {
+  const TaskCardWidget({
+    super.key,
+  });
+
+  @override
+  State<TaskCardWidget> createState() => _TaskCardWidgetState();
+}
+
+class _TaskCardWidgetState extends State<TaskCardWidget> {
+  bool value = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 80,
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 20),
+      decoration: BoxDecoration(
+        color: AppColors.white100,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Icon Design',
+                  style: AppTypography.b16d,
+                  overflow: TextOverflow.fade,
+                  softWrap: false,
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  'Canoz Mobile App',
+                  style: AppTypography.l12g,
+                  overflow: TextOverflow.fade,
+                  softWrap: false,
+                ),
+              ],
+            ),
+          ),
+          Transform.scale(
+            scale: 1.4,
+            child: Checkbox(
+              value: value,
+              onChanged: (b) {
+                setState(() {
+                  value = !value;
+                });
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
