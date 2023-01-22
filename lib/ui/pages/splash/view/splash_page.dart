@@ -4,6 +4,7 @@ import 'package:go_router_flow/go_router_flow.dart';
 import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/data/repository/token_repository.dart';
+import 'package:yuno/domain/repository/api_user_repository.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/splash/bloc/splash_bloc.dart';
 
@@ -20,7 +21,10 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    _bloc = SplashBloc(tokenRepository: sl.get<TokenRepository>());
+    _bloc = SplashBloc(
+      tokenRepository: sl.get<TokenRepository>(),
+      apiUserRepository: sl.get<ApiUserRepository>(),
+    );
     _bloc.add(const SplashLoaded());
   }
 

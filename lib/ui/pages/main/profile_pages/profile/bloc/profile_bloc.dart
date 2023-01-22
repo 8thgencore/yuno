@@ -46,7 +46,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ) async {
     emit(const ProfileState.loading());
     try {
-      await apiUserRepository.getData();
       final user = await userRepository.getItem();
       final refreshToken = await refreshTokenRepository.getItem();
       if (user == null || refreshToken == null) {

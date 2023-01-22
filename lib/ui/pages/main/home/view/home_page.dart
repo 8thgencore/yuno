@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:yuno/api/task/models/i_task_read.dart';
+import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
+import 'package:yuno/data/repository/user_repository.dart';
+import 'package:yuno/domain/repository/api_task_repository.dart';
 import 'package:yuno/resources/resources.dart';
+import 'package:yuno/ui/pages/main/home/bloc/home_header_bloc.dart';
 import 'package:yuno/ui/widgets/avatar_stacked.dart';
 
 class HomePage extends StatelessWidget {
@@ -45,89 +51,142 @@ class _TopCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(10),
-      height: 245,
-      decoration: BoxDecoration(
-        color: AppColors.primary100,
-        borderRadius: BorderRadius.circular(30),
-      ),
-      child: Stack(
-        children: [
-          Assets.svg.homeTopOrnament.svg(
-            width: double.infinity,
-            color: AppColors.white40,
-            fit: BoxFit.cover,
+    return BlocBuilder<HomeHeaderBloc, HomeHeaderState>(
+      builder: (context, state) => state.maybeWhen(
+        loading: () => Container(
+          margin: const EdgeInsets.all(10),
+          height: 245,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: AppColors.primary100,
+            borderRadius: BorderRadius.circular(30),
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: const Center(child: CircularProgressIndicator(color: AppColors.white100)),
+        ),
+        loaded: (username, taskLength, lastTask) => Container(
+          margin: const EdgeInsets.all(10),
+          height: 245,
+          decoration: BoxDecoration(
+            color: AppColors.primary100,
+            borderRadius: BorderRadius.circular(30),
+          ),
+          child: Stack(
             children: [
-              const SizedBox(height: 30),
-              Text(
-                'Hi, Jonathan!',
-                style: AppTypography.b18l,
+              Assets.svg.homeTopOrnament.svg(
+                width: double.infinity,
+                color: AppColors.white40,
+                fit: BoxFit.cover,
               ),
-              const SizedBox(height: 12),
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
-                height: 44,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(24),
-                  color: AppColors.dark100,
-                ),
-                child: Text(
-                  '6 Active Task',
-                  style: AppTypography.l18l,
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.all(14),
-                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
-                height: 100,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(18),
-                  color: AppColors.white100,
-                ),
-                child: Row(
-                  children: [
-                    Container(
-                      height: 46,
-                      width: 4,
-                      decoration: BoxDecoration(
-                        color: AppColors.secondary100,
-                        borderRadius: BorderRadius.circular(2),
-                      ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const SizedBox(height: 30),
+                  Text(
+                    'Hi, $username!',
+                    style: AppTypography.b18l,
+                  ),
+                  const SizedBox(height: 12),
+                  Container(
+                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
+                    height: 44,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(24),
+                      color: AppColors.dark100,
                     ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Canoz Homescreen Update',
-                            style: AppTypography.b16d,
-                            overflow: TextOverflow.fade,
-                            softWrap: false,
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            'Today, 4:00 PM',
-                            style: AppTypography.l12g,
-                            overflow: TextOverflow.fade,
-                            softWrap: false,
-                          ),
-                        ],
-                      ),
+                    child: Text(
+                      '$taskLength Active Task',
+                      style: AppTypography.l18l,
                     ),
-                    const Icon(Icons.arrow_forward_ios, color: AppColors.grey80),
-                  ],
-                ),
+                  ),
+                  _LastTaskWidget(task: lastTask),
+                ],
               )
             ],
-          )
-        ],
+          ),
+        ),
+        failure: (text) => Container(
+          margin: const EdgeInsets.all(10),
+          height: 245,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: AppColors.primary100,
+            borderRadius: BorderRadius.circular(30),
+          ),
+          child: Center(child: Text(text.toString(), style: AppTypography.b16l)),
+        ),
+        orElse: () => Container(
+          margin: const EdgeInsets.all(10),
+          height: 245,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: AppColors.primary100,
+            borderRadius: BorderRadius.circular(30),
+          ),
+        ),
       ),
+    );
+  }
+}
+
+class _LastTaskWidget extends StatelessWidget {
+  const _LastTaskWidget({this.task});
+
+  final ITaskRead? task;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(14),
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
+      height: 100,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(18),
+        color: AppColors.white100,
+      ),
+      child: task != null
+          ? Row(
+              children: [
+                Container(
+                  height: 46,
+                  width: 4,
+                  decoration: BoxDecoration(
+                    color: AppColors.secondary100,
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        task!.name,
+                        style: AppTypography.b16d,
+                        overflow: TextOverflow.fade,
+                        softWrap: false,
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        task!.deadline ?? 'Has no deadline',
+                        style: AppTypography.l12g,
+                        overflow: TextOverflow.fade,
+                        softWrap: false,
+                      ),
+                    ],
+                  ),
+                ),
+                const Icon(Icons.arrow_forward_ios, color: AppColors.grey80),
+              ],
+            )
+          : Container(
+              alignment: Alignment.center,
+              width: double.infinity,
+              child: Text(
+                'No upcoming task',
+                style: AppTypography.r14d,
+              ),
+            ),
     );
   }
 }

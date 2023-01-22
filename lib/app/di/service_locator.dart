@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:yuno/api/auth/rest_client.dart';
+import 'package:yuno/api/project/rest_client.dart';
+import 'package:yuno/api/task/rest_client.dart';
 import 'package:yuno/api/user/rest_client.dart';
 import 'package:yuno/data/http/authorization_interceptor.dart';
 import 'package:yuno/data/http/dio_provider.dart';
@@ -13,6 +15,7 @@ import 'package:yuno/data/repository/user_repository.dart';
 import 'package:yuno/data/storage/shared_preference_data.dart';
 import 'package:yuno/domain/logout_interactor.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
+import 'package:yuno/domain/repository/api_task_repository.dart';
 import 'package:yuno/domain/repository/api_user_repository.dart';
 import 'package:yuno/ui/pages/main/profile_pages/profile/bloc/profile_bloc.dart';
 
@@ -84,6 +87,12 @@ void _setApiRelatedClasses() {
   sl.registerLazySingleton<UserClient>(
     () => UserClient(sl.get<Dio>(instanceName: _authorizedDio)),
   );
+  sl.registerLazySingleton<TaskClient>(
+    () => TaskClient(sl.get<Dio>(instanceName: _authorizedDio)),
+  );
+  sl.registerLazySingleton<ProjectClient>(
+    () => ProjectClient(sl.get<Dio>(instanceName: _authorizedDio)),
+  );
 
   sl.registerLazySingleton<ApiAuthRepository>(
     () => ApiAuthRepository(
@@ -99,6 +108,11 @@ void _setApiRelatedClasses() {
       userClient: sl.get<UserClient>(),
       userRepository: sl.get<UserRepository>(),
       tokenRepository: sl.get<TokenRepository>(),
+    ),
+  );
+  sl.registerLazySingleton<ApiTaskRepository>(
+    () => ApiTaskRepository(
+      taskClient: sl.get<TaskClient>(),
     ),
   );
 
