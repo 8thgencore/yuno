@@ -1,12 +1,15 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:yuno/data/repository/refresh_token_provider.dart';
+import 'package:yuno/data/repository/tasks_provider.dart';
 import 'package:yuno/data/repository/token_provider.dart';
 import 'package:yuno/data/repository/user_provider.dart';
 
-class SharedPreferenceData implements UserProvider, TokenProvider, RefreshTokenProvider {
+class SharedPreferenceData
+    implements UserProvider, TokenProvider, RefreshTokenProvider, TasksProvider {
   static const _tokenKey = 'token_key';
   static const _refreshTokenKey = 'refresh_token_key';
   static const _userKey = 'user_key';
+  static const _tasksKey = 'tasks_key';
 
   @override
   Future<bool> setToken(final String? token) => _setItem(key: _tokenKey, item: token);
@@ -16,9 +19,9 @@ class SharedPreferenceData implements UserProvider, TokenProvider, RefreshTokenP
 
   @override
   Future<bool> setRefreshToken(final String? refreshToken) => _setItem(
-    key: _refreshTokenKey,
-    item: refreshToken,
-  );
+        key: _refreshTokenKey,
+        item: refreshToken,
+      );
 
   @override
   Future<String?> getRefreshToken() => _getItem(_refreshTokenKey);
@@ -28,6 +31,11 @@ class SharedPreferenceData implements UserProvider, TokenProvider, RefreshTokenP
 
   @override
   Future<String?> getUser() => _getItem(_userKey);
+
+  @override
+  Future<String?> getTasks() => _getItem(_tasksKey);
+
+  Future<bool> setTasks(final String? tasks) => _setItem(key: _tasksKey, item: tasks);
 
   Future<bool> _setItem({
     required final String key,
@@ -39,8 +47,8 @@ class SharedPreferenceData implements UserProvider, TokenProvider, RefreshTokenP
   }
 
   Future<String?> _getItem(
-      final String key,
-      ) async {
+    final String key,
+  ) async {
     final sp = await SharedPreferences.getInstance();
     return sp.getString(key);
   }

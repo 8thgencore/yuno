@@ -8,6 +8,8 @@ import 'package:yuno/data/http/authorization_interceptor.dart';
 import 'package:yuno/data/http/dio_provider.dart';
 import 'package:yuno/data/repository/refresh_token_provider.dart';
 import 'package:yuno/data/repository/refresh_token_repository.dart';
+import 'package:yuno/data/repository/tasks_provider.dart';
+import 'package:yuno/data/repository/tasks_repository.dart';
 import 'package:yuno/data/repository/token_provider.dart';
 import 'package:yuno/data/repository/token_repository.dart';
 import 'package:yuno/data/repository/user_provider.dart';
@@ -40,6 +42,7 @@ void _setupDataProviders() {
   sl.registerLazySingleton<UserProvider>(() => sl.get<SharedPreferenceData>());
   sl.registerLazySingleton<TokenProvider>(() => sl.get<SharedPreferenceData>());
   sl.registerLazySingleton<RefreshTokenProvider>(() => sl.get<SharedPreferenceData>());
+  sl.registerLazySingleton<TasksProvider>(() => sl.get<SharedPreferenceData>());
 }
 
 // ONLY SINGLETONS
@@ -47,6 +50,7 @@ void _setupRepositories() {
   sl.registerLazySingleton(() => UserRepository(sl.get<UserProvider>()));
   sl.registerLazySingleton(() => TokenRepository(sl.get<TokenProvider>()));
   sl.registerLazySingleton(() => RefreshTokenRepository(sl.get<RefreshTokenProvider>()));
+  sl.registerLazySingleton(() => TasksRepository(sl.get<TasksProvider>()));
 }
 
 // ONLY SINGLETONS
@@ -56,6 +60,7 @@ void _setupInteractors() {
       userRepository: sl.get<UserRepository>(),
       tokenRepository: sl.get<TokenRepository>(),
       refreshTokenRepository: sl.get<RefreshTokenRepository>(),
+      tasksRepository: sl.get<TasksRepository>(),
     ),
   );
 }

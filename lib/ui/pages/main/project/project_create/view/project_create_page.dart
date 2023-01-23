@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
-import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/widgets/custom_rounded_button.dart';
 import 'package:yuno/ui/widgets/custom_text_field.dart';
@@ -48,7 +47,7 @@ class _CreateProjectContentWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               GestureDetector(
-                onTap: () => context.goNamed(RouteName.home),
+                onTap: () => context.pop(),
                 child: Assets.svg.backArrow.svg(),
               ),
               const SizedBox(height: 12),

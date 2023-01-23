@@ -6,11 +6,7 @@ import 'package:yuno/api/project/models/i_project_with_users.dart';
 import 'package:yuno/domain/repository/api_project_repository.dart';
 
 part 'home_projects_bloc.freezed.dart';
-
-dart';
-
 part 'home_projects_event.dart';
-
 part 'home_projects_state.dart';
 
 class HomeProjectsBloc extends Bloc<HomeProjectsEvent, HomeProjectsState> {
@@ -18,7 +14,7 @@ class HomeProjectsBloc extends Bloc<HomeProjectsEvent, HomeProjectsState> {
     required this.apiProjectRepository,
   }) : super(const HomeProjectsState.initial()) {
     on<HomeProjectsEvent>(
-            (event, emit) => event.map(started: (event) => _onProjectsLoaded(event, emit)));
+        (event, emit) => event.map(started: (event) => _onProjectsLoaded(event, emit)));
   }
 
   final ApiProjectRepository apiProjectRepository;
