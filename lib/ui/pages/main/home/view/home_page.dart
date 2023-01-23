@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:yuno/api/task/models/i_task_read.dart';
-import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
-import 'package:yuno/data/repository/user_repository.dart';
-import 'package:yuno/domain/repository/api_task_repository.dart';
 import 'package:yuno/resources/resources.dart';
+import 'package:yuno/ui/pages/main/home/bloc/home_checklist_bloc.dart';
 import 'package:yuno/ui/pages/main/home/bloc/home_header_bloc.dart';
 import 'package:yuno/ui/widgets/avatar_stacked.dart';
 
@@ -51,33 +49,26 @@ class _TopCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeHeaderBloc, HomeHeaderState>(
-      builder: (context, state) => state.maybeWhen(
-        loading: () => Container(
-          margin: const EdgeInsets.all(10),
-          height: 245,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: AppColors.primary100,
-            borderRadius: BorderRadius.circular(30),
+    return Container(
+      margin: const EdgeInsets.all(10),
+      height: 245,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: AppColors.primary100,
+        borderRadius: BorderRadius.circular(30),
+      ),
+      child: Stack(
+        children: [
+          Assets.svg.homeTopOrnament.svg(
+            width: double.infinity,
+            color: AppColors.white40,
+            fit: BoxFit.cover,
           ),
-          child: const Center(child: CircularProgressIndicator(color: AppColors.white100)),
-        ),
-        loaded: (username, taskLength, lastTask) => Container(
-          margin: const EdgeInsets.all(10),
-          height: 245,
-          decoration: BoxDecoration(
-            color: AppColors.primary100,
-            borderRadius: BorderRadius.circular(30),
-          ),
-          child: Stack(
-            children: [
-              Assets.svg.homeTopOrnament.svg(
-                width: double.infinity,
-                color: AppColors.white40,
-                fit: BoxFit.cover,
-              ),
-              Column(
+          BlocBuilder<HomeHeaderBloc, HomeHeaderState>(
+            builder: (context, state) => state.maybeWhen(
+              loading: () =>
+                  const Center(child: CircularProgressIndicator(color: AppColors.white100)),
+              loaded: (username, taskLength, lastTask) => Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const SizedBox(height: 30),
@@ -100,29 +91,12 @@ class _TopCardWidget extends StatelessWidget {
                   ),
                   _LastTaskWidget(task: lastTask),
                 ],
-              )
-            ],
+              ),
+              failure: (text) => Center(child: Text(text.toString(), style: AppTypography.b16l)),
+              orElse: () => Center(child: Text('Error', style: AppTypography.b16l)),
+            ),
           ),
-        ),
-        failure: (text) => Container(
-          margin: const EdgeInsets.all(10),
-          height: 245,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: AppColors.primary100,
-            borderRadius: BorderRadius.circular(30),
-          ),
-          child: Center(child: Text(text.toString(), style: AppTypography.b16l)),
-        ),
-        orElse: () => Container(
-          margin: const EdgeInsets.all(10),
-          height: 245,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: AppColors.primary100,
-            borderRadius: BorderRadius.circular(30),
-          ),
-        ),
+        ],
       ),
     );
   }
@@ -184,7 +158,7 @@ class _LastTaskWidget extends StatelessWidget {
               width: double.infinity,
               child: Text(
                 'No upcoming task',
-                style: AppTypography.r14d,
+                style: AppTypography.l14g,
               ),
             ),
     );
@@ -284,6 +258,7 @@ class _ProjectCardWidget extends StatelessWidget {
                   'https://images.unsplash.com/photo-1554151228-14d9def656e4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=633&q=80',
                   'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
                   'https://images.unsplash.com/photo-1616766098956-c81f12114571?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+                  'https://images.unsplash.com/photo-1616766098956-c81f12114571?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
                 ],
               ),
             ],
@@ -346,17 +321,49 @@ class _CheckListWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          padding: const EdgeInsets.only(left: 24, right: 24, bottom: 6),
           child: Text('Checklist', style: AppTypography.b18d),
         ),
-        ListView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
-          itemCount: 5,
-          itemBuilder: (BuildContext context, int index) {
-            return const TaskCardWidget();
-          },
+        BlocBuilder<HomeChecklistBloc, HomeChecklistState>(
+          builder: (context, state) => state.maybeWhen(
+            loading: () => const Center(
+              child: CircularProgressIndicator(),
+            ),
+            loaded: (tasks) => tasks.isNotEmpty
+                ? ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    itemCount: tasks.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return TaskCardWidget(task: tasks[index]);
+                    },
+                  )
+                : Container(
+                    alignment: Alignment.center,
+                    width: double.infinity,
+                    child: Text(
+                      'Checklist is empty',
+                      style: AppTypography.l14g,
+                    ),
+                  ),
+            failure: (error) => Container(
+              alignment: Alignment.center,
+              width: double.infinity,
+              child: Text(
+                error.toString(),
+                style: AppTypography.r14d,
+              ),
+            ),
+            orElse: () => Container(
+              alignment: Alignment.center,
+              width: double.infinity,
+              child: Text(
+                'No upcoming task',
+                style: AppTypography.r14d,
+              ),
+            ),
+          ),
         ),
       ],
     );
@@ -365,15 +372,24 @@ class _CheckListWidget extends StatelessWidget {
 
 class TaskCardWidget extends StatefulWidget {
   const TaskCardWidget({
+    required this.task,
     super.key,
   });
+
+  final ITaskRead task;
 
   @override
   State<TaskCardWidget> createState() => _TaskCardWidgetState();
 }
 
 class _TaskCardWidgetState extends State<TaskCardWidget> {
-  bool value = false;
+  late bool value;
+
+  @override
+  void initState() {
+    super.initState();
+    value = widget.task.done ?? false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -392,14 +408,15 @@ class _TaskCardWidgetState extends State<TaskCardWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Icon Design',
+                  widget.task.name,
                   style: AppTypography.b16d,
                   overflow: TextOverflow.fade,
                   softWrap: false,
                 ),
                 const SizedBox(height: 6),
                 Text(
-                  'Canoz Mobile App',
+                  // TODO:
+                  'Project name',
                   style: AppTypography.l12g,
                   overflow: TextOverflow.fade,
                   softWrap: false,
@@ -414,6 +431,9 @@ class _TaskCardWidgetState extends State<TaskCardWidget> {
               onChanged: (b) {
                 setState(() {
                   value = !value;
+                  context
+                      .read<HomeChecklistBloc>()
+                      .add(HomeChecklistEvent.checkItem(id: widget.task.id));
                 });
               },
             ),

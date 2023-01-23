@@ -11,6 +11,7 @@ import 'package:yuno/domain/repository/api_user_repository.dart';
 import 'package:yuno/ui/pages/auth/login/view/login_page.dart';
 import 'package:yuno/ui/pages/auth/registration/view/registration_page.dart';
 import 'package:yuno/ui/pages/main/calendar/view/statistics_page.dart';
+import 'package:yuno/ui/pages/main/home/bloc/home_checklist_bloc.dart';
 import 'package:yuno/ui/pages/main/home/bloc/home_header_bloc.dart';
 import 'package:yuno/ui/pages/main/home/view/home_page.dart';
 import 'package:yuno/ui/pages/main/main_scaffold.dart';
@@ -44,13 +45,24 @@ mixin RouterMixin on State<App> {
             GoRoute(
               name: RouteName.home,
               path: RoutePath.home,
-              builder: (_, __) => BlocProvider(
-                create: (context) => HomeHeaderBloc(
-                  apiTaskRepository: sl.get<ApiTaskRepository>(),
-                  userRepository: sl.get<UserRepository>(),
-                )..add(const HomeHeaderEvent.started()),
+              builder: (_, __) => MultiBlocProvider(
+                providers: [
+                  BlocProvider(
+                    create: (context) => HomeHeaderBloc(
+                      apiTaskRepository: sl.get<ApiTaskRepository>(),
+                      userRepository: sl.get<UserRepository>(),
+                    )..add(const HomeHeaderEvent.started()),
+                    child: const HomePage(),
+                  ),
+                  BlocProvider(
+                    create: (context) => HomeChecklistBloc(
+                      apiTaskRepository: sl.get<ApiTaskRepository>(),
+                    )..add(const HomeChecklistEvent.started()),
+                    child: const HomePage(),
+                  ),
+                ],
                 child: const HomePage(),
-              ),
+)
             ),
             GoRoute(
               name: RouteName.calendar,

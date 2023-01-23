@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:yuno/resources/resources.dart';
 
 class AvatarStacked extends StatelessWidget {
   const AvatarStacked({
@@ -14,7 +16,14 @@ class AvatarStacked extends StatelessWidget {
   Widget build(BuildContext context) {
     const double size = 32;
     const double xShift = 6;
-    final items = urlImages.map((urlImage) => buildImage(urlImage)).toList();
+
+    List<Widget> items = [];
+    if (urlImages.length > 5) {
+      items = urlImages.sublist(0, 4).map((urlImage) => buildImage(urlImage)).toList();
+      items.add(buildNumber(urlImages.length - 4));
+    } else {
+      items = urlImages.map((urlImage) => buildImage(urlImage)).toList();
+    }
 
     return StackedWidgets(
       direction: direction,
@@ -30,9 +39,26 @@ class AvatarStacked extends StatelessWidget {
     return ClipOval(
       child: Container(
         padding: const EdgeInsets.all(borderSize),
-        color: Colors.white,
+        color: AppColors.white100,
         child: ClipOval(
-          child: Image.network(urlImage, fit: BoxFit.cover),
+          child: CachedNetworkImage(imageUrl: urlImage, fit: BoxFit.cover),
+        ),
+      ),
+    );
+  }
+
+  Widget buildNumber(int number) {
+    const double borderSize = 2;
+
+    return ClipOval(
+      child: Container(
+        padding: const EdgeInsets.all(borderSize),
+        color: AppColors.white100,
+        child: ClipOval(
+          child: ColoredBox(
+            color: AppColors.dark100,
+            child: Center(child: Text(number.toString(), style: AppTypography.r13l)),
+          ),
         ),
       ),
     );

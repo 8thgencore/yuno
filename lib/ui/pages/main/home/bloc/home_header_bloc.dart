@@ -43,9 +43,10 @@ class HomeHeaderBloc extends Bloc<HomeHeaderEvent, HomeHeaderState> {
           _username = user.firstName;
         }
       }
-      final tasks = await apiTaskRepository.getTasks();
+      var tasks = await apiTaskRepository.getTasks();
 
       if (tasks is List<ITaskRead>) {
+        tasks = tasks.where((task) => task.done == false).toList();
         if (tasks.isNotEmpty) {
           _task = tasks.last;
         }
