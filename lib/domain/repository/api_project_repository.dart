@@ -24,9 +24,9 @@ class ApiProjectRepository {
     }
   }
 
-  Future<dynamic> getProjects() async {
+  Future<dynamic> getProjects({required int size}) async {
     try {
-      final response = await projectClient.getProjectList();
+      final response = await projectClient.getProjectList(size: size);
 
       return response.data.items;
     } on DioError catch (e) {

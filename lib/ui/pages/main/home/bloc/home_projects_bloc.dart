@@ -5,18 +5,20 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:yuno/api/project/models/i_project_with_users.dart';
 import 'package:yuno/domain/repository/api_project_repository.dart';
 
+part 'home_projects_bloc.freezed.dart';
+
+dart';
+
 part 'home_projects_event.dart';
 
 part 'home_projects_state.dart';
-
-part 'home_projects_bloc.freezed.dart';
 
 class HomeProjectsBloc extends Bloc<HomeProjectsEvent, HomeProjectsState> {
   HomeProjectsBloc({
     required this.apiProjectRepository,
   }) : super(const HomeProjectsState.initial()) {
     on<HomeProjectsEvent>(
-        (event, emit) => event.map(started: (event) => _onProjectsLoaded(event, emit)));
+            (event, emit) => event.map(started: (event) => _onProjectsLoaded(event, emit)));
   }
 
   final ApiProjectRepository apiProjectRepository;
@@ -29,7 +31,7 @@ class HomeProjectsBloc extends Bloc<HomeProjectsEvent, HomeProjectsState> {
   ) async {
     emit(const HomeProjectsState.loading());
     try {
-      final projects = await apiProjectRepository.getMyProjects();
+      final projects = await apiProjectRepository.getProjects(size: 4);
       if (projects is List<IProjectWithUsers>) {
         if (projects.isNotEmpty) {
           _projects = projects;

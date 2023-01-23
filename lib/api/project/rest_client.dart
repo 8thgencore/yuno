@@ -3,7 +3,6 @@ import 'package:retrofit/retrofit.dart';
 import 'package:yuno/api/project/models/i_base_response_i_project_read.dart';
 import 'package:yuno/api/project/models/i_get_response_base_i_project_with_users.dart';
 import 'package:yuno/api/project/models/i_get_response_base_i_project_with_users_tasks.dart';
-import 'package:yuno/api/project/models/i_get_response_paginated_i_project_read.dart';
 import 'package:yuno/api/project/models/i_get_response_paginated_i_project_with_users.dart';
 import 'package:yuno/api/project/models/i_project_create.dart';
 import 'package:yuno/api/project/models/i_project_update.dart';
@@ -22,7 +21,7 @@ abstract class ProjectClient {
   });
 
   @GET('/project/list')
-  Future<IGetResponsePaginatedIProjectRead> getProjectList({
+  Future<IGetResponsePaginatedIProjectWithUsers> getProjectList({
     @Query('page') int? page = 1,
     @Query('size') int? size = 50,
   });

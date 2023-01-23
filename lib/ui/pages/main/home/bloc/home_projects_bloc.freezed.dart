@@ -611,14 +611,12 @@ class _$_LoadedState extends _LoadedState {
 }
 
 abstract class _LoadedState extends HomeProjectsState {
-  const factory _LoadedState({required final List<IProjectWithUsers> projects}) =
-      _$_LoadedState;
+  const factory _LoadedState({required final List<IProjectWithUsers> projects}) = _$_LoadedState;
   const _LoadedState._() : super._();
 
   List<IProjectWithUsers> get projects;
   @JsonKey(ignore: true)
-  _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

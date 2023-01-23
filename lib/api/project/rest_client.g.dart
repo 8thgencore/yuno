@@ -50,7 +50,7 @@ class _ProjectClient implements ProjectClient {
   }
 
   @override
-  Future<IGetResponsePaginatedIProjectRead> getProjectList({
+  Future<IGetResponsePaginatedIProjectWithUsers> getProjectList({
     page = 1,
     size = 50,
   }) async {
@@ -63,7 +63,7 @@ class _ProjectClient implements ProjectClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IGetResponsePaginatedIProjectRead>(Options(
+        _setStreamType<IGetResponsePaginatedIProjectWithUsers>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -75,7 +75,7 @@ class _ProjectClient implements ProjectClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = IGetResponsePaginatedIProjectRead.fromJson(_result.data!);
+    final value = IGetResponsePaginatedIProjectWithUsers.fromJson(_result.data!);
     return value;
   }
 

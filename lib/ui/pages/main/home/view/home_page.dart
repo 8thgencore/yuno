@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:yuno/api/project/models/i_project_with_users.dart';
+import 'package:go_router_flow/go_router_flow.dart';
+import 'package:intl/intl.dart';
 import 'package:yuno/api/task/models/i_task_read.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
+import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/home/bloc/home_checklist_bloc.dart';
 import 'package:yuno/ui/pages/main/home/bloc/home_header_bloc.dart';
 import 'package:yuno/ui/pages/main/home/bloc/home_projects_bloc.dart';
-import 'package:yuno/ui/widgets/avatar_stacked.dart';
-import 'package:intl/intl.dart';
+import 'package:yuno/ui/widgets/project_card_small_widget.dart';
 import 'package:yuno/utils/extensions/datetime.dart';
 
 class HomePage extends StatelessWidget {
@@ -194,7 +194,13 @@ class _ProjectsListWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('Projects', style: AppTypography.b18d),
-              Text('View All', style: AppTypography.r14d.copyWith(color: AppColors.primary100)),
+              GestureDetector(
+                onTap: () => context.pushNamed(RouteName.projects),
+                child: Text(
+                  'View All',
+                  style: AppTypography.r14d.copyWith(color: AppColors.primary100),
+                ),
+              ),
             ],
           ),
         ),
@@ -204,133 +210,23 @@ class _ProjectsListWidget extends StatelessWidget {
           child: BlocBuilder<HomeProjectsBloc, HomeProjectsState>(
             builder: (context, state) => state.maybeWhen(
               loading: () => const Center(child: CircularProgressIndicator()),
-              loaded: (projects) => ListView.builder(
-                // key: GlobalKey(),
-                scrollDirection: Axis.horizontal,
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                itemCount: projects.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return _ProjectCardWidget(project: projects[index]);
-                },
-              ),
-              failure: (error) => Text(error.toString(), style: AppTypography.b16l),
-              orElse: () => Text('Error', style: AppTypography.b16l),
+              loaded: (projects) => projects.isNotEmpty
+                  ? ListView.builder(
+                      // key: GlobalKey(),
+                      scrollDirection: Axis.horizontal,
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      itemCount: projects.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return ProjectCardSmallWidget(project: projects[index]);
+                      },
+                    )
+                  : Text('Projects list is empty', style: AppTypography.l14g),
+              failure: (error) => Text(error.toString(), style: AppTypography.l14g),
+              orElse: () => Text('Error', style: AppTypography.l14g),
             ),
           ),
         ),
       ],
-    );
-  }
-}
-
-class _ProjectCardWidget extends StatelessWidget {
-  const _ProjectCardWidget({required this.project});
-
-  final IProjectWithUsers project;
-
-  @override
-  Widget build(BuildContext context) {
-    final List<String> urlImages = [];
-    project.users?.forEach((user) {
-      urlImages.add(user.image?.media.link ?? '');
-    });
-
-    return Stack(
-      children: [
-        Container(
-          height: 150,
-          width: 222,
-          margin: const EdgeInsets.symmetric(horizontal: 12),
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          decoration: BoxDecoration(
-            color: AppColors.white80,
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Container(
-                    height: 46,
-                    width: 4,
-                    decoration: BoxDecoration(
-                      color: AppColors.secondary100,
-                      borderRadius: BorderRadius.circular(2),
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        width: 160,
-                        child: Text(
-                          project.name,
-                          style: AppTypography.b16d,
-                          overflow: TextOverflow.fade,
-                          softWrap: false,
-                        ),
-                      ),
-                      Text(
-                        project.description,
-                        style: AppTypography.l12g,
-                        overflow: TextOverflow.fade,
-                        softWrap: false,
-                      ),
-                    ],
-                  )
-                ],
-              ),
-              const SizedBox(height: 16),
-              AvatarStacked(urlImages: urlImages),
-            ],
-          ),
-        ),
-        const Positioned(
-          left: 24,
-          bottom: 0,
-          child: LinearPercentIndicatorWidget(percent: 0.62),
-        ),
-      ],
-    );
-  }
-}
-
-class LinearPercentIndicatorWidget extends StatelessWidget {
-  const LinearPercentIndicatorWidget({
-    super.key,
-    required this.percent,
-  });
-
-  final double percent;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 30,
-      width: 200,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: AppColors.white100,
-      ),
-      child: Row(
-        children: [
-          LinearPercentIndicator(
-            // width: MediaQuery.of(context).size.width - 50,
-            width: 168,
-            lineHeight: 8,
-            percent: percent,
-            barRadius: const Radius.circular(16),
-            progressColor: AppColors.primary100,
-            backgroundColor: AppColors.dark10,
-          ),
-          Text(
-            '${(percent * 100).round()}%',
-            style: AppTypography.r10d,
-          ),
-        ],
-      ),
     );
   }
 }

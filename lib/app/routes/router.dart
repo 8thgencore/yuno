@@ -22,6 +22,8 @@ import 'package:yuno/ui/pages/main/profile_pages/change_password/view/change_pas
 import 'package:yuno/ui/pages/main/profile_pages/edit_profile/bloc/profile_edit_bloc.dart';
 import 'package:yuno/ui/pages/main/profile_pages/edit_profile/view/profile_edit_page.dart';
 import 'package:yuno/ui/pages/main/profile_pages/profile/view/profile_page.dart';
+import 'package:yuno/ui/pages/main/project/project_create/view/project_create_page.dart';
+import 'package:yuno/ui/pages/main/project/projects_list/view/projects_list.dart';
 import 'package:yuno/ui/pages/main/statistics/view/statistics_page.dart';
 import 'package:yuno/ui/pages/splash/view/splash_page.dart';
 
@@ -70,7 +72,7 @@ mixin RouterMixin on State<App> {
                   ),
                 ],
                 child: const HomePage(),
-)
+              ),
             ),
             GoRoute(
               name: RouteName.calendar,
@@ -111,6 +113,20 @@ mixin RouterMixin on State<App> {
                   ),
                 ),
               ],
+            ),
+          ],
+        ),
+        GoRoute(
+          name: RouteName.projects,
+          path: RoutePath.projects,
+          parentNavigatorKey: rootNavigatorKey,
+          builder: (context, state) => const ProjectsListPage(),
+          routes: [
+            GoRoute(
+              name: RouteName.projectCreate,
+              path: RoutePath.projectCreate,
+              parentNavigatorKey: rootNavigatorKey,
+              builder: (context, state) => const ProjectCreatePage(),
             ),
           ],
         ),
