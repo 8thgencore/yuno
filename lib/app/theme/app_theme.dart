@@ -26,6 +26,9 @@ class AppTheme {
       checkColor: MaterialStateProperty.all(AppColors.white100),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
     ),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
+      color: AppColors.primary100,
+    ),
   );
 
   static Brightness get currentSystemBrightness =>

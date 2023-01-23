@@ -1,11 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:yuno/api/project/models/i_delete_response_base_i_project_read.dart';
-import 'package:yuno/api/project/models/i_get_response_paginated_i_project_with_users.dart';
+import 'package:yuno/api/project/models/i_base_response_i_project_read.dart';
 import 'package:yuno/api/project/models/i_get_response_base_i_project_with_users.dart';
 import 'package:yuno/api/project/models/i_get_response_base_i_project_with_users_tasks.dart';
 import 'package:yuno/api/project/models/i_get_response_paginated_i_project_read.dart';
-import 'package:yuno/api/project/models/i_post_response_base_i_project_read.dart';
+import 'package:yuno/api/project/models/i_get_response_paginated_i_project_with_users.dart';
 import 'package:yuno/api/project/models/i_project_create.dart';
 import 'package:yuno/api/project/models/i_project_update.dart';
 import 'package:yuno/api/task/models/i_get_response_paginated_i_task_read.dart';
@@ -29,7 +28,7 @@ abstract class ProjectClient {
   });
 
   @POST('/project')
-  Future<void> postProject({
+  Future<IBaseResponseIProjectRead> postProject({
     @Body() required IProjectCreate body,
   });
 
@@ -39,13 +38,13 @@ abstract class ProjectClient {
   });
 
   @PUT('/project/{project_id}')
-  Future<IPostResponseBaseIProjectRead> putProjectProjectId({
+  Future<IBaseResponseIProjectRead> putProjectProjectId({
     @Path('project_id') required String projectId,
     @Body() required IProjectUpdate body,
   });
 
   @DELETE('/project/{project_id}')
-  Future<IDeleteResponseBaseIProjectRead> deleteProjectProjectId({
+  Future<IBaseResponseIProjectRead> deleteProjectProjectId({
     @Path('project_id') required String projectId,
   });
 

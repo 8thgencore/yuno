@@ -7,11 +7,11 @@ part 'i_get_response_paginated_i_task_read.g.dart';
 @Freezed()
 class IGetResponsePaginatedITaskRead with _$IGetResponsePaginatedITaskRead {
   const factory IGetResponsePaginatedITaskRead({
-    required PageBaseDataTypeITaskRead data,
     @Default('Data got correctly')
     String? message,
     @Default({})
     Object? meta,
+    required PageBaseDataTypeITaskRead data,
   }) = _IGetResponsePaginatedITaskRead;
   
   factory IGetResponsePaginatedITaskRead.fromJson(Map<String, dynamic> json) => _$IGetResponsePaginatedITaskReadFromJson(json);

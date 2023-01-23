@@ -80,25 +80,27 @@ class _ProjectClient implements ProjectClient {
   }
 
   @override
-  Future<void> postProject({required body}) async {
+  Future<IBaseResponseIProjectRead> postProject({required body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    await _dio.fetch<void>(_setStreamType<void>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<IBaseResponseIProjectRead>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          '/project',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
+            .compose(
+              _dio.options,
+              '/project',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = IBaseResponseIProjectRead.fromJson(_result.data!);
+    return value;
   }
 
   @override
@@ -127,7 +129,7 @@ class _ProjectClient implements ProjectClient {
   }
 
   @override
-  Future<IPostResponseBaseIProjectRead> putProjectProjectId({
+  Future<IBaseResponseIProjectRead> putProjectProjectId({
     required projectId,
     required body,
   }) async {
@@ -137,7 +139,7 @@ class _ProjectClient implements ProjectClient {
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IPostResponseBaseIProjectRead>(Options(
+        _setStreamType<IBaseResponseIProjectRead>(Options(
       method: 'PUT',
       headers: _headers,
       extra: _extra,
@@ -149,19 +151,19 @@ class _ProjectClient implements ProjectClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = IPostResponseBaseIProjectRead.fromJson(_result.data!);
+    final value = IBaseResponseIProjectRead.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<IDeleteResponseBaseIProjectRead> deleteProjectProjectId(
+  Future<IBaseResponseIProjectRead> deleteProjectProjectId(
       {required projectId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IDeleteResponseBaseIProjectRead>(Options(
+        _setStreamType<IBaseResponseIProjectRead>(Options(
       method: 'DELETE',
       headers: _headers,
       extra: _extra,
@@ -173,7 +175,7 @@ class _ProjectClient implements ProjectClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = IDeleteResponseBaseIProjectRead.fromJson(_result.data!);
+    final value = IBaseResponseIProjectRead.fromJson(_result.data!);
     return value;
   }
 

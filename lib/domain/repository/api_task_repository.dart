@@ -1,25 +1,17 @@
 import 'package:dio/dio.dart';
-import 'package:yuno/api/auth/models/i_auth_change_password.dart';
-import 'package:yuno/api/auth/models/i_auth_login.dart';
-import 'package:yuno/api/auth/models/i_auth_register.dart';
-import 'package:yuno/api/auth/models/refresh_token.dart';
-import 'package:yuno/api/auth/rest_client.dart';
 import 'package:yuno/api/task/models/i_task_create.dart';
 import 'package:yuno/api/task/models/i_task_read.dart';
 import 'package:yuno/api/task/models/i_task_update.dart';
 import 'package:yuno/api/task/rest_client.dart';
 import 'package:yuno/data/http/error_interceptor.dart';
-import 'package:yuno/data/repository/refresh_token_repository.dart';
-import 'package:yuno/data/repository/token_repository.dart';
-import 'package:yuno/data/repository/user_repository.dart';
 
 class ApiTaskRepository {
   ApiTaskRepository({
     required this.taskClient,
-
   });
 
   final TaskClient taskClient;
+
   Future<dynamic> getTasks() async {
     try {
       final response = await taskClient.getTaskList();
@@ -52,7 +44,7 @@ class ApiTaskRepository {
   }) async {
     try {
       final response = await taskClient.postTask(
-        body:  ITaskCreate(
+        body: ITaskCreate(
           name: name,
           done: done,
           deadline: deadline,

@@ -137,7 +137,7 @@ class __$$_IGetResponseBaseIProjectWithUsersTasksCopyWithImpl<$Res>
 class _$_IGetResponseBaseIProjectWithUsersTasks
     implements _IGetResponseBaseIProjectWithUsersTasks {
   const _$_IGetResponseBaseIProjectWithUsersTasks(
-      {required this.message ,
+      {required this.message,
       required this.meta,
       required this.data});
 

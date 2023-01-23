@@ -1,9 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:yuno/api/task/models/i_delete_response_base_i_task_read.dart';
-import 'package:yuno/api/task/models/i_get_response_base_i_task_read.dart';
+import 'package:yuno/api/task/models/i_base_response_i_task_read.dart';
 import 'package:yuno/api/task/models/i_get_response_paginated_i_task_read.dart';
-import 'package:yuno/api/task/models/i_post_response_base_i_task_read.dart';
 import 'package:yuno/api/task/models/i_task_create.dart';
 import 'package:yuno/api/task/models/i_task_update.dart';
 
@@ -20,23 +18,23 @@ abstract class TaskClient {
   });
 
   @POST('/task')
-  Future<IGetResponseBaseITaskRead> postTask({
+  Future<IBaseResponseITaskRead> postTask({
     @Body() required ITaskCreate body,
   });
 
   @GET('/task/{task_id}')
-  Future<IGetResponseBaseITaskRead> getTaskTaskId({
+  Future<IBaseResponseITaskRead> getTaskTaskId({
     @Path('task_id') required String taskId,
   });
 
   @PUT('/task/{task_id}')
-  Future<IPostResponseBaseITaskRead> putTaskTaskId({
+  Future<IBaseResponseITaskRead> putTaskTaskId({
     @Path('task_id') required String taskId,
     @Body() required ITaskUpdate body,
   });
 
   @DELETE('/task/{task_id}')
-  Future<IDeleteResponseBaseITaskRead> deleteTaskTaskId({
+  Future<IBaseResponseITaskRead> deleteTaskTaskId({
     @Path('task_id') required String taskId,
   });
 }

@@ -15,6 +15,7 @@ import 'package:yuno/data/repository/user_repository.dart';
 import 'package:yuno/data/storage/shared_preference_data.dart';
 import 'package:yuno/domain/logout_interactor.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
+import 'package:yuno/domain/repository/api_project_repository.dart';
 import 'package:yuno/domain/repository/api_task_repository.dart';
 import 'package:yuno/domain/repository/api_user_repository.dart';
 import 'package:yuno/ui/pages/main/profile_pages/profile/bloc/profile_bloc.dart';
@@ -113,6 +114,11 @@ void _setApiRelatedClasses() {
   sl.registerLazySingleton<ApiTaskRepository>(
     () => ApiTaskRepository(
       taskClient: sl.get<TaskClient>(),
+    ),
+  );
+  sl.registerLazySingleton<ApiProjectRepository>(
+    () => ApiProjectRepository(
+      projectClient: sl.get<ProjectClient>(),
     ),
   );
 

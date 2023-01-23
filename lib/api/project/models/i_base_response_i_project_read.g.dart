@@ -1,21 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'i_delete_response_base_i_project_read.dart';
+part of 'i_base_response_i_project_read.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_IDeleteResponseBaseIProjectRead _$$_IDeleteResponseBaseIProjectReadFromJson(
+_$_IBaseResponseIProjectRead _$$_IBaseResponseIProjectReadFromJson(
         Map<String, dynamic> json) =>
-    _$_IDeleteResponseBaseIProjectRead(
-      message: json['message'] as String? ?? 'Data deleted correctly',
-      meta: json['meta'] as Object? ?? const {},
+    _$_IBaseResponseIProjectRead(
+      message: json['message'] as String? ?? '',
+      meta: json['meta'] as Object? ?? {},
       data: IProjectRead.fromJson(json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_IDeleteResponseBaseIProjectReadToJson(
-        _$_IDeleteResponseBaseIProjectRead instance) =>
+Map<String, dynamic> _$$_IBaseResponseIProjectReadToJson(
+        _$_IBaseResponseIProjectRead instance) =>
     <String, dynamic>{
       'message': instance.message,
       'meta': instance.meta,

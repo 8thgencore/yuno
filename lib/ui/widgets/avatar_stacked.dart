@@ -41,7 +41,11 @@ class AvatarStacked extends StatelessWidget {
         padding: const EdgeInsets.all(borderSize),
         color: AppColors.white100,
         child: ClipOval(
-          child: CachedNetworkImage(imageUrl: urlImage, fit: BoxFit.cover),
+          child: CachedNetworkImage(
+            imageUrl: urlImage,
+            fit: BoxFit.cover,
+            errorWidget: (context, _, __) => Assets.images.avatar.image(fit: BoxFit.cover),
+          ),
         ),
       ),
     );

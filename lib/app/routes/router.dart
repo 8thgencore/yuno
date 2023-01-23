@@ -6,6 +6,7 @@ import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/data/repository/user_repository.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
+import 'package:yuno/domain/repository/api_project_repository.dart';
 import 'package:yuno/domain/repository/api_task_repository.dart';
 import 'package:yuno/domain/repository/api_user_repository.dart';
 import 'package:yuno/ui/pages/auth/login/view/login_page.dart';
@@ -13,6 +14,7 @@ import 'package:yuno/ui/pages/auth/registration/view/registration_page.dart';
 import 'package:yuno/ui/pages/main/calendar/view/statistics_page.dart';
 import 'package:yuno/ui/pages/main/home/bloc/home_checklist_bloc.dart';
 import 'package:yuno/ui/pages/main/home/bloc/home_header_bloc.dart';
+import 'package:yuno/ui/pages/main/home/bloc/home_projects_bloc.dart';
 import 'package:yuno/ui/pages/main/home/view/home_page.dart';
 import 'package:yuno/ui/pages/main/main_scaffold.dart';
 import 'package:yuno/ui/pages/main/profile_pages/change_password/bloc/change_password_bloc.dart';
@@ -58,6 +60,12 @@ mixin RouterMixin on State<App> {
                     create: (context) => HomeChecklistBloc(
                       apiTaskRepository: sl.get<ApiTaskRepository>(),
                     )..add(const HomeChecklistEvent.started()),
+                    child: const HomePage(),
+                  ),
+                  BlocProvider(
+                    create: (context) => HomeProjectsBloc(
+                      apiProjectRepository: sl.get<ApiProjectRepository>(),
+                    )..add(const HomeProjectsEvent.started()),
                     child: const HomePage(),
                   ),
                 ],

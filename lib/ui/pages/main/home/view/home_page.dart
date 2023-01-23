@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:yuno/api/project/models/i_project_with_users.dart';
 import 'package:yuno/api/task/models/i_task_read.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/home/bloc/home_checklist_bloc.dart';
 import 'package:yuno/ui/pages/main/home/bloc/home_header_bloc.dart';
+import 'package:yuno/ui/pages/main/home/bloc/home_projects_bloc.dart';
 import 'package:yuno/ui/widgets/avatar_stacked.dart';
+import 'package:intl/intl.dart';
+import 'package:yuno/utils/extensions/datetime.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -109,6 +113,18 @@ class _LastTaskWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var deadline = 'Has no deadline';
+    if (task != null) {
+      if (task!.deadline != null) {
+        final DateFormat inputFormat = DateFormat('yyyy-MM-ddTHH:mm:ss');
+        final DateTime? dateTime = inputFormat.tryParse(task!.deadline!);
+        if (dateTime != null) {
+          final outputFormat = DateFormat('dd MMMM yyyy   HH:mm');
+          deadline = outputFormat.format(dateTime);
+        }
+      }
+    }
+
     return Container(
       margin: const EdgeInsets.all(14),
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
@@ -142,7 +158,7 @@ class _LastTaskWidget extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        task!.deadline ?? 'Has no deadline',
+                        deadline,
                         style: AppTypography.l12g,
                         overflow: TextOverflow.fade,
                         softWrap: false,
@@ -185,14 +201,21 @@ class _ProjectsListWidget extends StatelessWidget {
         const SizedBox(height: 18),
         SizedBox(
           height: 164,
-          child: ListView.builder(
-            // key: GlobalKey(),
-            scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            itemCount: 4,
-            itemBuilder: (BuildContext context, int index) {
-              return const _ProjectCardWidget();
-            },
+          child: BlocBuilder<HomeProjectsBloc, HomeProjectsState>(
+            builder: (context, state) => state.maybeWhen(
+              loading: () => const Center(child: CircularProgressIndicator()),
+              loaded: (projects) => ListView.builder(
+                // key: GlobalKey(),
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                itemCount: projects.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return _ProjectCardWidget(project: projects[index]);
+                },
+              ),
+              failure: (error) => Text(error.toString(), style: AppTypography.b16l),
+              orElse: () => Text('Error', style: AppTypography.b16l),
+            ),
           ),
         ),
       ],
@@ -201,10 +224,17 @@ class _ProjectsListWidget extends StatelessWidget {
 }
 
 class _ProjectCardWidget extends StatelessWidget {
-  const _ProjectCardWidget();
+  const _ProjectCardWidget({required this.project});
+
+  final IProjectWithUsers project;
 
   @override
   Widget build(BuildContext context) {
+    final List<String> urlImages = [];
+    project.users?.forEach((user) {
+      urlImages.add(user.image?.media.link ?? '');
+    });
+
     return Stack(
       children: [
         Container(
@@ -236,14 +266,14 @@ class _ProjectCardWidget extends StatelessWidget {
                       SizedBox(
                         width: 160,
                         child: Text(
-                          'Rando Mobile Ap22222',
+                          project.name,
                           style: AppTypography.b16d,
                           overflow: TextOverflow.fade,
                           softWrap: false,
                         ),
                       ),
                       Text(
-                        'Mobile App Redesign',
+                        project.description,
                         style: AppTypography.l12g,
                         overflow: TextOverflow.fade,
                         softWrap: false,
@@ -253,14 +283,7 @@ class _ProjectCardWidget extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 16),
-              const AvatarStacked(
-                urlImages: [
-                  'https://images.unsplash.com/photo-1554151228-14d9def656e4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=633&q=80',
-                  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
-                  'https://images.unsplash.com/photo-1616766098956-c81f12114571?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
-                  'https://images.unsplash.com/photo-1616766098956-c81f12114571?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
-                ],
-              ),
+              AvatarStacked(urlImages: urlImages),
             ],
           ),
         ),
