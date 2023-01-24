@@ -28,7 +28,7 @@ abstract class ProjectClient {
 
   @POST('/project')
   Future<IBaseResponseIProjectRead> postProject({
-    @Body() required IProjectCreate body,
+    @Body() required IProject body,
   });
 
   @GET('/project/{project_id}')

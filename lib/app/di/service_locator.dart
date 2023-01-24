@@ -50,7 +50,7 @@ void _setupRepositories() {
   sl.registerLazySingleton(() => UserRepository(sl.get<UserProvider>()));
   sl.registerLazySingleton(() => TokenRepository(sl.get<TokenProvider>()));
   sl.registerLazySingleton(() => RefreshTokenRepository(sl.get<RefreshTokenProvider>()));
-  sl.registerLazySingleton(() => TasksRepository(sl.get<TasksProvider>()));
+  sl.registerLazySingleton(() => LocalTasksRepository(sl.get<TasksProvider>()));
 }
 
 // ONLY SINGLETONS
@@ -60,7 +60,7 @@ void _setupInteractors() {
       userRepository: sl.get<UserRepository>(),
       tokenRepository: sl.get<TokenRepository>(),
       refreshTokenRepository: sl.get<RefreshTokenRepository>(),
-      tasksRepository: sl.get<TasksRepository>(),
+      localTasksRepository: sl.get<LocalTasksRepository>(),
     ),
   );
 }
@@ -119,6 +119,7 @@ void _setApiRelatedClasses() {
   sl.registerLazySingleton<ApiTaskRepository>(
     () => ApiTaskRepository(
       taskClient: sl.get<TaskClient>(),
+      localTasksRepository: sl.get<LocalTasksRepository>(),
     ),
   );
   sl.registerLazySingleton<ApiProjectRepository>(

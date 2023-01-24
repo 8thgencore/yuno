@@ -22,7 +22,6 @@ IProjectUpdate _$IProjectUpdateFromJson(Map<String, dynamic> json) {
 mixin _$IProjectUpdate {
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  String get link => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +35,7 @@ abstract class $IProjectUpdateCopyWith<$Res> {
           IProjectUpdate value, $Res Function(IProjectUpdate) then) =
       _$IProjectUpdateCopyWithImpl<$Res, IProjectUpdate>;
   @useResult
-  $Res call({String name, String description, String link});
+  $Res call({String name, String description});
 }
 
 /// @nodoc
@@ -54,7 +53,6 @@ class _$IProjectUpdateCopyWithImpl<$Res, $Val extends IProjectUpdate>
   $Res call({
     Object? name = null,
     Object? description = null,
-    Object? link = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -64,10 +62,6 @@ class _$IProjectUpdateCopyWithImpl<$Res, $Val extends IProjectUpdate>
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      link: null == link
-          ? _value.link
-          : link // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -79,9 +73,10 @@ abstract class _$$_IProjectUpdateCopyWith<$Res>
   factory _$$_IProjectUpdateCopyWith(
           _$_IProjectUpdate value, $Res Function(_$_IProjectUpdate) then) =
       __$$_IProjectUpdateCopyWithImpl<$Res>;
+
   @override
   @useResult
-  $Res call({String name, String description, String link});
+  $Res call({String name, String description});
 }
 
 /// @nodoc
@@ -97,7 +92,6 @@ class __$$_IProjectUpdateCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? description = null,
-    Object? link = null,
   }) {
     return _then(_$_IProjectUpdate(
       name: null == name
@@ -108,10 +102,6 @@ class __$$_IProjectUpdateCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      link: null == link
-          ? _value.link
-          : link // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -119,8 +109,7 @@ class __$$_IProjectUpdateCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_IProjectUpdate implements _IProjectUpdate {
-  const _$_IProjectUpdate(
-      {required this.name, required this.description, required this.link});
+  const _$_IProjectUpdate({required this.name, required this.description});
 
   factory _$_IProjectUpdate.fromJson(Map<String, dynamic> json) =>
       _$$_IProjectUpdateFromJson(json);
@@ -129,12 +118,10 @@ class _$_IProjectUpdate implements _IProjectUpdate {
   final String name;
   @override
   final String description;
-  @override
-  final String link;
 
   @override
   String toString() {
-    return 'IProjectUpdate(name: $name, description: $description, link: $link)';
+    return 'IProjectUpdate(name: $name, description: $description)';
   }
 
   @override
@@ -143,14 +130,12 @@ class _$_IProjectUpdate implements _IProjectUpdate {
         (other.runtimeType == runtimeType &&
             other is _$_IProjectUpdate &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.link, link) || other.link == link));
+            (identical(other.description, description) || other.description == description));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, description, link);
+  int get hashCode => Object.hash(runtimeType, name, description);
 
   @JsonKey(ignore: true)
   @override
@@ -167,10 +152,8 @@ class _$_IProjectUpdate implements _IProjectUpdate {
 }
 
 abstract class _IProjectUpdate implements IProjectUpdate {
-  const factory _IProjectUpdate(
-      {required final String name,
-      required final String description,
-      required final String link}) = _$_IProjectUpdate;
+  const factory _IProjectUpdate({required final String name, required final String description}) =
+      _$_IProjectUpdate;
 
   factory _IProjectUpdate.fromJson(Map<String, dynamic> json) =
       _$_IProjectUpdate.fromJson;
@@ -179,8 +162,6 @@ abstract class _IProjectUpdate implements IProjectUpdate {
   String get name;
   @override
   String get description;
-  @override
-  String get link;
   @override
   @JsonKey(ignore: true)
   _$$_IProjectUpdateCopyWith<_$_IProjectUpdate> get copyWith =>

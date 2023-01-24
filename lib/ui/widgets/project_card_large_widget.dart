@@ -18,6 +18,7 @@ class ProjectCardLargeWidget extends StatelessWidget {
     project.users?.forEach((user) {
       urlImages.add(user.image?.media.link ?? '');
     });
+
     return Container(
       height: 122,
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
@@ -39,21 +40,20 @@ class ProjectCardLargeWidget extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 20),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: 160,
-                    child: Text(
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
                       project.name,
                       style: AppTypography.b22d,
                       overflow: TextOverflow.fade,
                       softWrap: false,
                     ),
-                  ),
-                  const SizedBox(height: 8),
-                  AvatarStacked(urlImages: urlImages),
-                ],
+                    const SizedBox(height: 8),
+                    AvatarStacked(urlImages: urlImages),
+                  ],
+                ),
               )
             ],
           ),

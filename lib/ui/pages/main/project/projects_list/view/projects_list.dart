@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
+import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/project/projects_list/bloc/projects_list_bloc.dart';
 import 'package:yuno/ui/widgets/project_card_large_widget.dart';
@@ -70,22 +71,27 @@ class _ProjectListWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 24),
             itemCount: projects.length,
             itemBuilder: (BuildContext context, int index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Container(
-                  height: 200,
-                  decoration: BoxDecoration(
-                    color: AppColors.white60,
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Column(
-                    children: [
-                      ProjectCardLargeWidget(project: projects[index]),
-                      Padding(
-                        padding: EdgeInsets.all(24),
-                        child: LinearPercentIndicatorWidget(percent: 0.4),
-                      ),
-                    ],
+              return GestureDetector(
+                onTap: () => context.pushNamed(RouteName.project, params: {
+                  'id': projects[index].id,
+                }),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Container(
+                    height: 200,
+                    decoration: BoxDecoration(
+                      color: AppColors.white60,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Column(
+                      children: [
+                        ProjectCardLargeWidget(project: projects[index]),
+                        const Padding(
+                          padding: EdgeInsets.all(24),
+                          child: LinearPercentIndicatorWidget(percent: 0.4),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               );

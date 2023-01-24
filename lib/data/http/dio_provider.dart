@@ -1,9 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import 'package:yuno/api/shared_models/http_validation_error.dart';
 import 'package:yuno/data/http/authorization_interceptor.dart';
-import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/resources/constants.dart';
 
 class DioBuilder {

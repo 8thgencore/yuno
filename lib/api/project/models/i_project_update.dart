@@ -8,7 +8,6 @@ class IProjectUpdate with _$IProjectUpdate {
   const factory IProjectUpdate({
     required String name,
     required String description,
-    required String link,
   }) = _IProjectUpdate;
   
   factory IProjectUpdate.fromJson(Map<String, dynamic> json) => _$IProjectUpdateFromJson(json);

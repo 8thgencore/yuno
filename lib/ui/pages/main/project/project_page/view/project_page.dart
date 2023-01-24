@@ -1,29 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
 import 'package:yuno/resources/resources.dart';
+import 'package:yuno/ui/pages/main/project/project_page/bloc/project_bloc.dart';
 import 'package:yuno/ui/widgets/custom_rounded_button.dart';
 import 'package:yuno/ui/widgets/custom_text_field.dart';
 
-class ProjectCreatePage extends StatelessWidget {
-  const ProjectCreatePage({super.key});
+class ProjectPage extends StatelessWidget {
+  const ProjectPage({super.key, this.goRouterState});
+
+  final GoRouterState? goRouterState;
 
   @override
   Widget build(BuildContext context) {
+    // check params in urls
+    bool isParams = false;
+    if (goRouterState?.params.containsKey('id') != null) {
+      final paramsLength = goRouterState?.params['id']!.length ?? 0;
+      isParams = paramsLength > 16;
+    }
     return Scaffold(
       backgroundColor: AppColors.screen100,
-      body: const SafeArea(child: _CreateProjectContentWidget()),
+      body: SafeArea(child: _CreateProjectContentWidget(isParams: isParams)),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(left: 15, right: 15),
         child: CustomRoundedButton(
-          textButton: 'Create project',
+          textButton: isParams ? 'Update' : 'Create project',
           onPressed: () {
-            // final currentNode = FocusScope.of(context);
-            // if (currentNode.focusedChild != null && !currentNode.hasPrimaryFocus) {
-            //   FocusManager.instance.primaryFocus?.unfocus();
-            // }
-            // context.read<ProfileEditBloc>().add(const ProfileEditEvent.saved());
+            final currentNode = FocusScope.of(context);
+            if (currentNode.focusedChild != null && !currentNode.hasPrimaryFocus) {
+              FocusManager.instance.primaryFocus?.unfocus();
+            }
+            isParams
+                ? context.read<ProjectBloc>().add(const ProjectEvent.updated())
+                : context.read<ProjectBloc>().add(const ProjectEvent.saved());
           },
           textColor: AppColors.white100,
           buttonColor: AppColors.primary100,
@@ -34,7 +46,9 @@ class ProjectCreatePage extends StatelessWidget {
 }
 
 class _CreateProjectContentWidget extends StatelessWidget {
-  const _CreateProjectContentWidget();
+  const _CreateProjectContentWidget({required this.isParams});
+
+  final bool isParams;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +66,7 @@ class _CreateProjectContentWidget extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Text(
-                'Create new project',
+                isParams ? 'Update project' : 'Create new project',
                 style: AppTypography.b18d,
               ),
             ],
@@ -107,29 +121,20 @@ class _ProjectNameTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomTextField(
-      controller: TextEditingController(text: "state.firstName"),
-      labelText: 'Project Name',
-      keyboardType: TextInputType.text,
-      textColor: AppColors.dark100,
-      // onChanged: (text) => context.read<ProfileEditBloc>().add(
-      //   ProfileEditEvent.firstNameChanged(text),
-      // ),
+    return BlocBuilder<ProjectBloc, ProjectState>(
+      buildWhen: (_, current) => current.status == ProjectStatus.loaded,
+      builder: (context, state) {
+        return CustomTextField(
+          controller: TextEditingController(text: state.name),
+          labelText: 'Project Name',
+          keyboardType: TextInputType.text,
+          textColor: AppColors.dark100,
+          onChanged: (text) => context.read<ProjectBloc>().add(
+                ProjectEvent.nameChanged(text),
+              ),
+        );
+      },
     );
-    // return BlocBuilder<ProfileEditBloc, ProfileEditState>(
-    //   buildWhen: (_, current) => current.status == ProfileEditStatus.loaded,
-    //   builder: (context, state) {
-    //     return CustomTextField(
-    //       controller: TextEditingController(text: state.firstName),
-    //       labelText: 'First Name',
-    //       keyboardType: TextInputType.text,
-    //       textColor: AppColors.dark100,
-    //       onChanged: (text) => context.read<ProfileEditBloc>().add(
-    //         ProfileEditEvent.firstNameChanged(text),
-    //       ),
-    //     );
-    //   },
-    // );
   }
 }
 
@@ -138,28 +143,19 @@ class _ProjectDescriptionTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomTextField(
-      controller: TextEditingController(text: "state.firstName"),
-      labelText: 'Project Description',
-      keyboardType: TextInputType.text,
-      textColor: AppColors.dark100,
-      // onChanged: (text) => context.read<ProfileEditBloc>().add(
-      //   ProfileEditEvent.firstNameChanged(text),
-      // ),
+    return BlocBuilder<ProjectBloc, ProjectState>(
+      buildWhen: (_, current) => current.status == ProjectStatus.loaded,
+      builder: (context, state) {
+        return CustomTextField(
+          controller: TextEditingController(text: state.description),
+          labelText: 'Project Description',
+          keyboardType: TextInputType.text,
+          textColor: AppColors.dark100,
+          onChanged: (text) => context.read<ProjectBloc>().add(
+                ProjectEvent.descriptionChanged(text),
+              ),
+        );
+      },
     );
-    // return BlocBuilder<ProfileEditBloc, ProfileEditState>(
-    //   buildWhen: (_, current) => current.status == ProfileEditStatus.loaded,
-    //   builder: (context, state) {
-    //     return CustomTextField(
-    //       controller: TextEditingController(text: state.firstName),
-    //       labelText: 'First Name',
-    //       keyboardType: TextInputType.text,
-    //       textColor: AppColors.dark100,
-    //       onChanged: (text) => context.read<ProfileEditBloc>().add(
-    //         ProfileEditEvent.firstNameChanged(text),
-    //       ),
-    //     );
-    //   },
-    // );
   }
 }

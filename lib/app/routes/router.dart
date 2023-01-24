@@ -4,7 +4,6 @@ import 'package:go_router_flow/go_router_flow.dart';
 import 'package:yuno/app/app.dart';
 import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/routes.dart';
-import 'package:yuno/data/repository/tasks_repository.dart';
 import 'package:yuno/data/repository/user_repository.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/domain/repository/api_project_repository.dart';
@@ -23,7 +22,8 @@ import 'package:yuno/ui/pages/main/profile_pages/change_password/view/change_pas
 import 'package:yuno/ui/pages/main/profile_pages/edit_profile/bloc/profile_edit_bloc.dart';
 import 'package:yuno/ui/pages/main/profile_pages/edit_profile/view/profile_edit_page.dart';
 import 'package:yuno/ui/pages/main/profile_pages/profile/view/profile_page.dart';
-import 'package:yuno/ui/pages/main/project/project_create/view/project_create_page.dart';
+import 'package:yuno/ui/pages/main/project/project_page/bloc/project_bloc.dart';
+import 'package:yuno/ui/pages/main/project/project_page/view/project_page.dart';
 import 'package:yuno/ui/pages/main/project/projects_list/bloc/projects_list_bloc.dart';
 import 'package:yuno/ui/pages/main/project/projects_list/view/projects_list.dart';
 import 'package:yuno/ui/pages/main/statistics/view/statistics_page.dart';
@@ -56,14 +56,13 @@ mixin RouterMixin on State<App> {
                   BlocProvider(
                     create: (context) => HomeHeaderBloc(
                       userRepository: sl.get<UserRepository>(),
-                      tasksRepository: sl.get<TasksRepository>(),
+                      apiTaskRepository: sl.get<ApiTaskRepository>(),
                     )..add(const HomeHeaderEvent.started()),
                     child: const HomePage(),
                   ),
                   BlocProvider(
                     create: (context) => HomeChecklistBloc(
                       apiTaskRepository: sl.get<ApiTaskRepository>(),
-                      tasksRepository: sl.get<TasksRepository>(),
                     )..add(const HomeChecklistEvent.started()),
                     child: const HomePage(),
                   ),
@@ -131,10 +130,15 @@ mixin RouterMixin on State<App> {
           ),
           routes: [
             GoRoute(
-              name: RouteName.projectCreate,
-              path: RoutePath.projectCreate,
+              name: RouteName.project,
+              path: RoutePath.project,
               parentNavigatorKey: rootNavigatorKey,
-              builder: (context, state) => const ProjectCreatePage(),
+              builder: (context, state) => BlocProvider(
+                create: (context) => ProjectBloc(
+                  apiProjectRepository: sl.get<ApiProjectRepository>(),
+                )..add(ProjectEvent.started(state.params['id'] ?? '')),
+                child: ProjectPage(goRouterState: state),
+              ),
             ),
           ],
         ),

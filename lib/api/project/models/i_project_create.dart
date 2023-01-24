@@ -4,12 +4,12 @@ part 'i_project_create.freezed.dart';
 part 'i_project_create.g.dart';
 
 @Freezed()
-class IProjectCreate with _$IProjectCreate {
-  const factory IProjectCreate({
+class IProject with _$IProject {
+  const factory IProject({
     required String name,
     required String description,
     required String link,
-  }) = _IProjectCreate;
-  
-  factory IProjectCreate.fromJson(Map<String, dynamic> json) => _$IProjectCreateFromJson(json);
+  }) = _IProject;
+
+  factory IProject.fromJson(Map<String, dynamic> json) => _$IProjectFromJson(json);
 }

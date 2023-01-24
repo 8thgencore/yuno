@@ -11,7 +11,7 @@ abstract class RouteName {
   static const profileEdit = 'edit';
   static const profileChangePassword = 'change-password';
   static const projects = 'projects';
-  static const projectCreate = 'project-create';
+  static const project = 'project-create';
 }
 
 abstract class RoutePath {
@@ -27,5 +27,5 @@ abstract class RoutePath {
   static const profileEdit = 'edit';
   static const profileChangePassword = 'change-password';
   static const projects = '/projects';
-  static const projectCreate = 'create';
+  static const project = ':id';
 }

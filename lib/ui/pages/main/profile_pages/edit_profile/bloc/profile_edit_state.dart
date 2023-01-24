@@ -16,7 +16,7 @@ class ProfileEditState with _$ProfileEditState {
     required String lastName,
     required String username,
     required String email,
-     String? role,
+    String? role,
     ProfileEditEmailError? emailError,
     ProfileEditNicknameError? nicknameError,
     String? serverError,

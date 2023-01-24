@@ -26,7 +26,7 @@ class AuthorizationInterceptor extends Interceptor {
 
   @override
   Future<void> onError(DioError err, ErrorInterceptorHandler handler) async {
-    if (err.response?.statusCode == 403) {
+    if (err.response?.statusCode == 401) {
       await logoutInteractor.logout();
     }
     return handler.next(err);

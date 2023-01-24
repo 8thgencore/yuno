@@ -41,25 +41,24 @@ class ProjectCardSmallWidget extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 12),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        width: 160,
-                        child: Text(
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
                           project.name,
                           style: AppTypography.b16d,
                           overflow: TextOverflow.fade,
                           softWrap: false,
                         ),
-                      ),
-                      Text(
-                        project.description,
-                        style: AppTypography.l12g,
-                        overflow: TextOverflow.fade,
-                        softWrap: false,
-                      ),
-                    ],
+                        Text(
+                          project.description,
+                          style: AppTypography.l12g,
+                          overflow: TextOverflow.fade,
+                          softWrap: false,
+                        ),
+                      ],
+                    ),
                   )
                 ],
               ),

@@ -9,13 +9,12 @@ import 'package:yuno/domain/repository/api_task_repository.dart';
 import 'package:yuno/domain/repository/api_user_repository.dart';
 
 part 'splash_event.dart';
-
 part 'splash_state.dart';
 
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
   SplashBloc({
     required this.tokenRepository,
-    required this.tasksRepository,
+    required this.localTasksRepository,
     required this.apiUserRepository,
     required this.apiTaskRepository,
   }) : super(SplashInitial()) {
@@ -23,7 +22,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   }
 
   final TokenRepository tokenRepository;
-  final TasksRepository tasksRepository;
+  final LocalTasksRepository localTasksRepository;
   final ApiUserRepository apiUserRepository;
   final ApiTaskRepository apiTaskRepository;
 
@@ -42,7 +41,9 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
       // Get tasks from server
       final tasks = await apiTaskRepository.getTasks();
       if (tasks is List<ITaskRead>) {
-        await tasksRepository.setItem(tasks);
+        await localTasksRepository.setItem(tasks);
+      } else {
+        await localTasksRepository.setItem(null);
       }
       emit(const SplashAuthorized());
     }

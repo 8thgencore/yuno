@@ -25,7 +25,7 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
     _bloc = SplashBloc(
       tokenRepository: sl.get<TokenRepository>(),
-      tasksRepository: sl.get<TasksRepository>(),
+      localTasksRepository: sl.get<LocalTasksRepository>(),
       apiUserRepository: sl.get<ApiUserRepository>(),
       apiTaskRepository: sl.get<ApiTaskRepository>(),
     );

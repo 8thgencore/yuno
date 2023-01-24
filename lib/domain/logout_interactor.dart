@@ -8,18 +8,18 @@ class LogoutInteractor {
     required this.userRepository,
     required this.tokenRepository,
     required this.refreshTokenRepository,
-    required this.tasksRepository,
+    required this.localTasksRepository,
   });
 
   final UserRepository userRepository;
   final TokenRepository tokenRepository;
   final RefreshTokenRepository refreshTokenRepository;
-  final TasksRepository tasksRepository;
+  final LocalTasksRepository localTasksRepository;
 
   Future<void> logout() async {
     await userRepository.setItem(null);
     await tokenRepository.setItem(null);
     await refreshTokenRepository.setItem(null);
-    await tasksRepository.setItem(null);
+    await localTasksRepository.setItem(null);
   }
 }

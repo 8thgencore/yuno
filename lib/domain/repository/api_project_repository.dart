@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:yuno/api/project/models/i_project_create.dart';
-import 'package:yuno/api/project/models/i_project_read.dart';
 import 'package:yuno/api/project/models/i_project_update.dart';
 import 'package:yuno/api/project/rest_client.dart';
 import 'package:yuno/data/http/error_interceptor.dart';
@@ -48,13 +47,13 @@ class ApiProjectRepository {
     }
   }
 
-  Future<dynamic> createTask({
+  Future<dynamic> createProject({
     required String name,
     required String description,
   }) async {
     try {
       final response = await projectClient.postProject(
-        body: IProjectCreate(
+        body: IProject(
           name: name,
           description: description,
           link: '',
@@ -71,15 +70,15 @@ class ApiProjectRepository {
 
   Future<dynamic> updateTaskById({
     required String id,
-    required IProjectRead project,
+    required String name,
+    required String description,
   }) async {
     try {
       final response = await projectClient.putProjectProjectId(
         projectId: id,
         body: IProjectUpdate(
-          name: project.name,
-          description: project.description,
-          link: project.link,
+          name: name,
+          description: description,
         ),
       );
 

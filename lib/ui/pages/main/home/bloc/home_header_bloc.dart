@@ -4,18 +4,17 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:yuno/api/task/models/i_task_read.dart';
 import 'package:yuno/api/user/models/i_user_read.dart';
-import 'package:yuno/data/repository/tasks_repository.dart';
 import 'package:yuno/data/repository/user_repository.dart';
+import 'package:yuno/domain/repository/api_task_repository.dart';
 
 part 'home_header_bloc.freezed.dart';
-
 part 'home_header_event.dart';
 part 'home_header_state.dart';
 
 class HomeHeaderBloc extends Bloc<HomeHeaderEvent, HomeHeaderState> {
   HomeHeaderBloc({
     required this.userRepository,
-    required this.tasksRepository,
+    required this.apiTaskRepository,
   }) : super(const HomeHeaderState.initial()) {
     on<HomeHeaderEvent>(
       (event, emit) => event.map(
@@ -25,7 +24,7 @@ class HomeHeaderBloc extends Bloc<HomeHeaderEvent, HomeHeaderState> {
   }
 
   final UserRepository userRepository;
-  final TasksRepository tasksRepository;
+  final ApiTaskRepository apiTaskRepository;
 
   String _username = 'user';
   ITaskRead? _task;
@@ -42,9 +41,8 @@ class HomeHeaderBloc extends Bloc<HomeHeaderEvent, HomeHeaderState> {
           _username = user.firstName;
         }
       }
-
-      var tasks = await tasksRepository.getItem();
-      if (tasks != null) {
+      var tasks = await apiTaskRepository.getTasks();
+      if (tasks is List<ITaskRead>) {
         tasks = tasks.where((task) => task.done == false).toList();
         if (tasks.isNotEmpty) {
           _task = tasks.last;
