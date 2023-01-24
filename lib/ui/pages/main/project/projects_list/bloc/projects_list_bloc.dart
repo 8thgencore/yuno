@@ -5,15 +5,17 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:yuno/api/project/models/i_project_with_users.dart';
 import 'package:yuno/domain/repository/api_project_repository.dart';
 
-part 'home_projects_bloc.freezed.dart';
-part 'home_projects_event.dart';
-part 'home_projects_state.dart';
+part 'projects_list_bloc.freezed.dart';
 
-class HomeProjectsBloc extends Bloc<HomeProjectsEvent, HomeProjectsState> {
-  HomeProjectsBloc({
+part 'projects_list_event.dart';
+
+part 'projects_list_state.dart';
+
+class ProjectsListBloc extends Bloc<ProjectsListEvent, ProjectsListState> {
+  ProjectsListBloc({
     required this.apiProjectRepository,
-  }) : super(const HomeProjectsState.initial()) {
-    on<HomeProjectsEvent>(
+  }) : super(const ProjectsListState.initial()) {
+    on<ProjectsListEvent>(
         (event, emit) => event.map(started: (event) => _onProjectsLoaded(event, emit)));
   }
 
@@ -23,21 +25,21 @@ class HomeProjectsBloc extends Bloc<HomeProjectsEvent, HomeProjectsState> {
 
   FutureOr<void> _onProjectsLoaded(
     _StartedEvent event,
-    Emitter<HomeProjectsState> emit,
+    Emitter<ProjectsListState> emit,
   ) async {
-    emit(const HomeProjectsState.loading());
+    emit(const ProjectsListState.loading());
     try {
-      final projects = await apiProjectRepository.getProjects(size: 4);
+      final projects = await apiProjectRepository.getProjects(size: 10);
       if (projects is List<IProjectWithUsers>) {
         if (projects.isNotEmpty) {
           _projects = projects;
         }
-        emit(HomeProjectsState.loaded(_projects));
+        emit(ProjectsListState.loaded(_projects));
       } else {
-        emit(const HomeProjectsState.failure('Wrong data from server'));
+        emit(const ProjectsListState.failure('Wrong data from server'));
       }
     } on Exception catch (_) {
-      emit(const HomeProjectsState.failure("Don't get tasks"));
+      emit(const ProjectsListState.failure("Don't get tasks"));
     }
   }
 }

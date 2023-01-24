@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:yuno/api/project/models/i_project_with_users.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/widgets/avatar_stacked.dart';
 
 class ProjectCardLargeWidget extends StatelessWidget {
   const ProjectCardLargeWidget({
+    required this.project,
     super.key,
   });
 
+  final IProjectWithUsers project;
+
   @override
   Widget build(BuildContext context) {
+    final List<String> urlImages = [];
+    project.users?.forEach((user) {
+      urlImages.add(user.image?.media.link ?? '');
+    });
     return Container(
       height: 122,
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
@@ -37,24 +45,14 @@ class ProjectCardLargeWidget extends StatelessWidget {
                   SizedBox(
                     width: 160,
                     child: Text(
-                      "project.name",
+                      project.name,
                       style: AppTypography.b22d,
                       overflow: TextOverflow.fade,
                       softWrap: false,
                     ),
                   ),
                   const SizedBox(height: 8),
-                  AvatarStacked(
-                    urlImages: [
-                      "https://plus.unsplash.com/premium_photo-1672907030852-3eb140df586f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-                      "https://plus.unsplash.com/premium_photo-1672907030852-3eb140df586f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-                      "https://plus.unsplash.com/premium_photo-1672907030852-3eb140df586f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-                      "https://plus.unsplash.com/premium_photo-1672907030852-3eb140df586f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-                      "https://plus.unsplash.com/premium_photo-1672907030852-3eb140df586f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-                      "https://plus.unsplash.com/premium_photo-1672907030852-3eb140df586f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-                      "https://plus.unsplash.com/premium_photo-1672907030852-3eb140df586f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-                    ],
-                  ),
+                  AvatarStacked(urlImages: urlImages),
                 ],
               )
             ],

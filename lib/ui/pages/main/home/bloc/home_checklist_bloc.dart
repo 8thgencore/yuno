@@ -3,16 +3,17 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:yuno/api/task/models/i_task_read.dart';
+import 'package:yuno/data/repository/tasks_repository.dart';
 import 'package:yuno/domain/repository/api_task_repository.dart';
-
-part 'home_checklist_event.dart';
-
-part 'home_checklist_state.dart';
 
 part 'home_checklist_bloc.freezed.dart';
 
+part 'home_checklist_event.dart';
+part 'home_checklist_state.dart';
+
 class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
   HomeChecklistBloc({
+    required this.tasksRepository,
     required this.apiTaskRepository,
   }) : super(const HomeChecklistState.initial()) {
     on<HomeChecklistEvent>(
@@ -22,6 +23,7 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
     );
   }
 
+  final TasksRepository tasksRepository;
   final ApiTaskRepository apiTaskRepository;
 
   final List<ITaskRead> _tasks = [];
@@ -32,8 +34,8 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
   ) async {
     emit(const HomeChecklistState.loading());
     try {
-      final tasks = await apiTaskRepository.getTasks();
-      if (tasks is List<ITaskRead>) {
+      final tasks = await tasksRepository.getItem();
+      if (tasks != null) {
         if (tasks.isNotEmpty) {
           _tasks.addAll(tasks.where((task) => task.done == false));
         }
@@ -57,6 +59,7 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
     _tasks.removeWhere((task) => task.id == event.id);
     _tasks.add(checkedTask);
 
+    await tasksRepository.setItem(_tasks);
     await apiTaskRepository.updateTaskById(
       id: event.id,
       task: checkedTask.copyWith(done: !isDone),

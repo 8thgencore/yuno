@@ -8,9 +8,7 @@ class HomeProjectsState with _$HomeProjectsState {
 
   const factory HomeProjectsState.loading() = _LoadingState;
 
-  const factory HomeProjectsState.loaded({
-    required List<IProjectWithUsers> projects,
-  }) = _LoadedState;
+  const factory HomeProjectsState.loaded(List<IProjectWithUsers> projects) = _LoadedState;
 
   const factory HomeProjectsState.failure(Object error) = _FailureState;
 }

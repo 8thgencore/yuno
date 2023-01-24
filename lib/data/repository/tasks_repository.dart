@@ -10,10 +10,9 @@ class TasksRepository extends ReactiveRepository<List<ITaskRead>> {
   final TasksProvider _tasksProvider;
 
   @override
-  List<ITaskRead> convertFromString(String rawItem) =>
-      (json.decode(rawItem) as List<Map<String, dynamic>>)
-          .map((e) => ITaskRead.fromJson(e))
-          .toList();
+  List<ITaskRead> convertFromString(String rawItem) => (json.decode(rawItem) as List<dynamic>)
+      .map((e) => ITaskRead.fromJson(e as Map<String, dynamic>))
+      .toList();
 
   @override
   String convertToString(List<ITaskRead> item) => json.encode(item);
