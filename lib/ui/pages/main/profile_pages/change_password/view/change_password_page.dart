@@ -121,10 +121,7 @@ class _ChangePasswordContentWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 24),
             decoration: const BoxDecoration(
               color: AppColors.white60,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20.0),
-                topRight: Radius.circular(20.0),
-              ),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
             ),
             child: removeScrollingGlow(
               child: const SingleChildScrollView(

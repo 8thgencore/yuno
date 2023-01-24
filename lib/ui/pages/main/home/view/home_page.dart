@@ -212,12 +212,17 @@ class _ProjectsListWidget extends StatelessWidget {
               loading: () => const Center(child: CircularProgressIndicator()),
               loaded: (projects) => projects.isNotEmpty
                   ? ListView.builder(
-                      // key: GlobalKey(),
                       scrollDirection: Axis.horizontal,
                       padding: const EdgeInsets.symmetric(horizontal: 12),
                       itemCount: projects.length,
                       itemBuilder: (BuildContext context, int index) {
-                        return ProjectCardSmallWidget(project: projects[index]);
+                        return GestureDetector(
+                          onTap: () => context.pushNamed(
+                            RouteName.project,
+                            params: {'id': projects[index].id},
+                          ),
+                          child: ProjectCardSmallWidget(project: projects[index]),
+                        );
                       },
                     )
                   : Text('Projects list is empty', style: AppTypography.l14g),
@@ -255,7 +260,7 @@ class _CheckListWidget extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     itemCount: tasks.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return TaskCardWidget(task: tasks[index]);
+                      return _TaskCardWidget(task: tasks[index]);
                     },
                   )
                 : Container(
@@ -289,19 +294,16 @@ class _CheckListWidget extends StatelessWidget {
   }
 }
 
-class TaskCardWidget extends StatefulWidget {
-  const TaskCardWidget({
-    required this.task,
-    super.key,
-  });
+class _TaskCardWidget extends StatefulWidget {
+  const _TaskCardWidget({required this.task});
 
   final ITaskRead task;
 
   @override
-  State<TaskCardWidget> createState() => _TaskCardWidgetState();
+  State<_TaskCardWidget> createState() => _TaskCardWidgetState();
 }
 
-class _TaskCardWidgetState extends State<TaskCardWidget> {
+class _TaskCardWidgetState extends State<_TaskCardWidget> {
   late bool value;
 
   @override

@@ -3,39 +3,36 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
 import 'package:yuno/resources/resources.dart';
-import 'package:yuno/ui/pages/main/project/project_page/bloc/project_bloc.dart';
+import 'package:yuno/ui/pages/main/project/project_edit/bloc/project_edit_bloc.dart';
 import 'package:yuno/ui/widgets/custom_rounded_button.dart';
 import 'package:yuno/ui/widgets/custom_text_field.dart';
 
-class ProjectPage extends StatelessWidget {
-  const ProjectPage({super.key, this.goRouterState});
+class ProjectEditPage extends StatelessWidget {
+  const ProjectEditPage({
+    this.isUpdate = false,
+    super.key,
+  });
 
-  final GoRouterState? goRouterState;
+  final bool isUpdate;
 
   @override
   Widget build(BuildContext context) {
-    // check params in urls
-    bool isParams = false;
-    if (goRouterState?.params.containsKey('id') != null) {
-      final paramsLength = goRouterState?.params['id']!.length ?? 0;
-      isParams = paramsLength > 16;
-    }
     return Scaffold(
       backgroundColor: AppColors.screen100,
-      body: SafeArea(child: _CreateProjectContentWidget(isParams: isParams)),
+      body: SafeArea(child: _CreateProjectContentWidget(isUpdate: isUpdate)),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(left: 15, right: 15),
         child: CustomRoundedButton(
-          textButton: isParams ? 'Update' : 'Create project',
+          textButton: isUpdate ? 'Update' : 'Create project',
           onPressed: () {
             final currentNode = FocusScope.of(context);
             if (currentNode.focusedChild != null && !currentNode.hasPrimaryFocus) {
               FocusManager.instance.primaryFocus?.unfocus();
             }
-            isParams
-                ? context.read<ProjectBloc>().add(const ProjectEvent.updated())
-                : context.read<ProjectBloc>().add(const ProjectEvent.saved());
+            isUpdate
+                ? context.read<ProjectEditBloc>().add(const ProjectEditEvent.updated())
+                : context.read<ProjectEditBloc>().add(const ProjectEditEvent.saved());
           },
           textColor: AppColors.white100,
           buttonColor: AppColors.primary100,
@@ -46,9 +43,9 @@ class ProjectPage extends StatelessWidget {
 }
 
 class _CreateProjectContentWidget extends StatelessWidget {
-  const _CreateProjectContentWidget({required this.isParams});
+  const _CreateProjectContentWidget({required this.isUpdate});
 
-  final bool isParams;
+  final bool isUpdate;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +63,7 @@ class _CreateProjectContentWidget extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Text(
-                isParams ? 'Update project' : 'Create new project',
+                isUpdate ? 'Update project' : 'Create new project',
                 style: AppTypography.b18d,
               ),
             ],
@@ -78,10 +75,7 @@ class _CreateProjectContentWidget extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24),
               decoration: const BoxDecoration(
                 color: AppColors.white60,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20.0),
-                  topRight: Radius.circular(20.0),
-                ),
+                borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
               ),
               child: const SingleChildScrollView(
                 child: _ListTextFieldWidget(),
@@ -121,16 +115,16 @@ class _ProjectNameTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProjectBloc, ProjectState>(
-      buildWhen: (_, current) => current.status == ProjectStatus.loaded,
+    return BlocBuilder<ProjectEditBloc, ProjectEditState>(
+      buildWhen: (_, current) => current.status == ProjectEditStatus.loaded,
       builder: (context, state) {
         return CustomTextField(
           controller: TextEditingController(text: state.name),
           labelText: 'Project Name',
           keyboardType: TextInputType.text,
           textColor: AppColors.dark100,
-          onChanged: (text) => context.read<ProjectBloc>().add(
-                ProjectEvent.nameChanged(text),
+          onChanged: (text) => context.read<ProjectEditBloc>().add(
+                ProjectEditEvent.nameChanged(text),
               ),
         );
       },
@@ -143,16 +137,16 @@ class _ProjectDescriptionTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProjectBloc, ProjectState>(
-      buildWhen: (_, current) => current.status == ProjectStatus.loaded,
+    return BlocBuilder<ProjectEditBloc, ProjectEditState>(
+      buildWhen: (_, current) => current.status == ProjectEditStatus.loaded,
       builder: (context, state) {
         return CustomTextField(
           controller: TextEditingController(text: state.description),
           labelText: 'Project Description',
           keyboardType: TextInputType.text,
           textColor: AppColors.dark100,
-          onChanged: (text) => context.read<ProjectBloc>().add(
-                ProjectEvent.descriptionChanged(text),
+          onChanged: (text) => context.read<ProjectEditBloc>().add(
+                ProjectEditEvent.descriptionChanged(text),
               ),
         );
       },

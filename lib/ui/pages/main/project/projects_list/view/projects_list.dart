@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router_flow/go_router_flow.dart';
+import 'package:yuno/api/project/models/i_project_with_users.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
 import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/resources/resources.dart';
@@ -20,7 +21,7 @@ class ProjectsListPage extends StatelessWidget {
 }
 
 class _ProjectsListContentWidget extends StatelessWidget {
-  const _ProjectsListContentWidget({super.key});
+  const _ProjectsListContentWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class _ProjectsListContentWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          padding: const EdgeInsets.only(top: 18, left: 24, right: 24, bottom: 20),
+          padding: const EdgeInsets.only(top: 18, left: 24, right: 24, bottom: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -44,57 +45,28 @@ class _ProjectsListContentWidget extends StatelessWidget {
             ],
           ),
         ),
-        const Expanded(
-          child: _ProjectListWidget(),
-        ),
+        const Expanded(child: _ProjectListWidget()),
       ],
     );
   }
 }
 
 class _ProjectListWidget extends StatelessWidget {
-  const _ProjectListWidget({super.key});
+  const _ProjectListWidget();
 
   @override
   Widget build(BuildContext context) {
     return removeScrollingGlow(
       child: BlocBuilder<ProjectsListBloc, ProjectsListState>(
         builder: (context, state) => state.maybeWhen(
-          initial: () => const Center(
-            child: CircularProgressIndicator(),
-          ),
-          loading: () => const Center(
-            child: CircularProgressIndicator(),
-          ),
+          initial: () => const Center(child: CircularProgressIndicator()),
+          loading: () => const Center(child: CircularProgressIndicator()),
           loaded: (projects) => ListView.builder(
             shrinkWrap: true,
             padding: const EdgeInsets.symmetric(horizontal: 24),
             itemCount: projects.length,
             itemBuilder: (BuildContext context, int index) {
-              return GestureDetector(
-                onTap: () => context.pushNamed(RouteName.project, params: {
-                  'id': projects[index].id,
-                }),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Container(
-                    height: 200,
-                    decoration: BoxDecoration(
-                      color: AppColors.white60,
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Column(
-                      children: [
-                        ProjectCardLargeWidget(project: projects[index]),
-                        const Padding(
-                          padding: EdgeInsets.all(24),
-                          child: LinearPercentIndicatorWidget(percent: 0.4),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              );
+              return _ProjectFullCardWidget(project: projects[index]);
             },
           ),
           failure: (error) => Container(
@@ -112,6 +84,38 @@ class _ProjectListWidget extends StatelessWidget {
               'Failed to get a list of projects from the server',
               style: AppTypography.l14g,
             ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _ProjectFullCardWidget extends StatelessWidget {
+  const _ProjectFullCardWidget({required this.project});
+
+  final IProjectWithUsers project;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => context.pushNamed(RouteName.projectEdit, params: {'id': project.id}),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Container(
+          height: 200,
+          decoration: BoxDecoration(
+            color: AppColors.white60,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Column(
+            children: [
+              ProjectCardLargeWidget(project: project),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+                child: LinearPercentIndicatorWidget(percent: 0.4),
+              ),
+            ],
           ),
         ),
       ),

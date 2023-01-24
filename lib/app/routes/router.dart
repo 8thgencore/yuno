@@ -22,8 +22,9 @@ import 'package:yuno/ui/pages/main/profile_pages/change_password/view/change_pas
 import 'package:yuno/ui/pages/main/profile_pages/edit_profile/bloc/profile_edit_bloc.dart';
 import 'package:yuno/ui/pages/main/profile_pages/edit_profile/view/profile_edit_page.dart';
 import 'package:yuno/ui/pages/main/profile_pages/profile/view/profile_page.dart';
-import 'package:yuno/ui/pages/main/project/project_page/bloc/project_bloc.dart';
-import 'package:yuno/ui/pages/main/project/project_page/view/project_page.dart';
+import 'package:yuno/ui/pages/main/project/project_details/view/project_details_page.dart';
+import 'package:yuno/ui/pages/main/project/project_edit/bloc/project_edit_bloc.dart';
+import 'package:yuno/ui/pages/main/project/project_edit/view/project_page.dart';
 import 'package:yuno/ui/pages/main/project/projects_list/bloc/projects_list_bloc.dart';
 import 'package:yuno/ui/pages/main/project/projects_list/view/projects_list.dart';
 import 'package:yuno/ui/pages/main/statistics/view/statistics_page.dart';
@@ -118,6 +119,9 @@ mixin RouterMixin on State<App> {
             ),
           ],
         ),
+        ////////////////////
+        // Projects
+        ////////////////////
         GoRoute(
           name: RouteName.projects,
           path: RoutePath.projects,
@@ -130,18 +134,45 @@ mixin RouterMixin on State<App> {
           ),
           routes: [
             GoRoute(
-              name: RouteName.project,
-              path: RoutePath.project,
+                name: RouteName.project,
+                path: RoutePath.project,
+                parentNavigatorKey: rootNavigatorKey,
+                builder: (context, state) => const ProjectDetailsPage(),
+                // builder: (context, state) => BlocProvider(
+                // create: (context) => ProjectEditBloc(
+                //   apiProjectRepository: sl.get<ApiProjectRepository>(),
+                // )..add(ProjectEditEvent.started(state.params['id'] ?? '')),
+                // child: ProjectDetailsPage(),
+                // ),
+                routes: [
+                  GoRoute(
+                    name: RouteName.projectEdit,
+                    path: RoutePath.projectEdit,
+                    parentNavigatorKey: rootNavigatorKey,
+                    builder: (context, state) => BlocProvider(
+                      create: (context) => ProjectEditBloc(
+                        apiProjectRepository: sl.get<ApiProjectRepository>(),
+                      )..add(ProjectEditEvent.started(state.params['id'] ?? '')),
+                      child: const ProjectEditPage(isUpdate: true),
+                    ),
+                  ),
+                ]),
+            GoRoute(
+              name: RouteName.projectCreate,
+              path: RoutePath.projectCreate,
               parentNavigatorKey: rootNavigatorKey,
               builder: (context, state) => BlocProvider(
-                create: (context) => ProjectBloc(
+                create: (context) => ProjectEditBloc(
                   apiProjectRepository: sl.get<ApiProjectRepository>(),
-                )..add(ProjectEvent.started(state.params['id'] ?? '')),
-                child: ProjectPage(goRouterState: state),
+                )..add(const ProjectEditEvent.started('')),
+                child: const ProjectEditPage(),
               ),
-            ),
+            )
           ],
         ),
+        ////////////////////
+        // Authentication
+        ////////////////////
         GoRoute(
           name: RouteName.login,
           path: RoutePath.login,

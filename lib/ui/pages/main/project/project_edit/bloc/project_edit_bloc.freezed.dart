@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'project_bloc.dart';
+part of 'project_edit_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ProjectEvent {
+mixin _$ProjectEditEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String id) started,
@@ -78,15 +78,15 @@ mixin _$ProjectEvent {
 }
 
 /// @nodoc
-abstract class $ProjectEventCopyWith<$Res> {
-  factory $ProjectEventCopyWith(ProjectEvent value, $Res Function(ProjectEvent) then) =
-      _$ProjectEventCopyWithImpl<$Res, ProjectEvent>;
+abstract class $ProjectEditEventCopyWith<$Res> {
+  factory $ProjectEditEventCopyWith(ProjectEditEvent value, $Res Function(ProjectEditEvent) then) =
+      _$ProjectEditEventCopyWithImpl<$Res, ProjectEditEvent>;
 }
 
 /// @nodoc
-class _$ProjectEventCopyWithImpl<$Res, $Val extends ProjectEvent>
-    implements $ProjectEventCopyWith<$Res> {
-  _$ProjectEventCopyWithImpl(this._value, this._then);
+class _$ProjectEditEventCopyWithImpl<$Res, $Val extends ProjectEditEvent>
+    implements $ProjectEditEventCopyWith<$Res> {
+  _$ProjectEditEventCopyWithImpl(this._value, this._then);
 
 // ignore: unused_field
   final $Val _value;
@@ -103,7 +103,8 @@ abstract class _$$_StartedEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_StartedEventCopyWithImpl<$Res> extends _$ProjectEventCopyWithImpl<$Res, _$_StartedEvent>
+class __$$_StartedEventCopyWithImpl<$Res>
+    extends _$ProjectEditEventCopyWithImpl<$Res, _$_StartedEvent>
     implements _$$_StartedEventCopyWith<$Res> {
   __$$_StartedEventCopyWithImpl(_$_StartedEvent _value, $Res Function(_$_StartedEvent) _then)
       : super(_value, _then);
@@ -132,7 +133,7 @@ class _$_StartedEvent implements _StartedEvent {
 
   @override
   String toString() {
-    return 'ProjectEvent.started(id: $id)';
+    return 'ProjectEditEvent.started(id: $id)';
   }
 
   @override
@@ -233,7 +234,7 @@ class _$_StartedEvent implements _StartedEvent {
   }
 }
 
-abstract class _StartedEvent implements ProjectEvent {
+abstract class _StartedEvent implements ProjectEditEvent {
   const factory _StartedEvent(final String id) = _$_StartedEvent;
 
   String get id;
@@ -252,7 +253,7 @@ abstract class _$$_NameChangedEventCopyWith<$Res> {
 
 /// @nodoc
 class __$$_NameChangedEventCopyWithImpl<$Res>
-    extends _$ProjectEventCopyWithImpl<$Res, _$_NameChangedEvent>
+    extends _$ProjectEditEventCopyWithImpl<$Res, _$_NameChangedEvent>
     implements _$$_NameChangedEventCopyWith<$Res> {
   __$$_NameChangedEventCopyWithImpl(
       _$_NameChangedEvent _value, $Res Function(_$_NameChangedEvent) _then)
@@ -282,7 +283,7 @@ class _$_NameChangedEvent implements _NameChangedEvent {
 
   @override
   String toString() {
-    return 'ProjectEvent.nameChanged(text: $text)';
+    return 'ProjectEditEvent.nameChanged(text: $text)';
   }
 
   @override
@@ -383,7 +384,7 @@ class _$_NameChangedEvent implements _NameChangedEvent {
   }
 }
 
-abstract class _NameChangedEvent implements ProjectEvent {
+abstract class _NameChangedEvent implements ProjectEditEvent {
   const factory _NameChangedEvent(final String text) = _$_NameChangedEvent;
 
   String get text;
@@ -403,7 +404,7 @@ abstract class _$$_DescriptionChangedEventCopyWith<$Res> {
 
 /// @nodoc
 class __$$_DescriptionChangedEventCopyWithImpl<$Res>
-    extends _$ProjectEventCopyWithImpl<$Res, _$_DescriptionChangedEvent>
+    extends _$ProjectEditEventCopyWithImpl<$Res, _$_DescriptionChangedEvent>
     implements _$$_DescriptionChangedEventCopyWith<$Res> {
   __$$_DescriptionChangedEventCopyWithImpl(
       _$_DescriptionChangedEvent _value, $Res Function(_$_DescriptionChangedEvent) _then)
@@ -433,7 +434,7 @@ class _$_DescriptionChangedEvent implements _DescriptionChangedEvent {
 
   @override
   String toString() {
-    return 'ProjectEvent.descriptionChanged(text: $text)';
+    return 'ProjectEditEvent.descriptionChanged(text: $text)';
   }
 
   @override
@@ -534,7 +535,7 @@ class _$_DescriptionChangedEvent implements _DescriptionChangedEvent {
   }
 }
 
-abstract class _DescriptionChangedEvent implements ProjectEvent {
+abstract class _DescriptionChangedEvent implements ProjectEditEvent {
   const factory _DescriptionChangedEvent(final String text) = _$_DescriptionChangedEvent;
 
   String get text;
@@ -550,7 +551,7 @@ abstract class _$$_SavedEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SavedEventCopyWithImpl<$Res> extends _$ProjectEventCopyWithImpl<$Res, _$_SavedEvent>
+class __$$_SavedEventCopyWithImpl<$Res> extends _$ProjectEditEventCopyWithImpl<$Res, _$_SavedEvent>
     implements _$$_SavedEventCopyWith<$Res> {
   __$$_SavedEventCopyWithImpl(_$_SavedEvent _value, $Res Function(_$_SavedEvent) _then)
       : super(_value, _then);
@@ -563,7 +564,7 @@ class _$_SavedEvent implements _SavedEvent {
 
   @override
   String toString() {
-    return 'ProjectEvent.saved()';
+    return 'ProjectEditEvent.saved()';
   }
 
   @override
@@ -655,7 +656,7 @@ class _$_SavedEvent implements _SavedEvent {
   }
 }
 
-abstract class _SavedEvent implements ProjectEvent {
+abstract class _SavedEvent implements ProjectEditEvent {
   const factory _SavedEvent() = _$_SavedEvent;
 }
 
@@ -666,7 +667,8 @@ abstract class _$$_UpdatedEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UpdatedEventCopyWithImpl<$Res> extends _$ProjectEventCopyWithImpl<$Res, _$_UpdatedEvent>
+class __$$_UpdatedEventCopyWithImpl<$Res>
+    extends _$ProjectEditEventCopyWithImpl<$Res, _$_UpdatedEvent>
     implements _$$_UpdatedEventCopyWith<$Res> {
   __$$_UpdatedEventCopyWithImpl(_$_UpdatedEvent _value, $Res Function(_$_UpdatedEvent) _then)
       : super(_value, _then);
@@ -679,7 +681,7 @@ class _$_UpdatedEvent implements _UpdatedEvent {
 
   @override
   String toString() {
-    return 'ProjectEvent.updated()';
+    return 'ProjectEditEvent.updated()';
   }
 
   @override
@@ -771,35 +773,35 @@ class _$_UpdatedEvent implements _UpdatedEvent {
   }
 }
 
-abstract class _UpdatedEvent implements ProjectEvent {
+abstract class _UpdatedEvent implements ProjectEditEvent {
   const factory _UpdatedEvent() = _$_UpdatedEvent;
 }
 
 /// @nodoc
-mixin _$ProjectState {
-  ProjectStatus get status => throw _privateConstructorUsedError;
+mixin _$ProjectEditState {
+  ProjectEditStatus get status => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String? get serverError => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ProjectStateCopyWith<ProjectState> get copyWith => throw _privateConstructorUsedError;
+  $ProjectEditStateCopyWith<ProjectEditState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProjectStateCopyWith<$Res> {
-  factory $ProjectStateCopyWith(ProjectState value, $Res Function(ProjectState) then) =
-      _$ProjectStateCopyWithImpl<$Res, ProjectState>;
+abstract class $ProjectEditStateCopyWith<$Res> {
+  factory $ProjectEditStateCopyWith(ProjectEditState value, $Res Function(ProjectEditState) then) =
+      _$ProjectEditStateCopyWithImpl<$Res, ProjectEditState>;
   @useResult
   $Res call(
-      {ProjectStatus status, String id, String name, String description, String? serverError});
+      {ProjectEditStatus status, String id, String name, String description, String? serverError});
 }
 
 /// @nodoc
-class _$ProjectStateCopyWithImpl<$Res, $Val extends ProjectState>
-    implements $ProjectStateCopyWith<$Res> {
-  _$ProjectStateCopyWithImpl(this._value, this._then);
+class _$ProjectEditStateCopyWithImpl<$Res, $Val extends ProjectEditState>
+    implements $ProjectEditStateCopyWith<$Res> {
+  _$ProjectEditStateCopyWithImpl(this._value, this._then);
 
 // ignore: unused_field
   final $Val _value;
@@ -819,7 +821,7 @@ class _$ProjectStateCopyWithImpl<$Res, $Val extends ProjectState>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as ProjectStatus,
+              as ProjectEditStatus,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -841,19 +843,22 @@ class _$ProjectStateCopyWithImpl<$Res, $Val extends ProjectState>
 }
 
 /// @nodoc
-abstract class _$$_ProjectStateCopyWith<$Res> implements $ProjectStateCopyWith<$Res> {
-  factory _$$_ProjectStateCopyWith(_$_ProjectState value, $Res Function(_$_ProjectState) then) =
-      __$$_ProjectStateCopyWithImpl<$Res>;
+abstract class _$$_ProjectEditStateCopyWith<$Res> implements $ProjectEditStateCopyWith<$Res> {
+  factory _$$_ProjectEditStateCopyWith(
+          _$_ProjectEditState value, $Res Function(_$_ProjectEditState) then) =
+      __$$_ProjectEditStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {ProjectStatus status, String id, String name, String description, String? serverError});
+      {ProjectEditStatus status, String id, String name, String description, String? serverError});
 }
 
 /// @nodoc
-class __$$_ProjectStateCopyWithImpl<$Res> extends _$ProjectStateCopyWithImpl<$Res, _$_ProjectState>
-    implements _$$_ProjectStateCopyWith<$Res> {
-  __$$_ProjectStateCopyWithImpl(_$_ProjectState _value, $Res Function(_$_ProjectState) _then)
+class __$$_ProjectEditStateCopyWithImpl<$Res>
+    extends _$ProjectEditStateCopyWithImpl<$Res, _$_ProjectEditState>
+    implements _$$_ProjectEditStateCopyWith<$Res> {
+  __$$_ProjectEditStateCopyWithImpl(
+      _$_ProjectEditState _value, $Res Function(_$_ProjectEditState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -865,11 +870,11 @@ class __$$_ProjectStateCopyWithImpl<$Res> extends _$ProjectStateCopyWithImpl<$Re
     Object? description = null,
     Object? serverError = freezed,
   }) {
-    return _then(_$_ProjectState(
+    return _then(_$_ProjectEditState(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as ProjectStatus,
+              as ProjectEditStatus,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -892,9 +897,9 @@ class __$$_ProjectStateCopyWithImpl<$Res> extends _$ProjectStateCopyWithImpl<$Re
 
 /// @nodoc
 
-class _$_ProjectState implements _ProjectState {
-  const _$_ProjectState(
-      {this.status = ProjectStatus.initial,
+class _$_ProjectEditState implements _ProjectEditState {
+  const _$_ProjectEditState(
+      {this.status = ProjectEditStatus.initial,
       required this.id,
       required this.name,
       required this.description,
@@ -902,7 +907,7 @@ class _$_ProjectState implements _ProjectState {
 
   @override
   @JsonKey()
-  final ProjectStatus status;
+  final ProjectEditStatus status;
   @override
   final String id;
   @override
@@ -914,14 +919,14 @@ class _$_ProjectState implements _ProjectState {
 
   @override
   String toString() {
-    return 'ProjectState(status: $status, id: $id, name: $name, description: $description, serverError: $serverError)';
+    return 'ProjectEditState(status: $status, id: $id, name: $name, description: $description, serverError: $serverError)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProjectState &&
+            other is _$_ProjectEditState &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
@@ -935,20 +940,20 @@ class _$_ProjectState implements _ProjectState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProjectStateCopyWith<_$_ProjectState> get copyWith =>
-      __$$_ProjectStateCopyWithImpl<_$_ProjectState>(this, _$identity);
+  _$$_ProjectEditStateCopyWith<_$_ProjectEditState> get copyWith =>
+      __$$_ProjectEditStateCopyWithImpl<_$_ProjectEditState>(this, _$identity);
 }
 
-abstract class _ProjectState implements ProjectState {
-  const factory _ProjectState(
-      {final ProjectStatus status,
+abstract class _ProjectEditState implements ProjectEditState {
+  const factory _ProjectEditState(
+      {final ProjectEditStatus status,
       required final String id,
       required final String name,
       required final String description,
-      final String? serverError}) = _$_ProjectState;
+      final String? serverError}) = _$_ProjectEditState;
 
   @override
-  ProjectStatus get status;
+  ProjectEditStatus get status;
   @override
   String get id;
   @override
@@ -959,5 +964,6 @@ abstract class _ProjectState implements ProjectState {
   String? get serverError;
   @override
   @JsonKey(ignore: true)
-  _$$_ProjectStateCopyWith<_$_ProjectState> get copyWith => throw _privateConstructorUsedError;
+  _$$_ProjectEditStateCopyWith<_$_ProjectEditState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

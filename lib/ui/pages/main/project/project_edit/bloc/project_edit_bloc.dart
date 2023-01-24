@@ -6,24 +6,24 @@ import 'package:yuno/api/project/models/i_project_read.dart';
 import 'package:yuno/api/project/models/i_project_with_users_tasks.dart';
 import 'package:yuno/domain/repository/api_project_repository.dart';
 
-part 'project_bloc.freezed.dart';
+part 'project_edit_bloc.freezed.dart';
 
-part 'project_event.dart';
+part 'project_edit_event.dart';
 
-part 'project_state.dart';
+part 'project_edit_state.dart';
 
-class ProjectBloc extends Bloc<ProjectEvent, ProjectState> {
-  ProjectBloc({
+class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
+  ProjectEditBloc({
     required this.apiProjectRepository,
   }) : super(
-          const ProjectState(
-            status: ProjectStatus.initial,
+          const ProjectEditState(
+            status: ProjectEditStatus.initial,
             id: '',
             name: '',
             description: '',
           ),
         ) {
-    on<ProjectEvent>(
+    on<ProjectEditEvent>(
       (event, emit) => event.map(
         started: (event) => _onProjectLoaded(event, emit),
         nameChanged: (event) => _onNameChanged(event, emit),
@@ -38,28 +38,28 @@ class ProjectBloc extends Bloc<ProjectEvent, ProjectState> {
 
   FutureOr<void> _onProjectLoaded(
     _StartedEvent event,
-    Emitter<ProjectState> emit,
+    Emitter<ProjectEditState> emit,
   ) async {
-    emit(state.copyWith(status: ProjectStatus.loading));
+    emit(state.copyWith(status: ProjectEditStatus.loading));
     try {
       if (event.id.length < 16) {
-        emit(state.copyWith(status: ProjectStatus.loaded));
+        emit(state.copyWith(status: ProjectEditStatus.loaded));
       } else {
         final project = await apiProjectRepository.getProjectById(id: event.id);
         if (project is IProjectWithUsersTasks) {
           emit(state.copyWith(
-            status: ProjectStatus.loaded,
+            status: ProjectEditStatus.loaded,
             id: project.id,
             name: project.name,
             description: project.description,
           ));
         } else {
-          emit(state.copyWith(status: ProjectStatus.failure));
+          emit(state.copyWith(status: ProjectEditStatus.failure));
         }
       }
     } on Exception catch (_) {
       emit(state.copyWith(
-        status: ProjectStatus.failure,
+        status: ProjectEditStatus.failure,
         serverError: "Don't get project",
       ));
     }
@@ -67,10 +67,10 @@ class ProjectBloc extends Bloc<ProjectEvent, ProjectState> {
 
   FutureOr<void> _onNameChanged(
     _NameChangedEvent event,
-    Emitter<ProjectState> emit,
+    Emitter<ProjectEditState> emit,
   ) async {
     emit(state.copyWith(
-      status: ProjectStatus.failure,
+      status: ProjectEditStatus.failure,
       name: event.text,
     ));
     emit(state.copyWith(name: event.text));
@@ -78,25 +78,25 @@ class ProjectBloc extends Bloc<ProjectEvent, ProjectState> {
 
   FutureOr<void> _onDescriptionChanged(
     _DescriptionChangedEvent event,
-    Emitter<ProjectState> emit,
+    Emitter<ProjectEditState> emit,
   ) async {
     emit(state.copyWith(description: event.text));
   }
 
   FutureOr<void> _onProjectSaved(
     _SavedEvent event,
-    Emitter<ProjectState> emit,
+    Emitter<ProjectEditState> emit,
   ) async {
-    emit(state.copyWith(status: ProjectStatus.loading));
+    emit(state.copyWith(status: ProjectEditStatus.loading));
     final result = await apiProjectRepository.createProject(
       name: state.name,
       description: state.description,
     );
     if (result is IProjectRead) {
-      emit(state.copyWith(status: ProjectStatus.successCreated));
+      emit(state.copyWith(status: ProjectEditStatus.successCreated));
     } else {
       emit(state.copyWith(
-        status: ProjectStatus.failure,
+        status: ProjectEditStatus.failure,
         serverError: result.toString(),
       ));
     }
@@ -104,19 +104,19 @@ class ProjectBloc extends Bloc<ProjectEvent, ProjectState> {
 
   FutureOr<void> _onProjectUpdated(
     _UpdatedEvent event,
-    Emitter<ProjectState> emit,
+    Emitter<ProjectEditState> emit,
   ) async {
-    emit(state.copyWith(status: ProjectStatus.loading));
+    emit(state.copyWith(status: ProjectEditStatus.loading));
     final result = await apiProjectRepository.updateTaskById(
       id: state.id,
       name: state.name,
       description: state.description,
     );
     if (result is IProjectRead) {
-      emit(state.copyWith(status: ProjectStatus.successUpdated));
+      emit(state.copyWith(status: ProjectEditStatus.successUpdated));
     } else {
       emit(state.copyWith(
-        status: ProjectStatus.failure,
+        status: ProjectEditStatus.failure,
         serverError: result.toString(),
       ));
     }
