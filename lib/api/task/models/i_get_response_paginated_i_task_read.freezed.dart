@@ -23,11 +23,10 @@ IGetResponsePaginatedITaskRead _$IGetResponsePaginatedITaskReadFromJson(
 mixin _$IGetResponsePaginatedITaskRead {
   @JsonKey(defaultValue: '')
   String get message => throw _privateConstructorUsedError;
-
   @JsonKey(defaultValue: {})
   Object? get meta => throw _privateConstructorUsedError;
 
-  PageBaseDataTypeITaskRead get data => throw _privateConstructorUsedError;
+  dynamic get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
@@ -48,9 +47,7 @@ abstract class $IGetResponsePaginatedITaskReadCopyWith<$Res> {
   $Res call(
       {@JsonKey(defaultValue: '') String message,
       @JsonKey(defaultValue: {}) Object? meta,
-      PageBaseDataTypeITaskRead data});
-
-  $PageBaseDataTypeITaskReadCopyWith<$Res> get data;
+      dynamic data});
 }
 
 /// @nodoc
@@ -69,7 +66,7 @@ class _$IGetResponsePaginatedITaskReadCopyWithImpl<$Res,
   $Res call({
     Object? message = null,
     Object? meta = freezed,
-    Object? data = null,
+    Object? data = freezed,
   }) {
     return _then(_value.copyWith(
       message: null == message
@@ -77,19 +74,11 @@ class _$IGetResponsePaginatedITaskReadCopyWithImpl<$Res,
           : message // ignore: cast_nullable_to_non_nullable
               as String,
       meta: freezed == meta ? _value.meta : meta,
-      data: null == data
+      data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as PageBaseDataTypeITaskRead,
+              as dynamic,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PageBaseDataTypeITaskReadCopyWith<$Res> get data {
-    return $PageBaseDataTypeITaskReadCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value) as $Val);
-    });
   }
 }
 
@@ -106,10 +95,7 @@ abstract class _$$_IGetResponsePaginatedITaskReadCopyWith<$Res>
   $Res call(
       {@JsonKey(defaultValue: '') String message,
       @JsonKey(defaultValue: {}) Object? meta,
-      PageBaseDataTypeITaskRead data});
-
-  @override
-  $PageBaseDataTypeITaskReadCopyWith<$Res> get data;
+      dynamic data});
 }
 
 /// @nodoc
@@ -127,7 +113,7 @@ class __$$_IGetResponsePaginatedITaskReadCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
     Object? meta = freezed,
-    Object? data = null,
+    Object? data = freezed,
   }) {
     return _then(_$_IGetResponsePaginatedITaskRead(
       message: null == message
@@ -135,10 +121,7 @@ class __$$_IGetResponsePaginatedITaskReadCopyWithImpl<$Res>
           : message // ignore: cast_nullable_to_non_nullable
               as String,
       meta: freezed == meta ? _value.meta : meta,
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as PageBaseDataTypeITaskRead,
+      data: freezed == data ? _value.data! : data,
     ));
   }
 }
@@ -162,7 +145,7 @@ class _$_IGetResponsePaginatedITaskRead
   @JsonKey(defaultValue: {})
   final Object? meta;
   @override
-  final PageBaseDataTypeITaskRead data;
+  final dynamic data;
 
   @override
   String toString() {
@@ -176,13 +159,13 @@ class _$_IGetResponsePaginatedITaskRead
             other is _$_IGetResponsePaginatedITaskRead &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other.meta, meta) &&
-            (identical(other.data, data) || other.data == data));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, message, const DeepCollectionEquality().hash(meta), data);
+  int get hashCode => Object.hash(runtimeType, message, const DeepCollectionEquality().hash(meta),
+      const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -204,7 +187,7 @@ abstract class _IGetResponsePaginatedITaskRead
   const factory _IGetResponsePaginatedITaskRead(
       {@JsonKey(defaultValue: '') required final String message,
       @JsonKey(defaultValue: {}) final Object? meta,
-      required final PageBaseDataTypeITaskRead data}) = _$_IGetResponsePaginatedITaskRead;
+      required final dynamic data}) = _$_IGetResponsePaginatedITaskRead;
 
   factory _IGetResponsePaginatedITaskRead.fromJson(Map<String, dynamic> json) =
       _$_IGetResponsePaginatedITaskRead.fromJson;
@@ -218,7 +201,7 @@ abstract class _IGetResponsePaginatedITaskRead
   Object? get meta;
 
   @override
-  PageBaseDataTypeITaskRead get data;
+  dynamic get data;
 
   @override
   @JsonKey(ignore: true)

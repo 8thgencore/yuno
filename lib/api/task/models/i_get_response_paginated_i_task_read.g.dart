@@ -11,7 +11,7 @@ _$_IGetResponsePaginatedITaskRead _$$_IGetResponsePaginatedITaskReadFromJson(
     _$_IGetResponsePaginatedITaskRead(
       message: json['message'] as String? ?? '',
       meta: json['meta'] ?? {},
-      data: PageBaseDataTypeITaskRead.fromJson(json['data'] as Map<String, dynamic>),
+      data: json['data'],
     );
 
 Map<String, dynamic> _$$_IGetResponsePaginatedITaskReadToJson(

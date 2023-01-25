@@ -24,14 +24,11 @@ IGetResponseBaseIProjectWithUsersTasks
 mixin _$IGetResponseBaseIProjectWithUsersTasks {
   @JsonKey(defaultValue: '')
   String get message => throw _privateConstructorUsedError;
-
   @JsonKey(defaultValue: {})
   Object get meta => throw _privateConstructorUsedError;
-
   IProjectWithUsersTasks get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $IGetResponseBaseIProjectWithUsersTasksCopyWith<IGetResponseBaseIProjectWithUsersTasks>
       get copyWith => throw _privateConstructorUsedError;
@@ -44,7 +41,6 @@ abstract class $IGetResponseBaseIProjectWithUsersTasksCopyWith<$Res> {
           $Res Function(IGetResponseBaseIProjectWithUsersTasks) then) =
       _$IGetResponseBaseIProjectWithUsersTasksCopyWithImpl<$Res,
           IGetResponseBaseIProjectWithUsersTasks>;
-
   @useResult
   $Res call(
       {@JsonKey(defaultValue: '') String message,
@@ -101,7 +97,6 @@ abstract class _$$_IGetResponseBaseIProjectWithUsersTasksCopyWith<$Res>
           _$_IGetResponseBaseIProjectWithUsersTasks value,
           $Res Function(_$_IGetResponseBaseIProjectWithUsersTasks) then) =
       __$$_IGetResponseBaseIProjectWithUsersTasksCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -216,7 +211,6 @@ abstract class _IGetResponseBaseIProjectWithUsersTasks
   @override
   @JsonKey(defaultValue: '')
   String get message;
-
   @override
   @JsonKey(defaultValue: {})
   Object get meta;

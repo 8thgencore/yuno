@@ -22,8 +22,8 @@ IGetResponsePaginatedIProjectWithUsers
 
 /// @nodoc
 mixin _$IGetResponsePaginatedIProjectWithUsers {
-  PageBaseDataTypeIProjectWithUsers get data =>
-      throw _privateConstructorUsedError;
+  dynamic get data => throw _privateConstructorUsedError;
+
   String? get message => throw _privateConstructorUsedError;
   Object? get meta => throw _privateConstructorUsedError;
 
@@ -41,11 +41,9 @@ abstract class $IGetResponsePaginatedIProjectWithUsersCopyWith<$Res> {
           $Res Function(IGetResponsePaginatedIProjectWithUsers) then) =
       _$IGetResponsePaginatedIProjectWithUsersCopyWithImpl<$Res,
           IGetResponsePaginatedIProjectWithUsers>;
-  @useResult
-  $Res call(
-      {PageBaseDataTypeIProjectWithUsers data, String? message, Object? meta});
 
-  $PageBaseDataTypeIProjectWithUsersCopyWith<$Res> get data;
+  @useResult
+  $Res call({dynamic data, String? message, Object? meta});
 }
 
 /// @nodoc
@@ -62,30 +60,21 @@ class _$IGetResponsePaginatedIProjectWithUsersCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? data = freezed,
     Object? message = freezed,
     Object? meta = freezed,
   }) {
     return _then(_value.copyWith(
-      data: null == data
+      data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as PageBaseDataTypeIProjectWithUsers,
+              as dynamic,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
       meta: freezed == meta ? _value.meta : meta,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PageBaseDataTypeIProjectWithUsersCopyWith<$Res> get data {
-    return $PageBaseDataTypeIProjectWithUsersCopyWith<$Res>(_value.data,
-        (value) {
-      return _then(_value.copyWith(data: value) as $Val);
-    });
   }
 }
 
@@ -96,13 +85,10 @@ abstract class _$$_IGetResponsePaginatedIProjectWithUsersCopyWith<$Res>
           _$_IGetResponsePaginatedIProjectWithUsers value,
           $Res Function(_$_IGetResponsePaginatedIProjectWithUsers) then) =
       __$$_IGetResponsePaginatedIProjectWithUsersCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {PageBaseDataTypeIProjectWithUsers data, String? message, Object? meta});
 
   @override
-  $PageBaseDataTypeIProjectWithUsersCopyWith<$Res> get data;
+  @useResult
+  $Res call({dynamic data, String? message, Object? meta});
 }
 
 /// @nodoc
@@ -118,15 +104,12 @@ class __$$_IGetResponsePaginatedIProjectWithUsersCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? data = freezed,
     Object? message = freezed,
     Object? meta = freezed,
   }) {
     return _then(_$_IGetResponsePaginatedIProjectWithUsers(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as PageBaseDataTypeIProjectWithUsers,
+      data: freezed == data ? _value.data! : data,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -141,16 +124,13 @@ class __$$_IGetResponsePaginatedIProjectWithUsersCopyWithImpl<$Res>
 class _$_IGetResponsePaginatedIProjectWithUsers
     implements _IGetResponsePaginatedIProjectWithUsers {
   const _$_IGetResponsePaginatedIProjectWithUsers(
-      {required this.data,
-      this.message = 'Data got correctly',
-      this.meta = const {}});
+      {required this.data, this.message = 'Data got correctly', this.meta = const {}});
 
-  factory _$_IGetResponsePaginatedIProjectWithUsers.fromJson(
-          Map<String, dynamic> json) =>
+  factory _$_IGetResponsePaginatedIProjectWithUsers.fromJson(Map<String, dynamic> json) =>
       _$$_IGetResponsePaginatedIProjectWithUsersFromJson(json);
 
   @override
-  final PageBaseDataTypeIProjectWithUsers data;
+  final dynamic data;
   @override
   @JsonKey()
   final String? message;
@@ -168,15 +148,15 @@ class _$_IGetResponsePaginatedIProjectWithUsers
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IGetResponsePaginatedIProjectWithUsers &&
-            (identical(other.data, data) || other.data == data) &&
+            const DeepCollectionEquality().equals(other.data, data) &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other.meta, meta));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, data, message, const DeepCollectionEquality().hash(meta));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(data), message,
+      const DeepCollectionEquality().hash(meta));
 
   @JsonKey(ignore: true)
   @override
@@ -197,7 +177,7 @@ class _$_IGetResponsePaginatedIProjectWithUsers
 abstract class _IGetResponsePaginatedIProjectWithUsers
     implements IGetResponsePaginatedIProjectWithUsers {
   const factory _IGetResponsePaginatedIProjectWithUsers(
-      {required final PageBaseDataTypeIProjectWithUsers data,
+      {required final dynamic data,
       final String? message,
       final Object? meta}) = _$_IGetResponsePaginatedIProjectWithUsers;
 
@@ -206,7 +186,8 @@ abstract class _IGetResponsePaginatedIProjectWithUsers
       _$_IGetResponsePaginatedIProjectWithUsers.fromJson;
 
   @override
-  PageBaseDataTypeIProjectWithUsers get data;
+  dynamic get data;
+
   @override
   String? get message;
   @override

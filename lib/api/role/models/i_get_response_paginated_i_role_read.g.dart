@@ -9,8 +9,7 @@ part of 'i_get_response_paginated_i_role_read.dart';
 _$_IGetResponsePaginatedIRoleRead _$$_IGetResponsePaginatedIRoleReadFromJson(
         Map<String, dynamic> json) =>
     _$_IGetResponsePaginatedIRoleRead(
-      data: PageBaseDataTypeIRoleRead.fromJson(
-          json['data'] as Map<String, dynamic>),
+      data: json['data'],
       message: json['message'] as String? ?? 'Data got correctly',
       meta: json['meta'] ?? {},
     );

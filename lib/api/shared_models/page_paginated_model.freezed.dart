@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'page_base_data_type_i_role_read.dart';
+part of 'page_paginated_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,37 +14,38 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-PageBaseDataTypeIRoleRead _$PageBaseDataTypeIRoleReadFromJson(
-    Map<String, dynamic> json) {
-  return _PageBaseDataTypeIRoleRead.fromJson(json);
-}
-
 /// @nodoc
-mixin _$PageBaseDataTypeIRoleRead {
-  List<IRoleRead> get items => throw _privateConstructorUsedError;
+mixin _$PagePaginatedModel<T> {
+  List<T> get items => throw _privateConstructorUsedError;
+
   int get total => throw _privateConstructorUsedError;
+
   int get page => throw _privateConstructorUsedError;
+
   int get size => throw _privateConstructorUsedError;
+
   int get pages => throw _privateConstructorUsedError;
+
   @JsonKey(name: 'next_page')
   int? get nextPage => throw _privateConstructorUsedError;
+
   @JsonKey(name: 'previous_page')
   int? get previousPage => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PageBaseDataTypeIRoleReadCopyWith<PageBaseDataTypeIRoleRead> get copyWith =>
+  $PagePaginatedModelCopyWith<T, PagePaginatedModel<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PageBaseDataTypeIRoleReadCopyWith<$Res> {
-  factory $PageBaseDataTypeIRoleReadCopyWith(PageBaseDataTypeIRoleRead value,
-          $Res Function(PageBaseDataTypeIRoleRead) then) =
-      _$PageBaseDataTypeIRoleReadCopyWithImpl<$Res, PageBaseDataTypeIRoleRead>;
+abstract class $PagePaginatedModelCopyWith<T, $Res> {
+  factory $PagePaginatedModelCopyWith(
+          PagePaginatedModel<T> value, $Res Function(PagePaginatedModel<T>) then) =
+      _$PagePaginatedModelCopyWithImpl<T, $Res, PagePaginatedModel<T>>;
+
   @useResult
   $Res call(
-      {List<IRoleRead> items,
+      {List<T> items,
       int total,
       int page,
       int size,
@@ -54,13 +55,13 @@ abstract class $PageBaseDataTypeIRoleReadCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PageBaseDataTypeIRoleReadCopyWithImpl<$Res,
-        $Val extends PageBaseDataTypeIRoleRead>
-    implements $PageBaseDataTypeIRoleReadCopyWith<$Res> {
-  _$PageBaseDataTypeIRoleReadCopyWithImpl(this._value, this._then);
+class _$PagePaginatedModelCopyWithImpl<T, $Res, $Val extends PagePaginatedModel<T>>
+    implements $PagePaginatedModelCopyWith<T, $Res> {
+  _$PagePaginatedModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
+
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -79,7 +80,7 @@ class _$PageBaseDataTypeIRoleReadCopyWithImpl<$Res,
       items: null == items
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
-              as List<IRoleRead>,
+              as List<T>,
       total: null == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
@@ -109,16 +110,16 @@ class _$PageBaseDataTypeIRoleReadCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PageBaseDataTypeIRoleReadCopyWith<$Res>
-    implements $PageBaseDataTypeIRoleReadCopyWith<$Res> {
-  factory _$$_PageBaseDataTypeIRoleReadCopyWith(
-          _$_PageBaseDataTypeIRoleRead value,
-          $Res Function(_$_PageBaseDataTypeIRoleRead) then) =
-      __$$_PageBaseDataTypeIRoleReadCopyWithImpl<$Res>;
+abstract class _$$_PagePaginatedModelCopyWith<T, $Res>
+    implements $PagePaginatedModelCopyWith<T, $Res> {
+  factory _$$_PagePaginatedModelCopyWith(
+          _$_PagePaginatedModel<T> value, $Res Function(_$_PagePaginatedModel<T>) then) =
+      __$$_PagePaginatedModelCopyWithImpl<T, $Res>;
+
   @override
   @useResult
   $Res call(
-      {List<IRoleRead> items,
+      {List<T> items,
       int total,
       int page,
       int size,
@@ -128,13 +129,11 @@ abstract class _$$_PageBaseDataTypeIRoleReadCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PageBaseDataTypeIRoleReadCopyWithImpl<$Res>
-    extends _$PageBaseDataTypeIRoleReadCopyWithImpl<$Res,
-        _$_PageBaseDataTypeIRoleRead>
-    implements _$$_PageBaseDataTypeIRoleReadCopyWith<$Res> {
-  __$$_PageBaseDataTypeIRoleReadCopyWithImpl(
-      _$_PageBaseDataTypeIRoleRead _value,
-      $Res Function(_$_PageBaseDataTypeIRoleRead) _then)
+class __$$_PagePaginatedModelCopyWithImpl<T, $Res>
+    extends _$PagePaginatedModelCopyWithImpl<T, $Res, _$_PagePaginatedModel<T>>
+    implements _$$_PagePaginatedModelCopyWith<T, $Res> {
+  __$$_PagePaginatedModelCopyWithImpl(
+      _$_PagePaginatedModel<T> _value, $Res Function(_$_PagePaginatedModel<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -148,11 +147,11 @@ class __$$_PageBaseDataTypeIRoleReadCopyWithImpl<$Res>
     Object? nextPage = freezed,
     Object? previousPage = freezed,
   }) {
-    return _then(_$_PageBaseDataTypeIRoleRead(
+    return _then(_$_PagePaginatedModel<T>(
       items: null == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
-              as List<IRoleRead>,
+              as List<T>,
       total: null == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
@@ -182,10 +181,10 @@ class __$$_PageBaseDataTypeIRoleReadCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$_PageBaseDataTypeIRoleRead implements _PageBaseDataTypeIRoleRead {
-  const _$_PageBaseDataTypeIRoleRead(
-      {required final List<IRoleRead> items,
+
+class _$_PagePaginatedModel<T> implements _PagePaginatedModel<T> {
+  const _$_PagePaginatedModel(
+      {required final List<T> items,
       required this.total,
       required this.page,
       required this.size,
@@ -194,12 +193,10 @@ class _$_PageBaseDataTypeIRoleRead implements _PageBaseDataTypeIRoleRead {
       @JsonKey(name: 'previous_page') this.previousPage})
       : _items = items;
 
-  factory _$_PageBaseDataTypeIRoleRead.fromJson(Map<String, dynamic> json) =>
-      _$$_PageBaseDataTypeIRoleReadFromJson(json);
+  final List<T> _items;
 
-  final List<IRoleRead> _items;
   @override
-  List<IRoleRead> get items {
+  List<T> get items {
     if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_items);
@@ -222,14 +219,14 @@ class _$_PageBaseDataTypeIRoleRead implements _PageBaseDataTypeIRoleRead {
 
   @override
   String toString() {
-    return 'PageBaseDataTypeIRoleRead(items: $items, total: $total, page: $page, size: $size, pages: $pages, nextPage: $nextPage, previousPage: $previousPage)';
+    return 'PagePaginatedModel<$T>(items: $items, total: $total, page: $page, size: $size, pages: $pages, nextPage: $nextPage, previousPage: $previousPage)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PageBaseDataTypeIRoleRead &&
+            other is _$_PagePaginatedModel<T> &&
             const DeepCollectionEquality().equals(other._items, _items) &&
             (identical(other.total, total) || other.total == total) &&
             (identical(other.page, page) || other.page == page) &&
@@ -241,7 +238,6 @@ class _$_PageBaseDataTypeIRoleRead implements _PageBaseDataTypeIRoleRead {
                 other.previousPage == previousPage));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -256,34 +252,23 @@ class _$_PageBaseDataTypeIRoleRead implements _PageBaseDataTypeIRoleRead {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PageBaseDataTypeIRoleReadCopyWith<_$_PageBaseDataTypeIRoleRead>
-      get copyWith => __$$_PageBaseDataTypeIRoleReadCopyWithImpl<
-          _$_PageBaseDataTypeIRoleRead>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_PageBaseDataTypeIRoleReadToJson(
-      this,
-    );
-  }
+  _$$_PagePaginatedModelCopyWith<T, _$_PagePaginatedModel<T>> get copyWith =>
+      __$$_PagePaginatedModelCopyWithImpl<T, _$_PagePaginatedModel<T>>(this, _$identity);
 }
 
-abstract class _PageBaseDataTypeIRoleRead implements PageBaseDataTypeIRoleRead {
-  const factory _PageBaseDataTypeIRoleRead(
-          {required final List<IRoleRead> items,
-          required final int total,
-          required final int page,
-          required final int size,
-          required final int pages,
-          @JsonKey(name: 'next_page') final int? nextPage,
-          @JsonKey(name: 'previous_page') final int? previousPage}) =
-      _$_PageBaseDataTypeIRoleRead;
-
-  factory _PageBaseDataTypeIRoleRead.fromJson(Map<String, dynamic> json) =
-      _$_PageBaseDataTypeIRoleRead.fromJson;
+abstract class _PagePaginatedModel<T> implements PagePaginatedModel<T> {
+  const factory _PagePaginatedModel(
+      {required final List<T> items,
+      required final int total,
+      required final int page,
+      required final int size,
+      required final int pages,
+      @JsonKey(name: 'next_page') final int? nextPage,
+      @JsonKey(name: 'previous_page') final int? previousPage}) = _$_PagePaginatedModel<T>;
 
   @override
-  List<IRoleRead> get items;
+  List<T> get items;
+
   @override
   int get total;
   @override
@@ -295,11 +280,13 @@ abstract class _PageBaseDataTypeIRoleRead implements PageBaseDataTypeIRoleRead {
   @override
   @JsonKey(name: 'next_page')
   int? get nextPage;
+
   @override
   @JsonKey(name: 'previous_page')
   int? get previousPage;
+
   @override
   @JsonKey(ignore: true)
-  _$$_PageBaseDataTypeIRoleReadCopyWith<_$_PageBaseDataTypeIRoleRead>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$_PagePaginatedModelCopyWith<T, _$_PagePaginatedModel<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }

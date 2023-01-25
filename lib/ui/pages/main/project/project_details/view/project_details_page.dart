@@ -22,9 +22,16 @@ class ProjectDetailsPage extends StatelessWidget {
           child: const _ProjectContentWidget(),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.add, size: 32),
+      floatingActionButton: BlocBuilder<ProjectDetailsBloc, ProjectDetailsState>(
+        builder: (context, state) => state.maybeWhen(
+          loaded: (_, __, isMember) => isMember
+              ? FloatingActionButton(
+                  onPressed: () {},
+                  child: const Icon(Icons.add, size: 32),
+                )
+              : const SizedBox(),
+          orElse: () => const SizedBox(),
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

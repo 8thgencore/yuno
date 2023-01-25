@@ -9,11 +9,10 @@ part of 'i_get_response_base_i_project_with_users.dart';
 _$_IGetResponseBaseIProjectWithUsers
     _$$_IGetResponseBaseIProjectWithUsersFromJson(Map<String, dynamic> json) =>
         _$_IGetResponseBaseIProjectWithUsers(
-          message: json['message'] as String? ?? 'Data got correctly',
-          meta: json['meta'] as Object? ?? const {},
-          data:
-              IProjectWithUsers.fromJson(json['data'] as Map<String, dynamic>),
-        );
+      message: json['message'] as String? ?? '',
+      meta: json['meta'] as Object? ?? {},
+      data: IProjectWithUsers.fromJson(json['data'] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$$_IGetResponseBaseIProjectWithUsersToJson(
         _$_IGetResponseBaseIProjectWithUsers instance) =>

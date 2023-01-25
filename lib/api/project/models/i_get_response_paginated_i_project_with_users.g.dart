@@ -10,11 +10,10 @@ _$_IGetResponsePaginatedIProjectWithUsers
     _$$_IGetResponsePaginatedIProjectWithUsersFromJson(
             Map<String, dynamic> json) =>
         _$_IGetResponsePaginatedIProjectWithUsers(
-          data: PageBaseDataTypeIProjectWithUsers.fromJson(
-              json['data'] as Map<String, dynamic>),
-          message: json['message'] as String? ?? 'Data got correctly',
-          meta: json['meta'] ?? const {},
-        );
+          data: json['data'],
+      message: json['message'] as String? ?? 'Data got correctly',
+      meta: json['meta'] ?? const {},
+    );
 
 Map<String, dynamic> _$$_IGetResponsePaginatedIProjectWithUsersToJson(
         _$_IGetResponsePaginatedIProjectWithUsers instance) =>

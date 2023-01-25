@@ -21,14 +21,19 @@ IGetResponseBaseIProjectWithUsers _$IGetResponseBaseIProjectWithUsersFromJson(
 
 /// @nodoc
 mixin _$IGetResponseBaseIProjectWithUsers {
+  @JsonKey(defaultValue: '')
   String get message => throw _privateConstructorUsedError;
+
+  @JsonKey(defaultValue: {})
   Object get meta => throw _privateConstructorUsedError;
+
   IProjectWithUsers get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $IGetResponseBaseIProjectWithUsersCopyWith<IGetResponseBaseIProjectWithUsers>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -38,8 +43,12 @@ abstract class $IGetResponseBaseIProjectWithUsersCopyWith<$Res> {
           $Res Function(IGetResponseBaseIProjectWithUsers) then) =
       _$IGetResponseBaseIProjectWithUsersCopyWithImpl<$Res,
           IGetResponseBaseIProjectWithUsers>;
+
   @useResult
-  $Res call({String message, Object meta, IProjectWithUsers data});
+  $Res call(
+      {@JsonKey(defaultValue: '') String message,
+      @JsonKey(defaultValue: {}) Object meta,
+      IProjectWithUsers data});
 
   $IProjectWithUsersCopyWith<$Res> get data;
 }
@@ -91,9 +100,13 @@ abstract class _$$_IGetResponseBaseIProjectWithUsersCopyWith<$Res>
           _$_IGetResponseBaseIProjectWithUsers value,
           $Res Function(_$_IGetResponseBaseIProjectWithUsers) then) =
       __$$_IGetResponseBaseIProjectWithUsersCopyWithImpl<$Res>;
+
   @override
   @useResult
-  $Res call({String message, Object meta, IProjectWithUsers data});
+  $Res call(
+      {@JsonKey(defaultValue: '') String message,
+      @JsonKey(defaultValue: {}) Object meta,
+      IProjectWithUsers data});
 
   @override
   $IProjectWithUsersCopyWith<$Res> get data;
@@ -135,8 +148,8 @@ class __$$_IGetResponseBaseIProjectWithUsersCopyWithImpl<$Res>
 class _$_IGetResponseBaseIProjectWithUsers
     implements _IGetResponseBaseIProjectWithUsers {
   const _$_IGetResponseBaseIProjectWithUsers(
-      {required this.message,
-      required this.meta,
+      {@JsonKey(defaultValue: '') required this.message,
+      @JsonKey(defaultValue: {}) required this.meta,
       required this.data});
 
   factory _$_IGetResponseBaseIProjectWithUsers.fromJson(
@@ -144,10 +157,10 @@ class _$_IGetResponseBaseIProjectWithUsers
       _$$_IGetResponseBaseIProjectWithUsersFromJson(json);
 
   @override
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   final String message;
   @override
-  @JsonKey()
+  @JsonKey(defaultValue: {})
   final Object meta;
   @override
   final IProjectWithUsers data;
@@ -191,9 +204,9 @@ class _$_IGetResponseBaseIProjectWithUsers
 abstract class _IGetResponseBaseIProjectWithUsers
     implements IGetResponseBaseIProjectWithUsers {
   const factory _IGetResponseBaseIProjectWithUsers(
-          {required final String message,
-          required final Object meta,
-          required final IProjectWithUsers data}) =
+      {@JsonKey(defaultValue: '') required final String message,
+      @JsonKey(defaultValue: {}) required final Object meta,
+      required final IProjectWithUsers data}) =
       _$_IGetResponseBaseIProjectWithUsers;
 
   factory _IGetResponseBaseIProjectWithUsers.fromJson(
@@ -201,8 +214,11 @@ abstract class _IGetResponseBaseIProjectWithUsers
       _$_IGetResponseBaseIProjectWithUsers.fromJson;
 
   @override
+  @JsonKey(defaultValue: '')
   String get message;
+
   @override
+  @JsonKey(defaultValue: {})
   Object get meta;
   @override
   IProjectWithUsers get data;

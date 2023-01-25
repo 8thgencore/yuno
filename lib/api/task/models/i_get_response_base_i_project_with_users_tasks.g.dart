@@ -11,7 +11,7 @@ _$_IGetResponseBaseIProjectWithUsersTasks
             Map<String, dynamic> json) =>
     _$_IGetResponseBaseIProjectWithUsersTasks(
       message: json['message'] as String? ?? '',
-      meta: json['meta'] as Object? ?? const {},
+      meta: json['meta'] as Object? ?? {},
       data: IProjectWithUsersTasks.fromJson(json['data'] as Map<String, dynamic>),
     );
 

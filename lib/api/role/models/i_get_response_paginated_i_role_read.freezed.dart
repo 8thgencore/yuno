@@ -21,7 +21,8 @@ IGetResponsePaginatedIRoleRead _$IGetResponsePaginatedIRoleReadFromJson(
 
 /// @nodoc
 mixin _$IGetResponsePaginatedIRoleRead {
-  PageBaseDataTypeIRoleRead get data => throw _privateConstructorUsedError;
+  dynamic get data => throw _privateConstructorUsedError;
+
   @JsonKey(defaultValue: 'Data got correctly')
   String? get message => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: {})
@@ -42,11 +43,9 @@ abstract class $IGetResponsePaginatedIRoleReadCopyWith<$Res> {
           IGetResponsePaginatedIRoleRead>;
   @useResult
   $Res call(
-      {PageBaseDataTypeIRoleRead data,
+      {dynamic data,
       @JsonKey(defaultValue: 'Data got correctly') String? message,
       @JsonKey(defaultValue: {}) Object? meta});
-
-  $PageBaseDataTypeIRoleReadCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -63,29 +62,21 @@ class _$IGetResponsePaginatedIRoleReadCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? data = freezed,
     Object? message = freezed,
     Object? meta = freezed,
   }) {
     return _then(_value.copyWith(
-      data: null == data
+      data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as PageBaseDataTypeIRoleRead,
+              as dynamic,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
       meta: freezed == meta ? _value.meta : meta,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PageBaseDataTypeIRoleReadCopyWith<$Res> get data {
-    return $PageBaseDataTypeIRoleReadCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value) as $Val);
-    });
   }
 }
 
@@ -99,12 +90,9 @@ abstract class _$$_IGetResponsePaginatedIRoleReadCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {PageBaseDataTypeIRoleRead data,
+      {dynamic data,
       @JsonKey(defaultValue: 'Data got correctly') String? message,
       @JsonKey(defaultValue: {}) Object? meta});
-
-  @override
-  $PageBaseDataTypeIRoleReadCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -120,15 +108,12 @@ class __$$_IGetResponsePaginatedIRoleReadCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? data = freezed,
     Object? message = freezed,
     Object? meta = freezed,
   }) {
     return _then(_$_IGetResponsePaginatedIRoleRead(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as PageBaseDataTypeIRoleRead,
+      data: freezed == data ? _value.data! : data,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -147,12 +132,11 @@ class _$_IGetResponsePaginatedIRoleRead
       @JsonKey(defaultValue: 'Data got correctly') this.message,
       @JsonKey(defaultValue: {}) this.meta});
 
-  factory _$_IGetResponsePaginatedIRoleRead.fromJson(
-          Map<String, dynamic> json) =>
+  factory _$_IGetResponsePaginatedIRoleRead.fromJson(Map<String, dynamic> json) =>
       _$$_IGetResponsePaginatedIRoleReadFromJson(json);
 
   @override
-  final PageBaseDataTypeIRoleRead data;
+  final dynamic data;
   @override
   @JsonKey(defaultValue: 'Data got correctly')
   final String? message;
@@ -170,15 +154,15 @@ class _$_IGetResponsePaginatedIRoleRead
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IGetResponsePaginatedIRoleRead &&
-            (identical(other.data, data) || other.data == data) &&
+            const DeepCollectionEquality().equals(other.data, data) &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other.meta, meta));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, data, message, const DeepCollectionEquality().hash(meta));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(data), message,
+      const DeepCollectionEquality().hash(meta));
 
   @JsonKey(ignore: true)
   @override
@@ -198,16 +182,17 @@ class _$_IGetResponsePaginatedIRoleRead
 abstract class _IGetResponsePaginatedIRoleRead
     implements IGetResponsePaginatedIRoleRead {
   const factory _IGetResponsePaginatedIRoleRead(
-          {required final PageBaseDataTypeIRoleRead data,
-          @JsonKey(defaultValue: 'Data got correctly') final String? message,
-          @JsonKey(defaultValue: {}) final Object? meta}) =
+      {required final dynamic data,
+      @JsonKey(defaultValue: 'Data got correctly') final String? message,
+      @JsonKey(defaultValue: {}) final Object? meta}) =
       _$_IGetResponsePaginatedIRoleRead;
 
   factory _IGetResponsePaginatedIRoleRead.fromJson(Map<String, dynamic> json) =
       _$_IGetResponsePaginatedIRoleRead.fromJson;
 
   @override
-  PageBaseDataTypeIRoleRead get data;
+  dynamic get data;
+
   @override
   @JsonKey(defaultValue: 'Data got correctly')
   String? get message;
