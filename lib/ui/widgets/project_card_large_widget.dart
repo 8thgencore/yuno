@@ -51,7 +51,10 @@ class ProjectCardLargeWidget extends StatelessWidget {
                       softWrap: false,
                     ),
                     const SizedBox(height: 8),
-                    AvatarStacked(urlImages: urlImages),
+                    if (urlImages.isNotEmpty)
+                      AvatarStacked(urlImages: urlImages)
+                    else
+                      const SizedBox(height: 32),
                   ],
                 ),
               )

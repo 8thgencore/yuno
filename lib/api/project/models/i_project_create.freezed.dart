@@ -21,13 +21,10 @@ IProject _$IProjectFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$IProject {
   String get name => throw _privateConstructorUsedError;
-
   String get description => throw _privateConstructorUsedError;
-
   String get link => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $IProjectCopyWith<IProject> get copyWith => throw _privateConstructorUsedError;
 }
@@ -36,7 +33,6 @@ mixin _$IProject {
 abstract class $IProjectCopyWith<$Res> {
   factory $IProjectCopyWith(IProject value, $Res Function(IProject) then) =
       _$IProjectCopyWithImpl<$Res, IProject>;
-
   @useResult
   $Res call({String name, String description, String link});
 }
@@ -173,7 +169,6 @@ abstract class _IProject implements IProject {
 
   @override
   String get name;
-
   @override
   String get description;
 

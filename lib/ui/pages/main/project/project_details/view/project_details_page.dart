@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:yuno/api/project/models/i_project_with_users.dart';
 import 'package:yuno/api/task/models/i_task_read.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
 import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/resources/resources.dart';
+import 'package:yuno/ui/pages/main/project/project_details/bloc/project_details_bloc.dart';
+import 'package:yuno/ui/widgets/error_container.dart';
 import 'package:yuno/ui/widgets/project_card_large_widget.dart';
 
 class ProjectDetailsPage extends StatelessWidget {
@@ -12,9 +15,13 @@ class ProjectDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: AppColors.screen100,
-      body: SafeArea(child: _ProjectContentWidget()),
+      body: SafeArea(
+        child: removeScrollingGlow(
+          child: const _ProjectContentWidget(),
+        ),
+      ),
     );
   }
 }
@@ -45,24 +52,35 @@ class _ProjectContentWidget extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: removeScrollingGlow(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 10),
-                  _ProjectFullCardWidget(
-                    project: IProjectWithUsers(
-                      id: "213123",
-                      name: "213213",
-                      description: "12321312",
-                      link: "12321213",
+          child: SingleChildScrollView(
+            child: BlocBuilder<ProjectDetailsBloc, ProjectDetailsState>(
+              builder: (context, state) => state.maybeWhen(
+                initial: () => const Center(child: CircularProgressIndicator()),
+                loading: () => const Center(child: CircularProgressIndicator()),
+                loaded: (project, tasks) => Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 10),
+                    _ProjectFullCardWidget(
+                      project: IProjectWithUsers(
+                        id: project.id,
+                        name: project.name,
+                        description: project.description,
+                        link: project.link,
+                        users: project.users,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 28),
-                  _CheckListWidget(),
-                  SizedBox(height: 28),
-                ],
+                    const SizedBox(height: 28),
+                    _CheckListWidget(tasks: tasks),
+                    const SizedBox(height: 28),
+                  ],
+                ),
+                failure: (error) => ErrorContainer(
+                  text: 'Failed to get a project from the server\n$error',
+                ),
+                orElse: () => const ErrorContainer(
+                  text: 'Failed to get a project from the server',
+                ),
               ),
             ),
           ),
@@ -103,18 +121,12 @@ class _ProjectFullCardWidget extends StatelessWidget {
 }
 
 class _CheckListWidget extends StatelessWidget {
-  const _CheckListWidget();
+  const _CheckListWidget({required this.tasks});
+
+  final List<ITaskRead> tasks;
 
   @override
   Widget build(BuildContext context) {
-    final tasks = [
-      ITaskRead(name: "213", id: "21321"),
-      ITaskRead(name: "213", id: "21321"),
-      ITaskRead(name: "213", id: "21321"),
-      ITaskRead(name: "213", id: "21321"),
-      ITaskRead(name: "213", id: "21321"),
-    ];
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -122,58 +134,18 @@ class _CheckListWidget extends StatelessWidget {
           padding: const EdgeInsets.only(left: 24, right: 24, bottom: 6),
           child: Text('Checklist', style: AppTypography.b18d),
         ),
-        ListView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          itemCount: tasks.length,
-          itemBuilder: (BuildContext context, int index) {
-            return _TaskCardWidget(task: tasks[index]);
-          },
-        ),
-
-        //   BlocBuilder<HomeChecklistBloc, HomeChecklistState>(
-        //     builder: (context, state) => state.maybeWhen(
-        //       loading: () => const Center(
-        //         child: CircularProgressIndicator(),
-        //       ),
-        //       loaded: (tasks) => tasks.isNotEmpty
-        //           ? ListView.builder(
-        //         shrinkWrap: true,
-        //         physics: const NeverScrollableScrollPhysics(),
-        //         padding: const EdgeInsets.symmetric(horizontal: 24),
-        //         itemCount: tasks.length,
-        //         itemBuilder: (BuildContext context, int index) {
-        //           return TaskCardWidget(task: tasks[index]);
-        //         },
-        //       )
-        //           : Container(
-        //         alignment: Alignment.center,
-        //         width: double.infinity,
-        //         child: Text(
-        //           'Checklist is empty',
-        //           style: AppTypography.l14g,
-        //         ),
-        //       ),
-        //       failure: (error) => Container(
-        //         alignment: Alignment.center,
-        //         width: double.infinity,
-        //         child: Text(
-        //           error.toString(),
-        //           style: AppTypography.r14d,
-        //         ),
-        //       ),
-        //       orElse: () => Container(
-        //         alignment: Alignment.center,
-        //         width: double.infinity,
-        //         child: Text(
-        //           'No upcoming task',
-        //           style: AppTypography.r14d,
-        //         ),
-        //       ),
-        //     ),
-        //   ),
-        // ],
+        if (tasks.isNotEmpty)
+          ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            itemCount: tasks.length,
+            itemBuilder: (BuildContext context, int index) {
+              return _TaskCardWidget(task: tasks[index]);
+            },
+          )
+        else
+          const ErrorContainer(text: 'Tasks list is empty'),
       ],
     );
   }
@@ -236,9 +208,9 @@ class _TaskCardWidgetState extends State<_TaskCardWidget> {
               onChanged: (b) {
                 setState(() {
                   value = !value;
-                  // context
-                  //     .read<HomeChecklistBloc>()
-                  //     .add(HomeChecklistEvent.checkItem(id: widget.task.id));
+                  context
+                      .read<ProjectDetailsBloc>()
+                      .add(ProjectDetailsEvent.checkedTask(widget.task.id));
                 });
               },
             ),

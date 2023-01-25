@@ -7,8 +7,7 @@ part 'i_get_response_base_i_project_with_users_tasks.g.dart';
 @Freezed()
 class IGetResponseBaseIProjectWithUsersTasks with _$IGetResponseBaseIProjectWithUsersTasks {
   const factory IGetResponseBaseIProjectWithUsersTasks({
-    @Default('Data got correctly')
-    required String message,
+    @Default('') required String message,
     @Default({})
     required Object meta,
     required IProjectWithUsersTasks data,

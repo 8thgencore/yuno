@@ -6,6 +6,7 @@ import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
 import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/project/projects_list/bloc/projects_list_bloc.dart';
+import 'package:yuno/ui/widgets/error_container.dart';
 import 'package:yuno/ui/widgets/project_card_large_widget.dart';
 
 class ProjectsListPage extends StatelessWidget {
@@ -13,9 +14,13 @@ class ProjectsListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: AppColors.screen100,
-      body: SafeArea(child: _ProjectsListContentWidget()),
+      body: SafeArea(
+        child: removeScrollingGlow(
+          child: const _ProjectsListContentWidget(),
+        ),
+      ),
     );
   }
 }
@@ -56,35 +61,23 @@ class _ProjectListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return removeScrollingGlow(
-      child: BlocBuilder<ProjectsListBloc, ProjectsListState>(
-        builder: (context, state) => state.maybeWhen(
-          initial: () => const Center(child: CircularProgressIndicator()),
-          loading: () => const Center(child: CircularProgressIndicator()),
-          loaded: (projects) => ListView.builder(
-            shrinkWrap: true,
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            itemCount: projects.length,
-            itemBuilder: (BuildContext context, int index) {
-              return _ProjectFullCardWidget(project: projects[index]);
-            },
-          ),
-          failure: (error) => Container(
-            alignment: Alignment.center,
-            width: double.infinity,
-            child: Text(
-              'Failed to get a list of projects from the server\n$error',
-              style: AppTypography.l14g,
-            ),
-          ),
-          orElse: () => Container(
-            alignment: Alignment.center,
-            width: double.infinity,
-            child: Text(
-              'Failed to get a list of projects from the server',
-              style: AppTypography.l14g,
-            ),
-          ),
+    return BlocBuilder<ProjectsListBloc, ProjectsListState>(
+      builder: (context, state) => state.maybeWhen(
+        initial: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const Center(child: CircularProgressIndicator()),
+        loaded: (projects) => ListView.builder(
+          shrinkWrap: true,
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          itemCount: projects.length,
+          itemBuilder: (BuildContext context, int index) {
+            return _ProjectFullCardWidget(project: projects[index]);
+          },
+        ),
+        failure: (error) => ErrorContainer(
+          text: 'Failed to get a project from the server\n$error',
+        ),
+        orElse: () => const ErrorContainer(
+          text: 'Failed to get a project from the server',
         ),
       ),
     );
@@ -99,7 +92,7 @@ class _ProjectFullCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.pushNamed(RouteName.projectEdit, params: {'id': project.id}),
+      onTap: () => context.pushNamed(RouteName.project, params: {'id': project.id}),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
         child: Container(

@@ -31,7 +31,7 @@ class ApiTaskRepository {
     }
   }
 
-  Future<dynamic> getTaskById({required String id}) async {
+  Future<dynamic> getById({required String id}) async {
     try {
       final response = await taskClient.getTaskTaskId(taskId: id);
 
@@ -43,7 +43,7 @@ class ApiTaskRepository {
     }
   }
 
-  Future<dynamic> createTask({
+  Future<dynamic> create({
     required String name,
     required bool done,
     required String deadline,
@@ -73,18 +73,21 @@ class ApiTaskRepository {
     }
   }
 
-  Future<dynamic> updateTaskById({
+  Future<dynamic> updateById({
     required String id,
-    required ITaskRead task,
+    String? name,
+    String? deadline,
+    bool? done,
+    String? projectId,
   }) async {
     try {
       final response = await taskClient.putTaskTaskId(
         taskId: id,
         body: ITaskUpdate(
-          name: task.name,
-          done: task.done,
-          deadline: task.deadline,
-          projectId: task.projectId,
+          name: name,
+          done: done,
+          deadline: deadline,
+          projectId: projectId,
         ),
       );
 
@@ -93,10 +96,10 @@ class ApiTaskRepository {
       if (localTasks != null && taskIndex != null) {
         localTasks[taskIndex] = ITaskRead(
           id: id,
-          name: task.name,
-          done: task.done,
-          deadline: task.deadline,
-          projectId: task.projectId,
+          name: name ?? localTasks[taskIndex].name,
+          done: done ?? localTasks[taskIndex].done,
+          deadline: deadline ?? localTasks[taskIndex].deadline,
+          projectId: projectId ?? localTasks[taskIndex].projectId,
         );
         await localTasksRepository.setItem(localTasks);
       }
@@ -109,7 +112,7 @@ class ApiTaskRepository {
     }
   }
 
-  Future<dynamic> deleteTaskById({required String id}) async {
+  Future<dynamic> deleteById({required String id}) async {
     try {
       final response = await taskClient.deleteTaskTaskId(taskId: id);
 

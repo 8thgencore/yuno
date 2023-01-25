@@ -73,7 +73,6 @@ abstract class _$$_IProjectUpdateCopyWith<$Res>
   factory _$$_IProjectUpdateCopyWith(
           _$_IProjectUpdate value, $Res Function(_$_IProjectUpdate) then) =
       __$$_IProjectUpdateCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({String name, String description});
@@ -155,13 +154,14 @@ abstract class _IProjectUpdate implements IProjectUpdate {
   const factory _IProjectUpdate({required final String name, required final String description}) =
       _$_IProjectUpdate;
 
-  factory _IProjectUpdate.fromJson(Map<String, dynamic> json) =
-      _$_IProjectUpdate.fromJson;
+  factory _IProjectUpdate.fromJson(Map<String, dynamic> json) = _$_IProjectUpdate.fromJson;
 
   @override
   String get name;
+
   @override
   String get description;
+
   @override
   @JsonKey(ignore: true)
   _$$_IProjectUpdateCopyWith<_$_IProjectUpdate> get copyWith =>

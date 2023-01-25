@@ -8,12 +8,10 @@ class ITaskRead with _$ITaskRead {
   const factory ITaskRead({
     required String name,
     required String id,
-    @Default(false)
-    bool? done,
+    @Default(false) bool? done,
     String? deadline,
-    @JsonKey(name: 'project_id')
-    String? projectId,
+    @JsonKey(name: 'project_id') String? projectId,
   }) = _ITaskRead;
-  
+
   factory ITaskRead.fromJson(Map<String, dynamic> json) => _$ITaskReadFromJson(json);
 }

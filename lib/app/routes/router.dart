@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:yuno/app/app.dart';
 import 'package:yuno/app/di/service_locator.dart';
+import 'package:yuno/app/routes/observer.dart';
 import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/data/repository/user_repository.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
@@ -22,6 +23,7 @@ import 'package:yuno/ui/pages/main/profile_pages/change_password/view/change_pas
 import 'package:yuno/ui/pages/main/profile_pages/edit_profile/bloc/profile_edit_bloc.dart';
 import 'package:yuno/ui/pages/main/profile_pages/edit_profile/view/profile_edit_page.dart';
 import 'package:yuno/ui/pages/main/profile_pages/profile/view/profile_page.dart';
+import 'package:yuno/ui/pages/main/project/project_details/bloc/project_details_bloc.dart';
 import 'package:yuno/ui/pages/main/project/project_details/view/project_details_page.dart';
 import 'package:yuno/ui/pages/main/project/project_edit/bloc/project_edit_bloc.dart';
 import 'package:yuno/ui/pages/main/project/project_edit/view/project_page.dart';
@@ -39,6 +41,9 @@ mixin RouterMixin on State<App> {
     _router ??= GoRouter(
       initialLocation: RoutePath.splash,
       navigatorKey: rootNavigatorKey,
+      observers: [
+        GoRouterObserver(),
+      ],
       errorBuilder: (_, state) => const SplashPage(),
       routes: [
         GoRoute(
@@ -134,29 +139,30 @@ mixin RouterMixin on State<App> {
           ),
           routes: [
             GoRoute(
-                name: RouteName.project,
-                path: RoutePath.project,
-                parentNavigatorKey: rootNavigatorKey,
-                builder: (context, state) => const ProjectDetailsPage(),
-                // builder: (context, state) => BlocProvider(
-                // create: (context) => ProjectEditBloc(
-                //   apiProjectRepository: sl.get<ApiProjectRepository>(),
-                // )..add(ProjectEditEvent.started(state.params['id'] ?? '')),
-                // child: ProjectDetailsPage(),
-                // ),
-                routes: [
-                  GoRoute(
-                    name: RouteName.projectEdit,
-                    path: RoutePath.projectEdit,
-                    parentNavigatorKey: rootNavigatorKey,
-                    builder: (context, state) => BlocProvider(
-                      create: (context) => ProjectEditBloc(
-                        apiProjectRepository: sl.get<ApiProjectRepository>(),
-                      )..add(ProjectEditEvent.started(state.params['id'] ?? '')),
-                      child: const ProjectEditPage(isUpdate: true),
-                    ),
+              name: RouteName.project,
+              path: RoutePath.project,
+              parentNavigatorKey: rootNavigatorKey,
+              builder: (context, state) => BlocProvider(
+                create: (context) => ProjectDetailsBloc(
+                  apiProjectRepository: sl.get<ApiProjectRepository>(),
+                  apiTaskRepository: sl.get<ApiTaskRepository>(),
+                )..add(ProjectDetailsEvent.started(state.params['id'] ?? '')),
+                child: const ProjectDetailsPage(),
+              ),
+              routes: [
+                GoRoute(
+                  name: RouteName.projectEdit,
+                  path: RoutePath.projectEdit,
+                  parentNavigatorKey: rootNavigatorKey,
+                  builder: (context, state) => BlocProvider(
+                    create: (context) => ProjectEditBloc(
+                      apiProjectRepository: sl.get<ApiProjectRepository>(),
+                    )..add(ProjectEditEvent.started(state.params['id'] ?? '')),
+                    child: const ProjectEditPage(isUpdate: true),
                   ),
-                ]),
+                ),
+              ],
+            ),
             GoRoute(
               name: RouteName.projectCreate,
               path: RoutePath.projectCreate,

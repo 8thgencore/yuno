@@ -48,16 +48,20 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
     _CheckItemEvent event,
     Emitter<HomeChecklistState> emit,
   ) async {
-    var checkedTask = _tasks.firstWhere((task) => task.id == event.id);
-    final bool isDone = checkedTask.done ?? false;
-    checkedTask = checkedTask.copyWith(done: !isDone);
+    final task = _tasks.firstWhere((task) => task.id == event.id);
+    final bool isDone = task.done ?? false;
 
-    _tasks.removeWhere((task) => task.id == event.id);
-    _tasks.add(checkedTask);
-
-    await apiTaskRepository.updateTaskById(
+    final result = await apiTaskRepository.updateById(
       id: event.id,
-      task: checkedTask.copyWith(done: !isDone),
+      name: task.name,
+      deadline: task.deadline,
+      projectId: task.projectId,
+      done: !isDone,
     );
+
+    if (result is ITaskRead) {
+      _tasks.removeWhere((task) => task.id == event.id);
+      _tasks.add(task.copyWith(done: !isDone));
+    }
   }
 }

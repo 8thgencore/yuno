@@ -7,9 +7,7 @@ import 'package:yuno/api/project/models/i_project_with_users_tasks.dart';
 import 'package:yuno/domain/repository/api_project_repository.dart';
 
 part 'project_edit_bloc.freezed.dart';
-
 part 'project_edit_event.dart';
-
 part 'project_edit_state.dart';
 
 class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
@@ -45,7 +43,7 @@ class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
       if (event.id.length < 16) {
         emit(state.copyWith(status: ProjectEditStatus.loaded));
       } else {
-        final project = await apiProjectRepository.getProjectById(id: event.id);
+        final project = await apiProjectRepository.getById(id: event.id);
         if (project is IProjectWithUsersTasks) {
           emit(state.copyWith(
             status: ProjectEditStatus.loaded,
@@ -88,7 +86,7 @@ class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
     Emitter<ProjectEditState> emit,
   ) async {
     emit(state.copyWith(status: ProjectEditStatus.loading));
-    final result = await apiProjectRepository.createProject(
+    final result = await apiProjectRepository.create(
       name: state.name,
       description: state.description,
     );
@@ -107,7 +105,7 @@ class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
     Emitter<ProjectEditState> emit,
   ) async {
     emit(state.copyWith(status: ProjectEditStatus.loading));
-    final result = await apiProjectRepository.updateTaskById(
+    final result = await apiProjectRepository.updateById(
       id: state.id,
       name: state.name,
       description: state.description,

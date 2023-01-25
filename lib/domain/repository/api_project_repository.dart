@@ -35,7 +35,7 @@ class ApiProjectRepository {
     }
   }
 
-  Future<dynamic> getProjectById({required String id}) async {
+  Future<dynamic> getById({required String id}) async {
     try {
       final response = await projectClient.getProjectProjectId(projectId: id);
 
@@ -47,7 +47,7 @@ class ApiProjectRepository {
     }
   }
 
-  Future<dynamic> createProject({
+  Future<dynamic> create({
     required String name,
     required String description,
   }) async {
@@ -68,7 +68,7 @@ class ApiProjectRepository {
     }
   }
 
-  Future<dynamic> updateTaskById({
+  Future<dynamic> updateById({
     required String id,
     required String name,
     required String description,
@@ -90,7 +90,7 @@ class ApiProjectRepository {
     }
   }
 
-  Future<dynamic> deleteTaskById({required String id}) async {
+  Future<dynamic> deleteById({required String id}) async {
     try {
       final response = await projectClient.deleteProjectProjectId(projectId: id);
 
