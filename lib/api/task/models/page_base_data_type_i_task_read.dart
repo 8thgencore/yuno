@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'i_task_read.dart';
 
 part 'page_base_data_type_i_task_read.freezed.dart';

@@ -11,6 +11,7 @@ class ProjectDetailsState with _$ProjectDetailsState {
   const factory ProjectDetailsState.loaded({
     required IProjectWithUsersTasks project,
     required List<ITaskRead> tasks,
+    required bool isMember,
   }) = _LoadedState;
 
   const factory ProjectDetailsState.failure(Object error) = _FailureState;

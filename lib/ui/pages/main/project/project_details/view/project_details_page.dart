@@ -22,6 +22,11 @@ class ProjectDetailsPage extends StatelessWidget {
           child: const _ProjectContentWidget(),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.add, size: 32),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
@@ -57,11 +62,12 @@ class _ProjectContentWidget extends StatelessWidget {
               builder: (context, state) => state.maybeWhen(
                 initial: () => const Center(child: CircularProgressIndicator()),
                 loading: () => const Center(child: CircularProgressIndicator()),
-                loaded: (project, tasks) => Column(
+                loaded: (project, tasks, isMember) => Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 10),
                     _ProjectFullCardWidget(
+                      isMember: isMember,
                       project: IProjectWithUsers(
                         id: project.id,
                         name: project.name,
@@ -71,7 +77,7 @@ class _ProjectContentWidget extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 28),
-                    _CheckListWidget(tasks: tasks),
+                    _CheckListWidget(tasks: tasks, isMember: isMember),
                     const SizedBox(height: 28),
                   ],
                 ),
@@ -91,14 +97,20 @@ class _ProjectContentWidget extends StatelessWidget {
 }
 
 class _ProjectFullCardWidget extends StatelessWidget {
-  const _ProjectFullCardWidget({required this.project});
+  const _ProjectFullCardWidget({
+    required this.project,
+    required this.isMember,
+  });
 
   final IProjectWithUsers project;
+  final bool isMember;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.pushNamed(RouteName.projectEdit, params: {'id': project.id}),
+      onTap: isMember
+          ? () => context.pushNamed(RouteName.projectEdit, params: {'id': project.id})
+          : null,
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 24),
         height: 200,
@@ -121,9 +133,13 @@ class _ProjectFullCardWidget extends StatelessWidget {
 }
 
 class _CheckListWidget extends StatelessWidget {
-  const _CheckListWidget({required this.tasks});
+  const _CheckListWidget({
+    required this.tasks,
+    required this.isMember,
+  });
 
   final List<ITaskRead> tasks;
+  final bool isMember;
 
   @override
   Widget build(BuildContext context) {
@@ -141,7 +157,7 @@ class _CheckListWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 24),
             itemCount: tasks.length,
             itemBuilder: (BuildContext context, int index) {
-              return _TaskCardWidget(task: tasks[index]);
+              return _TaskCardWidget(task: tasks[index], isMember: isMember);
             },
           )
         else
@@ -152,9 +168,13 @@ class _CheckListWidget extends StatelessWidget {
 }
 
 class _TaskCardWidget extends StatefulWidget {
-  const _TaskCardWidget({required this.task});
+  const _TaskCardWidget({
+    required this.task,
+    required this.isMember,
+  });
 
   final ITaskRead task;
+  final bool isMember;
 
   @override
   State<_TaskCardWidget> createState() => _TaskCardWidgetState();
@@ -201,20 +221,23 @@ class _TaskCardWidgetState extends State<_TaskCardWidget> {
               ],
             ),
           ),
-          Transform.scale(
-            scale: 1.4,
-            child: Checkbox(
-              value: value,
-              onChanged: (b) {
-                setState(() {
-                  value = !value;
-                  context
-                      .read<ProjectDetailsBloc>()
-                      .add(ProjectDetailsEvent.checkedTask(widget.task.id));
-                });
-              },
-            ),
-          ),
+          if (widget.isMember)
+            Transform.scale(
+              scale: 1.4,
+              child: Checkbox(
+                value: value,
+                onChanged: (v) {
+                  setState(() {
+                    value = !value;
+                    context
+                        .read<ProjectDetailsBloc>()
+                        .add(ProjectDetailsEvent.checkedTask(widget.task.id));
+                  });
+                },
+              ),
+            )
+          else
+            const SizedBox(),
         ],
       ),
     );

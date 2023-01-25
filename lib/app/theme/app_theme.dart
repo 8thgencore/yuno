@@ -13,6 +13,9 @@ class AppTheme {
       elevation: 0,
       color: Colors.transparent,
     ),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: AppColors.primary100,
+    ),
     checkboxTheme: CheckboxThemeData(
       side: MaterialStateBorderSide.resolveWith(
         (Set<MaterialState> states) {
@@ -22,8 +25,6 @@ class AppTheme {
           return const BorderSide(color: AppColors.grey20);
         },
       ),
-      fillColor: MaterialStateProperty.all(AppColors.primary100),
-      checkColor: MaterialStateProperty.all(AppColors.white100),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
     ),
     progressIndicatorTheme: const ProgressIndicatorThemeData(

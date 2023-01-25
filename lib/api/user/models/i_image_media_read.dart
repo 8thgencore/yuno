@@ -3,7 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'i_media_read.dart';
 
 part 'i_image_media_read.freezed.dart';
-
 part 'i_image_media_read.g.dart';
 
 @Freezed()

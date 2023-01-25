@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'i_project_with_users.dart';
 
 part 'page_base_data_type_i_project_with_users.freezed.dart';

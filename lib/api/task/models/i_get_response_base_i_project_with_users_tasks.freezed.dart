@@ -137,9 +137,7 @@ class __$$_IGetResponseBaseIProjectWithUsersTasksCopyWithImpl<$Res>
 class _$_IGetResponseBaseIProjectWithUsersTasks
     implements _IGetResponseBaseIProjectWithUsersTasks {
   const _$_IGetResponseBaseIProjectWithUsersTasks(
-      {required this.message,
-      required this.meta,
-      required this.data});
+      {required this.message = '', required this.meta = const {}, required this.data});
 
   factory _$_IGetResponseBaseIProjectWithUsersTasks.fromJson(
           Map<String, dynamic> json) =>

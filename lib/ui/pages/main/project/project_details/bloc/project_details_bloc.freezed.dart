@@ -17,14 +17,12 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ProjectDetailsEvent {
   String get id => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String id) started,
     required TResult Function(String id) checkedTask,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id)? started,
@@ -38,14 +36,12 @@ mixin _$ProjectDetailsEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
     required TResult Function(_CheckTaskEvent value) checkedTask,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
@@ -79,7 +75,7 @@ class _$ProjectDetailsEventCopyWithImpl<$Res, $Val extends ProjectDetailsEvent>
     implements $ProjectDetailsEventCopyWith<$Res> {
   _$ProjectDetailsEventCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
 // ignore: unused_field
   final $Res Function($Val) _then;
@@ -371,7 +367,8 @@ mixin _$ProjectDetailsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks) loaded,
+    required TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)
+        loaded,
     required TResult Function(Object error) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -379,7 +376,7 @@ mixin _$ProjectDetailsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(IProjectWithUsersTasks project, List<ITaskRead> tasks)? loaded,
+    TResult? Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)? loaded,
     TResult? Function(Object error)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -387,7 +384,7 @@ mixin _$ProjectDetailsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks)? loaded,
+    TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)? loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) =>
@@ -474,7 +471,8 @@ class _$_InitialState extends _InitialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks) loaded,
+    required TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)
+        loaded,
     required TResult Function(Object error) failure,
   }) {
     return initial();
@@ -485,7 +483,7 @@ class _$_InitialState extends _InitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(IProjectWithUsersTasks project, List<ITaskRead> tasks)? loaded,
+    TResult? Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)? loaded,
     TResult? Function(Object error)? failure,
   }) {
     return initial?.call();
@@ -496,7 +494,7 @@ class _$_InitialState extends _InitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks)? loaded,
+    TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)? loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) {
@@ -586,7 +584,8 @@ class _$_LoadingState extends _LoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks) loaded,
+    required TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)
+        loaded,
     required TResult Function(Object error) failure,
   }) {
     return loading();
@@ -597,7 +596,7 @@ class _$_LoadingState extends _LoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(IProjectWithUsersTasks project, List<ITaskRead> tasks)? loaded,
+    TResult? Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)? loaded,
     TResult? Function(Object error)? failure,
   }) {
     return loading?.call();
@@ -608,7 +607,7 @@ class _$_LoadingState extends _LoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks)? loaded,
+    TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)? loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) {
@@ -666,7 +665,7 @@ abstract class _$$_LoadedStateCopyWith<$Res> {
   factory _$$_LoadedStateCopyWith(_$_LoadedState value, $Res Function(_$_LoadedState) then) =
       __$$_LoadedStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({IProjectWithUsersTasks project, List<ITaskRead> tasks});
+  $Res call({IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember});
 
   $IProjectWithUsersTasksCopyWith<$Res> get project;
 }
@@ -683,6 +682,7 @@ class __$$_LoadedStateCopyWithImpl<$Res>
   $Res call({
     Object? project = null,
     Object? tasks = null,
+    Object? isMember = null,
   }) {
     return _then(_$_LoadedState(
       project: null == project
@@ -693,6 +693,10 @@ class __$$_LoadedStateCopyWithImpl<$Res>
           ? _value._tasks
           : tasks // ignore: cast_nullable_to_non_nullable
               as List<ITaskRead>,
+      isMember: null == isMember
+          ? _value.isMember
+          : isMember // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
@@ -708,7 +712,8 @@ class __$$_LoadedStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LoadedState extends _LoadedState {
-  const _$_LoadedState({required this.project, required final List<ITaskRead> tasks})
+  const _$_LoadedState(
+      {required this.project, required final List<ITaskRead> tasks, required this.isMember})
       : _tasks = tasks,
         super._();
 
@@ -723,8 +728,11 @@ class _$_LoadedState extends _LoadedState {
   }
 
   @override
+  final bool isMember;
+
+  @override
   String toString() {
-    return 'ProjectDetailsState.loaded(project: $project, tasks: $tasks)';
+    return 'ProjectDetailsState.loaded(project: $project, tasks: $tasks, isMember: $isMember)';
   }
 
   @override
@@ -733,12 +741,13 @@ class _$_LoadedState extends _LoadedState {
         (other.runtimeType == runtimeType &&
             other is _$_LoadedState &&
             (identical(other.project, project) || other.project == project) &&
-            const DeepCollectionEquality().equals(other._tasks, _tasks));
+            const DeepCollectionEquality().equals(other._tasks, _tasks) &&
+            (identical(other.isMember, isMember) || other.isMember == isMember));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, project, const DeepCollectionEquality().hash(_tasks));
+      Object.hash(runtimeType, project, const DeepCollectionEquality().hash(_tasks), isMember);
 
   @JsonKey(ignore: true)
   @override
@@ -751,10 +760,11 @@ class _$_LoadedState extends _LoadedState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks) loaded,
+    required TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)
+        loaded,
     required TResult Function(Object error) failure,
   }) {
-    return loaded(project, tasks);
+    return loaded(project, tasks, isMember);
   }
 
   @override
@@ -762,10 +772,10 @@ class _$_LoadedState extends _LoadedState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(IProjectWithUsersTasks project, List<ITaskRead> tasks)? loaded,
+    TResult? Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)? loaded,
     TResult? Function(Object error)? failure,
   }) {
-    return loaded?.call(project, tasks);
+    return loaded?.call(project, tasks, isMember);
   }
 
   @override
@@ -773,12 +783,12 @@ class _$_LoadedState extends _LoadedState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks)? loaded,
+    TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)? loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(project, tasks);
+      return loaded(project, tasks, isMember);
     }
     return orElse();
   }
@@ -824,11 +834,13 @@ class _$_LoadedState extends _LoadedState {
 abstract class _LoadedState extends ProjectDetailsState {
   const factory _LoadedState(
       {required final IProjectWithUsersTasks project,
-      required final List<ITaskRead> tasks}) = _$_LoadedState;
+      required final List<ITaskRead> tasks,
+      required final bool isMember}) = _$_LoadedState;
   const _LoadedState._() : super._();
 
   IProjectWithUsersTasks get project;
   List<ITaskRead> get tasks;
+  bool get isMember;
   @JsonKey(ignore: true)
   _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith => throw _privateConstructorUsedError;
 }
@@ -894,7 +906,8 @@ class _$_FailureState extends _FailureState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks) loaded,
+    required TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)
+        loaded,
     required TResult Function(Object error) failure,
   }) {
     return failure(error);
@@ -905,7 +918,7 @@ class _$_FailureState extends _FailureState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(IProjectWithUsersTasks project, List<ITaskRead> tasks)? loaded,
+    TResult? Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)? loaded,
     TResult? Function(Object error)? failure,
   }) {
     return failure?.call(error);
@@ -916,7 +929,7 @@ class _$_FailureState extends _FailureState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks)? loaded,
+    TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)? loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) {

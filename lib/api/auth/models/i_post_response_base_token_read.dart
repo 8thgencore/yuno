@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'token_read.dart';
 
 part 'i_post_response_base_token_read.freezed.dart';

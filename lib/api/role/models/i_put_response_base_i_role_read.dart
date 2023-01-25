@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'i_role_read.dart';
 
 part 'i_put_response_base_i_role_read.freezed.dart';

@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'page_base_data_type_i_role_read.dart';
 
 part 'i_get_response_paginated_i_role_read.freezed.dart';

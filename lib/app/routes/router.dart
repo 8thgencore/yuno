@@ -146,6 +146,7 @@ mixin RouterMixin on State<App> {
                 create: (context) => ProjectDetailsBloc(
                   apiProjectRepository: sl.get<ApiProjectRepository>(),
                   apiTaskRepository: sl.get<ApiTaskRepository>(),
+                  userRepository: sl.get<UserRepository>(),
                 )..add(ProjectDetailsEvent.started(state.params['id'] ?? '')),
                 child: const ProjectDetailsPage(),
               ),

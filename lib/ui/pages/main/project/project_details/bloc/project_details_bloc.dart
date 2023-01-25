@@ -4,19 +4,19 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:yuno/api/project/models/i_project_with_users_tasks.dart';
 import 'package:yuno/api/task/models/i_task_read.dart';
+import 'package:yuno/data/repository/user_repository.dart';
 import 'package:yuno/domain/repository/api_project_repository.dart';
 import 'package:yuno/domain/repository/api_task_repository.dart';
 
 part 'project_details_bloc.freezed.dart';
-
 part 'project_details_event.dart';
-
 part 'project_details_state.dart';
 
 class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> {
   ProjectDetailsBloc({
     required this.apiProjectRepository,
     required this.apiTaskRepository,
+    required this.userRepository,
   }) : super(const ProjectDetailsState.initial()) {
     on<ProjectDetailsEvent>(
       (event, emit) => event.map(
@@ -28,8 +28,10 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
 
   final ApiProjectRepository apiProjectRepository;
   final ApiTaskRepository apiTaskRepository;
+  final UserRepository userRepository;
 
   final List<ITaskRead> _tasks = [];
+  bool _isMember = false;
 
   FutureOr<void> _onProjectLoaded(
     _StartedEvent event,
@@ -40,7 +42,13 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
       final project = await apiProjectRepository.getById(id: event.id);
       if (project is IProjectWithUsersTasks) {
         _tasks.addAll(project.tasks ?? []);
-        emit(ProjectDetailsState.loaded(project: project, tasks: _tasks));
+        // Check user member is project
+        final user = await userRepository.getItem();
+        final users = project.users;
+        if (user != null && users != null) {
+          _isMember = users.where((u) => u.id == user.id).isNotEmpty;
+        }
+        emit(ProjectDetailsState.loaded(project: project, tasks: _tasks, isMember: _isMember));
       } else {
         emit(const ProjectDetailsState.failure("Don't get project"));
       }

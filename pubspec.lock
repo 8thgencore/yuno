@@ -977,10 +977,10 @@ packages:
     dependency: "direct dev"
     description:
       name: swagger_parser
-      sha256: f7d74827fd348aebb60337a61533aa0ff57eb3603bf9e8b3b4b093732867e5db
+      sha256: b1df69fe073428948e8015840825c7c42de70bb7d1c9c2607daab75da8fab599
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.3"
+    version: "0.6.4"
   synchronized:
     dependency: transitive
     description:

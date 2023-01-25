@@ -21,14 +21,19 @@ IGetResponsePaginatedITaskRead _$IGetResponsePaginatedITaskReadFromJson(
 
 /// @nodoc
 mixin _$IGetResponsePaginatedITaskRead {
-  String? get message => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: '')
+  String get message => throw _privateConstructorUsedError;
+
+  @JsonKey(defaultValue: {})
   Object? get meta => throw _privateConstructorUsedError;
+
   PageBaseDataTypeITaskRead get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $IGetResponsePaginatedITaskReadCopyWith<IGetResponsePaginatedITaskRead>
-      get copyWith => throw _privateConstructorUsedError;
+  $IGetResponsePaginatedITaskReadCopyWith<IGetResponsePaginatedITaskRead> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -38,8 +43,12 @@ abstract class $IGetResponsePaginatedITaskReadCopyWith<$Res> {
           $Res Function(IGetResponsePaginatedITaskRead) then) =
       _$IGetResponsePaginatedITaskReadCopyWithImpl<$Res,
           IGetResponsePaginatedITaskRead>;
+
   @useResult
-  $Res call({String? message, Object? meta, PageBaseDataTypeITaskRead data});
+  $Res call(
+      {@JsonKey(defaultValue: '') String message,
+      @JsonKey(defaultValue: {}) Object? meta,
+      PageBaseDataTypeITaskRead data});
 
   $PageBaseDataTypeITaskReadCopyWith<$Res> get data;
 }
@@ -58,15 +67,15 @@ class _$IGetResponsePaginatedITaskReadCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = freezed,
+    Object? message = null,
     Object? meta = freezed,
     Object? data = null,
   }) {
     return _then(_value.copyWith(
-      message: freezed == message
+      message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       meta: freezed == meta ? _value.meta : meta,
       data: null == data
           ? _value.data
@@ -91,9 +100,13 @@ abstract class _$$_IGetResponsePaginatedITaskReadCopyWith<$Res>
           _$_IGetResponsePaginatedITaskRead value,
           $Res Function(_$_IGetResponsePaginatedITaskRead) then) =
       __$$_IGetResponsePaginatedITaskReadCopyWithImpl<$Res>;
+
   @override
   @useResult
-  $Res call({String? message, Object? meta, PageBaseDataTypeITaskRead data});
+  $Res call(
+      {@JsonKey(defaultValue: '') String message,
+      @JsonKey(defaultValue: {}) Object? meta,
+      PageBaseDataTypeITaskRead data});
 
   @override
   $PageBaseDataTypeITaskReadCopyWith<$Res> get data;
@@ -112,15 +125,15 @@ class __$$_IGetResponsePaginatedITaskReadCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = freezed,
+    Object? message = null,
     Object? meta = freezed,
     Object? data = null,
   }) {
     return _then(_$_IGetResponsePaginatedITaskRead(
-      message: freezed == message
+      message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       meta: freezed == meta ? _value.meta : meta,
       data: null == data
           ? _value.data
@@ -135,19 +148,18 @@ class __$$_IGetResponsePaginatedITaskReadCopyWithImpl<$Res>
 class _$_IGetResponsePaginatedITaskRead
     implements _IGetResponsePaginatedITaskRead {
   const _$_IGetResponsePaginatedITaskRead(
-      {this.message = 'Data got correctly',
-      this.meta = const {},
+      {@JsonKey(defaultValue: '') required this.message,
+      @JsonKey(defaultValue: {}) this.meta,
       required this.data});
 
-  factory _$_IGetResponsePaginatedITaskRead.fromJson(
-          Map<String, dynamic> json) =>
+  factory _$_IGetResponsePaginatedITaskRead.fromJson(Map<String, dynamic> json) =>
       _$$_IGetResponsePaginatedITaskReadFromJson(json);
 
   @override
-  @JsonKey()
-  final String? message;
+  @JsonKey(defaultValue: '')
+  final String message;
   @override
-  @JsonKey()
+  @JsonKey(defaultValue: {})
   final Object? meta;
   @override
   final PageBaseDataTypeITaskRead data;
@@ -190,22 +202,26 @@ class _$_IGetResponsePaginatedITaskRead
 abstract class _IGetResponsePaginatedITaskRead
     implements IGetResponsePaginatedITaskRead {
   const factory _IGetResponsePaginatedITaskRead(
-          {final String? message,
-          final Object? meta,
-          required final PageBaseDataTypeITaskRead data}) =
-      _$_IGetResponsePaginatedITaskRead;
+      {@JsonKey(defaultValue: '') required final String message,
+      @JsonKey(defaultValue: {}) final Object? meta,
+      required final PageBaseDataTypeITaskRead data}) = _$_IGetResponsePaginatedITaskRead;
 
   factory _IGetResponsePaginatedITaskRead.fromJson(Map<String, dynamic> json) =
       _$_IGetResponsePaginatedITaskRead.fromJson;
 
   @override
-  String? get message;
+  @JsonKey(defaultValue: '')
+  String get message;
+
   @override
+  @JsonKey(defaultValue: {})
   Object? get meta;
+
   @override
   PageBaseDataTypeITaskRead get data;
+
   @override
   @JsonKey(ignore: true)
-  _$$_IGetResponsePaginatedITaskReadCopyWith<_$_IGetResponsePaginatedITaskRead>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$_IGetResponsePaginatedITaskReadCopyWith<_$_IGetResponsePaginatedITaskRead> get copyWith =>
+      throw _privateConstructorUsedError;
 }
