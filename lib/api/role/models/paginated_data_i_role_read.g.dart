@@ -1,17 +1,16 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'page_paginated_model.dart';
+part of 'paginated_data_i_role_read.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-PagePaginatedModel<T> _$PagePaginatedModelFromJson<T>(
-  Map<String, dynamic> json,
-  T Function(Object? json) fromJsonT,
-) =>
-    PagePaginatedModel<T>(
-      items: (json['items'] as List<dynamic>).map(fromJsonT).toList(),
+_$_PaginatedDataIRoleRead _$$_PaginatedDataIRoleReadFromJson(Map<String, dynamic> json) =>
+    _$_PaginatedDataIRoleRead(
+      items: (json['items'] as List<dynamic>)
+          .map((e) => IRoleRead.fromJson(e as Map<String, dynamic>))
+          .toList(),
       total: json['total'] as int,
       page: json['page'] as int,
       size: json['size'] as int,
@@ -20,12 +19,9 @@ PagePaginatedModel<T> _$PagePaginatedModelFromJson<T>(
       previousPage: json['previous_page'] as int?,
     );
 
-Map<String, dynamic> _$PagePaginatedModelToJson<T>(
-  PagePaginatedModel<T> instance,
-  Object? Function(T value) toJsonT,
-) =>
+Map<String, dynamic> _$$_PaginatedDataIRoleReadToJson(_$_PaginatedDataIRoleRead instance) =>
     <String, dynamic>{
-      'items': instance.items.map(toJsonT).toList(),
+      'items': instance.items,
       'total': instance.total,
       'page': instance.page,
       'size': instance.size,

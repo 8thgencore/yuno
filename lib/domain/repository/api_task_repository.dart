@@ -22,7 +22,12 @@ class ApiTaskRepository {
         return localTasks;
       } else {
         final response = await taskClient.getTaskList();
-        return response.data.items;
+        final data = response.data as Map<String, dynamic>;
+        final tasks = (data['items'] as List)
+            .map((p) => ITaskRead.fromJson(p as Map<String, dynamic>))
+            .toList();
+
+        return tasks;
       }
     } on DioError catch (e) {
       return dioErrorInterceptor(e);

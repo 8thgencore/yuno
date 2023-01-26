@@ -3,12 +3,10 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:yuno/api/role/models/i_get_response_paginated_i_role_read.dart';
+import 'package:yuno/api/role/models/i_role_read.dart';
+import 'package:yuno/api/shared_models/base_response.dart';
 import 'package:yuno/api/shared_models/i_order_enum.dart';
-import 'package:yuno/api/user/models/i_delete_response_base_i_user_read.dart';
-import 'package:yuno/api/user/models/i_get_response_base_i_user_read.dart';
 import 'package:yuno/api/user/models/i_image_upload.dart';
-import 'package:yuno/api/user/models/i_put_response_base_i_user_read.dart';
 import 'package:yuno/api/user/models/i_user_create.dart';
 import 'package:yuno/api/user/models/i_user_read.dart';
 import 'package:yuno/api/user/models/i_user_update.dart';
@@ -20,7 +18,7 @@ abstract class UserClient {
   factory UserClient(Dio dio, { String baseUrl}) = _UserClient;
 
   @GET('/user')
-  Future<IGetResponseBaseIUserRead> getUser();
+  Future<BaseResponse<IUserRead>> getUser();
 
   @POST('/user')
   Future<IUserRead> postUser({
@@ -28,37 +26,37 @@ abstract class UserClient {
   });
 
   @GET('/user/list')
-  Future<IGetResponsePaginatedIRoleRead> getUserList({
+  Future<BaseResponse<IRoleRead>> getUserList({
     @Query('page') int? page = 1,
     @Query('size') int? size = 50,
   });
 
   @GET('/user/list/by_created_at')
-  Future<IGetResponsePaginatedIRoleRead> getUserListByCreatedAt({
+  Future<BaseResponse<IRoleRead>> getUserListByCreatedAt({
     @Query('order') IOrderEnum? order = IOrderEnum.asc,
     @Query('page') int? page = 1,
     @Query('size') int? size = 50,
   });
 
   @GET('/user/{user_id}')
-  Future<IGetResponseBaseIUserRead> getUserUserId({
+  Future<BaseResponse<IUserRead>> getUserUserId({
     @Path('user_id') required String userId,
   });
 
   @PUT('/user/{user_id}')
-  Future<IPutResponseBaseIUserRead> putUserUserId({
+  Future<BaseResponse<IUserRead>> putUserUserId({
     @Path('user_id') required String userId,
     @Body() required IUserUpdate body,
   });
 
   @DELETE('/user/{user_id}')
-  Future<IDeleteResponseBaseIUserRead> deleteUserUserId({
+  Future<BaseResponse<IUserRead>> deleteUserUserId({
     @Path('user_id') required String userId,
   });
 
   @MultiPart()
   @POST('/user/image')
-  Future<IGetResponseBaseIUserRead> postUserImage({
+  Future<BaseResponse<IUserRead>> postUserImage({
     @Part() required IImageUpload file,
     @Part(name: 'image_file') required File imageFile,
   });

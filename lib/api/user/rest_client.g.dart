@@ -19,13 +19,13 @@ class _UserClient implements UserClient {
   String? baseUrl;
 
   @override
-  Future<IGetResponseBaseIUserRead> getUser() async {
+  Future<BaseResponse<IUserRead>> getUser() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IGetResponseBaseIUserRead>(Options(
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IUserRead>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -37,7 +37,10 @@ class _UserClient implements UserClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = IGetResponseBaseIUserRead.fromJson(_result.data!);
+    final value = BaseResponse<IUserRead>.fromJson(
+      _result.data!,
+      (json) => IUserRead.fromJson(json as Map<String, dynamic>),
+    );
     return value;
   }
 
@@ -66,7 +69,7 @@ class _UserClient implements UserClient {
   }
 
   @override
-  Future<IGetResponsePaginatedIRoleRead> getUserList({
+  Future<BaseResponse<IRoleRead>> getUserList({
     page = 1,
     size = 50,
   }) async {
@@ -79,7 +82,7 @@ class _UserClient implements UserClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IGetResponsePaginatedIRoleRead>(Options(
+        _setStreamType<BaseResponse<IRoleRead>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -91,12 +94,15 @@ class _UserClient implements UserClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = IGetResponsePaginatedIRoleRead.fromJson(_result.data!);
+    final value = BaseResponse<IRoleRead>.fromJson(
+      _result.data!,
+      (json) => IRoleRead.fromJson(json as Map<String, dynamic>),
+    );
     return value;
   }
 
   @override
-  Future<IGetResponsePaginatedIRoleRead> getUserListByCreatedAt({
+  Future<BaseResponse<IRoleRead>> getUserListByCreatedAt({
     order = IOrderEnum.asc,
     page = 1,
     size = 50,
@@ -111,7 +117,7 @@ class _UserClient implements UserClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IGetResponsePaginatedIRoleRead>(Options(
+        _setStreamType<BaseResponse<IRoleRead>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -123,18 +129,21 @@ class _UserClient implements UserClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = IGetResponsePaginatedIRoleRead.fromJson(_result.data!);
+    final value = BaseResponse<IRoleRead>.fromJson(
+      _result.data!,
+      (json) => IRoleRead.fromJson(json as Map<String, dynamic>),
+    );
     return value;
   }
 
   @override
-  Future<IGetResponseBaseIUserRead> getUserUserId({required userId}) async {
+  Future<BaseResponse<IUserRead>> getUserUserId({required userId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IGetResponseBaseIUserRead>(Options(
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IUserRead>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -146,12 +155,15 @@ class _UserClient implements UserClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = IGetResponseBaseIUserRead.fromJson(_result.data!);
+    final value = BaseResponse<IUserRead>.fromJson(
+      _result.data!,
+      (json) => IUserRead.fromJson(json as Map<String, dynamic>),
+    );
     return value;
   }
 
   @override
-  Future<IPutResponseBaseIUserRead> putUserUserId({
+  Future<BaseResponse<IUserRead>> putUserUserId({
     required userId,
     required body,
   }) async {
@@ -160,8 +172,8 @@ class _UserClient implements UserClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IPutResponseBaseIUserRead>(Options(
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IUserRead>>(Options(
       method: 'PUT',
       headers: _headers,
       extra: _extra,
@@ -173,19 +185,21 @@ class _UserClient implements UserClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = IPutResponseBaseIUserRead.fromJson(_result.data!);
+    final value = BaseResponse<IUserRead>.fromJson(
+      _result.data!,
+      (json) => IUserRead.fromJson(json as Map<String, dynamic>),
+    );
     return value;
   }
 
   @override
-  Future<IDeleteResponseBaseIUserRead> deleteUserUserId(
-      {required userId}) async {
+  Future<BaseResponse<IUserRead>> deleteUserUserId({required userId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IDeleteResponseBaseIUserRead>(Options(
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IUserRead>>(Options(
       method: 'DELETE',
       headers: _headers,
       extra: _extra,
@@ -197,12 +211,15 @@ class _UserClient implements UserClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = IDeleteResponseBaseIUserRead.fromJson(_result.data!);
+    final value = BaseResponse<IUserRead>.fromJson(
+      _result.data!,
+      (json) => IUserRead.fromJson(json as Map<String, dynamic>),
+    );
     return value;
   }
 
   @override
-  Future<IGetResponseBaseIUserRead> postUserImage({
+  Future<BaseResponse<IUserRead>> postUserImage({
     required file,
     required imageFile,
   }) async {
@@ -222,7 +239,7 @@ class _UserClient implements UserClient {
       ),
     ));
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IGetResponseBaseIUserRead>(Options(
+        _setStreamType<BaseResponse<IUserRead>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -235,7 +252,10 @@ class _UserClient implements UserClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = IGetResponseBaseIUserRead.fromJson(_result.data!);
+    final value = BaseResponse<IUserRead>.fromJson(
+      _result.data!,
+      (json) => IUserRead.fromJson(json as Map<String, dynamic>),
+    );
     return value;
   }
 

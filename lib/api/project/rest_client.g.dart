@@ -19,7 +19,7 @@ class _ProjectClient implements ProjectClient {
   String? baseUrl;
 
   @override
-  Future<IGetResponsePaginatedIProjectWithUsers> getProjectMy({
+  Future<BaseResponse<PaginatedDataIProjectWithUsers>> getProjectMy({
     page = 1,
     size = 50,
   }) async {
@@ -32,7 +32,7 @@ class _ProjectClient implements ProjectClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IGetResponsePaginatedIProjectWithUsers>(Options(
+        _setStreamType<BaseResponse<PaginatedDataIProjectWithUsers>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -44,13 +44,15 @@ class _ProjectClient implements ProjectClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value =
-        IGetResponsePaginatedIProjectWithUsers.fromJson(_result.data!);
+    final value = BaseResponse<PaginatedDataIProjectWithUsers>.fromJson(
+      _result.data!,
+      (json) => PaginatedDataIProjectWithUsers.fromJson(json as Map<String, dynamic>),
+    );
     return value;
   }
 
   @override
-  Future<IGetResponsePaginatedIProjectWithUsers> getProjectList({
+  Future<BaseResponse<PaginatedDataIProjectWithUsers>> getProjectList({
     page = 1,
     size = 50,
   }) async {
@@ -63,7 +65,7 @@ class _ProjectClient implements ProjectClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IGetResponsePaginatedIProjectWithUsers>(Options(
+        _setStreamType<BaseResponse<PaginatedDataIProjectWithUsers>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -75,19 +77,22 @@ class _ProjectClient implements ProjectClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = IGetResponsePaginatedIProjectWithUsers.fromJson(_result.data!);
+    final value = BaseResponse<PaginatedDataIProjectWithUsers>.fromJson(
+      _result.data!,
+      (json) => PaginatedDataIProjectWithUsers.fromJson(json as Map<String, dynamic>),
+    );
     return value;
   }
 
   @override
-  Future<IBaseResponseIProjectRead> postProject({required body}) async {
+  Future<BaseResponse<IProjectRead>> postProject({required body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IBaseResponseIProjectRead>(Options(
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IProjectRead>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -99,19 +104,21 @@ class _ProjectClient implements ProjectClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = IBaseResponseIProjectRead.fromJson(_result.data!);
+    final value = BaseResponse<IProjectRead>.fromJson(
+      _result.data!,
+      (json) => IProjectRead.fromJson(json as Map<String, dynamic>),
+    );
     return value;
   }
 
   @override
-  Future<IGetResponseBaseIProjectWithUsersTasks> getProjectProjectId(
-      {required projectId}) async {
+  Future<BaseResponse<IProjectWithUsersTasks>> getProjectProjectId({required projectId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IGetResponseBaseIProjectWithUsersTasks>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IProjectWithUsersTasks>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -123,13 +130,15 @@ class _ProjectClient implements ProjectClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value =
-        IGetResponseBaseIProjectWithUsersTasks.fromJson(_result.data!);
+    final value = BaseResponse<IProjectWithUsersTasks>.fromJson(
+      _result.data!,
+      (json) => IProjectWithUsersTasks.fromJson(json as Map<String, dynamic>),
+    );
     return value;
   }
 
   @override
-  Future<IBaseResponseIProjectRead> putProjectProjectId({
+  Future<BaseResponse<IProjectRead>> putProjectProjectId({
     required projectId,
     required body,
   }) async {
@@ -138,8 +147,8 @@ class _ProjectClient implements ProjectClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IBaseResponseIProjectRead>(Options(
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IProjectRead>>(Options(
       method: 'PUT',
       headers: _headers,
       extra: _extra,
@@ -151,19 +160,21 @@ class _ProjectClient implements ProjectClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = IBaseResponseIProjectRead.fromJson(_result.data!);
+    final value = BaseResponse<IProjectRead>.fromJson(
+      _result.data!,
+      (json) => IProjectRead.fromJson(json as Map<String, dynamic>),
+    );
     return value;
   }
 
   @override
-  Future<IBaseResponseIProjectRead> deleteProjectProjectId(
-      {required projectId}) async {
+  Future<BaseResponse<IProjectRead>> deleteProjectProjectId({required projectId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IBaseResponseIProjectRead>(Options(
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IProjectRead>>(Options(
       method: 'DELETE',
       headers: _headers,
       extra: _extra,
@@ -175,19 +186,21 @@ class _ProjectClient implements ProjectClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = IBaseResponseIProjectRead.fromJson(_result.data!);
+    final value = BaseResponse<IProjectRead>.fromJson(
+      _result.data!,
+      (json) => IProjectRead.fromJson(json as Map<String, dynamic>),
+    );
     return value;
   }
 
   @override
-  Future<IGetResponseBaseIProjectWithUsers> getProjectProjectIdJoin(
-      {required projectId}) async {
+  Future<BaseResponse<IProjectWithUsers>> getProjectProjectIdJoin({required projectId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IGetResponseBaseIProjectWithUsers>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IProjectWithUsers>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -199,19 +212,21 @@ class _ProjectClient implements ProjectClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = IGetResponseBaseIProjectWithUsers.fromJson(_result.data!);
+    final value = BaseResponse<IProjectWithUsers>.fromJson(
+      _result.data!,
+      (json) => IProjectWithUsers.fromJson(json as Map<String, dynamic>),
+    );
     return value;
   }
 
   @override
-  Future<IGetResponseBaseIProjectWithUsers> getProjectProjectIdLeave(
-      {required projectId}) async {
+  Future<BaseResponse<IProjectWithUsers>> getProjectProjectIdLeave({required projectId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IGetResponseBaseIProjectWithUsers>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IProjectWithUsers>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -223,12 +238,15 @@ class _ProjectClient implements ProjectClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = IGetResponseBaseIProjectWithUsers.fromJson(_result.data!);
+    final value = BaseResponse<IProjectWithUsers>.fromJson(
+      _result.data!,
+      (json) => IProjectWithUsers.fromJson(json as Map<String, dynamic>),
+    );
     return value;
   }
 
   @override
-  Future<IGetResponsePaginatedITaskRead> getProjectProjectIdTasks({
+  Future<BaseResponse<IProjectRead>> getProjectProjectIdTasks({
     required projectId,
     page = 1,
     size = 50,
@@ -242,7 +260,7 @@ class _ProjectClient implements ProjectClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<IGetResponsePaginatedITaskRead>(Options(
+        _setStreamType<BaseResponse<IProjectRead>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -254,7 +272,10 @@ class _ProjectClient implements ProjectClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = IGetResponsePaginatedITaskRead.fromJson(_result.data!);
+    final value = BaseResponse<IProjectRead>.fromJson(
+      _result.data!,
+      (json) => IProjectRead.fromJson(json as Map<String, dynamic>),
+    );
     return value;
   }
 

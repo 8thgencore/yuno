@@ -26,7 +26,6 @@ class ApiProjectRepository {
   Future<dynamic> getProjects({required int size}) async {
     try {
       final response = await projectClient.getProjectList(size: size);
-
       return response.data.items;
     } on DioError catch (e) {
       return dioErrorInterceptor(e);
@@ -93,7 +92,6 @@ class ApiProjectRepository {
   Future<dynamic> deleteById({required String id}) async {
     try {
       final response = await projectClient.deleteProjectProjectId(projectId: id);
-
       return response.data;
     } on DioError catch (e) {
       return dioErrorInterceptor(e);
