@@ -5,9 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
 
 part 'change_password_bloc.freezed.dart';
-
 part 'change_password_event.dart';
-
 part 'change_password_state.dart';
 
 class ChangePasswordBloc extends Bloc<ChangePasswordEvent, ChangePasswordState> {

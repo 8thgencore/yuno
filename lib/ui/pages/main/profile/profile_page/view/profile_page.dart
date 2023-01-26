@@ -7,7 +7,7 @@ import 'package:yuno/api/user/models/i_image_media_read.dart';
 import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/resources/resources.dart';
-import 'package:yuno/ui/pages/main/profile_pages/profile/bloc/profile_bloc.dart';
+import 'package:yuno/ui/pages/main/profile/profile_page/bloc/profile_bloc.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});

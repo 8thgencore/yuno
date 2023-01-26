@@ -1,30 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
 import 'package:yuno/resources/resources.dart';
-import 'package:yuno/ui/pages/main/profile_pages/change_password/bloc/change_password_bloc.dart';
+import 'package:yuno/ui/pages/main/profile/change_password/bloc/change_password_bloc.dart';
 import 'package:yuno/ui/widgets/custom_rounded_button.dart';
 import 'package:yuno/ui/widgets/custom_text_field.dart';
 import 'package:yuno/ui/widgets/toast_widget.dart';
+import 'package:yuno/utils/toast.dart';
 
-class ChangePasswordPage extends StatefulWidget {
+class ChangePasswordPage extends StatelessWidget {
   const ChangePasswordPage({super.key});
-
-  @override
-  State<ChangePasswordPage> createState() => _ChangePasswordPageState();
-}
-
-class _ChangePasswordPageState extends State<ChangePasswordPage> {
-  late FToast fToast;
-
-  @override
-  void initState() {
-    super.initState();
-    fToast = FToast();
-    fToast.init(context);
-  }
 
   Widget build(BuildContext context) {
     return BlocConsumer<ChangePasswordBloc, ChangePasswordState>(
@@ -40,22 +26,22 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             break;
           case ChangePasswordStatus.success:
             context.loaderOverlay.hide();
-            fToast.showToast(
+            showToast(
+              context,
               child: const ToastWidget(
                 text: 'Password has been successfully updated',
                 type: ToastType.success,
               ),
-              gravity: ToastGravity.TOP,
             );
             break;
           case ChangePasswordStatus.failure:
             context.loaderOverlay.hide();
-            fToast.showToast(
+            showToast(
+              context,
               child: ToastWidget(
                 text: state.serverError ?? 'Server Error',
                 type: ToastType.failure,
               ),
-              gravity: ToastGravity.TOP,
             );
             break;
         }

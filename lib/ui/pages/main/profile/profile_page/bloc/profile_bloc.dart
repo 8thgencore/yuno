@@ -12,9 +12,7 @@ import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/domain/repository/api_user_repository.dart';
 
 part 'profile_bloc.freezed.dart';
-
 part 'profile_event.dart';
-
 part 'profile_state.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {

@@ -1,31 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
 import 'package:yuno/resources/resources.dart';
-import 'package:yuno/ui/pages/main/profile_pages/edit_profile/bloc/profile_edit_bloc.dart';
+import 'package:yuno/ui/pages/main/profile/edit_profile/bloc/profile_edit_bloc.dart';
 import 'package:yuno/ui/widgets/custom_rounded_button.dart';
 import 'package:yuno/ui/widgets/custom_text_field.dart';
 import 'package:yuno/ui/widgets/toast_widget.dart';
+import 'package:yuno/utils/toast.dart';
 
-class ProfileEditPage extends StatefulWidget {
+class ProfileEditPage extends StatelessWidget {
   const ProfileEditPage({super.key});
-
-  @override
-  State<ProfileEditPage> createState() => _ProfileEditPageState();
-}
-
-class _ProfileEditPageState extends State<ProfileEditPage> {
-  late FToast fToast;
-
-  @override
-  void initState() {
-    super.initState();
-    fToast = FToast();
-    fToast.init(context);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,22 +28,22 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
             break;
           case ProfileEditStatus.success:
             context.loaderOverlay.hide();
-            fToast.showToast(
+            showToast(
+              context,
               child: const ToastWidget(
                 text: 'User information has been successfully updated',
                 type: ToastType.success,
               ),
-              gravity: ToastGravity.TOP,
             );
             break;
           case ProfileEditStatus.failure:
             context.loaderOverlay.hide();
-            fToast.showToast(
+            showToast(
+              context,
               child: ToastWidget(
                 text: state.serverError ?? 'Server Error',
                 type: ToastType.failure,
               ),
-              gravity: ToastGravity.TOP,
             );
             break;
         }

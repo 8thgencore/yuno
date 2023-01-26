@@ -7,12 +7,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:yuno/api/user/models/i_user_read.dart';
 import 'package:yuno/data/repository/user_repository.dart';
 import 'package:yuno/domain/repository/api_user_repository.dart';
-import 'package:yuno/ui/pages/main/profile_pages/edit_profile/models/errors.dart';
+import 'package:yuno/ui/pages/main/profile/edit_profile/models/errors.dart';
 
 part 'profile_edit_bloc.freezed.dart';
-
 part 'profile_edit_event.dart';
-
 part 'profile_edit_state.dart';
 
 class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
