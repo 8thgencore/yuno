@@ -20,7 +20,7 @@ import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/domain/repository/api_project_repository.dart';
 import 'package:yuno/domain/repository/api_task_repository.dart';
 import 'package:yuno/domain/repository/api_user_repository.dart';
-import 'package:yuno/ui/pages/main/profile_pages/profile/bloc/profile_bloc.dart';
+import 'package:yuno/ui/pages/main/profile/profile_page/bloc/profile_bloc.dart';
 
 final sl = GetIt.instance;
 
