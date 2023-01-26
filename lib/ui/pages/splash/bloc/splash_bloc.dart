@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yuno/api/task/models/i_task_read.dart';
-import 'package:yuno/data/repository/tasks_repository.dart';
 import 'package:yuno/data/repository/token_repository.dart';
 import 'package:yuno/domain/repository/api_task_repository.dart';
 import 'package:yuno/domain/repository/api_user_repository.dart';
@@ -14,7 +12,6 @@ part 'splash_state.dart';
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
   SplashBloc({
     required this.tokenRepository,
-    required this.localTasksRepository,
     required this.apiUserRepository,
     required this.apiTaskRepository,
   }) : super(SplashInitial()) {
@@ -22,7 +19,6 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   }
 
   final TokenRepository tokenRepository;
-  final LocalTasksRepository localTasksRepository;
   final ApiUserRepository apiUserRepository;
   final ApiTaskRepository apiTaskRepository;
 
@@ -39,12 +35,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
       emit(const SplashUnauthorized());
     } else {
       // Get tasks from server
-      final tasks = await apiTaskRepository.getTasks();
-      if (tasks is List<ITaskRead>) {
-        await localTasksRepository.setItem(tasks);
-      } else {
-        await localTasksRepository.setItem(null);
-      }
+      await apiTaskRepository.getNotDoneTasks();
       emit(const SplashAuthorized());
     }
   }

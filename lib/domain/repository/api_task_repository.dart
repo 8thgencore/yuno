@@ -17,18 +17,22 @@ class ApiTaskRepository {
 
   Future<dynamic> getTasks() async {
     try {
-      final localTasks = await localTasksRepository.getItem();
-      if (localTasks != null) {
-        return localTasks;
-      } else {
-        final response = await taskClient.getTaskList();
-        final data = response.data as Map<String, dynamic>;
-        final tasks = (data['items'] as List)
-            .map((p) => ITaskRead.fromJson(p as Map<String, dynamic>))
-            .toList();
+      final response = await taskClient.getTaskList();
+      return response.data.items;
+    } on DioError catch (e) {
+      return dioErrorInterceptor(e);
+    } on Object {
+      return 'Something error';
+    }
+  }
 
-        return tasks;
-      }
+  Future<dynamic> getNotDoneTasks() async {
+    try {
+      final response = await taskClient.getNotDoneTaskList();
+      final tasks = response.data.items;
+      await localTasksRepository.setItem(tasks);
+
+      return tasks;
     } on DioError catch (e) {
       return dioErrorInterceptor(e);
     } on Object {
@@ -92,7 +96,6 @@ class ApiTaskRepository {
           name: name,
           done: done,
           deadline: deadline,
-          projectId: projectId,
         ),
       );
 

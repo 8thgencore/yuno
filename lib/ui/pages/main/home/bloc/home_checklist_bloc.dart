@@ -30,11 +30,9 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
   ) async {
     emit(const HomeChecklistState.loading());
     try {
-      final tasks = await apiTaskRepository.getTasks();
+      final tasks = await apiTaskRepository.getNotDoneTasks();
       if (tasks is List<ITaskRead>) {
-        if (tasks.isNotEmpty) {
-          _tasks.addAll(tasks.where((task) => task.done == false));
-        }
+        _tasks.addAll(tasks);
         emit(HomeChecklistState.loaded(tasks: _tasks));
       } else {
         emit(const HomeChecklistState.failure('Wrong data from server'));

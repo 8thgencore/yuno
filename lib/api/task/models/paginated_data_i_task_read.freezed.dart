@@ -21,23 +21,16 @@ PaginatedDataITaskRead _$PaginatedDataITaskReadFromJson(Map<String, dynamic> jso
 /// @nodoc
 mixin _$PaginatedDataITaskRead {
   List<ITaskRead> get items => throw _privateConstructorUsedError;
-
   int get total => throw _privateConstructorUsedError;
-
   int get page => throw _privateConstructorUsedError;
-
   int get size => throw _privateConstructorUsedError;
-
   int get pages => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'next_page')
   int? get nextPage => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'previous_page')
   int? get previousPage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $PaginatedDataITaskReadCopyWith<PaginatedDataITaskRead> get copyWith =>
       throw _privateConstructorUsedError;
@@ -203,7 +196,6 @@ class _$_PaginatedDataITaskRead implements _PaginatedDataITaskRead {
       _$$_PaginatedDataITaskReadFromJson(json);
 
   final List<ITaskRead> _items;
-
   @override
   List<ITaskRead> get items {
     if (_items is EqualUnmodifiableListView) return _items;
@@ -279,27 +271,20 @@ abstract class _PaginatedDataITaskRead implements PaginatedDataITaskRead {
 
   @override
   List<ITaskRead> get items;
-
   @override
   int get total;
-
   @override
   int get page;
-
   @override
   int get size;
-
   @override
   int get pages;
-
   @override
   @JsonKey(name: 'next_page')
   int? get nextPage;
-
   @override
   @JsonKey(name: 'previous_page')
   int? get previousPage;
-
   @override
   @JsonKey(ignore: true)
   _$$_PaginatedDataITaskReadCopyWith<_$_PaginatedDataITaskRead> get copyWith =>

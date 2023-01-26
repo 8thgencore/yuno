@@ -23,8 +23,6 @@ mixin _$ITaskUpdate {
   String? get name => throw _privateConstructorUsedError;
   bool? get done => throw _privateConstructorUsedError;
   String? get deadline => throw _privateConstructorUsedError;
-  @JsonKey(name: 'project_id')
-  String? get projectId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,11 +36,7 @@ abstract class $ITaskUpdateCopyWith<$Res> {
           ITaskUpdate value, $Res Function(ITaskUpdate) then) =
       _$ITaskUpdateCopyWithImpl<$Res, ITaskUpdate>;
   @useResult
-  $Res call(
-      {String? name,
-      bool? done,
-      String? deadline,
-      @JsonKey(name: 'project_id') String? projectId});
+  $Res call({String? name, bool? done, String? deadline});
 }
 
 /// @nodoc
@@ -61,7 +55,6 @@ class _$ITaskUpdateCopyWithImpl<$Res, $Val extends ITaskUpdate>
     Object? name = freezed,
     Object? done = freezed,
     Object? deadline = freezed,
-    Object? projectId = freezed,
   }) {
     return _then(_value.copyWith(
       name: freezed == name
@@ -76,10 +69,6 @@ class _$ITaskUpdateCopyWithImpl<$Res, $Val extends ITaskUpdate>
           ? _value.deadline
           : deadline // ignore: cast_nullable_to_non_nullable
               as String?,
-      projectId: freezed == projectId
-          ? _value.projectId
-          : projectId // ignore: cast_nullable_to_non_nullable
-              as String?,
     ) as $Val);
   }
 }
@@ -90,13 +79,10 @@ abstract class _$$_ITaskUpdateCopyWith<$Res>
   factory _$$_ITaskUpdateCopyWith(
           _$_ITaskUpdate value, $Res Function(_$_ITaskUpdate) then) =
       __$$_ITaskUpdateCopyWithImpl<$Res>;
+
   @override
   @useResult
-  $Res call(
-      {String? name,
-      bool? done,
-      String? deadline,
-      @JsonKey(name: 'project_id') String? projectId});
+  $Res call({String? name, bool? done, String? deadline});
 }
 
 /// @nodoc
@@ -113,7 +99,6 @@ class __$$_ITaskUpdateCopyWithImpl<$Res>
     Object? name = freezed,
     Object? done = freezed,
     Object? deadline = freezed,
-    Object? projectId = freezed,
   }) {
     return _then(_$_ITaskUpdate(
       name: freezed == name
@@ -128,10 +113,6 @@ class __$$_ITaskUpdateCopyWithImpl<$Res>
           ? _value.deadline
           : deadline // ignore: cast_nullable_to_non_nullable
               as String?,
-      projectId: freezed == projectId
-          ? _value.projectId
-          : projectId // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -139,11 +120,7 @@ class __$$_ITaskUpdateCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_ITaskUpdate implements _ITaskUpdate {
-  const _$_ITaskUpdate(
-      {this.name,
-      this.done = false,
-      this.deadline,
-      @JsonKey(name: 'project_id') this.projectId});
+  const _$_ITaskUpdate({this.name, this.done = false, this.deadline});
 
   factory _$_ITaskUpdate.fromJson(Map<String, dynamic> json) =>
       _$$_ITaskUpdateFromJson(json);
@@ -155,13 +132,10 @@ class _$_ITaskUpdate implements _ITaskUpdate {
   final bool? done;
   @override
   final String? deadline;
-  @override
-  @JsonKey(name: 'project_id')
-  final String? projectId;
 
   @override
   String toString() {
-    return 'ITaskUpdate(name: $name, done: $done, deadline: $deadline, projectId: $projectId)';
+    return 'ITaskUpdate(name: $name, done: $done, deadline: $deadline)';
   }
 
   @override
@@ -171,15 +145,12 @@ class _$_ITaskUpdate implements _ITaskUpdate {
             other is _$_ITaskUpdate &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.done, done) || other.done == done) &&
-            (identical(other.deadline, deadline) ||
-                other.deadline == deadline) &&
-            (identical(other.projectId, projectId) ||
-                other.projectId == projectId));
+            (identical(other.deadline, deadline) || other.deadline == deadline));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, done, deadline, projectId);
+  int get hashCode => Object.hash(runtimeType, name, done, deadline);
 
   @JsonKey(ignore: true)
   @override
@@ -196,11 +167,8 @@ class _$_ITaskUpdate implements _ITaskUpdate {
 }
 
 abstract class _ITaskUpdate implements ITaskUpdate {
-  const factory _ITaskUpdate(
-      {final String? name,
-      final bool? done,
-      final String? deadline,
-      @JsonKey(name: 'project_id') final String? projectId}) = _$_ITaskUpdate;
+  const factory _ITaskUpdate({final String? name, final bool? done, final String? deadline}) =
+      _$_ITaskUpdate;
 
   factory _ITaskUpdate.fromJson(Map<String, dynamic> json) =
       _$_ITaskUpdate.fromJson;
@@ -211,9 +179,6 @@ abstract class _ITaskUpdate implements ITaskUpdate {
   bool? get done;
   @override
   String? get deadline;
-  @override
-  @JsonKey(name: 'project_id')
-  String? get projectId;
   @override
   @JsonKey(ignore: true)
   _$$_ITaskUpdateCopyWith<_$_ITaskUpdate> get copyWith =>

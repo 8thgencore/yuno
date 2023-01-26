@@ -26,6 +26,8 @@ class AppTheme {
         },
       ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+      fillColor: MaterialStateProperty.all(AppColors.primary100),
+      checkColor: MaterialStateProperty.all(AppColors.white100),
     ),
     progressIndicatorTheme: const ProgressIndicatorThemeData(
       color: AppColors.primary100,

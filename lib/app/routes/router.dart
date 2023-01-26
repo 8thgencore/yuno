@@ -139,6 +139,17 @@ mixin RouterMixin on State<App> {
           ),
           routes: [
             GoRoute(
+              name: RouteName.projectCreate,
+              path: RoutePath.projectCreate,
+              parentNavigatorKey: rootNavigatorKey,
+              builder: (context, state) => BlocProvider(
+                create: (context) => ProjectEditBloc(
+                  apiProjectRepository: sl.get<ApiProjectRepository>(),
+                )..add(const ProjectEditEvent.started('')),
+                child: const ProjectEditPage(),
+              ),
+            ),
+            GoRoute(
               name: RouteName.project,
               path: RoutePath.project,
               parentNavigatorKey: rootNavigatorKey,
@@ -164,17 +175,6 @@ mixin RouterMixin on State<App> {
                 ),
               ],
             ),
-            GoRoute(
-              name: RouteName.projectCreate,
-              path: RoutePath.projectCreate,
-              parentNavigatorKey: rootNavigatorKey,
-              builder: (context, state) => BlocProvider(
-                create: (context) => ProjectEditBloc(
-                  apiProjectRepository: sl.get<ApiProjectRepository>(),
-                )..add(const ProjectEditEvent.started('')),
-                child: const ProjectEditPage(),
-              ),
-            )
           ],
         ),
         ////////////////////

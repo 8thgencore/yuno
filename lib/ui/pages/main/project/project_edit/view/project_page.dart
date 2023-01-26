@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router_flow/go_router_flow.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/project/project_edit/bloc/project_edit_bloc.dart';
 import 'package:yuno/ui/widgets/custom_rounded_button.dart';
 import 'package:yuno/ui/widgets/custom_text_field.dart';
+import 'package:yuno/ui/widgets/toast_widget.dart';
+import 'package:yuno/utils/toast.dart';
 
 class ProjectEditPage extends StatelessWidget {
   const ProjectEditPage({
@@ -17,25 +20,71 @@ class ProjectEditPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.screen100,
-      body: SafeArea(child: _CreateProjectContentWidget(isUpdate: isUpdate)),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(left: 15, right: 15),
-        child: CustomRoundedButton(
-          textButton: isUpdate ? 'Update' : 'Create project',
-          onPressed: () {
-            final currentNode = FocusScope.of(context);
-            if (currentNode.focusedChild != null && !currentNode.hasPrimaryFocus) {
-              FocusManager.instance.primaryFocus?.unfocus();
-            }
-            isUpdate
-                ? context.read<ProjectEditBloc>().add(const ProjectEditEvent.updated())
-                : context.read<ProjectEditBloc>().add(const ProjectEditEvent.saved());
-          },
-          textColor: AppColors.white100,
-          buttonColor: AppColors.primary100,
+    return BlocListener<ProjectEditBloc, ProjectEditState>(
+      listener: (context, state) {
+        switch (state.status) {
+          case ProjectEditStatus.initial:
+            break;
+          case ProjectEditStatus.loading:
+            context.loaderOverlay.show();
+            break;
+          case ProjectEditStatus.loaded:
+            context.loaderOverlay.hide();
+            break;
+          case ProjectEditStatus.failure:
+            context.loaderOverlay.hide();
+            showToast(
+              context,
+              child: ToastWidget(
+                text: state.serverError ?? 'Server Error',
+                type: ToastType.failure,
+              ),
+            );
+            break;
+          case ProjectEditStatus.successUpdated:
+            context.loaderOverlay.hide();
+            showToast(
+              context,
+              child: const ToastWidget(
+                text: 'Project information has been successfully updated',
+                type: ToastType.success,
+              ),
+            );
+            break;
+          case ProjectEditStatus.successCreated:
+            context.loaderOverlay.hide();
+            showToast(
+              context,
+              child: const ToastWidget(
+                text: 'The project was successfully created',
+                type: ToastType.success,
+              ),
+            );
+            break;
+        }
+      },
+      child: LoaderOverlay(
+        child: Scaffold(
+          backgroundColor: AppColors.screen100,
+          body: SafeArea(child: _CreateProjectContentWidget(isUpdate: isUpdate)),
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+          floatingActionButton: Padding(
+            padding: const EdgeInsets.only(left: 15, right: 15),
+            child: CustomRoundedButton(
+              textButton: isUpdate ? 'Update' : 'Create project',
+              onPressed: () {
+                final currentNode = FocusScope.of(context);
+                if (currentNode.focusedChild != null && !currentNode.hasPrimaryFocus) {
+                  FocusManager.instance.primaryFocus?.unfocus();
+                }
+                isUpdate
+                    ? context.read<ProjectEditBloc>().add(const ProjectEditEvent.updated())
+                    : context.read<ProjectEditBloc>().add(const ProjectEditEvent.saved());
+              },
+              textColor: AppColors.white100,
+              buttonColor: AppColors.primary100,
+            ),
+          ),
         ),
       ),
     );

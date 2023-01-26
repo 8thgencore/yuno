@@ -33,7 +33,7 @@ class _MainScaffoldState extends State<MainScaffold> with TickerProviderStateMix
         _currentIndex = index;
         context.goNamed(RouteName.calendar);
       } else if (index == 2) {
-        context.pushNamed(RouteName.projects);
+        context.pushNamed(RouteName.projectCreate);
       } else if (index == 3) {
         _currentIndex = index;
         context.goNamed(RouteName.statistics);

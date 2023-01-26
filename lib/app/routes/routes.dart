@@ -29,7 +29,7 @@ abstract class RoutePath {
   static const profileEdit = 'edit';
   static const profileChangePassword = 'change-password';
   static const projects = '/projects';
-  static const project = ':id';
+  static const project = ':id([0-9a-z-]{36})';
   static const projectEdit = 'edit';
   static const projectCreate = 'create';
 }

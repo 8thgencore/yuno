@@ -55,6 +55,7 @@ class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
           emit(state.copyWith(status: ProjectEditStatus.failure));
         }
       }
+      emit(state.copyWith(status: ProjectEditStatus.changeFields));
     } on Exception catch (_) {
       emit(state.copyWith(
         status: ProjectEditStatus.failure,
@@ -67,10 +68,6 @@ class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
     _NameChangedEvent event,
     Emitter<ProjectEditState> emit,
   ) async {
-    emit(state.copyWith(
-      status: ProjectEditStatus.failure,
-      name: event.text,
-    ));
     emit(state.copyWith(name: event.text));
   }
 

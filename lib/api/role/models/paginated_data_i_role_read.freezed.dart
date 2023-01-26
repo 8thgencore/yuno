@@ -21,23 +21,16 @@ PaginatedDataIRoleRead _$PaginatedDataIRoleReadFromJson(Map<String, dynamic> jso
 /// @nodoc
 mixin _$PaginatedDataIRoleRead {
   List<IRoleRead> get items => throw _privateConstructorUsedError;
-
   int get total => throw _privateConstructorUsedError;
-
   int get page => throw _privateConstructorUsedError;
-
   int get size => throw _privateConstructorUsedError;
-
   int get pages => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'next_page')
   int? get nextPage => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'previous_page')
   int? get previousPage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $PaginatedDataIRoleReadCopyWith<PaginatedDataIRoleRead> get copyWith =>
       throw _privateConstructorUsedError;
@@ -203,7 +196,6 @@ class _$_PaginatedDataIRoleRead implements _PaginatedDataIRoleRead {
       _$$_PaginatedDataIRoleReadFromJson(json);
 
   final List<IRoleRead> _items;
-
   @override
   List<IRoleRead> get items {
     if (_items is EqualUnmodifiableListView) return _items;
@@ -249,9 +241,7 @@ class _$_PaginatedDataIRoleRead implements _PaginatedDataIRoleRead {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_items), total,
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_items), total,
       page, size, pages, nextPage, previousPage);
 
   @JsonKey(ignore: true)
@@ -283,26 +273,20 @@ abstract class _PaginatedDataIRoleRead implements PaginatedDataIRoleRead {
 
   @override
   List<IRoleRead> get items;
-
   @override
   int get total;
-
   @override
   int get page;
-
   @override
   int get size;
-
   @override
   int get pages;
   @override
   @JsonKey(name: 'next_page')
   int? get nextPage;
-
   @override
   @JsonKey(name: 'previous_page')
   int? get previousPage;
-
   @override
   @JsonKey(ignore: true)
   _$$_PaginatedDataIRoleReadCopyWith<_$_PaginatedDataIRoleRead> get copyWith =>

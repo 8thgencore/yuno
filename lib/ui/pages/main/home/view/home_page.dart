@@ -9,6 +9,7 @@ import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/home/bloc/home_checklist_bloc.dart';
 import 'package:yuno/ui/pages/main/home/bloc/home_header_bloc.dart';
 import 'package:yuno/ui/pages/main/home/bloc/home_projects_bloc.dart';
+import 'package:yuno/ui/widgets/error_container.dart';
 import 'package:yuno/ui/widgets/project_card_small_widget.dart';
 import 'package:yuno/utils/extensions/datetime.dart';
 
@@ -119,7 +120,7 @@ class _LastTaskWidget extends StatelessWidget {
         final DateFormat inputFormat = DateFormat('yyyy-MM-ddTHH:mm:ss');
         final DateTime? dateTime = inputFormat.tryParse(task!.deadline!);
         if (dateTime != null) {
-          final outputFormat = DateFormat('dd MMMM yyyy   HH:mm');
+          final outputFormat = DateFormat('dd MMMM yyyy, HH:mm');
           deadline = outputFormat.format(dateTime);
         }
       }
@@ -225,7 +226,7 @@ class _ProjectsListWidget extends StatelessWidget {
                         );
                       },
                     )
-                  : Text('Projects list is empty', style: AppTypography.l14g),
+                  : const ErrorContainer(text: 'Projects list is empty'),
               failure: (error) => Text(error.toString(), style: AppTypography.l14g),
               orElse: () => Text('Error', style: AppTypography.l14g),
             ),
@@ -263,30 +264,9 @@ class _CheckListWidget extends StatelessWidget {
                       return _TaskCardWidget(task: tasks[index]);
                     },
                   )
-                : Container(
-                    alignment: Alignment.center,
-                    width: double.infinity,
-                    child: Text(
-                      'Checklist is empty',
-                      style: AppTypography.l14g,
-                    ),
-                  ),
-            failure: (error) => Container(
-              alignment: Alignment.center,
-              width: double.infinity,
-              child: Text(
-                error.toString(),
-                style: AppTypography.r14d,
-              ),
-            ),
-            orElse: () => Container(
-              alignment: Alignment.center,
-              width: double.infinity,
-              child: Text(
-                'No upcoming task',
-                style: AppTypography.r14d,
-              ),
-            ),
+                : const ErrorContainer(text: 'Checklist is empty'),
+            failure: (error) => ErrorContainer(text: 'Projects list is empty\n$error'),
+            orElse: () => const ErrorContainer(text: 'No upcoming task'),
           ),
         ),
       ],

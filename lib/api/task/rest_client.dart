@@ -18,6 +18,12 @@ abstract class TaskClient {
     @Query('size') int? size = 50,
   });
 
+  @GET('/task/not_done')
+  Future<BaseResponse<PaginatedDataITaskRead>> getNotDoneTaskList({
+    @Query('page') int? page = 1,
+    @Query('size') int? size = 50,
+  });
+
   @POST('/task')
   Future<BaseResponse<ITaskRead>> postTask({
     @Body() required ITaskCreate body,

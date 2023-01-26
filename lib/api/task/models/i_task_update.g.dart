@@ -11,7 +11,6 @@ _$_ITaskUpdate _$$_ITaskUpdateFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String?,
       done: json['done'] as bool? ?? false,
       deadline: json['deadline'] as String?,
-      projectId: json['project_id'] as String?,
     );
 
 Map<String, dynamic> _$$_ITaskUpdateToJson(_$_ITaskUpdate instance) =>
@@ -19,5 +18,4 @@ Map<String, dynamic> _$$_ITaskUpdateToJson(_$_ITaskUpdate instance) =>
       'name': instance.name,
       'done': instance.done,
       'deadline': instance.deadline,
-      'project_id': instance.projectId,
     };
