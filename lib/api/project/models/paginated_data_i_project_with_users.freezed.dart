@@ -21,18 +21,12 @@ PaginatedDataIProjectWithUsers _$PaginatedDataIProjectWithUsersFromJson(Map<Stri
 /// @nodoc
 mixin _$PaginatedDataIProjectWithUsers {
   List<IProjectWithUsers> get items => throw _privateConstructorUsedError;
-
   int get total => throw _privateConstructorUsedError;
-
   int get page => throw _privateConstructorUsedError;
-
   int get size => throw _privateConstructorUsedError;
-
   int get pages => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'next_page')
   int? get nextPage => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'previous_page')
   int? get previousPage => throw _privateConstructorUsedError;
 
@@ -68,7 +62,6 @@ class _$PaginatedDataIProjectWithUsersCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -281,19 +274,14 @@ abstract class _PaginatedDataIProjectWithUsers implements PaginatedDataIProjectW
 
   @override
   List<IProjectWithUsers> get items;
-
   @override
   int get total;
-
   @override
   int get page;
-
   @override
   int get size;
-
   @override
   int get pages;
-
   @override
   @JsonKey(name: 'next_page')
   int? get nextPage;

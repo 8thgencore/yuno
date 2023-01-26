@@ -7,6 +7,7 @@ import 'package:yuno/api/project/models/i_project_with_users.dart';
 import 'package:yuno/api/project/models/i_project_with_users_tasks.dart';
 import 'package:yuno/api/project/models/paginated_data_i_project_with_users.dart';
 import 'package:yuno/api/shared_models/base_response.dart';
+import 'package:yuno/api/task/models/paginated_data_i_task_read.dart';
 
 part 'rest_client.g.dart';
 
@@ -58,7 +59,7 @@ abstract class ProjectClient {
   });
 
   @GET('/project/{project_id}/tasks')
-  Future<BaseResponse<IProjectRead>> getProjectProjectIdTasks({
+  Future<BaseResponse<PaginatedDataITaskRead>> getProjectProjectIdTasks({
     @Path('project_id') required String projectId,
     @Query('page') int? page = 1,
     @Query('size') int? size = 50,

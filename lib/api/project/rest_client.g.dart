@@ -246,7 +246,7 @@ class _ProjectClient implements ProjectClient {
   }
 
   @override
-  Future<BaseResponse<IProjectRead>> getProjectProjectIdTasks({
+  Future<BaseResponse<PaginatedDataITaskRead>> getProjectProjectIdTasks({
     required projectId,
     page = 1,
     size = 50,
@@ -260,7 +260,7 @@ class _ProjectClient implements ProjectClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<BaseResponse<IProjectRead>>(Options(
+        _setStreamType<BaseResponse<PaginatedDataITaskRead>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -272,9 +272,9 @@ class _ProjectClient implements ProjectClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = BaseResponse<IProjectRead>.fromJson(
+    final value = BaseResponse<PaginatedDataITaskRead>.fromJson(
       _result.data!,
-      (json) => IProjectRead.fromJson(json as Map<String, dynamic>),
+      (json) => PaginatedDataITaskRead.fromJson(json as Map<String, dynamic>),
     );
     return value;
   }
