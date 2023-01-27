@@ -94,7 +94,15 @@ class _TopCardWidget extends StatelessWidget {
                       style: AppTypography.l18l,
                     ),
                   ),
-                  _LastTaskWidget(task: lastTask),
+                  GestureDetector(
+                    onTap: lastTask != null
+                        ? () => context.pushNamed(
+                              RouteName.taskEdit,
+                              params: {'id': lastTask.id},
+                            )
+                        : null,
+                    child: _LastTaskWidget(task: lastTask),
+                  ),
                 ],
               ),
               failure: (text) => Center(child: Text(text.toString(), style: AppTypography.b16l)),
@@ -261,7 +269,15 @@ class _CheckListWidget extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     itemCount: tasks.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return _TaskCardWidget(task: tasks[index]);
+                      return GestureDetector(
+                        onTap: () {
+                          context.pushNamed(
+                            RouteName.taskEdit,
+                            params: {'id': tasks[index].id},
+                          );
+                        },
+                        child: _TaskCardWidget(task: tasks[index]),
+                      );
                     },
                   )
                 : const ErrorContainer(text: 'Checklist is empty'),

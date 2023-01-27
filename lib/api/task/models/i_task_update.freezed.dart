@@ -79,7 +79,6 @@ abstract class _$$_ITaskUpdateCopyWith<$Res>
   factory _$$_ITaskUpdateCopyWith(
           _$_ITaskUpdate value, $Res Function(_$_ITaskUpdate) then) =
       __$$_ITaskUpdateCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({String? name, bool? done, String? deadline});
@@ -170,13 +169,14 @@ abstract class _ITaskUpdate implements ITaskUpdate {
   const factory _ITaskUpdate({final String? name, final bool? done, final String? deadline}) =
       _$_ITaskUpdate;
 
-  factory _ITaskUpdate.fromJson(Map<String, dynamic> json) =
-      _$_ITaskUpdate.fromJson;
+  factory _ITaskUpdate.fromJson(Map<String, dynamic> json) = _$_ITaskUpdate.fromJson;
 
   @override
   String? get name;
+
   @override
   bool? get done;
+
   @override
   String? get deadline;
   @override

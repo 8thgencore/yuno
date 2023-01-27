@@ -13,14 +13,12 @@ part 'project_edit_state.dart';
 class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
   ProjectEditBloc({
     required this.apiProjectRepository,
-  }) : super(
-          const ProjectEditState(
-            status: ProjectEditStatus.initial,
-            id: '',
-            name: '',
-            description: '',
-          ),
-        ) {
+  }) : super(const ProjectEditState(
+          status: ProjectEditStatus.initial,
+          id: '',
+          name: '',
+          description: '',
+        )) {
     on<ProjectEditEvent>(
       (event, emit) => event.map(
         started: (event) => _onProjectLoaded(event, emit),
@@ -55,7 +53,7 @@ class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
           emit(state.copyWith(status: ProjectEditStatus.failure));
         }
       }
-      emit(state.copyWith(status: ProjectEditStatus.changeFields));
+      emit(state.copyWith(status: ProjectEditStatus.fillingFields));
     } on Exception catch (_) {
       emit(state.copyWith(
         status: ProjectEditStatus.failure,

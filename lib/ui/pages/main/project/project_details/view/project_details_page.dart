@@ -24,9 +24,12 @@ class ProjectDetailsPage extends StatelessWidget {
       ),
       floatingActionButton: BlocBuilder<ProjectDetailsBloc, ProjectDetailsState>(
         builder: (context, state) => state.maybeWhen(
-          loaded: (_, __, isMember) => isMember
+          loaded: (project, _, isMember) => isMember
               ? FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () => context.pushNamed(
+                    RouteName.taskCreate,
+                    queryParams: {'project_id': project.id},
+                  ),
                   child: const Icon(Icons.add, size: 32),
                 )
               : const SizedBox(),
@@ -164,7 +167,15 @@ class _CheckListWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 24),
             itemCount: tasks.length,
             itemBuilder: (BuildContext context, int index) {
-              return _TaskCardWidget(task: tasks[index], isMember: isMember);
+              return GestureDetector(
+                onTap: () {
+                  context.pushNamed(
+                    RouteName.taskEdit,
+                    params: {'id': tasks[index].id},
+                  );
+                },
+                child: _TaskCardWidget(task: tasks[index], isMember: isMember),
+              );
             },
           )
         else

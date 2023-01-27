@@ -30,6 +30,8 @@ import 'package:yuno/ui/pages/main/project/project_edit/view/project_page.dart';
 import 'package:yuno/ui/pages/main/project/projects_list/bloc/projects_list_bloc.dart';
 import 'package:yuno/ui/pages/main/project/projects_list/view/projects_list.dart';
 import 'package:yuno/ui/pages/main/statistics/view/statistics_page.dart';
+import 'package:yuno/ui/pages/main/task/task_edit/bloc/task_edit_bloc.dart';
+import 'package:yuno/ui/pages/main/task/task_edit/view/task_page.dart';
 import 'package:yuno/ui/pages/splash/view/splash_page.dart';
 
 mixin RouterMixin on State<App> {
@@ -176,6 +178,41 @@ mixin RouterMixin on State<App> {
               ],
             ),
           ],
+        ),
+        ////////////////////
+        // Tasks
+        ////////////////////
+        GoRoute(
+          name: RouteName.taskEdit,
+          path: RoutePath.taskEdit,
+          parentNavigatorKey: rootNavigatorKey,
+          builder: (context, state) => BlocProvider(
+            create: (context) => TaskEditBloc(
+              apiTaskRepository: sl.get<ApiTaskRepository>(),
+            )..add(
+                TaskEditEvent.started(
+                  id: state.params['id'] ?? '',
+                  projectId: '',
+                ),
+              ),
+            child: const TaskEditPage(isUpdate: true),
+          ),
+        ),
+        GoRoute(
+          name: RouteName.taskCreate,
+          path: RoutePath.taskCreate,
+          parentNavigatorKey: rootNavigatorKey,
+          builder: (context, state) => BlocProvider(
+            create: (context) => TaskEditBloc(
+              apiTaskRepository: sl.get<ApiTaskRepository>(),
+            )..add(
+                TaskEditEvent.started(
+                  id: '',
+                  projectId: state.queryParams['project_id'] ?? '',
+                ),
+              ),
+            child: const TaskEditPage(),
+          ),
         ),
         ////////////////////
         // Authentication

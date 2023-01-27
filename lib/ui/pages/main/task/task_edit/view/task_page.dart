@@ -1,17 +1,19 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
 import 'package:yuno/resources/resources.dart';
-import 'package:yuno/ui/pages/main/project/project_edit/bloc/project_edit_bloc.dart';
+import 'package:yuno/ui/pages/main/task/task_edit/bloc/task_edit_bloc.dart';
 import 'package:yuno/ui/widgets/custom_rounded_button.dart';
 import 'package:yuno/ui/widgets/custom_text_field.dart';
 import 'package:yuno/ui/widgets/toast_widget.dart';
 import 'package:yuno/utils/toast.dart';
 
-class ProjectEditPage extends StatelessWidget {
-  const ProjectEditPage({
+class TaskEditPage extends StatelessWidget {
+  const TaskEditPage({
     this.isUpdate = false,
     super.key,
   });
@@ -20,18 +22,18 @@ class ProjectEditPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<ProjectEditBloc, ProjectEditState>(
+    return BlocListener<TaskEditBloc, TaskEditState>(
       listener: (context, state) {
         switch (state.status) {
-          case ProjectEditStatus.initial:
+          case TaskEditStatus.initial:
             break;
-          case ProjectEditStatus.loading:
+          case TaskEditStatus.loading:
             context.loaderOverlay.show();
             break;
-          case ProjectEditStatus.loaded:
+          case TaskEditStatus.loaded:
             context.loaderOverlay.hide();
             break;
-          case ProjectEditStatus.failure:
+          case TaskEditStatus.failure:
             context.loaderOverlay.hide();
             showToast(
               context,
@@ -41,9 +43,9 @@ class ProjectEditPage extends StatelessWidget {
               ),
             );
             break;
-          case ProjectEditStatus.fillingFields:
+          case TaskEditStatus.fillingFields:
             break;
-          case ProjectEditStatus.successUpdated:
+          case TaskEditStatus.successUpdated:
             context.loaderOverlay.hide();
             showToast(
               context,
@@ -53,7 +55,7 @@ class ProjectEditPage extends StatelessWidget {
               ),
             );
             break;
-          case ProjectEditStatus.successCreated:
+          case TaskEditStatus.successCreated:
             context.loaderOverlay.hide();
             showToast(
               context,
@@ -68,20 +70,20 @@ class ProjectEditPage extends StatelessWidget {
       child: LoaderOverlay(
         child: Scaffold(
           backgroundColor: AppColors.screen100,
-          body: SafeArea(child: _CreateProjectContentWidget(isUpdate: isUpdate)),
+          body: SafeArea(child: _CreateTaskContentWidget(isUpdate: isUpdate)),
           floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
           floatingActionButton: Padding(
             padding: const EdgeInsets.only(left: 15, right: 15),
             child: CustomRoundedButton(
-              textButton: isUpdate ? 'Update' : 'Create project',
+              textButton: isUpdate ? 'Update' : 'Create task',
               onPressed: () {
                 final currentNode = FocusScope.of(context);
                 if (currentNode.focusedChild != null && !currentNode.hasPrimaryFocus) {
                   FocusManager.instance.primaryFocus?.unfocus();
                 }
                 isUpdate
-                    ? context.read<ProjectEditBloc>().add(const ProjectEditEvent.updated())
-                    : context.read<ProjectEditBloc>().add(const ProjectEditEvent.saved());
+                    ? context.read<TaskEditBloc>().add(const TaskEditEvent.updated())
+                    : context.read<TaskEditBloc>().add(const TaskEditEvent.saved());
               },
               textColor: AppColors.white100,
               buttonColor: AppColors.primary100,
@@ -93,8 +95,8 @@ class ProjectEditPage extends StatelessWidget {
   }
 }
 
-class _CreateProjectContentWidget extends StatelessWidget {
-  const _CreateProjectContentWidget({required this.isUpdate});
+class _CreateTaskContentWidget extends StatelessWidget {
+  const _CreateTaskContentWidget({required this.isUpdate});
 
   final bool isUpdate;
 
@@ -114,7 +116,7 @@ class _CreateProjectContentWidget extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Text(
-                isUpdate ? 'Update project' : 'Create new project',
+                isUpdate ? 'Update task' : 'Create new task',
                 style: AppTypography.b18d,
               ),
             ],
@@ -150,11 +152,15 @@ class _ListTextFieldWidget extends StatelessWidget {
         SizedBox(height: 14),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 14),
-          child: _ProjectNameTextField(),
+          child: _TaskNameTextField(),
         ),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 14),
-          child: _ProjectDescriptionTextField(),
+          child: _TaskDeadlineTextField(),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 14, horizontal: 12),
+          child: _TaskDoneSwitch(),
         ),
         SizedBox(height: 90),
       ],
@@ -162,21 +168,21 @@ class _ListTextFieldWidget extends StatelessWidget {
   }
 }
 
-class _ProjectNameTextField extends StatelessWidget {
-  const _ProjectNameTextField();
+class _TaskNameTextField extends StatelessWidget {
+  const _TaskNameTextField();
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProjectEditBloc, ProjectEditState>(
-      buildWhen: (_, current) => current.status == ProjectEditStatus.loaded,
+    return BlocBuilder<TaskEditBloc, TaskEditState>(
+      buildWhen: (_, current) => current.status == TaskEditStatus.loaded,
       builder: (context, state) {
         return CustomTextField(
           controller: TextEditingController(text: state.name),
-          labelText: 'Project Name',
+          labelText: 'Task Name',
           keyboardType: TextInputType.text,
           textColor: AppColors.dark100,
-          onChanged: (text) => context.read<ProjectEditBloc>().add(
-                ProjectEditEvent.nameChanged(text),
+          onChanged: (text) => context.read<TaskEditBloc>().add(
+                TaskEditEvent.nameChanged(text),
               ),
         );
       },
@@ -184,24 +190,93 @@ class _ProjectNameTextField extends StatelessWidget {
   }
 }
 
-class _ProjectDescriptionTextField extends StatelessWidget {
-  const _ProjectDescriptionTextField();
+class _TaskDeadlineTextField extends StatefulWidget {
+  const _TaskDeadlineTextField();
+
+  @override
+  State<_TaskDeadlineTextField> createState() => _TaskDeadlineTextFieldState();
+}
+
+class _TaskDeadlineTextFieldState extends State<_TaskDeadlineTextField> {
+  late final TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProjectEditBloc, ProjectEditState>(
-      buildWhen: (_, current) => current.status == ProjectEditStatus.loaded,
+    return BlocBuilder<TaskEditBloc, TaskEditState>(
+      buildWhen: (_, current) => current.status == TaskEditStatus.loaded,
       builder: (context, state) {
+        if (_controller.text == '') {
+          final text = state.deadline ?? '';
+          _controller.text = text.replaceAll('T', ' ');
+        }
         return CustomTextField(
-          controller: TextEditingController(text: state.description),
-          labelText: 'Project Description',
-          keyboardType: TextInputType.text,
+          controller: _controller,
+          readOnly: true,
+          labelText: 'Deadline',
           textColor: AppColors.dark100,
-          onChanged: (text) => context.read<ProjectEditBloc>().add(
-                ProjectEditEvent.descriptionChanged(text),
+          onPressedFunction: () => _selectDate(context),
+          onChanged: (text) => context.read<TaskEditBloc>().add(
+                TaskEditEvent.deadlineChanged(text),
               ),
         );
       },
+    );
+  }
+
+  // Function to show the date picker and return the selected date
+  Future<void> _selectDate(BuildContext context) async {
+    final datePicked = await DatePicker.showDateTimePicker(
+      context,
+      currentTime: DateTime.now(),
+      onConfirm: (date) {
+        context.read<TaskEditBloc>().add(TaskEditEvent.deadlineChanged('$date'));
+      },
+    );
+    if (datePicked != null) {
+      setState(() {
+        _controller.text = datePicked.toString().replaceAll('T', ' ').split('.').first;
+      });
+    }
+  }
+}
+
+class _TaskDoneSwitch extends StatefulWidget {
+  const _TaskDoneSwitch();
+
+  @override
+  State<_TaskDoneSwitch> createState() => _TaskDoneSwitchState();
+}
+
+class _TaskDoneSwitchState extends State<_TaskDoneSwitch> {
+  bool? _isDone;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text('Completed', style: AppTypography.r14d),
+        BlocBuilder<TaskEditBloc, TaskEditState>(
+          buildWhen: (_, current) => current.status == TaskEditStatus.loaded,
+          builder: (context, state) {
+            _isDone ??= state.done;
+            return CupertinoSwitch(
+              value: _isDone ?? false,
+              activeColor: AppColors.primary100,
+              onChanged: (value) {
+                context.read<TaskEditBloc>().add(TaskEditEvent.clickSwitch(value));
+                setState(() => _isDone = value);
+              },
+            );
+          },
+        ),
+      ],
     );
   }
 }

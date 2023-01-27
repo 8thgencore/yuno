@@ -14,10 +14,19 @@ _$_ITaskCreate _$$_ITaskCreateFromJson(Map<String, dynamic> json) =>
       projectId: json['project_id'] as String?,
     );
 
-Map<String, dynamic> _$$_ITaskCreateToJson(_$_ITaskCreate instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'done': instance.done,
-      'deadline': instance.deadline,
-      'project_id': instance.projectId,
-    };
+Map<String, dynamic> _$$_ITaskCreateToJson(_$_ITaskCreate instance) {
+  final val = <String, dynamic>{
+    'name': instance.name,
+    'done': instance.done,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('deadline', instance.deadline);
+  writeNotNull('project_id', instance.projectId);
+  return val;
+}

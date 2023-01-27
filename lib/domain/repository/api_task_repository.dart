@@ -55,18 +55,17 @@ class ApiTaskRepository {
   Future<dynamic> create({
     required String name,
     required bool done,
-    required String deadline,
-    required String projectId,
+    String? deadline,
+    String? projectId,
   }) async {
     try {
-      final response = await taskClient.postTask(
-        body: ITaskCreate(
-          name: name,
-          done: done,
-          deadline: deadline,
-          projectId: projectId,
-        ),
+      final body = ITaskCreate(
+        name: name,
+        done: done,
+        deadline: deadline,
+        projectId: projectId,
       );
+      final response = await taskClient.postTask(body: body);
 
       final localTasks = await localTasksRepository.getItem();
       if (localTasks != null) {

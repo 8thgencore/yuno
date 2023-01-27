@@ -7,12 +7,10 @@ part 'i_task_create.g.dart';
 class ITaskCreate with _$ITaskCreate {
   const factory ITaskCreate({
     required String name,
-    @Default(false)
-    bool? done,
-    String? deadline,
-    @JsonKey(name: 'project_id')
-    String? projectId,
+    @Default(false) bool? done,
+    @JsonKey(includeIfNull: false) String? deadline,
+    @JsonKey(name: 'project_id', includeIfNull: false) String? projectId,
   }) = _ITaskCreate;
-  
+
   factory ITaskCreate.fromJson(Map<String, dynamic> json) => _$ITaskCreateFromJson(json);
 }

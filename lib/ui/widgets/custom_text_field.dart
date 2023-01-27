@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yuno/resources/resources.dart';
 
@@ -12,9 +11,10 @@ class CustomTextField extends StatelessWidget {
     this.suffixIcon,
     this.obscureText = false,
     this.enabled = true,
+    this.readOnly = false,
     this.onChanged,
     this.onSubmitted,
-    this.onTap,
+    this.onPressedFunction,
     this.controller,
     this.focusNode,
     super.key,
@@ -22,6 +22,7 @@ class CustomTextField extends StatelessWidget {
 
   final String labelText;
   final Color textColor;
+  final bool readOnly;
   final String? errorText;
   final TextInputType? keyboardType;
   final Widget? prefixIcon;
@@ -30,7 +31,7 @@ class CustomTextField extends StatelessWidget {
   final bool? enabled;
   final Function(String)? onChanged;
   final Function(String)? onSubmitted;
-  final VoidCallback? onTap;
+  final void Function()? onPressedFunction;
   final TextEditingController? controller;
   final FocusNode? focusNode;
 
@@ -49,10 +50,12 @@ class CustomTextField extends StatelessWidget {
             controller: controller,
             focusNode: focusNode,
             enabled: enabled,
+            readOnly: readOnly,
             style: AppTypography.r14d.copyWith(color: textColor),
             autocorrect: false,
             cursorColor: AppColors.primary100,
             obscureText: obscureText!,
+            onTap: onPressedFunction,
             onChanged: onChanged,
             onSubmitted: onSubmitted,
             keyboardType: keyboardType,

@@ -14,6 +14,8 @@ abstract class RouteName {
   static const project = 'project';
   static const projectEdit = 'project-edit';
   static const projectCreate = 'project-create';
+  static const taskEdit = 'task-edit';
+  static const taskCreate = 'task-create';
 }
 
 abstract class RoutePath {
@@ -32,4 +34,6 @@ abstract class RoutePath {
   static const project = ':id([0-9a-z-]{36})';
   static const projectEdit = 'edit';
   static const projectCreate = 'create';
+  static const taskEdit = '/task/:id([0-9a-z-]{36})/edit';
+  static const taskCreate = '/task/create';
 }

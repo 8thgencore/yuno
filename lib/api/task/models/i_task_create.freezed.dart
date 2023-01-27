@@ -21,15 +21,19 @@ ITaskCreate _$ITaskCreateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ITaskCreate {
   String get name => throw _privateConstructorUsedError;
+
   bool? get done => throw _privateConstructorUsedError;
+
+  @JsonKey(includeIfNull: false)
   String? get deadline => throw _privateConstructorUsedError;
-  @JsonKey(name: 'project_id')
+
+  @JsonKey(name: 'project_id', includeIfNull: false)
   String? get projectId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $ITaskCreateCopyWith<ITaskCreate> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ITaskCreateCopyWith<ITaskCreate> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -37,12 +41,13 @@ abstract class $ITaskCreateCopyWith<$Res> {
   factory $ITaskCreateCopyWith(
           ITaskCreate value, $Res Function(ITaskCreate) then) =
       _$ITaskCreateCopyWithImpl<$Res, ITaskCreate>;
+
   @useResult
   $Res call(
       {String name,
       bool? done,
-      String? deadline,
-      @JsonKey(name: 'project_id') String? projectId});
+      @JsonKey(includeIfNull: false) String? deadline,
+      @JsonKey(name: 'project_id', includeIfNull: false) String? projectId});
 }
 
 /// @nodoc
@@ -90,13 +95,14 @@ abstract class _$$_ITaskCreateCopyWith<$Res>
   factory _$$_ITaskCreateCopyWith(
           _$_ITaskCreate value, $Res Function(_$_ITaskCreate) then) =
       __$$_ITaskCreateCopyWithImpl<$Res>;
+
   @override
   @useResult
   $Res call(
       {String name,
       bool? done,
-      String? deadline,
-      @JsonKey(name: 'project_id') String? projectId});
+      @JsonKey(includeIfNull: false) String? deadline,
+      @JsonKey(name: 'project_id', includeIfNull: false) String? projectId});
 }
 
 /// @nodoc
@@ -142,8 +148,8 @@ class _$_ITaskCreate implements _ITaskCreate {
   const _$_ITaskCreate(
       {required this.name,
       this.done = false,
-      this.deadline,
-      @JsonKey(name: 'project_id') this.projectId});
+      @JsonKey(includeIfNull: false) this.deadline,
+      @JsonKey(name: 'project_id', includeIfNull: false) this.projectId});
 
   factory _$_ITaskCreate.fromJson(Map<String, dynamic> json) =>
       _$$_ITaskCreateFromJson(json);
@@ -154,9 +160,10 @@ class _$_ITaskCreate implements _ITaskCreate {
   @JsonKey()
   final bool? done;
   @override
+  @JsonKey(includeIfNull: false)
   final String? deadline;
   @override
-  @JsonKey(name: 'project_id')
+  @JsonKey(name: 'project_id', includeIfNull: false)
   final String? projectId;
 
   @override
@@ -199,8 +206,8 @@ abstract class _ITaskCreate implements ITaskCreate {
   const factory _ITaskCreate(
       {required final String name,
       final bool? done,
-      final String? deadline,
-      @JsonKey(name: 'project_id') final String? projectId}) = _$_ITaskCreate;
+      @JsonKey(includeIfNull: false) final String? deadline,
+      @JsonKey(name: 'project_id', includeIfNull: false) final String? projectId}) = _$_ITaskCreate;
 
   factory _ITaskCreate.fromJson(Map<String, dynamic> json) =
       _$_ITaskCreate.fromJson;
@@ -209,10 +216,13 @@ abstract class _ITaskCreate implements ITaskCreate {
   String get name;
   @override
   bool? get done;
+
   @override
+  @JsonKey(includeIfNull: false)
   String? get deadline;
+
   @override
-  @JsonKey(name: 'project_id')
+  @JsonKey(name: 'project_id', includeIfNull: false)
   String? get projectId;
   @override
   @JsonKey(ignore: true)

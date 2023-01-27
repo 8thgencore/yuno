@@ -5,7 +5,7 @@ enum ProjectEditStatus {
   loading,
   loaded,
   failure,
-  changeFields,
+  fillingFields,
   successUpdated,
   successCreated,
 }
