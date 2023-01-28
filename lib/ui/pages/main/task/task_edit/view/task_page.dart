@@ -54,6 +54,7 @@ class TaskEditPage extends StatelessWidget {
                 type: ToastType.success,
               ),
             );
+            context.pop(true);
             break;
           case TaskEditStatus.successCreated:
             context.loaderOverlay.hide();
@@ -64,6 +65,7 @@ class TaskEditPage extends StatelessWidget {
                 type: ToastType.success,
               ),
             );
+            context.pop(true);
             break;
         }
       },

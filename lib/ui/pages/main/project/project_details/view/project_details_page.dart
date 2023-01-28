@@ -26,10 +26,16 @@ class ProjectDetailsPage extends StatelessWidget {
         builder: (context, state) => state.maybeWhen(
           loaded: (project, _, isMember) => isMember
               ? FloatingActionButton(
-                  onPressed: () => context.pushNamed(
+                  onPressed: () => context.pushNamed<bool>(
                     RouteName.taskCreate,
                     queryParams: {'project_id': project.id},
-                  ),
+                  ).then((result) {
+                    WidgetsBinding.instance.addPostFrameCallback((_) {
+                      if (result ?? false) {
+                        context.read<ProjectDetailsBloc>().add(const ProjectDetailsEvent.update());
+                      }
+                    });
+                  }),
                   child: const Icon(Icons.add, size: 32),
                 )
               : const SizedBox(),
@@ -168,12 +174,22 @@ class _CheckListWidget extends StatelessWidget {
             itemCount: tasks.length,
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
-                onTap: () {
-                  context.pushNamed(
-                    RouteName.taskEdit,
-                    params: {'id': tasks[index].id},
-                  );
-                },
+                onTap: isMember
+                    ? () async {
+                        await context.pushNamed<bool>(
+                          RouteName.taskEdit,
+                          params: {'id': tasks[index].id},
+                        ).then((result) {
+                          WidgetsBinding.instance.addPostFrameCallback((_) {
+                            if (result ?? false) {
+                              context
+                                  .read<ProjectDetailsBloc>()
+                                  .add(const ProjectDetailsEvent.update());
+                            }
+                          });
+                        });
+                      }
+                    : null,
                 child: _TaskCardWidget(task: tasks[index], isMember: isMember),
               );
             },
@@ -231,7 +247,7 @@ class _TaskCardWidgetState extends State<_TaskCardWidget> {
                 ),
                 const SizedBox(height: 6),
                 Text(
-                  widget.task.deadline ?? '123123',
+                  widget.task.deadline ?? '',
                   style: AppTypography.l12g,
                   overflow: TextOverflow.fade,
                   softWrap: false,

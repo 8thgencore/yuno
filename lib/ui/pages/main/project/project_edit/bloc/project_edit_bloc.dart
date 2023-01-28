@@ -2,8 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:yuno/api/project/models/i_project_read.dart';
-import 'package:yuno/api/project/models/i_project_with_users_tasks.dart';
+import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/domain/repository/api_project_repository.dart';
 
 part 'project_edit_bloc.freezed.dart';
@@ -42,22 +41,20 @@ class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
         emit(state.copyWith(status: ProjectEditStatus.loaded));
       } else {
         final project = await apiProjectRepository.getById(id: event.id);
-        if (project is IProjectWithUsersTasks) {
+        if (project != null) {
           emit(state.copyWith(
             status: ProjectEditStatus.loaded,
             id: project.id,
             name: project.name,
             description: project.description,
           ));
-        } else {
-          emit(state.copyWith(status: ProjectEditStatus.failure));
         }
       }
       emit(state.copyWith(status: ProjectEditStatus.fillingFields));
-    } on Exception catch (_) {
+    } on DioError catch (dioError) {
       emit(state.copyWith(
         status: ProjectEditStatus.failure,
-        serverError: "Don't get project",
+        serverError: dioErrorInterceptor(dioError).toString(),
       ));
     }
   }
@@ -81,16 +78,18 @@ class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
     Emitter<ProjectEditState> emit,
   ) async {
     emit(state.copyWith(status: ProjectEditStatus.loading));
-    final result = await apiProjectRepository.create(
-      name: state.name,
-      description: state.description,
-    );
-    if (result is IProjectRead) {
-      emit(state.copyWith(status: ProjectEditStatus.successCreated));
-    } else {
+    try {
+      final result = await apiProjectRepository.create(
+        name: state.name,
+        description: state.description,
+      );
+      if (result != null) {
+        emit(state.copyWith(status: ProjectEditStatus.successCreated));
+      }
+    } on DioError catch (dioError) {
       emit(state.copyWith(
         status: ProjectEditStatus.failure,
-        serverError: result.toString(),
+        serverError: dioErrorInterceptor(dioError).toString(),
       ));
     }
   }
@@ -100,17 +99,19 @@ class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
     Emitter<ProjectEditState> emit,
   ) async {
     emit(state.copyWith(status: ProjectEditStatus.loading));
-    final result = await apiProjectRepository.updateById(
-      id: state.id,
-      name: state.name,
-      description: state.description,
-    );
-    if (result is IProjectRead) {
-      emit(state.copyWith(status: ProjectEditStatus.successUpdated));
-    } else {
+    try {
+      final result = await apiProjectRepository.updateById(
+        id: state.id,
+        name: state.name,
+        description: state.description,
+      );
+      if (result != null) {
+        emit(state.copyWith(status: ProjectEditStatus.successUpdated));
+      }
+    } on DioError catch (dioError) {
       emit(state.copyWith(
         status: ProjectEditStatus.failure,
-        serverError: result.toString(),
+        serverError: dioErrorInterceptor(dioError).toString(),
       ));
     }
   }

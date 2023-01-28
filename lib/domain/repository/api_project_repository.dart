@@ -1,8 +1,9 @@
-import 'package:dio/dio.dart';
 import 'package:yuno/api/project/models/i_project_create.dart';
+import 'package:yuno/api/project/models/i_project_read.dart';
 import 'package:yuno/api/project/models/i_project_update.dart';
+import 'package:yuno/api/project/models/i_project_with_users.dart';
+import 'package:yuno/api/project/models/i_project_with_users_tasks.dart';
 import 'package:yuno/api/project/rest_client.dart';
-import 'package:yuno/data/http/error_interceptor.dart';
 
 class ApiProjectRepository {
   ApiProjectRepository({
@@ -11,92 +12,54 @@ class ApiProjectRepository {
 
   final ProjectClient projectClient;
 
-  Future<dynamic> getMyProjects() async {
-    try {
-      final response = await projectClient.getProjectMy();
-
-      return response.data.items;
-    } on DioError catch (e) {
-      return dioErrorInterceptor(e);
-    } on Object {
-      return 'Something error';
-    }
+  Future<List<IProjectWithUsers>> getMyProjects() async {
+    final response = await projectClient.getProjectMy();
+    return response.data.items;
   }
 
-  Future<dynamic> getProjects({required int size}) async {
-    try {
-      final response = await projectClient.getProjectList(size: size);
-      return response.data.items;
-    } on DioError catch (e) {
-      return dioErrorInterceptor(e);
-    } on Object {
-      return 'Something error';
-    }
+  Future<List<IProjectWithUsers>> getProjects({required int size}) async {
+    final response = await projectClient.getProjectList(size: size);
+    return response.data.items;
   }
 
-  Future<dynamic> getById({required String id}) async {
-    try {
-      final response = await projectClient.getProjectProjectId(projectId: id);
-
-      return response.data;
-    } on DioError catch (e) {
-      return dioErrorInterceptor(e);
-    } on Object {
-      return 'Something error';
-    }
+  Future<IProjectWithUsersTasks> getById({required String id}) async {
+    final response = await projectClient.getProjectProjectId(projectId: id);
+    return response.data;
   }
 
-  Future<dynamic> create({
+  Future<IProjectRead> create({
     required String name,
     required String description,
   }) async {
-    try {
-      final response = await projectClient.postProject(
-        body: IProject(
-          name: name,
-          description: description,
-          link: '',
-        ),
-      );
+    final response = await projectClient.postProject(
+      body: IProject(
+        name: name,
+        description: description,
+        link: '',
+      ),
+    );
 
-      return response.data;
-    } on DioError catch (e) {
-      return dioErrorInterceptor(e);
-    } on Object {
-      return 'Something error';
-    }
+    return response.data;
   }
 
-  Future<dynamic> updateById({
+  Future<IProjectRead> updateById({
     required String id,
     required String name,
     required String description,
   }) async {
-    try {
-      final response = await projectClient.putProjectProjectId(
-        projectId: id,
-        body: IProjectUpdate(
-          name: name,
-          description: description,
-        ),
-      );
+    final response = await projectClient.putProjectProjectId(
+      projectId: id,
+      body: IProjectUpdate(
+        name: name,
+        description: description,
+      ),
+    );
 
-      return response.data;
-    } on DioError catch (e) {
-      return dioErrorInterceptor(e);
-    } on Object {
-      return 'Something error';
-    }
+    return response.data;
   }
 
-  Future<dynamic> deleteById({required String id}) async {
-    try {
-      final response = await projectClient.deleteProjectProjectId(projectId: id);
-      return response.data;
-    } on DioError catch (e) {
-      return dioErrorInterceptor(e);
-    } on Object {
-      return 'Something error';
-    }
+  Future<IProjectRead> deleteById({required String id}) async {
+    final response = await projectClient.deleteProjectProjectId(projectId: id);
+    return response.data;
   }
 }

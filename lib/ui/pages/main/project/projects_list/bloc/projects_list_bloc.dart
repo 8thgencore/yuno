@@ -3,12 +3,11 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:yuno/api/project/models/i_project_with_users.dart';
+import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/domain/repository/api_project_repository.dart';
 
 part 'projects_list_bloc.freezed.dart';
-
 part 'projects_list_event.dart';
-
 part 'projects_list_state.dart';
 
 class ProjectsListBloc extends Bloc<ProjectsListEvent, ProjectsListState> {
@@ -30,7 +29,7 @@ class ProjectsListBloc extends Bloc<ProjectsListEvent, ProjectsListState> {
     emit(const ProjectsListState.loading());
     try {
       final projects = await apiProjectRepository.getProjects(size: 10);
-      if (projects is List<IProjectWithUsers>) {
+      if (projects != null) {
         if (projects.isNotEmpty) {
           _projects = projects;
         }
@@ -38,8 +37,8 @@ class ProjectsListBloc extends Bloc<ProjectsListEvent, ProjectsListState> {
       } else {
         emit(const ProjectsListState.failure('Wrong data from server'));
       }
-    } on Exception catch (_) {
-      emit(const ProjectsListState.failure("Don't get tasks"));
+    } on DioError catch (dioError) {
+      emit(ProjectsListState.failure(dioErrorInterceptor(dioError).toString()));
     }
   }
 }

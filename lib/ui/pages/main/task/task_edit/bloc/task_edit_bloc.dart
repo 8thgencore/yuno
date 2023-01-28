@@ -2,13 +2,11 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:yuno/api/task/models/i_task_read.dart';
+import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/domain/repository/api_task_repository.dart';
 
 part 'task_edit_bloc.freezed.dart';
-
 part 'task_edit_event.dart';
-
 part 'task_edit_state.dart';
 
 class TaskEditBloc extends Bloc<TaskEditEvent, TaskEditState> {
@@ -46,7 +44,7 @@ class TaskEditBloc extends Bloc<TaskEditEvent, TaskEditState> {
         ));
       } else {
         final task = await apiTaskRepository.getById(id: event.id);
-        if (task is ITaskRead) {
+        if (task != null) {
           emit(state.copyWith(
             status: TaskEditStatus.loaded,
             id: task.id,
@@ -55,15 +53,13 @@ class TaskEditBloc extends Bloc<TaskEditEvent, TaskEditState> {
             done: task.done,
             projectId: task.projectId,
           ));
-        } else {
-          emit(state.copyWith(status: TaskEditStatus.failure));
         }
       }
       emit(state.copyWith(status: TaskEditStatus.fillingFields));
-    } on Exception catch (_) {
+    } on DioError catch (dioError) {
       emit(state.copyWith(
         status: TaskEditStatus.failure,
-        serverError: "Don't get task",
+        serverError: dioErrorInterceptor(dioError).toString(),
       ));
     }
   }
@@ -94,18 +90,20 @@ class TaskEditBloc extends Bloc<TaskEditEvent, TaskEditState> {
     Emitter<TaskEditState> emit,
   ) async {
     emit(state.copyWith(status: TaskEditStatus.loading));
-    final result = await apiTaskRepository.create(
-      name: state.name,
-      deadline: state.deadline,
-      done: state.done ?? false,
-      projectId: state.projectId,
-    );
-    if (result is ITaskRead) {
-      emit(state.copyWith(status: TaskEditStatus.successCreated));
-    } else {
+    try {
+      final result = await apiTaskRepository.create(
+        name: state.name,
+        deadline: state.deadline,
+        done: state.done ?? false,
+        projectId: state.projectId,
+      );
+      if (result != null) {
+        emit(state.copyWith(status: TaskEditStatus.successCreated));
+      }
+    } on DioError catch (dioError) {
       emit(state.copyWith(
         status: TaskEditStatus.failure,
-        serverError: result.toString(),
+        serverError: dioErrorInterceptor(dioError).toString(),
       ));
     }
   }
@@ -115,19 +113,21 @@ class TaskEditBloc extends Bloc<TaskEditEvent, TaskEditState> {
     Emitter<TaskEditState> emit,
   ) async {
     emit(state.copyWith(status: TaskEditStatus.loading));
-    final result = await apiTaskRepository.updateById(
-      id: state.id,
-      name: state.name,
-      deadline: state.deadline,
-      done: state.done,
-      projectId: state.projectId,
-    );
-    if (result is ITaskRead) {
-      emit(state.copyWith(status: TaskEditStatus.successUpdated));
-    } else {
+    try {
+      final result = await apiTaskRepository.updateById(
+        id: state.id,
+        name: state.name,
+        deadline: state.deadline,
+        done: state.done,
+        projectId: state.projectId,
+      );
+      if (result != null) {
+        emit(state.copyWith(status: TaskEditStatus.successUpdated));
+      }
+    } on DioError catch (dioError) {
       emit(state.copyWith(
         status: TaskEditStatus.failure,
-        serverError: result.toString(),
+        serverError: dioErrorInterceptor(dioError).toString(),
       ));
     }
   }

@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:yuno/api/shared_models/http_validation_error.dart';
 
+export 'package:dio/dio.dart';
+
 class CustomErrorInterceptor extends Interceptor {
   @override
   Future<void> onError(DioError err, ErrorInterceptorHandler handler) async {
