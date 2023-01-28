@@ -1,13 +1,14 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:equatable/equatable.dart';
+import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/ui/pages/auth/registration/model/errors.dart';
 
 part 'registration_event.dart';
-
 part 'registration_state.dart';
 
 class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
@@ -121,33 +122,35 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     final RegistrationCreateAccount event,
     final Emitter<RegistrationState> emit,
   ) async {
-    _highlightEmailError = true;
-    _highlightPasswordError = true;
-    _highlightPasswordConfirmationError = true;
-    _highlightNameError = true;
-    emit(_calculateFieldsInfo());
-    final haveError = _emailError != null ||
-        _passwordError != null ||
-        _passwordConfirmationError != null ||
-        _nameError != null;
-    if (haveError) {
-      return;
-    }
+    try {
+      _highlightEmailError = true;
+      _highlightPasswordError = true;
+      _highlightPasswordConfirmationError = true;
+      _highlightNameError = true;
+      emit(_calculateFieldsInfo());
+      final haveError = _emailError != null ||
+          _passwordError != null ||
+          _passwordConfirmationError != null ||
+          _nameError != null;
+      if (haveError) {
+        return;
+      }
 
-    emit(const RegistrationInProgress());
+      emit(const RegistrationInProgress());
 
-    final result = await apiAuthRepository.register(
-      email: _email,
-      username: _name,
-      password: _password,
-    );
-    if (result != null) {
-      _serverError = result.toString();
+      final result = await apiAuthRepository.register(
+        email: _email,
+        username: _name,
+        password: _password,
+      );
+      if (result != null) {
+        _highlightServerError = false;
+        emit(const RegistrationCompleted());
+      }
+    } on DioError catch (dioError) {
+      _serverError = dioErrorInterceptor(dioError).toString();
       _highlightServerError = true;
       emit(_calculateFieldsInfo());
-    } else {
-      _highlightServerError = false;
-      emit(const RegistrationCompleted());
     }
   }
 

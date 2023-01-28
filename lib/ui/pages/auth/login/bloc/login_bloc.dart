@@ -1,13 +1,14 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:equatable/equatable.dart';
+import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/ui/pages/auth/login/model/errors.dart';
 
 part 'login_event.dart';
-
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
@@ -73,27 +74,29 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     final LoginAuthAccount event,
     final Emitter<LoginState> emit,
   ) async {
-    _highlightEmailError = true;
-    _highlightPasswordError = true;
+    try {
+      _highlightEmailError = true;
+      _highlightPasswordError = true;
 
-    emit(_calculateFieldsInfo());
-    final haveError = _emailError != null || _passwordError != null;
-    if (haveError) {
-      return;
-    }
+      emit(_calculateFieldsInfo());
+      final haveError = _emailError != null || _passwordError != null;
+      if (haveError) {
+        return;
+      }
 
-    emit(const LoginInProgress());
+      emit(const LoginInProgress());
 
-    final result = await apiAuthRepository.login(
-      email: _email,
-      password: _password,
-    );
-    if (result != null) {
-      _serverError = result.toString();
+      final result = await apiAuthRepository.login(
+        email: _email,
+        password: _password,
+      );
+      if (result != null) {
+        emit(const LoginCompleted());
+      }
+    } on DioError catch (dioError) {
+      _serverError = dioErrorInterceptor(dioError).toString();
       _highlightServerError = true;
       emit(_calculateFieldsInfo());
-    } else {
-      emit(const LoginCompleted());
     }
   }
 

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yuno/data/repository/token_repository.dart';
@@ -26,17 +27,21 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     final SplashLoaded event,
     final Emitter<SplashState> emit,
   ) async {
-    await apiUserRepository.getData();
+    try {
+      await apiUserRepository.getData();
 
-    await Future.delayed(const Duration(seconds: 1));
+      await Future.delayed(const Duration(seconds: 1));
 
-    final token = await tokenRepository.getItem();
-    if (token == null || token.isEmpty) {
+      final token = await tokenRepository.getItem();
+      if (token == null || token.isEmpty) {
+        emit(const SplashUnauthorized());
+      } else {
+        // Get tasks from server
+        await apiTaskRepository.getNotDoneTasks();
+        emit(const SplashAuthorized());
+      }
+    } on DioError catch (_) {
       emit(const SplashUnauthorized());
-    } else {
-      // Get tasks from server
-      await apiTaskRepository.getNotDoneTasks();
-      emit(const SplashAuthorized());
     }
   }
 }

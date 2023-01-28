@@ -27,10 +27,9 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   AppTheme.setStatusBarAndNavigationBarColors();
 
   Bloc.observer = AppBlocObserver();
+
   await runZonedGuarded(
-    () async {
-      runApp(await builder());
-    },
+        () async => runApp(await builder()),
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
 }

@@ -21,9 +21,9 @@ class DioBuilder {
         if (kDebugMode)
           PrettyDioLogger(
             request: true,
-            requestHeader: true,
+            requestHeader: false,
             requestBody: true,
-            responseHeader: true,
+            responseHeader: false,
             responseBody: true,
             error: true,
           ),

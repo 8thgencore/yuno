@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
 
 part 'change_password_bloc.freezed.dart';
@@ -99,15 +101,15 @@ class ChangePasswordBloc extends Bloc<ChangePasswordEvent, ChangePasswordState> 
         newPassword: state.newPassword,
       );
       if (result != null) {
-        emit(state.copyWith(
-          status: ChangePasswordStatus.failure,
-          serverError: result.toString(),
-        ));
-      } else {
         emit(state.copyWith(status: ChangePasswordStatus.success));
+      } else {
+        _showUnknownError(emit);
       }
-    } on Exception catch (_) {
-      emit(state.copyWith(status: ChangePasswordStatus.failure));
+    } on DioError catch (dioError) {
+      emit(state.copyWith(
+        status: ChangePasswordStatus.failure,
+        serverError: dioErrorInterceptor(dioError).toString(),
+      ));
     }
   }
 
@@ -120,7 +122,7 @@ class ChangePasswordBloc extends Bloc<ChangePasswordEvent, ChangePasswordState> 
   }
 
   bool _isPasswordHaveNumber(String password) {
-    if (password.contains(RegExp(r'[0-9]'))) {
+    if (password.contains(RegExp(r'\d'))) {
       return true;
     } else {
       return false;
@@ -139,5 +141,12 @@ class ChangePasswordBloc extends Bloc<ChangePasswordEvent, ChangePasswordState> 
     } else {
       emit(state.copyWith(isValid: false));
     }
+  }
+
+  void _showUnknownError(Emitter<ChangePasswordState> emit) {
+    emit(state.copyWith(
+      status: ChangePasswordStatus.failure,
+      serverError: 'Unknown error',
+    ));
   }
 }

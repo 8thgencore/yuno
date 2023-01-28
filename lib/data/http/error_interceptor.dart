@@ -12,9 +12,11 @@ class CustomErrorInterceptor extends Interceptor {
 dynamic dioErrorInterceptor(DioError e) {
   if (e.response?.statusCode != 200) {
     if (e.response?.data is Map<String, dynamic>) {
-      return HTTPValidationError.fromJson(e.response?.data as Map<String, dynamic>).detail;
+      final error = HTTPValidationError.fromJson(e.response?.data as Map<String, dynamic>).detail;
+      return error;
     } else {
-      return e.error;
+      final error = ArgumentError('Unknown network error');
+      throw error;
     }
   }
 }

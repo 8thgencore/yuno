@@ -2,9 +2,11 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
+import 'package:dio/dio.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:yuno/api/user/models/i_user_read.dart';
+import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/data/repository/user_repository.dart';
 import 'package:yuno/domain/repository/api_user_repository.dart';
 import 'package:yuno/ui/pages/main/profile/edit_profile/models/errors.dart';
@@ -55,24 +57,21 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
     Emitter<ProfileEditState> emit,
   ) async {
     emit(state.copyWith(status: ProfileEditStatus.loading));
-    try {
-      final user = await userRepository.getItem();
-      if (user is IUserRead) {
-        _user = user;
-        _emailError = _validateEmail();
-        _nicknameError = _validateNickname();
-        emit(state.copyWith(
-          status: ProfileEditStatus.loaded,
-          firstName: user.firstName,
-          lastName: user.lastName,
-          username: user.username,
-          email: user.email,
-          role: user.role?.name ?? '',
-        ));
-      } else {
-        emit(state.copyWith(status: ProfileEditStatus.failure));
-      }
-    } on Exception catch (_) {
+
+    final user = await apiUserRepository.getCachedData();
+    if (user != null) {
+      _user = user;
+      _emailError = _validateEmail();
+      _nicknameError = _validateNickname();
+      emit(state.copyWith(
+        status: ProfileEditStatus.loaded,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        username: user.username,
+        email: user.email,
+        role: user.role?.name ?? '',
+      ));
+    } else {
       emit(state.copyWith(status: ProfileEditStatus.failure));
     }
   }
@@ -81,31 +80,34 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
     _SavedEvent event,
     Emitter<ProfileEditState> emit,
   ) async {
-    emit(state.copyWith(status: ProfileEditStatus.loading));
-    _highlightEmailError = true;
-    _highlightNicknameError = true;
-    _calculateFieldsInfo(emit);
-    final haveError = _emailError != null || _nicknameError != null;
-    if (haveError) {
-      emit(state.copyWith(status: ProfileEditStatus.loaded));
-      return;
-    }
+    try {
+      emit(state.copyWith(status: ProfileEditStatus.loading));
+      _highlightEmailError = true;
+      _highlightNicknameError = true;
+      _calculateFieldsInfo(emit);
+      final haveError = _emailError != null || _nicknameError != null;
+      if (haveError) {
+        emit(state.copyWith(status: ProfileEditStatus.loaded));
+        return;
+      }
 
-    final result = await apiUserRepository.updateDataById(
-      firstName: _user!.firstName,
-      lastName: _user!.lastName,
-      email: _user!.email,
-      username: _user!.username,
-    );
-    // await Future.delayed(Duration(seconds: 3));
-    emit(state.copyWith(status: ProfileEditStatus.loaded));
-    if (result != null) {
+      final result = await apiUserRepository.updateDataById(
+        firstName: _user!.firstName,
+        lastName: _user!.lastName,
+        email: _user!.email,
+        username: _user!.username,
+      );
+      emit(state.copyWith(status: ProfileEditStatus.loaded));
+      if (result != null) {
+        emit(state.copyWith(status: ProfileEditStatus.success));
+      } else {
+        _showUnknownError(emit);
+      }
+    } on DioError catch (dioError) {
       emit(state.copyWith(
         status: ProfileEditStatus.failure,
-        serverError: result.toString(),
+        serverError: dioErrorInterceptor(dioError).toString(),
       ));
-    } else {
-      emit(state.copyWith(status: ProfileEditStatus.success));
     }
   }
 
@@ -168,5 +170,12 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
       return ProfileEditNicknameError.tooShort;
     }
     return null;
+  }
+
+  void _showUnknownError(Emitter<ProfileEditState> emit) {
+    emit(state.copyWith(
+      status: ProfileEditStatus.failure,
+      serverError: 'Unknown error',
+    ));
   }
 }

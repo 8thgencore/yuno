@@ -141,7 +141,6 @@ void _setupBlocs() {
     () => ProfileBloc(
       apiAuthRepository: sl.get<ApiAuthRepository>(),
       apiUserRepository: sl.get<ApiUserRepository>(),
-      userRepository: sl.get<UserRepository>(),
       refreshTokenRepository: sl.get<RefreshTokenRepository>(),
       logoutInteractor: sl.get<LogoutInteractor>(),
     ),

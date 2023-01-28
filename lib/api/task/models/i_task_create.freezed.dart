@@ -21,17 +21,13 @@ ITaskCreate _$ITaskCreateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ITaskCreate {
   String get name => throw _privateConstructorUsedError;
-
   bool? get done => throw _privateConstructorUsedError;
-
   @JsonKey(includeIfNull: false)
   String? get deadline => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'project_id', includeIfNull: false)
   String? get projectId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $ITaskCreateCopyWith<ITaskCreate> get copyWith => throw _privateConstructorUsedError;
 }
@@ -41,7 +37,6 @@ abstract class $ITaskCreateCopyWith<$Res> {
   factory $ITaskCreateCopyWith(
           ITaskCreate value, $Res Function(ITaskCreate) then) =
       _$ITaskCreateCopyWithImpl<$Res, ITaskCreate>;
-
   @useResult
   $Res call(
       {String name,
@@ -95,7 +90,6 @@ abstract class _$$_ITaskCreateCopyWith<$Res>
   factory _$$_ITaskCreateCopyWith(
           _$_ITaskCreate value, $Res Function(_$_ITaskCreate) then) =
       __$$_ITaskCreateCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -216,11 +210,9 @@ abstract class _ITaskCreate implements ITaskCreate {
   String get name;
   @override
   bool? get done;
-
   @override
   @JsonKey(includeIfNull: false)
   String? get deadline;
-
   @override
   @JsonKey(name: 'project_id', includeIfNull: false)
   String? get projectId;
