@@ -4,8 +4,8 @@ import 'package:yuno/api/task/models/i_task_read.dart';
 import 'package:yuno/data/repository/base/reactive_repository.dart';
 import 'package:yuno/data/repository/tasks_provider.dart';
 
-class LocalTasksRepository extends ReactiveRepository<List<ITaskRead>> {
-  LocalTasksRepository(this._tasksProvider);
+class TasksNotDoneDataRepository extends ReactiveRepository<List<ITaskRead>> {
+  TasksNotDoneDataRepository(this._tasksProvider);
 
   final TasksProvider _tasksProvider;
 

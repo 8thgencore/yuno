@@ -1,13 +1,12 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:yuno/api/auth/models/refresh_token.dart';
 import 'package:yuno/api/user/models/i_user_read.dart';
 import 'package:yuno/data/http/error_interceptor.dart';
-import 'package:yuno/data/repository/refresh_token_repository.dart';
+import 'package:yuno/data/repository/refresh_token_data_repository.dart';
 import 'package:yuno/domain/logout_interactor.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/domain/repository/api_user_repository.dart';
@@ -20,7 +19,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ProfileBloc({
     required this.apiAuthRepository,
     required this.apiUserRepository,
-    required this.refreshTokenRepository,
+    required this.refreshTokenDataRepository,
     required this.logoutInteractor,
   }) : super(const ProfileState.initial()) {
     on<_StartedEvent>(_onProfileLoaded);
@@ -31,7 +30,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   final ApiAuthRepository apiAuthRepository;
   final ApiUserRepository apiUserRepository;
-  final RefreshTokenRepository refreshTokenRepository;
+  final RefreshTokenDataRepository refreshTokenDataRepository;
   final LogoutInteractor logoutInteractor;
 
   IUserRead? _user;
@@ -42,7 +41,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ) async {
     try {
       final user = await apiUserRepository.getCachedData();
-      final refreshToken = await refreshTokenRepository.getItem();
+      final refreshToken = await refreshTokenDataRepository.getItem();
       if (user == null || refreshToken == null) {
         _logout(emit);
         return;

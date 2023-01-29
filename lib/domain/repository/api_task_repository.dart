@@ -2,16 +2,16 @@ import 'package:yuno/api/task/models/i_task_create.dart';
 import 'package:yuno/api/task/models/i_task_read.dart';
 import 'package:yuno/api/task/models/i_task_update.dart';
 import 'package:yuno/api/task/rest_client.dart';
-import 'package:yuno/data/repository/tasks_repository.dart';
+import 'package:yuno/data/repository/tasks_data_repository.dart';
 
 class ApiTaskRepository {
   ApiTaskRepository({
     required this.taskClient,
-    required this.localTasksRepository,
+    required this.tasksNotDoneDataRepository,
   });
 
   final TaskClient taskClient;
-  final LocalTasksRepository localTasksRepository;
+  final TasksNotDoneDataRepository tasksNotDoneDataRepository;
 
   Future<List<ITaskRead>> getTasks() async {
     final response = await taskClient.getTaskList();
@@ -20,9 +20,15 @@ class ApiTaskRepository {
   }
 
   Future<List<ITaskRead>> getNotDoneTasks() async {
-    final response = await taskClient.getNotDoneTaskList();
+    final response = await taskClient.getNotDoneTaskList(size: 100);
     final tasks = response.data.items;
-    await localTasksRepository.setItem(tasks);
+    await tasksNotDoneDataRepository.setItem(tasks);
+
+    return tasks;
+  }
+
+  Future<List<ITaskRead>?> getCachedNotDoneTasks() async {
+    final tasks = await tasksNotDoneDataRepository.getItem();
 
     return tasks;
   }
@@ -47,10 +53,10 @@ class ApiTaskRepository {
     );
     final response = await taskClient.postTask(body: body);
 
-    final localTasks = await localTasksRepository.getItem();
+    final localTasks = await tasksNotDoneDataRepository.getItem();
     if (localTasks != null) {
       localTasks.add(response.data);
-      await localTasksRepository.setItem(localTasks);
+      await tasksNotDoneDataRepository.setItem(localTasks);
     }
 
     return response.data;
@@ -72,29 +78,29 @@ class ApiTaskRepository {
       ),
     );
 
-    final localTasks = await localTasksRepository.getItem();
-    final taskIndex = localTasks?.indexWhere((task) => task.id == id);
-    if (localTasks != null && taskIndex != null) {
-      localTasks[taskIndex] = ITaskRead(
+    final localTasks = await tasksNotDoneDataRepository.getItem();
+    if (done ?? true) {
+      localTasks?.removeWhere((task) => task.id == id);
+    } else if (done == false) {
+      final task = ITaskRead(
         id: id,
-        name: name ?? localTasks[taskIndex].name,
-        done: done ?? localTasks[taskIndex].done,
-        deadline: deadline ?? localTasks[taskIndex].deadline,
-        projectId: projectId ?? localTasks[taskIndex].projectId,
+        name: name ?? '',
+        done: done,
+        deadline: deadline,
       );
-      await localTasksRepository.setItem(localTasks);
+      localTasks?.insert(0, task);
     }
-
+    await tasksNotDoneDataRepository.setItem(localTasks);
     return response.data;
   }
 
   Future<ITaskRead> deleteById({required String id}) async {
     final response = await taskClient.deleteTaskTaskId(taskId: id);
 
-    final localTasks = await localTasksRepository.getItem();
+    final localTasks = await tasksNotDoneDataRepository.getItem();
     if (localTasks != null) {
       localTasks.removeWhere((task) => task.id == id);
-      await localTasksRepository.setItem(localTasks);
+      await tasksNotDoneDataRepository.setItem(localTasks);
     }
 
     return response.data;

@@ -5,9 +5,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:yuno/api/project/models/i_project_with_users_tasks.dart';
 import 'package:yuno/api/task/models/i_task_read.dart';
 import 'package:yuno/data/http/error_interceptor.dart';
-import 'package:yuno/data/repository/user_repository.dart';
 import 'package:yuno/domain/repository/api_project_repository.dart';
 import 'package:yuno/domain/repository/api_task_repository.dart';
+import 'package:yuno/domain/repository/api_user_repository.dart';
 
 part 'project_details_bloc.freezed.dart';
 part 'project_details_event.dart';
@@ -17,7 +17,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
   ProjectDetailsBloc({
     required this.apiProjectRepository,
     required this.apiTaskRepository,
-    required this.userRepository,
+    required this.apiUserRepository,
   }) : super(const ProjectDetailsState.initial()) {
     on<ProjectDetailsEvent>(
       (event, emit) => event.map(
@@ -28,9 +28,9 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
     );
   }
 
+  final ApiUserRepository apiUserRepository;
   final ApiProjectRepository apiProjectRepository;
   final ApiTaskRepository apiTaskRepository;
-  final UserRepository userRepository;
 
   String _projectId = '';
   final List<ITaskRead> _tasks = [];
@@ -46,7 +46,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
       if (project != null) {
         _tasks.addAll(project.tasks ?? []);
         // Check user member is project
-        final user = await userRepository.getItem();
+        final user = await apiUserRepository.getCachedData();
         final users = project.users;
         if (user != null && users != null) {
           _isMember = users.where((u) => u.id == user.id).isNotEmpty;
@@ -95,7 +95,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
       if (project != null) {
         _tasks.addAll(project.tasks ?? []);
         // Check user member is project
-        final user = await userRepository.getItem();
+        final user = await apiUserRepository.getCachedData();
         final users = project.users;
         if (user != null && users != null) {
           _isMember = users.where((u) => u.id == user.id).isNotEmpty;

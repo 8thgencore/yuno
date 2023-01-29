@@ -4,8 +4,8 @@ import 'package:yuno/api/user/models/i_user_read.dart';
 import 'package:yuno/data/repository/base/reactive_repository.dart';
 import 'package:yuno/data/repository/user_provider.dart';
 
-class UserRepository extends ReactiveRepository<IUserRead> {
-  UserRepository(this._userProvider);
+class UserDataRepository extends ReactiveRepository<IUserRead> {
+  UserDataRepository(this._userProvider);
 
   final UserProvider _userProvider;
 

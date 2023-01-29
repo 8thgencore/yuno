@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:yuno/api/task/models/i_task_read.dart';
+import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/domain/repository/api_task_repository.dart';
 
 part 'home_checklist_bloc.freezed.dart';
@@ -30,15 +31,13 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
   ) async {
     emit(const HomeChecklistState.loading());
     try {
-      final tasks = await apiTaskRepository.getNotDoneTasks();
-      if (tasks is List<ITaskRead>) {
+      final tasks = await apiTaskRepository.getCachedNotDoneTasks();
+      if (tasks != null) {
         _tasks.addAll(tasks);
-        emit(HomeChecklistState.loaded(tasks: _tasks));
-      } else {
-        emit(const HomeChecklistState.failure('Wrong data from server'));
       }
-    } on Exception catch (_) {
-      emit(const HomeChecklistState.failure("Don't get tasks"));
+      emit(HomeChecklistState.loaded(tasks: _tasks));
+    } on DioError catch (dioError) {
+      emit(HomeChecklistState.failure(dioErrorInterceptor(dioError).toString()));
     }
   }
 
@@ -46,20 +45,24 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
     _CheckItemEvent event,
     Emitter<HomeChecklistState> emit,
   ) async {
-    final task = _tasks.firstWhere((task) => task.id == event.id);
-    final bool isDone = task.done ?? false;
+    try {
+      final task = _tasks.firstWhere((task) => task.id == event.id);
+      final bool isDone = task.done ?? false;
 
-    final result = await apiTaskRepository.updateById(
-      id: event.id,
-      name: task.name,
-      deadline: task.deadline,
-      projectId: task.projectId,
-      done: !isDone,
-    );
+      final updatedTask = await apiTaskRepository.updateById(
+        id: event.id,
+        name: task.name,
+        deadline: task.deadline,
+        projectId: task.projectId,
+        done: !isDone,
+      );
 
-    if (result is ITaskRead) {
-      _tasks.removeWhere((task) => task.id == event.id);
-      _tasks.add(task.copyWith(done: !isDone));
+      if (updatedTask != null) {
+        _tasks.removeWhere((task) => task.id == event.id);
+        _tasks.add(task.copyWith(done: !isDone));
+      }
+    } on DioError catch (dioError) {
+      emit(HomeChecklistState.failure(dioErrorInterceptor(dioError).toString()));
     }
   }
 }

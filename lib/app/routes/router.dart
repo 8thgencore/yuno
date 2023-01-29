@@ -5,7 +5,6 @@ import 'package:yuno/app/app.dart';
 import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/observer.dart';
 import 'package:yuno/app/routes/routes.dart';
-import 'package:yuno/data/repository/user_repository.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/domain/repository/api_project_repository.dart';
 import 'package:yuno/domain/repository/api_task_repository.dart';
@@ -63,7 +62,7 @@ mixin RouterMixin on State<App> {
                 providers: [
                   BlocProvider(
                     create: (context) => HomeHeaderBloc(
-                      userRepository: sl.get<UserRepository>(),
+                      apiUserRepository: sl.get<ApiUserRepository>(),
                       apiTaskRepository: sl.get<ApiTaskRepository>(),
                     )..add(const HomeHeaderEvent.started()),
                     child: const HomePage(),
@@ -106,7 +105,6 @@ mixin RouterMixin on State<App> {
                   builder: (context, state) => BlocProvider(
                     create: (context) => ProfileEditBloc(
                       apiUserRepository: sl.get<ApiUserRepository>(),
-                      userRepository: sl.get<UserRepository>(),
                     )..add(const ProfileEditEvent.started()),
                     child: const ProfileEditPage(),
                   ),
@@ -157,9 +155,9 @@ mixin RouterMixin on State<App> {
               parentNavigatorKey: rootNavigatorKey,
               builder: (context, state) => BlocProvider(
                 create: (context) => ProjectDetailsBloc(
+                  apiUserRepository: sl.get<ApiUserRepository>(),
                   apiProjectRepository: sl.get<ApiProjectRepository>(),
                   apiTaskRepository: sl.get<ApiTaskRepository>(),
-                  userRepository: sl.get<UserRepository>(),
                 )..add(ProjectDetailsEvent.started(state.params['id'] ?? '')),
                 child: const ProjectDetailsPage(),
               ),

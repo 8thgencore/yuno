@@ -1,8 +1,8 @@
 import 'package:yuno/data/repository/base/reactive_repository.dart';
 import 'package:yuno/data/repository/refresh_token_provider.dart';
 
-class RefreshTokenRepository extends ReactiveRepository<String> {
-  RefreshTokenRepository(this._refreshTokenProvider);
+class RefreshTokenDataRepository extends ReactiveRepository<String> {
+  RefreshTokenDataRepository(this._refreshTokenProvider);
 
   final RefreshTokenProvider _refreshTokenProvider;
 

@@ -5,29 +5,29 @@ import 'package:yuno/api/user/models/i_image_upload.dart';
 import 'package:yuno/api/user/models/i_user_read.dart';
 import 'package:yuno/api/user/models/i_user_update.dart';
 import 'package:yuno/api/user/rest_client.dart';
-import 'package:yuno/data/repository/token_repository.dart';
-import 'package:yuno/data/repository/user_repository.dart';
+import 'package:yuno/data/repository/token_data_repository.dart';
+import 'package:yuno/data/repository/user_data_repository.dart';
 
 class ApiUserRepository {
   ApiUserRepository({
     required this.userClient,
-    required this.userRepository,
-    required this.tokenRepository,
+    required this.userDataRepository,
+    required this.tokenDataRepository,
   });
 
   final UserClient userClient;
-  final UserRepository userRepository;
-  final TokenRepository tokenRepository;
+  final UserDataRepository userDataRepository;
+  final TokenDataRepository tokenDataRepository;
 
   Future<IUserRead> getData() async {
     final response = await userClient.getUser();
     final user = response.data;
-    await userRepository.setItem(user);
+    await userDataRepository.setItem(user);
     return user;
   }
 
   Future<IUserRead?> getCachedData() async {
-    final user = await userRepository.getItem();
+    final user = await userDataRepository.getItem();
     return user;
   }
 
@@ -37,7 +37,7 @@ class ApiUserRepository {
     required String email,
     required String username,
   }) async {
-    final user = await userRepository.getItem();
+    final user = await userDataRepository.getItem();
     if (user != null) {
       final response = await userClient.putUserUserId(
         userId: user.id,
@@ -53,7 +53,7 @@ class ApiUserRepository {
       );
 
       final data = response.data;
-      await userRepository.setItem(data);
+      await userDataRepository.setItem(data);
 
       return data;
     }
@@ -72,7 +72,7 @@ class ApiUserRepository {
     );
 
     final user = response.data;
-    await userRepository.setItem(user);
+    await userDataRepository.setItem(user);
 
     return user;
   }

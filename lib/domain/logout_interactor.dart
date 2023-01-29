@@ -1,25 +1,25 @@
-import 'package:yuno/data/repository/refresh_token_repository.dart';
-import 'package:yuno/data/repository/tasks_repository.dart';
-import 'package:yuno/data/repository/token_repository.dart';
-import 'package:yuno/data/repository/user_repository.dart';
+import 'package:yuno/data/repository/refresh_token_data_repository.dart';
+import 'package:yuno/data/repository/tasks_data_repository.dart';
+import 'package:yuno/data/repository/token_data_repository.dart';
+import 'package:yuno/data/repository/user_data_repository.dart';
 
 class LogoutInteractor {
   LogoutInteractor({
-    required this.userRepository,
-    required this.tokenRepository,
-    required this.refreshTokenRepository,
-    required this.localTasksRepository,
+    required this.userDataRepository,
+    required this.tokenDataRepository,
+    required this.refreshTokenDataRepository,
+    required this.tasksDataRepository,
   });
 
-  final UserRepository userRepository;
-  final TokenRepository tokenRepository;
-  final RefreshTokenRepository refreshTokenRepository;
-  final LocalTasksRepository localTasksRepository;
+  final UserDataRepository userDataRepository;
+  final TokenDataRepository tokenDataRepository;
+  final RefreshTokenDataRepository refreshTokenDataRepository;
+  final TasksNotDoneDataRepository tasksDataRepository;
 
   Future<void> logout() async {
-    await userRepository.setItem(null);
-    await tokenRepository.setItem(null);
-    await refreshTokenRepository.setItem(null);
-    await localTasksRepository.setItem(null);
+    await userDataRepository.setItem(null);
+    await tokenDataRepository.setItem(null);
+    await refreshTokenDataRepository.setItem(null);
+    await tasksDataRepository.setItem(null);
   }
 }

@@ -6,14 +6,14 @@ import 'package:yuno/api/task/rest_client.dart';
 import 'package:yuno/api/user/rest_client.dart';
 import 'package:yuno/data/http/authorization_interceptor.dart';
 import 'package:yuno/data/http/dio_provider.dart';
+import 'package:yuno/data/repository/refresh_token_data_repository.dart';
 import 'package:yuno/data/repository/refresh_token_provider.dart';
-import 'package:yuno/data/repository/refresh_token_repository.dart';
+import 'package:yuno/data/repository/tasks_data_repository.dart';
 import 'package:yuno/data/repository/tasks_provider.dart';
-import 'package:yuno/data/repository/tasks_repository.dart';
+import 'package:yuno/data/repository/token_data_repository.dart';
 import 'package:yuno/data/repository/token_provider.dart';
-import 'package:yuno/data/repository/token_repository.dart';
+import 'package:yuno/data/repository/user_data_repository.dart';
 import 'package:yuno/data/repository/user_provider.dart';
-import 'package:yuno/data/repository/user_repository.dart';
 import 'package:yuno/data/storage/shared_preference_data.dart';
 import 'package:yuno/domain/logout_interactor.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
@@ -47,20 +47,20 @@ void _setupDataProviders() {
 
 // ONLY SINGLETONS
 void _setupRepositories() {
-  sl.registerLazySingleton(() => UserRepository(sl.get<UserProvider>()));
-  sl.registerLazySingleton(() => TokenRepository(sl.get<TokenProvider>()));
-  sl.registerLazySingleton(() => RefreshTokenRepository(sl.get<RefreshTokenProvider>()));
-  sl.registerLazySingleton(() => LocalTasksRepository(sl.get<TasksProvider>()));
+  sl.registerLazySingleton(() => UserDataRepository(sl.get<UserProvider>()));
+  sl.registerLazySingleton(() => TokenDataRepository(sl.get<TokenProvider>()));
+  sl.registerLazySingleton(() => RefreshTokenDataRepository(sl.get<RefreshTokenProvider>()));
+  sl.registerLazySingleton(() => TasksNotDoneDataRepository(sl.get<TasksProvider>()));
 }
 
 // ONLY SINGLETONS
 void _setupInteractors() {
   sl.registerLazySingleton(
     () => LogoutInteractor(
-      userRepository: sl.get<UserRepository>(),
-      tokenRepository: sl.get<TokenRepository>(),
-      refreshTokenRepository: sl.get<RefreshTokenRepository>(),
-      localTasksRepository: sl.get<LocalTasksRepository>(),
+      userDataRepository: sl.get<UserDataRepository>(),
+      tokenDataRepository: sl.get<TokenDataRepository>(),
+      refreshTokenDataRepository: sl.get<RefreshTokenDataRepository>(),
+      tasksDataRepository: sl.get<TasksNotDoneDataRepository>(),
     ),
   );
 }
@@ -72,7 +72,7 @@ void _setApiRelatedClasses() {
   sl.registerFactory(() => DioBuilder());
   sl.registerLazySingleton(
     () => AuthorizationInterceptor(
-      tokenRepository: sl.get<TokenRepository>(),
+      tokenDataRepository: sl.get<TokenDataRepository>(),
       logoutInteractor: sl.get<LogoutInteractor>(),
     ),
   );
@@ -104,22 +104,22 @@ void _setApiRelatedClasses() {
     () => ApiAuthRepository(
       authClient: sl.get<AuthClient>(),
       authPasswordClient: sl.get<AuthPasswordClient>(),
-      userRepository: sl.get<UserRepository>(),
-      tokenRepository: sl.get<TokenRepository>(),
-      refreshTokenRepository: sl.get<RefreshTokenRepository>(),
+      userDataRepository: sl.get<UserDataRepository>(),
+      tokenDataRepository: sl.get<TokenDataRepository>(),
+      refreshTokenDataRepository: sl.get<RefreshTokenDataRepository>(),
     ),
   );
   sl.registerLazySingleton<ApiUserRepository>(
     () => ApiUserRepository(
       userClient: sl.get<UserClient>(),
-      userRepository: sl.get<UserRepository>(),
-      tokenRepository: sl.get<TokenRepository>(),
+      userDataRepository: sl.get<UserDataRepository>(),
+      tokenDataRepository: sl.get<TokenDataRepository>(),
     ),
   );
   sl.registerLazySingleton<ApiTaskRepository>(
     () => ApiTaskRepository(
       taskClient: sl.get<TaskClient>(),
-      localTasksRepository: sl.get<LocalTasksRepository>(),
+      tasksNotDoneDataRepository: sl.get<TasksNotDoneDataRepository>(),
     ),
   );
   sl.registerLazySingleton<ApiProjectRepository>(
@@ -141,7 +141,7 @@ void _setupBlocs() {
     () => ProfileBloc(
       apiAuthRepository: sl.get<ApiAuthRepository>(),
       apiUserRepository: sl.get<ApiUserRepository>(),
-      refreshTokenRepository: sl.get<RefreshTokenRepository>(),
+      refreshTokenDataRepository: sl.get<RefreshTokenDataRepository>(),
       logoutInteractor: sl.get<LogoutInteractor>(),
     ),
   );

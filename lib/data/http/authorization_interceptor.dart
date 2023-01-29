@@ -1,21 +1,21 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:yuno/data/repository/token_repository.dart';
+import 'package:yuno/data/repository/token_data_repository.dart';
 import 'package:yuno/domain/logout_interactor.dart';
 
 class AuthorizationInterceptor extends Interceptor {
   AuthorizationInterceptor({
-    required this.tokenRepository,
+    required this.tokenDataRepository,
     required this.logoutInteractor,
   });
 
-  final TokenRepository tokenRepository;
+  final TokenDataRepository tokenDataRepository;
   final LogoutInteractor logoutInteractor;
 
   @override
   Future<void> onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
-    final token = await tokenRepository.getItem();
+    final token = await tokenDataRepository.getItem();
     if (token == null) {
       logoutInteractor.logout();
       return handler.next(options);

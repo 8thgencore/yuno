@@ -4,24 +4,24 @@ import 'package:yuno/api/auth/models/i_auth_register.dart';
 import 'package:yuno/api/auth/models/refresh_token.dart';
 import 'package:yuno/api/auth/rest_client.dart';
 import 'package:yuno/api/user/models/i_user_read.dart';
-import 'package:yuno/data/repository/refresh_token_repository.dart';
-import 'package:yuno/data/repository/token_repository.dart';
-import 'package:yuno/data/repository/user_repository.dart';
+import 'package:yuno/data/repository/refresh_token_data_repository.dart';
+import 'package:yuno/data/repository/token_data_repository.dart';
+import 'package:yuno/data/repository/user_data_repository.dart';
 
 class ApiAuthRepository {
   ApiAuthRepository({
     required this.authClient,
     required this.authPasswordClient,
-    required this.userRepository,
-    required this.tokenRepository,
-    required this.refreshTokenRepository,
+    required this.userDataRepository,
+    required this.tokenDataRepository,
+    required this.refreshTokenDataRepository,
   });
 
   final AuthClient authClient;
   final AuthPasswordClient authPasswordClient;
-  final UserRepository userRepository;
-  final TokenRepository tokenRepository;
-  final RefreshTokenRepository refreshTokenRepository;
+  final UserDataRepository userDataRepository;
+  final TokenDataRepository tokenDataRepository;
+  final RefreshTokenDataRepository refreshTokenDataRepository;
 
   Future<IUserRead> register({
     required String email,
@@ -37,7 +37,7 @@ class ApiAuthRepository {
     );
 
     final user = response.data;
-    await userRepository.setItem(user);
+    await userDataRepository.setItem(user);
 
     return user;
   }
@@ -54,9 +54,9 @@ class ApiAuthRepository {
     );
 
     final data = response.data;
-    await userRepository.setItem(data.user);
-    await tokenRepository.setItem(data.accessToken);
-    await refreshTokenRepository.setItem(data.refreshToken);
+    await userDataRepository.setItem(data.user);
+    await tokenDataRepository.setItem(data.accessToken);
+    await refreshTokenDataRepository.setItem(data.refreshToken);
 
     return data.user;
   }
@@ -65,7 +65,7 @@ class ApiAuthRepository {
     final response = await authClient.postAuthRefreshToken(body: body);
     final data = response.data;
 
-    await tokenRepository.setItem(data.accessToken);
+    await tokenDataRepository.setItem(data.accessToken);
 
     return data.accessToken;
   }
@@ -82,9 +82,9 @@ class ApiAuthRepository {
     );
 
     final data = response.data;
-    await userRepository.setItem(data.user);
-    await tokenRepository.setItem(data.accessToken);
-    await refreshTokenRepository.setItem(data.refreshToken);
+    await userDataRepository.setItem(data.user);
+    await tokenDataRepository.setItem(data.accessToken);
+    await refreshTokenDataRepository.setItem(data.refreshToken);
 
     return data.user;
   }
