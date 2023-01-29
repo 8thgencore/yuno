@@ -135,8 +135,10 @@ class _LastTaskWidget extends StatelessWidget {
     var deadline = 'Has no deadline';
     if (task != null) {
       if (task!.deadline != null) {
-        final DateFormat inputFormat = DateFormat('yyyy-MM-ddTHH:mm:ss');
-        final DateTime? dateTime = inputFormat.tryParse(task!.deadline!);
+        final DateFormat inputFormat = DateFormat('yyyy-MM-dd HH:mm:ss');
+        final DateFormat reserveInputFormat = DateFormat('yyyy-MM-ddTHH:mm:ss');
+        DateTime? dateTime = inputFormat.tryParse(task!.deadline!);
+        dateTime ??= reserveInputFormat.tryParse(task!.deadline!);
         if (dateTime != null) {
           final outputFormat = DateFormat('dd MMMM yyyy, HH:mm');
           deadline = outputFormat.format(dateTime);

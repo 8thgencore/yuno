@@ -21,6 +21,8 @@ mixin _$ProjectDetailsEvent {
     required TResult Function(String id) started,
     required TResult Function(String id) checkedTask,
     required TResult Function() update,
+    required TResult Function() join,
+    required TResult Function() leave,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +30,8 @@ mixin _$ProjectDetailsEvent {
     TResult? Function(String id)? started,
     TResult? Function(String id)? checkedTask,
     TResult? Function()? update,
+    TResult? Function()? join,
+    TResult? Function()? leave,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +39,8 @@ mixin _$ProjectDetailsEvent {
     TResult Function(String id)? started,
     TResult Function(String id)? checkedTask,
     TResult Function()? update,
+    TResult Function()? join,
+    TResult Function()? leave,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +49,8 @@ mixin _$ProjectDetailsEvent {
     required TResult Function(_StartedEvent value) started,
     required TResult Function(_CheckTaskEvent value) checkedTask,
     required TResult Function(_UpdateProjectEvent value) update,
+    required TResult Function(_JoinProjectEvent value) join,
+    required TResult Function(_LeaveProjectEvent value) leave,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +58,8 @@ mixin _$ProjectDetailsEvent {
     TResult? Function(_StartedEvent value)? started,
     TResult? Function(_CheckTaskEvent value)? checkedTask,
     TResult? Function(_UpdateProjectEvent value)? update,
+    TResult? Function(_JoinProjectEvent value)? join,
+    TResult? Function(_LeaveProjectEvent value)? leave,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +67,8 @@ mixin _$ProjectDetailsEvent {
     TResult Function(_StartedEvent value)? started,
     TResult Function(_CheckTaskEvent value)? checkedTask,
     TResult Function(_UpdateProjectEvent value)? update,
+    TResult Function(_JoinProjectEvent value)? join,
+    TResult Function(_LeaveProjectEvent value)? leave,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -145,6 +157,8 @@ class _$_StartedEvent implements _StartedEvent {
     required TResult Function(String id) started,
     required TResult Function(String id) checkedTask,
     required TResult Function() update,
+    required TResult Function() join,
+    required TResult Function() leave,
   }) {
     return started(id);
   }
@@ -155,6 +169,8 @@ class _$_StartedEvent implements _StartedEvent {
     TResult? Function(String id)? started,
     TResult? Function(String id)? checkedTask,
     TResult? Function()? update,
+    TResult? Function()? join,
+    TResult? Function()? leave,
   }) {
     return started?.call(id);
   }
@@ -165,6 +181,8 @@ class _$_StartedEvent implements _StartedEvent {
     TResult Function(String id)? started,
     TResult Function(String id)? checkedTask,
     TResult Function()? update,
+    TResult Function()? join,
+    TResult Function()? leave,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -179,6 +197,8 @@ class _$_StartedEvent implements _StartedEvent {
     required TResult Function(_StartedEvent value) started,
     required TResult Function(_CheckTaskEvent value) checkedTask,
     required TResult Function(_UpdateProjectEvent value) update,
+    required TResult Function(_JoinProjectEvent value) join,
+    required TResult Function(_LeaveProjectEvent value) leave,
   }) {
     return started(this);
   }
@@ -189,6 +209,8 @@ class _$_StartedEvent implements _StartedEvent {
     TResult? Function(_StartedEvent value)? started,
     TResult? Function(_CheckTaskEvent value)? checkedTask,
     TResult? Function(_UpdateProjectEvent value)? update,
+    TResult? Function(_JoinProjectEvent value)? join,
+    TResult? Function(_LeaveProjectEvent value)? leave,
   }) {
     return started?.call(this);
   }
@@ -199,6 +221,8 @@ class _$_StartedEvent implements _StartedEvent {
     TResult Function(_StartedEvent value)? started,
     TResult Function(_CheckTaskEvent value)? checkedTask,
     TResult Function(_UpdateProjectEvent value)? update,
+    TResult Function(_JoinProjectEvent value)? join,
+    TResult Function(_LeaveProjectEvent value)? leave,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -282,6 +306,8 @@ class _$_CheckTaskEvent implements _CheckTaskEvent {
     required TResult Function(String id) started,
     required TResult Function(String id) checkedTask,
     required TResult Function() update,
+    required TResult Function() join,
+    required TResult Function() leave,
   }) {
     return checkedTask(id);
   }
@@ -292,6 +318,8 @@ class _$_CheckTaskEvent implements _CheckTaskEvent {
     TResult? Function(String id)? started,
     TResult? Function(String id)? checkedTask,
     TResult? Function()? update,
+    TResult? Function()? join,
+    TResult? Function()? leave,
   }) {
     return checkedTask?.call(id);
   }
@@ -302,6 +330,8 @@ class _$_CheckTaskEvent implements _CheckTaskEvent {
     TResult Function(String id)? started,
     TResult Function(String id)? checkedTask,
     TResult Function()? update,
+    TResult Function()? join,
+    TResult Function()? leave,
     required TResult orElse(),
   }) {
     if (checkedTask != null) {
@@ -316,6 +346,8 @@ class _$_CheckTaskEvent implements _CheckTaskEvent {
     required TResult Function(_StartedEvent value) started,
     required TResult Function(_CheckTaskEvent value) checkedTask,
     required TResult Function(_UpdateProjectEvent value) update,
+    required TResult Function(_JoinProjectEvent value) join,
+    required TResult Function(_LeaveProjectEvent value) leave,
   }) {
     return checkedTask(this);
   }
@@ -326,6 +358,8 @@ class _$_CheckTaskEvent implements _CheckTaskEvent {
     TResult? Function(_StartedEvent value)? started,
     TResult? Function(_CheckTaskEvent value)? checkedTask,
     TResult? Function(_UpdateProjectEvent value)? update,
+    TResult? Function(_JoinProjectEvent value)? join,
+    TResult? Function(_LeaveProjectEvent value)? leave,
   }) {
     return checkedTask?.call(this);
   }
@@ -336,6 +370,8 @@ class _$_CheckTaskEvent implements _CheckTaskEvent {
     TResult Function(_StartedEvent value)? started,
     TResult Function(_CheckTaskEvent value)? checkedTask,
     TResult Function(_UpdateProjectEvent value)? update,
+    TResult Function(_JoinProjectEvent value)? join,
+    TResult Function(_LeaveProjectEvent value)? leave,
     required TResult orElse(),
   }) {
     if (checkedTask != null) {
@@ -394,6 +430,8 @@ class _$_UpdateProjectEvent implements _UpdateProjectEvent {
     required TResult Function(String id) started,
     required TResult Function(String id) checkedTask,
     required TResult Function() update,
+    required TResult Function() join,
+    required TResult Function() leave,
   }) {
     return update();
   }
@@ -404,6 +442,8 @@ class _$_UpdateProjectEvent implements _UpdateProjectEvent {
     TResult? Function(String id)? started,
     TResult? Function(String id)? checkedTask,
     TResult? Function()? update,
+    TResult? Function()? join,
+    TResult? Function()? leave,
   }) {
     return update?.call();
   }
@@ -414,6 +454,8 @@ class _$_UpdateProjectEvent implements _UpdateProjectEvent {
     TResult Function(String id)? started,
     TResult Function(String id)? checkedTask,
     TResult Function()? update,
+    TResult Function()? join,
+    TResult Function()? leave,
     required TResult orElse(),
   }) {
     if (update != null) {
@@ -428,6 +470,8 @@ class _$_UpdateProjectEvent implements _UpdateProjectEvent {
     required TResult Function(_StartedEvent value) started,
     required TResult Function(_CheckTaskEvent value) checkedTask,
     required TResult Function(_UpdateProjectEvent value) update,
+    required TResult Function(_JoinProjectEvent value) join,
+    required TResult Function(_LeaveProjectEvent value) leave,
   }) {
     return update(this);
   }
@@ -438,6 +482,8 @@ class _$_UpdateProjectEvent implements _UpdateProjectEvent {
     TResult? Function(_StartedEvent value)? started,
     TResult? Function(_CheckTaskEvent value)? checkedTask,
     TResult? Function(_UpdateProjectEvent value)? update,
+    TResult? Function(_JoinProjectEvent value)? join,
+    TResult? Function(_LeaveProjectEvent value)? leave,
   }) {
     return update?.call(this);
   }
@@ -448,6 +494,8 @@ class _$_UpdateProjectEvent implements _UpdateProjectEvent {
     TResult Function(_StartedEvent value)? started,
     TResult Function(_CheckTaskEvent value)? checkedTask,
     TResult Function(_UpdateProjectEvent value)? update,
+    TResult Function(_JoinProjectEvent value)? join,
+    TResult Function(_LeaveProjectEvent value)? leave,
     required TResult orElse(),
   }) {
     if (update != null) {
@@ -459,6 +507,246 @@ class _$_UpdateProjectEvent implements _UpdateProjectEvent {
 
 abstract class _UpdateProjectEvent implements ProjectDetailsEvent {
   const factory _UpdateProjectEvent() = _$_UpdateProjectEvent;
+}
+
+/// @nodoc
+abstract class _$$_JoinProjectEventCopyWith<$Res> {
+  factory _$$_JoinProjectEventCopyWith(
+          _$_JoinProjectEvent value, $Res Function(_$_JoinProjectEvent) then) =
+      __$$_JoinProjectEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_JoinProjectEventCopyWithImpl<$Res>
+    extends _$ProjectDetailsEventCopyWithImpl<$Res, _$_JoinProjectEvent>
+    implements _$$_JoinProjectEventCopyWith<$Res> {
+  __$$_JoinProjectEventCopyWithImpl(
+      _$_JoinProjectEvent _value, $Res Function(_$_JoinProjectEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_JoinProjectEvent implements _JoinProjectEvent {
+  const _$_JoinProjectEvent();
+
+  @override
+  String toString() {
+    return 'ProjectDetailsEvent.join()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_JoinProjectEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id) started,
+    required TResult Function(String id) checkedTask,
+    required TResult Function() update,
+    required TResult Function() join,
+    required TResult Function() leave,
+  }) {
+    return join();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id)? started,
+    TResult? Function(String id)? checkedTask,
+    TResult? Function()? update,
+    TResult? Function()? join,
+    TResult? Function()? leave,
+  }) {
+    return join?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id)? started,
+    TResult Function(String id)? checkedTask,
+    TResult Function()? update,
+    TResult Function()? join,
+    TResult Function()? leave,
+    required TResult orElse(),
+  }) {
+    if (join != null) {
+      return join();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StartedEvent value) started,
+    required TResult Function(_CheckTaskEvent value) checkedTask,
+    required TResult Function(_UpdateProjectEvent value) update,
+    required TResult Function(_JoinProjectEvent value) join,
+    required TResult Function(_LeaveProjectEvent value) leave,
+  }) {
+    return join(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_StartedEvent value)? started,
+    TResult? Function(_CheckTaskEvent value)? checkedTask,
+    TResult? Function(_UpdateProjectEvent value)? update,
+    TResult? Function(_JoinProjectEvent value)? join,
+    TResult? Function(_LeaveProjectEvent value)? leave,
+  }) {
+    return join?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_StartedEvent value)? started,
+    TResult Function(_CheckTaskEvent value)? checkedTask,
+    TResult Function(_UpdateProjectEvent value)? update,
+    TResult Function(_JoinProjectEvent value)? join,
+    TResult Function(_LeaveProjectEvent value)? leave,
+    required TResult orElse(),
+  }) {
+    if (join != null) {
+      return join(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _JoinProjectEvent implements ProjectDetailsEvent {
+  const factory _JoinProjectEvent() = _$_JoinProjectEvent;
+}
+
+/// @nodoc
+abstract class _$$_LeaveProjectEventCopyWith<$Res> {
+  factory _$$_LeaveProjectEventCopyWith(
+          _$_LeaveProjectEvent value, $Res Function(_$_LeaveProjectEvent) then) =
+      __$$_LeaveProjectEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_LeaveProjectEventCopyWithImpl<$Res>
+    extends _$ProjectDetailsEventCopyWithImpl<$Res, _$_LeaveProjectEvent>
+    implements _$$_LeaveProjectEventCopyWith<$Res> {
+  __$$_LeaveProjectEventCopyWithImpl(
+      _$_LeaveProjectEvent _value, $Res Function(_$_LeaveProjectEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_LeaveProjectEvent implements _LeaveProjectEvent {
+  const _$_LeaveProjectEvent();
+
+  @override
+  String toString() {
+    return 'ProjectDetailsEvent.leave()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_LeaveProjectEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id) started,
+    required TResult Function(String id) checkedTask,
+    required TResult Function() update,
+    required TResult Function() join,
+    required TResult Function() leave,
+  }) {
+    return leave();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id)? started,
+    TResult? Function(String id)? checkedTask,
+    TResult? Function()? update,
+    TResult? Function()? join,
+    TResult? Function()? leave,
+  }) {
+    return leave?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id)? started,
+    TResult Function(String id)? checkedTask,
+    TResult Function()? update,
+    TResult Function()? join,
+    TResult Function()? leave,
+    required TResult orElse(),
+  }) {
+    if (leave != null) {
+      return leave();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StartedEvent value) started,
+    required TResult Function(_CheckTaskEvent value) checkedTask,
+    required TResult Function(_UpdateProjectEvent value) update,
+    required TResult Function(_JoinProjectEvent value) join,
+    required TResult Function(_LeaveProjectEvent value) leave,
+  }) {
+    return leave(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_StartedEvent value)? started,
+    TResult? Function(_CheckTaskEvent value)? checkedTask,
+    TResult? Function(_UpdateProjectEvent value)? update,
+    TResult? Function(_JoinProjectEvent value)? join,
+    TResult? Function(_LeaveProjectEvent value)? leave,
+  }) {
+    return leave?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_StartedEvent value)? started,
+    TResult Function(_CheckTaskEvent value)? checkedTask,
+    TResult Function(_UpdateProjectEvent value)? update,
+    TResult Function(_JoinProjectEvent value)? join,
+    TResult Function(_LeaveProjectEvent value)? leave,
+    required TResult orElse(),
+  }) {
+    if (leave != null) {
+      return leave(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LeaveProjectEvent implements ProjectDetailsEvent {
+  const factory _LeaveProjectEvent() = _$_LeaveProjectEvent;
 }
 
 /// @nodoc
@@ -491,36 +779,36 @@ mixin _$ProjectDetailsState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialState value) initial,
-    required TResult Function(_LoadingState value) loading,
-    required TResult Function(_LoadedState value) loaded,
-    required TResult Function(_FailureState value) failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialState value)? initial,
-    TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_LoadedState value)? loaded,
-    TResult? Function(_FailureState value)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialState value)? initial,
-    TResult Function(_LoadingState value)? loading,
-    TResult Function(_LoadedState value)? loaded,
-    TResult Function(_FailureState value)? failure,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+required TResult Function(_InitialState value) initial,
+required TResult Function(_LoadingState value) loading,
+required TResult Function(_LoadedState value) loaded,
+required TResult Function(_FailureState value) failure,
+}) =>
+throw _privateConstructorUsedError;
+@optionalTypeArgs
+TResult? mapOrNull<TResult extends Object?>({
+TResult? Function(_InitialState value)? initial,
+TResult? Function(_LoadingState value)? loading,
+TResult? Function(_LoadedState value)? loaded,
+TResult? Function(_FailureState value)? failure,
+}) =>
+throw _privateConstructorUsedError;
+@optionalTypeArgs
+TResult maybeMap<TResult extends Object?>({
+TResult Function(_InitialState value)? initial,
+TResult Function(_LoadingState value)? loading,
+TResult Function(_LoadedState value)? loaded,
+TResult Function(_FailureState value)? failure,
+required TResult orElse(),
+}) =>
+throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ProjectDetailsStateCopyWith<$Res> {
-  factory $ProjectDetailsStateCopyWith(
-          ProjectDetailsState value, $Res Function(ProjectDetailsState) then) =
-      _$ProjectDetailsStateCopyWithImpl<$Res, ProjectDetailsState>;
+factory $ProjectDetailsStateCopyWith(
+ProjectDetailsState value, $Res Function(ProjectDetailsState) then) =
+_$ProjectDetailsStateCopyWithImpl<$Res, ProjectDetailsState>;
 }
 
 /// @nodoc

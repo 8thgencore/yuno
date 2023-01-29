@@ -3,8 +3,8 @@ import 'package:yuno/api/project/models/i_project_with_users.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/widgets/avatar_stacked.dart';
 
-class ProjectCardLargeWidget extends StatelessWidget {
-  const ProjectCardLargeWidget({
+class ProjectCardMediumWidget extends StatelessWidget {
+  const ProjectCardMediumWidget({
     required this.project,
     super.key,
   });
@@ -19,7 +19,7 @@ class ProjectCardLargeWidget extends StatelessWidget {
     });
 
     return Container(
-      height: 142,
+      height: 122,
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
       decoration: BoxDecoration(
         color: AppColors.white100,
@@ -31,7 +31,7 @@ class ProjectCardLargeWidget extends StatelessWidget {
           Row(
             children: [
               Container(
-                height: 90,
+                height: 74,
                 width: 4,
                 decoration: BoxDecoration(
                   color: AppColors.secondary100,
@@ -49,13 +49,7 @@ class ProjectCardLargeWidget extends StatelessWidget {
                       overflow: TextOverflow.fade,
                       softWrap: false,
                     ),
-                    Text(
-                      project.description,
-                      style: AppTypography.r14d,
-                      overflow: TextOverflow.fade,
-                      softWrap: false,
-                    ),
-                    const SizedBox(height: 6),
+                    const SizedBox(height: 8),
                     if (urlImages.isNotEmpty)
                       AvatarStacked(urlImages: urlImages)
                     else

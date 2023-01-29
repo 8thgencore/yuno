@@ -8,7 +8,10 @@ import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/project/project_details/bloc/project_details_bloc.dart';
 import 'package:yuno/ui/widgets/error_container.dart';
+import 'package:yuno/ui/widgets/linear_percent_indicator_large_widget.dart';
 import 'package:yuno/ui/widgets/project_card_large_widget.dart';
+import 'package:yuno/ui/widgets/yuno_icon_button.dart';
+import 'package:yuno/ui/widgets/yuno_white_text_button.dart';
 
 class ProjectDetailsPage extends StatelessWidget {
   const ProjectDetailsPage({super.key});
@@ -26,16 +29,17 @@ class ProjectDetailsPage extends StatelessWidget {
         builder: (context, state) => state.maybeWhen(
           loaded: (project, _, isMember) => isMember
               ? FloatingActionButton(
-                  onPressed: () => context.pushNamed<bool>(
-                    RouteName.taskCreate,
-                    queryParams: {'project_id': project.id},
-                  ).then((result) {
+                  onPressed: () async {
+                    final result = await context.pushNamed<bool>(
+                      RouteName.taskCreate,
+                      queryParams: {'project_id': project.id},
+                    );
                     WidgetsBinding.instance.addPostFrameCallback((_) {
                       if (result ?? false) {
                         context.read<ProjectDetailsBloc>().add(const ProjectDetailsEvent.update());
                       }
                     });
-                  }),
+                  },
                   child: const Icon(Icons.add, size: 32),
                 )
               : const SizedBox(),
@@ -123,27 +127,62 @@ class _ProjectFullCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: isMember
-          ? () => context.pushNamed(RouteName.projectEdit, params: {'id': project.id})
-          : null,
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 24),
-        height: 200,
-        decoration: BoxDecoration(
-          color: AppColors.white60,
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Column(
-          children: [
-            ProjectCardLargeWidget(project: project),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
-              child: LinearPercentIndicatorWidget(percent: 0.4),
-            ),
-          ],
-        ),
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 24),
+      decoration: BoxDecoration(
+        color: AppColors.white60,
+        borderRadius: BorderRadius.circular(16),
       ),
+      child: Column(
+        children: [
+          ProjectCardLargeWidget(project: project),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+            child: LinearPercentIndicatorWidget(percent: 0.4),
+          ),
+          if (isMember)
+            Padding(
+              padding: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
+              child: _ButtonsRowWidget(projectId: project.id),
+            )
+          else
+            const SizedBox(),
+        ],
+      ),
+    );
+  }
+}
+
+class _ButtonsRowWidget extends StatelessWidget {
+  const _ButtonsRowWidget({
+    required this.projectId,
+    super.key,
+  });
+
+  final String projectId;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const YunoWhiteTextButton(text: 'Invite People'),
+        GestureDetector(
+          onTap: () async {
+            final result = await context.pushNamed<bool>(
+              RouteName.projectEdit,
+              params: {'id': projectId},
+            );
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (result ?? false) {
+                context.read<ProjectDetailsBloc>().add(const ProjectDetailsEvent.update());
+              }
+            });
+          },
+          child: YunoIconButton(icon: Assets.svg.pencil.svg(color: AppColors.secondary100)),
+        ),
+        YunoIconButton(icon: Assets.svg.logout.svg(color: AppColors.error100)),
+      ],
     );
   }
 }

@@ -52,6 +52,7 @@ class ProjectEditPage extends StatelessWidget {
                 type: ToastType.success,
               ),
             );
+            context.pop(true);
             break;
           case ProjectEditStatus.successCreated:
             context.loaderOverlay.hide();
@@ -62,6 +63,7 @@ class ProjectEditPage extends StatelessWidget {
                 type: ToastType.success,
               ),
             );
+            context.pop(true);
             break;
         }
       },

@@ -7,7 +7,8 @@ import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/project/projects_list/bloc/projects_list_bloc.dart';
 import 'package:yuno/ui/widgets/error_container.dart';
-import 'package:yuno/ui/widgets/project_card_large_widget.dart';
+import 'package:yuno/ui/widgets/linear_percent_indicator_large_widget.dart';
+import 'package:yuno/ui/widgets/project_card_medium_widget.dart';
 
 class ProjectsListPage extends StatelessWidget {
   const ProjectsListPage({super.key});
@@ -103,7 +104,7 @@ class _ProjectFullCardWidget extends StatelessWidget {
           ),
           child: Column(
             children: [
-              ProjectCardLargeWidget(project: project),
+              ProjectCardMediumWidget(project: project),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
                 child: LinearPercentIndicatorWidget(percent: 0.4),

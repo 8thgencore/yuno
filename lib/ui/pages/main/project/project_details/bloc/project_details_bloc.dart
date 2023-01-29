@@ -24,6 +24,8 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
         started: (event) => _onProjectLoaded(event, emit),
         checkedTask: (event) => _onCheckedTask(event, emit),
         update: (event) => _onUpdatedProject(event, emit),
+        join: (event) => _onJoinProject(event, emit),
+        leave: (event) => _onLeaveProject(event, emit),
       ),
     );
   }
@@ -104,6 +106,28 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
       } else {
         emit(const ProjectDetailsState.failure("Don't get project"));
       }
+    } on DioError catch (dioError) {
+      emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
+    }
+  }
+
+  FutureOr<void> _onJoinProject(
+    _JoinProjectEvent event,
+    Emitter<ProjectDetailsState> emit,
+  ) async {
+    try {
+      // TODO:
+    } on DioError catch (dioError) {
+      emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
+    }
+  }
+
+  FutureOr<void> _onLeaveProject(
+    _LeaveProjectEvent event,
+    Emitter<ProjectDetailsState> emit,
+  ) async {
+    try {
+      // TODO:
     } on DioError catch (dioError) {
       emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
     }

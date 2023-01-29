@@ -59,8 +59,10 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
       );
 
       if (updatedTask != null) {
-        _tasks.removeWhere((task) => task.id == event.id);
-        _tasks.add(task.copyWith(done: !isDone));
+        final index = _tasks.indexWhere((task) => task.id == event.id);
+        if (index > 0) {
+          _tasks[index] = task.copyWith(done: !isDone);
+        }
       }
     } on DioError catch (dioError) {
       emit(HomeChecklistState.failure(dioErrorInterceptor(dioError).toString()));
