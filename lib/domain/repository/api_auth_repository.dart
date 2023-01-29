@@ -1,9 +1,6 @@
-import 'package:yuno/api/auth/models/i_auth_change_password.dart';
-import 'package:yuno/api/auth/models/i_auth_login.dart';
-import 'package:yuno/api/auth/models/i_auth_register.dart';
-import 'package:yuno/api/auth/models/refresh_token.dart';
+import 'package:yuno/api/auth/models.dart';
 import 'package:yuno/api/auth/rest_client.dart';
-import 'package:yuno/api/user/models/i_user_read.dart';
+import 'package:yuno/api/user/models.dart';
 import 'package:yuno/data/repository/refresh_token_data_repository.dart';
 import 'package:yuno/data/repository/token_data_repository.dart';
 import 'package:yuno/data/repository/user_data_repository.dart';

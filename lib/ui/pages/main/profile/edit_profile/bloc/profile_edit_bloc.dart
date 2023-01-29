@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:yuno/api/user/models/i_user_read.dart';
+import 'package:yuno/api/user/models.dart';
 import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/domain/repository/api_user_repository.dart';
 import 'package:yuno/ui/pages/main/profile/edit_profile/models/errors.dart';

@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:yuno/api/auth/models/refresh_token.dart';
-import 'package:yuno/api/user/models/i_user_read.dart';
+import 'package:yuno/api/auth/models.dart';
+import 'package:yuno/api/user/models.dart';
 import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/data/repository/refresh_token_data_repository.dart';
 import 'package:yuno/domain/logout_interactor.dart';
@@ -12,7 +12,9 @@ import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/domain/repository/api_user_repository.dart';
 
 part 'profile_bloc.freezed.dart';
+
 part 'profile_event.dart';
+
 part 'profile_state.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {

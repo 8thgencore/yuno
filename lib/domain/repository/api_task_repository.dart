@@ -1,6 +1,4 @@
-import 'package:yuno/api/task/models/i_task_create.dart';
-import 'package:yuno/api/task/models/i_task_read.dart';
-import 'package:yuno/api/task/models/i_task_update.dart';
+import 'package:yuno/api/task/models.dart';
 import 'package:yuno/api/task/rest_client.dart';
 import 'package:yuno/data/repository/tasks_data_repository.dart';
 

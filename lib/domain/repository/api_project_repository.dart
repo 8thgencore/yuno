@@ -1,8 +1,4 @@
-import 'package:yuno/api/project/models/i_project_create.dart';
-import 'package:yuno/api/project/models/i_project_read.dart';
-import 'package:yuno/api/project/models/i_project_update.dart';
-import 'package:yuno/api/project/models/i_project_with_users.dart';
-import 'package:yuno/api/project/models/i_project_with_users_tasks.dart';
+import 'package:yuno/api/project/models.dart';
 import 'package:yuno/api/project/rest_client.dart';
 
 class ApiProjectRepository {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yuno/api/project/models/i_project_with_users.dart';
+import 'package:yuno/api/project/models.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/widgets/avatar_stacked.dart';
 

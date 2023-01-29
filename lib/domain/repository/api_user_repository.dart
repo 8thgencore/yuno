@@ -1,9 +1,7 @@
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
-import 'package:yuno/api/user/models/i_image_upload.dart';
-import 'package:yuno/api/user/models/i_user_read.dart';
-import 'package:yuno/api/user/models/i_user_update.dart';
+import 'package:yuno/api/user/models.dart';
 import 'package:yuno/api/user/rest_client.dart';
 import 'package:yuno/data/repository/token_data_repository.dart';
 import 'package:yuno/data/repository/user_data_repository.dart';
