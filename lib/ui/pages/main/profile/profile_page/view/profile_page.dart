@@ -47,12 +47,11 @@ class _ProfileContentWidget extends StatelessWidget {
             text: 'Edit Profile',
             icon: Assets.svg.edit.svg(height: 28, color: AppColors.primary100),
             onPressed: () async {
-              await context.pushNamed<bool>(RouteName.profileEdit).then((result) {
-                WidgetsBinding.instance.addPostFrameCallback((_) {
-                  if (result ?? false) {
-                    context.read<ProfileBloc>().add(const ProfileEvent.update());
-                  }
-                });
+              final result = await context.pushNamed<bool>(RouteName.profileEdit);
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                if (result ?? false) {
+                  context.read<ProfileBloc>().add(const ProfileEvent.update());
+                }
               });
             },
           ),
@@ -80,9 +79,14 @@ class _ProfileContentWidget extends StatelessWidget {
   }
 }
 
-class _HeaderWidget extends StatelessWidget {
+class _HeaderWidget extends StatefulWidget {
   const _HeaderWidget();
 
+  @override
+  State<_HeaderWidget> createState() => _HeaderWidgetState();
+}
+
+class _HeaderWidgetState extends State<_HeaderWidget> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileBloc, ProfileState>(
@@ -93,12 +97,12 @@ class _HeaderWidget extends StatelessWidget {
         ),
         loaded: (user, error) {
           if (error != null) {
-            // fToast.showToast(
+            // showToast(
+            //   context,
             //   child: ToastWidget(
             //     text: error,
             //     type: ToastType.failure,
             //   ),
-            //   gravity: ToastGravity.TOP,
             // );
           }
           return Column(

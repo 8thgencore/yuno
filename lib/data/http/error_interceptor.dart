@@ -17,8 +17,7 @@ dynamic dioErrorInterceptor(DioError e) {
       final error = HTTPValidationError.fromJson(e.response?.data as Map<String, dynamic>).detail;
       return error;
     } else {
-      final error = ArgumentError('Unknown network error');
-      throw error;
+      return 'Unknown network error';
     }
   }
 }

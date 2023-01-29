@@ -96,10 +96,20 @@ class _TopCardWidget extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: lastTask != null
-                        ? () => context.pushNamed(
+                        ? () async {
+                            final result = await context.pushNamed<bool>(
                               RouteName.taskEdit,
                               params: {'id': lastTask.id},
-                            )
+                            );
+                            WidgetsBinding.instance.addPostFrameCallback((_) {
+                              if (result ?? false) {
+                                context.read<HomeHeaderBloc>().add(const HomeHeaderEvent.started());
+                                context
+                                    .read<HomeChecklistBloc>()
+                                    .add(const HomeChecklistEvent.started());
+                              }
+                            });
+                          }
                         : null,
                     child: _LastTaskWidget(task: lastTask),
                   ),
@@ -270,11 +280,19 @@ class _CheckListWidget extends StatelessWidget {
                     itemCount: tasks.length,
                     itemBuilder: (BuildContext context, int index) {
                       return GestureDetector(
-                        onTap: () {
-                          context.pushNamed(
+                        onTap: () async {
+                          final result = await context.pushNamed<bool>(
                             RouteName.taskEdit,
                             params: {'id': tasks[index].id},
                           );
+                          WidgetsBinding.instance.addPostFrameCallback((_) {
+                            if (result ?? false) {
+                              context.read<HomeHeaderBloc>().add(const HomeHeaderEvent.started());
+                              context
+                                  .read<HomeChecklistBloc>()
+                                  .add(const HomeChecklistEvent.started());
+                            }
+                          });
                         },
                         child: _TaskCardWidget(task: tasks[index]),
                       );

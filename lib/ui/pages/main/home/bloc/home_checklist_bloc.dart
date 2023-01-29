@@ -29,6 +29,7 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
     _StartedEvent event,
     Emitter<HomeChecklistState> emit,
   ) async {
+    _tasks.clear();
     emit(const HomeChecklistState.loading());
     try {
       final tasks = await apiTaskRepository.getCachedNotDoneTasks();

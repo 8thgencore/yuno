@@ -79,16 +79,32 @@ class ApiTaskRepository {
     );
 
     final localTasks = await tasksNotDoneDataRepository.getItem();
+    // delete task if completed
     if (done ?? true) {
       localTasks?.removeWhere((task) => task.id == id);
     } else if (done == false) {
-      final task = ITaskRead(
-        id: id,
-        name: name ?? '',
-        done: done,
-        deadline: deadline,
-      );
-      localTasks?.insert(0, task);
+      // check task if exists
+      final taskIndex = localTasks?.indexWhere((task) => task.id == id);
+      // update task
+      if (localTasks != null && taskIndex != null && taskIndex != -1) {
+        localTasks[taskIndex] = ITaskRead(
+          id: id,
+          name: name ?? localTasks[taskIndex].name,
+          done: done ?? localTasks[taskIndex].done,
+          deadline: deadline ?? localTasks[taskIndex].deadline,
+          projectId: projectId ?? localTasks[taskIndex].projectId,
+        );
+      }
+      // add new task
+      else {
+        final task = ITaskRead(
+          id: id,
+          name: name ?? '',
+          done: done,
+          deadline: deadline,
+        );
+        localTasks?.insert(0, task);
+      }
     }
     await tasksNotDoneDataRepository.setItem(localTasks);
     return response.data;

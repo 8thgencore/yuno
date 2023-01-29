@@ -90,6 +90,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       }
       emit(ProfileState.loaded(_user!, 'Error from server. Try again'));
     } on DioError catch (dioError) {
+      // emit(ProfileState.loaded(_user!, 'Error from server. Try again'));
       emit(ProfileState.failure(dioErrorInterceptor(dioError).toString()));
     }
   }

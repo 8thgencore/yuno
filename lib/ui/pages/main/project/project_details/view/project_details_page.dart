@@ -176,17 +176,16 @@ class _CheckListWidget extends StatelessWidget {
               return GestureDetector(
                 onTap: isMember
                     ? () async {
-                        await context.pushNamed<bool>(
+                        final result = await context.pushNamed<bool>(
                           RouteName.taskEdit,
                           params: {'id': tasks[index].id},
-                        ).then((result) {
-                          WidgetsBinding.instance.addPostFrameCallback((_) {
-                            if (result ?? false) {
-                              context
-                                  .read<ProjectDetailsBloc>()
-                                  .add(const ProjectDetailsEvent.update());
-                            }
-                          });
+                        );
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          if (result ?? false) {
+                            context
+                                .read<ProjectDetailsBloc>()
+                                .add(const ProjectDetailsEvent.update());
+                          }
                         });
                       }
                     : null,
