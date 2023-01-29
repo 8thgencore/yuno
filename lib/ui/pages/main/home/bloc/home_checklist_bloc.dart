@@ -60,7 +60,7 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
 
       if (updatedTask != null) {
         final index = _tasks.indexWhere((task) => task.id == event.id);
-        if (index > 0) {
+        if (index >= 0) {
           _tasks[index] = task.copyWith(done: !isDone);
         }
       }

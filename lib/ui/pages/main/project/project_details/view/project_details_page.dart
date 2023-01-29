@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router_flow/go_router_flow.dart';
+import 'package:intl/intl.dart';
 import 'package:yuno/api/project/models/i_project_with_users.dart';
 import 'package:yuno/api/task/models/i_task_read.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
@@ -12,6 +13,7 @@ import 'package:yuno/ui/widgets/linear_percent_indicator_large_widget.dart';
 import 'package:yuno/ui/widgets/project_card_large_widget.dart';
 import 'package:yuno/ui/widgets/yuno_icon_button.dart';
 import 'package:yuno/ui/widgets/yuno_white_text_button.dart';
+import 'package:yuno/utils/extensions/datetime.dart';
 
 class ProjectDetailsPage extends StatelessWidget {
   const ProjectDetailsPage({super.key});
@@ -263,6 +265,19 @@ class _TaskCardWidgetState extends State<_TaskCardWidget> {
 
   @override
   Widget build(BuildContext context) {
+    var deadline = '';
+    if (widget.task != null) {
+      if (widget.task.deadline != null) {
+        final DateFormat inputFormat = DateFormat('yyyy-MM-dd HH:mm:ss');
+        final DateFormat reserveInputFormat = DateFormat('yyyy-MM-ddTHH:mm:ss');
+        DateTime? dateTime = inputFormat.tryParse(widget.task.deadline!);
+        dateTime ??= reserveInputFormat.tryParse(widget.task.deadline!);
+        if (dateTime != null) {
+          final outputFormat = DateFormat('dd MMMM yyyy, HH:mm');
+          deadline = outputFormat.format(dateTime);
+        }
+      }
+    }
     return Container(
       height: 80,
       margin: const EdgeInsets.symmetric(vertical: 10),
@@ -285,7 +300,7 @@ class _TaskCardWidgetState extends State<_TaskCardWidget> {
                 ),
                 const SizedBox(height: 6),
                 Text(
-                  widget.task.deadline ?? '',
+                  deadline,
                   style: AppTypography.l12g,
                   overflow: TextOverflow.fade,
                   softWrap: false,
