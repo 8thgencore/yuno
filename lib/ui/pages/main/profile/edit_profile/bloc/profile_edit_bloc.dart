@@ -42,8 +42,8 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
 
   IUserRead? _user;
 
-  bool _highlightNicknameError = false;
-  ProfileEditNicknameError? _nicknameError;
+  bool _highlightUsernameError = false;
+  ProfileEditUsernameError? _usernameError;
 
   bool _highlightEmailError = false;
   ProfileEditEmailError? _emailError;
@@ -58,7 +58,7 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
     if (user != null) {
       _user = user;
       _emailError = _validateEmail();
-      _nicknameError = _validateNickname();
+      _usernameError = _validateUsername();
       emit(state.copyWith(
         status: ProfileEditStatus.loaded,
         firstName: user.firstName,
@@ -79,9 +79,9 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
     try {
       emit(state.copyWith(status: ProfileEditStatus.loading));
       _highlightEmailError = true;
-      _highlightNicknameError = true;
+      _highlightUsernameError = true;
       _calculateFieldsInfo(emit);
-      final haveError = _emailError != null || _nicknameError != null;
+      final haveError = _emailError != null || _usernameError != null;
       if (haveError) {
         emit(state.copyWith(status: ProfileEditStatus.loaded));
         return;
@@ -126,7 +126,7 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
     Emitter<ProfileEditState> emit,
   ) async {
     _user = _user!.copyWith(username: event.text);
-    _nicknameError = _validateNickname();
+    _usernameError = _validateUsername();
   }
 
   FutureOr<void> _onEmailChanged(
@@ -144,7 +144,7 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
       email: _user!.email,
       username: _user!.username,
       emailError: _highlightEmailError ? _emailError : null,
-      nicknameError: _highlightNicknameError ? _nicknameError : null,
+      usernameError: _highlightUsernameError ? _usernameError : null,
     ));
   }
 
@@ -158,12 +158,12 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
     return null;
   }
 
-  ProfileEditNicknameError? _validateNickname() {
+  ProfileEditUsernameError? _validateUsername() {
     if (_user!.username.isEmpty) {
-      return ProfileEditNicknameError.empty;
+      return ProfileEditUsernameError.empty;
     }
     if (_user!.username.length < 3) {
-      return ProfileEditNicknameError.tooShort;
+      return ProfileEditUsernameError.tooShort;
     }
     return null;
   }

@@ -994,8 +994,7 @@ mixin _$ProfileEditState {
   String get email => throw _privateConstructorUsedError;
   String? get role => throw _privateConstructorUsedError;
   ProfileEditEmailError? get emailError => throw _privateConstructorUsedError;
-  ProfileEditNicknameError? get nicknameError =>
-      throw _privateConstructorUsedError;
+  ProfileEditUsernameError? get usernameError => throw _privateConstructorUsedError;
   String? get serverError => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1017,7 +1016,7 @@ abstract class $ProfileEditStateCopyWith<$Res> {
       String email,
       String? role,
       ProfileEditEmailError? emailError,
-      ProfileEditNicknameError? nicknameError,
+      ProfileEditUsernameError? usernameError,
       String? serverError});
 }
 
@@ -1041,7 +1040,7 @@ class _$ProfileEditStateCopyWithImpl<$Res, $Val extends ProfileEditState>
     Object? email = null,
     Object? role = freezed,
     Object? emailError = freezed,
-    Object? nicknameError = freezed,
+    Object? usernameError = freezed,
     Object? serverError = freezed,
   }) {
     return _then(_value.copyWith(
@@ -1073,10 +1072,10 @@ class _$ProfileEditStateCopyWithImpl<$Res, $Val extends ProfileEditState>
           ? _value.emailError
           : emailError // ignore: cast_nullable_to_non_nullable
               as ProfileEditEmailError?,
-      nicknameError: freezed == nicknameError
-          ? _value.nicknameError
-          : nicknameError // ignore: cast_nullable_to_non_nullable
-              as ProfileEditNicknameError?,
+      usernameError: freezed == usernameError
+          ? _value.usernameError
+          : usernameError // ignore: cast_nullable_to_non_nullable
+              as ProfileEditUsernameError?,
       serverError: freezed == serverError
           ? _value.serverError
           : serverError // ignore: cast_nullable_to_non_nullable
@@ -1101,7 +1100,7 @@ abstract class _$$_ProfileEditStateCopyWith<$Res>
       String email,
       String? role,
       ProfileEditEmailError? emailError,
-      ProfileEditNicknameError? nicknameError,
+      ProfileEditUsernameError? usernameError,
       String? serverError});
 }
 
@@ -1123,7 +1122,7 @@ class __$$_ProfileEditStateCopyWithImpl<$Res>
     Object? email = null,
     Object? role = freezed,
     Object? emailError = freezed,
-    Object? nicknameError = freezed,
+    Object? usernameError = freezed,
     Object? serverError = freezed,
   }) {
     return _then(_$_ProfileEditState(
@@ -1155,10 +1154,10 @@ class __$$_ProfileEditStateCopyWithImpl<$Res>
           ? _value.emailError
           : emailError // ignore: cast_nullable_to_non_nullable
               as ProfileEditEmailError?,
-      nicknameError: freezed == nicknameError
-          ? _value.nicknameError
-          : nicknameError // ignore: cast_nullable_to_non_nullable
-              as ProfileEditNicknameError?,
+      usernameError: freezed == usernameError
+          ? _value.usernameError
+          : usernameError // ignore: cast_nullable_to_non_nullable
+              as ProfileEditUsernameError?,
       serverError: freezed == serverError
           ? _value.serverError
           : serverError // ignore: cast_nullable_to_non_nullable
@@ -1178,7 +1177,7 @@ class _$_ProfileEditState implements _ProfileEditState {
       required this.email,
       this.role,
       this.emailError,
-      this.nicknameError,
+      this.usernameError,
       this.serverError});
 
   @override
@@ -1197,13 +1196,13 @@ class _$_ProfileEditState implements _ProfileEditState {
   @override
   final ProfileEditEmailError? emailError;
   @override
-  final ProfileEditNicknameError? nicknameError;
+  final ProfileEditUsernameError? usernameError;
   @override
   final String? serverError;
 
   @override
   String toString() {
-    return 'ProfileEditState(status: $status, firstName: $firstName, lastName: $lastName, username: $username, email: $email, role: $role, emailError: $emailError, nicknameError: $nicknameError, serverError: $serverError)';
+    return 'ProfileEditState(status: $status, firstName: $firstName, lastName: $lastName, username: $username, email: $email, role: $role, emailError: $emailError, usernameError: $usernameError, serverError: $serverError)';
   }
 
   @override
@@ -1212,25 +1211,20 @@ class _$_ProfileEditState implements _ProfileEditState {
         (other.runtimeType == runtimeType &&
             other is _$_ProfileEditState &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.firstName, firstName) ||
-                other.firstName == firstName) &&
-            (identical(other.lastName, lastName) ||
-                other.lastName == lastName) &&
-            (identical(other.username, username) ||
-                other.username == username) &&
+            (identical(other.firstName, firstName) || other.firstName == firstName) &&
+            (identical(other.lastName, lastName) || other.lastName == lastName) &&
+            (identical(other.username, username) || other.username == username) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.role, role) || other.role == role) &&
-            (identical(other.emailError, emailError) ||
-                other.emailError == emailError) &&
-            (identical(other.nicknameError, nicknameError) ||
-                other.nicknameError == nicknameError) &&
-            (identical(other.serverError, serverError) ||
-                other.serverError == serverError));
+            (identical(other.emailError, emailError) || other.emailError == emailError) &&
+            (identical(other.usernameError, usernameError) ||
+                other.usernameError == usernameError) &&
+            (identical(other.serverError, serverError) || other.serverError == serverError));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, firstName, lastName,
-      username, email, role, emailError, nicknameError, serverError);
+  int get hashCode => Object.hash(runtimeType, status, firstName, lastName, username, email, role,
+      emailError, usernameError, serverError);
 
   @JsonKey(ignore: true)
   @override
@@ -1248,7 +1242,7 @@ abstract class _ProfileEditState implements ProfileEditState {
       required final String email,
       final String? role,
       final ProfileEditEmailError? emailError,
-      final ProfileEditNicknameError? nicknameError,
+      final ProfileEditUsernameError? usernameError,
       final String? serverError}) = _$_ProfileEditState;
 
   @override
@@ -1266,7 +1260,7 @@ abstract class _ProfileEditState implements ProfileEditState {
   @override
   ProfileEditEmailError? get emailError;
   @override
-  ProfileEditNicknameError? get nicknameError;
+  ProfileEditUsernameError? get usernameError;
   @override
   String? get serverError;
   @override

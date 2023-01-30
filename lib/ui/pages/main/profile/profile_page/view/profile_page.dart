@@ -46,6 +46,7 @@ class _ProfileContentWidget extends StatelessWidget {
           ProfileButtonWidget(
             text: 'Edit Profile',
             icon: Assets.svg.edit.svg(height: 28, color: AppColors.primary100),
+            // onPressed: ()  => context.pushNamed<bool>(RouteName.profileEdit),
             onPressed: () async {
               final result = await context.pushNamed<bool>(RouteName.profileEdit);
               WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -110,9 +111,9 @@ class _HeaderWidgetState extends State<_HeaderWidget> {
               AvatarWidget(image: user.image),
               const SizedBox(height: 20),
               if (user.firstName == '' && user.lastName == '')
-                Text(user.username, style: AppTypography.b22d)
+                Text(user.username, style: AppTypography.b22d, maxLines: 1)
               else
-                Text('${user.firstName} ${user.lastName}', style: AppTypography.b22d),
+                Text('${user.firstName} ${user.lastName}', style: AppTypography.b22d, maxLines: 1),
               const SizedBox(height: 12),
               Container(
                 padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 22),

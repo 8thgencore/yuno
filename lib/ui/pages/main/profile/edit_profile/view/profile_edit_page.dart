@@ -154,16 +154,30 @@ class _ListTextFieldWidget extends StatelessWidget {
   }
 }
 
-class _FirstNameTextField extends StatelessWidget {
+class _FirstNameTextField extends StatefulWidget {
   const _FirstNameTextField();
+
+  @override
+  State<_FirstNameTextField> createState() => _FirstNameTextFieldState();
+}
+
+class _FirstNameTextFieldState extends State<_FirstNameTextField> {
+  late final TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileEditBloc, ProfileEditState>(
       buildWhen: (_, current) => current.status == ProfileEditStatus.loaded,
       builder: (context, state) {
+        _controller.value = TextEditingValue(text: state.firstName);
         return CustomTextField(
-          controller: TextEditingController(text: state.firstName),
+          controller: _controller,
           labelText: 'First Name',
           keyboardType: TextInputType.text,
           textColor: AppColors.dark100,
@@ -176,16 +190,30 @@ class _FirstNameTextField extends StatelessWidget {
   }
 }
 
-class _LastNameTextField extends StatelessWidget {
+class _LastNameTextField extends StatefulWidget {
   const _LastNameTextField();
+
+  @override
+  State<_LastNameTextField> createState() => _LastNameTextFieldState();
+}
+
+class _LastNameTextFieldState extends State<_LastNameTextField> {
+  late final TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileEditBloc, ProfileEditState>(
       buildWhen: (_, current) => current.status == ProfileEditStatus.loaded,
       builder: (context, state) {
+        _controller.value = TextEditingValue(text: state.lastName);
         return CustomTextField(
-          controller: TextEditingController(text: state.lastName),
+          controller: _controller,
           labelText: 'Last Name',
           keyboardType: TextInputType.text,
           textColor: AppColors.dark100,
@@ -198,17 +226,31 @@ class _LastNameTextField extends StatelessWidget {
   }
 }
 
-class _UsernameTextField extends StatelessWidget {
+class _UsernameTextField extends StatefulWidget {
   const _UsernameTextField();
+
+  @override
+  State<_UsernameTextField> createState() => _UsernameTextFieldState();
+}
+
+class _UsernameTextFieldState extends State<_UsernameTextField> {
+  late final TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileEditBloc, ProfileEditState>(
       buildWhen: (_, current) => current.status == ProfileEditStatus.loaded,
       builder: (context, state) {
-        final error = state.nicknameError;
+        final error = state.usernameError;
+        _controller.value = TextEditingValue(text: state.username);
         return CustomTextField(
-          controller: TextEditingController(text: state.username),
+          controller: _controller,
           labelText: 'Nickname',
           errorText: error?.toString(),
           keyboardType: TextInputType.text,
@@ -222,8 +264,21 @@ class _UsernameTextField extends StatelessWidget {
   }
 }
 
-class _EmailTextField extends StatelessWidget {
+class _EmailTextField extends StatefulWidget {
   const _EmailTextField();
+
+  @override
+  State<_EmailTextField> createState() => _EmailTextFieldState();
+}
+
+class _EmailTextFieldState extends State<_EmailTextField> {
+  late final TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -231,8 +286,9 @@ class _EmailTextField extends StatelessWidget {
       buildWhen: (_, current) => current.status == ProfileEditStatus.loaded,
       builder: (context, state) {
         final error = state.emailError;
+        _controller.value = TextEditingValue(text: state.email);
         return CustomTextField(
-          controller: TextEditingController(text: state.email),
+          controller: _controller,
           labelText: 'Email',
           errorText: error?.toString(),
           keyboardType: TextInputType.emailAddress,
@@ -246,16 +302,30 @@ class _EmailTextField extends StatelessWidget {
   }
 }
 
-class _RoleTextField extends StatelessWidget {
+class _RoleTextField extends StatefulWidget {
   const _RoleTextField();
+
+  @override
+  State<_RoleTextField> createState() => _RoleTextFieldState();
+}
+
+class _RoleTextFieldState extends State<_RoleTextField> {
+  late final TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileEditBloc, ProfileEditState>(
       buildWhen: (_, current) => current.status == ProfileEditStatus.loaded,
       builder: (context, state) {
+        _controller.value = TextEditingValue(text: state.role ?? '');
         return CustomTextField(
-          controller: TextEditingController(text: state.role),
+          controller: _controller,
           labelText: 'Role',
           textColor: AppColors.dark60,
           enabled: false,

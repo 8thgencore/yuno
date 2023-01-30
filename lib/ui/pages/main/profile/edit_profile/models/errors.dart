@@ -1,3 +1,3 @@
 enum ProfileEditEmailError { empty, invalid }
 
-enum ProfileEditNicknameError { empty, tooShort }
+enum ProfileEditUsernameError { empty, tooShort }
