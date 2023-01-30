@@ -112,7 +112,7 @@ class _ProjectClient implements ProjectClient {
   }
 
   @override
-  Future<BaseResponse<IProjectWithUsersTasks>> getProjectProjectId({required projectId}) async {
+  Future<BaseResponse<IProjectWithUsersTasks>> getProjectId({required projectId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -138,7 +138,7 @@ class _ProjectClient implements ProjectClient {
   }
 
   @override
-  Future<BaseResponse<IProjectRead>> putProjectProjectId({
+  Future<BaseResponse<IProjectRead>> putProjectId({
     required projectId,
     required body,
   }) async {
@@ -168,7 +168,7 @@ class _ProjectClient implements ProjectClient {
   }
 
   @override
-  Future<BaseResponse<IProjectRead>> deleteProjectProjectId({required projectId}) async {
+  Future<BaseResponse<IProjectRead>> deleteProjectId({required projectId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -194,7 +194,7 @@ class _ProjectClient implements ProjectClient {
   }
 
   @override
-  Future<BaseResponse<IProjectWithUsers>> getProjectProjectIdJoin({required projectId}) async {
+  Future<BaseResponse<IProjectWithUsers>> projectIdJoin({required projectId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -220,7 +220,7 @@ class _ProjectClient implements ProjectClient {
   }
 
   @override
-  Future<BaseResponse<IProjectWithUsers>> getProjectProjectIdLeave({required projectId}) async {
+  Future<BaseResponse<IProjectWithUsers>> projectIdLeave({required projectId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -246,7 +246,7 @@ class _ProjectClient implements ProjectClient {
   }
 
   @override
-  Future<BaseResponse<PaginatedDataITaskRead>> getProjectProjectIdTasks({
+  Future<BaseResponse<PaginatedDataITaskRead>> getProjectIdTasks({
     required projectId,
     page = 1,
     size = 50,

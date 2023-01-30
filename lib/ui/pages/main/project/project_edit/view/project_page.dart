@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
+import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/project/project_edit/bloc/project_edit_bloc.dart';
 import 'package:yuno/ui/widgets/custom_rounded_button.dart';
@@ -63,8 +64,7 @@ class ProjectEditPage extends StatelessWidget {
                 type: ToastType.success,
               ),
             );
-            // TODO: Push to Project Details
-            context.pop(true);
+            context.pushReplacementNamed(RouteName.project, params: {'id': state.id});
             break;
         }
       },

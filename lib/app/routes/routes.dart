@@ -10,6 +10,7 @@ abstract class RouteName {
   static const profile = 'profile';
   static const profileEdit = 'edit';
   static const profileChangePassword = 'change-password';
+  static const profileProjects = 'my-projects';
   static const projects = 'projects';
   static const project = 'project';
   static const projectEdit = 'project-edit';
@@ -30,6 +31,7 @@ abstract class RoutePath {
   static const profile = '/profile';
   static const profileEdit = 'edit';
   static const profileChangePassword = 'change-password';
+  static const profileProjects = 'my-projects';
   static const projects = '/projects';
   static const project = ':id([0-9a-z-]{36})';
   static const projectEdit = 'edit';

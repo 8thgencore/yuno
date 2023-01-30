@@ -86,7 +86,7 @@ class _$ProjectDetailsEventCopyWithImpl<$Res, $Val extends ProjectDetailsEvent>
     implements $ProjectDetailsEventCopyWith<$Res> {
   _$ProjectDetailsEventCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
 // ignore: unused_field
   final $Res Function($Val) _then;
@@ -779,36 +779,36 @@ mixin _$ProjectDetailsState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-required TResult Function(_InitialState value) initial,
-required TResult Function(_LoadingState value) loading,
-required TResult Function(_LoadedState value) loaded,
-required TResult Function(_FailureState value) failure,
-}) =>
-throw _privateConstructorUsedError;
-@optionalTypeArgs
-TResult? mapOrNull<TResult extends Object?>({
-TResult? Function(_InitialState value)? initial,
-TResult? Function(_LoadingState value)? loading,
-TResult? Function(_LoadedState value)? loaded,
-TResult? Function(_FailureState value)? failure,
-}) =>
-throw _privateConstructorUsedError;
-@optionalTypeArgs
-TResult maybeMap<TResult extends Object?>({
-TResult Function(_InitialState value)? initial,
-TResult Function(_LoadingState value)? loading,
-TResult Function(_LoadedState value)? loaded,
-TResult Function(_FailureState value)? failure,
-required TResult orElse(),
-}) =>
-throw _privateConstructorUsedError;
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_LoadedState value) loaded,
+    required TResult Function(_FailureState value) failure,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_LoadedState value)? loaded,
+    TResult? Function(_FailureState value)? failure,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_LoadedState value)? loaded,
+    TResult Function(_FailureState value)? failure,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ProjectDetailsStateCopyWith<$Res> {
-factory $ProjectDetailsStateCopyWith(
-ProjectDetailsState value, $Res Function(ProjectDetailsState) then) =
-_$ProjectDetailsStateCopyWithImpl<$Res, ProjectDetailsState>;
+  factory $ProjectDetailsStateCopyWith(
+          ProjectDetailsState value, $Res Function(ProjectDetailsState) then) =
+      _$ProjectDetailsStateCopyWithImpl<$Res, ProjectDetailsState>;
 }
 
 /// @nodoc

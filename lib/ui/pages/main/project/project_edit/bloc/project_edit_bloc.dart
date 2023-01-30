@@ -84,7 +84,10 @@ class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
         description: state.description,
       );
       if (result != null) {
-        emit(state.copyWith(status: ProjectEditStatus.successCreated));
+        emit(state.copyWith(
+          id: result.id,
+          status: ProjectEditStatus.successCreated,
+        ));
       }
     } on DioError catch (dioError) {
       emit(state.copyWith(

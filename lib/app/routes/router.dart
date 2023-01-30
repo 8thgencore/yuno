@@ -120,6 +120,17 @@ mixin RouterMixin on State<App> {
                     child: const ChangePasswordPage(),
                   ),
                 ),
+                GoRoute(
+                  name: RouteName.profileProjects,
+                  path: RoutePath.profileProjects,
+                  parentNavigatorKey: rootNavigatorKey,
+                  builder: (context, state) => BlocProvider(
+                    create: (context) => ProjectsListBloc(
+                      apiProjectRepository: sl.get<ApiProjectRepository>(),
+                    )..add(const ProjectsListEvent.started(isSelf: true)),
+                    child: const ProjectsListPage(),
+                  ),
+                ),
               ],
             ),
           ],
@@ -134,7 +145,7 @@ mixin RouterMixin on State<App> {
           builder: (context, state) => BlocProvider(
             create: (context) => ProjectsListBloc(
               apiProjectRepository: sl.get<ApiProjectRepository>(),
-            )..add(const ProjectsListEvent.started()),
+            )..add(const ProjectsListEvent.started(isSelf: false)),
             child: const ProjectsListPage(),
           ),
           routes: [

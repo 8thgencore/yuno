@@ -28,14 +28,22 @@ class ProjectsListBloc extends Bloc<ProjectsListEvent, ProjectsListState> {
   ) async {
     emit(const ProjectsListState.loading());
     try {
-      final projects = await apiProjectRepository.getProjects(size: 10);
-      if (projects != null) {
-        if (projects.isNotEmpty) {
-          _projects = projects;
+      if (event.isSelf) {
+        final projects = await apiProjectRepository.getMyProjects(size: 10);
+        if (projects != null) {
+          if (projects.isNotEmpty) {
+            _projects = projects;
+          }
+          emit(ProjectsListState.loaded(_projects));
         }
-        emit(ProjectsListState.loaded(_projects));
       } else {
-        emit(const ProjectsListState.failure('Wrong data from server'));
+        final projects = await apiProjectRepository.getProjects(size: 10);
+        if (projects != null) {
+          if (projects.isNotEmpty) {
+            _projects = projects;
+          }
+          emit(ProjectsListState.loaded(_projects));
+        }
       }
     } on DioError catch (dioError) {
       emit(ProjectsListState.failure(dioErrorInterceptor(dioError).toString()));

@@ -8,8 +8,8 @@ class ApiProjectRepository {
 
   final ProjectClient projectClient;
 
-  Future<List<IProjectWithUsers>> getMyProjects() async {
-    final response = await projectClient.getProjectMy();
+  Future<List<IProjectWithUsers>> getMyProjects({required int size}) async {
+    final response = await projectClient.getProjectMy(size: size);
     return response.data.items;
   }
 
@@ -19,7 +19,7 @@ class ApiProjectRepository {
   }
 
   Future<IProjectWithUsersTasks> getById({required String id}) async {
-    final response = await projectClient.getProjectProjectId(projectId: id);
+    final response = await projectClient.getProjectId(projectId: id);
     return response.data;
   }
 
@@ -43,7 +43,7 @@ class ApiProjectRepository {
     required String name,
     required String description,
   }) async {
-    final response = await projectClient.putProjectProjectId(
+    final response = await projectClient.putProjectId(
       projectId: id,
       body: IProjectUpdate(
         name: name,
@@ -55,7 +55,17 @@ class ApiProjectRepository {
   }
 
   Future<IProjectRead> deleteById({required String id}) async {
-    final response = await projectClient.deleteProjectProjectId(projectId: id);
+    final response = await projectClient.deleteProjectId(projectId: id);
+    return response.data;
+  }
+
+  Future<IProjectWithUsers> joinProject({required String id}) async {
+    final response = await projectClient.projectIdJoin(projectId: id);
+    return response.data;
+  }
+
+  Future<IProjectWithUsers> leaveProject({required String id}) async {
+    final response = await projectClient.projectIdJoin(projectId: id);
     return response.data;
   }
 }

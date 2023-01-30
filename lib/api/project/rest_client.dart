@@ -33,33 +33,33 @@ abstract class ProjectClient {
   });
 
   @GET('/project/{project_id}')
-  Future<BaseResponse<IProjectWithUsersTasks>> getProjectProjectId({
+  Future<BaseResponse<IProjectWithUsersTasks>> getProjectId({
     @Path('project_id') required String projectId,
   });
 
   @PUT('/project/{project_id}')
-  Future<BaseResponse<IProjectRead>> putProjectProjectId({
+  Future<BaseResponse<IProjectRead>> putProjectId({
     @Path('project_id') required String projectId,
     @Body() required IProjectUpdate body,
   });
 
   @DELETE('/project/{project_id}')
-  Future<BaseResponse<IProjectRead>> deleteProjectProjectId({
+  Future<BaseResponse<IProjectRead>> deleteProjectId({
     @Path('project_id') required String projectId,
   });
 
   @GET('/project/{project_id}/join')
-  Future<BaseResponse<IProjectWithUsers>> getProjectProjectIdJoin({
+  Future<BaseResponse<IProjectWithUsers>> projectIdJoin({
     @Path('project_id') required String projectId,
   });
 
   @GET('/project/{project_id}/leave')
-  Future<BaseResponse<IProjectWithUsers>> getProjectProjectIdLeave({
+  Future<BaseResponse<IProjectWithUsers>> projectIdLeave({
     @Path('project_id') required String projectId,
   });
 
   @GET('/project/{project_id}/tasks')
-  Future<BaseResponse<PaginatedDataITaskRead>> getProjectProjectIdTasks({
+  Future<BaseResponse<PaginatedDataITaskRead>> getProjectIdTasks({
     @Path('project_id') required String projectId,
     @Query('page') int? page = 1,
     @Query('size') int? size = 50,

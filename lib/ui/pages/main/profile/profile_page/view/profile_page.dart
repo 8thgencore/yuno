@@ -66,6 +66,7 @@ class _ProfileContentWidget extends StatelessWidget {
           ProfileButtonWidget(
             text: 'Projects You Are In',
             icon: Assets.svg.project.svg(height: 28, color: AppColors.primary100),
+            onPressed: () => context.pushNamed(RouteName.profileProjects),
           ),
           const SizedBox(height: 16),
           ProfileButtonWidget(
