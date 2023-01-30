@@ -22,7 +22,7 @@ class TaskEditPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<TaskEditBloc, TaskEditState>(
+    return BlocConsumer<TaskEditBloc, TaskEditState>(
       listener: (context, state) {
         switch (state.status) {
           case TaskEditStatus.initial:
@@ -69,30 +69,32 @@ class TaskEditPage extends StatelessWidget {
             break;
         }
       },
-      child: LoaderOverlay(
-        child: Scaffold(
-          backgroundColor: AppColors.screen100,
-          body: SafeArea(child: _CreateTaskContentWidget(isUpdate: isUpdate)),
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-          floatingActionButton: Padding(
-            padding: const EdgeInsets.only(left: 15, right: 15),
-            child: CustomRoundedButton(
-              textButton: isUpdate ? 'Update' : 'Create task',
-              onPressed: () {
-                final currentNode = FocusScope.of(context);
-                if (currentNode.focusedChild != null && !currentNode.hasPrimaryFocus) {
-                  FocusManager.instance.primaryFocus?.unfocus();
-                }
-                isUpdate
-                    ? context.read<TaskEditBloc>().add(const TaskEditEvent.updated())
-                    : context.read<TaskEditBloc>().add(const TaskEditEvent.saved());
-              },
-              textColor: AppColors.white100,
-              buttonColor: AppColors.primary100,
+      builder: (context, state) {
+        return LoaderOverlay(
+          child: Scaffold(
+            backgroundColor: AppColors.screen100,
+            body: SafeArea(child: _CreateTaskContentWidget(isUpdate: isUpdate)),
+            floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+            floatingActionButton: Padding(
+              padding: const EdgeInsets.only(left: 15, right: 15),
+              child: CustomRoundedButton(
+                textButton: isUpdate ? 'Update' : 'Create task',
+                onPressed: state.name.isNotEmpty
+                    ? () {
+                        final currentNode = FocusScope.of(context);
+                        if (currentNode.focusedChild != null && !currentNode.hasPrimaryFocus) {
+                          FocusManager.instance.primaryFocus?.unfocus();
+                        }
+                        isUpdate
+                            ? context.read<TaskEditBloc>().add(const TaskEditEvent.updated())
+                            : context.read<TaskEditBloc>().add(const TaskEditEvent.saved());
+                      }
+                    : null,
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

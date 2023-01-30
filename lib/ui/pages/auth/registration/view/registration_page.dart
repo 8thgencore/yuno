@@ -492,8 +492,6 @@ class _RegistrationButton extends StatelessWidget {
                 ? null
                 : context.read<RegistrationBloc>().add(const RegistrationCreateAccount());
           },
-          textColor: AppColors.white100,
-          buttonColor: AppColors.primary100,
           // textColor: inProgress ? AppColors.white100 : AppColors.grey100,
           // buttonColor: inProgress ? AppColors.primary100 : AppColors.dark10,
         );

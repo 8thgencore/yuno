@@ -21,7 +21,7 @@ class ProjectEditPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<ProjectEditBloc, ProjectEditState>(
+    return BlocConsumer<ProjectEditBloc, ProjectEditState>(
       listener: (context, state) {
         switch (state.status) {
           case ProjectEditStatus.initial:
@@ -68,30 +68,32 @@ class ProjectEditPage extends StatelessWidget {
             break;
         }
       },
-      child: LoaderOverlay(
-        child: Scaffold(
-          backgroundColor: AppColors.screen100,
-          body: SafeArea(child: _CreateProjectContentWidget(isUpdate: isUpdate)),
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-          floatingActionButton: Padding(
-            padding: const EdgeInsets.only(left: 15, right: 15),
-            child: CustomRoundedButton(
-              textButton: isUpdate ? 'Update' : 'Create project',
-              onPressed: () {
-                final currentNode = FocusScope.of(context);
-                if (currentNode.focusedChild != null && !currentNode.hasPrimaryFocus) {
-                  FocusManager.instance.primaryFocus?.unfocus();
-                }
-                isUpdate
-                    ? context.read<ProjectEditBloc>().add(const ProjectEditEvent.updated())
-                    : context.read<ProjectEditBloc>().add(const ProjectEditEvent.saved());
-              },
-              textColor: AppColors.white100,
-              buttonColor: AppColors.primary100,
+      builder: (context, state) {
+        return LoaderOverlay(
+          child: Scaffold(
+            backgroundColor: AppColors.screen100,
+            body: SafeArea(child: _CreateProjectContentWidget(isUpdate: isUpdate)),
+            floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+            floatingActionButton: Padding(
+              padding: const EdgeInsets.only(left: 15, right: 15),
+              child: CustomRoundedButton(
+                textButton: isUpdate ? 'Update' : 'Create project',
+                onPressed: state.name.isNotEmpty
+                    ? () {
+                        final currentNode = FocusScope.of(context);
+                        if (currentNode.focusedChild != null && !currentNode.hasPrimaryFocus) {
+                          FocusManager.instance.primaryFocus?.unfocus();
+                        }
+                        isUpdate
+                            ? context.read<ProjectEditBloc>().add(const ProjectEditEvent.updated())
+                            : context.read<ProjectEditBloc>().add(const ProjectEditEvent.saved());
+                      }
+                    : null,
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

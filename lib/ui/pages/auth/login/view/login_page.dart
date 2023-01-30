@@ -414,8 +414,8 @@ class _LoginButton extends StatelessWidget {
         }
         context.read<LoginBloc>().add(const LoginAuthAccount());
       },
-      textColor: AppColors.white100,
-      buttonColor: AppColors.primary100,
+      // textColor: AppColors.white100,
+      // buttonColor: AppColors.primary100,
       // textColor: inProgress ? AppColors.white100 : AppColors.grey100,
       // buttonColor: inProgress ? AppColors.primary100 : AppColors.dark10,
     );

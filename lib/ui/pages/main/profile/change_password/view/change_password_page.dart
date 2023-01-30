@@ -65,9 +65,6 @@ class ChangePasswordPage extends StatelessWidget {
                         context.read<ChangePasswordBloc>().add(const ChangePasswordEvent.saved());
                       }
                     : null,
-                textColor: AppColors.white100,
-                disabledBackgroundColor: AppColors.dark10,
-                buttonColor: state.isValid ? AppColors.primary100 : AppColors.white100,
               ),
             ),
           ),

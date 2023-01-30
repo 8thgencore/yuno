@@ -8,13 +8,40 @@ class AppTheme {
 
   static final lightTheme = ThemeData(
     fontFamily: FontFamily.poppins,
-    backgroundColor: AppColors.screen100,
+    // colorScheme: ColorScheme(
+    //   brightness: Brightness.light,
+    //   primary: AppColors.primary100,
+    //   onPrimary: AppColors.primary100,
+    //   secondary: AppColors.secondary100,
+    //   onSecondary: AppColors.secondary100,
+    //   error: AppColors.error100,
+    //   onError: AppColors.error100,
+    //   background: AppColors.white100,
+    //   onBackground: AppColors.white100,
+    //   surface: AppColors.screen100,
+    //   onSurface: AppColors.screen100,
+    // ),
     appBarTheme: const AppBarTheme(
       elevation: 0,
       color: Colors.transparent,
     ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: AppColors.primary100,
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.primary100,
+        disabledBackgroundColor: AppColors.dark10,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        textStyle: MaterialStateTextStyle.resolveWith(
+          (Set<MaterialState> states) {
+            if (states.contains(MaterialState.disabled)) {
+              return AppTypography.b16l.copyWith(color: AppColors.grey100);
+            }
+            return AppTypography.b16l.copyWith(color: AppColors.white100);
+          },
+        ),
+      ),
     ),
     checkboxTheme: CheckboxThemeData(
       side: MaterialStateBorderSide.resolveWith(

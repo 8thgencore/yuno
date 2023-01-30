@@ -68,8 +68,6 @@ class ProfileEditPage extends StatelessWidget {
                 }
                 context.read<ProfileEditBloc>().add(const ProfileEditEvent.saved());
               },
-              textColor: AppColors.white100,
-              buttonColor: AppColors.primary100,
             ),
           ),
         ),
