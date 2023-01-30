@@ -30,7 +30,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     try {
       await apiUserRepository.getData();
 
-      await Future.delayed(const Duration(seconds: 1));
+      // await Future.delayed(const Duration(seconds: 1));
 
       final token = await tokenDataRepository.getItem();
       if (token == null || token.isEmpty) {

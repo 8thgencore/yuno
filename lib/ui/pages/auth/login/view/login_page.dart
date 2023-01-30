@@ -43,7 +43,7 @@ class _LoginPageWidget extends StatelessWidget {
       listener: (context, state) {
         if (state is LoginCompleted) {
           context.loaderOverlay.hide();
-          context.goNamed(RouteName.profile);
+          context.goNamed(RouteName.splash);
         } else if (state is LoginInProgress) {
           context.loaderOverlay.show();
         } else if (state is LoginFieldsInfo) {
@@ -162,6 +162,7 @@ class _ErrorWidget extends StatelessWidget {
             color: AppColors.error100,
           ),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Text(
                 'Error from server',

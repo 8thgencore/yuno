@@ -70,7 +70,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
       final task = _tasks.firstWhere((task) => task.id == event.id);
       final bool isDone = task.done ?? false;
 
-      final result = await apiTaskRepository.updateById(
+      final updatedTask = await apiTaskRepository.updateById(
         id: event.id,
         name: task.name,
         deadline: task.deadline,
@@ -78,9 +78,11 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
         done: !isDone,
       );
 
-      if (result != null) {
-        _tasks.removeWhere((task) => task.id == event.id);
-        _tasks.add(task.copyWith(done: !isDone));
+      if (updatedTask != null) {
+        final index = _tasks.indexWhere((task) => task.id == event.id);
+        if (index >= 0) {
+          _tasks[index] = task.copyWith(done: !isDone);
+        }
       }
     } on DioError catch (dioError) {
       emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
