@@ -94,7 +94,7 @@ class _$ProjectDetailsEventCopyWithImpl<$Res, $Val extends ProjectDetailsEvent>
 
   // ignore: unused_field
   final $Val _value;
-// ignore: unused_field
+  // ignore: unused_field
   final $Res Function($Val) _then;
 }
 
@@ -1296,7 +1296,7 @@ class _$_LoadedState extends _LoadedState {
   @override
   List<ITaskRead> get tasks {
     if (_tasks is EqualUnmodifiableListView) return _tasks;
-// ignore: implicit_dynamic_type
+    // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tasks);
   }
 

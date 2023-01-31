@@ -16,42 +16,46 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ProjectsListEvent {
-  bool get isSelf => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isSelf) started,
+    required TResult Function() updated,
   }) =>
       throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool isSelf)? started,
+    TResult? Function()? updated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isSelf)? started,
+    TResult Function()? updated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
+    required TResult Function(_UpdatedEvent value) updated,
   }) =>
       throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
+    TResult? Function(_UpdatedEvent value)? updated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
+    TResult Function(_UpdatedEvent value)? updated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ProjectsListEventCopyWith<ProjectsListEvent> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -59,8 +63,6 @@ abstract class $ProjectsListEventCopyWith<$Res> {
   factory $ProjectsListEventCopyWith(
           ProjectsListEvent value, $Res Function(ProjectsListEvent) then) =
       _$ProjectsListEventCopyWithImpl<$Res, ProjectsListEvent>;
-  @useResult
-  $Res call({bool isSelf});
 }
 
 /// @nodoc
@@ -72,26 +74,12 @@ class _$ProjectsListEventCopyWithImpl<$Res, $Val extends ProjectsListEvent>
   final $Val _value;
 // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isSelf = null,
-  }) {
-    return _then(_value.copyWith(
-      isSelf: null == isSelf
-          ? _value.isSelf
-          : isSelf // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$_StartedEventCopyWith<$Res> implements $ProjectsListEventCopyWith<$Res> {
+abstract class _$$_StartedEventCopyWith<$Res> {
   factory _$$_StartedEventCopyWith(_$_StartedEvent value, $Res Function(_$_StartedEvent) then) =
       __$$_StartedEventCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({bool isSelf});
 }
@@ -151,6 +139,7 @@ class _$_StartedEvent implements _StartedEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isSelf) started,
+    required TResult Function() updated,
   }) {
     return started(isSelf);
   }
@@ -159,6 +148,7 @@ class _$_StartedEvent implements _StartedEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool isSelf)? started,
+    TResult? Function()? updated,
   }) {
     return started?.call(isSelf);
   }
@@ -167,6 +157,7 @@ class _$_StartedEvent implements _StartedEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isSelf)? started,
+    TResult Function()? updated,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -179,6 +170,7 @@ class _$_StartedEvent implements _StartedEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
+    required TResult Function(_UpdatedEvent value) updated,
   }) {
     return started(this);
   }
@@ -187,6 +179,7 @@ class _$_StartedEvent implements _StartedEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
+    TResult? Function(_UpdatedEvent value)? updated,
   }) {
     return started?.call(this);
   }
@@ -195,6 +188,7 @@ class _$_StartedEvent implements _StartedEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
+    TResult Function(_UpdatedEvent value)? updated,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -207,11 +201,108 @@ class _$_StartedEvent implements _StartedEvent {
 abstract class _StartedEvent implements ProjectsListEvent {
   const factory _StartedEvent({required final bool isSelf}) = _$_StartedEvent;
 
-  @override
   bool get isSelf;
-  @override
   @JsonKey(ignore: true)
   _$$_StartedEventCopyWith<_$_StartedEvent> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_UpdatedEventCopyWith<$Res> {
+  factory _$$_UpdatedEventCopyWith(_$_UpdatedEvent value, $Res Function(_$_UpdatedEvent) then) =
+      __$$_UpdatedEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_UpdatedEventCopyWithImpl<$Res>
+    extends _$ProjectsListEventCopyWithImpl<$Res, _$_UpdatedEvent>
+    implements _$$_UpdatedEventCopyWith<$Res> {
+  __$$_UpdatedEventCopyWithImpl(_$_UpdatedEvent _value, $Res Function(_$_UpdatedEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_UpdatedEvent implements _UpdatedEvent {
+  const _$_UpdatedEvent();
+
+  @override
+  String toString() {
+    return 'ProjectsListEvent.updated()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_UpdatedEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isSelf) started,
+    required TResult Function() updated,
+  }) {
+    return updated();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool isSelf)? started,
+    TResult? Function()? updated,
+  }) {
+    return updated?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isSelf)? started,
+    TResult Function()? updated,
+    required TResult orElse(),
+  }) {
+    if (updated != null) {
+      return updated();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StartedEvent value) started,
+    required TResult Function(_UpdatedEvent value) updated,
+  }) {
+    return updated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_StartedEvent value)? started,
+    TResult? Function(_UpdatedEvent value)? updated,
+  }) {
+    return updated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_StartedEvent value)? started,
+    TResult Function(_UpdatedEvent value)? updated,
+    required TResult orElse(),
+  }) {
+    if (updated != null) {
+      return updated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdatedEvent implements ProjectsListEvent {
+  const factory _UpdatedEvent() = _$_UpdatedEvent;
 }
 
 /// @nodoc

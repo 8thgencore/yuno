@@ -15,12 +15,17 @@ class ProjectsListBloc extends Bloc<ProjectsListEvent, ProjectsListState> {
     required this.apiProjectRepository,
   }) : super(const ProjectsListState.initial()) {
     on<ProjectsListEvent>(
-        (event, emit) => event.map(started: (event) => _onProjectsLoaded(event, emit)));
+      (event, emit) => event.map(
+        started: (event) => _onProjectsLoaded(event, emit),
+        updated: (event) => _onProjectsUpdated(event, emit),
+      ),
+    );
   }
 
   final ApiProjectRepository apiProjectRepository;
 
   List<IProjectWithUsers> _projects = [];
+  bool _isSelf = false;
 
   FutureOr<void> _onProjectsLoaded(
     _StartedEvent event,
@@ -29,19 +34,39 @@ class ProjectsListBloc extends Bloc<ProjectsListEvent, ProjectsListState> {
     emit(const ProjectsListState.loading());
     try {
       if (event.isSelf) {
+        _isSelf = true;
         final projects = await apiProjectRepository.getMyProjects(size: 10);
         if (projects != null) {
-          if (projects.isNotEmpty) {
-            _projects = projects;
-          }
+          _projects = projects;
           emit(ProjectsListState.loaded(_projects));
         }
       } else {
         final projects = await apiProjectRepository.getProjects(size: 10);
         if (projects != null) {
-          if (projects.isNotEmpty) {
-            _projects = projects;
-          }
+          _projects = projects;
+          emit(ProjectsListState.loaded(_projects));
+        }
+      }
+    } on DioError catch (dioError) {
+      emit(ProjectsListState.failure(dioErrorInterceptor(dioError).toString()));
+    }
+  }
+
+  FutureOr<void> _onProjectsUpdated(
+    _UpdatedEvent event,
+    Emitter<ProjectsListState> emit,
+  ) async {
+    try {
+      if (_isSelf) {
+        final projects = await apiProjectRepository.getMyProjects(size: 10);
+        if (projects != null) {
+          _projects = projects;
+          emit(ProjectsListState.loaded(_projects));
+        }
+      } else {
+        final projects = await apiProjectRepository.getProjects(size: 10);
+        if (projects != null) {
+          _projects = projects;
           emit(ProjectsListState.loaded(_projects));
         }
       }

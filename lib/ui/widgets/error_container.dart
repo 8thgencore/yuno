@@ -13,7 +13,8 @@ class ErrorContainer extends StatelessWidget {
       alignment: Alignment.center,
       width: double.infinity,
       child: Text(
-        'Tasks list is empty',
+        text,
+        textAlign: TextAlign.center,
         style: AppTypography.l14g,
       ),
     );

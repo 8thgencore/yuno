@@ -272,8 +272,7 @@ class _CheckListWidget extends StatelessWidget {
         BlocBuilder<HomeChecklistBloc, HomeChecklistState>(
           builder: (context, state) => state.maybeWhen(
             loading: () => const Center(
-              child: CircularProgressIndicator(),
-            ),
+              child: CircularProgressIndicator()),
             loaded: (tasks) => tasks.isNotEmpty
                 ? ListView.builder(
                     shrinkWrap: true,
@@ -301,8 +300,8 @@ class _CheckListWidget extends StatelessWidget {
                     },
                   )
                 : const ErrorContainer(text: 'Checklist is empty'),
-            failure: (error) => ErrorContainer(text: 'Projects list is empty\n$error'),
-            orElse: () => const ErrorContainer(text: 'No upcoming task'),
+            failure: (error) => ErrorContainer(text: '$error'),
+            orElse: () => const ErrorContainer(text: 'Tasks list is empty'),
           ),
         ),
       ],

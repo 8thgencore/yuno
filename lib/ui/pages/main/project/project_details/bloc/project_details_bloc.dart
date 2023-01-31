@@ -107,7 +107,10 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
     Emitter<ProjectDetailsState> emit,
   ) async {
     try {
+      _tasks.clear();
       await apiProjectRepository.joinProject(id: _projectId);
+      // get new tasks list
+      await apiTaskRepository.getNotDoneTasks();
       await _getProjectInfo(emit);
     } on DioError catch (dioError) {
       emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
@@ -119,7 +122,10 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
     Emitter<ProjectDetailsState> emit,
   ) async {
     try {
+      _tasks.clear();
       await apiProjectRepository.leaveProject(id: _projectId);
+      // get new tasks list
+      await apiTaskRepository.getNotDoneTasks();
       await _getProjectInfo(emit);
     } on DioError catch (dioError) {
       emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
