@@ -22,22 +22,15 @@ IProjectWithUsersTasks _$IProjectWithUsersTasksFromJson(
 /// @nodoc
 mixin _$IProjectWithUsersTasks {
   String get name => throw _privateConstructorUsedError;
-
   String get description => throw _privateConstructorUsedError;
-
   String get link => throw _privateConstructorUsedError;
-
   String get id => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'created_by_id')
   String? get createdBy => throw _privateConstructorUsedError;
-
   List<ITaskRead>? get tasks => throw _privateConstructorUsedError;
-
   List<IUserRead>? get users => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $IProjectWithUsersTasksCopyWith<IProjectWithUsersTasks> get copyWith =>
       throw _privateConstructorUsedError;
@@ -214,7 +207,6 @@ class _$_IProjectWithUsersTasks implements _IProjectWithUsersTasks {
   @JsonKey(name: 'created_by_id')
   final String? createdBy;
   final List<ITaskRead>? _tasks;
-
   @override
   List<ITaskRead>? get tasks {
     final value = _tasks;
@@ -288,26 +280,19 @@ abstract class _IProjectWithUsersTasks implements IProjectWithUsersTasks {
 
   @override
   String get name;
-
   @override
   String get description;
-
   @override
   String get link;
-
   @override
   String get id;
-
   @override
   @JsonKey(name: 'created_by_id')
   String? get createdBy;
-
   @override
   List<ITaskRead>? get tasks;
-
   @override
   List<IUserRead>? get users;
-
   @override
   @JsonKey(ignore: true)
   _$$_IProjectWithUsersTasksCopyWith<_$_IProjectWithUsersTasks> get copyWith =>

@@ -9,7 +9,7 @@ class ITaskRead with _$ITaskRead {
     required String name,
     required String id,
     @Default(false) bool? done,
-    String? deadline,
+    DateTime? deadline,
     @JsonKey(name: 'project_id') String? projectId,
   }) = _ITaskRead;
 

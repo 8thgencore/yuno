@@ -22,7 +22,8 @@ ITaskUpdate _$ITaskUpdateFromJson(Map<String, dynamic> json) {
 mixin _$ITaskUpdate {
   String? get name => throw _privateConstructorUsedError;
   bool? get done => throw _privateConstructorUsedError;
-  String? get deadline => throw _privateConstructorUsedError;
+
+  DateTime? get deadline => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,8 +36,9 @@ abstract class $ITaskUpdateCopyWith<$Res> {
   factory $ITaskUpdateCopyWith(
           ITaskUpdate value, $Res Function(ITaskUpdate) then) =
       _$ITaskUpdateCopyWithImpl<$Res, ITaskUpdate>;
+
   @useResult
-  $Res call({String? name, bool? done, String? deadline});
+  $Res call({String? name, bool? done, DateTime? deadline});
 }
 
 /// @nodoc
@@ -68,7 +70,7 @@ class _$ITaskUpdateCopyWithImpl<$Res, $Val extends ITaskUpdate>
       deadline: freezed == deadline
           ? _value.deadline
           : deadline // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -79,9 +81,10 @@ abstract class _$$_ITaskUpdateCopyWith<$Res>
   factory _$$_ITaskUpdateCopyWith(
           _$_ITaskUpdate value, $Res Function(_$_ITaskUpdate) then) =
       __$$_ITaskUpdateCopyWithImpl<$Res>;
+
   @override
   @useResult
-  $Res call({String? name, bool? done, String? deadline});
+  $Res call({String? name, bool? done, DateTime? deadline});
 }
 
 /// @nodoc
@@ -111,7 +114,7 @@ class __$$_ITaskUpdateCopyWithImpl<$Res>
       deadline: freezed == deadline
           ? _value.deadline
           : deadline // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
     ));
   }
 }
@@ -121,8 +124,7 @@ class __$$_ITaskUpdateCopyWithImpl<$Res>
 class _$_ITaskUpdate implements _ITaskUpdate {
   const _$_ITaskUpdate({this.name, this.done = false, this.deadline});
 
-  factory _$_ITaskUpdate.fromJson(Map<String, dynamic> json) =>
-      _$$_ITaskUpdateFromJson(json);
+  factory _$_ITaskUpdate.fromJson(Map<String, dynamic> json) => _$$_ITaskUpdateFromJson(json);
 
   @override
   final String? name;
@@ -130,7 +132,7 @@ class _$_ITaskUpdate implements _ITaskUpdate {
   @JsonKey()
   final bool? done;
   @override
-  final String? deadline;
+  final DateTime? deadline;
 
   @override
   String toString() {
@@ -166,7 +168,7 @@ class _$_ITaskUpdate implements _ITaskUpdate {
 }
 
 abstract class _ITaskUpdate implements ITaskUpdate {
-  const factory _ITaskUpdate({final String? name, final bool? done, final String? deadline}) =
+  const factory _ITaskUpdate({final String? name, final bool? done, final DateTime? deadline}) =
       _$_ITaskUpdate;
 
   factory _ITaskUpdate.fromJson(Map<String, dynamic> json) = _$_ITaskUpdate.fromJson;
@@ -178,7 +180,7 @@ abstract class _ITaskUpdate implements ITaskUpdate {
   bool? get done;
 
   @override
-  String? get deadline;
+  DateTime? get deadline;
 
   @override
   @JsonKey(ignore: true)

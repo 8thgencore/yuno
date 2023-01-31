@@ -75,7 +75,7 @@ class TaskEditBloc extends Bloc<TaskEditEvent, TaskEditState> {
     _DeadlineChangedEvent event,
     Emitter<TaskEditState> emit,
   ) async {
-    emit(state.copyWith(deadline: event.text));
+    emit(state.copyWith(deadline: event.dateTime));
   }
 
   FutureOr<void> _onClickSwitch(

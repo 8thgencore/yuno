@@ -921,6 +921,7 @@ mixin _$ProjectDetailsState {
             IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)
         loaded,
     required TResult Function(Object error) failure,
+    required TResult Function() deleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -931,6 +932,7 @@ mixin _$ProjectDetailsState {
             IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
         loaded,
     TResult? Function(Object error)? failure,
+    TResult? Function()? deleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -941,6 +943,7 @@ mixin _$ProjectDetailsState {
             IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
         loaded,
     TResult Function(Object error)? failure,
+    TResult Function()? deleted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -950,6 +953,7 @@ mixin _$ProjectDetailsState {
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_LoadedState value) loaded,
     required TResult Function(_FailureState value) failure,
+    required TResult Function(_DeletedState value) deleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -958,6 +962,7 @@ mixin _$ProjectDetailsState {
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_LoadedState value)? loaded,
     TResult? Function(_FailureState value)? failure,
+    TResult? Function(_DeletedState value)? deleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -966,6 +971,7 @@ mixin _$ProjectDetailsState {
     TResult Function(_LoadingState value)? loading,
     TResult Function(_LoadedState value)? loaded,
     TResult Function(_FailureState value)? failure,
+    TResult Function(_DeletedState value)? deleted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1030,6 +1036,7 @@ class _$_InitialState extends _InitialState {
             IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)
         loaded,
     required TResult Function(Object error) failure,
+    required TResult Function() deleted,
   }) {
     return initial();
   }
@@ -1043,6 +1050,7 @@ class _$_InitialState extends _InitialState {
             IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
         loaded,
     TResult? Function(Object error)? failure,
+    TResult? Function()? deleted,
   }) {
     return initial?.call();
   }
@@ -1056,6 +1064,7 @@ class _$_InitialState extends _InitialState {
             IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
         loaded,
     TResult Function(Object error)? failure,
+    TResult Function()? deleted,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1071,6 +1080,7 @@ class _$_InitialState extends _InitialState {
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_LoadedState value) loaded,
     required TResult Function(_FailureState value) failure,
+    required TResult Function(_DeletedState value) deleted,
   }) {
     return initial(this);
   }
@@ -1082,6 +1092,7 @@ class _$_InitialState extends _InitialState {
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_LoadedState value)? loaded,
     TResult? Function(_FailureState value)? failure,
+    TResult? Function(_DeletedState value)? deleted,
   }) {
     return initial?.call(this);
   }
@@ -1093,6 +1104,7 @@ class _$_InitialState extends _InitialState {
     TResult Function(_LoadingState value)? loading,
     TResult Function(_LoadedState value)? loaded,
     TResult Function(_FailureState value)? failure,
+    TResult Function(_DeletedState value)? deleted,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1148,6 +1160,7 @@ class _$_LoadingState extends _LoadingState {
             IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)
         loaded,
     required TResult Function(Object error) failure,
+    required TResult Function() deleted,
   }) {
     return loading();
   }
@@ -1161,6 +1174,7 @@ class _$_LoadingState extends _LoadingState {
             IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
         loaded,
     TResult? Function(Object error)? failure,
+    TResult? Function()? deleted,
   }) {
     return loading?.call();
   }
@@ -1174,6 +1188,7 @@ class _$_LoadingState extends _LoadingState {
             IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
         loaded,
     TResult Function(Object error)? failure,
+    TResult Function()? deleted,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1189,6 +1204,7 @@ class _$_LoadingState extends _LoadingState {
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_LoadedState value) loaded,
     required TResult Function(_FailureState value) failure,
+    required TResult Function(_DeletedState value) deleted,
   }) {
     return loading(this);
   }
@@ -1200,6 +1216,7 @@ class _$_LoadingState extends _LoadingState {
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_LoadedState value)? loaded,
     TResult? Function(_FailureState value)? failure,
+    TResult? Function(_DeletedState value)? deleted,
   }) {
     return loading?.call(this);
   }
@@ -1211,6 +1228,7 @@ class _$_LoadingState extends _LoadingState {
     TResult Function(_LoadingState value)? loading,
     TResult Function(_LoadedState value)? loaded,
     TResult Function(_FailureState value)? failure,
+    TResult Function(_DeletedState value)? deleted,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1340,6 +1358,7 @@ class _$_LoadedState extends _LoadedState {
             IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)
         loaded,
     required TResult Function(Object error) failure,
+    required TResult Function() deleted,
   }) {
     return loaded(project, tasks, isMember, isOwner);
   }
@@ -1353,6 +1372,7 @@ class _$_LoadedState extends _LoadedState {
             IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
         loaded,
     TResult? Function(Object error)? failure,
+    TResult? Function()? deleted,
   }) {
     return loaded?.call(project, tasks, isMember, isOwner);
   }
@@ -1366,6 +1386,7 @@ class _$_LoadedState extends _LoadedState {
             IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
         loaded,
     TResult Function(Object error)? failure,
+    TResult Function()? deleted,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -1381,6 +1402,7 @@ class _$_LoadedState extends _LoadedState {
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_LoadedState value) loaded,
     required TResult Function(_FailureState value) failure,
+    required TResult Function(_DeletedState value) deleted,
   }) {
     return loaded(this);
   }
@@ -1392,6 +1414,7 @@ class _$_LoadedState extends _LoadedState {
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_LoadedState value)? loaded,
     TResult? Function(_FailureState value)? failure,
+    TResult? Function(_DeletedState value)? deleted,
   }) {
     return loaded?.call(this);
   }
@@ -1403,6 +1426,7 @@ class _$_LoadedState extends _LoadedState {
     TResult Function(_LoadingState value)? loading,
     TResult Function(_LoadedState value)? loaded,
     TResult Function(_FailureState value)? failure,
+    TResult Function(_DeletedState value)? deleted,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -1493,6 +1517,7 @@ class _$_FailureState extends _FailureState {
             IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)
         loaded,
     required TResult Function(Object error) failure,
+    required TResult Function() deleted,
   }) {
     return failure(error);
   }
@@ -1506,6 +1531,7 @@ class _$_FailureState extends _FailureState {
             IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
         loaded,
     TResult? Function(Object error)? failure,
+    TResult? Function()? deleted,
   }) {
     return failure?.call(error);
   }
@@ -1519,6 +1545,7 @@ class _$_FailureState extends _FailureState {
             IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
         loaded,
     TResult Function(Object error)? failure,
+    TResult Function()? deleted,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -1534,6 +1561,7 @@ class _$_FailureState extends _FailureState {
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_LoadedState value) loaded,
     required TResult Function(_FailureState value) failure,
+    required TResult Function(_DeletedState value) deleted,
   }) {
     return failure(this);
   }
@@ -1545,6 +1573,7 @@ class _$_FailureState extends _FailureState {
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_LoadedState value)? loaded,
     TResult? Function(_FailureState value)? failure,
+    TResult? Function(_DeletedState value)? deleted,
   }) {
     return failure?.call(this);
   }
@@ -1556,6 +1585,7 @@ class _$_FailureState extends _FailureState {
     TResult Function(_LoadingState value)? loading,
     TResult Function(_LoadedState value)? loaded,
     TResult Function(_FailureState value)? failure,
+    TResult Function(_DeletedState value)? deleted,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -1572,4 +1602,128 @@ abstract class _FailureState extends ProjectDetailsState {
   Object get error;
   @JsonKey(ignore: true)
   _$$_FailureStateCopyWith<_$_FailureState> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_DeletedStateCopyWith<$Res> {
+  factory _$$_DeletedStateCopyWith(_$_DeletedState value, $Res Function(_$_DeletedState) then) =
+      __$$_DeletedStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_DeletedStateCopyWithImpl<$Res>
+    extends _$ProjectDetailsStateCopyWithImpl<$Res, _$_DeletedState>
+    implements _$$_DeletedStateCopyWith<$Res> {
+  __$$_DeletedStateCopyWithImpl(_$_DeletedState _value, $Res Function(_$_DeletedState) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_DeletedState extends _DeletedState {
+  const _$_DeletedState() : super._();
+
+  @override
+  String toString() {
+    return 'ProjectDetailsState.deleted()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_DeletedState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)
+        loaded,
+    required TResult Function(Object error) failure,
+    required TResult Function() deleted,
+  }) {
+    return deleted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
+        loaded,
+    TResult? Function(Object error)? failure,
+    TResult? Function()? deleted,
+  }) {
+    return deleted?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
+        loaded,
+    TResult Function(Object error)? failure,
+    TResult Function()? deleted,
+    required TResult orElse(),
+  }) {
+    if (deleted != null) {
+      return deleted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_LoadedState value) loaded,
+    required TResult Function(_FailureState value) failure,
+    required TResult Function(_DeletedState value) deleted,
+  }) {
+    return deleted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_LoadedState value)? loaded,
+    TResult? Function(_FailureState value)? failure,
+    TResult? Function(_DeletedState value)? deleted,
+  }) {
+    return deleted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_LoadedState value)? loaded,
+    TResult Function(_FailureState value)? failure,
+    TResult Function(_DeletedState value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (deleted != null) {
+      return deleted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeletedState extends ProjectDetailsState {
+  const factory _DeletedState() = _$_DeletedState;
+  const _DeletedState._() : super._();
 }

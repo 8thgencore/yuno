@@ -40,7 +40,7 @@ class ApiTaskRepository {
   Future<ITaskRead> create({
     required String name,
     required bool done,
-    String? deadline,
+    DateTime? deadline,
     String? projectId,
   }) async {
     final body = ITaskCreate(
@@ -63,7 +63,7 @@ class ApiTaskRepository {
   Future<ITaskRead> updateById({
     required String id,
     String? name,
-    String? deadline,
+    DateTime? deadline,
     bool? done,
     String? projectId,
   }) async {

@@ -16,7 +16,7 @@ class TaskEditState with _$TaskEditState {
     @Default(TaskEditStatus.initial) TaskEditStatus status,
     required String id,
     required String name,
-    String? deadline,
+    DateTime? deadline,
     String? projectId,
     bool? done,
     String? serverError,

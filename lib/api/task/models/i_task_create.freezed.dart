@@ -22,12 +22,15 @@ ITaskCreate _$ITaskCreateFromJson(Map<String, dynamic> json) {
 mixin _$ITaskCreate {
   String get name => throw _privateConstructorUsedError;
   bool? get done => throw _privateConstructorUsedError;
+
   @JsonKey(includeIfNull: false)
-  String? get deadline => throw _privateConstructorUsedError;
+  DateTime? get deadline => throw _privateConstructorUsedError;
+
   @JsonKey(name: 'project_id', includeIfNull: false)
   String? get projectId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $ITaskCreateCopyWith<ITaskCreate> get copyWith => throw _privateConstructorUsedError;
 }
@@ -41,7 +44,7 @@ abstract class $ITaskCreateCopyWith<$Res> {
   $Res call(
       {String name,
       bool? done,
-      @JsonKey(includeIfNull: false) String? deadline,
+      @JsonKey(includeIfNull: false) DateTime? deadline,
       @JsonKey(name: 'project_id', includeIfNull: false) String? projectId});
 }
 
@@ -75,7 +78,7 @@ class _$ITaskCreateCopyWithImpl<$Res, $Val extends ITaskCreate>
       deadline: freezed == deadline
           ? _value.deadline
           : deadline // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       projectId: freezed == projectId
           ? _value.projectId
           : projectId // ignore: cast_nullable_to_non_nullable
@@ -95,7 +98,7 @@ abstract class _$$_ITaskCreateCopyWith<$Res>
   $Res call(
       {String name,
       bool? done,
-      @JsonKey(includeIfNull: false) String? deadline,
+      @JsonKey(includeIfNull: false) DateTime? deadline,
       @JsonKey(name: 'project_id', includeIfNull: false) String? projectId});
 }
 
@@ -127,7 +130,7 @@ class __$$_ITaskCreateCopyWithImpl<$Res>
       deadline: freezed == deadline
           ? _value.deadline
           : deadline // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       projectId: freezed == projectId
           ? _value.projectId
           : projectId // ignore: cast_nullable_to_non_nullable
@@ -145,8 +148,7 @@ class _$_ITaskCreate implements _ITaskCreate {
       @JsonKey(includeIfNull: false) this.deadline,
       @JsonKey(name: 'project_id', includeIfNull: false) this.projectId});
 
-  factory _$_ITaskCreate.fromJson(Map<String, dynamic> json) =>
-      _$$_ITaskCreateFromJson(json);
+  factory _$_ITaskCreate.fromJson(Map<String, dynamic> json) => _$$_ITaskCreateFromJson(json);
 
   @override
   final String name;
@@ -155,7 +157,7 @@ class _$_ITaskCreate implements _ITaskCreate {
   final bool? done;
   @override
   @JsonKey(includeIfNull: false)
-  final String? deadline;
+  final DateTime? deadline;
   @override
   @JsonKey(name: 'project_id', includeIfNull: false)
   final String? projectId;
@@ -200,7 +202,7 @@ abstract class _ITaskCreate implements ITaskCreate {
   const factory _ITaskCreate(
       {required final String name,
       final bool? done,
-      @JsonKey(includeIfNull: false) final String? deadline,
+      @JsonKey(includeIfNull: false) final DateTime? deadline,
       @JsonKey(name: 'project_id', includeIfNull: false) final String? projectId}) = _$_ITaskCreate;
 
   factory _ITaskCreate.fromJson(Map<String, dynamic> json) =
@@ -208,11 +210,14 @@ abstract class _ITaskCreate implements ITaskCreate {
 
   @override
   String get name;
+
   @override
   bool? get done;
+
   @override
   @JsonKey(includeIfNull: false)
-  String? get deadline;
+  DateTime? get deadline;
+
   @override
   @JsonKey(name: 'project_id', includeIfNull: false)
   String? get projectId;

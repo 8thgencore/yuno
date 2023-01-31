@@ -23,7 +23,9 @@ mixin _$ITaskRead {
   String get name => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   bool? get done => throw _privateConstructorUsedError;
-  String? get deadline => throw _privateConstructorUsedError;
+
+  DateTime? get deadline => throw _privateConstructorUsedError;
+
   @JsonKey(name: 'project_id')
   String? get projectId => throw _privateConstructorUsedError;
 
@@ -42,7 +44,7 @@ abstract class $ITaskReadCopyWith<$Res> {
       {String name,
       String id,
       bool? done,
-      String? deadline,
+      DateTime? deadline,
       @JsonKey(name: 'project_id') String? projectId});
 }
 
@@ -81,7 +83,7 @@ class _$ITaskReadCopyWithImpl<$Res, $Val extends ITaskRead>
       deadline: freezed == deadline
           ? _value.deadline
           : deadline // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       projectId: freezed == projectId
           ? _value.projectId
           : projectId // ignore: cast_nullable_to_non_nullable
@@ -101,7 +103,7 @@ abstract class _$$_ITaskReadCopyWith<$Res> implements $ITaskReadCopyWith<$Res> {
       {String name,
       String id,
       bool? done,
-      String? deadline,
+      DateTime? deadline,
       @JsonKey(name: 'project_id') String? projectId});
 }
 
@@ -138,7 +140,7 @@ class __$$_ITaskReadCopyWithImpl<$Res>
       deadline: freezed == deadline
           ? _value.deadline
           : deadline // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       projectId: freezed == projectId
           ? _value.projectId
           : projectId // ignore: cast_nullable_to_non_nullable
@@ -157,8 +159,7 @@ class _$_ITaskRead implements _ITaskRead {
       this.deadline,
       @JsonKey(name: 'project_id') this.projectId});
 
-  factory _$_ITaskRead.fromJson(Map<String, dynamic> json) =>
-      _$$_ITaskReadFromJson(json);
+  factory _$_ITaskRead.fromJson(Map<String, dynamic> json) => _$$_ITaskReadFromJson(json);
 
   @override
   final String name;
@@ -168,7 +169,7 @@ class _$_ITaskRead implements _ITaskRead {
   @JsonKey()
   final bool? done;
   @override
-  final String? deadline;
+  final DateTime? deadline;
   @override
   @JsonKey(name: 'project_id')
   final String? projectId;
@@ -216,7 +217,7 @@ abstract class _ITaskRead implements ITaskRead {
       {required final String name,
       required final String id,
       final bool? done,
-      final String? deadline,
+      final DateTime? deadline,
       @JsonKey(name: 'project_id') final String? projectId}) = _$_ITaskRead;
 
   factory _ITaskRead.fromJson(Map<String, dynamic> json) =
@@ -226,10 +227,13 @@ abstract class _ITaskRead implements ITaskRead {
   String get name;
   @override
   String get id;
+
   @override
   bool? get done;
+
   @override
-  String? get deadline;
+  DateTime? get deadline;
+
   @override
   @JsonKey(name: 'project_id')
   String? get projectId;

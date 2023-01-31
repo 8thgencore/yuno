@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:go_router_flow/go_router_flow.dart';
+import 'package:intl/intl.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
 import 'package:yuno/resources/resources.dart';
@@ -216,37 +217,34 @@ class _TaskDeadlineTextFieldState extends State<_TaskDeadlineTextField> {
       buildWhen: (_, current) => current.status == TaskEditStatus.loaded,
       builder: (context, state) {
         if (_controller.text == '') {
-          final text = state.deadline ?? '';
-          _controller.text = text.replaceAll('T', ' ');
+          if (state.deadline != null) {
+            final outputFormat = DateFormat('dd MMMM yyyy, HH:mm');
+            _controller.text = outputFormat.format(state.deadline!);
+          }
         }
         return CustomTextField(
           controller: _controller,
           readOnly: true,
           labelText: 'Deadline',
           textColor: AppColors.dark100,
-          onPressedFunction: () => _selectDate(context),
-          onChanged: (text) => context.read<TaskEditBloc>().add(
-                TaskEditEvent.deadlineChanged(text),
-              ),
+          onPressedFunction: () async {
+            final datePicked = await DatePicker.showDateTimePicker(
+              context,
+              currentTime: DateTime.now(),
+              onConfirm: (date) {
+                context.read<TaskEditBloc>().add(TaskEditEvent.deadlineChanged(date));
+              },
+            );
+            if (datePicked != null) {
+              setState(() {
+                final outputFormat = DateFormat('dd MMMM yyyy, HH:mm');
+                _controller.text = outputFormat.format(datePicked);
+              });
+            }
+          },
         );
       },
     );
-  }
-
-  // Function to show the date picker and return the selected date
-  Future<void> _selectDate(BuildContext context) async {
-    final datePicked = await DatePicker.showDateTimePicker(
-      context,
-      currentTime: DateTime.now(),
-      onConfirm: (date) {
-        context.read<TaskEditBloc>().add(TaskEditEvent.deadlineChanged('$date'));
-      },
-    );
-    if (datePicked != null) {
-      setState(() {
-        _controller.text = datePicked.toString().replaceAll('T', ' ').split('.').first;
-      });
-    }
   }
 }
 

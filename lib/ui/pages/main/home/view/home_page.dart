@@ -11,7 +11,6 @@ import 'package:yuno/ui/pages/main/home/bloc/home_header_bloc.dart';
 import 'package:yuno/ui/pages/main/home/bloc/home_projects_bloc.dart';
 import 'package:yuno/ui/widgets/error_container.dart';
 import 'package:yuno/ui/widgets/project_card_small_widget.dart';
-import 'package:yuno/utils/extensions/datetime.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -135,17 +134,10 @@ class _LastTaskWidget extends StatelessWidget {
     var deadline = 'Has no deadline';
     if (task != null) {
       if (task!.deadline != null) {
-        final DateFormat inputFormat = DateFormat('yyyy-MM-dd HH:mm:ss');
-        final DateFormat reserveInputFormat = DateFormat('yyyy-MM-ddTHH:mm:ss');
-        DateTime? dateTime = inputFormat.tryParse(task!.deadline!);
-        dateTime ??= reserveInputFormat.tryParse(task!.deadline!);
-        if (dateTime != null) {
-          final outputFormat = DateFormat('dd MMMM yyyy, HH:mm');
-          deadline = outputFormat.format(dateTime);
-        }
+        final outputFormat = DateFormat('dd MMMM yyyy, HH:mm');
+        deadline = outputFormat.format(task!.deadline!);
       }
     }
-
     return Container(
       margin: const EdgeInsets.all(14),
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 18),

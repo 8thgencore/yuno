@@ -9,7 +9,7 @@ extension ToastTypeBackgroundColor on ToastType {
       case ToastType.success:
         return AppColors.primary80;
       case ToastType.info:
-        return AppColors.error80;
+        return AppColors.primary80;
       case ToastType.warning:
         return AppColors.secondary80;
       case ToastType.failure:
@@ -24,7 +24,7 @@ extension ToastTypeTextColor on ToastType {
       case ToastType.success:
         return AppColors.white100;
       case ToastType.info:
-        return AppColors.dark100;
+        return AppColors.white100;
       case ToastType.warning:
         return AppColors.dark100;
       case ToastType.failure:
@@ -72,7 +72,11 @@ class ToastWidget extends StatelessWidget {
           Icon(type.icon, color: type.textColor),
           const SizedBox(width: 12.0),
           Expanded(
-            child: Text(text, style: TextStyle(color: type.textColor)),
+            child: Text(
+              text,
+              textAlign: TextAlign.center,
+              style: TextStyle(color: type.textColor),
+            ),
           ),
         ],
       ),

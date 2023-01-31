@@ -22,7 +22,6 @@ mixin _$ProjectsListEvent {
     required TResult Function() updated,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool isSelf)? started,
@@ -42,7 +41,6 @@ mixin _$ProjectsListEvent {
     required TResult Function(_UpdatedEvent value) updated,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
@@ -70,7 +68,7 @@ class _$ProjectsListEventCopyWithImpl<$Res, $Val extends ProjectsListEvent>
     implements $ProjectsListEventCopyWith<$Res> {
   _$ProjectsListEventCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
 // ignore: unused_field
   final $Res Function($Val) _then;

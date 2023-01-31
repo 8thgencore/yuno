@@ -41,11 +41,21 @@ class HomeHeaderBloc extends Bloc<HomeHeaderEvent, HomeHeaderState> {
           _username = user.firstName;
         }
       }
-
       final tasks = await apiTaskRepository.getCachedNotDoneTasks();
+
+      // get a task close in time
       if (tasks != null) {
-        if (tasks.isNotEmpty) {
-          _task = tasks.last;
+        final tasksWithDeadline = [...tasks];
+        tasksWithDeadline.removeWhere((e) => e.deadline == null);
+        if (tasksWithDeadline.isNotEmpty) {
+          tasksWithDeadline.sort((a, b) {
+            final aDate = a.deadline!.microsecondsSinceEpoch;
+            final bDate = b.deadline!.microsecondsSinceEpoch;
+            return aDate.compareTo(bDate);
+          });
+          _task = tasksWithDeadline.firstWhere((e) {
+            return (e.deadline!.microsecondsSinceEpoch - DateTime.now().microsecondsSinceEpoch) > 0;
+          });
         }
       }
       emit(HomeHeaderState.loaded(

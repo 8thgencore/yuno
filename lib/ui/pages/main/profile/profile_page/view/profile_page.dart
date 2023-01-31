@@ -8,6 +8,7 @@ import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/profile/profile_page/bloc/profile_bloc.dart';
+import 'package:yuno/ui/widgets/error_container.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -127,6 +128,10 @@ class _HeaderWidgetState extends State<_HeaderWidget> {
             ],
           );
         },
+        failure: (_) => const SizedBox(
+          height: 255,
+          child: ErrorContainer(text: 'Unexpected Error. Restart the app'),
+        ),
         orElse: () => const SizedBox.shrink(),
       ),
     );

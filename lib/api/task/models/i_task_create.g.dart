@@ -10,7 +10,7 @@ _$_ITaskCreate _$$_ITaskCreateFromJson(Map<String, dynamic> json) =>
     _$_ITaskCreate(
       name: json['name'] as String,
       done: json['done'] as bool? ?? false,
-      deadline: json['deadline'] as String?,
+      deadline: json['deadline'] == null ? null : DateTime.parse(json['deadline'] as String),
       projectId: json['project_id'] as String?,
     );
 
@@ -26,7 +26,7 @@ Map<String, dynamic> _$$_ITaskCreateToJson(_$_ITaskCreate instance) {
     }
   }
 
-  writeNotNull('deadline', instance.deadline);
+  writeNotNull('deadline', instance.deadline?.toIso8601String());
   writeNotNull('project_id', instance.projectId);
   return val;
 }

@@ -10,7 +10,7 @@ _$_ITaskRead _$$_ITaskReadFromJson(Map<String, dynamic> json) => _$_ITaskRead(
       name: json['name'] as String,
       id: json['id'] as String,
       done: json['done'] as bool? ?? false,
-      deadline: json['deadline'] as String?,
+      deadline: json['deadline'] == null ? null : DateTime.parse(json['deadline'] as String),
       projectId: json['project_id'] as String?,
     );
 
@@ -19,6 +19,6 @@ Map<String, dynamic> _$$_ITaskReadToJson(_$_ITaskRead instance) =>
       'name': instance.name,
       'id': instance.id,
       'done': instance.done,
-      'deadline': instance.deadline,
+      'deadline': instance.deadline?.toIso8601String(),
       'project_id': instance.projectId,
     };

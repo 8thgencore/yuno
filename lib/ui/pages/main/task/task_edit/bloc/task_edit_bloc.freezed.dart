@@ -20,7 +20,7 @@ mixin _$TaskEditEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String id, String projectId) started,
     required TResult Function(String text) nameChanged,
-    required TResult Function(String text) deadlineChanged,
+    required TResult Function(DateTime dateTime) deadlineChanged,
     required TResult Function(bool value) clickSwitch,
     required TResult Function() saved,
     required TResult Function() updated,
@@ -30,7 +30,7 @@ mixin _$TaskEditEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id, String projectId)? started,
     TResult? Function(String text)? nameChanged,
-    TResult? Function(String text)? deadlineChanged,
+    TResult? Function(DateTime dateTime)? deadlineChanged,
     TResult? Function(bool value)? clickSwitch,
     TResult? Function()? saved,
     TResult? Function()? updated,
@@ -40,7 +40,7 @@ mixin _$TaskEditEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id, String projectId)? started,
     TResult Function(String text)? nameChanged,
-    TResult Function(String text)? deadlineChanged,
+    TResult Function(DateTime dateTime)? deadlineChanged,
     TResult Function(bool value)? clickSwitch,
     TResult Function()? saved,
     TResult Function()? updated,
@@ -168,7 +168,7 @@ class _$_StartedEvent implements _StartedEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String id, String projectId) started,
     required TResult Function(String text) nameChanged,
-    required TResult Function(String text) deadlineChanged,
+    required TResult Function(DateTime dateTime) deadlineChanged,
     required TResult Function(bool value) clickSwitch,
     required TResult Function() saved,
     required TResult Function() updated,
@@ -181,7 +181,7 @@ class _$_StartedEvent implements _StartedEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id, String projectId)? started,
     TResult? Function(String text)? nameChanged,
-    TResult? Function(String text)? deadlineChanged,
+    TResult? Function(DateTime dateTime)? deadlineChanged,
     TResult? Function(bool value)? clickSwitch,
     TResult? Function()? saved,
     TResult? Function()? updated,
@@ -194,7 +194,7 @@ class _$_StartedEvent implements _StartedEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id, String projectId)? started,
     TResult Function(String text)? nameChanged,
-    TResult Function(String text)? deadlineChanged,
+    TResult Function(DateTime dateTime)? deadlineChanged,
     TResult Function(bool value)? clickSwitch,
     TResult Function()? saved,
     TResult Function()? updated,
@@ -326,7 +326,7 @@ class _$_NameChangedEvent implements _NameChangedEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String id, String projectId) started,
     required TResult Function(String text) nameChanged,
-    required TResult Function(String text) deadlineChanged,
+    required TResult Function(DateTime dateTime) deadlineChanged,
     required TResult Function(bool value) clickSwitch,
     required TResult Function() saved,
     required TResult Function() updated,
@@ -339,7 +339,7 @@ class _$_NameChangedEvent implements _NameChangedEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id, String projectId)? started,
     TResult? Function(String text)? nameChanged,
-    TResult? Function(String text)? deadlineChanged,
+    TResult? Function(DateTime dateTime)? deadlineChanged,
     TResult? Function(bool value)? clickSwitch,
     TResult? Function()? saved,
     TResult? Function()? updated,
@@ -352,7 +352,7 @@ class _$_NameChangedEvent implements _NameChangedEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id, String projectId)? started,
     TResult Function(String text)? nameChanged,
-    TResult Function(String text)? deadlineChanged,
+    TResult Function(DateTime dateTime)? deadlineChanged,
     TResult Function(bool value)? clickSwitch,
     TResult Function()? saved,
     TResult Function()? updated,
@@ -423,7 +423,7 @@ abstract class _$$_DeadlineChangedEventCopyWith<$Res> {
           _$_DeadlineChangedEvent value, $Res Function(_$_DeadlineChangedEvent) then) =
       __$$_DeadlineChangedEventCopyWithImpl<$Res>;
   @useResult
-  $Res call({String text});
+  $Res call({DateTime dateTime});
 }
 
 /// @nodoc
@@ -437,13 +437,13 @@ class __$$_DeadlineChangedEventCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? text = null,
+    Object? dateTime = null,
   }) {
     return _then(_$_DeadlineChangedEvent(
-      null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
+      null == dateTime
+          ? _value.dateTime
+          : dateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -451,14 +451,14 @@ class __$$_DeadlineChangedEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_DeadlineChangedEvent implements _DeadlineChangedEvent {
-  const _$_DeadlineChangedEvent(this.text);
+  const _$_DeadlineChangedEvent(this.dateTime);
 
   @override
-  final String text;
+  final DateTime dateTime;
 
   @override
   String toString() {
-    return 'TaskEditEvent.deadlineChanged(text: $text)';
+    return 'TaskEditEvent.deadlineChanged(dateTime: $dateTime)';
   }
 
   @override
@@ -466,11 +466,11 @@ class _$_DeadlineChangedEvent implements _DeadlineChangedEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_DeadlineChangedEvent &&
-            (identical(other.text, text) || other.text == text));
+            (identical(other.dateTime, dateTime) || other.dateTime == dateTime));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, text);
+  int get hashCode => Object.hash(runtimeType, dateTime);
 
   @JsonKey(ignore: true)
   @override
@@ -483,12 +483,12 @@ class _$_DeadlineChangedEvent implements _DeadlineChangedEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String id, String projectId) started,
     required TResult Function(String text) nameChanged,
-    required TResult Function(String text) deadlineChanged,
+    required TResult Function(DateTime dateTime) deadlineChanged,
     required TResult Function(bool value) clickSwitch,
     required TResult Function() saved,
     required TResult Function() updated,
   }) {
-    return deadlineChanged(text);
+    return deadlineChanged(dateTime);
   }
 
   @override
@@ -496,12 +496,12 @@ class _$_DeadlineChangedEvent implements _DeadlineChangedEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id, String projectId)? started,
     TResult? Function(String text)? nameChanged,
-    TResult? Function(String text)? deadlineChanged,
+    TResult? Function(DateTime dateTime)? deadlineChanged,
     TResult? Function(bool value)? clickSwitch,
     TResult? Function()? saved,
     TResult? Function()? updated,
   }) {
-    return deadlineChanged?.call(text);
+    return deadlineChanged?.call(dateTime);
   }
 
   @override
@@ -509,14 +509,14 @@ class _$_DeadlineChangedEvent implements _DeadlineChangedEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id, String projectId)? started,
     TResult Function(String text)? nameChanged,
-    TResult Function(String text)? deadlineChanged,
+    TResult Function(DateTime dateTime)? deadlineChanged,
     TResult Function(bool value)? clickSwitch,
     TResult Function()? saved,
     TResult Function()? updated,
     required TResult orElse(),
   }) {
     if (deadlineChanged != null) {
-      return deadlineChanged(text);
+      return deadlineChanged(dateTime);
     }
     return orElse();
   }
@@ -566,9 +566,9 @@ class _$_DeadlineChangedEvent implements _DeadlineChangedEvent {
 }
 
 abstract class _DeadlineChangedEvent implements TaskEditEvent {
-  const factory _DeadlineChangedEvent(final String text) = _$_DeadlineChangedEvent;
+  const factory _DeadlineChangedEvent(final DateTime dateTime) = _$_DeadlineChangedEvent;
 
-  String get text;
+  DateTime get dateTime;
   @JsonKey(ignore: true)
   _$$_DeadlineChangedEventCopyWith<_$_DeadlineChangedEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -640,7 +640,7 @@ class _$_ClickSwitchEvent implements _ClickSwitchEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String id, String projectId) started,
     required TResult Function(String text) nameChanged,
-    required TResult Function(String text) deadlineChanged,
+    required TResult Function(DateTime dateTime) deadlineChanged,
     required TResult Function(bool value) clickSwitch,
     required TResult Function() saved,
     required TResult Function() updated,
@@ -653,7 +653,7 @@ class _$_ClickSwitchEvent implements _ClickSwitchEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id, String projectId)? started,
     TResult? Function(String text)? nameChanged,
-    TResult? Function(String text)? deadlineChanged,
+    TResult? Function(DateTime dateTime)? deadlineChanged,
     TResult? Function(bool value)? clickSwitch,
     TResult? Function()? saved,
     TResult? Function()? updated,
@@ -666,7 +666,7 @@ class _$_ClickSwitchEvent implements _ClickSwitchEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id, String projectId)? started,
     TResult Function(String text)? nameChanged,
-    TResult Function(String text)? deadlineChanged,
+    TResult Function(DateTime dateTime)? deadlineChanged,
     TResult Function(bool value)? clickSwitch,
     TResult Function()? saved,
     TResult Function()? updated,
@@ -767,7 +767,7 @@ class _$_SavedEvent implements _SavedEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String id, String projectId) started,
     required TResult Function(String text) nameChanged,
-    required TResult Function(String text) deadlineChanged,
+    required TResult Function(DateTime dateTime) deadlineChanged,
     required TResult Function(bool value) clickSwitch,
     required TResult Function() saved,
     required TResult Function() updated,
@@ -780,7 +780,7 @@ class _$_SavedEvent implements _SavedEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id, String projectId)? started,
     TResult? Function(String text)? nameChanged,
-    TResult? Function(String text)? deadlineChanged,
+    TResult? Function(DateTime dateTime)? deadlineChanged,
     TResult? Function(bool value)? clickSwitch,
     TResult? Function()? saved,
     TResult? Function()? updated,
@@ -793,7 +793,7 @@ class _$_SavedEvent implements _SavedEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id, String projectId)? started,
     TResult Function(String text)? nameChanged,
-    TResult Function(String text)? deadlineChanged,
+    TResult Function(DateTime dateTime)? deadlineChanged,
     TResult Function(bool value)? clickSwitch,
     TResult Function()? saved,
     TResult Function()? updated,
@@ -889,7 +889,7 @@ class _$_UpdatedEvent implements _UpdatedEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String id, String projectId) started,
     required TResult Function(String text) nameChanged,
-    required TResult Function(String text) deadlineChanged,
+    required TResult Function(DateTime dateTime) deadlineChanged,
     required TResult Function(bool value) clickSwitch,
     required TResult Function() saved,
     required TResult Function() updated,
@@ -902,7 +902,7 @@ class _$_UpdatedEvent implements _UpdatedEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id, String projectId)? started,
     TResult? Function(String text)? nameChanged,
-    TResult? Function(String text)? deadlineChanged,
+    TResult? Function(DateTime dateTime)? deadlineChanged,
     TResult? Function(bool value)? clickSwitch,
     TResult? Function()? saved,
     TResult? Function()? updated,
@@ -915,7 +915,7 @@ class _$_UpdatedEvent implements _UpdatedEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id, String projectId)? started,
     TResult Function(String text)? nameChanged,
-    TResult Function(String text)? deadlineChanged,
+    TResult Function(DateTime dateTime)? deadlineChanged,
     TResult Function(bool value)? clickSwitch,
     TResult Function()? saved,
     TResult Function()? updated,
@@ -980,7 +980,7 @@ mixin _$TaskEditState {
   TaskEditStatus get status => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String? get deadline => throw _privateConstructorUsedError;
+  DateTime? get deadline => throw _privateConstructorUsedError;
   String? get projectId => throw _privateConstructorUsedError;
   bool? get done => throw _privateConstructorUsedError;
   String? get serverError => throw _privateConstructorUsedError;
@@ -998,7 +998,7 @@ abstract class $TaskEditStateCopyWith<$Res> {
       {TaskEditStatus status,
       String id,
       String name,
-      String? deadline,
+      DateTime? deadline,
       String? projectId,
       bool? done,
       String? serverError});
@@ -1041,7 +1041,7 @@ class _$TaskEditStateCopyWithImpl<$Res, $Val extends TaskEditState>
       deadline: freezed == deadline
           ? _value.deadline
           : deadline // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       projectId: freezed == projectId
           ? _value.projectId
           : projectId // ignore: cast_nullable_to_non_nullable
@@ -1068,7 +1068,7 @@ abstract class _$$_TaskEditStateCopyWith<$Res> implements $TaskEditStateCopyWith
       {TaskEditStatus status,
       String id,
       String name,
-      String? deadline,
+      DateTime? deadline,
       String? projectId,
       bool? done,
       String? serverError});
@@ -1108,7 +1108,7 @@ class __$$_TaskEditStateCopyWithImpl<$Res>
       deadline: freezed == deadline
           ? _value.deadline
           : deadline // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       projectId: freezed == projectId
           ? _value.projectId
           : projectId // ignore: cast_nullable_to_non_nullable
@@ -1145,7 +1145,7 @@ class _$_TaskEditState implements _TaskEditState {
   @override
   final String name;
   @override
-  final String? deadline;
+  final DateTime? deadline;
   @override
   final String? projectId;
   @override
@@ -1188,7 +1188,7 @@ abstract class _TaskEditState implements TaskEditState {
       {final TaskEditStatus status,
       required final String id,
       required final String name,
-      final String? deadline,
+      final DateTime? deadline,
       final String? projectId,
       final bool? done,
       final String? serverError}) = _$_TaskEditState;
@@ -1200,7 +1200,7 @@ abstract class _TaskEditState implements TaskEditState {
   @override
   String get name;
   @override
-  String? get deadline;
+  DateTime? get deadline;
   @override
   String? get projectId;
   @override

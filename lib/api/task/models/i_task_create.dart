@@ -8,7 +8,7 @@ class ITaskCreate with _$ITaskCreate {
   const factory ITaskCreate({
     required String name,
     @Default(false) bool? done,
-    @JsonKey(includeIfNull: false) String? deadline,
+    @JsonKey(includeIfNull: false) DateTime? deadline,
     @JsonKey(name: 'project_id', includeIfNull: false) String? projectId,
   }) = _ITaskCreate;
 

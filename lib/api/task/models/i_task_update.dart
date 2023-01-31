@@ -8,7 +8,7 @@ class ITaskUpdate with _$ITaskUpdate {
   const factory ITaskUpdate({
     String? name,
     @Default(false) bool? done,
-    String? deadline,
+    DateTime? deadline,
   }) = _ITaskUpdate;
 
   factory ITaskUpdate.fromJson(Map<String, dynamic> json) => _$ITaskUpdateFromJson(json);

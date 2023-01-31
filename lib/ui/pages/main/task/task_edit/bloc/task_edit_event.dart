@@ -9,7 +9,7 @@ class TaskEditEvent with _$TaskEditEvent {
 
   const factory TaskEditEvent.nameChanged(String text) = _NameChangedEvent;
 
-  const factory TaskEditEvent.deadlineChanged(String text) = _DeadlineChangedEvent;
+  const factory TaskEditEvent.deadlineChanged(DateTime dateTime) = _DeadlineChangedEvent;
 
   const factory TaskEditEvent.clickSwitch(bool value) = _ClickSwitchEvent;
 

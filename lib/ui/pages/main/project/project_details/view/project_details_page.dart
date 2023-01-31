@@ -11,9 +11,10 @@ import 'package:yuno/ui/pages/main/project/project_details/bloc/project_details_
 import 'package:yuno/ui/widgets/error_container.dart';
 import 'package:yuno/ui/widgets/linear_percent_indicator_large_widget.dart';
 import 'package:yuno/ui/widgets/project_card_large_widget.dart';
+import 'package:yuno/ui/widgets/toast_widget.dart';
 import 'package:yuno/ui/widgets/yuno_icon_button.dart';
 import 'package:yuno/ui/widgets/yuno_white_text_button.dart';
-import 'package:yuno/utils/extensions/datetime.dart';
+import 'package:yuno/utils/toast.dart';
 
 class ProjectDetailsPage extends StatelessWidget {
   const ProjectDetailsPage({super.key});
@@ -27,7 +28,19 @@ class ProjectDetailsPage extends StatelessWidget {
           child: const _ProjectContentWidget(),
         ),
       ),
-      floatingActionButton: BlocBuilder<ProjectDetailsBloc, ProjectDetailsState>(
+      floatingActionButton: BlocConsumer<ProjectDetailsBloc, ProjectDetailsState>(
+        listener: (context, state) {
+          if (state == const ProjectDetailsState.deleted()) {
+            showToast(
+              context,
+              child: const ToastWidget(
+                text: 'Project has been successfully deleted',
+                type: ToastType.info,
+              ),
+            );
+            context.pop(true);
+          }
+        },
         builder: (context, state) => state.maybeWhen(
           loaded: (project, _, isMember, isOwner) => isMember
               ? FloatingActionButton(
@@ -104,8 +117,8 @@ class _ProjectContentWidget extends StatelessWidget {
                     const SizedBox(height: 28),
                   ],
                 ),
-                failure: (error) => ErrorContainer(
-                  text: 'Failed to get a project from the server\n$error',
+                failure: (error) => const ErrorContainer(
+                  text: 'Failed to get a project from the server',
                 ),
                 orElse: () => const ErrorContainer(
                   text: 'Failed to get a project from the server',
@@ -189,9 +202,8 @@ class _ButtonsRowWidget extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: isOwner
-              ? () async {
+              ? () {
                   context.read<ProjectDetailsBloc>().add(const ProjectDetailsEvent.delete());
-                  context.pop(true);
                 }
               : null,
           child: YunoIconButton(
@@ -306,14 +318,8 @@ class _TaskCardWidgetState extends State<_TaskCardWidget> {
     var deadline = '';
     if (widget.task != null) {
       if (widget.task.deadline != null) {
-        final DateFormat inputFormat = DateFormat('yyyy-MM-dd HH:mm:ss');
-        final DateFormat reserveInputFormat = DateFormat('yyyy-MM-ddTHH:mm:ss');
-        DateTime? dateTime = inputFormat.tryParse(widget.task.deadline!);
-        dateTime ??= reserveInputFormat.tryParse(widget.task.deadline!);
-        if (dateTime != null) {
-          final outputFormat = DateFormat('dd MMMM yyyy, HH:mm');
-          deadline = outputFormat.format(dateTime);
-        }
+        final outputFormat = DateFormat('dd MMMM yyyy, HH:mm');
+        deadline = outputFormat.format(widget.task.deadline!);
       }
     }
     return Container(

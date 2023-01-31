@@ -20,7 +20,10 @@ class CustomRoundedButton extends StatelessWidget {
       ),
       child: ElevatedButton(
         onPressed: onPressed,
-        child: Text(textButton),
+        child: Text(
+          textButton,
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+        ),
       ),
     );
   }
