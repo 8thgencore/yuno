@@ -22,13 +22,22 @@ IProjectWithUsersTasks _$IProjectWithUsersTasksFromJson(
 /// @nodoc
 mixin _$IProjectWithUsersTasks {
   String get name => throw _privateConstructorUsedError;
+
   String get description => throw _privateConstructorUsedError;
+
   String get link => throw _privateConstructorUsedError;
+
   String get id => throw _privateConstructorUsedError;
+
+  @JsonKey(name: 'created_by_id')
+  String? get createdBy => throw _privateConstructorUsedError;
+
   List<ITaskRead>? get tasks => throw _privateConstructorUsedError;
+
   List<IUserRead>? get users => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $IProjectWithUsersTasksCopyWith<IProjectWithUsersTasks> get copyWith =>
       throw _privateConstructorUsedError;
@@ -45,6 +54,7 @@ abstract class $IProjectWithUsersTasksCopyWith<$Res> {
       String description,
       String link,
       String id,
+      @JsonKey(name: 'created_by_id') String? createdBy,
       List<ITaskRead>? tasks,
       List<IUserRead>? users});
 }
@@ -67,6 +77,7 @@ class _$IProjectWithUsersTasksCopyWithImpl<$Res,
     Object? description = null,
     Object? link = null,
     Object? id = null,
+    Object? createdBy = freezed,
     Object? tasks = freezed,
     Object? users = freezed,
   }) {
@@ -87,6 +98,10 @@ class _$IProjectWithUsersTasksCopyWithImpl<$Res,
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      createdBy: freezed == createdBy
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as String?,
       tasks: freezed == tasks
           ? _value.tasks
           : tasks // ignore: cast_nullable_to_non_nullable
@@ -112,6 +127,7 @@ abstract class _$$_IProjectWithUsersTasksCopyWith<$Res>
       String description,
       String link,
       String id,
+      @JsonKey(name: 'created_by_id') String? createdBy,
       List<ITaskRead>? tasks,
       List<IUserRead>? users});
 }
@@ -132,6 +148,7 @@ class __$$_IProjectWithUsersTasksCopyWithImpl<$Res>
     Object? description = null,
     Object? link = null,
     Object? id = null,
+    Object? createdBy = freezed,
     Object? tasks = freezed,
     Object? users = freezed,
   }) {
@@ -152,6 +169,10 @@ class __$$_IProjectWithUsersTasksCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      createdBy: freezed == createdBy
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as String?,
       tasks: freezed == tasks
           ? _value._tasks
           : tasks // ignore: cast_nullable_to_non_nullable
@@ -172,6 +193,7 @@ class _$_IProjectWithUsersTasks implements _IProjectWithUsersTasks {
       required this.description,
       required this.link,
       required this.id,
+      @JsonKey(name: 'created_by_id') this.createdBy,
       final List<ITaskRead>? tasks,
       final List<IUserRead>? users})
       : _tasks = tasks,
@@ -188,7 +210,11 @@ class _$_IProjectWithUsersTasks implements _IProjectWithUsersTasks {
   final String link;
   @override
   final String id;
+  @override
+  @JsonKey(name: 'created_by_id')
+  final String? createdBy;
   final List<ITaskRead>? _tasks;
+
   @override
   List<ITaskRead>? get tasks {
     final value = _tasks;
@@ -210,7 +236,7 @@ class _$_IProjectWithUsersTasks implements _IProjectWithUsersTasks {
 
   @override
   String toString() {
-    return 'IProjectWithUsersTasks(name: $name, description: $description, link: $link, id: $id, tasks: $tasks, users: $users)';
+    return 'IProjectWithUsersTasks(name: $name, description: $description, link: $link, id: $id, createdBy: $createdBy, tasks: $tasks, users: $users)';
   }
 
   @override
@@ -219,24 +245,18 @@ class _$_IProjectWithUsersTasks implements _IProjectWithUsersTasks {
         (other.runtimeType == runtimeType &&
             other is _$_IProjectWithUsersTasks &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
+            (identical(other.description, description) || other.description == description) &&
             (identical(other.link, link) || other.link == link) &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.createdBy, createdBy) || other.createdBy == createdBy) &&
             const DeepCollectionEquality().equals(other._tasks, _tasks) &&
             const DeepCollectionEquality().equals(other._users, _users));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      name,
-      description,
-      link,
-      id,
-      const DeepCollectionEquality().hash(_tasks),
-      const DeepCollectionEquality().hash(_users));
+  int get hashCode => Object.hash(runtimeType, name, description, link, id, createdBy,
+      const DeepCollectionEquality().hash(_tasks), const DeepCollectionEquality().hash(_users));
 
   @JsonKey(ignore: true)
   @override
@@ -259,6 +279,7 @@ abstract class _IProjectWithUsersTasks implements IProjectWithUsersTasks {
       required final String description,
       required final String link,
       required final String id,
+      @JsonKey(name: 'created_by_id') final String? createdBy,
       final List<ITaskRead>? tasks,
       final List<IUserRead>? users}) = _$_IProjectWithUsersTasks;
 
@@ -267,16 +288,26 @@ abstract class _IProjectWithUsersTasks implements IProjectWithUsersTasks {
 
   @override
   String get name;
+
   @override
   String get description;
+
   @override
   String get link;
+
   @override
   String get id;
+
+  @override
+  @JsonKey(name: 'created_by_id')
+  String? get createdBy;
+
   @override
   List<ITaskRead>? get tasks;
+
   @override
   List<IUserRead>? get users;
+
   @override
   @JsonKey(ignore: true)
   _$$_IProjectWithUsersTasksCopyWith<_$_IProjectWithUsersTasks> get copyWith =>

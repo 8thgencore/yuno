@@ -8,6 +8,8 @@ class ProjectDetailsEvent with _$ProjectDetailsEvent {
 
   const factory ProjectDetailsEvent.update() = _UpdateProjectEvent;
 
+  const factory ProjectDetailsEvent.delete() = _DeleteProjectEvent;
+
   const factory ProjectDetailsEvent.join() = _JoinProjectEvent;
 
   const factory ProjectDetailsEvent.leave() = _LeaveProjectEvent;

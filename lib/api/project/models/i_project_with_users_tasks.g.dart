@@ -13,6 +13,7 @@ _$_IProjectWithUsersTasks _$$_IProjectWithUsersTasksFromJson(
       description: json['description'] as String,
       link: json['link'] as String,
       id: json['id'] as String,
+      createdBy: json['created_by_id'] as String?,
       tasks: (json['tasks'] as List<dynamic>?)
           ?.map((e) => ITaskRead.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -28,6 +29,7 @@ Map<String, dynamic> _$$_IProjectWithUsersTasksToJson(
       'description': instance.description,
       'link': instance.link,
       'id': instance.id,
+      'created_by_id': instance.createdBy,
       'tasks': instance.tasks,
       'users': instance.users,
     };

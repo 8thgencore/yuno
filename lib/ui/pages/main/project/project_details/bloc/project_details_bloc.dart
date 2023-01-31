@@ -24,6 +24,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
         started: (event) => _onProjectLoaded(event, emit),
         checkedTask: (event) => _onCheckedTask(event, emit),
         update: (event) => _onUpdatedProject(event, emit),
+        delete: (event) => _onDeletedProject(event, emit),
         join: (event) => _onJoinProject(event, emit),
         leave: (event) => _onLeaveProject(event, emit),
       ),
@@ -37,6 +38,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
   String _projectId = '';
   final List<ITaskRead> _tasks = [];
   bool _isMember = false;
+  bool _isOwner = false;
 
   FutureOr<void> _onProjectLoaded(
     _StartedEvent event,
@@ -44,19 +46,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
   ) async {
     try {
       _projectId = event.id;
-      final project = await apiProjectRepository.getById(id: _projectId);
-      if (project != null) {
-        _tasks.addAll(project.tasks ?? []);
-        // Check user member is project
-        final user = await apiUserRepository.getCachedData();
-        final users = project.users;
-        if (user != null && users != null) {
-          _isMember = users.where((u) => u.id == user.id).isNotEmpty;
-        }
-        emit(ProjectDetailsState.loaded(project: project, tasks: _tasks, isMember: _isMember));
-      } else {
-        emit(const ProjectDetailsState.failure("Don't get project"));
-      }
+      await _getProjectInfo(emit);
     } on DioError catch (dioError) {
       emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
     }
@@ -95,19 +85,18 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
   ) async {
     try {
       _tasks.clear();
-      final project = await apiProjectRepository.getById(id: _projectId);
-      if (project != null) {
-        _tasks.addAll(project.tasks ?? []);
-        // Check user member is project
-        final user = await apiUserRepository.getCachedData();
-        final users = project.users;
-        if (user != null && users != null) {
-          _isMember = users.where((u) => u.id == user.id).isNotEmpty;
-        }
-        emit(ProjectDetailsState.loaded(project: project, tasks: _tasks, isMember: _isMember));
-      } else {
-        emit(const ProjectDetailsState.failure("Don't get project"));
-      }
+      await _getProjectInfo(emit);
+    } on DioError catch (dioError) {
+      emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
+    }
+  }
+
+  FutureOr<void> _onDeletedProject(
+    _DeleteProjectEvent event,
+    Emitter<ProjectDetailsState> emit,
+  ) async {
+    try {
+      await apiProjectRepository.deleteById(id: _projectId);
     } on DioError catch (dioError) {
       emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
     }
@@ -118,7 +107,8 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
     Emitter<ProjectDetailsState> emit,
   ) async {
     try {
-      // TODO:
+      await apiProjectRepository.joinProject(id: _projectId);
+      await _getProjectInfo(emit);
     } on DioError catch (dioError) {
       emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
     }
@@ -129,9 +119,32 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
     Emitter<ProjectDetailsState> emit,
   ) async {
     try {
-      // TODO:
+      await apiProjectRepository.leaveProject(id: _projectId);
+      await _getProjectInfo(emit);
     } on DioError catch (dioError) {
       emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
+    }
+  }
+
+  Future<void> _getProjectInfo(Emitter<ProjectDetailsState> emit) async {
+    final project = await apiProjectRepository.getById(id: _projectId);
+    if (project != null) {
+      _tasks.addAll(project.tasks ?? []);
+      // Check user member is project
+      final user = await apiUserRepository.getCachedData();
+      final users = project.users;
+      if (user != null && users != null) {
+        _isMember = users.where((u) => u.id == user.id).isNotEmpty;
+        _isOwner = project.createdBy == user.id;
+      }
+      emit(ProjectDetailsState.loaded(
+        project: project,
+        tasks: _tasks,
+        isMember: _isMember,
+        isOwner: _isOwner,
+      ));
+    } else {
+      emit(const ProjectDetailsState.failure("Don't get project"));
     }
   }
 }

@@ -21,6 +21,7 @@ mixin _$ProjectDetailsEvent {
     required TResult Function(String id) started,
     required TResult Function(String id) checkedTask,
     required TResult Function() update,
+    required TResult Function() delete,
     required TResult Function() join,
     required TResult Function() leave,
   }) =>
@@ -30,6 +31,7 @@ mixin _$ProjectDetailsEvent {
     TResult? Function(String id)? started,
     TResult? Function(String id)? checkedTask,
     TResult? Function()? update,
+    TResult? Function()? delete,
     TResult? Function()? join,
     TResult? Function()? leave,
   }) =>
@@ -39,6 +41,7 @@ mixin _$ProjectDetailsEvent {
     TResult Function(String id)? started,
     TResult Function(String id)? checkedTask,
     TResult Function()? update,
+    TResult Function()? delete,
     TResult Function()? join,
     TResult Function()? leave,
     required TResult orElse(),
@@ -49,6 +52,7 @@ mixin _$ProjectDetailsEvent {
     required TResult Function(_StartedEvent value) started,
     required TResult Function(_CheckTaskEvent value) checkedTask,
     required TResult Function(_UpdateProjectEvent value) update,
+    required TResult Function(_DeleteProjectEvent value) delete,
     required TResult Function(_JoinProjectEvent value) join,
     required TResult Function(_LeaveProjectEvent value) leave,
   }) =>
@@ -58,6 +62,7 @@ mixin _$ProjectDetailsEvent {
     TResult? Function(_StartedEvent value)? started,
     TResult? Function(_CheckTaskEvent value)? checkedTask,
     TResult? Function(_UpdateProjectEvent value)? update,
+    TResult? Function(_DeleteProjectEvent value)? delete,
     TResult? Function(_JoinProjectEvent value)? join,
     TResult? Function(_LeaveProjectEvent value)? leave,
   }) =>
@@ -67,6 +72,7 @@ mixin _$ProjectDetailsEvent {
     TResult Function(_StartedEvent value)? started,
     TResult Function(_CheckTaskEvent value)? checkedTask,
     TResult Function(_UpdateProjectEvent value)? update,
+    TResult Function(_DeleteProjectEvent value)? delete,
     TResult Function(_JoinProjectEvent value)? join,
     TResult Function(_LeaveProjectEvent value)? leave,
     required TResult orElse(),
@@ -157,6 +163,7 @@ class _$_StartedEvent implements _StartedEvent {
     required TResult Function(String id) started,
     required TResult Function(String id) checkedTask,
     required TResult Function() update,
+    required TResult Function() delete,
     required TResult Function() join,
     required TResult Function() leave,
   }) {
@@ -169,6 +176,7 @@ class _$_StartedEvent implements _StartedEvent {
     TResult? Function(String id)? started,
     TResult? Function(String id)? checkedTask,
     TResult? Function()? update,
+    TResult? Function()? delete,
     TResult? Function()? join,
     TResult? Function()? leave,
   }) {
@@ -181,6 +189,7 @@ class _$_StartedEvent implements _StartedEvent {
     TResult Function(String id)? started,
     TResult Function(String id)? checkedTask,
     TResult Function()? update,
+    TResult Function()? delete,
     TResult Function()? join,
     TResult Function()? leave,
     required TResult orElse(),
@@ -197,6 +206,7 @@ class _$_StartedEvent implements _StartedEvent {
     required TResult Function(_StartedEvent value) started,
     required TResult Function(_CheckTaskEvent value) checkedTask,
     required TResult Function(_UpdateProjectEvent value) update,
+    required TResult Function(_DeleteProjectEvent value) delete,
     required TResult Function(_JoinProjectEvent value) join,
     required TResult Function(_LeaveProjectEvent value) leave,
   }) {
@@ -209,6 +219,7 @@ class _$_StartedEvent implements _StartedEvent {
     TResult? Function(_StartedEvent value)? started,
     TResult? Function(_CheckTaskEvent value)? checkedTask,
     TResult? Function(_UpdateProjectEvent value)? update,
+    TResult? Function(_DeleteProjectEvent value)? delete,
     TResult? Function(_JoinProjectEvent value)? join,
     TResult? Function(_LeaveProjectEvent value)? leave,
   }) {
@@ -221,6 +232,7 @@ class _$_StartedEvent implements _StartedEvent {
     TResult Function(_StartedEvent value)? started,
     TResult Function(_CheckTaskEvent value)? checkedTask,
     TResult Function(_UpdateProjectEvent value)? update,
+    TResult Function(_DeleteProjectEvent value)? delete,
     TResult Function(_JoinProjectEvent value)? join,
     TResult Function(_LeaveProjectEvent value)? leave,
     required TResult orElse(),
@@ -306,6 +318,7 @@ class _$_CheckTaskEvent implements _CheckTaskEvent {
     required TResult Function(String id) started,
     required TResult Function(String id) checkedTask,
     required TResult Function() update,
+    required TResult Function() delete,
     required TResult Function() join,
     required TResult Function() leave,
   }) {
@@ -318,6 +331,7 @@ class _$_CheckTaskEvent implements _CheckTaskEvent {
     TResult? Function(String id)? started,
     TResult? Function(String id)? checkedTask,
     TResult? Function()? update,
+    TResult? Function()? delete,
     TResult? Function()? join,
     TResult? Function()? leave,
   }) {
@@ -330,6 +344,7 @@ class _$_CheckTaskEvent implements _CheckTaskEvent {
     TResult Function(String id)? started,
     TResult Function(String id)? checkedTask,
     TResult Function()? update,
+    TResult Function()? delete,
     TResult Function()? join,
     TResult Function()? leave,
     required TResult orElse(),
@@ -346,6 +361,7 @@ class _$_CheckTaskEvent implements _CheckTaskEvent {
     required TResult Function(_StartedEvent value) started,
     required TResult Function(_CheckTaskEvent value) checkedTask,
     required TResult Function(_UpdateProjectEvent value) update,
+    required TResult Function(_DeleteProjectEvent value) delete,
     required TResult Function(_JoinProjectEvent value) join,
     required TResult Function(_LeaveProjectEvent value) leave,
   }) {
@@ -358,6 +374,7 @@ class _$_CheckTaskEvent implements _CheckTaskEvent {
     TResult? Function(_StartedEvent value)? started,
     TResult? Function(_CheckTaskEvent value)? checkedTask,
     TResult? Function(_UpdateProjectEvent value)? update,
+    TResult? Function(_DeleteProjectEvent value)? delete,
     TResult? Function(_JoinProjectEvent value)? join,
     TResult? Function(_LeaveProjectEvent value)? leave,
   }) {
@@ -370,6 +387,7 @@ class _$_CheckTaskEvent implements _CheckTaskEvent {
     TResult Function(_StartedEvent value)? started,
     TResult Function(_CheckTaskEvent value)? checkedTask,
     TResult Function(_UpdateProjectEvent value)? update,
+    TResult Function(_DeleteProjectEvent value)? delete,
     TResult Function(_JoinProjectEvent value)? join,
     TResult Function(_LeaveProjectEvent value)? leave,
     required TResult orElse(),
@@ -430,6 +448,7 @@ class _$_UpdateProjectEvent implements _UpdateProjectEvent {
     required TResult Function(String id) started,
     required TResult Function(String id) checkedTask,
     required TResult Function() update,
+    required TResult Function() delete,
     required TResult Function() join,
     required TResult Function() leave,
   }) {
@@ -442,6 +461,7 @@ class _$_UpdateProjectEvent implements _UpdateProjectEvent {
     TResult? Function(String id)? started,
     TResult? Function(String id)? checkedTask,
     TResult? Function()? update,
+    TResult? Function()? delete,
     TResult? Function()? join,
     TResult? Function()? leave,
   }) {
@@ -454,6 +474,7 @@ class _$_UpdateProjectEvent implements _UpdateProjectEvent {
     TResult Function(String id)? started,
     TResult Function(String id)? checkedTask,
     TResult Function()? update,
+    TResult Function()? delete,
     TResult Function()? join,
     TResult Function()? leave,
     required TResult orElse(),
@@ -470,6 +491,7 @@ class _$_UpdateProjectEvent implements _UpdateProjectEvent {
     required TResult Function(_StartedEvent value) started,
     required TResult Function(_CheckTaskEvent value) checkedTask,
     required TResult Function(_UpdateProjectEvent value) update,
+    required TResult Function(_DeleteProjectEvent value) delete,
     required TResult Function(_JoinProjectEvent value) join,
     required TResult Function(_LeaveProjectEvent value) leave,
   }) {
@@ -482,6 +504,7 @@ class _$_UpdateProjectEvent implements _UpdateProjectEvent {
     TResult? Function(_StartedEvent value)? started,
     TResult? Function(_CheckTaskEvent value)? checkedTask,
     TResult? Function(_UpdateProjectEvent value)? update,
+    TResult? Function(_DeleteProjectEvent value)? delete,
     TResult? Function(_JoinProjectEvent value)? join,
     TResult? Function(_LeaveProjectEvent value)? leave,
   }) {
@@ -494,6 +517,7 @@ class _$_UpdateProjectEvent implements _UpdateProjectEvent {
     TResult Function(_StartedEvent value)? started,
     TResult Function(_CheckTaskEvent value)? checkedTask,
     TResult Function(_UpdateProjectEvent value)? update,
+    TResult Function(_DeleteProjectEvent value)? delete,
     TResult Function(_JoinProjectEvent value)? join,
     TResult Function(_LeaveProjectEvent value)? leave,
     required TResult orElse(),
@@ -507,6 +531,132 @@ class _$_UpdateProjectEvent implements _UpdateProjectEvent {
 
 abstract class _UpdateProjectEvent implements ProjectDetailsEvent {
   const factory _UpdateProjectEvent() = _$_UpdateProjectEvent;
+}
+
+/// @nodoc
+abstract class _$$_DeleteProjectEventCopyWith<$Res> {
+  factory _$$_DeleteProjectEventCopyWith(
+          _$_DeleteProjectEvent value, $Res Function(_$_DeleteProjectEvent) then) =
+      __$$_DeleteProjectEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_DeleteProjectEventCopyWithImpl<$Res>
+    extends _$ProjectDetailsEventCopyWithImpl<$Res, _$_DeleteProjectEvent>
+    implements _$$_DeleteProjectEventCopyWith<$Res> {
+  __$$_DeleteProjectEventCopyWithImpl(
+      _$_DeleteProjectEvent _value, $Res Function(_$_DeleteProjectEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_DeleteProjectEvent implements _DeleteProjectEvent {
+  const _$_DeleteProjectEvent();
+
+  @override
+  String toString() {
+    return 'ProjectDetailsEvent.delete()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_DeleteProjectEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id) started,
+    required TResult Function(String id) checkedTask,
+    required TResult Function() update,
+    required TResult Function() delete,
+    required TResult Function() join,
+    required TResult Function() leave,
+  }) {
+    return delete();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id)? started,
+    TResult? Function(String id)? checkedTask,
+    TResult? Function()? update,
+    TResult? Function()? delete,
+    TResult? Function()? join,
+    TResult? Function()? leave,
+  }) {
+    return delete?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id)? started,
+    TResult Function(String id)? checkedTask,
+    TResult Function()? update,
+    TResult Function()? delete,
+    TResult Function()? join,
+    TResult Function()? leave,
+    required TResult orElse(),
+  }) {
+    if (delete != null) {
+      return delete();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StartedEvent value) started,
+    required TResult Function(_CheckTaskEvent value) checkedTask,
+    required TResult Function(_UpdateProjectEvent value) update,
+    required TResult Function(_DeleteProjectEvent value) delete,
+    required TResult Function(_JoinProjectEvent value) join,
+    required TResult Function(_LeaveProjectEvent value) leave,
+  }) {
+    return delete(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_StartedEvent value)? started,
+    TResult? Function(_CheckTaskEvent value)? checkedTask,
+    TResult? Function(_UpdateProjectEvent value)? update,
+    TResult? Function(_DeleteProjectEvent value)? delete,
+    TResult? Function(_JoinProjectEvent value)? join,
+    TResult? Function(_LeaveProjectEvent value)? leave,
+  }) {
+    return delete?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_StartedEvent value)? started,
+    TResult Function(_CheckTaskEvent value)? checkedTask,
+    TResult Function(_UpdateProjectEvent value)? update,
+    TResult Function(_DeleteProjectEvent value)? delete,
+    TResult Function(_JoinProjectEvent value)? join,
+    TResult Function(_LeaveProjectEvent value)? leave,
+    required TResult orElse(),
+  }) {
+    if (delete != null) {
+      return delete(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteProjectEvent implements ProjectDetailsEvent {
+  const factory _DeleteProjectEvent() = _$_DeleteProjectEvent;
 }
 
 /// @nodoc
@@ -550,6 +700,7 @@ class _$_JoinProjectEvent implements _JoinProjectEvent {
     required TResult Function(String id) started,
     required TResult Function(String id) checkedTask,
     required TResult Function() update,
+    required TResult Function() delete,
     required TResult Function() join,
     required TResult Function() leave,
   }) {
@@ -562,6 +713,7 @@ class _$_JoinProjectEvent implements _JoinProjectEvent {
     TResult? Function(String id)? started,
     TResult? Function(String id)? checkedTask,
     TResult? Function()? update,
+    TResult? Function()? delete,
     TResult? Function()? join,
     TResult? Function()? leave,
   }) {
@@ -574,6 +726,7 @@ class _$_JoinProjectEvent implements _JoinProjectEvent {
     TResult Function(String id)? started,
     TResult Function(String id)? checkedTask,
     TResult Function()? update,
+    TResult Function()? delete,
     TResult Function()? join,
     TResult Function()? leave,
     required TResult orElse(),
@@ -590,6 +743,7 @@ class _$_JoinProjectEvent implements _JoinProjectEvent {
     required TResult Function(_StartedEvent value) started,
     required TResult Function(_CheckTaskEvent value) checkedTask,
     required TResult Function(_UpdateProjectEvent value) update,
+    required TResult Function(_DeleteProjectEvent value) delete,
     required TResult Function(_JoinProjectEvent value) join,
     required TResult Function(_LeaveProjectEvent value) leave,
   }) {
@@ -602,6 +756,7 @@ class _$_JoinProjectEvent implements _JoinProjectEvent {
     TResult? Function(_StartedEvent value)? started,
     TResult? Function(_CheckTaskEvent value)? checkedTask,
     TResult? Function(_UpdateProjectEvent value)? update,
+    TResult? Function(_DeleteProjectEvent value)? delete,
     TResult? Function(_JoinProjectEvent value)? join,
     TResult? Function(_LeaveProjectEvent value)? leave,
   }) {
@@ -614,6 +769,7 @@ class _$_JoinProjectEvent implements _JoinProjectEvent {
     TResult Function(_StartedEvent value)? started,
     TResult Function(_CheckTaskEvent value)? checkedTask,
     TResult Function(_UpdateProjectEvent value)? update,
+    TResult Function(_DeleteProjectEvent value)? delete,
     TResult Function(_JoinProjectEvent value)? join,
     TResult Function(_LeaveProjectEvent value)? leave,
     required TResult orElse(),
@@ -670,6 +826,7 @@ class _$_LeaveProjectEvent implements _LeaveProjectEvent {
     required TResult Function(String id) started,
     required TResult Function(String id) checkedTask,
     required TResult Function() update,
+    required TResult Function() delete,
     required TResult Function() join,
     required TResult Function() leave,
   }) {
@@ -682,6 +839,7 @@ class _$_LeaveProjectEvent implements _LeaveProjectEvent {
     TResult? Function(String id)? started,
     TResult? Function(String id)? checkedTask,
     TResult? Function()? update,
+    TResult? Function()? delete,
     TResult? Function()? join,
     TResult? Function()? leave,
   }) {
@@ -694,6 +852,7 @@ class _$_LeaveProjectEvent implements _LeaveProjectEvent {
     TResult Function(String id)? started,
     TResult Function(String id)? checkedTask,
     TResult Function()? update,
+    TResult Function()? delete,
     TResult Function()? join,
     TResult Function()? leave,
     required TResult orElse(),
@@ -710,6 +869,7 @@ class _$_LeaveProjectEvent implements _LeaveProjectEvent {
     required TResult Function(_StartedEvent value) started,
     required TResult Function(_CheckTaskEvent value) checkedTask,
     required TResult Function(_UpdateProjectEvent value) update,
+    required TResult Function(_DeleteProjectEvent value) delete,
     required TResult Function(_JoinProjectEvent value) join,
     required TResult Function(_LeaveProjectEvent value) leave,
   }) {
@@ -722,6 +882,7 @@ class _$_LeaveProjectEvent implements _LeaveProjectEvent {
     TResult? Function(_StartedEvent value)? started,
     TResult? Function(_CheckTaskEvent value)? checkedTask,
     TResult? Function(_UpdateProjectEvent value)? update,
+    TResult? Function(_DeleteProjectEvent value)? delete,
     TResult? Function(_JoinProjectEvent value)? join,
     TResult? Function(_LeaveProjectEvent value)? leave,
   }) {
@@ -734,6 +895,7 @@ class _$_LeaveProjectEvent implements _LeaveProjectEvent {
     TResult Function(_StartedEvent value)? started,
     TResult Function(_CheckTaskEvent value)? checkedTask,
     TResult Function(_UpdateProjectEvent value)? update,
+    TResult Function(_DeleteProjectEvent value)? delete,
     TResult Function(_JoinProjectEvent value)? join,
     TResult Function(_LeaveProjectEvent value)? leave,
     required TResult orElse(),
@@ -755,7 +917,8 @@ mixin _$ProjectDetailsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)
+    required TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)
         loaded,
     required TResult Function(Object error) failure,
   }) =>
@@ -764,7 +927,9 @@ mixin _$ProjectDetailsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)? loaded,
+    TResult? Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
+        loaded,
     TResult? Function(Object error)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -772,7 +937,9 @@ mixin _$ProjectDetailsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)? loaded,
+    TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
+        loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) =>
@@ -859,7 +1026,8 @@ class _$_InitialState extends _InitialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)
+    required TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)
         loaded,
     required TResult Function(Object error) failure,
   }) {
@@ -871,7 +1039,9 @@ class _$_InitialState extends _InitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)? loaded,
+    TResult? Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
+        loaded,
     TResult? Function(Object error)? failure,
   }) {
     return initial?.call();
@@ -882,7 +1052,9 @@ class _$_InitialState extends _InitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)? loaded,
+    TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
+        loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) {
@@ -972,7 +1144,8 @@ class _$_LoadingState extends _LoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)
+    required TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)
         loaded,
     required TResult Function(Object error) failure,
   }) {
@@ -984,7 +1157,9 @@ class _$_LoadingState extends _LoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)? loaded,
+    TResult? Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
+        loaded,
     TResult? Function(Object error)? failure,
   }) {
     return loading?.call();
@@ -995,7 +1170,9 @@ class _$_LoadingState extends _LoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)? loaded,
+    TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
+        loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) {
@@ -1053,7 +1230,7 @@ abstract class _$$_LoadedStateCopyWith<$Res> {
   factory _$$_LoadedStateCopyWith(_$_LoadedState value, $Res Function(_$_LoadedState) then) =
       __$$_LoadedStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember});
+  $Res call({IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner});
 
   $IProjectWithUsersTasksCopyWith<$Res> get project;
 }
@@ -1071,6 +1248,7 @@ class __$$_LoadedStateCopyWithImpl<$Res>
     Object? project = null,
     Object? tasks = null,
     Object? isMember = null,
+    Object? isOwner = null,
   }) {
     return _then(_$_LoadedState(
       project: null == project
@@ -1084,6 +1262,10 @@ class __$$_LoadedStateCopyWithImpl<$Res>
       isMember: null == isMember
           ? _value.isMember
           : isMember // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isOwner: null == isOwner
+          ? _value.isOwner
+          : isOwner // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -1101,7 +1283,10 @@ class __$$_LoadedStateCopyWithImpl<$Res>
 
 class _$_LoadedState extends _LoadedState {
   const _$_LoadedState(
-      {required this.project, required final List<ITaskRead> tasks, required this.isMember})
+      {required this.project,
+      required final List<ITaskRead> tasks,
+      required this.isMember,
+      required this.isOwner})
       : _tasks = tasks,
         super._();
 
@@ -1117,10 +1302,12 @@ class _$_LoadedState extends _LoadedState {
 
   @override
   final bool isMember;
+  @override
+  final bool isOwner;
 
   @override
   String toString() {
-    return 'ProjectDetailsState.loaded(project: $project, tasks: $tasks, isMember: $isMember)';
+    return 'ProjectDetailsState.loaded(project: $project, tasks: $tasks, isMember: $isMember, isOwner: $isOwner)';
   }
 
   @override
@@ -1130,12 +1317,13 @@ class _$_LoadedState extends _LoadedState {
             other is _$_LoadedState &&
             (identical(other.project, project) || other.project == project) &&
             const DeepCollectionEquality().equals(other._tasks, _tasks) &&
-            (identical(other.isMember, isMember) || other.isMember == isMember));
+            (identical(other.isMember, isMember) || other.isMember == isMember) &&
+            (identical(other.isOwner, isOwner) || other.isOwner == isOwner));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, project, const DeepCollectionEquality().hash(_tasks), isMember);
+  int get hashCode => Object.hash(
+      runtimeType, project, const DeepCollectionEquality().hash(_tasks), isMember, isOwner);
 
   @JsonKey(ignore: true)
   @override
@@ -1148,11 +1336,12 @@ class _$_LoadedState extends _LoadedState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)
+    required TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)
         loaded,
     required TResult Function(Object error) failure,
   }) {
-    return loaded(project, tasks, isMember);
+    return loaded(project, tasks, isMember, isOwner);
   }
 
   @override
@@ -1160,10 +1349,12 @@ class _$_LoadedState extends _LoadedState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)? loaded,
+    TResult? Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
+        loaded,
     TResult? Function(Object error)? failure,
   }) {
-    return loaded?.call(project, tasks, isMember);
+    return loaded?.call(project, tasks, isMember, isOwner);
   }
 
   @override
@@ -1171,12 +1362,14 @@ class _$_LoadedState extends _LoadedState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)? loaded,
+    TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
+        loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(project, tasks, isMember);
+      return loaded(project, tasks, isMember, isOwner);
     }
     return orElse();
   }
@@ -1223,12 +1416,14 @@ abstract class _LoadedState extends ProjectDetailsState {
   const factory _LoadedState(
       {required final IProjectWithUsersTasks project,
       required final List<ITaskRead> tasks,
-      required final bool isMember}) = _$_LoadedState;
+      required final bool isMember,
+      required final bool isOwner}) = _$_LoadedState;
   const _LoadedState._() : super._();
 
   IProjectWithUsersTasks get project;
   List<ITaskRead> get tasks;
   bool get isMember;
+  bool get isOwner;
   @JsonKey(ignore: true)
   _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith => throw _privateConstructorUsedError;
 }
@@ -1294,7 +1489,8 @@ class _$_FailureState extends _FailureState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)
+    required TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)
         loaded,
     required TResult Function(Object error) failure,
   }) {
@@ -1306,7 +1502,9 @@ class _$_FailureState extends _FailureState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)? loaded,
+    TResult? Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
+        loaded,
     TResult? Function(Object error)? failure,
   }) {
     return failure?.call(error);
@@ -1317,7 +1515,9 @@ class _$_FailureState extends _FailureState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember)? loaded,
+    TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
+        loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) {

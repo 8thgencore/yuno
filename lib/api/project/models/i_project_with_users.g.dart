@@ -12,6 +12,7 @@ _$_IProjectWithUsers _$$_IProjectWithUsersFromJson(Map<String, dynamic> json) =>
       description: json['description'] as String,
       link: json['link'] as String,
       id: json['id'] as String,
+      createdBy: json['created_by_id'] as String?,
       users: (json['users'] as List<dynamic>?)
           ?.map((e) => IUserRead.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -24,5 +25,6 @@ Map<String, dynamic> _$$_IProjectWithUsersToJson(
       'description': instance.description,
       'link': instance.link,
       'id': instance.id,
+      'created_by_id': instance.createdBy,
       'users': instance.users,
     };

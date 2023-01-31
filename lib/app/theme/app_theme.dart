@@ -38,7 +38,7 @@ class AppTheme {
             if (states.contains(MaterialState.disabled)) {
               return AppTypography.b16l.copyWith(color: AppColors.grey100);
             }
-            return AppTypography.b16l.copyWith(color: AppColors.white100);
+            return AppTypography.b16l;
           },
         ),
       ),

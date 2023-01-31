@@ -12,6 +12,7 @@ _$_IProjectRead _$$_IProjectReadFromJson(Map<String, dynamic> json) =>
       description: json['description'] as String,
       link: json['link'] as String,
       id: json['id'] as String,
+      createdBy: json['created_by_id'] as String?,
     );
 
 Map<String, dynamic> _$$_IProjectReadToJson(_$_IProjectRead instance) =>
@@ -20,4 +21,5 @@ Map<String, dynamic> _$$_IProjectReadToJson(_$_IProjectRead instance) =>
       'description': instance.description,
       'link': instance.link,
       'id': instance.id,
+      'created_by_id': instance.createdBy,
     };

@@ -21,15 +21,22 @@ IProjectWithUsers _$IProjectWithUsersFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$IProjectWithUsers {
   String get name => throw _privateConstructorUsedError;
+
   String get description => throw _privateConstructorUsedError;
+
   String get link => throw _privateConstructorUsedError;
+
   String get id => throw _privateConstructorUsedError;
+
+  @JsonKey(name: 'created_by_id')
+  String? get createdBy => throw _privateConstructorUsedError;
+
   List<IUserRead>? get users => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $IProjectWithUsersCopyWith<IProjectWithUsers> get copyWith =>
-      throw _privateConstructorUsedError;
+  $IProjectWithUsersCopyWith<IProjectWithUsers> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -43,6 +50,7 @@ abstract class $IProjectWithUsersCopyWith<$Res> {
       String description,
       String link,
       String id,
+      @JsonKey(name: 'created_by_id') String? createdBy,
       List<IUserRead>? users});
 }
 
@@ -63,6 +71,7 @@ class _$IProjectWithUsersCopyWithImpl<$Res, $Val extends IProjectWithUsers>
     Object? description = null,
     Object? link = null,
     Object? id = null,
+    Object? createdBy = freezed,
     Object? users = freezed,
   }) {
     return _then(_value.copyWith(
@@ -82,6 +91,10 @@ class _$IProjectWithUsersCopyWithImpl<$Res, $Val extends IProjectWithUsers>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      createdBy: freezed == createdBy
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as String?,
       users: freezed == users
           ? _value.users
           : users // ignore: cast_nullable_to_non_nullable
@@ -103,6 +116,7 @@ abstract class _$$_IProjectWithUsersCopyWith<$Res>
       String description,
       String link,
       String id,
+      @JsonKey(name: 'created_by_id') String? createdBy,
       List<IUserRead>? users});
 }
 
@@ -121,6 +135,7 @@ class __$$_IProjectWithUsersCopyWithImpl<$Res>
     Object? description = null,
     Object? link = null,
     Object? id = null,
+    Object? createdBy = freezed,
     Object? users = freezed,
   }) {
     return _then(_$_IProjectWithUsers(
@@ -140,6 +155,10 @@ class __$$_IProjectWithUsersCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      createdBy: freezed == createdBy
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as String?,
       users: freezed == users
           ? _value._users
           : users // ignore: cast_nullable_to_non_nullable
@@ -156,6 +175,7 @@ class _$_IProjectWithUsers implements _IProjectWithUsers {
       required this.description,
       required this.link,
       required this.id,
+      @JsonKey(name: 'created_by_id') this.createdBy,
       final List<IUserRead>? users})
       : _users = users;
 
@@ -170,7 +190,11 @@ class _$_IProjectWithUsers implements _IProjectWithUsers {
   final String link;
   @override
   final String id;
+  @override
+  @JsonKey(name: 'created_by_id')
+  final String? createdBy;
   final List<IUserRead>? _users;
+
   @override
   List<IUserRead>? get users {
     final value = _users;
@@ -182,7 +206,7 @@ class _$_IProjectWithUsers implements _IProjectWithUsers {
 
   @override
   String toString() {
-    return 'IProjectWithUsers(name: $name, description: $description, link: $link, id: $id, users: $users)';
+    return 'IProjectWithUsers(name: $name, description: $description, link: $link, id: $id, createdBy: $createdBy, users: $users)';
   }
 
   @override
@@ -191,16 +215,16 @@ class _$_IProjectWithUsers implements _IProjectWithUsers {
         (other.runtimeType == runtimeType &&
             other is _$_IProjectWithUsers &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
+            (identical(other.description, description) || other.description == description) &&
             (identical(other.link, link) || other.link == link) &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.createdBy, createdBy) || other.createdBy == createdBy) &&
             const DeepCollectionEquality().equals(other._users, _users));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, description, link, id,
+  int get hashCode => Object.hash(runtimeType, name, description, link, id, createdBy,
       const DeepCollectionEquality().hash(_users));
 
   @JsonKey(ignore: true)
@@ -224,21 +248,30 @@ abstract class _IProjectWithUsers implements IProjectWithUsers {
       required final String description,
       required final String link,
       required final String id,
+      @JsonKey(name: 'created_by_id') final String? createdBy,
       final List<IUserRead>? users}) = _$_IProjectWithUsers;
 
-  factory _IProjectWithUsers.fromJson(Map<String, dynamic> json) =
-      _$_IProjectWithUsers.fromJson;
+  factory _IProjectWithUsers.fromJson(Map<String, dynamic> json) = _$_IProjectWithUsers.fromJson;
 
   @override
   String get name;
+
   @override
   String get description;
+
   @override
   String get link;
+
   @override
   String get id;
+
+  @override
+  @JsonKey(name: 'created_by_id')
+  String? get createdBy;
+
   @override
   List<IUserRead>? get users;
+
   @override
   @JsonKey(ignore: true)
   _$$_IProjectWithUsersCopyWith<_$_IProjectWithUsers> get copyWith =>

@@ -21,14 +21,20 @@ IProjectRead _$IProjectReadFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$IProjectRead {
   String get name => throw _privateConstructorUsedError;
+
   String get description => throw _privateConstructorUsedError;
+
   String get link => throw _privateConstructorUsedError;
+
   String get id => throw _privateConstructorUsedError;
 
+  @JsonKey(name: 'created_by_id')
+  String? get createdBy => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $IProjectReadCopyWith<IProjectRead> get copyWith =>
-      throw _privateConstructorUsedError;
+  $IProjectReadCopyWith<IProjectRead> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -36,8 +42,14 @@ abstract class $IProjectReadCopyWith<$Res> {
   factory $IProjectReadCopyWith(
           IProjectRead value, $Res Function(IProjectRead) then) =
       _$IProjectReadCopyWithImpl<$Res, IProjectRead>;
+
   @useResult
-  $Res call({String name, String description, String link, String id});
+  $Res call(
+      {String name,
+      String description,
+      String link,
+      String id,
+      @JsonKey(name: 'created_by_id') String? createdBy});
 }
 
 /// @nodoc
@@ -57,6 +69,7 @@ class _$IProjectReadCopyWithImpl<$Res, $Val extends IProjectRead>
     Object? description = null,
     Object? link = null,
     Object? id = null,
+    Object? createdBy = freezed,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -75,6 +88,10 @@ class _$IProjectReadCopyWithImpl<$Res, $Val extends IProjectRead>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      createdBy: freezed == createdBy
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -85,9 +102,15 @@ abstract class _$$_IProjectReadCopyWith<$Res>
   factory _$$_IProjectReadCopyWith(
           _$_IProjectRead value, $Res Function(_$_IProjectRead) then) =
       __$$_IProjectReadCopyWithImpl<$Res>;
+
   @override
   @useResult
-  $Res call({String name, String description, String link, String id});
+  $Res call(
+      {String name,
+      String description,
+      String link,
+      String id,
+      @JsonKey(name: 'created_by_id') String? createdBy});
 }
 
 /// @nodoc
@@ -105,6 +128,7 @@ class __$$_IProjectReadCopyWithImpl<$Res>
     Object? description = null,
     Object? link = null,
     Object? id = null,
+    Object? createdBy = freezed,
   }) {
     return _then(_$_IProjectRead(
       name: null == name
@@ -123,6 +147,10 @@ class __$$_IProjectReadCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      createdBy: freezed == createdBy
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -134,10 +162,10 @@ class _$_IProjectRead implements _IProjectRead {
       {required this.name,
       required this.description,
       required this.link,
-      required this.id});
+      required this.id,
+      @JsonKey(name: 'created_by_id') this.createdBy});
 
-  factory _$_IProjectRead.fromJson(Map<String, dynamic> json) =>
-      _$$_IProjectReadFromJson(json);
+  factory _$_IProjectRead.fromJson(Map<String, dynamic> json) => _$$_IProjectReadFromJson(json);
 
   @override
   final String name;
@@ -147,10 +175,13 @@ class _$_IProjectRead implements _IProjectRead {
   final String link;
   @override
   final String id;
+  @override
+  @JsonKey(name: 'created_by_id')
+  final String? createdBy;
 
   @override
   String toString() {
-    return 'IProjectRead(name: $name, description: $description, link: $link, id: $id)';
+    return 'IProjectRead(name: $name, description: $description, link: $link, id: $id, createdBy: $createdBy)';
   }
 
   @override
@@ -159,15 +190,15 @@ class _$_IProjectRead implements _IProjectRead {
         (other.runtimeType == runtimeType &&
             other is _$_IProjectRead &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
+            (identical(other.description, description) || other.description == description) &&
             (identical(other.link, link) || other.link == link) &&
-            (identical(other.id, id) || other.id == id));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.createdBy, createdBy) || other.createdBy == createdBy));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, description, link, id);
+  int get hashCode => Object.hash(runtimeType, name, description, link, id, createdBy);
 
   @JsonKey(ignore: true)
   @override
@@ -188,21 +219,28 @@ abstract class _IProjectRead implements IProjectRead {
       {required final String name,
       required final String description,
       required final String link,
-      required final String id}) = _$_IProjectRead;
+      required final String id,
+      @JsonKey(name: 'created_by_id') final String? createdBy}) = _$_IProjectRead;
 
-  factory _IProjectRead.fromJson(Map<String, dynamic> json) =
-      _$_IProjectRead.fromJson;
+  factory _IProjectRead.fromJson(Map<String, dynamic> json) = _$_IProjectRead.fromJson;
 
   @override
   String get name;
+
   @override
   String get description;
+
   @override
   String get link;
+
   @override
   String get id;
+
+  @override
+  @JsonKey(name: 'created_by_id')
+  String? get createdBy;
+
   @override
   @JsonKey(ignore: true)
-  _$$_IProjectReadCopyWith<_$_IProjectRead> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_IProjectReadCopyWith<_$_IProjectRead> get copyWith => throw _privateConstructorUsedError;
 }

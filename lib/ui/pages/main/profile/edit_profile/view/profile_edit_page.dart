@@ -19,6 +19,7 @@ class ProfileEditPage extends StatelessWidget {
       listener: (context, state) {
         switch (state.status) {
           case ProfileEditStatus.initial:
+            context.loaderOverlay.show();
             break;
           case ProfileEditStatus.loading:
             context.loaderOverlay.show();

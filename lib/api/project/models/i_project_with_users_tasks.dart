@@ -12,6 +12,7 @@ class IProjectWithUsersTasks with _$IProjectWithUsersTasks {
     required String description,
     required String link,
     required String id,
+    @JsonKey(name: 'created_by_id') String? createdBy,
     List<ITaskRead>? tasks,
     List<IUserRead>? users,
   }) = _IProjectWithUsersTasks;

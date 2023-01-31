@@ -65,7 +65,7 @@ class ApiProjectRepository {
   }
 
   Future<IProjectWithUsers> leaveProject({required String id}) async {
-    final response = await projectClient.projectIdJoin(projectId: id);
+    final response = await projectClient.projectIdLeave(projectId: id);
     return response.data;
   }
 }

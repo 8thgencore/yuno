@@ -29,7 +29,7 @@ class ProjectDetailsPage extends StatelessWidget {
       ),
       floatingActionButton: BlocBuilder<ProjectDetailsBloc, ProjectDetailsState>(
         builder: (context, state) => state.maybeWhen(
-          loaded: (project, _, isMember) => isMember
+          loaded: (project, _, isMember, isOwner) => isMember
               ? FloatingActionButton(
                   onPressed: () async {
                     final result = await context.pushNamed<bool>(
@@ -84,12 +84,13 @@ class _ProjectContentWidget extends StatelessWidget {
               builder: (context, state) => state.maybeWhen(
                 initial: () => const Center(child: CircularProgressIndicator()),
                 loading: () => const Center(child: CircularProgressIndicator()),
-                loaded: (project, tasks, isMember) => Column(
+                loaded: (project, tasks, isMember, isOwner) => Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 10),
                     _ProjectFullCardWidget(
                       isMember: isMember,
+                      isOwner: isOwner,
                       project: IProjectWithUsers(
                         id: project.id,
                         name: project.name,
@@ -122,10 +123,12 @@ class _ProjectFullCardWidget extends StatelessWidget {
   const _ProjectFullCardWidget({
     required this.project,
     required this.isMember,
+    required this.isOwner,
   });
 
   final IProjectWithUsers project;
   final bool isMember;
+  final bool isOwner;
 
   @override
   Widget build(BuildContext context) {
@@ -139,13 +142,28 @@ class _ProjectFullCardWidget extends StatelessWidget {
         children: [
           ProjectCardLargeWidget(project: project),
           const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+            padding: EdgeInsets.only(left: 24, right: 24, bottom: 12),
             child: LinearPercentIndicatorWidget(percent: 0.4),
           ),
           if (isMember)
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              child: YunoWhiteTextButton(text: 'Invite People'),
+            )
+          else
             Padding(
-              padding: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
-              child: _ButtonsRowWidget(projectId: project.id),
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              child: GestureDetector(
+                onTap: () {
+                  context.read<ProjectDetailsBloc>().add(const ProjectDetailsEvent.join());
+                },
+                child: const YunoWhiteTextButton(text: 'Join The Project'),
+              ),
+            ),
+          if (isMember)
+            Padding(
+              padding: const EdgeInsets.only(left: 24, right: 24, top: 12, bottom: 24),
+              child: _ButtonsRowWidget(isOwner: isOwner, projectId: project.id),
             )
           else
             const SizedBox(),
@@ -158,17 +176,32 @@ class _ProjectFullCardWidget extends StatelessWidget {
 class _ButtonsRowWidget extends StatelessWidget {
   const _ButtonsRowWidget({
     required this.projectId,
-    super.key,
+    required this.isOwner,
   });
 
   final String projectId;
+  final bool isOwner;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const YunoWhiteTextButton(text: 'Invite People'),
+        GestureDetector(
+          onTap: isOwner
+              ? () async {
+                  context.read<ProjectDetailsBloc>().add(const ProjectDetailsEvent.delete());
+                  context.pop(true);
+                }
+              : null,
+          child: YunoIconButton(
+            icon: Icon(
+              Icons.delete_outline,
+              size: 26,
+              color: isOwner ? AppColors.error100 : AppColors.error40,
+            ),
+          ),
+        ),
         GestureDetector(
           onTap: () async {
             final result = await context.pushNamed<bool>(
@@ -183,7 +216,12 @@ class _ButtonsRowWidget extends StatelessWidget {
           },
           child: YunoIconButton(icon: Assets.svg.pencil.svg(color: AppColors.secondary100)),
         ),
-        YunoIconButton(icon: Assets.svg.logout.svg(color: AppColors.error100)),
+        GestureDetector(
+          onTap: () {
+            context.read<ProjectDetailsBloc>().add(const ProjectDetailsEvent.leave());
+          },
+          child: YunoIconButton(icon: Assets.svg.logout.svg(color: AppColors.error100)),
+        ),
       ],
     );
   }

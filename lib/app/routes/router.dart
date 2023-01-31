@@ -5,6 +5,7 @@ import 'package:yuno/app/app.dart';
 import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/observer.dart';
 import 'package:yuno/app/routes/routes.dart';
+import 'package:yuno/data/repository/token_data_repository.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/domain/repository/api_project_repository.dart';
 import 'package:yuno/domain/repository/api_task_repository.dart';
@@ -31,6 +32,7 @@ import 'package:yuno/ui/pages/main/project/projects_list/view/projects_list.dart
 import 'package:yuno/ui/pages/main/statistics/view/statistics_page.dart';
 import 'package:yuno/ui/pages/main/task/task_edit/bloc/task_edit_bloc.dart';
 import 'package:yuno/ui/pages/main/task/task_edit/view/task_page.dart';
+import 'package:yuno/ui/pages/splash/bloc/splash_bloc.dart';
 import 'package:yuno/ui/pages/splash/view/splash_page.dart';
 
 mixin RouterMixin on State<App> {
@@ -50,7 +52,14 @@ mixin RouterMixin on State<App> {
         GoRoute(
           name: RouteName.splash,
           path: RoutePath.splash,
-          builder: (context, state) => const SplashPage(),
+          builder: (context, state) => BlocProvider(
+            create: (context) => SplashBloc(
+              tokenDataRepository: sl.get<TokenDataRepository>(),
+              apiUserRepository: sl.get<ApiUserRepository>(),
+              apiTaskRepository: sl.get<ApiTaskRepository>(),
+            )..add(const SplashLoaded()),
+            child: const SplashPage(),
+          ),
         ),
         ShellRoute(
           builder: (_, __, child) => MainScaffold(child: child),
