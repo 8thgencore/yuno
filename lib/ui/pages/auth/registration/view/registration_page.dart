@@ -7,7 +7,7 @@ import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/auth/registration/bloc/registration_bloc.dart';
-import 'package:yuno/ui/widgets/custom_rounded_button.dart';
+import 'package:yuno/ui/widgets/buttons/custom_rounded_button.dart';
 import 'package:yuno/ui/widgets/custom_text_field.dart';
 
 class RegistrationPage extends StatelessWidget {

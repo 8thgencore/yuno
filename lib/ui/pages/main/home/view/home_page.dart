@@ -11,6 +11,7 @@ import 'package:yuno/ui/pages/main/home/bloc/home_header_bloc.dart';
 import 'package:yuno/ui/pages/main/home/bloc/home_projects_bloc.dart';
 import 'package:yuno/ui/widgets/error_container.dart';
 import 'package:yuno/ui/widgets/project_card_small_widget.dart';
+import 'package:yuno/ui/widgets/task_card_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -263,8 +264,7 @@ class _CheckListWidget extends StatelessWidget {
         ),
         BlocBuilder<HomeChecklistBloc, HomeChecklistState>(
           builder: (context, state) => state.maybeWhen(
-            loading: () => const Center(
-              child: CircularProgressIndicator()),
+            loading: () => const Center(child: CircularProgressIndicator()),
             loaded: (tasks) => tasks.isNotEmpty
                 ? ListView.builder(
                     shrinkWrap: true,
@@ -287,7 +287,16 @@ class _CheckListWidget extends StatelessWidget {
                             }
                           });
                         },
-                        child: _TaskCardWidget(task: tasks[index]),
+                        child: TaskCardWidget(
+                          task: tasks[index],
+                          onClickCheckBox: () => context
+                              .read<HomeChecklistBloc>()
+                              .add(HomeChecklistEvent.checkedItem(tasks[index].id)),
+                          onDismissible: () => context
+                              .read<HomeChecklistBloc>()
+                              .add(HomeChecklistEvent.deletedItem(tasks[index].id)),
+                          isMember: true,
+                        ),
                       );
                     },
                   )
@@ -297,77 +306,6 @@ class _CheckListWidget extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class _TaskCardWidget extends StatefulWidget {
-  const _TaskCardWidget({required this.task});
-
-  final ITaskRead task;
-
-  @override
-  State<_TaskCardWidget> createState() => _TaskCardWidgetState();
-}
-
-class _TaskCardWidgetState extends State<_TaskCardWidget> {
-  late bool value;
-
-  @override
-  void initState() {
-    super.initState();
-    value = widget.task.done ?? false;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 80,
-      margin: const EdgeInsets.symmetric(vertical: 10),
-      padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 20),
-      decoration: BoxDecoration(
-        color: AppColors.white100,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  widget.task.name,
-                  style: AppTypography.b16d,
-                  overflow: TextOverflow.fade,
-                  softWrap: false,
-                ),
-                const SizedBox(height: 6),
-                Text(
-                  // TODO:
-                  'Project name',
-                  style: AppTypography.l12g,
-                  overflow: TextOverflow.fade,
-                  softWrap: false,
-                ),
-              ],
-            ),
-          ),
-          Transform.scale(
-            scale: 1.4,
-            child: Checkbox(
-              value: value,
-              onChanged: (b) {
-                setState(() {
-                  value = !value;
-                  context
-                      .read<HomeChecklistBloc>()
-                      .add(HomeChecklistEvent.checkItem(id: widget.task.id));
-                });
-              },
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

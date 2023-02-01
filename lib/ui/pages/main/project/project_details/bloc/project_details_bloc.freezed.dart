@@ -20,6 +20,7 @@ mixin _$ProjectDetailsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String id) started,
     required TResult Function(String id) checkedTask,
+    required TResult Function(String id) deletedTask,
     required TResult Function() update,
     required TResult Function() delete,
     required TResult Function() join,
@@ -30,6 +31,7 @@ mixin _$ProjectDetailsEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id)? started,
     TResult? Function(String id)? checkedTask,
+    TResult? Function(String id)? deletedTask,
     TResult? Function()? update,
     TResult? Function()? delete,
     TResult? Function()? join,
@@ -40,6 +42,7 @@ mixin _$ProjectDetailsEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id)? started,
     TResult Function(String id)? checkedTask,
+    TResult Function(String id)? deletedTask,
     TResult Function()? update,
     TResult Function()? delete,
     TResult Function()? join,
@@ -50,7 +53,8 @@ mixin _$ProjectDetailsEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
-    required TResult Function(_CheckTaskEvent value) checkedTask,
+    required TResult Function(_CheckedTaskEvent value) checkedTask,
+    required TResult Function(_DeletedTaskEvent value) deletedTask,
     required TResult Function(_UpdateProjectEvent value) update,
     required TResult Function(_DeleteProjectEvent value) delete,
     required TResult Function(_JoinProjectEvent value) join,
@@ -60,7 +64,8 @@ mixin _$ProjectDetailsEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
-    TResult? Function(_CheckTaskEvent value)? checkedTask,
+    TResult? Function(_CheckedTaskEvent value)? checkedTask,
+    TResult? Function(_DeletedTaskEvent value)? deletedTask,
     TResult? Function(_UpdateProjectEvent value)? update,
     TResult? Function(_DeleteProjectEvent value)? delete,
     TResult? Function(_JoinProjectEvent value)? join,
@@ -70,7 +75,8 @@ mixin _$ProjectDetailsEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
-    TResult Function(_CheckTaskEvent value)? checkedTask,
+    TResult Function(_CheckedTaskEvent value)? checkedTask,
+    TResult Function(_DeletedTaskEvent value)? deletedTask,
     TResult Function(_UpdateProjectEvent value)? update,
     TResult Function(_DeleteProjectEvent value)? delete,
     TResult Function(_JoinProjectEvent value)? join,
@@ -162,6 +168,7 @@ class _$_StartedEvent implements _StartedEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String id) started,
     required TResult Function(String id) checkedTask,
+    required TResult Function(String id) deletedTask,
     required TResult Function() update,
     required TResult Function() delete,
     required TResult Function() join,
@@ -175,6 +182,7 @@ class _$_StartedEvent implements _StartedEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id)? started,
     TResult? Function(String id)? checkedTask,
+    TResult? Function(String id)? deletedTask,
     TResult? Function()? update,
     TResult? Function()? delete,
     TResult? Function()? join,
@@ -188,6 +196,7 @@ class _$_StartedEvent implements _StartedEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id)? started,
     TResult Function(String id)? checkedTask,
+    TResult Function(String id)? deletedTask,
     TResult Function()? update,
     TResult Function()? delete,
     TResult Function()? join,
@@ -204,7 +213,8 @@ class _$_StartedEvent implements _StartedEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
-    required TResult Function(_CheckTaskEvent value) checkedTask,
+    required TResult Function(_CheckedTaskEvent value) checkedTask,
+    required TResult Function(_DeletedTaskEvent value) deletedTask,
     required TResult Function(_UpdateProjectEvent value) update,
     required TResult Function(_DeleteProjectEvent value) delete,
     required TResult Function(_JoinProjectEvent value) join,
@@ -217,7 +227,8 @@ class _$_StartedEvent implements _StartedEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
-    TResult? Function(_CheckTaskEvent value)? checkedTask,
+    TResult? Function(_CheckedTaskEvent value)? checkedTask,
+    TResult? Function(_DeletedTaskEvent value)? deletedTask,
     TResult? Function(_UpdateProjectEvent value)? update,
     TResult? Function(_DeleteProjectEvent value)? delete,
     TResult? Function(_JoinProjectEvent value)? join,
@@ -230,7 +241,8 @@ class _$_StartedEvent implements _StartedEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
-    TResult Function(_CheckTaskEvent value)? checkedTask,
+    TResult Function(_CheckedTaskEvent value)? checkedTask,
+    TResult Function(_DeletedTaskEvent value)? deletedTask,
     TResult Function(_UpdateProjectEvent value)? update,
     TResult Function(_DeleteProjectEvent value)? delete,
     TResult Function(_JoinProjectEvent value)? join,
@@ -253,19 +265,20 @@ abstract class _StartedEvent implements ProjectDetailsEvent {
 }
 
 /// @nodoc
-abstract class _$$_CheckTaskEventCopyWith<$Res> {
-  factory _$$_CheckTaskEventCopyWith(
-          _$_CheckTaskEvent value, $Res Function(_$_CheckTaskEvent) then) =
-      __$$_CheckTaskEventCopyWithImpl<$Res>;
+abstract class _$$_CheckedTaskEventCopyWith<$Res> {
+  factory _$$_CheckedTaskEventCopyWith(
+          _$_CheckedTaskEvent value, $Res Function(_$_CheckedTaskEvent) then) =
+      __$$_CheckedTaskEventCopyWithImpl<$Res>;
   @useResult
   $Res call({String id});
 }
 
 /// @nodoc
-class __$$_CheckTaskEventCopyWithImpl<$Res>
-    extends _$ProjectDetailsEventCopyWithImpl<$Res, _$_CheckTaskEvent>
-    implements _$$_CheckTaskEventCopyWith<$Res> {
-  __$$_CheckTaskEventCopyWithImpl(_$_CheckTaskEvent _value, $Res Function(_$_CheckTaskEvent) _then)
+class __$$_CheckedTaskEventCopyWithImpl<$Res>
+    extends _$ProjectDetailsEventCopyWithImpl<$Res, _$_CheckedTaskEvent>
+    implements _$$_CheckedTaskEventCopyWith<$Res> {
+  __$$_CheckedTaskEventCopyWithImpl(
+      _$_CheckedTaskEvent _value, $Res Function(_$_CheckedTaskEvent) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -273,7 +286,7 @@ class __$$_CheckTaskEventCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
   }) {
-    return _then(_$_CheckTaskEvent(
+    return _then(_$_CheckedTaskEvent(
       null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -284,8 +297,8 @@ class __$$_CheckTaskEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CheckTaskEvent implements _CheckTaskEvent {
-  const _$_CheckTaskEvent(this.id);
+class _$_CheckedTaskEvent implements _CheckedTaskEvent {
+  const _$_CheckedTaskEvent(this.id);
 
   @override
   final String id;
@@ -299,7 +312,7 @@ class _$_CheckTaskEvent implements _CheckTaskEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CheckTaskEvent &&
+            other is _$_CheckedTaskEvent &&
             (identical(other.id, id) || other.id == id));
   }
 
@@ -309,14 +322,15 @@ class _$_CheckTaskEvent implements _CheckTaskEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CheckTaskEventCopyWith<_$_CheckTaskEvent> get copyWith =>
-      __$$_CheckTaskEventCopyWithImpl<_$_CheckTaskEvent>(this, _$identity);
+  _$$_CheckedTaskEventCopyWith<_$_CheckedTaskEvent> get copyWith =>
+      __$$_CheckedTaskEventCopyWithImpl<_$_CheckedTaskEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String id) started,
     required TResult Function(String id) checkedTask,
+    required TResult Function(String id) deletedTask,
     required TResult Function() update,
     required TResult Function() delete,
     required TResult Function() join,
@@ -330,6 +344,7 @@ class _$_CheckTaskEvent implements _CheckTaskEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id)? started,
     TResult? Function(String id)? checkedTask,
+    TResult? Function(String id)? deletedTask,
     TResult? Function()? update,
     TResult? Function()? delete,
     TResult? Function()? join,
@@ -343,6 +358,7 @@ class _$_CheckTaskEvent implements _CheckTaskEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id)? started,
     TResult Function(String id)? checkedTask,
+    TResult Function(String id)? deletedTask,
     TResult Function()? update,
     TResult Function()? delete,
     TResult Function()? join,
@@ -359,7 +375,8 @@ class _$_CheckTaskEvent implements _CheckTaskEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
-    required TResult Function(_CheckTaskEvent value) checkedTask,
+    required TResult Function(_CheckedTaskEvent value) checkedTask,
+    required TResult Function(_DeletedTaskEvent value) deletedTask,
     required TResult Function(_UpdateProjectEvent value) update,
     required TResult Function(_DeleteProjectEvent value) delete,
     required TResult Function(_JoinProjectEvent value) join,
@@ -372,7 +389,8 @@ class _$_CheckTaskEvent implements _CheckTaskEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
-    TResult? Function(_CheckTaskEvent value)? checkedTask,
+    TResult? Function(_CheckedTaskEvent value)? checkedTask,
+    TResult? Function(_DeletedTaskEvent value)? deletedTask,
     TResult? Function(_UpdateProjectEvent value)? update,
     TResult? Function(_DeleteProjectEvent value)? delete,
     TResult? Function(_JoinProjectEvent value)? join,
@@ -385,7 +403,8 @@ class _$_CheckTaskEvent implements _CheckTaskEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
-    TResult Function(_CheckTaskEvent value)? checkedTask,
+    TResult Function(_CheckedTaskEvent value)? checkedTask,
+    TResult Function(_DeletedTaskEvent value)? deletedTask,
     TResult Function(_UpdateProjectEvent value)? update,
     TResult Function(_DeleteProjectEvent value)? delete,
     TResult Function(_JoinProjectEvent value)? join,
@@ -399,12 +418,176 @@ class _$_CheckTaskEvent implements _CheckTaskEvent {
   }
 }
 
-abstract class _CheckTaskEvent implements ProjectDetailsEvent {
-  const factory _CheckTaskEvent(final String id) = _$_CheckTaskEvent;
+abstract class _CheckedTaskEvent implements ProjectDetailsEvent {
+  const factory _CheckedTaskEvent(final String id) = _$_CheckedTaskEvent;
 
   String get id;
   @JsonKey(ignore: true)
-  _$$_CheckTaskEventCopyWith<_$_CheckTaskEvent> get copyWith => throw _privateConstructorUsedError;
+  _$$_CheckedTaskEventCopyWith<_$_CheckedTaskEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_DeletedTaskEventCopyWith<$Res> {
+  factory _$$_DeletedTaskEventCopyWith(
+          _$_DeletedTaskEvent value, $Res Function(_$_DeletedTaskEvent) then) =
+      __$$_DeletedTaskEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$_DeletedTaskEventCopyWithImpl<$Res>
+    extends _$ProjectDetailsEventCopyWithImpl<$Res, _$_DeletedTaskEvent>
+    implements _$$_DeletedTaskEventCopyWith<$Res> {
+  __$$_DeletedTaskEventCopyWithImpl(
+      _$_DeletedTaskEvent _value, $Res Function(_$_DeletedTaskEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$_DeletedTaskEvent(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_DeletedTaskEvent implements _DeletedTaskEvent {
+  const _$_DeletedTaskEvent(this.id);
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'ProjectDetailsEvent.deletedTask(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_DeletedTaskEvent &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_DeletedTaskEventCopyWith<_$_DeletedTaskEvent> get copyWith =>
+      __$$_DeletedTaskEventCopyWithImpl<_$_DeletedTaskEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id) started,
+    required TResult Function(String id) checkedTask,
+    required TResult Function(String id) deletedTask,
+    required TResult Function() update,
+    required TResult Function() delete,
+    required TResult Function() join,
+    required TResult Function() leave,
+  }) {
+    return deletedTask(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id)? started,
+    TResult? Function(String id)? checkedTask,
+    TResult? Function(String id)? deletedTask,
+    TResult? Function()? update,
+    TResult? Function()? delete,
+    TResult? Function()? join,
+    TResult? Function()? leave,
+  }) {
+    return deletedTask?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id)? started,
+    TResult Function(String id)? checkedTask,
+    TResult Function(String id)? deletedTask,
+    TResult Function()? update,
+    TResult Function()? delete,
+    TResult Function()? join,
+    TResult Function()? leave,
+    required TResult orElse(),
+  }) {
+    if (deletedTask != null) {
+      return deletedTask(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StartedEvent value) started,
+    required TResult Function(_CheckedTaskEvent value) checkedTask,
+    required TResult Function(_DeletedTaskEvent value) deletedTask,
+    required TResult Function(_UpdateProjectEvent value) update,
+    required TResult Function(_DeleteProjectEvent value) delete,
+    required TResult Function(_JoinProjectEvent value) join,
+    required TResult Function(_LeaveProjectEvent value) leave,
+  }) {
+    return deletedTask(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_StartedEvent value)? started,
+    TResult? Function(_CheckedTaskEvent value)? checkedTask,
+    TResult? Function(_DeletedTaskEvent value)? deletedTask,
+    TResult? Function(_UpdateProjectEvent value)? update,
+    TResult? Function(_DeleteProjectEvent value)? delete,
+    TResult? Function(_JoinProjectEvent value)? join,
+    TResult? Function(_LeaveProjectEvent value)? leave,
+  }) {
+    return deletedTask?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_StartedEvent value)? started,
+    TResult Function(_CheckedTaskEvent value)? checkedTask,
+    TResult Function(_DeletedTaskEvent value)? deletedTask,
+    TResult Function(_UpdateProjectEvent value)? update,
+    TResult Function(_DeleteProjectEvent value)? delete,
+    TResult Function(_JoinProjectEvent value)? join,
+    TResult Function(_LeaveProjectEvent value)? leave,
+    required TResult orElse(),
+  }) {
+    if (deletedTask != null) {
+      return deletedTask(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeletedTaskEvent implements ProjectDetailsEvent {
+  const factory _DeletedTaskEvent(final String id) = _$_DeletedTaskEvent;
+
+  String get id;
+  @JsonKey(ignore: true)
+  _$$_DeletedTaskEventCopyWith<_$_DeletedTaskEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -447,6 +630,7 @@ class _$_UpdateProjectEvent implements _UpdateProjectEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String id) started,
     required TResult Function(String id) checkedTask,
+    required TResult Function(String id) deletedTask,
     required TResult Function() update,
     required TResult Function() delete,
     required TResult Function() join,
@@ -460,6 +644,7 @@ class _$_UpdateProjectEvent implements _UpdateProjectEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id)? started,
     TResult? Function(String id)? checkedTask,
+    TResult? Function(String id)? deletedTask,
     TResult? Function()? update,
     TResult? Function()? delete,
     TResult? Function()? join,
@@ -473,6 +658,7 @@ class _$_UpdateProjectEvent implements _UpdateProjectEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id)? started,
     TResult Function(String id)? checkedTask,
+    TResult Function(String id)? deletedTask,
     TResult Function()? update,
     TResult Function()? delete,
     TResult Function()? join,
@@ -489,7 +675,8 @@ class _$_UpdateProjectEvent implements _UpdateProjectEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
-    required TResult Function(_CheckTaskEvent value) checkedTask,
+    required TResult Function(_CheckedTaskEvent value) checkedTask,
+    required TResult Function(_DeletedTaskEvent value) deletedTask,
     required TResult Function(_UpdateProjectEvent value) update,
     required TResult Function(_DeleteProjectEvent value) delete,
     required TResult Function(_JoinProjectEvent value) join,
@@ -502,7 +689,8 @@ class _$_UpdateProjectEvent implements _UpdateProjectEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
-    TResult? Function(_CheckTaskEvent value)? checkedTask,
+    TResult? Function(_CheckedTaskEvent value)? checkedTask,
+    TResult? Function(_DeletedTaskEvent value)? deletedTask,
     TResult? Function(_UpdateProjectEvent value)? update,
     TResult? Function(_DeleteProjectEvent value)? delete,
     TResult? Function(_JoinProjectEvent value)? join,
@@ -515,7 +703,8 @@ class _$_UpdateProjectEvent implements _UpdateProjectEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
-    TResult Function(_CheckTaskEvent value)? checkedTask,
+    TResult Function(_CheckedTaskEvent value)? checkedTask,
+    TResult Function(_DeletedTaskEvent value)? deletedTask,
     TResult Function(_UpdateProjectEvent value)? update,
     TResult Function(_DeleteProjectEvent value)? delete,
     TResult Function(_JoinProjectEvent value)? join,
@@ -573,6 +762,7 @@ class _$_DeleteProjectEvent implements _DeleteProjectEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String id) started,
     required TResult Function(String id) checkedTask,
+    required TResult Function(String id) deletedTask,
     required TResult Function() update,
     required TResult Function() delete,
     required TResult Function() join,
@@ -586,6 +776,7 @@ class _$_DeleteProjectEvent implements _DeleteProjectEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id)? started,
     TResult? Function(String id)? checkedTask,
+    TResult? Function(String id)? deletedTask,
     TResult? Function()? update,
     TResult? Function()? delete,
     TResult? Function()? join,
@@ -599,6 +790,7 @@ class _$_DeleteProjectEvent implements _DeleteProjectEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id)? started,
     TResult Function(String id)? checkedTask,
+    TResult Function(String id)? deletedTask,
     TResult Function()? update,
     TResult Function()? delete,
     TResult Function()? join,
@@ -615,7 +807,8 @@ class _$_DeleteProjectEvent implements _DeleteProjectEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
-    required TResult Function(_CheckTaskEvent value) checkedTask,
+    required TResult Function(_CheckedTaskEvent value) checkedTask,
+    required TResult Function(_DeletedTaskEvent value) deletedTask,
     required TResult Function(_UpdateProjectEvent value) update,
     required TResult Function(_DeleteProjectEvent value) delete,
     required TResult Function(_JoinProjectEvent value) join,
@@ -628,7 +821,8 @@ class _$_DeleteProjectEvent implements _DeleteProjectEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
-    TResult? Function(_CheckTaskEvent value)? checkedTask,
+    TResult? Function(_CheckedTaskEvent value)? checkedTask,
+    TResult? Function(_DeletedTaskEvent value)? deletedTask,
     TResult? Function(_UpdateProjectEvent value)? update,
     TResult? Function(_DeleteProjectEvent value)? delete,
     TResult? Function(_JoinProjectEvent value)? join,
@@ -641,7 +835,8 @@ class _$_DeleteProjectEvent implements _DeleteProjectEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
-    TResult Function(_CheckTaskEvent value)? checkedTask,
+    TResult Function(_CheckedTaskEvent value)? checkedTask,
+    TResult Function(_DeletedTaskEvent value)? deletedTask,
     TResult Function(_UpdateProjectEvent value)? update,
     TResult Function(_DeleteProjectEvent value)? delete,
     TResult Function(_JoinProjectEvent value)? join,
@@ -699,6 +894,7 @@ class _$_JoinProjectEvent implements _JoinProjectEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String id) started,
     required TResult Function(String id) checkedTask,
+    required TResult Function(String id) deletedTask,
     required TResult Function() update,
     required TResult Function() delete,
     required TResult Function() join,
@@ -712,6 +908,7 @@ class _$_JoinProjectEvent implements _JoinProjectEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id)? started,
     TResult? Function(String id)? checkedTask,
+    TResult? Function(String id)? deletedTask,
     TResult? Function()? update,
     TResult? Function()? delete,
     TResult? Function()? join,
@@ -725,6 +922,7 @@ class _$_JoinProjectEvent implements _JoinProjectEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id)? started,
     TResult Function(String id)? checkedTask,
+    TResult Function(String id)? deletedTask,
     TResult Function()? update,
     TResult Function()? delete,
     TResult Function()? join,
@@ -741,7 +939,8 @@ class _$_JoinProjectEvent implements _JoinProjectEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
-    required TResult Function(_CheckTaskEvent value) checkedTask,
+    required TResult Function(_CheckedTaskEvent value) checkedTask,
+    required TResult Function(_DeletedTaskEvent value) deletedTask,
     required TResult Function(_UpdateProjectEvent value) update,
     required TResult Function(_DeleteProjectEvent value) delete,
     required TResult Function(_JoinProjectEvent value) join,
@@ -754,7 +953,8 @@ class _$_JoinProjectEvent implements _JoinProjectEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
-    TResult? Function(_CheckTaskEvent value)? checkedTask,
+    TResult? Function(_CheckedTaskEvent value)? checkedTask,
+    TResult? Function(_DeletedTaskEvent value)? deletedTask,
     TResult? Function(_UpdateProjectEvent value)? update,
     TResult? Function(_DeleteProjectEvent value)? delete,
     TResult? Function(_JoinProjectEvent value)? join,
@@ -767,7 +967,8 @@ class _$_JoinProjectEvent implements _JoinProjectEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
-    TResult Function(_CheckTaskEvent value)? checkedTask,
+    TResult Function(_CheckedTaskEvent value)? checkedTask,
+    TResult Function(_DeletedTaskEvent value)? deletedTask,
     TResult Function(_UpdateProjectEvent value)? update,
     TResult Function(_DeleteProjectEvent value)? delete,
     TResult Function(_JoinProjectEvent value)? join,
@@ -825,6 +1026,7 @@ class _$_LeaveProjectEvent implements _LeaveProjectEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String id) started,
     required TResult Function(String id) checkedTask,
+    required TResult Function(String id) deletedTask,
     required TResult Function() update,
     required TResult Function() delete,
     required TResult Function() join,
@@ -838,6 +1040,7 @@ class _$_LeaveProjectEvent implements _LeaveProjectEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id)? started,
     TResult? Function(String id)? checkedTask,
+    TResult? Function(String id)? deletedTask,
     TResult? Function()? update,
     TResult? Function()? delete,
     TResult? Function()? join,
@@ -851,6 +1054,7 @@ class _$_LeaveProjectEvent implements _LeaveProjectEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id)? started,
     TResult Function(String id)? checkedTask,
+    TResult Function(String id)? deletedTask,
     TResult Function()? update,
     TResult Function()? delete,
     TResult Function()? join,
@@ -867,7 +1071,8 @@ class _$_LeaveProjectEvent implements _LeaveProjectEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
-    required TResult Function(_CheckTaskEvent value) checkedTask,
+    required TResult Function(_CheckedTaskEvent value) checkedTask,
+    required TResult Function(_DeletedTaskEvent value) deletedTask,
     required TResult Function(_UpdateProjectEvent value) update,
     required TResult Function(_DeleteProjectEvent value) delete,
     required TResult Function(_JoinProjectEvent value) join,
@@ -880,7 +1085,8 @@ class _$_LeaveProjectEvent implements _LeaveProjectEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
-    TResult? Function(_CheckTaskEvent value)? checkedTask,
+    TResult? Function(_CheckedTaskEvent value)? checkedTask,
+    TResult? Function(_DeletedTaskEvent value)? deletedTask,
     TResult? Function(_UpdateProjectEvent value)? update,
     TResult? Function(_DeleteProjectEvent value)? delete,
     TResult? Function(_JoinProjectEvent value)? join,
@@ -893,7 +1099,8 @@ class _$_LeaveProjectEvent implements _LeaveProjectEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
-    TResult Function(_CheckTaskEvent value)? checkedTask,
+    TResult Function(_CheckedTaskEvent value)? checkedTask,
+    TResult Function(_DeletedTaskEvent value)? deletedTask,
     TResult Function(_UpdateProjectEvent value)? update,
     TResult Function(_DeleteProjectEvent value)? delete,
     TResult Function(_JoinProjectEvent value)? join,

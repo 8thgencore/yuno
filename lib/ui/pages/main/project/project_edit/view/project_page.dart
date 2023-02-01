@@ -6,7 +6,7 @@ import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
 import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/project/project_edit/bloc/project_edit_bloc.dart';
-import 'package:yuno/ui/widgets/custom_rounded_button.dart';
+import 'package:yuno/ui/widgets/buttons/custom_rounded_button.dart';
 import 'package:yuno/ui/widgets/custom_text_field.dart';
 import 'package:yuno/ui/widgets/toast_widget.dart';
 import 'package:yuno/utils/toast.dart';

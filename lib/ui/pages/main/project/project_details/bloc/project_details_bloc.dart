@@ -23,6 +23,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
       (event, emit) => event.map(
         started: (event) => _onProjectLoaded(event, emit),
         checkedTask: (event) => _onCheckedTask(event, emit),
+        deletedTask: (event) => _onDeletedTask(event, emit),
         update: (event) => _onUpdatedProject(event, emit),
         delete: (event) => _onDeletedProject(event, emit),
         join: (event) => _onJoinProject(event, emit),
@@ -53,7 +54,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
   }
 
   FutureOr<void> _onCheckedTask(
-    _CheckTaskEvent event,
+    _CheckedTaskEvent event,
     Emitter<ProjectDetailsState> emit,
   ) async {
     try {
@@ -73,6 +74,20 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
         if (index >= 0) {
           _tasks[index] = task.copyWith(done: !isDone);
         }
+      }
+    } on DioError catch (dioError) {
+      emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
+    }
+  }
+
+  FutureOr<void> _onDeletedTask(
+    _DeletedTaskEvent event,
+    Emitter<ProjectDetailsState> emit,
+  ) async {
+    try {
+      final updatedTask = await apiTaskRepository.deleteById(id: event.id);
+      if (updatedTask != null) {
+        _tasks.removeWhere((task) => task.id == event.id);
       }
     } on DioError catch (dioError) {
       emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));

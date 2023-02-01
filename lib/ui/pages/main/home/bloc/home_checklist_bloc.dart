@@ -16,8 +16,10 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
   }) : super(const HomeChecklistState.initial()) {
     on<HomeChecklistEvent>(
       (event, emit) => event.map(
-          started: (event) => _onChecklistLoaded(event, emit),
-          checkItem: (event) => _onCheckItem(event, emit)),
+        started: (event) => _onChecklistLoaded(event, emit),
+        checkedItem: (event) => _onCheckedItem(event, emit),
+        deletedItem: (event) => _onDeletedItem(event, emit),
+      ),
     );
   }
 
@@ -42,8 +44,8 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
     }
   }
 
-  FutureOr<void> _onCheckItem(
-    _CheckItemEvent event,
+  FutureOr<void> _onCheckedItem(
+    _CheckedItemEvent event,
     Emitter<HomeChecklistState> emit,
   ) async {
     try {
@@ -63,6 +65,20 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
         if (index >= 0) {
           _tasks[index] = task.copyWith(done: !isDone);
         }
+      }
+    } on DioError catch (dioError) {
+      emit(HomeChecklistState.failure(dioErrorInterceptor(dioError).toString()));
+    }
+  }
+
+  FutureOr<void> _onDeletedItem(
+    _DeletedItemEvent event,
+    Emitter<HomeChecklistState> emit,
+  ) async {
+    try {
+      final updatedTask = await apiTaskRepository.deleteById(id: event.id);
+      if (updatedTask != null) {
+        _tasks.removeWhere((task) => task.id == event.id);
       }
     } on DioError catch (dioError) {
       emit(HomeChecklistState.failure(dioErrorInterceptor(dioError).toString()));

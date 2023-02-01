@@ -19,38 +19,46 @@ mixin _$HomeChecklistEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String id) checkItem,
+    required TResult Function(String id) checkedItem,
+    required TResult Function(String id) deletedItem,
   }) =>
       throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String id)? checkItem,
+    TResult? Function(String id)? checkedItem,
+    TResult? Function(String id)? deletedItem,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String id)? checkItem,
+    TResult Function(String id)? checkedItem,
+    TResult Function(String id)? deletedItem,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
-    required TResult Function(_CheckItemEvent value) checkItem,
+    required TResult Function(_CheckedItemEvent value) checkedItem,
+    required TResult Function(_DeletedItemEvent value) deletedItem,
   }) =>
       throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
-    TResult? Function(_CheckItemEvent value)? checkItem,
+    TResult? Function(_CheckedItemEvent value)? checkedItem,
+    TResult? Function(_DeletedItemEvent value)? deletedItem,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
-    TResult Function(_CheckItemEvent value)? checkItem,
+    TResult Function(_CheckedItemEvent value)? checkedItem,
+    TResult Function(_DeletedItemEvent value)? deletedItem,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +121,8 @@ class _$_StartedEvent implements _StartedEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String id) checkItem,
+    required TResult Function(String id) checkedItem,
+    required TResult Function(String id) deletedItem,
   }) {
     return started();
   }
@@ -122,7 +131,8 @@ class _$_StartedEvent implements _StartedEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String id)? checkItem,
+    TResult? Function(String id)? checkedItem,
+    TResult? Function(String id)? deletedItem,
   }) {
     return started?.call();
   }
@@ -131,7 +141,8 @@ class _$_StartedEvent implements _StartedEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String id)? checkItem,
+    TResult Function(String id)? checkedItem,
+    TResult Function(String id)? deletedItem,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -144,7 +155,8 @@ class _$_StartedEvent implements _StartedEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
-    required TResult Function(_CheckItemEvent value) checkItem,
+    required TResult Function(_CheckedItemEvent value) checkedItem,
+    required TResult Function(_DeletedItemEvent value) deletedItem,
   }) {
     return started(this);
   }
@@ -153,7 +165,8 @@ class _$_StartedEvent implements _StartedEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
-    TResult? Function(_CheckItemEvent value)? checkItem,
+    TResult? Function(_CheckedItemEvent value)? checkedItem,
+    TResult? Function(_DeletedItemEvent value)? deletedItem,
   }) {
     return started?.call(this);
   }
@@ -162,7 +175,8 @@ class _$_StartedEvent implements _StartedEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
-    TResult Function(_CheckItemEvent value)? checkItem,
+    TResult Function(_CheckedItemEvent value)? checkedItem,
+    TResult Function(_DeletedItemEvent value)? deletedItem,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -177,20 +191,20 @@ abstract class _StartedEvent implements HomeChecklistEvent {
 }
 
 /// @nodoc
-abstract class _$$_CheckItemEventCopyWith<$Res> {
-  factory _$$_CheckItemEventCopyWith(
-          _$_CheckItemEvent value, $Res Function(_$_CheckItemEvent) then) =
-      __$$_CheckItemEventCopyWithImpl<$Res>;
+abstract class _$$_CheckedItemEventCopyWith<$Res> {
+  factory _$$_CheckedItemEventCopyWith(
+          _$_CheckedItemEvent value, $Res Function(_$_CheckedItemEvent) then) =
+      __$$_CheckedItemEventCopyWithImpl<$Res>;
   @useResult
   $Res call({String id});
 }
 
 /// @nodoc
-class __$$_CheckItemEventCopyWithImpl<$Res>
-    extends _$HomeChecklistEventCopyWithImpl<$Res, _$_CheckItemEvent>
-    implements _$$_CheckItemEventCopyWith<$Res> {
-  __$$_CheckItemEventCopyWithImpl(
-      _$_CheckItemEvent _value, $Res Function(_$_CheckItemEvent) _then)
+class __$$_CheckedItemEventCopyWithImpl<$Res>
+    extends _$HomeChecklistEventCopyWithImpl<$Res, _$_CheckedItemEvent>
+    implements _$$_CheckedItemEventCopyWith<$Res> {
+  __$$_CheckedItemEventCopyWithImpl(
+      _$_CheckedItemEvent _value, $Res Function(_$_CheckedItemEvent) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -198,8 +212,8 @@ class __$$_CheckItemEventCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
   }) {
-    return _then(_$_CheckItemEvent(
-      id: null == id
+    return _then(_$_CheckedItemEvent(
+      null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
@@ -209,22 +223,22 @@ class __$$_CheckItemEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CheckItemEvent implements _CheckItemEvent {
-  const _$_CheckItemEvent({required this.id});
+class _$_CheckedItemEvent implements _CheckedItemEvent {
+  const _$_CheckedItemEvent(this.id);
 
   @override
   final String id;
 
   @override
   String toString() {
-    return 'HomeChecklistEvent.checkItem(id: $id)';
+    return 'HomeChecklistEvent.checkedItem(id: $id)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CheckItemEvent &&
+            other is _$_CheckedItemEvent &&
             (identical(other.id, id) || other.id == id));
   }
 
@@ -234,36 +248,39 @@ class _$_CheckItemEvent implements _CheckItemEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CheckItemEventCopyWith<_$_CheckItemEvent> get copyWith =>
-      __$$_CheckItemEventCopyWithImpl<_$_CheckItemEvent>(this, _$identity);
+  _$$_CheckedItemEventCopyWith<_$_CheckedItemEvent> get copyWith =>
+      __$$_CheckedItemEventCopyWithImpl<_$_CheckedItemEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String id) checkItem,
+    required TResult Function(String id) checkedItem,
+    required TResult Function(String id) deletedItem,
   }) {
-    return checkItem(id);
+    return checkedItem(id);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String id)? checkItem,
+    TResult? Function(String id)? checkedItem,
+    TResult? Function(String id)? deletedItem,
   }) {
-    return checkItem?.call(id);
+    return checkedItem?.call(id);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String id)? checkItem,
+    TResult Function(String id)? checkedItem,
+    TResult Function(String id)? deletedItem,
     required TResult orElse(),
   }) {
-    if (checkItem != null) {
-      return checkItem(id);
+    if (checkedItem != null) {
+      return checkedItem(id);
     }
     return orElse();
   }
@@ -272,40 +289,182 @@ class _$_CheckItemEvent implements _CheckItemEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
-    required TResult Function(_CheckItemEvent value) checkItem,
+    required TResult Function(_CheckedItemEvent value) checkedItem,
+    required TResult Function(_DeletedItemEvent value) deletedItem,
   }) {
-    return checkItem(this);
+    return checkedItem(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
-    TResult? Function(_CheckItemEvent value)? checkItem,
+    TResult? Function(_CheckedItemEvent value)? checkedItem,
+    TResult? Function(_DeletedItemEvent value)? deletedItem,
   }) {
-    return checkItem?.call(this);
+    return checkedItem?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
-    TResult Function(_CheckItemEvent value)? checkItem,
+    TResult Function(_CheckedItemEvent value)? checkedItem,
+    TResult Function(_DeletedItemEvent value)? deletedItem,
     required TResult orElse(),
   }) {
-    if (checkItem != null) {
-      return checkItem(this);
+    if (checkedItem != null) {
+      return checkedItem(this);
     }
     return orElse();
   }
 }
 
-abstract class _CheckItemEvent implements HomeChecklistEvent {
-  const factory _CheckItemEvent({required final String id}) = _$_CheckItemEvent;
+abstract class _CheckedItemEvent implements HomeChecklistEvent {
+  const factory _CheckedItemEvent(final String id) = _$_CheckedItemEvent;
 
   String get id;
   @JsonKey(ignore: true)
-  _$$_CheckItemEventCopyWith<_$_CheckItemEvent> get copyWith =>
+  _$$_CheckedItemEventCopyWith<_$_CheckedItemEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_DeletedItemEventCopyWith<$Res> {
+  factory _$$_DeletedItemEventCopyWith(
+          _$_DeletedItemEvent value, $Res Function(_$_DeletedItemEvent) then) =
+      __$$_DeletedItemEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$_DeletedItemEventCopyWithImpl<$Res>
+    extends _$HomeChecklistEventCopyWithImpl<$Res, _$_DeletedItemEvent>
+    implements _$$_DeletedItemEventCopyWith<$Res> {
+  __$$_DeletedItemEventCopyWithImpl(
+      _$_DeletedItemEvent _value, $Res Function(_$_DeletedItemEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$_DeletedItemEvent(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_DeletedItemEvent implements _DeletedItemEvent {
+  const _$_DeletedItemEvent(this.id);
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'HomeChecklistEvent.deletedItem(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_DeletedItemEvent &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_DeletedItemEventCopyWith<_$_DeletedItemEvent> get copyWith =>
+      __$$_DeletedItemEventCopyWithImpl<_$_DeletedItemEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String id) checkedItem,
+    required TResult Function(String id) deletedItem,
+  }) {
+    return deletedItem(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String id)? checkedItem,
+    TResult? Function(String id)? deletedItem,
+  }) {
+    return deletedItem?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String id)? checkedItem,
+    TResult Function(String id)? deletedItem,
+    required TResult orElse(),
+  }) {
+    if (deletedItem != null) {
+      return deletedItem(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StartedEvent value) started,
+    required TResult Function(_CheckedItemEvent value) checkedItem,
+    required TResult Function(_DeletedItemEvent value) deletedItem,
+  }) {
+    return deletedItem(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_StartedEvent value)? started,
+    TResult? Function(_CheckedItemEvent value)? checkedItem,
+    TResult? Function(_DeletedItemEvent value)? deletedItem,
+  }) {
+    return deletedItem?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_StartedEvent value)? started,
+    TResult Function(_CheckedItemEvent value)? checkedItem,
+    TResult Function(_DeletedItemEvent value)? deletedItem,
+    required TResult orElse(),
+  }) {
+    if (deletedItem != null) {
+      return deletedItem(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeletedItemEvent implements HomeChecklistEvent {
+  const factory _DeletedItemEvent(final String id) = _$_DeletedItemEvent;
+
+  String get id;
+  @JsonKey(ignore: true)
+  _$$_DeletedItemEventCopyWith<_$_DeletedItemEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

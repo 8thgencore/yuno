@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router_flow/go_router_flow.dart';
-import 'package:intl/intl.dart';
 import 'package:yuno/api/project/models.dart';
 import 'package:yuno/api/task/models.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
 import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/project/project_details/bloc/project_details_bloc.dart';
+import 'package:yuno/ui/widgets/buttons/yuno_icon_button.dart';
+import 'package:yuno/ui/widgets/buttons/yuno_white_text_button.dart';
 import 'package:yuno/ui/widgets/error_container.dart';
 import 'package:yuno/ui/widgets/linear_percent_indicator_large_widget.dart';
 import 'package:yuno/ui/widgets/project_card_large_widget.dart';
+import 'package:yuno/ui/widgets/task_card_widget.dart';
 import 'package:yuno/ui/widgets/toast_widget.dart';
 import 'package:yuno/ui/widgets/yuno_alert_dialog.dart';
-import 'package:yuno/ui/widgets/yuno_icon_button.dart';
-import 'package:yuno/ui/widgets/yuno_white_text_button.dart';
 import 'package:yuno/utils/toast.dart';
 
 class ProjectDetailsPage extends StatelessWidget {
@@ -293,97 +293,22 @@ class _CheckListWidget extends StatelessWidget {
                         });
                       }
                     : null,
-                child: _TaskCardWidget(task: tasks[index], isMember: isMember),
+                child: TaskCardWidget(
+                  task: tasks[index],
+                  onClickCheckBox: () => context
+                      .read<ProjectDetailsBloc>()
+                      .add(ProjectDetailsEvent.checkedTask(tasks[index].id)),
+                  onDismissible: () => context
+                      .read<ProjectDetailsBloc>()
+                      .add(ProjectDetailsEvent.deletedTask(tasks[index].id)),
+                  isMember: isMember,
+                ),
               );
             },
           )
         else
           const ErrorContainer(text: 'Tasks list is empty'),
       ],
-    );
-  }
-}
-
-class _TaskCardWidget extends StatefulWidget {
-  const _TaskCardWidget({
-    required this.task,
-    required this.isMember,
-  });
-
-  final ITaskRead task;
-  final bool isMember;
-
-  @override
-  State<_TaskCardWidget> createState() => _TaskCardWidgetState();
-}
-
-class _TaskCardWidgetState extends State<_TaskCardWidget> {
-  late bool value;
-
-  @override
-  void initState() {
-    super.initState();
-    value = widget.task.done ?? false;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    var deadline = '';
-    if (widget.task != null) {
-      if (widget.task.deadline != null) {
-        final outputFormat = DateFormat('dd MMMM yyyy, HH:mm');
-        deadline = outputFormat.format(widget.task.deadline!);
-      }
-    }
-    return Container(
-      height: 80,
-      margin: const EdgeInsets.symmetric(vertical: 10),
-      padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 20),
-      decoration: BoxDecoration(
-        color: AppColors.white100,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  widget.task.name,
-                  style: AppTypography.b16d,
-                  overflow: TextOverflow.fade,
-                  softWrap: false,
-                ),
-                const SizedBox(height: 6),
-                Text(
-                  deadline,
-                  style: AppTypography.l12g,
-                  overflow: TextOverflow.fade,
-                  softWrap: false,
-                ),
-              ],
-            ),
-          ),
-          if (widget.isMember)
-            Transform.scale(
-              scale: 1.4,
-              child: Checkbox(
-                value: value,
-                onChanged: (v) {
-                  setState(() {
-                    value = !value;
-                    context
-                        .read<ProjectDetailsBloc>()
-                        .add(ProjectDetailsEvent.checkedTask(widget.task.id));
-                  });
-                },
-              ),
-            )
-          else
-            const SizedBox(),
-        ],
-      ),
     );
   }
 }

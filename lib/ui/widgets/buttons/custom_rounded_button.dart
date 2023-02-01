@@ -22,7 +22,7 @@ class CustomRoundedButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           textButton,
-          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
       ),
     );
