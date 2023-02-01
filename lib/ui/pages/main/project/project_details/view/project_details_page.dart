@@ -12,6 +12,7 @@ import 'package:yuno/ui/widgets/error_container.dart';
 import 'package:yuno/ui/widgets/linear_percent_indicator_large_widget.dart';
 import 'package:yuno/ui/widgets/project_card_large_widget.dart';
 import 'package:yuno/ui/widgets/toast_widget.dart';
+import 'package:yuno/ui/widgets/yuno_alert_dialog.dart';
 import 'package:yuno/ui/widgets/yuno_icon_button.dart';
 import 'package:yuno/ui/widgets/yuno_white_text_button.dart';
 import 'package:yuno/utils/toast.dart';
@@ -114,7 +115,7 @@ class _ProjectContentWidget extends StatelessWidget {
                     ),
                     const SizedBox(height: 28),
                     _CheckListWidget(tasks: tasks, isMember: isMember),
-                    const SizedBox(height: 28),
+                    const SizedBox(height: 80),
                   ],
                 ),
                 failure: (error) => const ErrorContainer(
@@ -155,7 +156,7 @@ class _ProjectFullCardWidget extends StatelessWidget {
         children: [
           ProjectCardLargeWidget(project: project),
           const Padding(
-            padding: EdgeInsets.only(left: 24, right: 24, bottom: 12),
+            padding: EdgeInsets.only(left: 24, right: 24, top: 24, bottom: 12),
             child: LinearPercentIndicatorWidget(percent: 0.4),
           ),
           if (isMember)
@@ -202,8 +203,14 @@ class _ButtonsRowWidget extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: isOwner
-              ? () {
-                  context.read<ProjectDetailsBloc>().add(const ProjectDetailsEvent.delete());
+              ? () async {
+                  final bool? val = await showDialog<bool?>(
+                    context: context,
+                    builder: (context) => const YunoAlertDialog(text: 'Delete The Project?'),
+                  );
+                  if (val ?? true) {
+                    context.read<ProjectDetailsBloc>().add(const ProjectDetailsEvent.delete());
+                  }
                 }
               : null,
           child: YunoIconButton(
@@ -229,8 +236,14 @@ class _ButtonsRowWidget extends StatelessWidget {
           child: YunoIconButton(icon: Assets.svg.pencil.svg(color: AppColors.secondary100)),
         ),
         GestureDetector(
-          onTap: () {
-            context.read<ProjectDetailsBloc>().add(const ProjectDetailsEvent.leave());
+          onTap: () async {
+            final bool? val = await showDialog<bool?>(
+              context: context,
+              builder: (context) => const YunoAlertDialog(text: 'Leave The Project?'),
+            );
+            if (val ?? true) {
+              context.read<ProjectDetailsBloc>().add(const ProjectDetailsEvent.leave());
+            }
           },
           child: YunoIconButton(icon: Assets.svg.logout.svg(color: AppColors.error100)),
         ),
