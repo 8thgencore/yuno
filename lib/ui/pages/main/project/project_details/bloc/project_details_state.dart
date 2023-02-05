@@ -17,5 +17,7 @@ class ProjectDetailsState with _$ProjectDetailsState {
 
   const factory ProjectDetailsState.failure(Object error) = _FailureState;
 
+  const factory ProjectDetailsState.keep() = _KeepState;
+
   const factory ProjectDetailsState.deleted() = _DeletedState;
 }

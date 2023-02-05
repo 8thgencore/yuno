@@ -53,9 +53,12 @@ class HomeHeaderBloc extends Bloc<HomeHeaderEvent, HomeHeaderState> {
             final bDate = b.deadline!.microsecondsSinceEpoch;
             return aDate.compareTo(bDate);
           });
-          _task = tasksWithDeadline.firstWhere((e) {
+          final nearestTask = tasksWithDeadline.where((e) {
             return (e.deadline!.microsecondsSinceEpoch - DateTime.now().microsecondsSinceEpoch) > 0;
           });
+          if (nearestTask.isNotEmpty) {
+            _task = nearestTask.first;
+          }
         }
       }
       emit(HomeHeaderState.loaded(

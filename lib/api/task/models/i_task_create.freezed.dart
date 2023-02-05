@@ -22,15 +22,12 @@ ITaskCreate _$ITaskCreateFromJson(Map<String, dynamic> json) {
 mixin _$ITaskCreate {
   String get name => throw _privateConstructorUsedError;
   bool? get done => throw _privateConstructorUsedError;
-
   @JsonKey(includeIfNull: false)
   DateTime? get deadline => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'project_id', includeIfNull: false)
   String? get projectId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $ITaskCreateCopyWith<ITaskCreate> get copyWith => throw _privateConstructorUsedError;
 }
@@ -210,14 +207,11 @@ abstract class _ITaskCreate implements ITaskCreate {
 
   @override
   String get name;
-
   @override
   bool? get done;
-
   @override
   @JsonKey(includeIfNull: false)
   DateTime? get deadline;
-
   @override
   @JsonKey(name: 'project_id', includeIfNull: false)
   String? get projectId;

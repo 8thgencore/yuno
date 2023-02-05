@@ -21,18 +21,13 @@ IProjectRead _$IProjectReadFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$IProjectRead {
   String get name => throw _privateConstructorUsedError;
-
   String get description => throw _privateConstructorUsedError;
-
   String get link => throw _privateConstructorUsedError;
-
   String get id => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'created_by_id')
   String? get createdBy => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $IProjectReadCopyWith<IProjectRead> get copyWith => throw _privateConstructorUsedError;
 }
@@ -42,7 +37,6 @@ abstract class $IProjectReadCopyWith<$Res> {
   factory $IProjectReadCopyWith(
           IProjectRead value, $Res Function(IProjectRead) then) =
       _$IProjectReadCopyWithImpl<$Res, IProjectRead>;
-
   @useResult
   $Res call(
       {String name,
@@ -102,7 +96,6 @@ abstract class _$$_IProjectReadCopyWith<$Res>
   factory _$$_IProjectReadCopyWith(
           _$_IProjectRead value, $Res Function(_$_IProjectRead) then) =
       __$$_IProjectReadCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(

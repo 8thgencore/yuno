@@ -80,6 +80,8 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
       if (updatedTask != null) {
         _tasks.removeWhere((task) => task.id == event.id);
       }
+      emit(const HomeChecklistState.keep());
+      emit(HomeChecklistState.loaded(tasks: _tasks));
     } on DioError catch (dioError) {
       emit(HomeChecklistState.failure(dioErrorInterceptor(dioError).toString()));
     }

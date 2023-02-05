@@ -8,11 +8,10 @@ part 'i_image_media_read.g.dart';
 @Freezed()
 class IImageMediaRead with _$IImageMediaRead {
   const factory IImageMediaRead({
-    @JsonKey(name: 'file_format')
-    required String fileFormat,
-    required int width,
-    required int height,
+    @JsonKey(name: 'file_format') required String fileFormat,
     required IMediaRead media,
+    int? width,
+    int? height,
   }) = _IImageMediaRead;
 
   factory IImageMediaRead.fromJson(Map<String, dynamic> json) => _$IImageMediaReadFromJson(json);

@@ -23,9 +23,7 @@ mixin _$ITaskRead {
   String get name => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   bool? get done => throw _privateConstructorUsedError;
-
   DateTime? get deadline => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'project_id')
   String? get projectId => throw _privateConstructorUsedError;
 
@@ -227,13 +225,10 @@ abstract class _ITaskRead implements ITaskRead {
   String get name;
   @override
   String get id;
-
   @override
   bool? get done;
-
   @override
   DateTime? get deadline;
-
   @override
   @JsonKey(name: 'project_id')
   String? get projectId;

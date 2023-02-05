@@ -36,6 +36,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
   final ApiProjectRepository apiProjectRepository;
   final ApiTaskRepository apiTaskRepository;
 
+  IProjectWithUsersTasks? _project;
   String _projectId = '';
   final List<ITaskRead> _tasks = [];
   bool _isMember = false;
@@ -89,6 +90,13 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
       if (updatedTask != null) {
         _tasks.removeWhere((task) => task.id == event.id);
       }
+      emit(const ProjectDetailsState.keep());
+      emit(ProjectDetailsState.loaded(
+        project: _project!,
+        tasks: _tasks,
+        isMember: _isMember,
+        isOwner: _isOwner,
+      ));
     } on DioError catch (dioError) {
       emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
     }
@@ -150,6 +158,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
 
   Future<void> _getProjectInfo(Emitter<ProjectDetailsState> emit) async {
     final project = await apiProjectRepository.getById(id: _projectId);
+    _project = project;
     if (project != null) {
       _tasks.addAll(project.tasks ?? []);
       // Check user member is project

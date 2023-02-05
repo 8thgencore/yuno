@@ -23,7 +23,6 @@ mixin _$HomeChecklistEvent {
     required TResult Function(String id) deletedItem,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
@@ -46,7 +45,6 @@ mixin _$HomeChecklistEvent {
     required TResult Function(_DeletedItemEvent value) deletedItem,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
@@ -474,6 +472,7 @@ mixin _$HomeChecklistState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() keep,
     required TResult Function(List<ITaskRead> tasks) loaded,
     required TResult Function(Object error) failure,
   }) =>
@@ -482,6 +481,7 @@ mixin _$HomeChecklistState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? keep,
     TResult? Function(List<ITaskRead> tasks)? loaded,
     TResult? Function(Object error)? failure,
   }) =>
@@ -490,6 +490,7 @@ mixin _$HomeChecklistState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? keep,
     TResult Function(List<ITaskRead> tasks)? loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
@@ -499,6 +500,7 @@ mixin _$HomeChecklistState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
+    required TResult Function(_KeepState value) keep,
     required TResult Function(_LoadedState value) loaded,
     required TResult Function(_FailureState value) failure,
   }) =>
@@ -507,6 +509,7 @@ mixin _$HomeChecklistState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_KeepState value)? keep,
     TResult? Function(_LoadedState value)? loaded,
     TResult? Function(_FailureState value)? failure,
   }) =>
@@ -515,6 +518,7 @@ mixin _$HomeChecklistState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
+    TResult Function(_KeepState value)? keep,
     TResult Function(_LoadedState value)? loaded,
     TResult Function(_FailureState value)? failure,
     required TResult orElse(),
@@ -580,6 +584,7 @@ class _$_InitialState extends _InitialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() keep,
     required TResult Function(List<ITaskRead> tasks) loaded,
     required TResult Function(Object error) failure,
   }) {
@@ -591,6 +596,7 @@ class _$_InitialState extends _InitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? keep,
     TResult? Function(List<ITaskRead> tasks)? loaded,
     TResult? Function(Object error)? failure,
   }) {
@@ -602,6 +608,7 @@ class _$_InitialState extends _InitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? keep,
     TResult Function(List<ITaskRead> tasks)? loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
@@ -617,6 +624,7 @@ class _$_InitialState extends _InitialState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
+    required TResult Function(_KeepState value) keep,
     required TResult Function(_LoadedState value) loaded,
     required TResult Function(_FailureState value) failure,
   }) {
@@ -628,6 +636,7 @@ class _$_InitialState extends _InitialState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_KeepState value)? keep,
     TResult? Function(_LoadedState value)? loaded,
     TResult? Function(_FailureState value)? failure,
   }) {
@@ -639,6 +648,7 @@ class _$_InitialState extends _InitialState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
+    TResult Function(_KeepState value)? keep,
     TResult Function(_LoadedState value)? loaded,
     TResult Function(_FailureState value)? failure,
     required TResult orElse(),
@@ -695,6 +705,7 @@ class _$_LoadingState extends _LoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() keep,
     required TResult Function(List<ITaskRead> tasks) loaded,
     required TResult Function(Object error) failure,
   }) {
@@ -706,6 +717,7 @@ class _$_LoadingState extends _LoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? keep,
     TResult? Function(List<ITaskRead> tasks)? loaded,
     TResult? Function(Object error)? failure,
   }) {
@@ -717,6 +729,7 @@ class _$_LoadingState extends _LoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? keep,
     TResult Function(List<ITaskRead> tasks)? loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
@@ -732,6 +745,7 @@ class _$_LoadingState extends _LoadingState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
+    required TResult Function(_KeepState value) keep,
     required TResult Function(_LoadedState value) loaded,
     required TResult Function(_FailureState value) failure,
   }) {
@@ -743,6 +757,7 @@ class _$_LoadingState extends _LoadingState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_KeepState value)? keep,
     TResult? Function(_LoadedState value)? loaded,
     TResult? Function(_FailureState value)? failure,
   }) {
@@ -754,6 +769,7 @@ class _$_LoadingState extends _LoadingState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
+    TResult Function(_KeepState value)? keep,
     TResult Function(_LoadedState value)? loaded,
     TResult Function(_FailureState value)? failure,
     required TResult orElse(),
@@ -771,9 +787,125 @@ abstract class _LoadingState extends HomeChecklistState {
 }
 
 /// @nodoc
+abstract class _$$_KeepStateCopyWith<$Res> {
+  factory _$$_KeepStateCopyWith(_$_KeepState value, $Res Function(_$_KeepState) then) =
+      __$$_KeepStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_KeepStateCopyWithImpl<$Res> extends _$HomeChecklistStateCopyWithImpl<$Res, _$_KeepState>
+    implements _$$_KeepStateCopyWith<$Res> {
+  __$$_KeepStateCopyWithImpl(_$_KeepState _value, $Res Function(_$_KeepState) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_KeepState extends _KeepState {
+  const _$_KeepState() : super._();
+
+  @override
+  String toString() {
+    return 'HomeChecklistState.keep()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_KeepState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() keep,
+    required TResult Function(List<ITaskRead> tasks) loaded,
+    required TResult Function(Object error) failure,
+  }) {
+    return keep();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? keep,
+    TResult? Function(List<ITaskRead> tasks)? loaded,
+    TResult? Function(Object error)? failure,
+  }) {
+    return keep?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? keep,
+    TResult Function(List<ITaskRead> tasks)? loaded,
+    TResult Function(Object error)? failure,
+    required TResult orElse(),
+  }) {
+    if (keep != null) {
+      return keep();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_KeepState value) keep,
+    required TResult Function(_LoadedState value) loaded,
+    required TResult Function(_FailureState value) failure,
+  }) {
+    return keep(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_KeepState value)? keep,
+    TResult? Function(_LoadedState value)? loaded,
+    TResult? Function(_FailureState value)? failure,
+  }) {
+    return keep?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_KeepState value)? keep,
+    TResult Function(_LoadedState value)? loaded,
+    TResult Function(_FailureState value)? failure,
+    required TResult orElse(),
+  }) {
+    if (keep != null) {
+      return keep(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _KeepState extends HomeChecklistState {
+  const factory _KeepState() = _$_KeepState;
+  const _KeepState._() : super._();
+}
+
+/// @nodoc
 abstract class _$$_LoadedStateCopyWith<$Res> {
-  factory _$$_LoadedStateCopyWith(
-          _$_LoadedState value, $Res Function(_$_LoadedState) then) =
+  factory _$$_LoadedStateCopyWith(_$_LoadedState value, $Res Function(_$_LoadedState) then) =
       __$$_LoadedStateCopyWithImpl<$Res>;
   @useResult
   $Res call({List<ITaskRead> tasks});
@@ -783,8 +915,7 @@ abstract class _$$_LoadedStateCopyWith<$Res> {
 class __$$_LoadedStateCopyWithImpl<$Res>
     extends _$HomeChecklistStateCopyWithImpl<$Res, _$_LoadedState>
     implements _$$_LoadedStateCopyWith<$Res> {
-  __$$_LoadedStateCopyWithImpl(
-      _$_LoadedState _value, $Res Function(_$_LoadedState) _then)
+  __$$_LoadedStateCopyWithImpl(_$_LoadedState _value, $Res Function(_$_LoadedState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -812,7 +943,7 @@ class _$_LoadedState extends _LoadedState {
   @override
   List<ITaskRead> get tasks {
     if (_tasks is EqualUnmodifiableListView) return _tasks;
-    // ignore: implicit_dynamic_type
+// ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tasks);
   }
 
@@ -830,8 +961,7 @@ class _$_LoadedState extends _LoadedState {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_tasks));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_tasks));
 
   @JsonKey(ignore: true)
   @override
@@ -844,6 +974,7 @@ class _$_LoadedState extends _LoadedState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() keep,
     required TResult Function(List<ITaskRead> tasks) loaded,
     required TResult Function(Object error) failure,
   }) {
@@ -855,6 +986,7 @@ class _$_LoadedState extends _LoadedState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? keep,
     TResult? Function(List<ITaskRead> tasks)? loaded,
     TResult? Function(Object error)? failure,
   }) {
@@ -866,6 +998,7 @@ class _$_LoadedState extends _LoadedState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? keep,
     TResult Function(List<ITaskRead> tasks)? loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
@@ -881,6 +1014,7 @@ class _$_LoadedState extends _LoadedState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
+    required TResult Function(_KeepState value) keep,
     required TResult Function(_LoadedState value) loaded,
     required TResult Function(_FailureState value) failure,
   }) {
@@ -892,6 +1026,7 @@ class _$_LoadedState extends _LoadedState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_KeepState value)? keep,
     TResult? Function(_LoadedState value)? loaded,
     TResult? Function(_FailureState value)? failure,
   }) {
@@ -903,6 +1038,7 @@ class _$_LoadedState extends _LoadedState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
+    TResult Function(_KeepState value)? keep,
     TResult Function(_LoadedState value)? loaded,
     TResult Function(_FailureState value)? failure,
     required TResult orElse(),
@@ -915,14 +1051,12 @@ class _$_LoadedState extends _LoadedState {
 }
 
 abstract class _LoadedState extends HomeChecklistState {
-  const factory _LoadedState({required final List<ITaskRead> tasks}) =
-      _$_LoadedState;
+  const factory _LoadedState({required final List<ITaskRead> tasks}) = _$_LoadedState;
   const _LoadedState._() : super._();
 
   List<ITaskRead> get tasks;
   @JsonKey(ignore: true)
-  _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -989,6 +1123,7 @@ class _$_FailureState extends _FailureState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() keep,
     required TResult Function(List<ITaskRead> tasks) loaded,
     required TResult Function(Object error) failure,
   }) {
@@ -1000,6 +1135,7 @@ class _$_FailureState extends _FailureState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? keep,
     TResult? Function(List<ITaskRead> tasks)? loaded,
     TResult? Function(Object error)? failure,
   }) {
@@ -1011,6 +1147,7 @@ class _$_FailureState extends _FailureState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? keep,
     TResult Function(List<ITaskRead> tasks)? loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
@@ -1026,6 +1163,7 @@ class _$_FailureState extends _FailureState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
+    required TResult Function(_KeepState value) keep,
     required TResult Function(_LoadedState value) loaded,
     required TResult Function(_FailureState value) failure,
   }) {
@@ -1037,6 +1175,7 @@ class _$_FailureState extends _FailureState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_KeepState value)? keep,
     TResult? Function(_LoadedState value)? loaded,
     TResult? Function(_FailureState value)? failure,
   }) {
@@ -1048,6 +1187,7 @@ class _$_FailureState extends _FailureState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
+    TResult Function(_KeepState value)? keep,
     TResult Function(_LoadedState value)? loaded,
     TResult Function(_FailureState value)? failure,
     required TResult orElse(),

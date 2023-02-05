@@ -22,7 +22,6 @@ ITaskUpdate _$ITaskUpdateFromJson(Map<String, dynamic> json) {
 mixin _$ITaskUpdate {
   String? get name => throw _privateConstructorUsedError;
   bool? get done => throw _privateConstructorUsedError;
-
   DateTime? get deadline => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +35,6 @@ abstract class $ITaskUpdateCopyWith<$Res> {
   factory $ITaskUpdateCopyWith(
           ITaskUpdate value, $Res Function(ITaskUpdate) then) =
       _$ITaskUpdateCopyWithImpl<$Res, ITaskUpdate>;
-
   @useResult
   $Res call({String? name, bool? done, DateTime? deadline});
 }
@@ -81,7 +79,6 @@ abstract class _$$_ITaskUpdateCopyWith<$Res>
   factory _$$_ITaskUpdateCopyWith(
           _$_ITaskUpdate value, $Res Function(_$_ITaskUpdate) then) =
       __$$_ITaskUpdateCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({String? name, bool? done, DateTime? deadline});

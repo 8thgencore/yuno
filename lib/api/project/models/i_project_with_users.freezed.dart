@@ -21,20 +21,14 @@ IProjectWithUsers _$IProjectWithUsersFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$IProjectWithUsers {
   String get name => throw _privateConstructorUsedError;
-
   String get description => throw _privateConstructorUsedError;
-
   String get link => throw _privateConstructorUsedError;
-
   String get id => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'created_by_id')
   String? get createdBy => throw _privateConstructorUsedError;
-
   List<IUserRead>? get users => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $IProjectWithUsersCopyWith<IProjectWithUsers> get copyWith => throw _privateConstructorUsedError;
 }
@@ -194,7 +188,6 @@ class _$_IProjectWithUsers implements _IProjectWithUsers {
   @JsonKey(name: 'created_by_id')
   final String? createdBy;
   final List<IUserRead>? _users;
-
   @override
   List<IUserRead>? get users {
     final value = _users;
@@ -268,10 +261,8 @@ abstract class _IProjectWithUsers implements IProjectWithUsers {
   @override
   @JsonKey(name: 'created_by_id')
   String? get createdBy;
-
   @override
   List<IUserRead>? get users;
-
   @override
   @JsonKey(ignore: true)
   _$$_IProjectWithUsersCopyWith<_$_IProjectWithUsers> get copyWith =>

@@ -22,14 +22,17 @@ IImageMediaRead _$IImageMediaReadFromJson(Map<String, dynamic> json) {
 mixin _$IImageMediaRead {
   @JsonKey(name: 'file_format')
   String get fileFormat => throw _privateConstructorUsedError;
-  int get width => throw _privateConstructorUsedError;
-  int get height => throw _privateConstructorUsedError;
+
   IMediaRead get media => throw _privateConstructorUsedError;
 
+  int? get width => throw _privateConstructorUsedError;
+
+  int? get height => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $IImageMediaReadCopyWith<IImageMediaRead> get copyWith =>
-      throw _privateConstructorUsedError;
+  $IImageMediaReadCopyWith<IImageMediaRead> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -37,12 +40,10 @@ abstract class $IImageMediaReadCopyWith<$Res> {
   factory $IImageMediaReadCopyWith(
           IImageMediaRead value, $Res Function(IImageMediaRead) then) =
       _$IImageMediaReadCopyWithImpl<$Res, IImageMediaRead>;
+
   @useResult
   $Res call(
-      {@JsonKey(name: 'file_format') String fileFormat,
-      int width,
-      int height,
-      IMediaRead media});
+      {@JsonKey(name: 'file_format') String fileFormat, IMediaRead media, int? width, int? height});
 
   $IMediaReadCopyWith<$Res> get media;
 }
@@ -61,27 +62,27 @@ class _$IImageMediaReadCopyWithImpl<$Res, $Val extends IImageMediaRead>
   @override
   $Res call({
     Object? fileFormat = null,
-    Object? width = null,
-    Object? height = null,
     Object? media = null,
+    Object? width = freezed,
+    Object? height = freezed,
   }) {
     return _then(_value.copyWith(
       fileFormat: null == fileFormat
           ? _value.fileFormat
           : fileFormat // ignore: cast_nullable_to_non_nullable
               as String,
-      width: null == width
-          ? _value.width
-          : width // ignore: cast_nullable_to_non_nullable
-              as int,
-      height: null == height
-          ? _value.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as int,
       media: null == media
           ? _value.media
           : media // ignore: cast_nullable_to_non_nullable
               as IMediaRead,
+      width: freezed == width
+          ? _value.width
+          : width // ignore: cast_nullable_to_non_nullable
+              as int?,
+      height: freezed == height
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 
@@ -100,13 +101,11 @@ abstract class _$$_IImageMediaReadCopyWith<$Res>
   factory _$$_IImageMediaReadCopyWith(
           _$_IImageMediaRead value, $Res Function(_$_IImageMediaRead) then) =
       __$$_IImageMediaReadCopyWithImpl<$Res>;
+
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'file_format') String fileFormat,
-      int width,
-      int height,
-      IMediaRead media});
+      {@JsonKey(name: 'file_format') String fileFormat, IMediaRead media, int? width, int? height});
 
   @override
   $IMediaReadCopyWith<$Res> get media;
@@ -124,27 +123,27 @@ class __$$_IImageMediaReadCopyWithImpl<$Res>
   @override
   $Res call({
     Object? fileFormat = null,
-    Object? width = null,
-    Object? height = null,
     Object? media = null,
+    Object? width = freezed,
+    Object? height = freezed,
   }) {
     return _then(_$_IImageMediaRead(
       fileFormat: null == fileFormat
           ? _value.fileFormat
           : fileFormat // ignore: cast_nullable_to_non_nullable
               as String,
-      width: null == width
-          ? _value.width
-          : width // ignore: cast_nullable_to_non_nullable
-              as int,
-      height: null == height
-          ? _value.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as int,
       media: null == media
           ? _value.media
           : media // ignore: cast_nullable_to_non_nullable
               as IMediaRead,
+      width: freezed == width
+          ? _value.width
+          : width // ignore: cast_nullable_to_non_nullable
+              as int?,
+      height: freezed == height
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -154,9 +153,9 @@ class __$$_IImageMediaReadCopyWithImpl<$Res>
 class _$_IImageMediaRead implements _IImageMediaRead {
   const _$_IImageMediaRead(
       {@JsonKey(name: 'file_format') required this.fileFormat,
-      required this.width,
-      required this.height,
-      required this.media});
+      required this.media,
+      this.width,
+      this.height});
 
   factory _$_IImageMediaRead.fromJson(Map<String, dynamic> json) =>
       _$$_IImageMediaReadFromJson(json);
@@ -165,15 +164,15 @@ class _$_IImageMediaRead implements _IImageMediaRead {
   @JsonKey(name: 'file_format')
   final String fileFormat;
   @override
-  final int width;
-  @override
-  final int height;
-  @override
   final IMediaRead media;
+  @override
+  final int? width;
+  @override
+  final int? height;
 
   @override
   String toString() {
-    return 'IImageMediaRead(fileFormat: $fileFormat, width: $width, height: $height, media: $media)';
+    return 'IImageMediaRead(fileFormat: $fileFormat, media: $media, width: $width, height: $height)';
   }
 
   @override
@@ -181,17 +180,15 @@ class _$_IImageMediaRead implements _IImageMediaRead {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IImageMediaRead &&
-            (identical(other.fileFormat, fileFormat) ||
-                other.fileFormat == fileFormat) &&
+            (identical(other.fileFormat, fileFormat) || other.fileFormat == fileFormat) &&
+            (identical(other.media, media) || other.media == media) &&
             (identical(other.width, width) || other.width == width) &&
-            (identical(other.height, height) || other.height == height) &&
-            (identical(other.media, media) || other.media == media));
+            (identical(other.height, height) || other.height == height));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, fileFormat, width, height, media);
+  int get hashCode => Object.hash(runtimeType, fileFormat, media, width, height);
 
   @JsonKey(ignore: true)
   @override
@@ -210,22 +207,25 @@ class _$_IImageMediaRead implements _IImageMediaRead {
 abstract class _IImageMediaRead implements IImageMediaRead {
   const factory _IImageMediaRead(
       {@JsonKey(name: 'file_format') required final String fileFormat,
-      required final int width,
-      required final int height,
-      required final IMediaRead media}) = _$_IImageMediaRead;
+      required final IMediaRead media,
+      final int? width,
+      final int? height}) = _$_IImageMediaRead;
 
-  factory _IImageMediaRead.fromJson(Map<String, dynamic> json) =
-      _$_IImageMediaRead.fromJson;
+  factory _IImageMediaRead.fromJson(Map<String, dynamic> json) = _$_IImageMediaRead.fromJson;
 
   @override
   @JsonKey(name: 'file_format')
   String get fileFormat;
-  @override
-  int get width;
-  @override
-  int get height;
+
   @override
   IMediaRead get media;
+
+  @override
+  int? get width;
+
+  @override
+  int? get height;
+
   @override
   @JsonKey(ignore: true)
   _$$_IImageMediaReadCopyWith<_$_IImageMediaRead> get copyWith =>

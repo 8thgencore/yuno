@@ -40,7 +40,7 @@ class _HomeContentWidget extends StatelessWidget {
             SizedBox(height: 18),
             _ProjectsListWidget(),
             SizedBox(height: 36),
-            _CheckListWidget(),
+            _CheckListBuilderWidget(),
             SizedBox(height: 18),
           ],
         ),
@@ -250,8 +250,8 @@ class _ProjectsListWidget extends StatelessWidget {
   }
 }
 
-class _CheckListWidget extends StatelessWidget {
-  const _CheckListWidget();
+class _CheckListBuilderWidget extends StatelessWidget {
+  const _CheckListBuilderWidget();
 
   @override
   Widget build(BuildContext context) {
