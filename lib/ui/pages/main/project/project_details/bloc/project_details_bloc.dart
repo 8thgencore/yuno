@@ -120,6 +120,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
   ) async {
     try {
       await apiProjectRepository.deleteById(id: _projectId);
+      await apiTaskRepository.getNotDoneTasks();
       emit(const ProjectDetailsState.deleted());
     } on DioError catch (dioError) {
       emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));

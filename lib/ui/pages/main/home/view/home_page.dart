@@ -71,8 +71,9 @@ class _TopCardWidget extends StatelessWidget {
           ),
           BlocBuilder<HomeHeaderBloc, HomeHeaderState>(
             builder: (context, state) => state.maybeWhen(
-              loading: () =>
-                  const Center(child: CircularProgressIndicator(color: AppColors.white100)),
+              loading: () => const Center(
+                child: CircularProgressIndicator(color: AppColors.white100),
+              ),
               loaded: (username, taskLength, lastTask) => Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
