@@ -943,7 +943,7 @@ class _$_LoadedState extends _LoadedState {
   @override
   List<ITaskWithProjectName> get tasks {
     if (_tasks is EqualUnmodifiableListView) return _tasks;
-// ignore: implicit_dynamic_type
+    // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tasks);
   }
 

@@ -57,8 +57,34 @@ class _ProjectsListContentWidget extends StatelessWidget {
   }
 }
 
-class _ProjectListWidget extends StatelessWidget {
+class _ProjectListWidget extends StatefulWidget {
   const _ProjectListWidget();
+
+  @override
+  State<_ProjectListWidget> createState() => _ProjectListWidgetState();
+}
+
+class _ProjectListWidgetState extends State<_ProjectListWidget> {
+  late final ScrollController _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _scrollController.addListener(() {
+        if (_scrollController.position.extentAfter < 300) {
+          context.read<ProjectsListBloc>().add(const ProjectsListEvent.scrollAutoLoaded());
+        }
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,21 +92,33 @@ class _ProjectListWidget extends StatelessWidget {
       builder: (context, state) => state.maybeWhen(
         initial: () => const Center(child: CircularProgressIndicator()),
         loading: () => const Center(child: CircularProgressIndicator()),
-        loaded: (projects) => ListView.builder(
+        loaded: (projects, isShowLoading) => ListView.builder(
+          controller: _scrollController,
           shrinkWrap: true,
           padding: const EdgeInsets.symmetric(horizontal: 24),
-          itemCount: projects.length,
+          itemCount: projects.length + (isShowLoading ? 1 : 0),
           itemBuilder: (BuildContext context, int index) {
-            return _ProjectFullCardWidget(project: projects[index]);
+            if (index == projects.length) {
+              if (isShowLoading) {
+                return Container(
+                  height: 128,
+                  alignment: Alignment.center,
+                  child: const CircularProgressIndicator(),
+                );
+              }
+            } else {
+              return _ProjectFullCardWidget(project: projects[index]);
+            }
+            return null;
           },
-        ),
-        failure: (error) => ErrorContainer(
-          text: 'Failed to get a project from the server\n$error',
-        ),
-        orElse: () => const ErrorContainer(
-          text: 'Failed to get a project from the server',
-        ),
-      ),
+                ),
+            failure: (error) => ErrorContainer(
+              text: 'Failed to get a project from the server\n$error',
+            ),
+            orElse: () => const ErrorContainer(
+              text: 'Failed to get a project from the server',
+            ),
+          ),
     );
   }
 }

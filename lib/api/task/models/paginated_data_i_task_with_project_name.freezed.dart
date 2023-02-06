@@ -22,23 +22,16 @@ PaginatedDataITaskWithProjectName _$PaginatedDataITaskWithProjectNameFromJson(
 /// @nodoc
 mixin _$PaginatedDataITaskWithProjectName {
   List<ITaskWithProjectName> get items => throw _privateConstructorUsedError;
-
   int get total => throw _privateConstructorUsedError;
-
   int get page => throw _privateConstructorUsedError;
-
   int get size => throw _privateConstructorUsedError;
-
   int get pages => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'next_page')
   int? get nextPage => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'previous_page')
   int? get previousPage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $PaginatedDataITaskWithProjectNameCopyWith<PaginatedDataITaskWithProjectName> get copyWith =>
       throw _privateConstructorUsedError;
@@ -69,7 +62,6 @@ class _$PaginatedDataITaskWithProjectNameCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -294,10 +286,8 @@ abstract class _PaginatedDataITaskWithProjectName implements PaginatedDataITaskW
 
   @override
   int get size;
-
   @override
   int get pages;
-
   @override
   @JsonKey(name: 'next_page')
   int? get nextPage;

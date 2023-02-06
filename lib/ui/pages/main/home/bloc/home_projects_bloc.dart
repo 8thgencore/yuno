@@ -31,10 +31,10 @@ class HomeProjectsBloc extends Bloc<HomeProjectsEvent, HomeProjectsState> {
   ) async {
     emit(const HomeProjectsState.loading());
     try {
-      final projects = await apiProjectRepository.getProjects(size: 4);
+      final projects = await apiProjectRepository.getProjects(size: 4, page: 1);
 
-      if (projects.isNotEmpty) {
-        _projects = projects;
+      if (projects.items.isNotEmpty) {
+        _projects = projects.items;
       }
       emit(HomeProjectsState.loaded(_projects));
     } on DioError catch (dioError) {

@@ -479,8 +479,7 @@ abstract class _$$_LoadedStateCopyWith<$Res> {
 /// @nodoc
 class __$$_LoadedStateCopyWithImpl<$Res> extends _$HomeHeaderStateCopyWithImpl<$Res, _$_LoadedState>
     implements _$$_LoadedStateCopyWith<$Res> {
-  __$$_LoadedStateCopyWithImpl(
-      _$_LoadedState _value, $Res Function(_$_LoadedState) _then)
+  __$$_LoadedStateCopyWithImpl(_$_LoadedState _value, $Res Function(_$_LoadedState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')

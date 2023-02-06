@@ -21,21 +21,15 @@ ITaskWithProjectName _$ITaskWithProjectNameFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ITaskWithProjectName {
   String get name => throw _privateConstructorUsedError;
-
   String get id => throw _privateConstructorUsedError;
-
   bool? get done => throw _privateConstructorUsedError;
-
   DateTime? get deadline => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'project_id')
   String? get projectId => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'project_name')
   String? get projectName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $ITaskWithProjectNameCopyWith<ITaskWithProjectName> get copyWith =>
       throw _privateConstructorUsedError;
@@ -252,24 +246,18 @@ abstract class _ITaskWithProjectName implements ITaskWithProjectName {
 
   @override
   String get name;
-
   @override
   String get id;
-
   @override
   bool? get done;
-
   @override
   DateTime? get deadline;
-
   @override
   @JsonKey(name: 'project_id')
   String? get projectId;
-
   @override
   @JsonKey(name: 'project_name')
   String? get projectName;
-
   @override
   @JsonKey(ignore: true)
   _$$_ITaskWithProjectNameCopyWith<_$_ITaskWithProjectName> get copyWith =>

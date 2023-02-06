@@ -11,6 +11,7 @@ import 'package:yuno/ui/widgets/buttons/yuno_icon_button.dart';
 import 'package:yuno/ui/widgets/buttons/yuno_white_text_button.dart';
 import 'package:yuno/ui/widgets/error_container.dart';
 import 'package:yuno/ui/widgets/linear_percent_indicator_large_widget.dart';
+import 'package:yuno/ui/widgets/loading_container.dart';
 import 'package:yuno/ui/widgets/project_card_large_widget.dart';
 import 'package:yuno/ui/widgets/task_card_widget.dart';
 import 'package:yuno/ui/widgets/toast_widget.dart';
@@ -96,8 +97,8 @@ class _ProjectContentWidget extends StatelessWidget {
           child: SingleChildScrollView(
             child: BlocBuilder<ProjectDetailsBloc, ProjectDetailsState>(
               builder: (context, state) => state.maybeWhen(
-                initial: () => const Center(child: CircularProgressIndicator()),
-                loading: () => const Center(child: CircularProgressIndicator()),
+                initial: () => const LoadingContainer(),
+                loading: () => const LoadingContainer(),
                 loaded: (project, tasks, isMember, isOwner) => Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
