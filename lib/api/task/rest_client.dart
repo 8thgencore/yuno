@@ -4,7 +4,7 @@ import 'package:yuno/api/shared_models/base_response.dart';
 import 'package:yuno/api/task/models/i_task_create.dart';
 import 'package:yuno/api/task/models/i_task_read.dart';
 import 'package:yuno/api/task/models/i_task_update.dart';
-import 'package:yuno/api/task/models/paginated_data_i_task_read.dart';
+import 'package:yuno/api/task/models/paginated_data_i_task_with_project_name.dart';
 
 part 'rest_client.g.dart';
 
@@ -13,13 +13,13 @@ abstract class TaskClient {
   factory TaskClient(Dio dio, {String baseUrl}) = _TaskClient;
 
   @GET('/task/list')
-  Future<BaseResponse<PaginatedDataITaskRead>> getTaskList({
+  Future<BaseResponse<PaginatedDataITaskWithProjectName>> getTaskList({
     @Query('page') int? page = 1,
     @Query('size') int? size = 50,
   });
 
   @GET('/task/not_done')
-  Future<BaseResponse<PaginatedDataITaskRead>> getNotDoneTaskList({
+  Future<BaseResponse<PaginatedDataITaskWithProjectName>> getNotDoneTaskList({
     @Query('page') int? page = 1,
     @Query('size') int? size = 50,
   });

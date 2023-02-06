@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:yuno/api/task/models/i_task_read.dart';
 import 'package:yuno/resources/resources.dart';
 
 class TaskCardWidget extends StatefulWidget {
   const TaskCardWidget({
-    required this.task,
+    required this.id,
+    required this.title,
+    this.isMember = false,
+    this.deadline,
+    this.projectName,
+    this.done,
     this.onClickCheckBox,
     this.onDismissible,
-    this.isMember = false,
     super.key,
-  });
+  }) : assert(!(projectName != null && deadline != null));
 
-  final ITaskRead task;
+  final String id;
+  final String title;
+  final bool isMember;
+  final DateTime? deadline;
+  final String? projectName;
+  final bool? done;
   final VoidCallback? onClickCheckBox;
   final VoidCallback? onDismissible;
-  final bool isMember;
 
   @override
   State<TaskCardWidget> createState() => _TaskCardWidgetState();
@@ -27,21 +34,19 @@ class _TaskCardWidgetState extends State<TaskCardWidget> {
   @override
   void initState() {
     super.initState();
-    value = widget.task.done ?? false;
+    value = widget.done ?? false;
   }
 
   @override
   Widget build(BuildContext context) {
     var deadline = '';
-    if (widget.task != null) {
-      if (widget.task.deadline != null) {
-        final outputFormat = DateFormat('dd MMMM yyyy, HH:mm');
-        deadline = outputFormat.format(widget.task.deadline!);
-      }
+    if (widget.deadline != null) {
+      final outputFormat = DateFormat('dd MMMM yyyy, HH:mm');
+      deadline = outputFormat.format(widget.deadline!);
     }
 
     return Dismissible(
-      key: ValueKey(widget.task.id),
+      key: ValueKey(widget.id),
       direction: widget.isMember ? DismissDirection.startToEnd : DismissDirection.none,
       confirmDismiss: (DismissDirection dismissDirection) async {
         if (dismissDirection == DismissDirection.startToEnd) {
@@ -82,16 +87,14 @@ class _TaskCardWidgetState extends State<TaskCardWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    widget.task.name,
+                    widget.title,
                     style: AppTypography.b16d,
                     overflow: TextOverflow.fade,
                     softWrap: false,
                   ),
                   const SizedBox(height: 6),
                   Text(
-                    // TODO:
-                    // 'Project name',
-                    deadline,
+                    widget.projectName ?? deadline,
                     style: AppTypography.l12g,
                     overflow: TextOverflow.fade,
                     softWrap: false,

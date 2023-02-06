@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:yuno/api/task/models.dart';
+import 'package:yuno/api/task/models/i_task_with_project_name.dart';
 import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/domain/repository/api_task_repository.dart';
 import 'package:yuno/domain/repository/api_user_repository.dart';
@@ -27,7 +27,7 @@ class HomeHeaderBloc extends Bloc<HomeHeaderEvent, HomeHeaderState> {
   final ApiTaskRepository apiTaskRepository;
 
   String _username = 'user';
-  ITaskRead? _task;
+  ITaskWithProjectName? _task;
 
   FutureOr<void> _onHomeHeaderLoaded(
     _StartedEvent event,

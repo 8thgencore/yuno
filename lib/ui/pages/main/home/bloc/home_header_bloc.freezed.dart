@@ -170,8 +170,7 @@ mixin _$HomeHeaderState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String username, int taskLength, ITaskRead? task)
-        loaded,
+    required TResult Function(String username, int taskLength, ITaskWithProjectName? task) loaded,
     required TResult Function(Object error) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -179,7 +178,7 @@ mixin _$HomeHeaderState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String username, int taskLength, ITaskRead? task)? loaded,
+    TResult? Function(String username, int taskLength, ITaskWithProjectName? task)? loaded,
     TResult? Function(Object error)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -187,7 +186,7 @@ mixin _$HomeHeaderState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String username, int taskLength, ITaskRead? task)? loaded,
+    TResult Function(String username, int taskLength, ITaskWithProjectName? task)? loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) =>
@@ -277,8 +276,7 @@ class _$_InitialState extends _InitialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String username, int taskLength, ITaskRead? task)
-        loaded,
+    required TResult Function(String username, int taskLength, ITaskWithProjectName? task) loaded,
     required TResult Function(Object error) failure,
   }) {
     return initial();
@@ -289,7 +287,7 @@ class _$_InitialState extends _InitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String username, int taskLength, ITaskRead? task)? loaded,
+    TResult? Function(String username, int taskLength, ITaskWithProjectName? task)? loaded,
     TResult? Function(Object error)? failure,
   }) {
     return initial?.call();
@@ -300,7 +298,7 @@ class _$_InitialState extends _InitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String username, int taskLength, ITaskRead? task)? loaded,
+    TResult Function(String username, int taskLength, ITaskWithProjectName? task)? loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) {
@@ -393,8 +391,7 @@ class _$_LoadingState extends _LoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String username, int taskLength, ITaskRead? task)
-        loaded,
+    required TResult Function(String username, int taskLength, ITaskWithProjectName? task) loaded,
     required TResult Function(Object error) failure,
   }) {
     return loading();
@@ -405,7 +402,7 @@ class _$_LoadingState extends _LoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String username, int taskLength, ITaskRead? task)? loaded,
+    TResult? Function(String username, int taskLength, ITaskWithProjectName? task)? loaded,
     TResult? Function(Object error)? failure,
   }) {
     return loading?.call();
@@ -416,7 +413,7 @@ class _$_LoadingState extends _LoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String username, int taskLength, ITaskRead? task)? loaded,
+    TResult Function(String username, int taskLength, ITaskWithProjectName? task)? loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) {
@@ -471,18 +468,16 @@ abstract class _LoadingState extends HomeHeaderState {
 
 /// @nodoc
 abstract class _$$_LoadedStateCopyWith<$Res> {
-  factory _$$_LoadedStateCopyWith(
-          _$_LoadedState value, $Res Function(_$_LoadedState) then) =
+  factory _$$_LoadedStateCopyWith(_$_LoadedState value, $Res Function(_$_LoadedState) then) =
       __$$_LoadedStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({String username, int taskLength, ITaskRead? task});
+  $Res call({String username, int taskLength, ITaskWithProjectName? task});
 
-  $ITaskReadCopyWith<$Res>? get task;
+  $ITaskWithProjectNameCopyWith<$Res>? get task;
 }
 
 /// @nodoc
-class __$$_LoadedStateCopyWithImpl<$Res>
-    extends _$HomeHeaderStateCopyWithImpl<$Res, _$_LoadedState>
+class __$$_LoadedStateCopyWithImpl<$Res> extends _$HomeHeaderStateCopyWithImpl<$Res, _$_LoadedState>
     implements _$$_LoadedStateCopyWith<$Res> {
   __$$_LoadedStateCopyWithImpl(
       _$_LoadedState _value, $Res Function(_$_LoadedState) _then)
@@ -507,18 +502,18 @@ class __$$_LoadedStateCopyWithImpl<$Res>
       task: freezed == task
           ? _value.task
           : task // ignore: cast_nullable_to_non_nullable
-              as ITaskRead?,
+              as ITaskWithProjectName?,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ITaskReadCopyWith<$Res>? get task {
+  $ITaskWithProjectNameCopyWith<$Res>? get task {
     if (_value.task == null) {
       return null;
     }
 
-    return $ITaskReadCopyWith<$Res>(_value.task!, (value) {
+    return $ITaskWithProjectNameCopyWith<$Res>(_value.task!, (value) {
       return _then(_value.copyWith(task: value));
     });
   }
@@ -536,7 +531,7 @@ class _$_LoadedState extends _LoadedState {
   @override
   final int taskLength;
   @override
-  final ITaskRead? task;
+  final ITaskWithProjectName? task;
 
   @override
   String toString() {
@@ -569,8 +564,7 @@ class _$_LoadedState extends _LoadedState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String username, int taskLength, ITaskRead? task)
-        loaded,
+    required TResult Function(String username, int taskLength, ITaskWithProjectName? task) loaded,
     required TResult Function(Object error) failure,
   }) {
     return loaded(username, taskLength, task);
@@ -581,7 +575,7 @@ class _$_LoadedState extends _LoadedState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String username, int taskLength, ITaskRead? task)? loaded,
+    TResult? Function(String username, int taskLength, ITaskWithProjectName? task)? loaded,
     TResult? Function(Object error)? failure,
   }) {
     return loaded?.call(username, taskLength, task);
@@ -592,7 +586,7 @@ class _$_LoadedState extends _LoadedState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String username, int taskLength, ITaskRead? task)? loaded,
+    TResult Function(String username, int taskLength, ITaskWithProjectName? task)? loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) {
@@ -644,15 +638,14 @@ abstract class _LoadedState extends HomeHeaderState {
   const factory _LoadedState(
       {required final String username,
       required final int taskLength,
-      final ITaskRead? task}) = _$_LoadedState;
+      final ITaskWithProjectName? task}) = _$_LoadedState;
   const _LoadedState._() : super._();
 
   String get username;
   int get taskLength;
-  ITaskRead? get task;
+  ITaskWithProjectName? get task;
   @JsonKey(ignore: true)
-  _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -719,8 +712,7 @@ class _$_FailureState extends _FailureState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String username, int taskLength, ITaskRead? task)
-        loaded,
+    required TResult Function(String username, int taskLength, ITaskWithProjectName? task) loaded,
     required TResult Function(Object error) failure,
   }) {
     return failure(error);
@@ -731,7 +723,7 @@ class _$_FailureState extends _FailureState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String username, int taskLength, ITaskRead? task)? loaded,
+    TResult? Function(String username, int taskLength, ITaskWithProjectName? task)? loaded,
     TResult? Function(Object error)? failure,
   }) {
     return failure?.call(error);
@@ -742,7 +734,7 @@ class _$_FailureState extends _FailureState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String username, int taskLength, ITaskRead? task)? loaded,
+    TResult Function(String username, int taskLength, ITaskWithProjectName? task)? loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) {

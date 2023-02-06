@@ -19,7 +19,7 @@ class _TaskClient implements TaskClient {
   String? baseUrl;
 
   @override
-  Future<BaseResponse<PaginatedDataITaskRead>> getTaskList({
+  Future<BaseResponse<PaginatedDataITaskWithProjectName>> getTaskList({
     page = 1,
     size = 50,
   }) async {
@@ -31,8 +31,8 @@ class _TaskClient implements TaskClient {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<PaginatedDataITaskRead>>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BaseResponse<PaginatedDataITaskWithProjectName>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -44,15 +44,15 @@ class _TaskClient implements TaskClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = BaseResponse<PaginatedDataITaskRead>.fromJson(
+    final value = BaseResponse<PaginatedDataITaskWithProjectName>.fromJson(
       _result.data!,
-      (json) => PaginatedDataITaskRead.fromJson(json as Map<String, dynamic>),
+      (json) => PaginatedDataITaskWithProjectName.fromJson(json as Map<String, dynamic>),
     );
     return value;
   }
 
   @override
-  Future<BaseResponse<PaginatedDataITaskRead>> getNotDoneTaskList({
+  Future<BaseResponse<PaginatedDataITaskWithProjectName>> getNotDoneTaskList({
     page = 1,
     size = 50,
   }) async {
@@ -64,8 +64,8 @@ class _TaskClient implements TaskClient {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<PaginatedDataITaskRead>>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BaseResponse<PaginatedDataITaskWithProjectName>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -77,9 +77,9 @@ class _TaskClient implements TaskClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = BaseResponse<PaginatedDataITaskRead>.fromJson(
+    final value = BaseResponse<PaginatedDataITaskWithProjectName>.fromJson(
       _result.data!,
-      (json) => PaginatedDataITaskRead.fromJson(json as Map<String, dynamic>),
+      (json) => PaginatedDataITaskWithProjectName.fromJson(json as Map<String, dynamic>),
     );
     return value;
   }

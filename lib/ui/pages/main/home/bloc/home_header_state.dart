@@ -11,7 +11,7 @@ class HomeHeaderState with _$HomeHeaderState {
   const factory HomeHeaderState.loaded({
     required String username,
     required int taskLength,
-    ITaskRead? task,
+    ITaskWithProjectName? task,
   }) = _LoadedState;
 
   const factory HomeHeaderState.failure(Object error) = _FailureState;

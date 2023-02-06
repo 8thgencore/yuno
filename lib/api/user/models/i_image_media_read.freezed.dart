@@ -22,15 +22,11 @@ IImageMediaRead _$IImageMediaReadFromJson(Map<String, dynamic> json) {
 mixin _$IImageMediaRead {
   @JsonKey(name: 'file_format')
   String get fileFormat => throw _privateConstructorUsedError;
-
   IMediaRead get media => throw _privateConstructorUsedError;
-
   int? get width => throw _privateConstructorUsedError;
-
   int? get height => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $IImageMediaReadCopyWith<IImageMediaRead> get copyWith => throw _privateConstructorUsedError;
 }
@@ -225,7 +221,6 @@ abstract class _IImageMediaRead implements IImageMediaRead {
 
   @override
   int? get height;
-
   @override
   @JsonKey(ignore: true)
   _$$_IImageMediaReadCopyWith<_$_IImageMediaRead> get copyWith =>

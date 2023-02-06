@@ -1,4 +1,5 @@
 import 'package:yuno/api/task/models.dart';
+import 'package:yuno/api/task/models/i_task_with_project_name.dart';
 import 'package:yuno/api/task/rest_client.dart';
 import 'package:yuno/data/repository/tasks_data_repository.dart';
 
@@ -11,13 +12,14 @@ class ApiTaskRepository {
   final TaskClient taskClient;
   final TasksNotDoneDataRepository tasksNotDoneDataRepository;
 
-  Future<List<ITaskRead>> getTasks() async {
+  Future<List<ITaskWithProjectName>> getTasks() async {
     final response = await taskClient.getTaskList();
+    final tasks = response.data.items;
 
-    return response.data.items;
+    return tasks;
   }
 
-  Future<List<ITaskRead>> getNotDoneTasks() async {
+  Future<List<ITaskWithProjectName>> getNotDoneTasks() async {
     final response = await taskClient.getNotDoneTaskList(size: 100);
     final tasks = response.data.items;
     await tasksNotDoneDataRepository.setItem(tasks);
@@ -25,7 +27,7 @@ class ApiTaskRepository {
     return tasks;
   }
 
-  Future<List<ITaskRead>?> getCachedNotDoneTasks() async {
+  Future<List<ITaskWithProjectName>?> getCachedNotDoneTasks() async {
     final tasks = await tasksNotDoneDataRepository.getItem();
 
     return tasks;
@@ -50,12 +52,13 @@ class ApiTaskRepository {
       projectId: projectId,
     );
     final response = await taskClient.postTask(body: body);
+    await getNotDoneTasks();
 
-    final localTasks = await tasksNotDoneDataRepository.getItem();
-    if (localTasks != null) {
-      localTasks.add(response.data);
-      await tasksNotDoneDataRepository.setItem(localTasks);
-    }
+    // final localTasks = await tasksNotDoneDataRepository.getItem();
+    // if (localTasks != null) {
+    //   localTasks.add(response.data);
+    //   await tasksNotDoneDataRepository.setItem(localTasks);
+    // }
 
     return response.data;
   }
@@ -76,35 +79,39 @@ class ApiTaskRepository {
       ),
     );
 
-    final localTasks = await tasksNotDoneDataRepository.getItem();
-    // delete task if completed
-    if (done ?? true) {
-      localTasks?.removeWhere((task) => task.id == id);
-    } else if (done == false) {
-      // check task if exists
-      final taskIndex = localTasks?.indexWhere((task) => task.id == id);
-      // update task
-      if (localTasks != null && taskIndex != null && taskIndex != -1) {
-        localTasks[taskIndex] = ITaskRead(
-          id: id,
-          name: name ?? localTasks[taskIndex].name,
-          done: done ?? localTasks[taskIndex].done,
-          deadline: deadline ?? localTasks[taskIndex].deadline,
-          projectId: projectId ?? localTasks[taskIndex].projectId,
-        );
-      }
-      // add new task
-      else {
-        final task = ITaskRead(
-          id: id,
-          name: name ?? '',
-          done: done,
-          deadline: deadline,
-        );
-        localTasks?.insert(0, task);
-      }
-    }
-    await tasksNotDoneDataRepository.setItem(localTasks);
+    await getNotDoneTasks();
+
+    // final localTasks = await tasksNotDoneDataRepository.getItem();
+    // // delete task if completed
+    // if (done ?? true) {
+    //   localTasks?.removeWhere((task) => task.id == id);
+    // } else if (done == false) {
+    //   // check task if exists
+    //   final taskIndex = localTasks?.indexWhere((task) => task.id == id);
+    //   // update task
+    //   if (localTasks != null && taskIndex != null && taskIndex != -1) {
+    //     localTasks[taskIndex] = ITaskRead(
+    //       id: id,
+    //       name: name ?? localTasks[taskIndex].name,
+    //       done: done ?? localTasks[taskIndex].done,
+    //       deadline: deadline ?? localTasks[taskIndex].deadline,
+    //       projectId: localTasks[taskIndex].projectId,
+    //     );
+    //   }
+    //   // add new task
+    //   else {
+    //     final task = ITaskWithProjectName(
+    //       id: id,
+    //       name: name ?? '',
+    //       done: done,
+    //       deadline: deadline,
+    //       projectId: projectId,
+    //     );
+    //     localTasks?.insert(0, task);
+    //   }
+    // }
+    // await tasksNotDoneDataRepository.setItem(localTasks);
+
     return response.data;
   }
 

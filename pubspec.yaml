@@ -16,9 +16,9 @@ dependencies:
   rxdart: ^0.27.7
 
   # State management
-  bloc: ^8.1.0
+  bloc: ^8.1.1
   flutter_bloc: ^8.1.1
-  bloc_concurrency: ^0.2.0
+  bloc_concurrency: ^0.2.1
 
   # Network
   dio: ^4.0.6

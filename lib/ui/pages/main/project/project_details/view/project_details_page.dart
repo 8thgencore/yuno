@@ -294,7 +294,9 @@ class _CheckListWidget extends StatelessWidget {
                       }
                     : null,
                 child: TaskCardWidget(
-                  task: tasks[index],
+                  id: tasks[index].id,
+                  title: tasks[index].name,
+                  deadline: tasks[index].deadline,
                   onClickCheckBox: () => context
                       .read<ProjectDetailsBloc>()
                       .add(ProjectDetailsEvent.checkedTask(tasks[index].id)),

@@ -1980,31 +1980,31 @@ abstract class _$$_DeletedStateCopyWith<$Res> {
 class __$$_DeletedStateCopyWithImpl<$Res>
     extends _$ProjectDetailsStateCopyWithImpl<$Res, _$_DeletedState>
     implements _$$_DeletedStateCopyWith<$Res> {
-__$$_DeletedStateCopyWithImpl(_$_DeletedState _value, $Res Function(_$_DeletedState) _then)
-    : super(_value, _then);
+  __$$_DeletedStateCopyWithImpl(_$_DeletedState _value, $Res Function(_$_DeletedState) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
 
 class _$_DeletedState extends _DeletedState {
-const _$_DeletedState() : super._();
+  const _$_DeletedState() : super._();
 
-@override
-String toString() {
-return 'ProjectDetailsState.deleted()';
-}
+  @override
+  String toString() {
+    return 'ProjectDetailsState.deleted()';
+  }
 
-@override
-bool operator ==(dynamic other) {
-return identical(this, other) || (other.runtimeType == runtimeType && other is _$_DeletedState);
-}
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_DeletedState);
+  }
 
-@override
-int get hashCode => runtimeType.hashCode;
+  @override
+  int get hashCode => runtimeType.hashCode;
 
-@override
-@optionalTypeArgs
-TResult when<TResult extends Object?>({
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(
@@ -2014,12 +2014,12 @@ TResult when<TResult extends Object?>({
     required TResult Function() keep,
     required TResult Function() deleted,
   }) {
-return deleted();
-}
+    return deleted();
+  }
 
-@override
-@optionalTypeArgs
-TResult? whenOrNull<TResult extends Object?>({
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(
@@ -2029,12 +2029,12 @@ TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? keep,
     TResult? Function()? deleted,
   }) {
-return deleted?.call();
-}
+    return deleted?.call();
+  }
 
-@override
-@optionalTypeArgs
-TResult maybeWhen<TResult extends Object?>({
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(
@@ -2045,15 +2045,15 @@ TResult maybeWhen<TResult extends Object?>({
     TResult Function()? deleted,
     required TResult orElse(),
   }) {
-if (deleted != null) {
-return deleted();
-}
-return orElse();
-}
+    if (deleted != null) {
+      return deleted();
+    }
+    return orElse();
+  }
 
-@override
-@optionalTypeArgs
-TResult map<TResult extends Object?>({
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_LoadedState value) loaded,
@@ -2061,25 +2061,25 @@ TResult map<TResult extends Object?>({
     required TResult Function(_KeepState value) keep,
     required TResult Function(_DeletedState value) deleted,
   }) {
-return deleted(this);
-}
+    return deleted(this);
+  }
 
-@override
-@optionalTypeArgs
-TResult? mapOrNull<TResult extends Object?>({
-TResult? Function(_InitialState value)? initial,
-TResult? Function(_LoadingState value)? loading,
-TResult? Function(_LoadedState value)? loaded,
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_LoadedState value)? loaded,
     TResult? Function(_FailureState value)? failure,
     TResult? Function(_KeepState value)? keep,
     TResult? Function(_DeletedState value)? deleted,
   }) {
-return deleted?.call(this);
-}
+    return deleted?.call(this);
+  }
 
-@override
-@optionalTypeArgs
-TResult maybeMap<TResult extends Object?>({
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
     TResult Function(_LoadedState value)? loaded,
@@ -2088,14 +2088,14 @@ TResult maybeMap<TResult extends Object?>({
     TResult Function(_DeletedState value)? deleted,
     required TResult orElse(),
   }) {
-if (deleted != null) {
-return deleted(this);
-}
-return orElse();
-}
+    if (deleted != null) {
+      return deleted(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _DeletedState extends ProjectDetailsState {
-const factory _DeletedState() = _$_DeletedState;
-const _DeletedState._() : super._();
+  const factory _DeletedState() = _$_DeletedState;
+  const _DeletedState._() : super._();
 }

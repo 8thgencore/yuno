@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:yuno/api/task/models.dart';
+import 'package:yuno/api/task/models/i_task_with_project_name.dart';
 import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/domain/repository/api_task_repository.dart';
 
@@ -25,7 +25,7 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
 
   final ApiTaskRepository apiTaskRepository;
 
-  final List<ITaskRead> _tasks = [];
+  final List<ITaskWithProjectName> _tasks = [];
 
   FutureOr<void> _onChecklistLoaded(
     _StartedEvent event,

@@ -473,7 +473,7 @@ mixin _$HomeChecklistState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() keep,
-    required TResult Function(List<ITaskRead> tasks) loaded,
+    required TResult Function(List<ITaskWithProjectName> tasks) loaded,
     required TResult Function(Object error) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -482,7 +482,7 @@ mixin _$HomeChecklistState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? keep,
-    TResult? Function(List<ITaskRead> tasks)? loaded,
+    TResult? Function(List<ITaskWithProjectName> tasks)? loaded,
     TResult? Function(Object error)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -491,7 +491,7 @@ mixin _$HomeChecklistState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? keep,
-    TResult Function(List<ITaskRead> tasks)? loaded,
+    TResult Function(List<ITaskWithProjectName> tasks)? loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) =>
@@ -585,7 +585,7 @@ class _$_InitialState extends _InitialState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() keep,
-    required TResult Function(List<ITaskRead> tasks) loaded,
+    required TResult Function(List<ITaskWithProjectName> tasks) loaded,
     required TResult Function(Object error) failure,
   }) {
     return initial();
@@ -597,7 +597,7 @@ class _$_InitialState extends _InitialState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? keep,
-    TResult? Function(List<ITaskRead> tasks)? loaded,
+    TResult? Function(List<ITaskWithProjectName> tasks)? loaded,
     TResult? Function(Object error)? failure,
   }) {
     return initial?.call();
@@ -609,7 +609,7 @@ class _$_InitialState extends _InitialState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? keep,
-    TResult Function(List<ITaskRead> tasks)? loaded,
+    TResult Function(List<ITaskWithProjectName> tasks)? loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) {
@@ -706,7 +706,7 @@ class _$_LoadingState extends _LoadingState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() keep,
-    required TResult Function(List<ITaskRead> tasks) loaded,
+    required TResult Function(List<ITaskWithProjectName> tasks) loaded,
     required TResult Function(Object error) failure,
   }) {
     return loading();
@@ -718,7 +718,7 @@ class _$_LoadingState extends _LoadingState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? keep,
-    TResult? Function(List<ITaskRead> tasks)? loaded,
+    TResult? Function(List<ITaskWithProjectName> tasks)? loaded,
     TResult? Function(Object error)? failure,
   }) {
     return loading?.call();
@@ -730,7 +730,7 @@ class _$_LoadingState extends _LoadingState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? keep,
-    TResult Function(List<ITaskRead> tasks)? loaded,
+    TResult Function(List<ITaskWithProjectName> tasks)? loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) {
@@ -823,7 +823,7 @@ class _$_KeepState extends _KeepState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() keep,
-    required TResult Function(List<ITaskRead> tasks) loaded,
+    required TResult Function(List<ITaskWithProjectName> tasks) loaded,
     required TResult Function(Object error) failure,
   }) {
     return keep();
@@ -835,7 +835,7 @@ class _$_KeepState extends _KeepState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? keep,
-    TResult? Function(List<ITaskRead> tasks)? loaded,
+    TResult? Function(List<ITaskWithProjectName> tasks)? loaded,
     TResult? Function(Object error)? failure,
   }) {
     return keep?.call();
@@ -847,7 +847,7 @@ class _$_KeepState extends _KeepState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? keep,
-    TResult Function(List<ITaskRead> tasks)? loaded,
+    TResult Function(List<ITaskWithProjectName> tasks)? loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) {
@@ -908,7 +908,7 @@ abstract class _$$_LoadedStateCopyWith<$Res> {
   factory _$$_LoadedStateCopyWith(_$_LoadedState value, $Res Function(_$_LoadedState) then) =
       __$$_LoadedStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<ITaskRead> tasks});
+  $Res call({List<ITaskWithProjectName> tasks});
 }
 
 /// @nodoc
@@ -927,7 +927,7 @@ class __$$_LoadedStateCopyWithImpl<$Res>
       tasks: null == tasks
           ? _value._tasks
           : tasks // ignore: cast_nullable_to_non_nullable
-              as List<ITaskRead>,
+              as List<ITaskWithProjectName>,
     ));
   }
 }
@@ -935,13 +935,13 @@ class __$$_LoadedStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LoadedState extends _LoadedState {
-  const _$_LoadedState({required final List<ITaskRead> tasks})
+  const _$_LoadedState({required final List<ITaskWithProjectName> tasks})
       : _tasks = tasks,
         super._();
 
-  final List<ITaskRead> _tasks;
+  final List<ITaskWithProjectName> _tasks;
   @override
-  List<ITaskRead> get tasks {
+  List<ITaskWithProjectName> get tasks {
     if (_tasks is EqualUnmodifiableListView) return _tasks;
 // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tasks);
@@ -975,7 +975,7 @@ class _$_LoadedState extends _LoadedState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() keep,
-    required TResult Function(List<ITaskRead> tasks) loaded,
+    required TResult Function(List<ITaskWithProjectName> tasks) loaded,
     required TResult Function(Object error) failure,
   }) {
     return loaded(tasks);
@@ -987,7 +987,7 @@ class _$_LoadedState extends _LoadedState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? keep,
-    TResult? Function(List<ITaskRead> tasks)? loaded,
+    TResult? Function(List<ITaskWithProjectName> tasks)? loaded,
     TResult? Function(Object error)? failure,
   }) {
     return loaded?.call(tasks);
@@ -999,7 +999,7 @@ class _$_LoadedState extends _LoadedState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? keep,
-    TResult Function(List<ITaskRead> tasks)? loaded,
+    TResult Function(List<ITaskWithProjectName> tasks)? loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) {
@@ -1051,10 +1051,10 @@ class _$_LoadedState extends _LoadedState {
 }
 
 abstract class _LoadedState extends HomeChecklistState {
-  const factory _LoadedState({required final List<ITaskRead> tasks}) = _$_LoadedState;
+  const factory _LoadedState({required final List<ITaskWithProjectName> tasks}) = _$_LoadedState;
   const _LoadedState._() : super._();
 
-  List<ITaskRead> get tasks;
+  List<ITaskWithProjectName> get tasks;
   @JsonKey(ignore: true)
   _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith => throw _privateConstructorUsedError;
 }
@@ -1124,7 +1124,7 @@ class _$_FailureState extends _FailureState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() keep,
-    required TResult Function(List<ITaskRead> tasks) loaded,
+    required TResult Function(List<ITaskWithProjectName> tasks) loaded,
     required TResult Function(Object error) failure,
   }) {
     return failure(error);
@@ -1136,7 +1136,7 @@ class _$_FailureState extends _FailureState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? keep,
-    TResult? Function(List<ITaskRead> tasks)? loaded,
+    TResult? Function(List<ITaskWithProjectName> tasks)? loaded,
     TResult? Function(Object error)? failure,
   }) {
     return failure?.call(error);
@@ -1148,7 +1148,7 @@ class _$_FailureState extends _FailureState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? keep,
-    TResult Function(List<ITaskRead> tasks)? loaded,
+    TResult Function(List<ITaskWithProjectName> tasks)? loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) {

@@ -12,7 +12,7 @@ class HomeChecklistState with _$HomeChecklistState {
   const factory HomeChecklistState.keep() = _KeepState;
 
   const factory HomeChecklistState.loaded({
-    required List<ITaskRead> tasks,
+    required List<ITaskWithProjectName> tasks,
   }) = _LoadedState;
 
   const factory HomeChecklistState.failure(Object error) = _FailureState;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:intl/intl.dart';
-import 'package:yuno/api/task/models.dart';
+import 'package:yuno/api/task/models/i_task_with_project_name.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
 import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/resources/resources.dart';
@@ -129,7 +129,7 @@ class _TopCardWidget extends StatelessWidget {
 class _LastTaskWidget extends StatelessWidget {
   const _LastTaskWidget({this.task});
 
-  final ITaskRead? task;
+  final ITaskWithProjectName? task;
 
   @override
   Widget build(BuildContext context) {
@@ -289,7 +289,9 @@ class _CheckListBuilderWidget extends StatelessWidget {
                           });
                         },
                         child: TaskCardWidget(
-                          task: tasks[index],
+                          id: tasks[index].id,
+                          title: tasks[index].name,
+                          projectName: tasks[index].projectName,
                           onClickCheckBox: () => context
                               .read<HomeChecklistBloc>()
                               .add(HomeChecklistEvent.checkedItem(tasks[index].id)),
