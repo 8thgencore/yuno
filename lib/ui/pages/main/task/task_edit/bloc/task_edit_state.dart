@@ -5,6 +5,7 @@ enum TaskEditStatus {
   loading,
   loaded,
   failure,
+  failureLoaded,
   fillingFields,
   successUpdated,
   successCreated,

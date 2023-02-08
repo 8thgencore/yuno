@@ -44,7 +44,19 @@ class TaskEditPage extends StatelessWidget {
               ),
             );
             break;
+          case TaskEditStatus.failureLoaded:
+            context.loaderOverlay.hide();
+            showToast(
+              context,
+              child: ToastWidget(
+                text: state.serverError ?? 'Server Error',
+                type: ToastType.failure,
+              ),
+            );
+            context.pop();
+            break;
           case TaskEditStatus.fillingFields:
+            context.loaderOverlay.hide();
             break;
           case TaskEditStatus.successUpdated:
             context.loaderOverlay.hide();
@@ -173,16 +185,36 @@ class _ListTextFieldWidget extends StatelessWidget {
   }
 }
 
-class _TaskNameTextField extends StatelessWidget {
+class _TaskNameTextField extends StatefulWidget {
   const _TaskNameTextField();
+
+  @override
+  State<_TaskNameTextField> createState() => _TaskNameTextFieldState();
+}
+
+class _TaskNameTextFieldState extends State<_TaskNameTextField> {
+  late final TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TaskEditBloc, TaskEditState>(
       buildWhen: (_, current) => current.status == TaskEditStatus.loaded,
       builder: (context, state) {
+        _controller.value = TextEditingValue(text: state.name);
         return CustomTextField(
-          controller: TextEditingController(text: state.name),
+          controller: _controller,
           labelText: 'Task Name',
           keyboardType: TextInputType.text,
           textColor: AppColors.dark100,
@@ -212,6 +244,12 @@ class _TaskDeadlineTextFieldState extends State<_TaskDeadlineTextField> {
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<TaskEditBloc, TaskEditState>(
       buildWhen: (_, current) => current.status == TaskEditStatus.loaded,
@@ -219,7 +257,7 @@ class _TaskDeadlineTextFieldState extends State<_TaskDeadlineTextField> {
         if (_controller.text == '') {
           if (state.deadline != null) {
             final outputFormat = DateFormat('dd MMMM yyyy, HH:mm');
-            _controller.text = outputFormat.format(state.deadline!);
+            _controller.value = TextEditingValue(text: outputFormat.format(state.deadline!));
           }
         }
         return CustomTextField(

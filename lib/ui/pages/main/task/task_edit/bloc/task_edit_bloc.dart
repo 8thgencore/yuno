@@ -6,7 +6,9 @@ import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/domain/repository/api_task_repository.dart';
 
 part 'task_edit_bloc.freezed.dart';
+
 part 'task_edit_event.dart';
+
 part 'task_edit_state.dart';
 
 class TaskEditBloc extends Bloc<TaskEditEvent, TaskEditState> {
@@ -44,21 +46,19 @@ class TaskEditBloc extends Bloc<TaskEditEvent, TaskEditState> {
         ));
       } else {
         final task = await apiTaskRepository.getById(id: event.id);
-        if (task != null) {
-          emit(state.copyWith(
-            status: TaskEditStatus.loaded,
-            id: task.id,
-            name: task.name,
-            deadline: task.deadline,
-            done: task.done,
-            projectId: task.projectId,
-          ));
-        }
+        emit(state.copyWith(
+          status: TaskEditStatus.loaded,
+          id: task.id,
+          name: task.name,
+          deadline: task.deadline,
+          done: task.done,
+          projectId: task.projectId,
+        ));
       }
       emit(state.copyWith(status: TaskEditStatus.fillingFields));
     } on DioError catch (dioError) {
       emit(state.copyWith(
-        status: TaskEditStatus.failure,
+        status: TaskEditStatus.failureLoaded,
         serverError: dioErrorInterceptor(dioError).toString(),
       ));
     }
@@ -91,15 +91,13 @@ class TaskEditBloc extends Bloc<TaskEditEvent, TaskEditState> {
   ) async {
     emit(state.copyWith(status: TaskEditStatus.loading));
     try {
-      final result = await apiTaskRepository.create(
+      await apiTaskRepository.create(
         name: state.name,
         deadline: state.deadline,
         done: state.done ?? false,
         projectId: state.projectId,
       );
-      if (result != null) {
-        emit(state.copyWith(status: TaskEditStatus.successCreated));
-      }
+      emit(state.copyWith(status: TaskEditStatus.successCreated));
     } on DioError catch (dioError) {
       emit(state.copyWith(
         status: TaskEditStatus.failure,
@@ -114,16 +112,14 @@ class TaskEditBloc extends Bloc<TaskEditEvent, TaskEditState> {
   ) async {
     emit(state.copyWith(status: TaskEditStatus.loading));
     try {
-      final result = await apiTaskRepository.updateById(
+      await apiTaskRepository.updateById(
         id: state.id,
         name: state.name,
         deadline: state.deadline,
         done: state.done,
         projectId: state.projectId,
       );
-      if (result != null) {
-        emit(state.copyWith(status: TaskEditStatus.successUpdated));
-      }
+      emit(state.copyWith(status: TaskEditStatus.successUpdated));
     } on DioError catch (dioError) {
       emit(state.copyWith(
         status: TaskEditStatus.failure,

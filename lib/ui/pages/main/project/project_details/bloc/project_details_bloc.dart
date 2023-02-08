@@ -106,7 +106,6 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
     Emitter<ProjectDetailsState> emit,
   ) async {
     try {
-      _tasks.clear();
       await _getProjectInfo(emit);
     } on DioError catch (dioError) {
       emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
@@ -131,7 +130,6 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
     Emitter<ProjectDetailsState> emit,
   ) async {
     try {
-      _tasks.clear();
       await apiProjectRepository.joinProject(id: _projectId);
       // get new tasks list
       await apiTaskRepository.getNotDoneTasks();
@@ -146,7 +144,6 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
     Emitter<ProjectDetailsState> emit,
   ) async {
     try {
-      _tasks.clear();
       await apiProjectRepository.leaveProject(id: _projectId);
       // get new tasks list
       await apiTaskRepository.getNotDoneTasks();
@@ -160,6 +157,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
     final project = await apiProjectRepository.getById(id: _projectId);
     _project = project;
 
+    _tasks.clear();
     _tasks.addAll(project.tasks ?? []);
     // Check user member is project
     final user = await apiUserRepository.getCachedData();

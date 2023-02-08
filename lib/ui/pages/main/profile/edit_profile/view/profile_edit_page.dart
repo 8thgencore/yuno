@@ -170,6 +170,12 @@ class _FirstNameTextFieldState extends State<_FirstNameTextField> {
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileEditBloc, ProfileEditState>(
       buildWhen: (_, current) => current.status == ProfileEditStatus.loaded,
@@ -206,6 +212,12 @@ class _LastNameTextFieldState extends State<_LastNameTextField> {
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileEditBloc, ProfileEditState>(
       buildWhen: (_, current) => current.status == ProfileEditStatus.loaded,
@@ -239,6 +251,12 @@ class _UsernameTextFieldState extends State<_UsernameTextField> {
   void initState() {
     super.initState();
     _controller = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -280,6 +298,12 @@ class _EmailTextFieldState extends State<_EmailTextField> {
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileEditBloc, ProfileEditState>(
       buildWhen: (_, current) => current.status == ProfileEditStatus.loaded,
@@ -315,6 +339,12 @@ class _RoleTextFieldState extends State<_RoleTextField> {
   void initState() {
     super.initState();
     _controller = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
