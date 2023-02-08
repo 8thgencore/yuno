@@ -139,8 +139,8 @@ class _CreateTaskContentWidget extends StatelessWidget {
             ],
           ),
         ),
-        Expanded(
-          child: removeScrollingGlow(
+        removeScrollingGlow(
+          child: Expanded(
             child: Container(
               width: double.infinity,
               padding: const EdgeInsets.symmetric(horizontal: 24),
