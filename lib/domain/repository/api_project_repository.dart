@@ -8,13 +8,18 @@ class ApiProjectRepository {
 
   final ProjectClient projectClient;
 
-  Future<PaginatedDataIProjectWithUsers> getMyProjects(
-      {required int page, required int size}) async {
+  Future<PaginatedDataIProjectWithUsers> getMyProjects({
+    required int page,
+    required int size,
+  }) async {
     final response = await projectClient.getProjectMy(page: page, size: size);
     return response.data;
   }
 
-  Future<PaginatedDataIProjectWithUsers> getProjects({required int page, required int size}) async {
+  Future<PaginatedDataIProjectWithUsers> getProjects({
+    required int page,
+    required int size,
+  }) async {
     final response = await projectClient.getProjectList(page: page, size: size);
     return response.data;
   }

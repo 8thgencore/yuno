@@ -1,15 +1,16 @@
 name: yuno
-description: Yuno
+description: A Yuno Task Management
 version: 1.0.0+1
 publish_to: none
 
 environment:
   sdk: ">=2.19.0 <3.0.0"
+  flutter: 3.7.1
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_gen: ^5.2.0
+  #  flutter_gen: ^5.2.0
   flutter_localizations:
     sdk: flutter
   intl: ^0.17.0
@@ -59,7 +60,7 @@ dev_dependencies:
   json_serializable: ^6.6.1
   mocktail: ^0.3.0
   retrofit_generator: ^4.2.0
-  swagger_parser: ^0.6.4
+  swagger_parser: ^0.7.0
 
 flutter:
   uses-material-design: true

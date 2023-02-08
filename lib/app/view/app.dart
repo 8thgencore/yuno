@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yuno/app/routes/router.dart';
 import 'package:yuno/app/theme/app_theme.dart';
+import 'package:yuno/l10n/l10n.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -14,11 +15,8 @@ class _AppState extends State<App> with RouterMixin {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       theme: AppTheme.lightTheme,
-      // localizationsDelegates: const [
-      //   AppLocalizations.delegate,
-      //   GlobalMaterialLocalizations.delegate,
-      // ],
-      // supportedLocales: AppLocalizations.supportedLocales,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       routerConfig: router,
     );
   }

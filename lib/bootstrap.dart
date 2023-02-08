@@ -7,13 +7,13 @@ import 'package:yuno/app/theme/app_theme.dart';
 
 class AppBlocObserver extends BlocObserver {
   @override
-  void onChange(bloc, change) {
+  void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
     super.onChange(bloc, change);
     log('onChange(${bloc.runtimeType}, $change)');
   }
 
   @override
-  void onError(bloc, Object error, StackTrace stackTrace) {
+  void onError(BlocBase<dynamic> bloc, Object error, StackTrace stackTrace) {
     log('onError(${bloc.runtimeType}, $error, $stackTrace)');
     super.onError(bloc, error, stackTrace);
   }
