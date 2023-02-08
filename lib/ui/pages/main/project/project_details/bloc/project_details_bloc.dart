@@ -49,6 +49,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
     Emitter<ProjectDetailsState> emit,
   ) async {
     try {
+      emit(ProjectDetailsState.loading());
       _projectId = event.id;
       await _getProjectInfo(emit);
     } on DioError catch (dioError) {

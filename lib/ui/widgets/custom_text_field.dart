@@ -29,8 +29,8 @@ class CustomTextField extends StatelessWidget {
   final Widget? suffixIcon;
   final bool? obscureText;
   final bool? enabled;
-  final Function(String)? onChanged;
-  final Function(String)? onSubmitted;
+  final void Function(String)? onChanged;
+  final void Function(String)? onSubmitted;
   final void Function()? onPressedFunction;
   final TextEditingController? controller;
   final FocusNode? focusNode;

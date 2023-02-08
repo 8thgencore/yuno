@@ -53,7 +53,6 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
     Emitter<ProfileEditState> emit,
   ) async {
     emit(state.copyWith(status: ProfileEditStatus.loading));
-
     final user = await apiUserRepository.getCachedData();
     if (user != null) {
       _user = user;

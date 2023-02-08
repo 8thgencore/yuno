@@ -38,13 +38,22 @@ class _TaskCardWidgetState extends State<TaskCardWidget> {
   }
 
   @override
+  void didUpdateWidget(TaskCardWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.done != widget.done) {
+      setState(() {
+        value = widget.done ?? false;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     var deadline = '';
     if (widget.deadline != null) {
       final outputFormat = DateFormat('dd MMMM yyyy, HH:mm');
       deadline = outputFormat.format(widget.deadline!);
     }
-
     return Dismissible(
       key: ValueKey(widget.id),
       direction: widget.isMember ? DismissDirection.startToEnd : DismissDirection.none,
@@ -111,9 +120,7 @@ class _TaskCardWidgetState extends State<TaskCardWidget> {
                     if (widget.onClickCheckBox != null) {
                       widget.onClickCheckBox!();
                     }
-                    setState(() {
-                      value = !value;
-                    });
+                    setState(() => value = !value);
                   },
                 ),
               )
