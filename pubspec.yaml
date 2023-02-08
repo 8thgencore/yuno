@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_gen: ^5.1.0+1
+  flutter_gen: ^5.2.0
   flutter_localizations:
     sdk: flutter
   intl: ^0.17.0
@@ -17,7 +17,7 @@ dependencies:
 
   # State management
   bloc: ^8.1.1
-  flutter_bloc: ^8.1.1
+  flutter_bloc: ^8.1.2
   bloc_concurrency: ^0.2.1
 
   # Network
@@ -36,7 +36,7 @@ dependencies:
   get_it: ^7.2.0
 
   # UI
-  flutter_svg: ^1.1.6
+  flutter_svg: ^2.0.0+1
   cached_network_image: ^3.2.3
   fluttertoast: ^8.1.2
   loader_overlay: ^2.1.0
@@ -54,7 +54,7 @@ dependencies:
 
 dev_dependencies:
   build_runner: ^2.3.3
-  flutter_gen_runner: ^5.1.0+1
+  flutter_gen_runner: ^5.2.0
   freezed: ^2.3.2
   json_serializable: ^6.6.1
   mocktail: ^0.3.0

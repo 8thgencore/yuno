@@ -298,6 +298,7 @@ class _CheckListWidget extends StatelessWidget {
                   id: tasks[index].id,
                   title: tasks[index].name,
                   deadline: tasks[index].deadline,
+                  done: tasks[index].done,
                   onClickCheckBox: () => context
                       .read<ProjectDetailsBloc>()
                       .add(ProjectDetailsEvent.checkedTask(tasks[index].id)),

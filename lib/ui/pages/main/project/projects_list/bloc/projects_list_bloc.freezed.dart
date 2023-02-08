@@ -23,7 +23,6 @@ mixin _$ProjectsListEvent {
     required TResult Function() updated,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool isSelf)? started,
@@ -46,7 +45,6 @@ mixin _$ProjectsListEvent {
     required TResult Function(_UpdatedEvent value) updated,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
