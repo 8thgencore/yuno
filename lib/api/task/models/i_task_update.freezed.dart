@@ -26,14 +26,12 @@ mixin _$ITaskUpdate {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ITaskUpdateCopyWith<ITaskUpdate> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ITaskUpdateCopyWith<ITaskUpdate> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ITaskUpdateCopyWith<$Res> {
-  factory $ITaskUpdateCopyWith(
-          ITaskUpdate value, $Res Function(ITaskUpdate) then) =
+  factory $ITaskUpdateCopyWith(ITaskUpdate value, $Res Function(ITaskUpdate) then) =
       _$ITaskUpdateCopyWithImpl<$Res, ITaskUpdate>;
   @useResult
   $Res call({String? name, bool? done, DateTime? deadline});
@@ -74,10 +72,8 @@ class _$ITaskUpdateCopyWithImpl<$Res, $Val extends ITaskUpdate>
 }
 
 /// @nodoc
-abstract class _$$_ITaskUpdateCopyWith<$Res>
-    implements $ITaskUpdateCopyWith<$Res> {
-  factory _$$_ITaskUpdateCopyWith(
-          _$_ITaskUpdate value, $Res Function(_$_ITaskUpdate) then) =
+abstract class _$$_ITaskUpdateCopyWith<$Res> implements $ITaskUpdateCopyWith<$Res> {
+  factory _$$_ITaskUpdateCopyWith(_$_ITaskUpdate value, $Res Function(_$_ITaskUpdate) then) =
       __$$_ITaskUpdateCopyWithImpl<$Res>;
   @override
   @useResult
@@ -85,11 +81,9 @@ abstract class _$$_ITaskUpdateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ITaskUpdateCopyWithImpl<$Res>
-    extends _$ITaskUpdateCopyWithImpl<$Res, _$_ITaskUpdate>
+class __$$_ITaskUpdateCopyWithImpl<$Res> extends _$ITaskUpdateCopyWithImpl<$Res, _$_ITaskUpdate>
     implements _$$_ITaskUpdateCopyWith<$Res> {
-  __$$_ITaskUpdateCopyWithImpl(
-      _$_ITaskUpdate _value, $Res Function(_$_ITaskUpdate) _then)
+  __$$_ITaskUpdateCopyWithImpl(_$_ITaskUpdate _value, $Res Function(_$_ITaskUpdate) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')

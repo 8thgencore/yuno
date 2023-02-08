@@ -6,8 +6,7 @@ part of 'i_user_update.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_IUserUpdate _$$_IUserUpdateFromJson(Map<String, dynamic> json) =>
-    _$_IUserUpdate(
+_$_IUserUpdate _$$_IUserUpdateFromJson(Map<String, dynamic> json) => _$_IUserUpdate(
       firstName: json['first_name'] as String,
       lastName: json['last_name'] as String,
       username: json['username'] as String,
@@ -17,8 +16,7 @@ _$_IUserUpdate _$$_IUserUpdateFromJson(Map<String, dynamic> json) =>
       roleId: json['role_id'] as String?,
     );
 
-Map<String, dynamic> _$$_IUserUpdateToJson(_$_IUserUpdate instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_IUserUpdateToJson(_$_IUserUpdate instance) => <String, dynamic>{
       'first_name': instance.firstName,
       'last_name': instance.lastName,
       'username': instance.username,

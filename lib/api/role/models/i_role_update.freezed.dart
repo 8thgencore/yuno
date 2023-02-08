@@ -25,14 +25,12 @@ mixin _$IRoleUpdate {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $IRoleUpdateCopyWith<IRoleUpdate> get copyWith =>
-      throw _privateConstructorUsedError;
+  $IRoleUpdateCopyWith<IRoleUpdate> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $IRoleUpdateCopyWith<$Res> {
-  factory $IRoleUpdateCopyWith(
-          IRoleUpdate value, $Res Function(IRoleUpdate) then) =
+  factory $IRoleUpdateCopyWith(IRoleUpdate value, $Res Function(IRoleUpdate) then) =
       _$IRoleUpdateCopyWithImpl<$Res, IRoleUpdate>;
   @useResult
   $Res call({String name, String description});
@@ -68,10 +66,8 @@ class _$IRoleUpdateCopyWithImpl<$Res, $Val extends IRoleUpdate>
 }
 
 /// @nodoc
-abstract class _$$_IRoleUpdateCopyWith<$Res>
-    implements $IRoleUpdateCopyWith<$Res> {
-  factory _$$_IRoleUpdateCopyWith(
-          _$_IRoleUpdate value, $Res Function(_$_IRoleUpdate) then) =
+abstract class _$$_IRoleUpdateCopyWith<$Res> implements $IRoleUpdateCopyWith<$Res> {
+  factory _$$_IRoleUpdateCopyWith(_$_IRoleUpdate value, $Res Function(_$_IRoleUpdate) then) =
       __$$_IRoleUpdateCopyWithImpl<$Res>;
   @override
   @useResult
@@ -79,11 +75,9 @@ abstract class _$$_IRoleUpdateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_IRoleUpdateCopyWithImpl<$Res>
-    extends _$IRoleUpdateCopyWithImpl<$Res, _$_IRoleUpdate>
+class __$$_IRoleUpdateCopyWithImpl<$Res> extends _$IRoleUpdateCopyWithImpl<$Res, _$_IRoleUpdate>
     implements _$$_IRoleUpdateCopyWith<$Res> {
-  __$$_IRoleUpdateCopyWithImpl(
-      _$_IRoleUpdate _value, $Res Function(_$_IRoleUpdate) _then)
+  __$$_IRoleUpdateCopyWithImpl(_$_IRoleUpdate _value, $Res Function(_$_IRoleUpdate) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -110,8 +104,7 @@ class __$$_IRoleUpdateCopyWithImpl<$Res>
 class _$_IRoleUpdate implements _IRoleUpdate {
   const _$_IRoleUpdate({required this.name, required this.description});
 
-  factory _$_IRoleUpdate.fromJson(Map<String, dynamic> json) =>
-      _$$_IRoleUpdateFromJson(json);
+  factory _$_IRoleUpdate.fromJson(Map<String, dynamic> json) => _$$_IRoleUpdateFromJson(json);
 
   @override
   final String name;
@@ -129,8 +122,7 @@ class _$_IRoleUpdate implements _IRoleUpdate {
         (other.runtimeType == runtimeType &&
             other is _$_IRoleUpdate &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) ||
-                other.description == description));
+            (identical(other.description, description) || other.description == description));
   }
 
   @JsonKey(ignore: true)
@@ -152,12 +144,10 @@ class _$_IRoleUpdate implements _IRoleUpdate {
 }
 
 abstract class _IRoleUpdate implements IRoleUpdate {
-  const factory _IRoleUpdate(
-      {required final String name,
-      required final String description}) = _$_IRoleUpdate;
+  const factory _IRoleUpdate({required final String name, required final String description}) =
+      _$_IRoleUpdate;
 
-  factory _IRoleUpdate.fromJson(Map<String, dynamic> json) =
-      _$_IRoleUpdate.fromJson;
+  factory _IRoleUpdate.fromJson(Map<String, dynamic> json) = _$_IRoleUpdate.fromJson;
 
   @override
   String get name;
@@ -165,6 +155,5 @@ abstract class _IRoleUpdate implements IRoleUpdate {
   String get description;
   @override
   @JsonKey(ignore: true)
-  _$$_IRoleUpdateCopyWith<_$_IRoleUpdate> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_IRoleUpdateCopyWith<_$_IRoleUpdate> get copyWith => throw _privateConstructorUsedError;
 }

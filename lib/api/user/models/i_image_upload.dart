@@ -9,6 +9,6 @@ class IImageUpload with _$IImageUpload {
     String? title,
     String? description,
   }) = _IImageUpload;
-  
+
   factory IImageUpload.fromJson(Map<String, dynamic> json) => _$IImageUploadFromJson(json);
 }

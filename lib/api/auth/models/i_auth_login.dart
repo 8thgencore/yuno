@@ -9,6 +9,6 @@ class IAuthLogin with _$IAuthLogin {
     required String email,
     required String password,
   }) = _IAuthLogin;
-  
+
   factory IAuthLogin.fromJson(Map<String, dynamic> json) => _$IAuthLoginFromJson(json);
 }

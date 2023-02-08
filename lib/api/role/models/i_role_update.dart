@@ -9,6 +9,6 @@ class IRoleUpdate with _$IRoleUpdate {
     required String name,
     required String description,
   }) = _IRoleUpdate;
-  
+
   factory IRoleUpdate.fromJson(Map<String, dynamic> json) => _$IRoleUpdateFromJson(json);
 }

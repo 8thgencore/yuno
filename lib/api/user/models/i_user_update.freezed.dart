@@ -33,14 +33,12 @@ mixin _$IUserUpdate {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $IUserUpdateCopyWith<IUserUpdate> get copyWith =>
-      throw _privateConstructorUsedError;
+  $IUserUpdateCopyWith<IUserUpdate> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $IUserUpdateCopyWith<$Res> {
-  factory $IUserUpdateCopyWith(
-          IUserUpdate value, $Res Function(IUserUpdate) then) =
+  factory $IUserUpdateCopyWith(IUserUpdate value, $Res Function(IUserUpdate) then) =
       _$IUserUpdateCopyWithImpl<$Res, IUserUpdate>;
   @useResult
   $Res call(
@@ -108,10 +106,8 @@ class _$IUserUpdateCopyWithImpl<$Res, $Val extends IUserUpdate>
 }
 
 /// @nodoc
-abstract class _$$_IUserUpdateCopyWith<$Res>
-    implements $IUserUpdateCopyWith<$Res> {
-  factory _$$_IUserUpdateCopyWith(
-          _$_IUserUpdate value, $Res Function(_$_IUserUpdate) then) =
+abstract class _$$_IUserUpdateCopyWith<$Res> implements $IUserUpdateCopyWith<$Res> {
+  factory _$$_IUserUpdateCopyWith(_$_IUserUpdate value, $Res Function(_$_IUserUpdate) then) =
       __$$_IUserUpdateCopyWithImpl<$Res>;
   @override
   @useResult
@@ -126,11 +122,9 @@ abstract class _$$_IUserUpdateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_IUserUpdateCopyWithImpl<$Res>
-    extends _$IUserUpdateCopyWithImpl<$Res, _$_IUserUpdate>
+class __$$_IUserUpdateCopyWithImpl<$Res> extends _$IUserUpdateCopyWithImpl<$Res, _$_IUserUpdate>
     implements _$$_IUserUpdateCopyWith<$Res> {
-  __$$_IUserUpdateCopyWithImpl(
-      _$_IUserUpdate _value, $Res Function(_$_IUserUpdate) _then)
+  __$$_IUserUpdateCopyWithImpl(_$_IUserUpdate _value, $Res Function(_$_IUserUpdate) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -189,8 +183,7 @@ class _$_IUserUpdate implements _IUserUpdate {
       this.phone,
       @JsonKey(name: 'role_id') this.roleId});
 
-  factory _$_IUserUpdate.fromJson(Map<String, dynamic> json) =>
-      _$$_IUserUpdateFromJson(json);
+  factory _$_IUserUpdate.fromJson(Map<String, dynamic> json) => _$$_IUserUpdateFromJson(json);
 
   @override
   @JsonKey(name: 'first_name')
@@ -220,23 +213,19 @@ class _$_IUserUpdate implements _IUserUpdate {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IUserUpdate &&
-            (identical(other.firstName, firstName) ||
-                other.firstName == firstName) &&
-            (identical(other.lastName, lastName) ||
-                other.lastName == lastName) &&
-            (identical(other.username, username) ||
-                other.username == username) &&
+            (identical(other.firstName, firstName) || other.firstName == firstName) &&
+            (identical(other.lastName, lastName) || other.lastName == lastName) &&
+            (identical(other.username, username) || other.username == username) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.birthdate, birthdate) ||
-                other.birthdate == birthdate) &&
+            (identical(other.birthdate, birthdate) || other.birthdate == birthdate) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.roleId, roleId) || other.roleId == roleId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, firstName, lastName, username,
-      email, birthdate, phone, roleId);
+  int get hashCode =>
+      Object.hash(runtimeType, firstName, lastName, username, email, birthdate, phone, roleId);
 
   @JsonKey(ignore: true)
   @override
@@ -262,8 +251,7 @@ abstract class _IUserUpdate implements IUserUpdate {
       final String? phone,
       @JsonKey(name: 'role_id') final String? roleId}) = _$_IUserUpdate;
 
-  factory _IUserUpdate.fromJson(Map<String, dynamic> json) =
-      _$_IUserUpdate.fromJson;
+  factory _IUserUpdate.fromJson(Map<String, dynamic> json) = _$_IUserUpdate.fromJson;
 
   @override
   @JsonKey(name: 'first_name')
@@ -284,6 +272,5 @@ abstract class _IUserUpdate implements IUserUpdate {
   String? get roleId;
   @override
   @JsonKey(ignore: true)
-  _$$_IUserUpdateCopyWith<_$_IUserUpdate> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_IUserUpdateCopyWith<_$_IUserUpdate> get copyWith => throw _privateConstructorUsedError;
 }

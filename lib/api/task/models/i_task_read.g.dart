@@ -14,8 +14,7 @@ _$_ITaskRead _$$_ITaskReadFromJson(Map<String, dynamic> json) => _$_ITaskRead(
       projectId: json['project_id'] as String?,
     );
 
-Map<String, dynamic> _$$_ITaskReadToJson(_$_ITaskRead instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_ITaskReadToJson(_$_ITaskRead instance) => <String, dynamic>{
       'name': instance.name,
       'id': instance.id,
       'done': instance.done,

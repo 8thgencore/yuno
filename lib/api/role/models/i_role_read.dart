@@ -10,6 +10,6 @@ class IRoleRead with _$IRoleRead {
     required String description,
     required String id,
   }) = _IRoleRead;
-  
+
   factory IRoleRead.fromJson(Map<String, dynamic> json) => _$IRoleReadFromJson(json);
 }

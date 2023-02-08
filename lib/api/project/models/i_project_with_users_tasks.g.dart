@@ -6,8 +6,7 @@ part of 'i_project_with_users_tasks.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_IProjectWithUsersTasks _$$_IProjectWithUsersTasksFromJson(
-        Map<String, dynamic> json) =>
+_$_IProjectWithUsersTasks _$$_IProjectWithUsersTasksFromJson(Map<String, dynamic> json) =>
     _$_IProjectWithUsersTasks(
       name: json['name'] as String,
       description: json['description'] as String,
@@ -22,8 +21,7 @@ _$_IProjectWithUsersTasks _$$_IProjectWithUsersTasksFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$_IProjectWithUsersTasksToJson(
-        _$_IProjectWithUsersTasks instance) =>
+Map<String, dynamic> _$$_IProjectWithUsersTasksToJson(_$_IProjectWithUsersTasks instance) =>
     <String, dynamic>{
       'name': instance.name,
       'description': instance.description,

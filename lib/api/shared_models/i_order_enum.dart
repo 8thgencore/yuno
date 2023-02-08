@@ -6,8 +6,7 @@ enum IOrderEnum {
 
   const IOrderEnum();
 
-  factory IOrderEnum.fromJson(Map<String, dynamic> json) =>
-      $enumDecode(_$IOrderEnumEnumMap, json);
+  factory IOrderEnum.fromJson(Map<String, dynamic> json) => $enumDecode(_$IOrderEnumEnumMap, json);
 
   String toJson() => _$IOrderEnumEnumMap[this]!;
 }

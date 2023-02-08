@@ -12,8 +12,7 @@ _$_IRoleRead _$$_IRoleReadFromJson(Map<String, dynamic> json) => _$_IRoleRead(
       id: json['id'] as String,
     );
 
-Map<String, dynamic> _$$_IRoleReadToJson(_$_IRoleRead instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_IRoleReadToJson(_$_IRoleRead instance) => <String, dynamic>{
       'name': instance.name,
       'description': instance.description,
       'id': instance.id,

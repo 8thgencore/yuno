@@ -12,6 +12,6 @@ class IMediaRead with _$IMediaRead {
     String? path,
     String? link,
   }) = _IMediaRead;
-  
+
   factory IMediaRead.fromJson(Map<String, dynamic> json) => _$IMediaReadFromJson(json);
 }

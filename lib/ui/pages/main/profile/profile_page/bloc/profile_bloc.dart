@@ -35,8 +35,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final RefreshTokenDataRepository refreshTokenDataRepository;
   final LogoutInteractor logoutInteractor;
 
-  IUserRead? _user;
-
   FutureOr<void> _onProfileLoaded(
     _StartedEvent event,
     Emitter<ProfileState> emit,
@@ -48,20 +46,12 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         _logout(emit);
         return;
       }
-      _user = user;
-
       emit(const ProfileState.loading());
 
-      final refreshTokenResponse = await apiAuthRepository.refreshToken(
-        body: RefreshToken(refreshToken: refreshToken),
-      );
-      if (refreshTokenResponse == null) {
-        _logout(emit);
-        return;
-      }
-
+      await apiAuthRepository.refreshToken(body: RefreshToken(refreshToken: refreshToken));
       emit(ProfileState.loaded(user, null));
     } on DioError catch (dioError) {
+      _logout(emit);
       emit(ProfileState.failure(dioErrorInterceptor(dioError).toString()));
     }
   }
@@ -76,7 +66,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       emit(const ProfileState.failure('Unknown error'));
       return;
     }
-    _user = user;
     emit(ProfileState.loaded(user, null));
   }
 
@@ -86,11 +75,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ) async {
     try {
       final user = await apiUserRepository.loadImage(file: event.file);
-      if (user != null) {
-        emit(ProfileState.loaded(user, null));
-        return;
-      }
-      emit(ProfileState.loaded(_user!, 'Error from server. Try again'));
+      emit(ProfileState.loaded(user, null));
     } on DioError catch (dioError) {
       // emit(ProfileState.loaded(_user!, 'Error from server. Try again'));
       emit(ProfileState.failure(dioErrorInterceptor(dioError).toString()));

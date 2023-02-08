@@ -34,8 +34,7 @@ mixin _$IProjectRead {
 
 /// @nodoc
 abstract class $IProjectReadCopyWith<$Res> {
-  factory $IProjectReadCopyWith(
-          IProjectRead value, $Res Function(IProjectRead) then) =
+  factory $IProjectReadCopyWith(IProjectRead value, $Res Function(IProjectRead) then) =
       _$IProjectReadCopyWithImpl<$Res, IProjectRead>;
   @useResult
   $Res call(
@@ -91,10 +90,8 @@ class _$IProjectReadCopyWithImpl<$Res, $Val extends IProjectRead>
 }
 
 /// @nodoc
-abstract class _$$_IProjectReadCopyWith<$Res>
-    implements $IProjectReadCopyWith<$Res> {
-  factory _$$_IProjectReadCopyWith(
-          _$_IProjectRead value, $Res Function(_$_IProjectRead) then) =
+abstract class _$$_IProjectReadCopyWith<$Res> implements $IProjectReadCopyWith<$Res> {
+  factory _$$_IProjectReadCopyWith(_$_IProjectRead value, $Res Function(_$_IProjectRead) then) =
       __$$_IProjectReadCopyWithImpl<$Res>;
   @override
   @useResult
@@ -107,11 +104,9 @@ abstract class _$$_IProjectReadCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_IProjectReadCopyWithImpl<$Res>
-    extends _$IProjectReadCopyWithImpl<$Res, _$_IProjectRead>
+class __$$_IProjectReadCopyWithImpl<$Res> extends _$IProjectReadCopyWithImpl<$Res, _$_IProjectRead>
     implements _$$_IProjectReadCopyWith<$Res> {
-  __$$_IProjectReadCopyWithImpl(
-      _$_IProjectRead _value, $Res Function(_$_IProjectRead) _then)
+  __$$_IProjectReadCopyWithImpl(_$_IProjectRead _value, $Res Function(_$_IProjectRead) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')

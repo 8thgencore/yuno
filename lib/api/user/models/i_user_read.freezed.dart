@@ -36,8 +36,7 @@ mixin _$IUserRead {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $IUserReadCopyWith<IUserRead> get copyWith =>
-      throw _privateConstructorUsedError;
+  $IUserReadCopyWith<IUserRead> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -62,8 +61,7 @@ abstract class $IUserReadCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$IUserReadCopyWithImpl<$Res, $Val extends IUserRead>
-    implements $IUserReadCopyWith<$Res> {
+class _$IUserReadCopyWithImpl<$Res, $Val extends IUserRead> implements $IUserReadCopyWith<$Res> {
   _$IUserReadCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -156,8 +154,7 @@ class _$IUserReadCopyWithImpl<$Res, $Val extends IUserRead>
 
 /// @nodoc
 abstract class _$$_IUserReadCopyWith<$Res> implements $IUserReadCopyWith<$Res> {
-  factory _$$_IUserReadCopyWith(
-          _$_IUserRead value, $Res Function(_$_IUserRead) then) =
+  factory _$$_IUserReadCopyWith(_$_IUserRead value, $Res Function(_$_IUserRead) then) =
       __$$_IUserReadCopyWithImpl<$Res>;
   @override
   @useResult
@@ -180,11 +177,9 @@ abstract class _$$_IUserReadCopyWith<$Res> implements $IUserReadCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_IUserReadCopyWithImpl<$Res>
-    extends _$IUserReadCopyWithImpl<$Res, _$_IUserRead>
+class __$$_IUserReadCopyWithImpl<$Res> extends _$IUserReadCopyWithImpl<$Res, _$_IUserRead>
     implements _$$_IUserReadCopyWith<$Res> {
-  __$$_IUserReadCopyWithImpl(
-      _$_IUserRead _value, $Res Function(_$_IUserRead) _then)
+  __$$_IUserReadCopyWithImpl(_$_IUserRead _value, $Res Function(_$_IUserRead) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -261,8 +256,7 @@ class _$_IUserRead implements _IUserRead {
       this.role,
       this.image});
 
-  factory _$_IUserRead.fromJson(Map<String, dynamic> json) =>
-      _$$_IUserReadFromJson(json);
+  factory _$_IUserRead.fromJson(Map<String, dynamic> json) => _$$_IUserReadFromJson(json);
 
   @override
   @JsonKey(name: 'first_name')
@@ -298,16 +292,12 @@ class _$_IUserRead implements _IUserRead {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IUserRead &&
-            (identical(other.firstName, firstName) ||
-                other.firstName == firstName) &&
-            (identical(other.lastName, lastName) ||
-                other.lastName == lastName) &&
-            (identical(other.username, username) ||
-                other.username == username) &&
+            (identical(other.firstName, firstName) || other.firstName == firstName) &&
+            (identical(other.lastName, lastName) || other.lastName == lastName) &&
+            (identical(other.username, username) || other.username == username) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.birthdate, birthdate) ||
-                other.birthdate == birthdate) &&
+            (identical(other.birthdate, birthdate) || other.birthdate == birthdate) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.roleId, roleId) || other.roleId == roleId) &&
             (identical(other.role, role) || other.role == role) &&
@@ -316,8 +306,8 @@ class _$_IUserRead implements _IUserRead {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, firstName, lastName, username,
-      email, id, birthdate, phone, roleId, role, image);
+  int get hashCode => Object.hash(
+      runtimeType, firstName, lastName, username, email, id, birthdate, phone, roleId, role, image);
 
   @JsonKey(ignore: true)
   @override
@@ -346,8 +336,7 @@ abstract class _IUserRead implements IUserRead {
       final IRoleRead? role,
       final IImageMediaRead? image}) = _$_IUserRead;
 
-  factory _IUserRead.fromJson(Map<String, dynamic> json) =
-      _$_IUserRead.fromJson;
+  factory _IUserRead.fromJson(Map<String, dynamic> json) = _$_IUserRead.fromJson;
 
   @override
   @JsonKey(name: 'first_name')
@@ -374,6 +363,5 @@ abstract class _IUserRead implements IUserRead {
   IImageMediaRead? get image;
   @override
   @JsonKey(ignore: true)
-  _$$_IUserReadCopyWith<_$_IUserRead> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_IUserReadCopyWith<_$_IUserRead> get copyWith => throw _privateConstructorUsedError;
 }

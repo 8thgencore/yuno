@@ -6,8 +6,7 @@ part of 'i_task_create.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ITaskCreate _$$_ITaskCreateFromJson(Map<String, dynamic> json) =>
-    _$_ITaskCreate(
+_$_ITaskCreate _$$_ITaskCreateFromJson(Map<String, dynamic> json) => _$_ITaskCreate(
       name: json['name'] as String,
       done: json['done'] as bool? ?? false,
       deadline: json['deadline'] == null ? null : DateTime.parse(json['deadline'] as String),

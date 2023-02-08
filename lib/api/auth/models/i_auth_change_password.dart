@@ -7,9 +7,9 @@ part 'i_auth_change_password.g.dart';
 class IAuthChangePassword with _$IAuthChangePassword {
   const factory IAuthChangePassword({
     required String current,
-    @JsonKey(name: 'new')
-    required String newvalue,
+    @JsonKey(name: 'new') required String newvalue,
   }) = _IAuthChangePassword;
-  
-  factory IAuthChangePassword.fromJson(Map<String, dynamic> json) => _$IAuthChangePasswordFromJson(json);
+
+  factory IAuthChangePassword.fromJson(Map<String, dynamic> json) =>
+      _$IAuthChangePasswordFromJson(json);
 }

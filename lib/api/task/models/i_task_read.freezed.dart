@@ -29,8 +29,7 @@ mixin _$ITaskRead {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ITaskReadCopyWith<ITaskRead> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ITaskReadCopyWith<ITaskRead> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -47,8 +46,7 @@ abstract class $ITaskReadCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ITaskReadCopyWithImpl<$Res, $Val extends ITaskRead>
-    implements $ITaskReadCopyWith<$Res> {
+class _$ITaskReadCopyWithImpl<$Res, $Val extends ITaskRead> implements $ITaskReadCopyWith<$Res> {
   _$ITaskReadCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -92,8 +90,7 @@ class _$ITaskReadCopyWithImpl<$Res, $Val extends ITaskRead>
 
 /// @nodoc
 abstract class _$$_ITaskReadCopyWith<$Res> implements $ITaskReadCopyWith<$Res> {
-  factory _$$_ITaskReadCopyWith(
-          _$_ITaskRead value, $Res Function(_$_ITaskRead) then) =
+  factory _$$_ITaskReadCopyWith(_$_ITaskRead value, $Res Function(_$_ITaskRead) then) =
       __$$_ITaskReadCopyWithImpl<$Res>;
   @override
   @useResult
@@ -106,11 +103,9 @@ abstract class _$$_ITaskReadCopyWith<$Res> implements $ITaskReadCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ITaskReadCopyWithImpl<$Res>
-    extends _$ITaskReadCopyWithImpl<$Res, _$_ITaskRead>
+class __$$_ITaskReadCopyWithImpl<$Res> extends _$ITaskReadCopyWithImpl<$Res, _$_ITaskRead>
     implements _$$_ITaskReadCopyWith<$Res> {
-  __$$_ITaskReadCopyWithImpl(
-      _$_ITaskRead _value, $Res Function(_$_ITaskRead) _then)
+  __$$_ITaskReadCopyWithImpl(_$_ITaskRead _value, $Res Function(_$_ITaskRead) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -185,16 +180,13 @@ class _$_ITaskRead implements _ITaskRead {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.done, done) || other.done == done) &&
-            (identical(other.deadline, deadline) ||
-                other.deadline == deadline) &&
-            (identical(other.projectId, projectId) ||
-                other.projectId == projectId));
+            (identical(other.deadline, deadline) || other.deadline == deadline) &&
+            (identical(other.projectId, projectId) || other.projectId == projectId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, name, id, done, deadline, projectId);
+  int get hashCode => Object.hash(runtimeType, name, id, done, deadline, projectId);
 
   @JsonKey(ignore: true)
   @override
@@ -218,8 +210,7 @@ abstract class _ITaskRead implements ITaskRead {
       final DateTime? deadline,
       @JsonKey(name: 'project_id') final String? projectId}) = _$_ITaskRead;
 
-  factory _ITaskRead.fromJson(Map<String, dynamic> json) =
-      _$_ITaskRead.fromJson;
+  factory _ITaskRead.fromJson(Map<String, dynamic> json) = _$_ITaskRead.fromJson;
 
   @override
   String get name;
@@ -234,6 +225,5 @@ abstract class _ITaskRead implements ITaskRead {
   String? get projectId;
   @override
   @JsonKey(ignore: true)
-  _$$_ITaskReadCopyWith<_$_ITaskRead> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_ITaskReadCopyWith<_$_ITaskRead> get copyWith => throw _privateConstructorUsedError;
 }

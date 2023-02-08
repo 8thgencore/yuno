@@ -28,27 +28,19 @@ mixin _$IMediaRead {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $IMediaReadCopyWith<IMediaRead> get copyWith =>
-      throw _privateConstructorUsedError;
+  $IMediaReadCopyWith<IMediaRead> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $IMediaReadCopyWith<$Res> {
-  factory $IMediaReadCopyWith(
-          IMediaRead value, $Res Function(IMediaRead) then) =
+  factory $IMediaReadCopyWith(IMediaRead value, $Res Function(IMediaRead) then) =
       _$IMediaReadCopyWithImpl<$Res, IMediaRead>;
   @useResult
-  $Res call(
-      {Object id,
-      String? title,
-      String? description,
-      String? path,
-      String? link});
+  $Res call({Object id, String? title, String? description, String? path, String? link});
 }
 
 /// @nodoc
-class _$IMediaReadCopyWithImpl<$Res, $Val extends IMediaRead>
-    implements $IMediaReadCopyWith<$Res> {
+class _$IMediaReadCopyWithImpl<$Res, $Val extends IMediaRead> implements $IMediaReadCopyWith<$Res> {
   _$IMediaReadCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -88,27 +80,18 @@ class _$IMediaReadCopyWithImpl<$Res, $Val extends IMediaRead>
 }
 
 /// @nodoc
-abstract class _$$_IMediaReadCopyWith<$Res>
-    implements $IMediaReadCopyWith<$Res> {
-  factory _$$_IMediaReadCopyWith(
-          _$_IMediaRead value, $Res Function(_$_IMediaRead) then) =
+abstract class _$$_IMediaReadCopyWith<$Res> implements $IMediaReadCopyWith<$Res> {
+  factory _$$_IMediaReadCopyWith(_$_IMediaRead value, $Res Function(_$_IMediaRead) then) =
       __$$_IMediaReadCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {Object id,
-      String? title,
-      String? description,
-      String? path,
-      String? link});
+  $Res call({Object id, String? title, String? description, String? path, String? link});
 }
 
 /// @nodoc
-class __$$_IMediaReadCopyWithImpl<$Res>
-    extends _$IMediaReadCopyWithImpl<$Res, _$_IMediaRead>
+class __$$_IMediaReadCopyWithImpl<$Res> extends _$IMediaReadCopyWithImpl<$Res, _$_IMediaRead>
     implements _$$_IMediaReadCopyWith<$Res> {
-  __$$_IMediaReadCopyWithImpl(
-      _$_IMediaRead _value, $Res Function(_$_IMediaRead) _then)
+  __$$_IMediaReadCopyWithImpl(_$_IMediaRead _value, $Res Function(_$_IMediaRead) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -145,11 +128,9 @@ class __$$_IMediaReadCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_IMediaRead implements _IMediaRead {
-  const _$_IMediaRead(
-      {required this.id, this.title, this.description, this.path, this.link});
+  const _$_IMediaRead({required this.id, this.title, this.description, this.path, this.link});
 
-  factory _$_IMediaRead.fromJson(Map<String, dynamic> json) =>
-      _$$_IMediaReadFromJson(json);
+  factory _$_IMediaRead.fromJson(Map<String, dynamic> json) => _$$_IMediaReadFromJson(json);
 
   @override
   final Object id;
@@ -174,16 +155,15 @@ class _$_IMediaRead implements _IMediaRead {
             other is _$_IMediaRead &&
             const DeepCollectionEquality().equals(other.id, id) &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
+            (identical(other.description, description) || other.description == description) &&
             (identical(other.path, path) || other.path == path) &&
             (identical(other.link, link) || other.link == link));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(id), title, description, path, link);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(id), title, description, path, link);
 
   @JsonKey(ignore: true)
   @override
@@ -207,8 +187,7 @@ abstract class _IMediaRead implements IMediaRead {
       final String? path,
       final String? link}) = _$_IMediaRead;
 
-  factory _IMediaRead.fromJson(Map<String, dynamic> json) =
-      _$_IMediaRead.fromJson;
+  factory _IMediaRead.fromJson(Map<String, dynamic> json) = _$_IMediaRead.fromJson;
 
   @override
   Object get id;
@@ -222,6 +201,5 @@ abstract class _IMediaRead implements IMediaRead {
   String? get link;
   @override
   @JsonKey(ignore: true)
-  _$$_IMediaReadCopyWith<_$_IMediaRead> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_IMediaReadCopyWith<_$_IMediaRead> get copyWith => throw _privateConstructorUsedError;
 }

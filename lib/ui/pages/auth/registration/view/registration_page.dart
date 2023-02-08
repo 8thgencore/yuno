@@ -44,7 +44,7 @@ class _RegistrationPageWidget extends StatelessWidget {
           context.loaderOverlay.hide();
           context.goNamed(RouteName.login);
 
-        // Navigator.pushNamedAndRemoveUntil(context, RoutesPage.login, (route) => false);
+          // Navigator.pushNamedAndRemoveUntil(context, RoutesPage.login, (route) => false);
         } else if (state is RegistrationInProgress) {
           context.loaderOverlay.show();
         } else if (state is RegistrationFieldsInfo) {
@@ -279,7 +279,7 @@ class _BottomWidgetState extends State<_BottomWidget> {
                   'Login',
                   style: TextStyle(color: AppColors.primary100),
                 ),
-                onPressed:() => context.goNamed(RouteName.login),
+                onPressed: () => context.goNamed(RouteName.login),
               ),
             ],
           ),

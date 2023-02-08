@@ -25,14 +25,12 @@ mixin _$IProjectUpdate {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $IProjectUpdateCopyWith<IProjectUpdate> get copyWith =>
-      throw _privateConstructorUsedError;
+  $IProjectUpdateCopyWith<IProjectUpdate> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $IProjectUpdateCopyWith<$Res> {
-  factory $IProjectUpdateCopyWith(
-          IProjectUpdate value, $Res Function(IProjectUpdate) then) =
+  factory $IProjectUpdateCopyWith(IProjectUpdate value, $Res Function(IProjectUpdate) then) =
       _$IProjectUpdateCopyWithImpl<$Res, IProjectUpdate>;
   @useResult
   $Res call({String name, String description});
@@ -68,8 +66,7 @@ class _$IProjectUpdateCopyWithImpl<$Res, $Val extends IProjectUpdate>
 }
 
 /// @nodoc
-abstract class _$$_IProjectUpdateCopyWith<$Res>
-    implements $IProjectUpdateCopyWith<$Res> {
+abstract class _$$_IProjectUpdateCopyWith<$Res> implements $IProjectUpdateCopyWith<$Res> {
   factory _$$_IProjectUpdateCopyWith(
           _$_IProjectUpdate value, $Res Function(_$_IProjectUpdate) then) =
       __$$_IProjectUpdateCopyWithImpl<$Res>;
@@ -82,8 +79,7 @@ abstract class _$$_IProjectUpdateCopyWith<$Res>
 class __$$_IProjectUpdateCopyWithImpl<$Res>
     extends _$IProjectUpdateCopyWithImpl<$Res, _$_IProjectUpdate>
     implements _$$_IProjectUpdateCopyWith<$Res> {
-  __$$_IProjectUpdateCopyWithImpl(
-      _$_IProjectUpdate _value, $Res Function(_$_IProjectUpdate) _then)
+  __$$_IProjectUpdateCopyWithImpl(_$_IProjectUpdate _value, $Res Function(_$_IProjectUpdate) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -110,8 +106,7 @@ class __$$_IProjectUpdateCopyWithImpl<$Res>
 class _$_IProjectUpdate implements _IProjectUpdate {
   const _$_IProjectUpdate({required this.name, required this.description});
 
-  factory _$_IProjectUpdate.fromJson(Map<String, dynamic> json) =>
-      _$$_IProjectUpdateFromJson(json);
+  factory _$_IProjectUpdate.fromJson(Map<String, dynamic> json) => _$$_IProjectUpdateFromJson(json);
 
   @override
   final String name;

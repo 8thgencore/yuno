@@ -233,10 +233,8 @@ class _$_PaginatedDataIRoleRead implements _PaginatedDataIRoleRead {
             (identical(other.page, page) || other.page == page) &&
             (identical(other.size, size) || other.size == size) &&
             (identical(other.pages, pages) || other.pages == pages) &&
-            (identical(other.nextPage, nextPage) ||
-                other.nextPage == nextPage) &&
-            (identical(other.previousPage, previousPage) ||
-                other.previousPage == previousPage));
+            (identical(other.nextPage, nextPage) || other.nextPage == nextPage) &&
+            (identical(other.previousPage, previousPage) || other.previousPage == previousPage));
   }
 
   @JsonKey(ignore: true)

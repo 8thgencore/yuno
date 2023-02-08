@@ -69,10 +69,9 @@ class _$IAuthChangePasswordCopyWithImpl<$Res, $Val extends IAuthChangePassword>
 }
 
 /// @nodoc
-abstract class _$$_IAuthChangePasswordCopyWith<$Res>
-    implements $IAuthChangePasswordCopyWith<$Res> {
-  factory _$$_IAuthChangePasswordCopyWith(_$_IAuthChangePassword value,
-          $Res Function(_$_IAuthChangePassword) then) =
+abstract class _$$_IAuthChangePasswordCopyWith<$Res> implements $IAuthChangePasswordCopyWith<$Res> {
+  factory _$$_IAuthChangePasswordCopyWith(
+          _$_IAuthChangePassword value, $Res Function(_$_IAuthChangePassword) then) =
       __$$_IAuthChangePasswordCopyWithImpl<$Res>;
   @override
   @useResult
@@ -83,8 +82,8 @@ abstract class _$$_IAuthChangePasswordCopyWith<$Res>
 class __$$_IAuthChangePasswordCopyWithImpl<$Res>
     extends _$IAuthChangePasswordCopyWithImpl<$Res, _$_IAuthChangePassword>
     implements _$$_IAuthChangePasswordCopyWith<$Res> {
-  __$$_IAuthChangePasswordCopyWithImpl(_$_IAuthChangePassword _value,
-      $Res Function(_$_IAuthChangePassword) _then)
+  __$$_IAuthChangePasswordCopyWithImpl(
+      _$_IAuthChangePassword _value, $Res Function(_$_IAuthChangePassword) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -132,8 +131,7 @@ class _$_IAuthChangePassword implements _IAuthChangePassword {
         (other.runtimeType == runtimeType &&
             other is _$_IAuthChangePassword &&
             (identical(other.current, current) || other.current == current) &&
-            (identical(other.newvalue, newvalue) ||
-                other.newvalue == newvalue));
+            (identical(other.newvalue, newvalue) || other.newvalue == newvalue));
   }
 
   @JsonKey(ignore: true)
@@ -144,8 +142,7 @@ class _$_IAuthChangePassword implements _IAuthChangePassword {
   @override
   @pragma('vm:prefer-inline')
   _$$_IAuthChangePasswordCopyWith<_$_IAuthChangePassword> get copyWith =>
-      __$$_IAuthChangePasswordCopyWithImpl<_$_IAuthChangePassword>(
-          this, _$identity);
+      __$$_IAuthChangePasswordCopyWithImpl<_$_IAuthChangePassword>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -157,9 +154,8 @@ class _$_IAuthChangePassword implements _IAuthChangePassword {
 
 abstract class _IAuthChangePassword implements IAuthChangePassword {
   const factory _IAuthChangePassword(
-          {required final String current,
-          @JsonKey(name: 'new') required final String newvalue}) =
-      _$_IAuthChangePassword;
+      {required final String current,
+      @JsonKey(name: 'new') required final String newvalue}) = _$_IAuthChangePassword;
 
   factory _IAuthChangePassword.fromJson(Map<String, dynamic> json) =
       _$_IAuthChangePassword.fromJson;

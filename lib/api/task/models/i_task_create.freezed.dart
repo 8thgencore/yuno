@@ -34,8 +34,7 @@ mixin _$ITaskCreate {
 
 /// @nodoc
 abstract class $ITaskCreateCopyWith<$Res> {
-  factory $ITaskCreateCopyWith(
-          ITaskCreate value, $Res Function(ITaskCreate) then) =
+  factory $ITaskCreateCopyWith(ITaskCreate value, $Res Function(ITaskCreate) then) =
       _$ITaskCreateCopyWithImpl<$Res, ITaskCreate>;
   @useResult
   $Res call(
@@ -85,10 +84,8 @@ class _$ITaskCreateCopyWithImpl<$Res, $Val extends ITaskCreate>
 }
 
 /// @nodoc
-abstract class _$$_ITaskCreateCopyWith<$Res>
-    implements $ITaskCreateCopyWith<$Res> {
-  factory _$$_ITaskCreateCopyWith(
-          _$_ITaskCreate value, $Res Function(_$_ITaskCreate) then) =
+abstract class _$$_ITaskCreateCopyWith<$Res> implements $ITaskCreateCopyWith<$Res> {
+  factory _$$_ITaskCreateCopyWith(_$_ITaskCreate value, $Res Function(_$_ITaskCreate) then) =
       __$$_ITaskCreateCopyWithImpl<$Res>;
   @override
   @useResult
@@ -100,11 +97,9 @@ abstract class _$$_ITaskCreateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ITaskCreateCopyWithImpl<$Res>
-    extends _$ITaskCreateCopyWithImpl<$Res, _$_ITaskCreate>
+class __$$_ITaskCreateCopyWithImpl<$Res> extends _$ITaskCreateCopyWithImpl<$Res, _$_ITaskCreate>
     implements _$$_ITaskCreateCopyWith<$Res> {
-  __$$_ITaskCreateCopyWithImpl(
-      _$_ITaskCreate _value, $Res Function(_$_ITaskCreate) _then)
+  __$$_ITaskCreateCopyWithImpl(_$_ITaskCreate _value, $Res Function(_$_ITaskCreate) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -171,10 +166,8 @@ class _$_ITaskCreate implements _ITaskCreate {
             other is _$_ITaskCreate &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.done, done) || other.done == done) &&
-            (identical(other.deadline, deadline) ||
-                other.deadline == deadline) &&
-            (identical(other.projectId, projectId) ||
-                other.projectId == projectId));
+            (identical(other.deadline, deadline) || other.deadline == deadline) &&
+            (identical(other.projectId, projectId) || other.projectId == projectId));
   }
 
   @JsonKey(ignore: true)
@@ -202,8 +195,7 @@ abstract class _ITaskCreate implements ITaskCreate {
       @JsonKey(includeIfNull: false) final DateTime? deadline,
       @JsonKey(name: 'project_id', includeIfNull: false) final String? projectId}) = _$_ITaskCreate;
 
-  factory _ITaskCreate.fromJson(Map<String, dynamic> json) =
-      _$_ITaskCreate.fromJson;
+  factory _ITaskCreate.fromJson(Map<String, dynamic> json) = _$_ITaskCreate.fromJson;
 
   @override
   String get name;
@@ -217,6 +209,5 @@ abstract class _ITaskCreate implements ITaskCreate {
   String? get projectId;
   @override
   @JsonKey(ignore: true)
-  _$$_ITaskCreateCopyWith<_$_ITaskCreate> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_ITaskCreateCopyWith<_$_ITaskCreate> get copyWith => throw _privateConstructorUsedError;
 }

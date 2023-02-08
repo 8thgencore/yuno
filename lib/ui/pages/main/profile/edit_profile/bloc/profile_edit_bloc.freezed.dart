@@ -82,8 +82,7 @@ mixin _$ProfileEditEvent {
 
 /// @nodoc
 abstract class $ProfileEditEventCopyWith<$Res> {
-  factory $ProfileEditEventCopyWith(
-          ProfileEditEvent value, $Res Function(ProfileEditEvent) then) =
+  factory $ProfileEditEventCopyWith(ProfileEditEvent value, $Res Function(ProfileEditEvent) then) =
       _$ProfileEditEventCopyWithImpl<$Res, ProfileEditEvent>;
 }
 
@@ -100,8 +99,7 @@ class _$ProfileEditEventCopyWithImpl<$Res, $Val extends ProfileEditEvent>
 
 /// @nodoc
 abstract class _$$_StartedEventCopyWith<$Res> {
-  factory _$$_StartedEventCopyWith(
-          _$_StartedEvent value, $Res Function(_$_StartedEvent) then) =
+  factory _$$_StartedEventCopyWith(_$_StartedEvent value, $Res Function(_$_StartedEvent) then) =
       __$$_StartedEventCopyWithImpl<$Res>;
 }
 
@@ -109,8 +107,7 @@ abstract class _$$_StartedEventCopyWith<$Res> {
 class __$$_StartedEventCopyWithImpl<$Res>
     extends _$ProfileEditEventCopyWithImpl<$Res, _$_StartedEvent>
     implements _$$_StartedEventCopyWith<$Res> {
-  __$$_StartedEventCopyWithImpl(
-      _$_StartedEvent _value, $Res Function(_$_StartedEvent) _then)
+  __$$_StartedEventCopyWithImpl(_$_StartedEvent _value, $Res Function(_$_StartedEvent) _then)
       : super(_value, _then);
 }
 
@@ -126,8 +123,7 @@ class _$_StartedEvent implements _StartedEvent {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_StartedEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_StartedEvent);
   }
 
   @override
@@ -226,8 +222,8 @@ abstract class _StartedEvent implements ProfileEditEvent {
 
 /// @nodoc
 abstract class _$$_FirstNameChangedEventCopyWith<$Res> {
-  factory _$$_FirstNameChangedEventCopyWith(_$_FirstNameChangedEvent value,
-          $Res Function(_$_FirstNameChangedEvent) then) =
+  factory _$$_FirstNameChangedEventCopyWith(
+          _$_FirstNameChangedEvent value, $Res Function(_$_FirstNameChangedEvent) then) =
       __$$_FirstNameChangedEventCopyWithImpl<$Res>;
   @useResult
   $Res call({String text});
@@ -237,8 +233,8 @@ abstract class _$$_FirstNameChangedEventCopyWith<$Res> {
 class __$$_FirstNameChangedEventCopyWithImpl<$Res>
     extends _$ProfileEditEventCopyWithImpl<$Res, _$_FirstNameChangedEvent>
     implements _$$_FirstNameChangedEventCopyWith<$Res> {
-  __$$_FirstNameChangedEventCopyWithImpl(_$_FirstNameChangedEvent _value,
-      $Res Function(_$_FirstNameChangedEvent) _then)
+  __$$_FirstNameChangedEventCopyWithImpl(
+      _$_FirstNameChangedEvent _value, $Res Function(_$_FirstNameChangedEvent) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -283,8 +279,7 @@ class _$_FirstNameChangedEvent implements _FirstNameChangedEvent {
   @override
   @pragma('vm:prefer-inline')
   _$$_FirstNameChangedEventCopyWith<_$_FirstNameChangedEvent> get copyWith =>
-      __$$_FirstNameChangedEventCopyWithImpl<_$_FirstNameChangedEvent>(
-          this, _$identity);
+      __$$_FirstNameChangedEventCopyWithImpl<_$_FirstNameChangedEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -374,8 +369,7 @@ class _$_FirstNameChangedEvent implements _FirstNameChangedEvent {
 }
 
 abstract class _FirstNameChangedEvent implements ProfileEditEvent {
-  const factory _FirstNameChangedEvent(final String text) =
-      _$_FirstNameChangedEvent;
+  const factory _FirstNameChangedEvent(final String text) = _$_FirstNameChangedEvent;
 
   String get text;
   @JsonKey(ignore: true)
@@ -385,8 +379,8 @@ abstract class _FirstNameChangedEvent implements ProfileEditEvent {
 
 /// @nodoc
 abstract class _$$_LastNameChangedEventCopyWith<$Res> {
-  factory _$$_LastNameChangedEventCopyWith(_$_LastNameChangedEvent value,
-          $Res Function(_$_LastNameChangedEvent) then) =
+  factory _$$_LastNameChangedEventCopyWith(
+          _$_LastNameChangedEvent value, $Res Function(_$_LastNameChangedEvent) then) =
       __$$_LastNameChangedEventCopyWithImpl<$Res>;
   @useResult
   $Res call({String text});
@@ -396,8 +390,8 @@ abstract class _$$_LastNameChangedEventCopyWith<$Res> {
 class __$$_LastNameChangedEventCopyWithImpl<$Res>
     extends _$ProfileEditEventCopyWithImpl<$Res, _$_LastNameChangedEvent>
     implements _$$_LastNameChangedEventCopyWith<$Res> {
-  __$$_LastNameChangedEventCopyWithImpl(_$_LastNameChangedEvent _value,
-      $Res Function(_$_LastNameChangedEvent) _then)
+  __$$_LastNameChangedEventCopyWithImpl(
+      _$_LastNameChangedEvent _value, $Res Function(_$_LastNameChangedEvent) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -442,8 +436,7 @@ class _$_LastNameChangedEvent implements _LastNameChangedEvent {
   @override
   @pragma('vm:prefer-inline')
   _$$_LastNameChangedEventCopyWith<_$_LastNameChangedEvent> get copyWith =>
-      __$$_LastNameChangedEventCopyWithImpl<_$_LastNameChangedEvent>(
-          this, _$identity);
+      __$$_LastNameChangedEventCopyWithImpl<_$_LastNameChangedEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -533,8 +526,7 @@ class _$_LastNameChangedEvent implements _LastNameChangedEvent {
 }
 
 abstract class _LastNameChangedEvent implements ProfileEditEvent {
-  const factory _LastNameChangedEvent(final String text) =
-      _$_LastNameChangedEvent;
+  const factory _LastNameChangedEvent(final String text) = _$_LastNameChangedEvent;
 
   String get text;
   @JsonKey(ignore: true)
@@ -544,8 +536,8 @@ abstract class _LastNameChangedEvent implements ProfileEditEvent {
 
 /// @nodoc
 abstract class _$$_UsernameChangedEventCopyWith<$Res> {
-  factory _$$_UsernameChangedEventCopyWith(_$_UsernameChangedEvent value,
-          $Res Function(_$_UsernameChangedEvent) then) =
+  factory _$$_UsernameChangedEventCopyWith(
+          _$_UsernameChangedEvent value, $Res Function(_$_UsernameChangedEvent) then) =
       __$$_UsernameChangedEventCopyWithImpl<$Res>;
   @useResult
   $Res call({String text});
@@ -555,8 +547,8 @@ abstract class _$$_UsernameChangedEventCopyWith<$Res> {
 class __$$_UsernameChangedEventCopyWithImpl<$Res>
     extends _$ProfileEditEventCopyWithImpl<$Res, _$_UsernameChangedEvent>
     implements _$$_UsernameChangedEventCopyWith<$Res> {
-  __$$_UsernameChangedEventCopyWithImpl(_$_UsernameChangedEvent _value,
-      $Res Function(_$_UsernameChangedEvent) _then)
+  __$$_UsernameChangedEventCopyWithImpl(
+      _$_UsernameChangedEvent _value, $Res Function(_$_UsernameChangedEvent) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -601,8 +593,7 @@ class _$_UsernameChangedEvent implements _UsernameChangedEvent {
   @override
   @pragma('vm:prefer-inline')
   _$$_UsernameChangedEventCopyWith<_$_UsernameChangedEvent> get copyWith =>
-      __$$_UsernameChangedEventCopyWithImpl<_$_UsernameChangedEvent>(
-          this, _$identity);
+      __$$_UsernameChangedEventCopyWithImpl<_$_UsernameChangedEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -692,8 +683,7 @@ class _$_UsernameChangedEvent implements _UsernameChangedEvent {
 }
 
 abstract class _UsernameChangedEvent implements ProfileEditEvent {
-  const factory _UsernameChangedEvent(final String text) =
-      _$_UsernameChangedEvent;
+  const factory _UsernameChangedEvent(final String text) = _$_UsernameChangedEvent;
 
   String get text;
   @JsonKey(ignore: true)
@@ -703,8 +693,8 @@ abstract class _UsernameChangedEvent implements ProfileEditEvent {
 
 /// @nodoc
 abstract class _$$_EmailChangedEventCopyWith<$Res> {
-  factory _$$_EmailChangedEventCopyWith(_$_EmailChangedEvent value,
-          $Res Function(_$_EmailChangedEvent) then) =
+  factory _$$_EmailChangedEventCopyWith(
+          _$_EmailChangedEvent value, $Res Function(_$_EmailChangedEvent) then) =
       __$$_EmailChangedEventCopyWithImpl<$Res>;
   @useResult
   $Res call({String text});
@@ -760,8 +750,7 @@ class _$_EmailChangedEvent implements _EmailChangedEvent {
   @override
   @pragma('vm:prefer-inline')
   _$$_EmailChangedEventCopyWith<_$_EmailChangedEvent> get copyWith =>
-      __$$_EmailChangedEventCopyWithImpl<_$_EmailChangedEvent>(
-          this, _$identity);
+      __$$_EmailChangedEventCopyWithImpl<_$_EmailChangedEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -861,17 +850,14 @@ abstract class _EmailChangedEvent implements ProfileEditEvent {
 
 /// @nodoc
 abstract class _$$_SavedEventCopyWith<$Res> {
-  factory _$$_SavedEventCopyWith(
-          _$_SavedEvent value, $Res Function(_$_SavedEvent) then) =
+  factory _$$_SavedEventCopyWith(_$_SavedEvent value, $Res Function(_$_SavedEvent) then) =
       __$$_SavedEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SavedEventCopyWithImpl<$Res>
-    extends _$ProfileEditEventCopyWithImpl<$Res, _$_SavedEvent>
+class __$$_SavedEventCopyWithImpl<$Res> extends _$ProfileEditEventCopyWithImpl<$Res, _$_SavedEvent>
     implements _$$_SavedEventCopyWith<$Res> {
-  __$$_SavedEventCopyWithImpl(
-      _$_SavedEvent _value, $Res Function(_$_SavedEvent) _then)
+  __$$_SavedEventCopyWithImpl(_$_SavedEvent _value, $Res Function(_$_SavedEvent) _then)
       : super(_value, _then);
 }
 
@@ -887,8 +873,7 @@ class _$_SavedEvent implements _SavedEvent {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SavedEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_SavedEvent);
   }
 
   @override
@@ -998,14 +983,12 @@ mixin _$ProfileEditState {
   String? get serverError => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ProfileEditStateCopyWith<ProfileEditState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ProfileEditStateCopyWith<ProfileEditState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ProfileEditStateCopyWith<$Res> {
-  factory $ProfileEditStateCopyWith(
-          ProfileEditState value, $Res Function(ProfileEditState) then) =
+  factory $ProfileEditStateCopyWith(ProfileEditState value, $Res Function(ProfileEditState) then) =
       _$ProfileEditStateCopyWithImpl<$Res, ProfileEditState>;
   @useResult
   $Res call(
@@ -1085,8 +1068,7 @@ class _$ProfileEditStateCopyWithImpl<$Res, $Val extends ProfileEditState>
 }
 
 /// @nodoc
-abstract class _$$_ProfileEditStateCopyWith<$Res>
-    implements $ProfileEditStateCopyWith<$Res> {
+abstract class _$$_ProfileEditStateCopyWith<$Res> implements $ProfileEditStateCopyWith<$Res> {
   factory _$$_ProfileEditStateCopyWith(
           _$_ProfileEditState value, $Res Function(_$_ProfileEditState) then) =
       __$$_ProfileEditStateCopyWithImpl<$Res>;

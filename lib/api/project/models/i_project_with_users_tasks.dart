@@ -16,6 +16,7 @@ class IProjectWithUsersTasks with _$IProjectWithUsersTasks {
     List<ITaskRead>? tasks,
     List<IUserRead>? users,
   }) = _IProjectWithUsersTasks;
-  
-  factory IProjectWithUsersTasks.fromJson(Map<String, dynamic> json) => _$IProjectWithUsersTasksFromJson(json);
+
+  factory IProjectWithUsersTasks.fromJson(Map<String, dynamic> json) =>
+      _$IProjectWithUsersTasksFromJson(json);
 }

@@ -10,6 +10,6 @@ class IAuthRegister with _$IAuthRegister {
     required String username,
     required String password,
   }) = _IAuthRegister;
-  
+
   factory IAuthRegister.fromJson(Map<String, dynamic> json) => _$IAuthRegisterFromJson(json);
 }

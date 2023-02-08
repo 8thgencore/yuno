@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';

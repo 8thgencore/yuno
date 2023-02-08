@@ -25,14 +25,12 @@ mixin _$RefreshToken {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $RefreshTokenCopyWith<RefreshToken> get copyWith =>
-      throw _privateConstructorUsedError;
+  $RefreshTokenCopyWith<RefreshToken> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $RefreshTokenCopyWith<$Res> {
-  factory $RefreshTokenCopyWith(
-          RefreshToken value, $Res Function(RefreshToken) then) =
+  factory $RefreshTokenCopyWith(RefreshToken value, $Res Function(RefreshToken) then) =
       _$RefreshTokenCopyWithImpl<$Res, RefreshToken>;
   @useResult
   $Res call({@JsonKey(name: 'refresh_token') String refreshToken});
@@ -63,10 +61,8 @@ class _$RefreshTokenCopyWithImpl<$Res, $Val extends RefreshToken>
 }
 
 /// @nodoc
-abstract class _$$_RefreshTokenCopyWith<$Res>
-    implements $RefreshTokenCopyWith<$Res> {
-  factory _$$_RefreshTokenCopyWith(
-          _$_RefreshToken value, $Res Function(_$_RefreshToken) then) =
+abstract class _$$_RefreshTokenCopyWith<$Res> implements $RefreshTokenCopyWith<$Res> {
+  factory _$$_RefreshTokenCopyWith(_$_RefreshToken value, $Res Function(_$_RefreshToken) then) =
       __$$_RefreshTokenCopyWithImpl<$Res>;
   @override
   @useResult
@@ -74,11 +70,9 @@ abstract class _$$_RefreshTokenCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RefreshTokenCopyWithImpl<$Res>
-    extends _$RefreshTokenCopyWithImpl<$Res, _$_RefreshToken>
+class __$$_RefreshTokenCopyWithImpl<$Res> extends _$RefreshTokenCopyWithImpl<$Res, _$_RefreshToken>
     implements _$$_RefreshTokenCopyWith<$Res> {
-  __$$_RefreshTokenCopyWithImpl(
-      _$_RefreshToken _value, $Res Function(_$_RefreshToken) _then)
+  __$$_RefreshTokenCopyWithImpl(_$_RefreshToken _value, $Res Function(_$_RefreshToken) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -98,11 +92,9 @@ class __$$_RefreshTokenCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_RefreshToken implements _RefreshToken {
-  const _$_RefreshToken(
-      {@JsonKey(name: 'refresh_token') required this.refreshToken});
+  const _$_RefreshToken({@JsonKey(name: 'refresh_token') required this.refreshToken});
 
-  factory _$_RefreshToken.fromJson(Map<String, dynamic> json) =>
-      _$$_RefreshTokenFromJson(json);
+  factory _$_RefreshToken.fromJson(Map<String, dynamic> json) => _$$_RefreshTokenFromJson(json);
 
   @override
   @JsonKey(name: 'refresh_token')
@@ -118,8 +110,7 @@ class _$_RefreshToken implements _RefreshToken {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_RefreshToken &&
-            (identical(other.refreshToken, refreshToken) ||
-                other.refreshToken == refreshToken));
+            (identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken));
   }
 
   @JsonKey(ignore: true)
@@ -142,17 +133,14 @@ class _$_RefreshToken implements _RefreshToken {
 
 abstract class _RefreshToken implements RefreshToken {
   const factory _RefreshToken(
-      {@JsonKey(name: 'refresh_token')
-          required final String refreshToken}) = _$_RefreshToken;
+      {@JsonKey(name: 'refresh_token') required final String refreshToken}) = _$_RefreshToken;
 
-  factory _RefreshToken.fromJson(Map<String, dynamic> json) =
-      _$_RefreshToken.fromJson;
+  factory _RefreshToken.fromJson(Map<String, dynamic> json) = _$_RefreshToken.fromJson;
 
   @override
   @JsonKey(name: 'refresh_token')
   String get refreshToken;
   @override
   @JsonKey(ignore: true)
-  _$$_RefreshTokenCopyWith<_$_RefreshToken> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_RefreshTokenCopyWith<_$_RefreshToken> get copyWith => throw _privateConstructorUsedError;
 }

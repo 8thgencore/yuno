@@ -9,6 +9,6 @@ class IProjectUpdate with _$IProjectUpdate {
     required String name,
     required String description,
   }) = _IProjectUpdate;
-  
+
   factory IProjectUpdate.fromJson(Map<String, dynamic> json) => _$IProjectUpdateFromJson(json);
 }

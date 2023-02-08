@@ -35,8 +35,7 @@ mixin _$Token {
 
 /// @nodoc
 abstract class $TokenCopyWith<$Res> {
-  factory $TokenCopyWith(Token value, $Res Function(Token) then) =
-      _$TokenCopyWithImpl<$Res, Token>;
+  factory $TokenCopyWith(Token value, $Res Function(Token) then) = _$TokenCopyWithImpl<$Res, Token>;
   @useResult
   $Res call(
       {@JsonKey(name: 'access_token') String accessToken,
@@ -48,8 +47,7 @@ abstract class $TokenCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TokenCopyWithImpl<$Res, $Val extends Token>
-    implements $TokenCopyWith<$Res> {
+class _$TokenCopyWithImpl<$Res, $Val extends Token> implements $TokenCopyWith<$Res> {
   _$TokenCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -113,8 +111,7 @@ abstract class _$$_TokenCopyWith<$Res> implements $TokenCopyWith<$Res> {
 /// @nodoc
 class __$$_TokenCopyWithImpl<$Res> extends _$TokenCopyWithImpl<$Res, _$_Token>
     implements _$$_TokenCopyWith<$Res> {
-  __$$_TokenCopyWithImpl(_$_Token _value, $Res Function(_$_Token) _then)
-      : super(_value, _then);
+  __$$_TokenCopyWithImpl(_$_Token _value, $Res Function(_$_Token) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -154,8 +151,7 @@ class _$_Token implements _Token {
       @JsonKey(name: 'refresh_token') required this.refreshToken,
       required this.user});
 
-  factory _$_Token.fromJson(Map<String, dynamic> json) =>
-      _$$_TokenFromJson(json);
+  factory _$_Token.fromJson(Map<String, dynamic> json) => _$$_TokenFromJson(json);
 
   @override
   @JsonKey(name: 'access_token')
@@ -179,25 +175,20 @@ class _$_Token implements _Token {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Token &&
-            (identical(other.accessToken, accessToken) ||
-                other.accessToken == accessToken) &&
-            (identical(other.tokenType, tokenType) ||
-                other.tokenType == tokenType) &&
-            (identical(other.refreshToken, refreshToken) ||
-                other.refreshToken == refreshToken) &&
+            (identical(other.accessToken, accessToken) || other.accessToken == accessToken) &&
+            (identical(other.tokenType, tokenType) || other.tokenType == tokenType) &&
+            (identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken) &&
             (identical(other.user, user) || other.user == user));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, accessToken, tokenType, refreshToken, user);
+  int get hashCode => Object.hash(runtimeType, accessToken, tokenType, refreshToken, user);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TokenCopyWith<_$_Token> get copyWith =>
-      __$$_TokenCopyWithImpl<_$_Token>(this, _$identity);
+  _$$_TokenCopyWith<_$_Token> get copyWith => __$$_TokenCopyWithImpl<_$_Token>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -229,6 +220,5 @@ abstract class _Token implements Token {
   IUserRead get user;
   @override
   @JsonKey(ignore: true)
-  _$$_TokenCopyWith<_$_Token> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_TokenCopyWith<_$_Token> get copyWith => throw _privateConstructorUsedError;
 }

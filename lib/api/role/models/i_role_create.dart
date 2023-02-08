@@ -9,6 +9,6 @@ class IRoleCreate with _$IRoleCreate {
     required String name,
     required String description,
   }) = _IRoleCreate;
-  
+
   factory IRoleCreate.fromJson(Map<String, dynamic> json) => _$IRoleCreateFromJson(json);
 }

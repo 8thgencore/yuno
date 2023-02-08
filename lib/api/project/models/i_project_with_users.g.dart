@@ -18,8 +18,7 @@ _$_IProjectWithUsers _$$_IProjectWithUsersFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_IProjectWithUsersToJson(
-        _$_IProjectWithUsers instance) =>
+Map<String, dynamic> _$$_IProjectWithUsersToJson(_$_IProjectWithUsers instance) =>
     <String, dynamic>{
       'name': instance.name,
       'description': instance.description,

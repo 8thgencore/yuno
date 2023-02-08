@@ -98,10 +98,9 @@ class _$IProjectWithUsersCopyWithImpl<$Res, $Val extends IProjectWithUsers>
 }
 
 /// @nodoc
-abstract class _$$_IProjectWithUsersCopyWith<$Res>
-    implements $IProjectWithUsersCopyWith<$Res> {
-  factory _$$_IProjectWithUsersCopyWith(_$_IProjectWithUsers value,
-          $Res Function(_$_IProjectWithUsers) then) =
+abstract class _$$_IProjectWithUsersCopyWith<$Res> implements $IProjectWithUsersCopyWith<$Res> {
+  factory _$$_IProjectWithUsersCopyWith(
+          _$_IProjectWithUsers value, $Res Function(_$_IProjectWithUsers) then) =
       __$$_IProjectWithUsersCopyWithImpl<$Res>;
   @override
   @useResult
@@ -224,8 +223,7 @@ class _$_IProjectWithUsers implements _IProjectWithUsers {
   @override
   @pragma('vm:prefer-inline')
   _$$_IProjectWithUsersCopyWith<_$_IProjectWithUsers> get copyWith =>
-      __$$_IProjectWithUsersCopyWithImpl<_$_IProjectWithUsers>(
-          this, _$identity);
+      __$$_IProjectWithUsersCopyWithImpl<_$_IProjectWithUsers>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {

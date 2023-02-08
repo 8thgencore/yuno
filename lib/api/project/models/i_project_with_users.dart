@@ -14,6 +14,7 @@ class IProjectWithUsers with _$IProjectWithUsers {
     @JsonKey(name: 'created_by_id') String? createdBy,
     List<IUserRead>? users,
   }) = _IProjectWithUsers;
-  
-  factory IProjectWithUsers.fromJson(Map<String, dynamic> json) => _$IProjectWithUsersFromJson(json);
+
+  factory IProjectWithUsers.fromJson(Map<String, dynamic> json) =>
+      _$IProjectWithUsersFromJson(json);
 }

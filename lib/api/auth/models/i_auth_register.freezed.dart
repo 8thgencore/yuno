@@ -26,14 +26,12 @@ mixin _$IAuthRegister {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $IAuthRegisterCopyWith<IAuthRegister> get copyWith =>
-      throw _privateConstructorUsedError;
+  $IAuthRegisterCopyWith<IAuthRegister> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $IAuthRegisterCopyWith<$Res> {
-  factory $IAuthRegisterCopyWith(
-          IAuthRegister value, $Res Function(IAuthRegister) then) =
+  factory $IAuthRegisterCopyWith(IAuthRegister value, $Res Function(IAuthRegister) then) =
       _$IAuthRegisterCopyWithImpl<$Res, IAuthRegister>;
   @useResult
   $Res call({String email, String username, String password});
@@ -74,10 +72,8 @@ class _$IAuthRegisterCopyWithImpl<$Res, $Val extends IAuthRegister>
 }
 
 /// @nodoc
-abstract class _$$_IAuthRegisterCopyWith<$Res>
-    implements $IAuthRegisterCopyWith<$Res> {
-  factory _$$_IAuthRegisterCopyWith(
-          _$_IAuthRegister value, $Res Function(_$_IAuthRegister) then) =
+abstract class _$$_IAuthRegisterCopyWith<$Res> implements $IAuthRegisterCopyWith<$Res> {
+  factory _$$_IAuthRegisterCopyWith(_$_IAuthRegister value, $Res Function(_$_IAuthRegister) then) =
       __$$_IAuthRegisterCopyWithImpl<$Res>;
   @override
   @useResult
@@ -88,8 +84,7 @@ abstract class _$$_IAuthRegisterCopyWith<$Res>
 class __$$_IAuthRegisterCopyWithImpl<$Res>
     extends _$IAuthRegisterCopyWithImpl<$Res, _$_IAuthRegister>
     implements _$$_IAuthRegisterCopyWith<$Res> {
-  __$$_IAuthRegisterCopyWithImpl(
-      _$_IAuthRegister _value, $Res Function(_$_IAuthRegister) _then)
+  __$$_IAuthRegisterCopyWithImpl(_$_IAuthRegister _value, $Res Function(_$_IAuthRegister) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -119,11 +114,9 @@ class __$$_IAuthRegisterCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_IAuthRegister implements _IAuthRegister {
-  const _$_IAuthRegister(
-      {required this.email, required this.username, required this.password});
+  const _$_IAuthRegister({required this.email, required this.username, required this.password});
 
-  factory _$_IAuthRegister.fromJson(Map<String, dynamic> json) =>
-      _$$_IAuthRegisterFromJson(json);
+  factory _$_IAuthRegister.fromJson(Map<String, dynamic> json) => _$$_IAuthRegisterFromJson(json);
 
   @override
   final String email;
@@ -143,10 +136,8 @@ class _$_IAuthRegister implements _IAuthRegister {
         (other.runtimeType == runtimeType &&
             other is _$_IAuthRegister &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.username, username) ||
-                other.username == username) &&
-            (identical(other.password, password) ||
-                other.password == password));
+            (identical(other.username, username) || other.username == username) &&
+            (identical(other.password, password) || other.password == password));
   }
 
   @JsonKey(ignore: true)
@@ -173,8 +164,7 @@ abstract class _IAuthRegister implements IAuthRegister {
       required final String username,
       required final String password}) = _$_IAuthRegister;
 
-  factory _IAuthRegister.fromJson(Map<String, dynamic> json) =
-      _$_IAuthRegister.fromJson;
+  factory _IAuthRegister.fromJson(Map<String, dynamic> json) = _$_IAuthRegister.fromJson;
 
   @override
   String get email;
@@ -184,6 +174,5 @@ abstract class _IAuthRegister implements IAuthRegister {
   String get password;
   @override
   @JsonKey(ignore: true)
-  _$$_IAuthRegisterCopyWith<_$_IAuthRegister> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_IAuthRegisterCopyWith<_$_IAuthRegister> get copyWith => throw _privateConstructorUsedError;
 }

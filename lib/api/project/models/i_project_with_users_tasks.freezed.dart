@@ -14,8 +14,7 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-IProjectWithUsersTasks _$IProjectWithUsersTasksFromJson(
-    Map<String, dynamic> json) {
+IProjectWithUsersTasks _$IProjectWithUsersTasksFromJson(Map<String, dynamic> json) {
   return _IProjectWithUsersTasks.fromJson(json);
 }
 
@@ -38,8 +37,8 @@ mixin _$IProjectWithUsersTasks {
 
 /// @nodoc
 abstract class $IProjectWithUsersTasksCopyWith<$Res> {
-  factory $IProjectWithUsersTasksCopyWith(IProjectWithUsersTasks value,
-          $Res Function(IProjectWithUsersTasks) then) =
+  factory $IProjectWithUsersTasksCopyWith(
+          IProjectWithUsersTasks value, $Res Function(IProjectWithUsersTasks) then) =
       _$IProjectWithUsersTasksCopyWithImpl<$Res, IProjectWithUsersTasks>;
   @useResult
   $Res call(
@@ -53,8 +52,7 @@ abstract class $IProjectWithUsersTasksCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$IProjectWithUsersTasksCopyWithImpl<$Res,
-        $Val extends IProjectWithUsersTasks>
+class _$IProjectWithUsersTasksCopyWithImpl<$Res, $Val extends IProjectWithUsersTasks>
     implements $IProjectWithUsersTasksCopyWith<$Res> {
   _$IProjectWithUsersTasksCopyWithImpl(this._value, this._then);
 
@@ -110,8 +108,8 @@ class _$IProjectWithUsersTasksCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$_IProjectWithUsersTasksCopyWith<$Res>
     implements $IProjectWithUsersTasksCopyWith<$Res> {
-  factory _$$_IProjectWithUsersTasksCopyWith(_$_IProjectWithUsersTasks value,
-          $Res Function(_$_IProjectWithUsersTasks) then) =
+  factory _$$_IProjectWithUsersTasksCopyWith(
+          _$_IProjectWithUsersTasks value, $Res Function(_$_IProjectWithUsersTasks) then) =
       __$$_IProjectWithUsersTasksCopyWithImpl<$Res>;
   @override
   @useResult
@@ -127,11 +125,10 @@ abstract class _$$_IProjectWithUsersTasksCopyWith<$Res>
 
 /// @nodoc
 class __$$_IProjectWithUsersTasksCopyWithImpl<$Res>
-    extends _$IProjectWithUsersTasksCopyWithImpl<$Res,
-        _$_IProjectWithUsersTasks>
+    extends _$IProjectWithUsersTasksCopyWithImpl<$Res, _$_IProjectWithUsersTasks>
     implements _$$_IProjectWithUsersTasksCopyWith<$Res> {
-  __$$_IProjectWithUsersTasksCopyWithImpl(_$_IProjectWithUsersTasks _value,
-      $Res Function(_$_IProjectWithUsersTasks) _then)
+  __$$_IProjectWithUsersTasksCopyWithImpl(
+      _$_IProjectWithUsersTasks _value, $Res Function(_$_IProjectWithUsersTasks) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -254,8 +251,7 @@ class _$_IProjectWithUsersTasks implements _IProjectWithUsersTasks {
   @override
   @pragma('vm:prefer-inline')
   _$$_IProjectWithUsersTasksCopyWith<_$_IProjectWithUsersTasks> get copyWith =>
-      __$$_IProjectWithUsersTasksCopyWithImpl<_$_IProjectWithUsersTasks>(
-          this, _$identity);
+      __$$_IProjectWithUsersTasksCopyWithImpl<_$_IProjectWithUsersTasks>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {

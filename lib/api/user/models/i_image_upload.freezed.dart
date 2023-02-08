@@ -25,14 +25,12 @@ mixin _$IImageUpload {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $IImageUploadCopyWith<IImageUpload> get copyWith =>
-      throw _privateConstructorUsedError;
+  $IImageUploadCopyWith<IImageUpload> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $IImageUploadCopyWith<$Res> {
-  factory $IImageUploadCopyWith(
-          IImageUpload value, $Res Function(IImageUpload) then) =
+  factory $IImageUploadCopyWith(IImageUpload value, $Res Function(IImageUpload) then) =
       _$IImageUploadCopyWithImpl<$Res, IImageUpload>;
   @useResult
   $Res call({String? title, String? description});
@@ -68,10 +66,8 @@ class _$IImageUploadCopyWithImpl<$Res, $Val extends IImageUpload>
 }
 
 /// @nodoc
-abstract class _$$_IImageUploadCopyWith<$Res>
-    implements $IImageUploadCopyWith<$Res> {
-  factory _$$_IImageUploadCopyWith(
-          _$_IImageUpload value, $Res Function(_$_IImageUpload) then) =
+abstract class _$$_IImageUploadCopyWith<$Res> implements $IImageUploadCopyWith<$Res> {
+  factory _$$_IImageUploadCopyWith(_$_IImageUpload value, $Res Function(_$_IImageUpload) then) =
       __$$_IImageUploadCopyWithImpl<$Res>;
   @override
   @useResult
@@ -79,11 +75,9 @@ abstract class _$$_IImageUploadCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_IImageUploadCopyWithImpl<$Res>
-    extends _$IImageUploadCopyWithImpl<$Res, _$_IImageUpload>
+class __$$_IImageUploadCopyWithImpl<$Res> extends _$IImageUploadCopyWithImpl<$Res, _$_IImageUpload>
     implements _$$_IImageUploadCopyWith<$Res> {
-  __$$_IImageUploadCopyWithImpl(
-      _$_IImageUpload _value, $Res Function(_$_IImageUpload) _then)
+  __$$_IImageUploadCopyWithImpl(_$_IImageUpload _value, $Res Function(_$_IImageUpload) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -110,8 +104,7 @@ class __$$_IImageUploadCopyWithImpl<$Res>
 class _$_IImageUpload implements _IImageUpload {
   const _$_IImageUpload({this.title, this.description});
 
-  factory _$_IImageUpload.fromJson(Map<String, dynamic> json) =>
-      _$$_IImageUploadFromJson(json);
+  factory _$_IImageUpload.fromJson(Map<String, dynamic> json) => _$$_IImageUploadFromJson(json);
 
   @override
   final String? title;
@@ -129,8 +122,7 @@ class _$_IImageUpload implements _IImageUpload {
         (other.runtimeType == runtimeType &&
             other is _$_IImageUpload &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.description, description) ||
-                other.description == description));
+            (identical(other.description, description) || other.description == description));
   }
 
   @JsonKey(ignore: true)
@@ -152,11 +144,9 @@ class _$_IImageUpload implements _IImageUpload {
 }
 
 abstract class _IImageUpload implements IImageUpload {
-  const factory _IImageUpload(
-      {final String? title, final String? description}) = _$_IImageUpload;
+  const factory _IImageUpload({final String? title, final String? description}) = _$_IImageUpload;
 
-  factory _IImageUpload.fromJson(Map<String, dynamic> json) =
-      _$_IImageUpload.fromJson;
+  factory _IImageUpload.fromJson(Map<String, dynamic> json) = _$_IImageUpload.fromJson;
 
   @override
   String? get title;
@@ -164,6 +154,5 @@ abstract class _IImageUpload implements IImageUpload {
   String? get description;
   @override
   @JsonKey(ignore: true)
-  _$$_IImageUploadCopyWith<_$_IImageUpload> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_IImageUploadCopyWith<_$_IImageUpload> get copyWith => throw _privateConstructorUsedError;
 }

@@ -7,7 +7,9 @@ import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/domain/repository/api_task_repository.dart';
 
 part 'home_checklist_bloc.freezed.dart';
+
 part 'home_checklist_event.dart';
+
 part 'home_checklist_state.dart';
 
 class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
@@ -52,7 +54,7 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
       final task = _tasks.firstWhere((task) => task.id == event.id);
       final bool isDone = task.done ?? false;
 
-      final updatedTask = await apiTaskRepository.updateById(
+      await apiTaskRepository.updateById(
         id: event.id,
         name: task.name,
         deadline: task.deadline,
@@ -60,11 +62,9 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
         done: !isDone,
       );
 
-      if (updatedTask != null) {
-        final index = _tasks.indexWhere((task) => task.id == event.id);
-        if (index >= 0) {
-          _tasks[index] = task.copyWith(done: !isDone);
-        }
+      final index = _tasks.indexWhere((task) => task.id == event.id);
+      if (index >= 0) {
+        _tasks[index] = task.copyWith(done: !isDone);
       }
     } on DioError catch (dioError) {
       emit(HomeChecklistState.failure(dioErrorInterceptor(dioError).toString()));
@@ -76,10 +76,9 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
     Emitter<HomeChecklistState> emit,
   ) async {
     try {
-      final updatedTask = await apiTaskRepository.deleteById(id: event.id);
-      if (updatedTask != null) {
-        _tasks.removeWhere((task) => task.id == event.id);
-      }
+      await apiTaskRepository.deleteById(id: event.id);
+      _tasks.removeWhere((task) => task.id == event.id);
+
       emit(const HomeChecklistState.keep());
       emit(HomeChecklistState.loaded(tasks: _tasks));
     } on DioError catch (dioError) {

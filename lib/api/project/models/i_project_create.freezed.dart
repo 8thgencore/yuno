@@ -136,8 +136,7 @@ class _$_IProject implements _IProject {
         (other.runtimeType == runtimeType &&
             other is _$_IProject &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
+            (identical(other.description, description) || other.description == description) &&
             (identical(other.link, link) || other.link == link));
   }
 

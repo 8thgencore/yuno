@@ -111,14 +111,14 @@ class _ProjectListWidgetState extends State<_ProjectListWidget> {
             }
             return null;
           },
-                ),
-            failure: (error) => ErrorContainer(
-              text: 'Failed to get a project from the server\n$error',
-            ),
-            orElse: () => const ErrorContainer(
-              text: 'Failed to get a project from the server',
-            ),
-          ),
+        ),
+        failure: (error) => ErrorContainer(
+          text: 'Failed to get a project from the server\n$error',
+        ),
+        orElse: () => const ErrorContainer(
+          text: 'Failed to get a project from the server',
+        ),
+      ),
     );
   }
 }

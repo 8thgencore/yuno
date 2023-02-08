@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:dio/dio.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:equatable/equatable.dart';
 import 'package:yuno/data/http/error_interceptor.dart';
@@ -9,6 +8,7 @@ import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/ui/pages/auth/registration/model/errors.dart';
 
 part 'registration_event.dart';
+
 part 'registration_state.dart';
 
 class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
@@ -138,15 +138,14 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
 
       emit(const RegistrationInProgress());
 
-      final result = await apiAuthRepository.register(
+      await apiAuthRepository.register(
         email: _email,
         username: _name,
         password: _password,
       );
-      if (result != null) {
-        _highlightServerError = false;
-        emit(const RegistrationCompleted());
-      }
+
+      _highlightServerError = false;
+      emit(const RegistrationCompleted());
     } on DioError catch (dioError) {
       _serverError = dioErrorInterceptor(dioError).toString();
       _highlightServerError = true;

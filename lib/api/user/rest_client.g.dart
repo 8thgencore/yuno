@@ -51,19 +51,18 @@ class _UserClient implements UserClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<IUserRead>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<IUserRead>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/user',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+        .compose(
+          _dio.options,
+          '/user',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = IUserRead.fromJson(_result.data!);
     return value;
   }
@@ -81,8 +80,8 @@ class _UserClient implements UserClient {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<BaseResponse<IRoleRead>>(Options(
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IRoleRead>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -116,8 +115,8 @@ class _UserClient implements UserClient {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<BaseResponse<IRoleRead>>(Options(
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IRoleRead>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -238,8 +237,8 @@ class _UserClient implements UserClient {
         filename: imageFile.path.split(Platform.pathSeparator).last,
       ),
     ));
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<BaseResponse<IUserRead>>(Options(
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IUserRead>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,

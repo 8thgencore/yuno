@@ -2,7 +2,6 @@ part of 'home_checklist_bloc.dart';
 
 @freezed
 class HomeChecklistState with _$HomeChecklistState {
-
   const HomeChecklistState._();
 
   const factory HomeChecklistState.initial() = _InitialState;

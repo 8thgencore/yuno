@@ -10,7 +10,9 @@ import 'package:yuno/domain/repository/api_task_repository.dart';
 import 'package:yuno/domain/repository/api_user_repository.dart';
 
 part 'project_details_bloc.freezed.dart';
+
 part 'project_details_event.dart';
+
 part 'project_details_state.dart';
 
 class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> {
@@ -62,7 +64,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
       final task = _tasks.firstWhere((task) => task.id == event.id);
       final bool isDone = task.done ?? false;
 
-      final updatedTask = await apiTaskRepository.updateById(
+      await apiTaskRepository.updateById(
         id: event.id,
         name: task.name,
         deadline: task.deadline,
@@ -70,11 +72,9 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
         done: !isDone,
       );
 
-      if (updatedTask != null) {
-        final index = _tasks.indexWhere((task) => task.id == event.id);
-        if (index >= 0) {
-          _tasks[index] = task.copyWith(done: !isDone);
-        }
+      final index = _tasks.indexWhere((task) => task.id == event.id);
+      if (index >= 0) {
+        _tasks[index] = task.copyWith(done: !isDone);
       }
     } on DioError catch (dioError) {
       emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
@@ -86,10 +86,9 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
     Emitter<ProjectDetailsState> emit,
   ) async {
     try {
-      final updatedTask = await apiTaskRepository.deleteById(id: event.id);
-      if (updatedTask != null) {
-        _tasks.removeWhere((task) => task.id == event.id);
-      }
+      await apiTaskRepository.deleteById(id: event.id);
+      _tasks.removeWhere((task) => task.id == event.id);
+
       emit(const ProjectDetailsState.keep());
       emit(ProjectDetailsState.loaded(
         project: _project!,
@@ -160,23 +159,20 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
   Future<void> _getProjectInfo(Emitter<ProjectDetailsState> emit) async {
     final project = await apiProjectRepository.getById(id: _projectId);
     _project = project;
-    if (project != null) {
-      _tasks.addAll(project.tasks ?? []);
-      // Check user member is project
-      final user = await apiUserRepository.getCachedData();
-      final users = project.users;
-      if (user != null && users != null) {
-        _isMember = users.where((u) => u.id == user.id).isNotEmpty;
-        _isOwner = project.createdBy == user.id;
-      }
-      emit(ProjectDetailsState.loaded(
-        project: project,
-        tasks: _tasks,
-        isMember: _isMember,
-        isOwner: _isOwner,
-      ));
-    } else {
-      emit(const ProjectDetailsState.failure("Don't get project"));
+
+    _tasks.addAll(project.tasks ?? []);
+    // Check user member is project
+    final user = await apiUserRepository.getCachedData();
+    final users = project.users;
+    if (user != null && users != null) {
+      _isMember = users.where((u) => u.id == user.id).isNotEmpty;
+      _isOwner = project.createdBy == user.id;
     }
+    emit(ProjectDetailsState.loaded(
+      project: project,
+      tasks: _tasks,
+      isMember: _isMember,
+      isOwner: _isOwner,
+    ));
   }
 }

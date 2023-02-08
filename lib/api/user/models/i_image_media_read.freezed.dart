@@ -33,8 +33,7 @@ mixin _$IImageMediaRead {
 
 /// @nodoc
 abstract class $IImageMediaReadCopyWith<$Res> {
-  factory $IImageMediaReadCopyWith(
-          IImageMediaRead value, $Res Function(IImageMediaRead) then) =
+  factory $IImageMediaReadCopyWith(IImageMediaRead value, $Res Function(IImageMediaRead) then) =
       _$IImageMediaReadCopyWithImpl<$Res, IImageMediaRead>;
 
   @useResult
@@ -92,8 +91,7 @@ class _$IImageMediaReadCopyWithImpl<$Res, $Val extends IImageMediaRead>
 }
 
 /// @nodoc
-abstract class _$$_IImageMediaReadCopyWith<$Res>
-    implements $IImageMediaReadCopyWith<$Res> {
+abstract class _$$_IImageMediaReadCopyWith<$Res> implements $IImageMediaReadCopyWith<$Res> {
   factory _$$_IImageMediaReadCopyWith(
           _$_IImageMediaRead value, $Res Function(_$_IImageMediaRead) then) =
       __$$_IImageMediaReadCopyWithImpl<$Res>;

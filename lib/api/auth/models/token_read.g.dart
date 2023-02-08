@@ -11,8 +11,7 @@ _$_TokenRead _$$_TokenReadFromJson(Map<String, dynamic> json) => _$_TokenRead(
       tokenType: json['token_type'] as String,
     );
 
-Map<String, dynamic> _$$_TokenReadToJson(_$_TokenRead instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_TokenReadToJson(_$_TokenRead instance) => <String, dynamic>{
       'access_token': instance.accessToken,
       'token_type': instance.tokenType,
     };

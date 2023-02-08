@@ -70,8 +70,7 @@ class _$HomeProjectsEventCopyWithImpl<$Res, $Val extends HomeProjectsEvent>
 
 /// @nodoc
 abstract class _$$_StartedEventCopyWith<$Res> {
-  factory _$$_StartedEventCopyWith(
-          _$_StartedEvent value, $Res Function(_$_StartedEvent) then) =
+  factory _$$_StartedEventCopyWith(_$_StartedEvent value, $Res Function(_$_StartedEvent) then) =
       __$$_StartedEventCopyWithImpl<$Res>;
 }
 
@@ -79,8 +78,7 @@ abstract class _$$_StartedEventCopyWith<$Res> {
 class __$$_StartedEventCopyWithImpl<$Res>
     extends _$HomeProjectsEventCopyWithImpl<$Res, _$_StartedEvent>
     implements _$$_StartedEventCopyWith<$Res> {
-  __$$_StartedEventCopyWithImpl(
-      _$_StartedEvent _value, $Res Function(_$_StartedEvent) _then)
+  __$$_StartedEventCopyWithImpl(_$_StartedEvent _value, $Res Function(_$_StartedEvent) _then)
       : super(_value, _then);
 }
 
@@ -96,8 +94,7 @@ class _$_StartedEvent implements _StartedEvent {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_StartedEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_StartedEvent);
   }
 
   @override
@@ -238,8 +235,7 @@ class _$HomeProjectsStateCopyWithImpl<$Res, $Val extends HomeProjectsState>
 
 /// @nodoc
 abstract class _$$_InitialStateCopyWith<$Res> {
-  factory _$$_InitialStateCopyWith(
-          _$_InitialState value, $Res Function(_$_InitialState) then) =
+  factory _$$_InitialStateCopyWith(_$_InitialState value, $Res Function(_$_InitialState) then) =
       __$$_InitialStateCopyWithImpl<$Res>;
 }
 
@@ -247,8 +243,7 @@ abstract class _$$_InitialStateCopyWith<$Res> {
 class __$$_InitialStateCopyWithImpl<$Res>
     extends _$HomeProjectsStateCopyWithImpl<$Res, _$_InitialState>
     implements _$$_InitialStateCopyWith<$Res> {
-  __$$_InitialStateCopyWithImpl(
-      _$_InitialState _value, $Res Function(_$_InitialState) _then)
+  __$$_InitialStateCopyWithImpl(_$_InitialState _value, $Res Function(_$_InitialState) _then)
       : super(_value, _then);
 }
 
@@ -264,8 +259,7 @@ class _$_InitialState extends _InitialState {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_InitialState);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_InitialState);
   }
 
   @override
@@ -353,8 +347,7 @@ abstract class _InitialState extends HomeProjectsState {
 
 /// @nodoc
 abstract class _$$_LoadingStateCopyWith<$Res> {
-  factory _$$_LoadingStateCopyWith(
-          _$_LoadingState value, $Res Function(_$_LoadingState) then) =
+  factory _$$_LoadingStateCopyWith(_$_LoadingState value, $Res Function(_$_LoadingState) then) =
       __$$_LoadingStateCopyWithImpl<$Res>;
 }
 
@@ -362,8 +355,7 @@ abstract class _$$_LoadingStateCopyWith<$Res> {
 class __$$_LoadingStateCopyWithImpl<$Res>
     extends _$HomeProjectsStateCopyWithImpl<$Res, _$_LoadingState>
     implements _$$_LoadingStateCopyWith<$Res> {
-  __$$_LoadingStateCopyWithImpl(
-      _$_LoadingState _value, $Res Function(_$_LoadingState) _then)
+  __$$_LoadingStateCopyWithImpl(_$_LoadingState _value, $Res Function(_$_LoadingState) _then)
       : super(_value, _then);
 }
 
@@ -379,8 +371,7 @@ class _$_LoadingState extends _LoadingState {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoadingState);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_LoadingState);
   }
 
   @override
@@ -468,8 +459,7 @@ abstract class _LoadingState extends HomeProjectsState {
 
 /// @nodoc
 abstract class _$$_LoadedStateCopyWith<$Res> {
-  factory _$$_LoadedStateCopyWith(
-          _$_LoadedState value, $Res Function(_$_LoadedState) then) =
+  factory _$$_LoadedStateCopyWith(_$_LoadedState value, $Res Function(_$_LoadedState) then) =
       __$$_LoadedStateCopyWithImpl<$Res>;
   @useResult
   $Res call({List<IProjectWithUsers> projects});
@@ -479,8 +469,7 @@ abstract class _$$_LoadedStateCopyWith<$Res> {
 class __$$_LoadedStateCopyWithImpl<$Res>
     extends _$HomeProjectsStateCopyWithImpl<$Res, _$_LoadedState>
     implements _$$_LoadedStateCopyWith<$Res> {
-  __$$_LoadedStateCopyWithImpl(
-      _$_LoadedState _value, $Res Function(_$_LoadedState) _then)
+  __$$_LoadedStateCopyWithImpl(_$_LoadedState _value, $Res Function(_$_LoadedState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -526,8 +515,7 @@ class _$_LoadedState extends _LoadedState {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_projects));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_projects));
 
   @JsonKey(ignore: true)
   @override
@@ -621,8 +609,7 @@ abstract class _LoadedState extends HomeProjectsState {
 
 /// @nodoc
 abstract class _$$_FailureStateCopyWith<$Res> {
-  factory _$$_FailureStateCopyWith(
-          _$_FailureState value, $Res Function(_$_FailureState) then) =
+  factory _$$_FailureStateCopyWith(_$_FailureState value, $Res Function(_$_FailureState) then) =
       __$$_FailureStateCopyWithImpl<$Res>;
   @useResult
   $Res call({Object error});
@@ -632,8 +619,7 @@ abstract class _$$_FailureStateCopyWith<$Res> {
 class __$$_FailureStateCopyWithImpl<$Res>
     extends _$HomeProjectsStateCopyWithImpl<$Res, _$_FailureState>
     implements _$$_FailureStateCopyWith<$Res> {
-  __$$_FailureStateCopyWithImpl(
-      _$_FailureState _value, $Res Function(_$_FailureState) _then)
+  __$$_FailureStateCopyWithImpl(_$_FailureState _value, $Res Function(_$_FailureState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -669,8 +655,7 @@ class _$_FailureState extends _FailureState {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
@@ -759,6 +744,5 @@ abstract class _FailureState extends HomeProjectsState {
 
   Object get error;
   @JsonKey(ignore: true)
-  _$$_FailureStateCopyWith<_$_FailureState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_FailureStateCopyWith<_$_FailureState> get copyWith => throw _privateConstructorUsedError;
 }

@@ -35,6 +35,12 @@ _\*Yuno works on iOS, Android, Web, and Windows._
 
 ---
 
+## Flutter format
+
+```sh
+dart format --output=none --set-exit-if-changed --line-length=100 ./lib
+```
+
 ## Running Tests 🧪
 
 To run all unit and widget tests use the following command:

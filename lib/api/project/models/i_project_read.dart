@@ -12,6 +12,6 @@ class IProjectRead with _$IProjectRead {
     required String id,
     @JsonKey(name: 'created_by_id') String? createdBy,
   }) = _IProjectRead;
-  
+
   factory IProjectRead.fromJson(Map<String, dynamic> json) => _$IProjectReadFromJson(json);
 }

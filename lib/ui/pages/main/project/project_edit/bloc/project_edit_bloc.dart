@@ -6,7 +6,9 @@ import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/domain/repository/api_project_repository.dart';
 
 part 'project_edit_bloc.freezed.dart';
+
 part 'project_edit_event.dart';
+
 part 'project_edit_state.dart';
 
 class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
@@ -41,14 +43,12 @@ class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
         emit(state.copyWith(status: ProjectEditStatus.loaded));
       } else {
         final project = await apiProjectRepository.getById(id: event.id);
-        if (project != null) {
-          emit(state.copyWith(
-            status: ProjectEditStatus.loaded,
-            id: project.id,
-            name: project.name,
-            description: project.description,
-          ));
-        }
+        emit(state.copyWith(
+          status: ProjectEditStatus.loaded,
+          id: project.id,
+          name: project.name,
+          description: project.description,
+        ));
       }
       emit(state.copyWith(status: ProjectEditStatus.fillingFields));
     } on DioError catch (dioError) {
@@ -83,12 +83,10 @@ class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
         name: state.name,
         description: state.description,
       );
-      if (result != null) {
-        emit(state.copyWith(
-          id: result.id,
-          status: ProjectEditStatus.successCreated,
-        ));
-      }
+      emit(state.copyWith(
+        id: result.id,
+        status: ProjectEditStatus.successCreated,
+      ));
     } on DioError catch (dioError) {
       emit(state.copyWith(
         status: ProjectEditStatus.failure,
@@ -103,14 +101,12 @@ class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
   ) async {
     emit(state.copyWith(status: ProjectEditStatus.loading));
     try {
-      final result = await apiProjectRepository.updateById(
+      await apiProjectRepository.updateById(
         id: state.id,
         name: state.name,
         description: state.description,
       );
-      if (result != null) {
-        emit(state.copyWith(status: ProjectEditStatus.successUpdated));
-      }
+      emit(state.copyWith(status: ProjectEditStatus.successUpdated));
     } on DioError catch (dioError) {
       emit(state.copyWith(
         status: ProjectEditStatus.failure,

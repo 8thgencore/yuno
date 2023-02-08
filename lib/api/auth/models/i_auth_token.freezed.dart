@@ -33,14 +33,12 @@ mixin _$IAuthToken {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $IAuthTokenCopyWith<IAuthToken> get copyWith =>
-      throw _privateConstructorUsedError;
+  $IAuthTokenCopyWith<IAuthToken> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $IAuthTokenCopyWith<$Res> {
-  factory $IAuthTokenCopyWith(
-          IAuthToken value, $Res Function(IAuthToken) then) =
+  factory $IAuthTokenCopyWith(IAuthToken value, $Res Function(IAuthToken) then) =
       _$IAuthTokenCopyWithImpl<$Res, IAuthToken>;
   @useResult
   $Res call(
@@ -53,8 +51,7 @@ abstract class $IAuthTokenCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$IAuthTokenCopyWithImpl<$Res, $Val extends IAuthToken>
-    implements $IAuthTokenCopyWith<$Res> {
+class _$IAuthTokenCopyWithImpl<$Res, $Val extends IAuthToken> implements $IAuthTokenCopyWith<$Res> {
   _$IAuthTokenCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -102,10 +99,8 @@ class _$IAuthTokenCopyWithImpl<$Res, $Val extends IAuthToken>
 }
 
 /// @nodoc
-abstract class _$$_IAuthTokenCopyWith<$Res>
-    implements $IAuthTokenCopyWith<$Res> {
-  factory _$$_IAuthTokenCopyWith(
-          _$_IAuthToken value, $Res Function(_$_IAuthToken) then) =
+abstract class _$$_IAuthTokenCopyWith<$Res> implements $IAuthTokenCopyWith<$Res> {
+  factory _$$_IAuthTokenCopyWith(_$_IAuthToken value, $Res Function(_$_IAuthToken) then) =
       __$$_IAuthTokenCopyWithImpl<$Res>;
   @override
   @useResult
@@ -119,11 +114,9 @@ abstract class _$$_IAuthTokenCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_IAuthTokenCopyWithImpl<$Res>
-    extends _$IAuthTokenCopyWithImpl<$Res, _$_IAuthToken>
+class __$$_IAuthTokenCopyWithImpl<$Res> extends _$IAuthTokenCopyWithImpl<$Res, _$_IAuthToken>
     implements _$$_IAuthTokenCopyWith<$Res> {
-  __$$_IAuthTokenCopyWithImpl(
-      _$_IAuthToken _value, $Res Function(_$_IAuthToken) _then)
+  __$$_IAuthTokenCopyWithImpl(_$_IAuthToken _value, $Res Function(_$_IAuthToken) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -176,8 +169,7 @@ class _$_IAuthToken implements _IAuthToken {
       @JsonKey(name: 'client_id') this.clientId,
       @JsonKey(name: 'client_secret') this.clientSecret});
 
-  factory _$_IAuthToken.fromJson(Map<String, dynamic> json) =>
-      _$$_IAuthTokenFromJson(json);
+  factory _$_IAuthToken.fromJson(Map<String, dynamic> json) => _$$_IAuthTokenFromJson(json);
 
   @override
   final String username;
@@ -206,23 +198,18 @@ class _$_IAuthToken implements _IAuthToken {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IAuthToken &&
-            (identical(other.username, username) ||
-                other.username == username) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
-            (identical(other.grantType, grantType) ||
-                other.grantType == grantType) &&
+            (identical(other.username, username) || other.username == username) &&
+            (identical(other.password, password) || other.password == password) &&
+            (identical(other.grantType, grantType) || other.grantType == grantType) &&
             (identical(other.scope, scope) || other.scope == scope) &&
-            (identical(other.clientId, clientId) ||
-                other.clientId == clientId) &&
-            (identical(other.clientSecret, clientSecret) ||
-                other.clientSecret == clientSecret));
+            (identical(other.clientId, clientId) || other.clientId == clientId) &&
+            (identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, username, password, grantType,
-      scope, clientId, clientSecret);
+  int get hashCode =>
+      Object.hash(runtimeType, username, password, grantType, scope, clientId, clientSecret);
 
   @JsonKey(ignore: true)
   @override
@@ -240,16 +227,14 @@ class _$_IAuthToken implements _IAuthToken {
 
 abstract class _IAuthToken implements IAuthToken {
   const factory _IAuthToken(
-          {required final String username,
-          required final String password,
-          @JsonKey(name: 'grant_type') final String? grantType,
-          @JsonKey(defaultValue: '') final String? scope,
-          @JsonKey(name: 'client_id') final String? clientId,
-          @JsonKey(name: 'client_secret') final String? clientSecret}) =
-      _$_IAuthToken;
+      {required final String username,
+      required final String password,
+      @JsonKey(name: 'grant_type') final String? grantType,
+      @JsonKey(defaultValue: '') final String? scope,
+      @JsonKey(name: 'client_id') final String? clientId,
+      @JsonKey(name: 'client_secret') final String? clientSecret}) = _$_IAuthToken;
 
-  factory _IAuthToken.fromJson(Map<String, dynamic> json) =
-      _$_IAuthToken.fromJson;
+  factory _IAuthToken.fromJson(Map<String, dynamic> json) = _$_IAuthToken.fromJson;
 
   @override
   String get username;
@@ -269,6 +254,5 @@ abstract class _IAuthToken implements IAuthToken {
   String? get clientSecret;
   @override
   @JsonKey(ignore: true)
-  _$$_IAuthTokenCopyWith<_$_IAuthToken> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_IAuthTokenCopyWith<_$_IAuthToken> get copyWith => throw _privateConstructorUsedError;
 }

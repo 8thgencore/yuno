@@ -30,15 +30,13 @@ class $AssetsFontsGen {
   String get poppinsExtraBold => 'assets/fonts/Poppins-ExtraBold.ttf';
 
   /// File path: assets/fonts/Poppins-ExtraBoldItalic.ttf
-  String get poppinsExtraBoldItalic =>
-      'assets/fonts/Poppins-ExtraBoldItalic.ttf';
+  String get poppinsExtraBoldItalic => 'assets/fonts/Poppins-ExtraBoldItalic.ttf';
 
   /// File path: assets/fonts/Poppins-ExtraLight.ttf
   String get poppinsExtraLight => 'assets/fonts/Poppins-ExtraLight.ttf';
 
   /// File path: assets/fonts/Poppins-ExtraLightItalic.ttf
-  String get poppinsExtraLightItalic =>
-      'assets/fonts/Poppins-ExtraLightItalic.ttf';
+  String get poppinsExtraLightItalic => 'assets/fonts/Poppins-ExtraLightItalic.ttf';
 
   /// File path: assets/fonts/Poppins-Italic.ttf
   String get poppinsItalic => 'assets/fonts/Poppins-Italic.ttf';
@@ -100,23 +98,19 @@ class $AssetsImagesGen {
   AssetGenImage get avatar => const AssetGenImage('assets/images/avatar.jpg');
 
   /// File path: assets/images/fingerprint.png
-  AssetGenImage get fingerprint =>
-      const AssetGenImage('assets/images/fingerprint.png');
+  AssetGenImage get fingerprint => const AssetGenImage('assets/images/fingerprint.png');
 
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
   /// File path: assets/images/sign_ornament.png
-  AssetGenImage get signOrnament =>
-      const AssetGenImage('assets/images/sign_ornament.png');
+  AssetGenImage get signOrnament => const AssetGenImage('assets/images/sign_ornament.png');
 
   /// File path: assets/images/splash_ornament.png
-  AssetGenImage get splashOrnament =>
-      const AssetGenImage('assets/images/splash_ornament.png');
+  AssetGenImage get splashOrnament => const AssetGenImage('assets/images/splash_ornament.png');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [avatar, fingerprint, logo, signOrnament, splashOrnament];
+  List<AssetGenImage> get values => [avatar, fingerprint, logo, signOrnament, splashOrnament];
 }
 
 class $AssetsSvgGen {
@@ -129,8 +123,7 @@ class $AssetsSvgGen {
   SvgGenImage get calendar => const SvgGenImage('assets/svg/calendar.svg');
 
   /// File path: assets/svg/calendar_filled.svg
-  SvgGenImage get calendarFilled =>
-      const SvgGenImage('assets/svg/calendar_filled.svg');
+  SvgGenImage get calendarFilled => const SvgGenImage('assets/svg/calendar_filled.svg');
 
   /// File path: assets/svg/edit.svg
   SvgGenImage get edit => const SvgGenImage('assets/svg/edit.svg');
@@ -148,8 +141,7 @@ class $AssetsSvgGen {
   SvgGenImage get gridFilled => const SvgGenImage('assets/svg/grid_filled.svg');
 
   /// File path: assets/svg/home_top_ornament.svg
-  SvgGenImage get homeTopOrnament =>
-      const SvgGenImage('assets/svg/home_top_ornament.svg');
+  SvgGenImage get homeTopOrnament => const SvgGenImage('assets/svg/home_top_ornament.svg');
 
   /// File path: assets/svg/lock.svg
   SvgGenImage get lock => const SvgGenImage('assets/svg/lock.svg');
@@ -167,15 +159,13 @@ class $AssetsSvgGen {
   SvgGenImage get roundCheck => const SvgGenImage('assets/svg/round_check.svg');
 
   /// File path: assets/svg/round_exclamation.svg
-  SvgGenImage get roundExclamation =>
-      const SvgGenImage('assets/svg/round_exclamation.svg');
+  SvgGenImage get roundExclamation => const SvgGenImage('assets/svg/round_exclamation.svg');
 
   /// File path: assets/svg/stats.svg
   SvgGenImage get stats => const SvgGenImage('assets/svg/stats.svg');
 
   /// File path: assets/svg/stats_filled.svg
-  SvgGenImage get statsFilled =>
-      const SvgGenImage('assets/svg/stats_filled.svg');
+  SvgGenImage get statsFilled => const SvgGenImage('assets/svg/stats_filled.svg');
 
   /// File path: assets/svg/user.svg
   SvgGenImage get user => const SvgGenImage('assets/svg/user.svg');

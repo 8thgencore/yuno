@@ -70,8 +70,7 @@ mixin _$ProfileEvent {
 
 /// @nodoc
 abstract class $ProfileEventCopyWith<$Res> {
-  factory $ProfileEventCopyWith(
-          ProfileEvent value, $Res Function(ProfileEvent) then) =
+  factory $ProfileEventCopyWith(ProfileEvent value, $Res Function(ProfileEvent) then) =
       _$ProfileEventCopyWithImpl<$Res, ProfileEvent>;
 }
 
@@ -88,17 +87,14 @@ class _$ProfileEventCopyWithImpl<$Res, $Val extends ProfileEvent>
 
 /// @nodoc
 abstract class _$$_StartedEventCopyWith<$Res> {
-  factory _$$_StartedEventCopyWith(
-          _$_StartedEvent value, $Res Function(_$_StartedEvent) then) =
+  factory _$$_StartedEventCopyWith(_$_StartedEvent value, $Res Function(_$_StartedEvent) then) =
       __$$_StartedEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedEventCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res, _$_StartedEvent>
+class __$$_StartedEventCopyWithImpl<$Res> extends _$ProfileEventCopyWithImpl<$Res, _$_StartedEvent>
     implements _$$_StartedEventCopyWith<$Res> {
-  __$$_StartedEventCopyWithImpl(
-      _$_StartedEvent _value, $Res Function(_$_StartedEvent) _then)
+  __$$_StartedEventCopyWithImpl(_$_StartedEvent _value, $Res Function(_$_StartedEvent) _then)
       : super(_value, _then);
 }
 
@@ -114,8 +110,7 @@ class _$_StartedEvent implements _StartedEvent {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_StartedEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_StartedEvent);
   }
 
   @override
@@ -202,17 +197,14 @@ abstract class _StartedEvent implements ProfileEvent {
 
 /// @nodoc
 abstract class _$$_UpdateEventCopyWith<$Res> {
-  factory _$$_UpdateEventCopyWith(
-          _$_UpdateEvent value, $Res Function(_$_UpdateEvent) then) =
+  factory _$$_UpdateEventCopyWith(_$_UpdateEvent value, $Res Function(_$_UpdateEvent) then) =
       __$$_UpdateEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UpdateEventCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res, _$_UpdateEvent>
+class __$$_UpdateEventCopyWithImpl<$Res> extends _$ProfileEventCopyWithImpl<$Res, _$_UpdateEvent>
     implements _$$_UpdateEventCopyWith<$Res> {
-  __$$_UpdateEventCopyWithImpl(
-      _$_UpdateEvent _value, $Res Function(_$_UpdateEvent) _then)
+  __$$_UpdateEventCopyWithImpl(_$_UpdateEvent _value, $Res Function(_$_UpdateEvent) _then)
       : super(_value, _then);
 }
 
@@ -228,8 +220,7 @@ class _$_UpdateEvent implements _UpdateEvent {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_UpdateEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_UpdateEvent);
   }
 
   @override
@@ -327,8 +318,7 @@ abstract class _$$_LoadImageEventCopyWith<$Res> {
 class __$$_LoadImageEventCopyWithImpl<$Res>
     extends _$ProfileEventCopyWithImpl<$Res, _$_LoadImageEvent>
     implements _$$_LoadImageEventCopyWith<$Res> {
-  __$$_LoadImageEventCopyWithImpl(
-      _$_LoadImageEvent _value, $Res Function(_$_LoadImageEvent) _then)
+  __$$_LoadImageEventCopyWithImpl(_$_LoadImageEvent _value, $Res Function(_$_LoadImageEvent) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -455,23 +445,19 @@ abstract class _LoadImageEvent implements ProfileEvent {
 
   PlatformFile get file;
   @JsonKey(ignore: true)
-  _$$_LoadImageEventCopyWith<_$_LoadImageEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_LoadImageEventCopyWith<_$_LoadImageEvent> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_LogoutEventCopyWith<$Res> {
-  factory _$$_LogoutEventCopyWith(
-          _$_LogoutEvent value, $Res Function(_$_LogoutEvent) then) =
+  factory _$$_LogoutEventCopyWith(_$_LogoutEvent value, $Res Function(_$_LogoutEvent) then) =
       __$$_LogoutEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LogoutEventCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res, _$_LogoutEvent>
+class __$$_LogoutEventCopyWithImpl<$Res> extends _$ProfileEventCopyWithImpl<$Res, _$_LogoutEvent>
     implements _$$_LogoutEventCopyWith<$Res> {
-  __$$_LogoutEventCopyWithImpl(
-      _$_LogoutEvent _value, $Res Function(_$_LogoutEvent) _then)
+  __$$_LogoutEventCopyWithImpl(_$_LogoutEvent _value, $Res Function(_$_LogoutEvent) _then)
       : super(_value, _then);
 }
 
@@ -487,8 +473,7 @@ class _$_LogoutEvent implements _LogoutEvent {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LogoutEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_LogoutEvent);
   }
 
   @override
@@ -635,8 +620,7 @@ mixin _$ProfileState {
 
 /// @nodoc
 abstract class $ProfileStateCopyWith<$Res> {
-  factory $ProfileStateCopyWith(
-          ProfileState value, $Res Function(ProfileState) then) =
+  factory $ProfileStateCopyWith(ProfileState value, $Res Function(ProfileState) then) =
       _$ProfileStateCopyWithImpl<$Res, ProfileState>;
 }
 
@@ -653,17 +637,14 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
 
 /// @nodoc
 abstract class _$$_InitialStateCopyWith<$Res> {
-  factory _$$_InitialStateCopyWith(
-          _$_InitialState value, $Res Function(_$_InitialState) then) =
+  factory _$$_InitialStateCopyWith(_$_InitialState value, $Res Function(_$_InitialState) then) =
       __$$_InitialStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialStateCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$_InitialState>
+class __$$_InitialStateCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res, _$_InitialState>
     implements _$$_InitialStateCopyWith<$Res> {
-  __$$_InitialStateCopyWithImpl(
-      _$_InitialState _value, $Res Function(_$_InitialState) _then)
+  __$$_InitialStateCopyWithImpl(_$_InitialState _value, $Res Function(_$_InitialState) _then)
       : super(_value, _then);
 }
 
@@ -679,8 +660,7 @@ class _$_InitialState extends _InitialState {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_InitialState);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_InitialState);
   }
 
   @override
@@ -774,17 +754,14 @@ abstract class _InitialState extends ProfileState {
 
 /// @nodoc
 abstract class _$$_LoadingStateCopyWith<$Res> {
-  factory _$$_LoadingStateCopyWith(
-          _$_LoadingState value, $Res Function(_$_LoadingState) then) =
+  factory _$$_LoadingStateCopyWith(_$_LoadingState value, $Res Function(_$_LoadingState) then) =
       __$$_LoadingStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingStateCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$_LoadingState>
+class __$$_LoadingStateCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res, _$_LoadingState>
     implements _$$_LoadingStateCopyWith<$Res> {
-  __$$_LoadingStateCopyWithImpl(
-      _$_LoadingState _value, $Res Function(_$_LoadingState) _then)
+  __$$_LoadingStateCopyWithImpl(_$_LoadingState _value, $Res Function(_$_LoadingState) _then)
       : super(_value, _then);
 }
 
@@ -800,8 +777,7 @@ class _$_LoadingState extends _LoadingState {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoadingState);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_LoadingState);
   }
 
   @override
@@ -895,8 +871,7 @@ abstract class _LoadingState extends ProfileState {
 
 /// @nodoc
 abstract class _$$_LoadedStateCopyWith<$Res> {
-  factory _$$_LoadedStateCopyWith(
-          _$_LoadedState value, $Res Function(_$_LoadedState) then) =
+  factory _$$_LoadedStateCopyWith(_$_LoadedState value, $Res Function(_$_LoadedState) then) =
       __$$_LoadedStateCopyWithImpl<$Res>;
   @useResult
   $Res call({IUserRead user, String? error});
@@ -905,11 +880,9 @@ abstract class _$$_LoadedStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LoadedStateCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$_LoadedState>
+class __$$_LoadedStateCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res, _$_LoadedState>
     implements _$$_LoadedStateCopyWith<$Res> {
-  __$$_LoadedStateCopyWithImpl(
-      _$_LoadedState _value, $Res Function(_$_LoadedState) _then)
+  __$$_LoadedStateCopyWithImpl(_$_LoadedState _value, $Res Function(_$_LoadedState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1054,30 +1027,25 @@ class _$_LoadedState extends _LoadedState {
 }
 
 abstract class _LoadedState extends ProfileState {
-  const factory _LoadedState(final IUserRead user, final String? error) =
-      _$_LoadedState;
+  const factory _LoadedState(final IUserRead user, final String? error) = _$_LoadedState;
   const _LoadedState._() : super._();
 
   IUserRead get user;
   String? get error;
   @JsonKey(ignore: true)
-  _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_LogoutStateCopyWith<$Res> {
-  factory _$$_LogoutStateCopyWith(
-          _$_LogoutState value, $Res Function(_$_LogoutState) then) =
+  factory _$$_LogoutStateCopyWith(_$_LogoutState value, $Res Function(_$_LogoutState) then) =
       __$$_LogoutStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LogoutStateCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$_LogoutState>
+class __$$_LogoutStateCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res, _$_LogoutState>
     implements _$$_LogoutStateCopyWith<$Res> {
-  __$$_LogoutStateCopyWithImpl(
-      _$_LogoutState _value, $Res Function(_$_LogoutState) _then)
+  __$$_LogoutStateCopyWithImpl(_$_LogoutState _value, $Res Function(_$_LogoutState) _then)
       : super(_value, _then);
 }
 
@@ -1093,8 +1061,7 @@ class _$_LogoutState extends _LogoutState {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LogoutState);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_LogoutState);
   }
 
   @override
@@ -1188,19 +1155,16 @@ abstract class _LogoutState extends ProfileState {
 
 /// @nodoc
 abstract class _$$_FailureStateCopyWith<$Res> {
-  factory _$$_FailureStateCopyWith(
-          _$_FailureState value, $Res Function(_$_FailureState) then) =
+  factory _$$_FailureStateCopyWith(_$_FailureState value, $Res Function(_$_FailureState) then) =
       __$$_FailureStateCopyWithImpl<$Res>;
   @useResult
   $Res call({Object error});
 }
 
 /// @nodoc
-class __$$_FailureStateCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$_FailureState>
+class __$$_FailureStateCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res, _$_FailureState>
     implements _$$_FailureStateCopyWith<$Res> {
-  __$$_FailureStateCopyWithImpl(
-      _$_FailureState _value, $Res Function(_$_FailureState) _then)
+  __$$_FailureStateCopyWithImpl(_$_FailureState _value, $Res Function(_$_FailureState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1236,8 +1200,7 @@ class _$_FailureState extends _FailureState {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
@@ -1332,6 +1295,5 @@ abstract class _FailureState extends ProfileState {
 
   Object get error;
   @JsonKey(ignore: true)
-  _$$_FailureStateCopyWith<_$_FailureState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_FailureStateCopyWith<_$_FailureState> get copyWith => throw _privateConstructorUsedError;
 }

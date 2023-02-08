@@ -15,7 +15,7 @@ part 'rest_client.g.dart';
 
 @RestApi()
 abstract class UserClient {
-  factory UserClient(Dio dio, { String baseUrl}) = _UserClient;
+  factory UserClient(Dio dio, {String baseUrl}) = _UserClient;
 
   @GET('/user')
   Future<BaseResponse<IUserRead>> getUser();

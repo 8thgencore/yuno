@@ -25,22 +25,19 @@ mixin _$IAuthLogin {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $IAuthLoginCopyWith<IAuthLogin> get copyWith =>
-      throw _privateConstructorUsedError;
+  $IAuthLoginCopyWith<IAuthLogin> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $IAuthLoginCopyWith<$Res> {
-  factory $IAuthLoginCopyWith(
-          IAuthLogin value, $Res Function(IAuthLogin) then) =
+  factory $IAuthLoginCopyWith(IAuthLogin value, $Res Function(IAuthLogin) then) =
       _$IAuthLoginCopyWithImpl<$Res, IAuthLogin>;
   @useResult
   $Res call({String email, String password});
 }
 
 /// @nodoc
-class _$IAuthLoginCopyWithImpl<$Res, $Val extends IAuthLogin>
-    implements $IAuthLoginCopyWith<$Res> {
+class _$IAuthLoginCopyWithImpl<$Res, $Val extends IAuthLogin> implements $IAuthLoginCopyWith<$Res> {
   _$IAuthLoginCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -68,10 +65,8 @@ class _$IAuthLoginCopyWithImpl<$Res, $Val extends IAuthLogin>
 }
 
 /// @nodoc
-abstract class _$$_IAuthLoginCopyWith<$Res>
-    implements $IAuthLoginCopyWith<$Res> {
-  factory _$$_IAuthLoginCopyWith(
-          _$_IAuthLogin value, $Res Function(_$_IAuthLogin) then) =
+abstract class _$$_IAuthLoginCopyWith<$Res> implements $IAuthLoginCopyWith<$Res> {
+  factory _$$_IAuthLoginCopyWith(_$_IAuthLogin value, $Res Function(_$_IAuthLogin) then) =
       __$$_IAuthLoginCopyWithImpl<$Res>;
   @override
   @useResult
@@ -79,11 +74,9 @@ abstract class _$$_IAuthLoginCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_IAuthLoginCopyWithImpl<$Res>
-    extends _$IAuthLoginCopyWithImpl<$Res, _$_IAuthLogin>
+class __$$_IAuthLoginCopyWithImpl<$Res> extends _$IAuthLoginCopyWithImpl<$Res, _$_IAuthLogin>
     implements _$$_IAuthLoginCopyWith<$Res> {
-  __$$_IAuthLoginCopyWithImpl(
-      _$_IAuthLogin _value, $Res Function(_$_IAuthLogin) _then)
+  __$$_IAuthLoginCopyWithImpl(_$_IAuthLogin _value, $Res Function(_$_IAuthLogin) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -110,8 +103,7 @@ class __$$_IAuthLoginCopyWithImpl<$Res>
 class _$_IAuthLogin implements _IAuthLogin {
   const _$_IAuthLogin({required this.email, required this.password});
 
-  factory _$_IAuthLogin.fromJson(Map<String, dynamic> json) =>
-      _$$_IAuthLoginFromJson(json);
+  factory _$_IAuthLogin.fromJson(Map<String, dynamic> json) => _$$_IAuthLoginFromJson(json);
 
   @override
   final String email;
@@ -129,8 +121,7 @@ class _$_IAuthLogin implements _IAuthLogin {
         (other.runtimeType == runtimeType &&
             other is _$_IAuthLogin &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.password, password) ||
-                other.password == password));
+            (identical(other.password, password) || other.password == password));
   }
 
   @JsonKey(ignore: true)
@@ -152,12 +143,10 @@ class _$_IAuthLogin implements _IAuthLogin {
 }
 
 abstract class _IAuthLogin implements IAuthLogin {
-  const factory _IAuthLogin(
-      {required final String email,
-      required final String password}) = _$_IAuthLogin;
+  const factory _IAuthLogin({required final String email, required final String password}) =
+      _$_IAuthLogin;
 
-  factory _IAuthLogin.fromJson(Map<String, dynamic> json) =
-      _$_IAuthLogin.fromJson;
+  factory _IAuthLogin.fromJson(Map<String, dynamic> json) = _$_IAuthLogin.fromJson;
 
   @override
   String get email;
@@ -165,6 +154,5 @@ abstract class _IAuthLogin implements IAuthLogin {
   String get password;
   @override
   @JsonKey(ignore: true)
-  _$$_IAuthLoginCopyWith<_$_IAuthLogin> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_IAuthLoginCopyWith<_$_IAuthLogin> get copyWith => throw _privateConstructorUsedError;
 }
