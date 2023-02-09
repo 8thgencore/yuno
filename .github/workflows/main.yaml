@@ -20,11 +20,6 @@ jobs:
         with:
           flutter-version: '3.7.1'
           cache: true
-      - name: 📦 Get dependencies
-        run: |
-          flutter clean
-          flutter pub get
-          flutter doctor -v
       - name: 🔽 Import files
         env:
           BACKEND_URL: ${{ secrets.BACKEND_URL }}
@@ -35,6 +30,11 @@ jobs:
           cd android
           if [[ -n "$KEY_PROPERTIES" ]] ; then echo "$KEY_PROPERTIES" | base64 --decode > key.properties  ; fi
           if [[ -n "$KEY_JKS" ]] ; then echo "$KEY_JKS" | base64 --decode > app/upload-keystore.jks  ; fi
+      - name: 📦 Get dependencies
+        run: |
+          flutter clean
+          flutter pub get
+          flutter doctor -v
       - name: 🔍 Analyze code
         run: |
           flutter analyze
