@@ -1,4 +1,4 @@
-name: yuno
+name: ♦ Yuno CI
 
 on:
   pull_request:
