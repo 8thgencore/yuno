@@ -38,7 +38,7 @@ jobs:
           dart format --set-exit-if-changed --line-length=100 ./lib
 
   build:
-    needs: [ analyze, test ]
+    needs: [ analyze ]
     name: 🔨 Build ${{ matrix.target }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 10
