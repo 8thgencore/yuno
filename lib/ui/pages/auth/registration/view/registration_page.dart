@@ -209,6 +209,7 @@ class _BottomWidgetState extends State<_BottomWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) => _addFocusLostHandlers());
   }
 
+  // ignore: unused_element
   void _addFocusLostHandlers() {
     _emailFocusNode.addListener(() {
       if (!_emailFocusNode.hasFocus) {
