@@ -43,8 +43,6 @@ class _RegistrationPageWidget extends StatelessWidget {
         if (state is RegistrationCompleted) {
           context.loaderOverlay.hide();
           context.goNamed(RouteName.login);
-
-          // Navigator.pushNamedAndRemoveUntil(context, RoutesPage.login, (route) => false);
         } else if (state is RegistrationInProgress) {
           context.loaderOverlay.show();
         } else if (state is RegistrationFieldsInfo) {
@@ -205,6 +203,7 @@ class _BottomWidgetState extends State<_BottomWidget> {
     // SchedulerBinding.instance.addPostFrameCallback((_) => _addFocusLostHandlers());
   }
 
+  // ignore: unused_element
   void _addFocusLostHandlers() {
     _emailFocusNode.addListener(() {
       if (!_emailFocusNode.hasFocus) {
