@@ -1,6 +1,9 @@
 name: ♦ Yuno CI
 
 on:
+  push:
+    branches:
+      - ci-cd
   pull_request:
     branches:
       - main
