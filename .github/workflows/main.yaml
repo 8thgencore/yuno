@@ -29,6 +29,8 @@ jobs:
           if [[ -n "$BACKEND_URL" ]] ; then echo "$BACKEND_URL" > .env ; fi
           cd android
           if [[ -n "$KEY_PROPERTIES" ]] ; then echo "$KEY_PROPERTIES" | base64 --decode > key.properties  ; fi
+          sed -i -e '$d' key.properties
+          DIR=$(pwd) && sed -i -e '$a storeFile='$DIR'/upload-keystore.jks' ./key.properties
           if [[ -n "$KEY_JKS" ]] ; then echo "$KEY_JKS" | base64 --decode > app/upload-keystore.jks  ; fi
       - name: 📦 Get dependencies
         run: |
@@ -57,16 +59,6 @@ jobs:
     steps:
       - name: ⬆️ Checkout
         uses: actions/checkout@v3
-      - name: ⬇️ Import files
-        env:
-          BACKEND_URL: ${{ secrets.BACKEND_URL }}
-          KEY_JKS: ${{ secrets.KEY_JKS }}
-          KEY_PROPERTIES: ${{ secrets.KEY_PROPERTIES }}
-        run: |
-          if [[ -n "$BACKEND_URL" ]] ; then echo "$BACKEND_URL" > .env ; fi
-          cd android
-          if [[ -n "$KEY_PROPERTIES" ]] ; then echo "$KEY_PROPERTIES" | base64 --decode > key.properties  ; fi
-          if [[ -n "$KEY_JKS" ]] ; then echo "$KEY_JKS" | base64 --decode > app/upload-keystore.jks  ; fi
       - if: ${{ matrix.java-version }}
         uses: actions/setup-java@v2
         with:
@@ -78,10 +70,6 @@ jobs:
           cache: true
       - name: 🏭 Build production
         run: |
-          ls
-          ls android
-          cat android/key.properties
-          cat android/app/upload-keystore.jks
           flutter build ${{ matrix.build-args }} --release --flavor production --target lib/main_production.dart
           cp build/app/outputs/flutter-apk/app-production-release.apk yuno-android.apk
       - name: ⬆️ Upload generated apk to the artifacts
