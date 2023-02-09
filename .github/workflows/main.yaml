@@ -31,7 +31,7 @@ jobs:
           KEY_JKS: ${{ secrets.KEY_JKS }}
           KEY_PROPERTIES: ${{ secrets.KEY_PROPERTIES }}
         run: |
-          if [[ -n "BACKEND_URL" ]] ; then echo "BACKEND_URL" | base64 --decode > .env ; fi
+          if [[ -n "$BACKEND_URL" ]] ; then "$BACKEND_URL" > .env ; fi
           cd android
           if [[ -n "$KEY_PROPERTIES" ]] ; then echo "$KEY_PROPERTIES" | base64 --decode > key.properties  ; fi
           if [[ -n "$KEY_JKS" ]] ; then echo "$KEY_JKS" | base64 --decode > app/upload-keystore.jks  ; fi
@@ -62,7 +62,7 @@ jobs:
           KEY_JKS: ${{ secrets.KEY_JKS }}
           KEY_PROPERTIES: ${{ secrets.KEY_PROPERTIES }}
         run: |
-          if [[ -n "BACKEND_URL" ]] ; then echo "BACKEND_URL" | base64 --decode > .env ; fi
+          if [[ -n "$BACKEND_URL" ]] ; then "$BACKEND_URL" > .env ; fi
           cd android
           if [[ -n "$KEY_PROPERTIES" ]] ; then echo "$KEY_PROPERTIES" | base64 --decode > key.properties  ; fi
           if [[ -n "$KEY_JKS" ]] ; then echo "$KEY_JKS" | base64 --decode > app/upload-keystore.jks  ; fi
