@@ -30,8 +30,6 @@ jobs:
           if [[ -n "$BACKEND_URL" ]] ; then echo "$BACKEND_URL" > .env ; fi
           cd android
           if [[ -n "$KEY_PROPERTIES" ]] ; then echo "$KEY_PROPERTIES" | base64 --decode > key.properties  ; fi
-          sed -i -e '$d' key.properties
-          DIR=$(pwd) && sed -i -e '$a storeFile='$DIR'/upload-keystore.jks' ./key.properties
           if [[ -n "$KEY_JKS" ]] ; then echo "$KEY_JKS" | base64 --decode > app/upload-keystore.jks  ; fi
       - name: 📦 Get dependencies
         run: |
@@ -71,7 +69,7 @@ jobs:
           cd android
           if [[ -n "$KEY_PROPERTIES" ]] ; then echo "$KEY_PROPERTIES" | base64 --decode > key.properties  ; fi
           sed -i -e '$d' key.properties
-          DIR=$(pwd) && sed -i -e '$a storeFile='$DIR'/upload-keystore.jks' ./key.properties
+          DIR=$(pwd) && sed -i -e '$a storeFile='$DIR'/app/upload-keystore.jks' ./key.properties
           if [[ -n "$KEY_JKS" ]] ; then echo "$KEY_JKS" | base64 --decode > app/upload-keystore.jks  ; fi
       - if: ${{ matrix.java-version }}
         uses: actions/setup-java@v2
