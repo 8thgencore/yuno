@@ -91,9 +91,9 @@ class _$TaskEditEventCopyWithImpl<$Res, $Val extends TaskEditEvent>
     implements $TaskEditEventCopyWith<$Res> {
   _$TaskEditEventCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
-// ignore: unused_field
+  // ignore: unused_field
   final $Res Function($Val) _then;
 }
 
@@ -1009,9 +1009,9 @@ class _$TaskEditStateCopyWithImpl<$Res, $Val extends TaskEditState>
     implements $TaskEditStateCopyWith<$Res> {
   _$TaskEditStateCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
-// ignore: unused_field
+  // ignore: unused_field
   final $Res Function($Val) _then;
 
   @pragma('vm:prefer-inline')
