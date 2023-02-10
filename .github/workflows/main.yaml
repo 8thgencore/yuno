@@ -75,15 +75,19 @@ jobs:
           encodedString: ${{ secrets.KEY_JKS }} # ${{ secrets.RELEASE_KEYSTORE }}
 
       - name: ⬇️ Create key.properties
+        env:
+          KEYSTORE_PASSPHRASE: ${{ secrets.KEYSTORE_PASSPHRASE }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEYSTORE_ALIAS: ${{ secrets.KEYSTORE_ALIAS }}
+          KEYSTORE_PATH: ${{ steps.android_keystore.outputs.fileName }}
         run: |
           DIR=$(pwd) && cp ${{ steps.android_keystore.outputs.filePath }} $DIR/android/app
-          echo "storeFile=upload-keystore.jks" > android/key.properties
-          echo "storePassword=${{ secrets.KEYSTORE_PASSPHRASE }}" >> android/key.properties
-          echo "keyPassword=${{ secrets.KEYSTORE_PASSWORD }}" >> android/key.properties
-          echo "keyAlias=${{ secrets.KEYSTORE_ALIAS }}" >> android/key.properties
-          ls -la android
-          ls -la android/app
-          cat android/app/upload-keystore.jks
+          echo "storePassword=$KEYSTORE_PASSPHRASE" >> android/key.properties
+          echo "keyPassword=$KEYSTORE_PASSWORD" >> android/key.properties
+          echo "keyAlias=$KEYSTORE_ALIAS" >> android/key.properties
+          echo "storeFile=$KEYSTORE_PATH" >> android/key.properties
+          cat android/key.properties
+
       - name: ⬇️ Import .env file
         env:
           BACKEND_URL: ${{ secrets.BACKEND_URL }}
@@ -91,7 +95,7 @@ jobs:
           if [[ -n "$BACKEND_URL" ]] ; then echo "$BACKEND_URL" > .env ; fi
 
       - if: ${{ matrix.java-version }}
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
           java-version: ${{ matrix.java-version }}
