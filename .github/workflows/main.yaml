@@ -76,15 +76,14 @@ jobs:
 
       - name: ⬇️ Create key.properties
         run: |
-          ls -la android
-          ls -la android/app
-          cat android/app/upload-keystore.jks
           DIR=$(pwd) && cp ${{ steps.android_keystore.outputs.filePath }} $DIR/android/app
           echo "storeFile=upload-keystore.jks" > android/key.properties
           echo "storePassword=${{ secrets.KEYSTORE_PASSPHRASE }}" >> android/key.properties
           echo "keyPassword=${{ secrets.KEYSTORE_PASSWORD }}" >> android/key.properties
           echo "keyAlias=${{ secrets.KEYSTORE_ALIAS }}" >> android/key.properties
-
+          ls -la android
+          ls -la android/app
+          cat android/app/upload-keystore.jks
       - name: ⬇️ Import .env file
         env:
           BACKEND_URL: ${{ secrets.BACKEND_URL }}
