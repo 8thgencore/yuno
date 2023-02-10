@@ -42,7 +42,6 @@ abstract class $PaginatedDataITaskWithProjectNameCopyWith<$Res> {
   factory $PaginatedDataITaskWithProjectNameCopyWith(PaginatedDataITaskWithProjectName value,
           $Res Function(PaginatedDataITaskWithProjectName) then) =
       _$PaginatedDataITaskWithProjectNameCopyWithImpl<$Res, PaginatedDataITaskWithProjectName>;
-
   @useResult
   $Res call(
       {List<ITaskWithProjectName> items,
@@ -115,7 +114,6 @@ abstract class _$$_PaginatedDataITaskWithProjectNameCopyWith<$Res>
   factory _$$_PaginatedDataITaskWithProjectNameCopyWith(_$_PaginatedDataITaskWithProjectName value,
           $Res Function(_$_PaginatedDataITaskWithProjectName) then) =
       __$$_PaginatedDataITaskWithProjectNameCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -198,7 +196,6 @@ class _$_PaginatedDataITaskWithProjectName implements _PaginatedDataITaskWithPro
       _$$_PaginatedDataITaskWithProjectNameFromJson(json);
 
   final List<ITaskWithProjectName> _items;
-
   @override
   List<ITaskWithProjectName> get items {
     if (_items is EqualUnmodifiableListView) return _items;
@@ -277,13 +274,10 @@ abstract class _PaginatedDataITaskWithProjectName implements PaginatedDataITaskW
 
   @override
   List<ITaskWithProjectName> get items;
-
   @override
   int get total;
-
   @override
   int get page;
-
   @override
   int get size;
   @override
@@ -291,11 +285,9 @@ abstract class _PaginatedDataITaskWithProjectName implements PaginatedDataITaskW
   @override
   @JsonKey(name: 'next_page')
   int? get nextPage;
-
   @override
   @JsonKey(name: 'previous_page')
   int? get previousPage;
-
   @override
   @JsonKey(ignore: true)
   _$$_PaginatedDataITaskWithProjectNameCopyWith<_$_PaginatedDataITaskWithProjectName>

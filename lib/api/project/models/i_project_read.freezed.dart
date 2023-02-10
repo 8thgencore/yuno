@@ -214,20 +214,15 @@ abstract class _IProjectRead implements IProjectRead {
 
   @override
   String get name;
-
   @override
   String get description;
-
   @override
   String get link;
-
   @override
   String get id;
-
   @override
   @JsonKey(name: 'created_by_id')
   String? get createdBy;
-
   @override
   @JsonKey(ignore: true)
   _$$_IProjectReadCopyWith<_$_IProjectRead> get copyWith => throw _privateConstructorUsedError;

@@ -29,7 +29,7 @@ class ProjectsListBloc extends Bloc<ProjectsListEvent, ProjectsListState> {
 
   final ApiProjectRepository apiProjectRepository;
 
-  static const _size = 5;
+  static const _size = 4;
   int _page = 1;
   int _pages = 1;
   List<IProjectWithUsers> _projects = [];

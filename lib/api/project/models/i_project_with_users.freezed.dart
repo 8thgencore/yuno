@@ -246,16 +246,12 @@ abstract class _IProjectWithUsers implements IProjectWithUsers {
 
   @override
   String get name;
-
   @override
   String get description;
-
   @override
   String get link;
-
   @override
   String get id;
-
   @override
   @JsonKey(name: 'created_by_id')
   String? get createdBy;

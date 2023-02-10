@@ -17,11 +17,17 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => LoginBloc(sl.get<ApiAuthRepository>()),
-      child: const LoaderOverlay(
+      child: LoaderOverlay(
         child: Scaffold(
-          // appBar: AppBar(toolbarHeight: 0, elevation: 0),
-          backgroundColor: AppColors.primary100,
-          body: SafeArea(
+          body: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                stops: [0.7, 1.0],
+                colors: [AppColors.primary100, AppColors.screen100],
+              ),
+            ),
             child: _LoginPageWidget(),
           ),
         ),

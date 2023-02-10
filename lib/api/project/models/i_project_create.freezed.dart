@@ -43,7 +43,6 @@ class _$IProjectCopyWithImpl<$Res, $Val extends IProject> implements $IProjectCo
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -75,7 +74,6 @@ class _$IProjectCopyWithImpl<$Res, $Val extends IProject> implements $IProjectCo
 abstract class _$$_IProjectCopyWith<$Res> implements $IProjectCopyWith<$Res> {
   factory _$$_IProjectCopyWith(_$_IProject value, $Res Function(_$_IProject) then) =
       __$$_IProjectCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({String name, String description, String link});
@@ -170,10 +168,8 @@ abstract class _IProject implements IProject {
   String get name;
   @override
   String get description;
-
   @override
   String get link;
-
   @override
   @JsonKey(ignore: true)
   _$$_IProjectCopyWith<_$_IProject> get copyWith => throw _privateConstructorUsedError;

@@ -35,7 +35,6 @@ mixin _$IImageMediaRead {
 abstract class $IImageMediaReadCopyWith<$Res> {
   factory $IImageMediaReadCopyWith(IImageMediaRead value, $Res Function(IImageMediaRead) then) =
       _$IImageMediaReadCopyWithImpl<$Res, IImageMediaRead>;
-
   @useResult
   $Res call(
       {@JsonKey(name: 'file_format') String fileFormat, IMediaRead media, int? width, int? height});
@@ -95,7 +94,6 @@ abstract class _$$_IImageMediaReadCopyWith<$Res> implements $IImageMediaReadCopy
   factory _$$_IImageMediaReadCopyWith(
           _$_IImageMediaRead value, $Res Function(_$_IImageMediaRead) then) =
       __$$_IImageMediaReadCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -210,13 +208,10 @@ abstract class _IImageMediaRead implements IImageMediaRead {
   @override
   @JsonKey(name: 'file_format')
   String get fileFormat;
-
   @override
   IMediaRead get media;
-
   @override
   int? get width;
-
   @override
   int? get height;
   @override
