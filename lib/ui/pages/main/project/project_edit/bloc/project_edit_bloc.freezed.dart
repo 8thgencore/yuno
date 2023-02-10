@@ -85,9 +85,9 @@ class _$ProjectEditEventCopyWithImpl<$Res, $Val extends ProjectEditEvent>
     implements $ProjectEditEventCopyWith<$Res> {
   _$ProjectEditEventCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
-// ignore: unused_field
+  // ignore: unused_field
   final $Res Function($Val) _then;
 }
 
@@ -800,9 +800,9 @@ class _$ProjectEditStateCopyWithImpl<$Res, $Val extends ProjectEditState>
     implements $ProjectEditStateCopyWith<$Res> {
   _$ProjectEditStateCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
-// ignore: unused_field
+  // ignore: unused_field
   final $Res Function($Val) _then;
 
   @pragma('vm:prefer-inline')

@@ -40,7 +40,6 @@ abstract class $ITaskWithProjectNameCopyWith<$Res> {
   factory $ITaskWithProjectNameCopyWith(
           ITaskWithProjectName value, $Res Function(ITaskWithProjectName) then) =
       _$ITaskWithProjectNameCopyWithImpl<$Res, ITaskWithProjectName>;
-
   @useResult
   $Res call(
       {String name,
@@ -58,7 +57,6 @@ class _$ITaskWithProjectNameCopyWithImpl<$Res, $Val extends ITaskWithProjectName
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -107,7 +105,6 @@ abstract class _$$_ITaskWithProjectNameCopyWith<$Res>
   factory _$$_ITaskWithProjectNameCopyWith(
           _$_ITaskWithProjectName value, $Res Function(_$_ITaskWithProjectName) then) =
       __$$_ITaskWithProjectNameCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(

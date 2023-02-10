@@ -19,6 +19,7 @@ class BaseResponse<T> {
 
   final String message;
   final Object meta;
+  // ignore: inference_failure_on_instance_creation
   @_Converter()
   final T data;
 

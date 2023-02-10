@@ -19,9 +19,15 @@ class RegistrationPage extends StatelessWidget {
       create: (context) => RegistrationBloc(sl.get<ApiAuthRepository>()),
       child: LoaderOverlay(
         child: Scaffold(
-          appBar: AppBar(toolbarHeight: 0, elevation: 0),
-          backgroundColor: AppColors.primary100,
-          body: const SafeArea(
+          body: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                stops: [0.7, 1.0],
+                colors: [AppColors.primary100, AppColors.screen100],
+              ),
+            ),
             child: _RegistrationPageWidget(),
           ),
         ),
@@ -43,8 +49,6 @@ class _RegistrationPageWidget extends StatelessWidget {
         if (state is RegistrationCompleted) {
           context.loaderOverlay.hide();
           context.goNamed(RouteName.login);
-
-          // Navigator.pushNamedAndRemoveUntil(context, RoutesPage.login, (route) => false);
         } else if (state is RegistrationInProgress) {
           context.loaderOverlay.show();
         } else if (state is RegistrationFieldsInfo) {
@@ -205,6 +209,7 @@ class _BottomWidgetState extends State<_BottomWidget> {
     // SchedulerBinding.instance.addPostFrameCallback((_) => _addFocusLostHandlers());
   }
 
+// ignore: unused_element
   void _addFocusLostHandlers() {
     _emailFocusNode.addListener(() {
       if (!_emailFocusNode.hasFocus) {

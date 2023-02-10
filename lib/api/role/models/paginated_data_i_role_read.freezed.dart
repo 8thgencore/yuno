@@ -41,7 +41,6 @@ abstract class $PaginatedDataIRoleReadCopyWith<$Res> {
   factory $PaginatedDataIRoleReadCopyWith(
           PaginatedDataIRoleRead value, $Res Function(PaginatedDataIRoleRead) then) =
       _$PaginatedDataIRoleReadCopyWithImpl<$Res, PaginatedDataIRoleRead>;
-
   @useResult
   $Res call(
       {List<IRoleRead> items,
@@ -60,7 +59,6 @@ class _$PaginatedDataIRoleReadCopyWithImpl<$Res, $Val extends PaginatedDataIRole
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -114,7 +112,6 @@ abstract class _$$_PaginatedDataIRoleReadCopyWith<$Res>
   factory _$$_PaginatedDataIRoleReadCopyWith(
           _$_PaginatedDataIRoleRead value, $Res Function(_$_PaginatedDataIRoleRead) then) =
       __$$_PaginatedDataIRoleReadCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(

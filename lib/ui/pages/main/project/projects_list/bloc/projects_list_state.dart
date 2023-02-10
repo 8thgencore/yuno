@@ -11,6 +11,7 @@ class ProjectsListState with _$ProjectsListState {
   const factory ProjectsListState.loaded(
     List<IProjectWithUsers> projects,
     bool isShowLoading,
+    bool isShowError,
   ) = _LoadedState;
 
   const factory ProjectsListState.failure(Object error) = _FailureState;

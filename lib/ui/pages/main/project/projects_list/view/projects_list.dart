@@ -74,7 +74,7 @@ class _ProjectListWidgetState extends State<_ProjectListWidget> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _scrollController.addListener(() {
         if (_scrollController.position.extentAfter < 300) {
-          context.read<ProjectsListBloc>().add(const ProjectsListEvent.scrollAutoLoaded());
+          context.read<ProjectsListBloc>().add(const ProjectsListEvent.autoLoaded());
         }
       });
     });
@@ -92,26 +92,51 @@ class _ProjectListWidgetState extends State<_ProjectListWidget> {
       builder: (context, state) => state.maybeWhen(
         initial: () => const Center(child: CircularProgressIndicator()),
         loading: () => const Center(child: CircularProgressIndicator()),
-        loaded: (projects, isShowLoading) => ListView.builder(
-          controller: _scrollController,
-          shrinkWrap: true,
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          itemCount: projects.length + (isShowLoading ? 1 : 0),
-          itemBuilder: (BuildContext context, int index) {
-            if (index == projects.length) {
-              if (isShowLoading) {
-                return Container(
-                  height: 128,
-                  alignment: Alignment.center,
-                  child: const CircularProgressIndicator(),
-                );
+        loaded: (projects, isShowLoading, isShowError) {
+          bool _haveExtraWidget = isShowLoading || isShowError;
+          return ListView.builder(
+            controller: _scrollController,
+            shrinkWrap: true,
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            itemCount: projects.length + (_haveExtraWidget ? 1 : 0),
+            itemBuilder: (BuildContext context, int index) {
+              if (index == projects.length) {
+                if (isShowLoading) {
+                  return Container(
+                    height: 120,
+                    alignment: Alignment.center,
+                    child: const CircularProgressIndicator(),
+                  );
+                } else if (isShowError) {
+                  return SizedBox(
+                    height: 120,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Spacer(),
+                        Text('Failed to upload data', style: AppTypography.r16d),
+                        TextButton(
+                          onPressed: () => context
+                              .read<ProjectsListBloc>()
+                              .add(const ProjectsListEvent.nextLoaded()),
+                          child: Text(
+                            'Try again',
+                            style: AppTypography.l14d.copyWith(color: AppColors.primary100),
+                          ),
+                        ),
+                        Spacer(),
+                      ],
+                    ),
+                  );
+                }
+              } else {
+                return _ProjectFullCardWidget(project: projects[index]);
               }
-            } else {
-              return _ProjectFullCardWidget(project: projects[index]);
-            }
-            return null;
-          },
-        ),
+              return null;
+            },
+          );
+        },
         failure: (error) => ErrorContainer(
           text: 'Failed to get a project from the server\n$error',
         ),

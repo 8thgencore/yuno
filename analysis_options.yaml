@@ -82,6 +82,9 @@ analyzer:
     # Allow having TODOs in the code.
     todo: ignore
 
+    # Other
+    invalid_annotation_target: ignore
+
 # LINTER Preferences
 #
 # Explicitly disable only the rules we do not want.

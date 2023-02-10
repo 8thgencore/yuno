@@ -19,21 +19,24 @@ mixin _$ProjectsListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isSelf) started,
-    required TResult Function() scrollAutoLoaded,
+    required TResult Function() nextLoaded,
+    required TResult Function() autoLoaded,
     required TResult Function() updated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool isSelf)? started,
-    TResult? Function()? scrollAutoLoaded,
+    TResult? Function()? nextLoaded,
+    TResult? Function()? autoLoaded,
     TResult? Function()? updated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isSelf)? started,
-    TResult Function()? scrollAutoLoaded,
+    TResult Function()? nextLoaded,
+    TResult Function()? autoLoaded,
     TResult Function()? updated,
     required TResult orElse(),
   }) =>
@@ -41,21 +44,24 @@ mixin _$ProjectsListEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
-    required TResult Function(_ScrollAutoLoadedEvent value) scrollAutoLoaded,
+    required TResult Function(_NextLoadedEvent value) nextLoaded,
+    required TResult Function(_AutoLoadedEvent value) autoLoaded,
     required TResult Function(_UpdatedEvent value) updated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
-    TResult? Function(_ScrollAutoLoadedEvent value)? scrollAutoLoaded,
+    TResult? Function(_NextLoadedEvent value)? nextLoaded,
+    TResult? Function(_AutoLoadedEvent value)? autoLoaded,
     TResult? Function(_UpdatedEvent value)? updated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
-    TResult Function(_ScrollAutoLoadedEvent value)? scrollAutoLoaded,
+    TResult Function(_NextLoadedEvent value)? nextLoaded,
+    TResult Function(_AutoLoadedEvent value)? autoLoaded,
     TResult Function(_UpdatedEvent value)? updated,
     required TResult orElse(),
   }) =>
@@ -143,7 +149,8 @@ class _$_StartedEvent implements _StartedEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isSelf) started,
-    required TResult Function() scrollAutoLoaded,
+    required TResult Function() nextLoaded,
+    required TResult Function() autoLoaded,
     required TResult Function() updated,
   }) {
     return started(isSelf);
@@ -153,7 +160,8 @@ class _$_StartedEvent implements _StartedEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool isSelf)? started,
-    TResult? Function()? scrollAutoLoaded,
+    TResult? Function()? nextLoaded,
+    TResult? Function()? autoLoaded,
     TResult? Function()? updated,
   }) {
     return started?.call(isSelf);
@@ -163,7 +171,8 @@ class _$_StartedEvent implements _StartedEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isSelf)? started,
-    TResult Function()? scrollAutoLoaded,
+    TResult Function()? nextLoaded,
+    TResult Function()? autoLoaded,
     TResult Function()? updated,
     required TResult orElse(),
   }) {
@@ -177,7 +186,8 @@ class _$_StartedEvent implements _StartedEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
-    required TResult Function(_ScrollAutoLoadedEvent value) scrollAutoLoaded,
+    required TResult Function(_NextLoadedEvent value) nextLoaded,
+    required TResult Function(_AutoLoadedEvent value) autoLoaded,
     required TResult Function(_UpdatedEvent value) updated,
   }) {
     return started(this);
@@ -187,7 +197,8 @@ class _$_StartedEvent implements _StartedEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
-    TResult? Function(_ScrollAutoLoadedEvent value)? scrollAutoLoaded,
+    TResult? Function(_NextLoadedEvent value)? nextLoaded,
+    TResult? Function(_AutoLoadedEvent value)? autoLoaded,
     TResult? Function(_UpdatedEvent value)? updated,
   }) {
     return started?.call(this);
@@ -197,7 +208,8 @@ class _$_StartedEvent implements _StartedEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
-    TResult Function(_ScrollAutoLoadedEvent value)? scrollAutoLoaded,
+    TResult Function(_NextLoadedEvent value)? nextLoaded,
+    TResult Function(_AutoLoadedEvent value)? autoLoaded,
     TResult Function(_UpdatedEvent value)? updated,
     required TResult orElse(),
   }) {
@@ -217,35 +229,35 @@ abstract class _StartedEvent implements ProjectsListEvent {
 }
 
 /// @nodoc
-abstract class _$$_ScrollAutoLoadedEventCopyWith<$Res> {
-  factory _$$_ScrollAutoLoadedEventCopyWith(
-          _$_ScrollAutoLoadedEvent value, $Res Function(_$_ScrollAutoLoadedEvent) then) =
-      __$$_ScrollAutoLoadedEventCopyWithImpl<$Res>;
+abstract class _$$_NextLoadedEventCopyWith<$Res> {
+  factory _$$_NextLoadedEventCopyWith(
+          _$_NextLoadedEvent value, $Res Function(_$_NextLoadedEvent) then) =
+      __$$_NextLoadedEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ScrollAutoLoadedEventCopyWithImpl<$Res>
-    extends _$ProjectsListEventCopyWithImpl<$Res, _$_ScrollAutoLoadedEvent>
-    implements _$$_ScrollAutoLoadedEventCopyWith<$Res> {
-  __$$_ScrollAutoLoadedEventCopyWithImpl(
-      _$_ScrollAutoLoadedEvent _value, $Res Function(_$_ScrollAutoLoadedEvent) _then)
+class __$$_NextLoadedEventCopyWithImpl<$Res>
+    extends _$ProjectsListEventCopyWithImpl<$Res, _$_NextLoadedEvent>
+    implements _$$_NextLoadedEventCopyWith<$Res> {
+  __$$_NextLoadedEventCopyWithImpl(
+      _$_NextLoadedEvent _value, $Res Function(_$_NextLoadedEvent) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ScrollAutoLoadedEvent implements _ScrollAutoLoadedEvent {
-  const _$_ScrollAutoLoadedEvent();
+class _$_NextLoadedEvent implements _NextLoadedEvent {
+  const _$_NextLoadedEvent();
 
   @override
   String toString() {
-    return 'ProjectsListEvent.scrollAutoLoaded()';
+    return 'ProjectsListEvent.nextLoaded()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ScrollAutoLoadedEvent);
+        (other.runtimeType == runtimeType && other is _$_NextLoadedEvent);
   }
 
   @override
@@ -255,32 +267,35 @@ class _$_ScrollAutoLoadedEvent implements _ScrollAutoLoadedEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isSelf) started,
-    required TResult Function() scrollAutoLoaded,
+    required TResult Function() nextLoaded,
+    required TResult Function() autoLoaded,
     required TResult Function() updated,
   }) {
-    return scrollAutoLoaded();
+    return nextLoaded();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool isSelf)? started,
-    TResult? Function()? scrollAutoLoaded,
+    TResult? Function()? nextLoaded,
+    TResult? Function()? autoLoaded,
     TResult? Function()? updated,
   }) {
-    return scrollAutoLoaded?.call();
+    return nextLoaded?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isSelf)? started,
-    TResult Function()? scrollAutoLoaded,
+    TResult Function()? nextLoaded,
+    TResult Function()? autoLoaded,
     TResult Function()? updated,
     required TResult orElse(),
   }) {
-    if (scrollAutoLoaded != null) {
-      return scrollAutoLoaded();
+    if (nextLoaded != null) {
+      return nextLoaded();
     }
     return orElse();
   }
@@ -289,39 +304,156 @@ class _$_ScrollAutoLoadedEvent implements _ScrollAutoLoadedEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
-    required TResult Function(_ScrollAutoLoadedEvent value) scrollAutoLoaded,
+    required TResult Function(_NextLoadedEvent value) nextLoaded,
+    required TResult Function(_AutoLoadedEvent value) autoLoaded,
     required TResult Function(_UpdatedEvent value) updated,
   }) {
-    return scrollAutoLoaded(this);
+    return nextLoaded(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
-    TResult? Function(_ScrollAutoLoadedEvent value)? scrollAutoLoaded,
+    TResult? Function(_NextLoadedEvent value)? nextLoaded,
+    TResult? Function(_AutoLoadedEvent value)? autoLoaded,
     TResult? Function(_UpdatedEvent value)? updated,
   }) {
-    return scrollAutoLoaded?.call(this);
+    return nextLoaded?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
-    TResult Function(_ScrollAutoLoadedEvent value)? scrollAutoLoaded,
+    TResult Function(_NextLoadedEvent value)? nextLoaded,
+    TResult Function(_AutoLoadedEvent value)? autoLoaded,
     TResult Function(_UpdatedEvent value)? updated,
     required TResult orElse(),
   }) {
-    if (scrollAutoLoaded != null) {
-      return scrollAutoLoaded(this);
+    if (nextLoaded != null) {
+      return nextLoaded(this);
     }
     return orElse();
   }
 }
 
-abstract class _ScrollAutoLoadedEvent implements ProjectsListEvent {
-  const factory _ScrollAutoLoadedEvent() = _$_ScrollAutoLoadedEvent;
+abstract class _NextLoadedEvent implements ProjectsListEvent {
+  const factory _NextLoadedEvent() = _$_NextLoadedEvent;
+}
+
+/// @nodoc
+abstract class _$$_AutoLoadedEventCopyWith<$Res> {
+  factory _$$_AutoLoadedEventCopyWith(
+          _$_AutoLoadedEvent value, $Res Function(_$_AutoLoadedEvent) then) =
+      __$$_AutoLoadedEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_AutoLoadedEventCopyWithImpl<$Res>
+    extends _$ProjectsListEventCopyWithImpl<$Res, _$_AutoLoadedEvent>
+    implements _$$_AutoLoadedEventCopyWith<$Res> {
+  __$$_AutoLoadedEventCopyWithImpl(
+      _$_AutoLoadedEvent _value, $Res Function(_$_AutoLoadedEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_AutoLoadedEvent implements _AutoLoadedEvent {
+  const _$_AutoLoadedEvent();
+
+  @override
+  String toString() {
+    return 'ProjectsListEvent.autoLoaded()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_AutoLoadedEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isSelf) started,
+    required TResult Function() nextLoaded,
+    required TResult Function() autoLoaded,
+    required TResult Function() updated,
+  }) {
+    return autoLoaded();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool isSelf)? started,
+    TResult? Function()? nextLoaded,
+    TResult? Function()? autoLoaded,
+    TResult? Function()? updated,
+  }) {
+    return autoLoaded?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isSelf)? started,
+    TResult Function()? nextLoaded,
+    TResult Function()? autoLoaded,
+    TResult Function()? updated,
+    required TResult orElse(),
+  }) {
+    if (autoLoaded != null) {
+      return autoLoaded();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StartedEvent value) started,
+    required TResult Function(_NextLoadedEvent value) nextLoaded,
+    required TResult Function(_AutoLoadedEvent value) autoLoaded,
+    required TResult Function(_UpdatedEvent value) updated,
+  }) {
+    return autoLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_StartedEvent value)? started,
+    TResult? Function(_NextLoadedEvent value)? nextLoaded,
+    TResult? Function(_AutoLoadedEvent value)? autoLoaded,
+    TResult? Function(_UpdatedEvent value)? updated,
+  }) {
+    return autoLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_StartedEvent value)? started,
+    TResult Function(_NextLoadedEvent value)? nextLoaded,
+    TResult Function(_AutoLoadedEvent value)? autoLoaded,
+    TResult Function(_UpdatedEvent value)? updated,
+    required TResult orElse(),
+  }) {
+    if (autoLoaded != null) {
+      return autoLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AutoLoadedEvent implements ProjectsListEvent {
+  const factory _AutoLoadedEvent() = _$_AutoLoadedEvent;
 }
 
 /// @nodoc
@@ -360,7 +492,8 @@ class _$_UpdatedEvent implements _UpdatedEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isSelf) started,
-    required TResult Function() scrollAutoLoaded,
+    required TResult Function() nextLoaded,
+    required TResult Function() autoLoaded,
     required TResult Function() updated,
   }) {
     return updated();
@@ -370,7 +503,8 @@ class _$_UpdatedEvent implements _UpdatedEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool isSelf)? started,
-    TResult? Function()? scrollAutoLoaded,
+    TResult? Function()? nextLoaded,
+    TResult? Function()? autoLoaded,
     TResult? Function()? updated,
   }) {
     return updated?.call();
@@ -380,7 +514,8 @@ class _$_UpdatedEvent implements _UpdatedEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isSelf)? started,
-    TResult Function()? scrollAutoLoaded,
+    TResult Function()? nextLoaded,
+    TResult Function()? autoLoaded,
     TResult Function()? updated,
     required TResult orElse(),
   }) {
@@ -394,7 +529,8 @@ class _$_UpdatedEvent implements _UpdatedEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
-    required TResult Function(_ScrollAutoLoadedEvent value) scrollAutoLoaded,
+    required TResult Function(_NextLoadedEvent value) nextLoaded,
+    required TResult Function(_AutoLoadedEvent value) autoLoaded,
     required TResult Function(_UpdatedEvent value) updated,
   }) {
     return updated(this);
@@ -404,7 +540,8 @@ class _$_UpdatedEvent implements _UpdatedEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
-    TResult? Function(_ScrollAutoLoadedEvent value)? scrollAutoLoaded,
+    TResult? Function(_NextLoadedEvent value)? nextLoaded,
+    TResult? Function(_AutoLoadedEvent value)? autoLoaded,
     TResult? Function(_UpdatedEvent value)? updated,
   }) {
     return updated?.call(this);
@@ -414,7 +551,8 @@ class _$_UpdatedEvent implements _UpdatedEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
-    TResult Function(_ScrollAutoLoadedEvent value)? scrollAutoLoaded,
+    TResult Function(_NextLoadedEvent value)? nextLoaded,
+    TResult Function(_AutoLoadedEvent value)? autoLoaded,
     TResult Function(_UpdatedEvent value)? updated,
     required TResult orElse(),
   }) {
@@ -435,7 +573,9 @@ mixin _$ProjectsListState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<IProjectWithUsers> projects, bool isShowLoading) loaded,
+    required TResult Function(
+            List<IProjectWithUsers> projects, bool isShowLoading, bool isShowError)
+        loaded,
     required TResult Function(Object error) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -443,7 +583,8 @@ mixin _$ProjectsListState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<IProjectWithUsers> projects, bool isShowLoading)? loaded,
+    TResult? Function(List<IProjectWithUsers> projects, bool isShowLoading, bool isShowError)?
+        loaded,
     TResult? Function(Object error)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -451,7 +592,8 @@ mixin _$ProjectsListState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<IProjectWithUsers> projects, bool isShowLoading)? loaded,
+    TResult Function(List<IProjectWithUsers> projects, bool isShowLoading, bool isShowError)?
+        loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) =>
@@ -495,9 +637,9 @@ class _$ProjectsListStateCopyWithImpl<$Res, $Val extends ProjectsListState>
     implements $ProjectsListStateCopyWith<$Res> {
   _$ProjectsListStateCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
-// ignore: unused_field
+  // ignore: unused_field
   final $Res Function($Val) _then;
 }
 
@@ -538,7 +680,9 @@ class _$_InitialState extends _InitialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<IProjectWithUsers> projects, bool isShowLoading) loaded,
+    required TResult Function(
+            List<IProjectWithUsers> projects, bool isShowLoading, bool isShowError)
+        loaded,
     required TResult Function(Object error) failure,
   }) {
     return initial();
@@ -549,7 +693,8 @@ class _$_InitialState extends _InitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<IProjectWithUsers> projects, bool isShowLoading)? loaded,
+    TResult? Function(List<IProjectWithUsers> projects, bool isShowLoading, bool isShowError)?
+        loaded,
     TResult? Function(Object error)? failure,
   }) {
     return initial?.call();
@@ -560,7 +705,8 @@ class _$_InitialState extends _InitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<IProjectWithUsers> projects, bool isShowLoading)? loaded,
+    TResult Function(List<IProjectWithUsers> projects, bool isShowLoading, bool isShowError)?
+        loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) {
@@ -650,7 +796,9 @@ class _$_LoadingState extends _LoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<IProjectWithUsers> projects, bool isShowLoading) loaded,
+    required TResult Function(
+            List<IProjectWithUsers> projects, bool isShowLoading, bool isShowError)
+        loaded,
     required TResult Function(Object error) failure,
   }) {
     return loading();
@@ -661,7 +809,8 @@ class _$_LoadingState extends _LoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<IProjectWithUsers> projects, bool isShowLoading)? loaded,
+    TResult? Function(List<IProjectWithUsers> projects, bool isShowLoading, bool isShowError)?
+        loaded,
     TResult? Function(Object error)? failure,
   }) {
     return loading?.call();
@@ -672,7 +821,8 @@ class _$_LoadingState extends _LoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<IProjectWithUsers> projects, bool isShowLoading)? loaded,
+    TResult Function(List<IProjectWithUsers> projects, bool isShowLoading, bool isShowError)?
+        loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) {
@@ -730,7 +880,7 @@ abstract class _$$_LoadedStateCopyWith<$Res> {
   factory _$$_LoadedStateCopyWith(_$_LoadedState value, $Res Function(_$_LoadedState) then) =
       __$$_LoadedStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<IProjectWithUsers> projects, bool isShowLoading});
+  $Res call({List<IProjectWithUsers> projects, bool isShowLoading, bool isShowError});
 }
 
 /// @nodoc
@@ -745,6 +895,7 @@ class __$$_LoadedStateCopyWithImpl<$Res>
   $Res call({
     Object? projects = null,
     Object? isShowLoading = null,
+    Object? isShowError = null,
   }) {
     return _then(_$_LoadedState(
       null == projects
@@ -755,6 +906,10 @@ class __$$_LoadedStateCopyWithImpl<$Res>
           ? _value.isShowLoading
           : isShowLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      null == isShowError
+          ? _value.isShowError
+          : isShowError // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -762,7 +917,7 @@ class __$$_LoadedStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LoadedState extends _LoadedState {
-  const _$_LoadedState(final List<IProjectWithUsers> projects, this.isShowLoading)
+  const _$_LoadedState(final List<IProjectWithUsers> projects, this.isShowLoading, this.isShowError)
       : _projects = projects,
         super._();
 
@@ -770,16 +925,18 @@ class _$_LoadedState extends _LoadedState {
   @override
   List<IProjectWithUsers> get projects {
     if (_projects is EqualUnmodifiableListView) return _projects;
-// ignore: implicit_dynamic_type
+    // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_projects);
   }
 
   @override
   final bool isShowLoading;
+  @override
+  final bool isShowError;
 
   @override
   String toString() {
-    return 'ProjectsListState.loaded(projects: $projects, isShowLoading: $isShowLoading)';
+    return 'ProjectsListState.loaded(projects: $projects, isShowLoading: $isShowLoading, isShowError: $isShowError)';
   }
 
   @override
@@ -789,12 +946,13 @@ class _$_LoadedState extends _LoadedState {
             other is _$_LoadedState &&
             const DeepCollectionEquality().equals(other._projects, _projects) &&
             (identical(other.isShowLoading, isShowLoading) ||
-                other.isShowLoading == isShowLoading));
+                other.isShowLoading == isShowLoading) &&
+            (identical(other.isShowError, isShowError) || other.isShowError == isShowError));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_projects), isShowLoading);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_projects), isShowLoading, isShowError);
 
   @JsonKey(ignore: true)
   @override
@@ -807,10 +965,12 @@ class _$_LoadedState extends _LoadedState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<IProjectWithUsers> projects, bool isShowLoading) loaded,
+    required TResult Function(
+            List<IProjectWithUsers> projects, bool isShowLoading, bool isShowError)
+        loaded,
     required TResult Function(Object error) failure,
   }) {
-    return loaded(projects, isShowLoading);
+    return loaded(projects, isShowLoading, isShowError);
   }
 
   @override
@@ -818,10 +978,11 @@ class _$_LoadedState extends _LoadedState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<IProjectWithUsers> projects, bool isShowLoading)? loaded,
+    TResult? Function(List<IProjectWithUsers> projects, bool isShowLoading, bool isShowError)?
+        loaded,
     TResult? Function(Object error)? failure,
   }) {
-    return loaded?.call(projects, isShowLoading);
+    return loaded?.call(projects, isShowLoading, isShowError);
   }
 
   @override
@@ -829,12 +990,13 @@ class _$_LoadedState extends _LoadedState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<IProjectWithUsers> projects, bool isShowLoading)? loaded,
+    TResult Function(List<IProjectWithUsers> projects, bool isShowLoading, bool isShowError)?
+        loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(projects, isShowLoading);
+      return loaded(projects, isShowLoading, isShowError);
     }
     return orElse();
   }
@@ -878,12 +1040,13 @@ class _$_LoadedState extends _LoadedState {
 }
 
 abstract class _LoadedState extends ProjectsListState {
-  const factory _LoadedState(final List<IProjectWithUsers> projects, final bool isShowLoading) =
-      _$_LoadedState;
+  const factory _LoadedState(final List<IProjectWithUsers> projects, final bool isShowLoading,
+      final bool isShowError) = _$_LoadedState;
   const _LoadedState._() : super._();
 
   List<IProjectWithUsers> get projects;
   bool get isShowLoading;
+  bool get isShowError;
   @JsonKey(ignore: true)
   _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith => throw _privateConstructorUsedError;
 }
@@ -949,7 +1112,9 @@ class _$_FailureState extends _FailureState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<IProjectWithUsers> projects, bool isShowLoading) loaded,
+    required TResult Function(
+            List<IProjectWithUsers> projects, bool isShowLoading, bool isShowError)
+        loaded,
     required TResult Function(Object error) failure,
   }) {
     return failure(error);
@@ -960,7 +1125,8 @@ class _$_FailureState extends _FailureState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<IProjectWithUsers> projects, bool isShowLoading)? loaded,
+    TResult? Function(List<IProjectWithUsers> projects, bool isShowLoading, bool isShowError)?
+        loaded,
     TResult? Function(Object error)? failure,
   }) {
     return failure?.call(error);
@@ -971,7 +1137,8 @@ class _$_FailureState extends _FailureState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<IProjectWithUsers> projects, bool isShowLoading)? loaded,
+    TResult Function(List<IProjectWithUsers> projects, bool isShowLoading, bool isShowError)?
+        loaded,
     TResult Function(Object error)? failure,
     required TResult orElse(),
   }) {

@@ -8,7 +8,9 @@ import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/domain/repository/api_project_repository.dart';
 
 part 'projects_list_bloc.freezed.dart';
+
 part 'projects_list_event.dart';
+
 part 'projects_list_state.dart';
 
 class ProjectsListBloc extends Bloc<ProjectsListEvent, ProjectsListState> {
@@ -19,14 +21,15 @@ class ProjectsListBloc extends Bloc<ProjectsListEvent, ProjectsListState> {
       (event, emit) => event.map(
         started: (event) => _onProjectsLoaded(event, emit),
         updated: (event) => _onProjectsUpdated(event, emit),
-        scrollAutoLoaded: (event) => _onProjectAutoLoaded(event, emit),
+        nextLoaded: (event) => _onProjectNextLoaded(event, emit),
+        autoLoaded: (event) => _onProjectAutoLoaded(event, emit),
       ),
     );
   }
 
   final ApiProjectRepository apiProjectRepository;
 
-  static const _size = 5;
+  static const _size = 4;
   int _page = 1;
   int _pages = 1;
   List<IProjectWithUsers> _projects = [];
@@ -51,8 +54,21 @@ class ProjectsListBloc extends Bloc<ProjectsListEvent, ProjectsListState> {
     await _loadProject(emit);
   }
 
+  FutureOr<void> _onProjectNextLoaded(
+    _NextLoadedEvent event,
+    Emitter<ProjectsListState> emit,
+  ) async {
+    if (_loading) {
+      return;
+    }
+    emit(ProjectsListState.loaded(_projects, true, false));
+    _loading = true;
+    await _loadProject(emit);
+    _loading = false;
+  }
+
   FutureOr<void> _onProjectAutoLoaded(
-    _ScrollAutoLoadedEvent event,
+    _AutoLoadedEvent event,
     Emitter<ProjectsListState> emit,
   ) async {
     if (_loading) {
@@ -63,7 +79,7 @@ class ProjectsListBloc extends Bloc<ProjectsListEvent, ProjectsListState> {
     } else {
       return;
     }
-    emit(ProjectsListState.loaded(_projects, true));
+    emit(ProjectsListState.loaded(_projects, true, false));
     _loading = true;
     await _loadProject(emit);
     _loading = false;
@@ -79,13 +95,12 @@ class ProjectsListBloc extends Bloc<ProjectsListEvent, ProjectsListState> {
       } else {
         projects = await apiProjectRepository.getProjects(page: _page, size: _size);
       }
-      if (projects != null) {
-        _projects = [..._projects, ...projects.items];
-        _pages = projects.pages;
-      }
-      emit(ProjectsListState.loaded(_projects, false));
-    } on DioError catch (dioError) {
-      emit(ProjectsListState.failure(dioErrorInterceptor(dioError).toString()));
+
+      _projects = [..._projects, ...projects.items];
+      _pages = projects.pages;
+      emit(ProjectsListState.loaded(_projects, false, false));
+    } on DioError catch (_) {
+      emit(ProjectsListState.loaded(_projects, false, true));
     }
   }
 }
