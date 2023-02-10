@@ -76,6 +76,8 @@ jobs:
 
       - name: ⬇️ Create key.properties
         run: |
+          echo $DIR
+          echo ${{ steps.android_keystore.outputs.filePath }}
           DIR=$(pwd) && cp ${{ steps.android_keystore.outputs.filePath }} $DIR/app
           echo "storeFile=upload-keystore.jks" > android/key.properties
           echo "storePassword=${{ secrets.KEYSTORE_PASSPHRASE }}" >> android/key.properties
