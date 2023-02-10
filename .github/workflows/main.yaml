@@ -79,9 +79,8 @@ jobs:
           KEYSTORE_PASSPHRASE: ${{ secrets.KEYSTORE_PASSPHRASE }}
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEYSTORE_ALIAS: ${{ secrets.KEYSTORE_ALIAS }}
-          KEYSTORE_PATH: ${{ steps.android_keystore.outputs.fileName }}
+          KEYSTORE_PATH: ${{ steps.android_keystore.outputs.filePath }}
         run: |
-          DIR=$(pwd) && cp ${{ steps.android_keystore.outputs.filePath }} $DIR/android/app
           echo "storePassword=$KEYSTORE_PASSPHRASE" >> android/key.properties
           echo "keyPassword=$KEYSTORE_PASSWORD" >> android/key.properties
           echo "keyAlias=$KEYSTORE_ALIAS" >> android/key.properties
