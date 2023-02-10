@@ -1,0 +1,110 @@
+name: ♦ Yuno CI
+
+on:
+  push:
+    branches:
+      - ci-cd
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  analyze:
+    name: 🔎 Run analyzer and formatter
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+
+    steps:
+      - name: ⬆️ Checkout
+        uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.7.3'
+          cache: true
+
+      - name: ⬇️ Import files
+        env:
+          BACKEND_URL: ${{ secrets.BACKEND_URL }}
+          KEY_JKS: ${{ secrets.KEY_JKS }}
+          KEY_PROPERTIES: ${{ secrets.KEY_PROPERTIES }}
+        run: |
+          if [[ -n "$BACKEND_URL" ]] ; then echo "$BACKEND_URL" > .env ; fi
+          cd android
+          if [[ -n "$KEY_PROPERTIES" ]] ; then echo "$KEY_PROPERTIES" | base64 --decode > key.properties  ; fi
+          if [[ -n "$KEY_JKS" ]] ; then echo "$KEY_JKS" | base64 --decode > app/upload-keystore.jks  ; fi
+
+      - name: 📦 Get dependencies
+        run: |
+          flutter clean
+          flutter pub get
+          flutter doctor -v
+
+      - name: 🔍 Analyze code
+        run: |
+          flutter analyze
+          dart format --set-exit-if-changed --line-length=100 ./lib
+
+  build:
+    needs: [ analyze ]
+    name: 🔨 Build ${{ matrix.target }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        target: [ 'android' ]
+        include:
+          - target: android
+            os: ubuntu-latest
+            build-args: 'apk'
+            # build-args: 'apk --split-per-abi'
+            java-version: '11'
+
+    steps:
+      - name: ⬆️ Checkout
+        uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.7.3'
+          cache: true
+
+      - name: ⬇️ Download Android keystore
+        id: android_keystore
+        uses: timheuer/base64-to-file@v1.2
+        with:
+          fileName: upload-keystore.jks
+          encodedString: ${{ secrets.KEYSTORE_JKS }}
+
+      - name: ⬇️ Create key.properties
+        env:
+          KEYSTORE_PASSPHRASE: ${{ secrets.KEYSTORE_PASSPHRASE }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEYSTORE_ALIAS: ${{ secrets.KEYSTORE_ALIAS }}
+          KEYSTORE_PATH: ${{ steps.android_keystore.outputs.filePath }}
+        run: |
+          echo "storePassword=$KEYSTORE_PASSPHRASE" >> android/key.properties
+          echo "keyPassword=$KEYSTORE_PASSWORD" >> android/key.properties
+          echo "keyAlias=$KEYSTORE_ALIAS" >> android/key.properties
+          echo "storeFile=$KEYSTORE_PATH" >> android/key.properties
+
+      - name: ⬇️ Import .env file
+        env:
+          BACKEND_URL: ${{ secrets.BACKEND_URL }}
+        run: |
+          if [[ -n "$BACKEND_URL" ]] ; then echo "$BACKEND_URL" > .env ; fi
+
+      - if: ${{ matrix.java-version }}
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: ${{ matrix.java-version }}
+
+      - name: 🏭 Build production
+        run: |
+          flutter build ${{ matrix.build-args }} --release --flavor production --target lib/main_production.dart
+          cp build/app/outputs/flutter-apk/app-production-release.apk yuno-android.apk
+
+      - name: ⬆️ Upload generated apk to the artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: apk
+          path: yuno-android.apk
