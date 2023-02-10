@@ -85,9 +85,6 @@ jobs:
           echo "keyPassword=$KEYSTORE_PASSWORD" >> android/key.properties
           echo "keyAlias=$KEYSTORE_ALIAS" >> android/key.properties
           echo "storeFile=$KEYSTORE_PATH" >> android/key.properties
-          echo $DIR/android/app/upload-keystore.jks
-          echo $DIR/android/key.properties
-          echo $KEYSTORE_PATH
 
       - name: ⬇️ Import .env file
         env:
@@ -110,4 +107,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: apk
-          path: app/yuno-android.apk
+          path: yuno-android.apk
