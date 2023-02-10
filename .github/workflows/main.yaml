@@ -71,6 +71,7 @@ jobs:
         id: android_keystore
         uses: timheuer/base64-to-file@v1.2
         with:
+          fileName: upload-keystore.jks
           encodedString: ${{ secrets.KEY_JKS }} # ${{ secrets.RELEASE_KEYSTORE }}
 
       - name: ⬇️ Create key.properties
