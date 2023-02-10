@@ -72,21 +72,19 @@ jobs:
         uses: timheuer/base64-to-file@v1.2
         with:
           fileName: upload-keystore.jks
-          encodedString: ${{ secrets.KEY_JKS }} # ${{ secrets.RELEASE_KEYSTORE }}
+          encodedString: ${{ secrets.KEYSTORE_JKS }}
 
       - name: ⬇️ Create key.properties
         env:
           KEYSTORE_PASSPHRASE: ${{ secrets.KEYSTORE_PASSPHRASE }}
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEYSTORE_ALIAS: ${{ secrets.KEYSTORE_ALIAS }}
-          KEYSTORE_PATH: ${{ steps.android_keystore.outputs.fileName }}
+          KEYSTORE_PATH: ${{ steps.android_keystore.outputs.filePath }}
         run: |
-          DIR=$(pwd) && cp ${{ steps.android_keystore.outputs.filePath }} $DIR/android/app
           echo "storePassword=$KEYSTORE_PASSPHRASE" >> android/key.properties
           echo "keyPassword=$KEYSTORE_PASSWORD" >> android/key.properties
           echo "keyAlias=$KEYSTORE_ALIAS" >> android/key.properties
           echo "storeFile=$KEYSTORE_PATH" >> android/key.properties
-          cat android/key.properties
 
       - name: ⬇️ Import .env file
         env:
@@ -109,4 +107,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: apk
-          path: app/yuno-android.apk
+          path: yuno-android.apk

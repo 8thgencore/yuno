@@ -153,10 +153,8 @@ abstract class _IProjectUpdate implements IProjectUpdate {
 
   @override
   String get name;
-
   @override
   String get description;
-
   @override
   @JsonKey(ignore: true)
   _$$_IProjectUpdateCopyWith<_$_IProjectUpdate> get copyWith => throw _privateConstructorUsedError;

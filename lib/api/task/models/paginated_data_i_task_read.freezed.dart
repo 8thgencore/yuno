@@ -41,7 +41,6 @@ abstract class $PaginatedDataITaskReadCopyWith<$Res> {
   factory $PaginatedDataITaskReadCopyWith(
           PaginatedDataITaskRead value, $Res Function(PaginatedDataITaskRead) then) =
       _$PaginatedDataITaskReadCopyWithImpl<$Res, PaginatedDataITaskRead>;
-
   @useResult
   $Res call(
       {List<ITaskRead> items,
@@ -60,7 +59,6 @@ class _$PaginatedDataITaskReadCopyWithImpl<$Res, $Val extends PaginatedDataITask
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -114,7 +112,6 @@ abstract class _$$_PaginatedDataITaskReadCopyWith<$Res>
   factory _$$_PaginatedDataITaskReadCopyWith(
           _$_PaginatedDataITaskRead value, $Res Function(_$_PaginatedDataITaskRead) then) =
       __$$_PaginatedDataITaskReadCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(

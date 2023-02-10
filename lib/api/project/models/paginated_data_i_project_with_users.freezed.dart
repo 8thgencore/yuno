@@ -31,7 +31,6 @@ mixin _$PaginatedDataIProjectWithUsers {
   int? get previousPage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $PaginatedDataIProjectWithUsersCopyWith<PaginatedDataIProjectWithUsers> get copyWith =>
       throw _privateConstructorUsedError;
@@ -42,7 +41,6 @@ abstract class $PaginatedDataIProjectWithUsersCopyWith<$Res> {
   factory $PaginatedDataIProjectWithUsersCopyWith(PaginatedDataIProjectWithUsers value,
           $Res Function(PaginatedDataIProjectWithUsers) then) =
       _$PaginatedDataIProjectWithUsersCopyWithImpl<$Res, PaginatedDataIProjectWithUsers>;
-
   @useResult
   $Res call(
       {List<IProjectWithUsers> items,
@@ -115,7 +113,6 @@ abstract class _$$_PaginatedDataIProjectWithUsersCopyWith<$Res>
   factory _$$_PaginatedDataIProjectWithUsersCopyWith(_$_PaginatedDataIProjectWithUsers value,
           $Res Function(_$_PaginatedDataIProjectWithUsers) then) =
       __$$_PaginatedDataIProjectWithUsersCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -197,7 +194,6 @@ class _$_PaginatedDataIProjectWithUsers implements _PaginatedDataIProjectWithUse
       _$$_PaginatedDataIProjectWithUsersFromJson(json);
 
   final List<IProjectWithUsers> _items;
-
   @override
   List<IProjectWithUsers> get items {
     if (_items is EqualUnmodifiableListView) return _items;
@@ -285,11 +281,9 @@ abstract class _PaginatedDataIProjectWithUsers implements PaginatedDataIProjectW
   @override
   @JsonKey(name: 'next_page')
   int? get nextPage;
-
   @override
   @JsonKey(name: 'previous_page')
   int? get previousPage;
-
   @override
   @JsonKey(ignore: true)
   _$$_PaginatedDataIProjectWithUsersCopyWith<_$_PaginatedDataIProjectWithUsers> get copyWith =>

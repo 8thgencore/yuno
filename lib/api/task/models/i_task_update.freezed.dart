@@ -166,13 +166,10 @@ abstract class _ITaskUpdate implements ITaskUpdate {
 
   @override
   String? get name;
-
   @override
   bool? get done;
-
   @override
   DateTime? get deadline;
-
   @override
   @JsonKey(ignore: true)
   _$$_ITaskUpdateCopyWith<_$_ITaskUpdate> get copyWith => throw _privateConstructorUsedError;
