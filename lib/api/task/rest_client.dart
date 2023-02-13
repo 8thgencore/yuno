@@ -24,6 +24,13 @@ abstract class TaskClient {
     @Query('size') int? size = 50,
   });
 
+  @GET('/task/by_deadline')
+  Future<BaseResponse<PaginatedDataITaskWithProjectName>> getTaskByDeadline({
+    @Query('date') required String date,
+    @Query('page') int? page = 1,
+    @Query('size') int? size = 50,
+  });
+
   @POST('/task')
   Future<BaseResponse<ITaskRead>> postTask({
     @Body() required ITaskCreate body,
