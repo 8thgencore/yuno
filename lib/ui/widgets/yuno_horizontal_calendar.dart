@@ -5,10 +5,25 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:yuno/resources/resources.dart';
 
+/// Signature for a function that detects when a tap is occurred.
+///
+/// Used by [DatePickerTimeline] for tap detection.
+typedef DateSelectionCallback = void Function(DateTime selectedDate);
+
+/// Signature for a function that is called when selected date is changed
+///
+/// Used by [DatePickerTimeline] for tap detection.
+typedef DateChangeListener = void Function(DateTime selectedDate);
+
 class YunoHorizontalCalendarWidget extends StatefulWidget {
-  const YunoHorizontalCalendarWidget({this.itemCount = 50, Key? key}) : super(key: key);
+  const YunoHorizontalCalendarWidget({
+    this.itemCount = 50,
+    this.onDateChange,
+    super.key,
+  });
 
   final int itemCount;
+  final DateChangeListener? onDateChange;
 
   @override
   State<YunoHorizontalCalendarWidget> createState() => _YunoHorizontalCalendarWidgetState();
@@ -70,6 +85,9 @@ class _YunoHorizontalCalendarWidgetState extends State<YunoHorizontalCalendarWid
               // if (widget.onDateChange != null) {
               //   widget.onDateChange!(selectedDate);
               // }
+              if (widget.onDateChange != null) {
+                widget.onDateChange!(selectedDate);
+              }
               setState(() => _selectedDate = selectedDate);
             },
           );
@@ -84,16 +102,6 @@ class _YunoHorizontalCalendarWidgetState extends State<YunoHorizontalCalendarWid
     return date1.day == date2.day && date1.month == date2.month && date1.year == date2.year;
   }
 }
-
-/// Signature for a function that detects when a tap is occurred.
-///
-/// Used by [DatePickerTimeline] for tap detection.
-typedef DateSelectionCallback = void Function(DateTime selectedDate);
-
-/// Signature for a function that is called when selected date is changed
-///
-/// Used by [DatePickerTimeline] for tap detection.
-typedef DateChangeListener = void Function(DateTime selectedDate);
 
 class DateWidget extends StatelessWidget {
   final double? width;

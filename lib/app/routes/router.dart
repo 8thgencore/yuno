@@ -12,7 +12,8 @@ import 'package:yuno/domain/repository/api_task_repository.dart';
 import 'package:yuno/domain/repository/api_user_repository.dart';
 import 'package:yuno/ui/pages/auth/login/view/login_page.dart';
 import 'package:yuno/ui/pages/auth/registration/view/registration_page.dart';
-import 'package:yuno/ui/pages/main/calendar/view/statistics_page.dart';
+import 'package:yuno/ui/pages/main/calendar/bloc/calendar_bloc.dart';
+import 'package:yuno/ui/pages/main/calendar/view/calendar_page.dart';
 import 'package:yuno/ui/pages/main/home/bloc/home_checklist_bloc.dart';
 import 'package:yuno/ui/pages/main/home/bloc/home_header_bloc.dart';
 import 'package:yuno/ui/pages/main/home/bloc/home_projects_bloc.dart';
@@ -95,7 +96,12 @@ mixin RouterMixin on State<App> {
             GoRoute(
               name: RouteName.calendar,
               path: RoutePath.calendar,
-              builder: (_, __) => const CalendarPage(),
+              builder: (context, state) => BlocProvider(
+                create: (context) => CalendarBloc(
+                  apiTaskRepository: sl.get<ApiTaskRepository>(),
+                )..add(const CalendarEvent.started()),
+                child: CalendarPage(),
+              ),
             ),
             GoRoute(
               name: RouteName.statistics,

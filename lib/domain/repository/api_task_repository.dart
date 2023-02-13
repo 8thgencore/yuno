@@ -30,7 +30,6 @@ class ApiTaskRepository {
   Future<List<ITaskWithProjectName>> getTaskByDeadline(String date) async {
     final response = await taskClient.getTaskByDeadline(date: date);
     final tasks = response.data.items;
-    await tasksNotDoneDataRepository.setItem(tasks);
 
     return tasks;
   }
