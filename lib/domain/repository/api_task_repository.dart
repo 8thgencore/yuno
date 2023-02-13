@@ -27,6 +27,13 @@ class ApiTaskRepository {
     return tasks;
   }
 
+  Future<List<ITaskWithProjectName>> getTaskByDeadline(String date) async {
+    final response = await taskClient.getTaskByDeadline(date: date);
+    final tasks = response.data.items;
+
+    return tasks;
+  }
+
   Future<List<ITaskWithProjectName>?> getCachedNotDoneTasks() async {
     final tasks = await tasksNotDoneDataRepository.getItem();
 

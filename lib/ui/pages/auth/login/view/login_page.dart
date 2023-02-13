@@ -216,7 +216,7 @@ class _FingerprintWidget extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.all(12),
-            child: Image.asset(Assets.images.fingerprint.path),
+            child: Assets.svg.icFinger.svg(),
           ),
         ),
         Text(

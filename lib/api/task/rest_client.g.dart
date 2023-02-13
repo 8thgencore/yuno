@@ -85,6 +85,41 @@ class _TaskClient implements TaskClient {
   }
 
   @override
+  Future<BaseResponse<PaginatedDataITaskWithProjectName>> getTaskByDeadline({
+    required date,
+    page = 1,
+    size = 50,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'date': date,
+      r'page': page,
+      r'size': size,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BaseResponse<PaginatedDataITaskWithProjectName>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/task/by_deadline',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = BaseResponse<PaginatedDataITaskWithProjectName>.fromJson(
+      _result.data!,
+      (json) => PaginatedDataITaskWithProjectName.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
   Future<BaseResponse<ITaskRead>> postTask({required body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

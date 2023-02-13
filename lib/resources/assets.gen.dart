@@ -94,11 +94,11 @@ class $AssetsFontsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/add_new_task.png
+  AssetGenImage get addNewTask => const AssetGenImage('assets/images/add_new_task.png');
+
   /// File path: assets/images/avatar.jpg
   AssetGenImage get avatar => const AssetGenImage('assets/images/avatar.jpg');
-
-  /// File path: assets/images/fingerprint.png
-  AssetGenImage get fingerprint => const AssetGenImage('assets/images/fingerprint.png');
 
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
@@ -110,7 +110,7 @@ class $AssetsImagesGen {
   AssetGenImage get splashOrnament => const AssetGenImage('assets/images/splash_ornament.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [avatar, fingerprint, logo, signOrnament, splashOrnament];
+  List<AssetGenImage> get values => [addNewTask, avatar, logo, signOrnament, splashOrnament];
 }
 
 class $AssetsSvgGen {
@@ -142,6 +142,9 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/home_top_ornament.svg
   SvgGenImage get homeTopOrnament => const SvgGenImage('assets/svg/home_top_ornament.svg');
+
+  /// File path: assets/svg/ic_finger.svg
+  SvgGenImage get icFinger => const SvgGenImage('assets/svg/ic_finger.svg');
 
   /// File path: assets/svg/lock.svg
   SvgGenImage get lock => const SvgGenImage('assets/svg/lock.svg');
@@ -184,6 +187,7 @@ class $AssetsSvgGen {
         grid,
         gridFilled,
         homeTopOrnament,
+        icFinger,
         lock,
         logout,
         pencil,
