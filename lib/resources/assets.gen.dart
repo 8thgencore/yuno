@@ -94,6 +94,9 @@ class $AssetsFontsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/add_new_task.png
+  AssetGenImage get addNewTask => const AssetGenImage('assets/images/add_new_task.png');
+
   /// File path: assets/images/avatar.jpg
   AssetGenImage get avatar => const AssetGenImage('assets/images/avatar.jpg');
 
