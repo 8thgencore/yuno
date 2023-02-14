@@ -6,6 +6,7 @@ import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/calendar/bloc/calendar_bloc.dart';
 import 'package:yuno/ui/widgets/error_container.dart';
+import 'package:yuno/ui/widgets/loading_container.dart';
 import 'package:yuno/ui/widgets/task_card_widget.dart';
 import 'package:yuno/ui/widgets/yuno_horizontal_calendar.dart';
 
@@ -67,7 +68,7 @@ class _HeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final outputFormat = DateFormat('MMMM dd, yyyy');
+    final outputFormat = DateFormat('MMM dd, yyyy');
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -99,7 +100,7 @@ class _CheckListBuilderWidget extends StatelessWidget {
         ),
         BlocBuilder<CalendarBloc, CalendarState>(
           builder: (context, state) => state.maybeWhen(
-            loading: () => const Center(child: CircularProgressIndicator()),
+            loading: () => LoadingContainer(),
             loaded: (date, tasks) => tasks.isNotEmpty
                 ? ListView.builder(
                     shrinkWrap: true,
@@ -133,11 +134,12 @@ class _CheckListBuilderWidget extends StatelessWidget {
                     },
                   )
                 : Container(
+                    padding: EdgeInsets.symmetric(horizontal: 24),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(height: 16),
-                        Image.asset(Assets.images.addNewTask.path),
+                        Image.asset(Assets.images.checklistEmpty.path),
                         SizedBox(height: 32),
                         Text(
                           'Woops, No Checklist Yet!',

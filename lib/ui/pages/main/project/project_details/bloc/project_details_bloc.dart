@@ -41,6 +41,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
   IProjectWithUsersTasks? _project;
   String _projectId = '';
   final List<ITaskRead> _tasks = [];
+  double _percentDone = 0;
   bool _isMember = false;
   bool _isOwner = false;
 
@@ -94,6 +95,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
       emit(ProjectDetailsState.loaded(
         project: _project!,
         tasks: _tasks,
+        percentDone: _percentDone,
         isMember: _isMember,
         isOwner: _isOwner,
       ));
@@ -167,9 +169,15 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
       _isMember = users.where((u) => u.id == user.id).isNotEmpty;
       _isOwner = project.createdBy == user.id;
     }
+    if (_tasks.length != 0) {
+      _percentDone = _tasks.where((t) => t.done == true).length / _tasks.length;
+    } else {
+      _percentDone = 0;
+    }
     emit(ProjectDetailsState.loaded(
       project: project,
       tasks: _tasks,
+      percentDone: _percentDone,
       isMember: _isMember,
       isOwner: _isOwner,
     ));

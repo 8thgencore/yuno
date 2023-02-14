@@ -100,6 +100,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/avatar.jpg
   AssetGenImage get avatar => const AssetGenImage('assets/images/avatar.jpg');
 
+  /// File path: assets/images/checklist_empty.png
+  AssetGenImage get checklistEmpty => const AssetGenImage('assets/images/checklist_empty.png');
+
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
@@ -110,7 +113,7 @@ class $AssetsImagesGen {
   AssetGenImage get splashOrnament => const AssetGenImage('assets/images/splash_ornament.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [addNewTask, avatar, logo, signOrnament, splashOrnament];
+  List<AssetGenImage> get values => [avatar, checklistEmpty, logo, signOrnament, splashOrnament];
 }
 
 class $AssetsSvgGen {
