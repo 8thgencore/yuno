@@ -17,7 +17,7 @@ part 'profile_edit_state.dart';
 
 class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
   ProfileEditBloc({
-    required this.apiUserRepository,
+    required this.userRepository,
   }) : super(
           const ProfileEditState(
             status: ProfileEditStatus.initial,
@@ -40,7 +40,7 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
     );
   }
 
-  final ApiUserRepository apiUserRepository;
+  final IUserRepository userRepository;
 
   IUserRead? _user;
 
@@ -61,7 +61,7 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
     // As a result, we will get a beautiful animation for the TextField when opening the page
     await Future.delayed(Duration(milliseconds: 100), () {});
 
-    final user = await apiUserRepository.getCachedData();
+    final user = await userRepository.getCachedData();
     if (user != null) {
       _user = user;
       _emailError = _validateEmail();
@@ -94,7 +94,7 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
         return;
       }
 
-      final result = await apiUserRepository.updateDataById(
+      final result = await userRepository.updateDataById(
         firstName: _user!.firstName,
         lastName: _user!.lastName,
         email: _user!.email,

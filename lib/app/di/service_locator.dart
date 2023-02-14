@@ -93,7 +93,7 @@ void _setApiRelatedClasses() {
     () => ProjectClient(sl.get<Dio>(instanceName: _authorizedDio)),
   );
 
-  sl.registerLazySingleton<ApiAuthRepository>(
+  sl.registerLazySingleton<IAuthRepository>(
     () => ApiAuthRepository(
       authClient: sl.get<AuthClient>(),
       authPasswordClient: sl.get<AuthPasswordClient>(),
@@ -102,20 +102,20 @@ void _setApiRelatedClasses() {
       refreshTokenDataRepository: sl.get<RefreshTokenDataRepository>(),
     ),
   );
-  sl.registerLazySingleton<ApiUserRepository>(
+  sl.registerLazySingleton<IUserRepository>(
     () => ApiUserRepository(
       userClient: sl.get<UserClient>(),
       userDataRepository: sl.get<UserDataRepository>(),
       tokenDataRepository: sl.get<TokenDataRepository>(),
     ),
   );
-  sl.registerLazySingleton<ApiTaskRepository>(
+  sl.registerLazySingleton<ITaskRepository>(
     () => ApiTaskRepository(
       taskClient: sl.get<TaskClient>(),
       tasksNotDoneDataRepository: sl.get<TasksNotDoneDataRepository>(),
     ),
   );
-  sl.registerLazySingleton<ApiProjectRepository>(
+  sl.registerLazySingleton<IProjectRepository>(
     () => ApiProjectRepository(
       projectClient: sl.get<ProjectClient>(),
     ),
@@ -132,8 +132,8 @@ void _setApiRelatedClasses() {
 void _setupBlocs() {
   sl.registerFactory(
     () => ProfileBloc(
-      apiAuthRepository: sl.get<ApiAuthRepository>(),
-      apiUserRepository: sl.get<ApiUserRepository>(),
+      authRepository: sl.get<IAuthRepository>(),
+      userRepository: sl.get<IUserRepository>(),
       refreshTokenDataRepository: sl.get<RefreshTokenDataRepository>(),
       logoutInteractor: sl.get<LogoutInteractor>(),
     ),

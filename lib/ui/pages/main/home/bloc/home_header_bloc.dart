@@ -13,8 +13,8 @@ part 'home_header_state.dart';
 
 class HomeHeaderBloc extends Bloc<HomeHeaderEvent, HomeHeaderState> {
   HomeHeaderBloc({
-    required this.apiUserRepository,
-    required this.apiTaskRepository,
+    required this.userRepository,
+    required this.taskRepository,
   }) : super(const HomeHeaderState.initial()) {
     on<HomeHeaderEvent>(
       (event, emit) => event.map(
@@ -23,8 +23,8 @@ class HomeHeaderBloc extends Bloc<HomeHeaderEvent, HomeHeaderState> {
     );
   }
 
-  final ApiUserRepository apiUserRepository;
-  final ApiTaskRepository apiTaskRepository;
+  final IUserRepository userRepository;
+  final ITaskRepository taskRepository;
 
   String _username = 'user';
   ITaskWithProjectName? _task;
@@ -35,13 +35,13 @@ class HomeHeaderBloc extends Bloc<HomeHeaderEvent, HomeHeaderState> {
   ) async {
     emit(const HomeHeaderState.loading());
     try {
-      final user = await apiUserRepository.getCachedData();
+      final user = await userRepository.getCachedData();
       if (user != null) {
         if (user.firstName.isNotEmpty) {
           _username = user.firstName;
         }
       }
-      final tasks = await apiTaskRepository.getCachedNotDoneTasks();
+      final tasks = await taskRepository.getCachedNotDoneTasks();
 
       // get a task close in time
       if (tasks != null) {

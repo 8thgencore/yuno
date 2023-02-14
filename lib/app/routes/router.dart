@@ -56,8 +56,8 @@ mixin RouterMixin on State<App> {
           builder: (context, state) => BlocProvider(
             create: (context) => SplashBloc(
               tokenDataRepository: sl.get<TokenDataRepository>(),
-              apiUserRepository: sl.get<ApiUserRepository>(),
-              apiTaskRepository: sl.get<ApiTaskRepository>(),
+              userRepository: sl.get<IUserRepository>(),
+              taskRepository: sl.get<ITaskRepository>(),
             )..add(const SplashLoaded()),
             child: const SplashPage(),
           ),
@@ -72,20 +72,20 @@ mixin RouterMixin on State<App> {
                 providers: [
                   BlocProvider(
                     create: (context) => HomeHeaderBloc(
-                      apiUserRepository: sl.get<ApiUserRepository>(),
-                      apiTaskRepository: sl.get<ApiTaskRepository>(),
+                      userRepository: sl.get<IUserRepository>(),
+                      taskRepository: sl.get<ITaskRepository>(),
                     )..add(const HomeHeaderEvent.started()),
                     child: const HomePage(),
                   ),
                   BlocProvider(
                     create: (context) => HomeChecklistBloc(
-                      apiTaskRepository: sl.get<ApiTaskRepository>(),
+                      taskRepository: sl.get<ITaskRepository>(),
                     )..add(const HomeChecklistEvent.started()),
                     child: const HomePage(),
                   ),
                   BlocProvider(
                     create: (context) => HomeProjectsBloc(
-                      apiProjectRepository: sl.get<ApiProjectRepository>(),
+                      projectRepository: sl.get<IProjectRepository>(),
                     )..add(const HomeProjectsEvent.started()),
                     child: const HomePage(),
                   ),
@@ -98,7 +98,7 @@ mixin RouterMixin on State<App> {
               path: RoutePath.calendar,
               builder: (context, state) => BlocProvider(
                 create: (context) => CalendarBloc(
-                  apiTaskRepository: sl.get<ApiTaskRepository>(),
+                  taskRepository: sl.get<ITaskRepository>(),
                 )..add(const CalendarEvent.started()),
                 child: CalendarPage(),
               ),
@@ -119,7 +119,7 @@ mixin RouterMixin on State<App> {
                   parentNavigatorKey: rootNavigatorKey,
                   builder: (context, state) => BlocProvider(
                     create: (context) => ProfileEditBloc(
-                      apiUserRepository: sl.get<ApiUserRepository>(),
+                      userRepository: sl.get<IUserRepository>(),
                     )..add(const ProfileEditEvent.started()),
                     child: const ProfileEditPage(),
                   ),
@@ -130,7 +130,7 @@ mixin RouterMixin on State<App> {
                   parentNavigatorKey: rootNavigatorKey,
                   builder: (context, state) => BlocProvider(
                     create: (context) => ChangePasswordBloc(
-                      apiAuthRepository: sl.get<ApiAuthRepository>(),
+                      authRepository: sl.get<IAuthRepository>(),
                     ),
                     child: const ChangePasswordPage(),
                   ),
@@ -141,7 +141,7 @@ mixin RouterMixin on State<App> {
                   parentNavigatorKey: rootNavigatorKey,
                   builder: (context, state) => BlocProvider(
                     create: (context) => ProjectsListBloc(
-                      apiProjectRepository: sl.get<ApiProjectRepository>(),
+                      projectRepository: sl.get<IProjectRepository>(),
                     )..add(const ProjectsListEvent.started(isSelf: true)),
                     child: const ProjectsListPage(),
                   ),
@@ -159,7 +159,7 @@ mixin RouterMixin on State<App> {
           parentNavigatorKey: rootNavigatorKey,
           builder: (context, state) => BlocProvider(
             create: (context) => ProjectsListBloc(
-              apiProjectRepository: sl.get<ApiProjectRepository>(),
+              projectRepository: sl.get<IProjectRepository>(),
             )..add(const ProjectsListEvent.started(isSelf: false)),
             child: const ProjectsListPage(),
           ),
@@ -170,7 +170,7 @@ mixin RouterMixin on State<App> {
               parentNavigatorKey: rootNavigatorKey,
               builder: (context, state) => BlocProvider(
                 create: (context) => ProjectEditBloc(
-                  apiProjectRepository: sl.get<ApiProjectRepository>(),
+                  projectRepository: sl.get<IProjectRepository>(),
                 )..add(const ProjectEditEvent.started('')),
                 child: const ProjectEditPage(),
               ),
@@ -181,9 +181,9 @@ mixin RouterMixin on State<App> {
               parentNavigatorKey: rootNavigatorKey,
               builder: (context, state) => BlocProvider(
                 create: (context) => ProjectDetailsBloc(
-                  apiUserRepository: sl.get<ApiUserRepository>(),
-                  apiProjectRepository: sl.get<ApiProjectRepository>(),
-                  apiTaskRepository: sl.get<ApiTaskRepository>(),
+                  userRepository: sl.get<IUserRepository>(),
+                  projectRepository: sl.get<IProjectRepository>(),
+                  taskRepository: sl.get<ITaskRepository>(),
                 )..add(ProjectDetailsEvent.started(state.params['id'] ?? '')),
                 child: const ProjectDetailsPage(),
               ),
@@ -194,7 +194,7 @@ mixin RouterMixin on State<App> {
                   parentNavigatorKey: rootNavigatorKey,
                   builder: (context, state) => BlocProvider(
                     create: (context) => ProjectEditBloc(
-                      apiProjectRepository: sl.get<ApiProjectRepository>(),
+                      projectRepository: sl.get<IProjectRepository>(),
                     )..add(ProjectEditEvent.started(state.params['id'] ?? '')),
                     child: const ProjectEditPage(isUpdate: true),
                   ),
@@ -212,7 +212,7 @@ mixin RouterMixin on State<App> {
           parentNavigatorKey: rootNavigatorKey,
           builder: (context, state) => BlocProvider(
             create: (context) => TaskEditBloc(
-              apiTaskRepository: sl.get<ApiTaskRepository>(),
+              taskRepository: sl.get<ITaskRepository>(),
             )..add(
                 TaskEditEvent.started(
                   id: state.params['id'] ?? '',
@@ -228,7 +228,7 @@ mixin RouterMixin on State<App> {
           parentNavigatorKey: rootNavigatorKey,
           builder: (context, state) => BlocProvider(
             create: (context) => TaskEditBloc(
-              apiTaskRepository: sl.get<ApiTaskRepository>(),
+              taskRepository: sl.get<ITaskRepository>(),
             )..add(
                 TaskEditEvent.started(
                   id: '',

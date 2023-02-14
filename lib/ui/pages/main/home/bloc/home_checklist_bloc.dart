@@ -14,7 +14,7 @@ part 'home_checklist_state.dart';
 
 class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
   HomeChecklistBloc({
-    required this.apiTaskRepository,
+    required this.taskRepository,
   }) : super(const HomeChecklistState.initial()) {
     on<HomeChecklistEvent>(
       (event, emit) => event.map(
@@ -25,7 +25,7 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
     );
   }
 
-  final ApiTaskRepository apiTaskRepository;
+  final ITaskRepository taskRepository;
 
   final List<ITaskWithProjectName> _tasks = [];
 
@@ -36,7 +36,7 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
     _tasks.clear();
     emit(const HomeChecklistState.loading());
     try {
-      final tasks = await apiTaskRepository.getCachedNotDoneTasks();
+      final tasks = await taskRepository.getCachedNotDoneTasks();
       if (tasks != null) {
         _tasks.addAll(tasks);
       }
@@ -54,7 +54,7 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
       final task = _tasks.firstWhere((task) => task.id == event.id);
       final bool isDone = task.done ?? false;
 
-      await apiTaskRepository.updateById(
+      await taskRepository.updateById(
         id: event.id,
         name: task.name,
         deadline: task.deadline,
@@ -76,7 +76,7 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
     Emitter<HomeChecklistState> emit,
   ) async {
     try {
-      await apiTaskRepository.deleteById(id: event.id);
+      await taskRepository.deleteById(id: event.id);
       _tasks.removeWhere((task) => task.id == event.id);
 
       emit(const HomeChecklistState.keep());

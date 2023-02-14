@@ -14,7 +14,7 @@ part 'calendar_bloc.freezed.dart';
 
 class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
   CalendarBloc({
-    required this.apiTaskRepository,
+    required this.taskRepository,
   }) : super(const CalendarState.initial()) {
     on<CalendarEvent>(
       (event, emit) => event.map(
@@ -26,7 +26,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     );
   }
 
-  final ApiTaskRepository apiTaskRepository;
+  final ITaskRepository taskRepository;
 
   List<ITaskWithProjectName> _tasks = [];
 
@@ -39,7 +39,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     _tasks.clear();
     emit(const CalendarState.loading());
     try {
-      final tasks = await apiTaskRepository.getTaskByDeadline(_date.toIso8601String());
+      final tasks = await taskRepository.getTaskByDeadline(_date.toIso8601String());
       _tasks.addAll(tasks);
       emit(CalendarState.loaded(date: _date, tasks: _tasks));
     } on DioError catch (dioError) {
@@ -52,7 +52,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     Emitter<CalendarState> emit,
   ) async {
     try {
-      final tasks = await apiTaskRepository.getTaskByDeadline(_date.toIso8601String());
+      final tasks = await taskRepository.getTaskByDeadline(_date.toIso8601String());
       _tasks = [...tasks];
       emit(CalendarState.loaded(date: _date, tasks: _tasks));
     } on DioError catch (dioError) {
@@ -66,7 +66,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
   ) async {
     try {
       _date = event.date;
-      final tasks = await apiTaskRepository.getTaskByDeadline(_date.toIso8601String());
+      final tasks = await taskRepository.getTaskByDeadline(_date.toIso8601String());
       _tasks = [...tasks];
       emit(CalendarState.loaded(date: _date, tasks: _tasks));
     } on DioError catch (dioError) {
@@ -82,7 +82,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
       final task = _tasks.firstWhere((task) => task.id == event.id);
       final bool isDone = task.done ?? false;
 
-      await apiTaskRepository.updateById(
+      await taskRepository.updateById(
         id: event.id,
         name: task.name,
         deadline: task.deadline,

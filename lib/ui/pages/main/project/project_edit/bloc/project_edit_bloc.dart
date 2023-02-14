@@ -13,7 +13,7 @@ part 'project_edit_state.dart';
 
 class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
   ProjectEditBloc({
-    required this.apiProjectRepository,
+    required this.projectRepository,
   }) : super(const ProjectEditState(
           status: ProjectEditStatus.initial,
           id: '',
@@ -31,7 +31,7 @@ class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
     );
   }
 
-  final ApiProjectRepository apiProjectRepository;
+  final IProjectRepository projectRepository;
 
   FutureOr<void> _onProjectLoaded(
     _StartedEvent event,
@@ -42,7 +42,7 @@ class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
       if (event.id.length < 16) {
         emit(state.copyWith(status: ProjectEditStatus.loaded));
       } else {
-        final project = await apiProjectRepository.getById(id: event.id);
+        final project = await projectRepository.getById(id: event.id);
         emit(state.copyWith(
           status: ProjectEditStatus.loaded,
           id: project.id,
@@ -79,7 +79,7 @@ class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
   ) async {
     emit(state.copyWith(status: ProjectEditStatus.loading));
     try {
-      final result = await apiProjectRepository.create(
+      final result = await projectRepository.create(
         name: state.name,
         description: state.description,
       );
@@ -101,7 +101,7 @@ class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
   ) async {
     emit(state.copyWith(status: ProjectEditStatus.loading));
     try {
-      await apiProjectRepository.updateById(
+      await projectRepository.updateById(
         id: state.id,
         name: state.name,
         description: state.description,

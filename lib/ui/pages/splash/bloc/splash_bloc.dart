@@ -13,22 +13,22 @@ part 'splash_state.dart';
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
   SplashBloc({
     required this.tokenDataRepository,
-    required this.apiUserRepository,
-    required this.apiTaskRepository,
+    required this.userRepository,
+    required this.taskRepository,
   }) : super(SplashInitial()) {
     on<SplashLoaded>(_onSplashLoaded);
   }
 
   final TokenDataRepository tokenDataRepository;
-  final ApiUserRepository apiUserRepository;
-  final ApiTaskRepository apiTaskRepository;
+  final IUserRepository userRepository;
+  final ITaskRepository taskRepository;
 
   FutureOr<void> _onSplashLoaded(
     final SplashLoaded event,
     final Emitter<SplashState> emit,
   ) async {
     try {
-      await apiUserRepository.getData();
+      await userRepository.getData();
 
       // await Future.delayed(const Duration(seconds: 1));
 
@@ -37,7 +37,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
         emit(const SplashUnauthorized());
       } else {
         // Get tasks from server
-        await apiTaskRepository.getNotDoneTasks();
+        await taskRepository.getNotDoneTasks();
         emit(const SplashAuthorized());
       }
     } on DioError catch (_) {
