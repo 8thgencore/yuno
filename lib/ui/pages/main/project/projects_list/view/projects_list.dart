@@ -168,9 +168,9 @@ class _ProjectFullCardWidget extends StatelessWidget {
           child: Column(
             children: [
               ProjectCardMediumWidget(project: project),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
-                child: LinearPercentIndicatorWidget(percent: 0.4),
+                child: LinearPercentIndicatorWidget(percent: project.percentCompleted),
               ),
             ],
           ),

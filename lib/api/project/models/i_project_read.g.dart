@@ -11,6 +11,7 @@ _$_IProjectRead _$$_IProjectReadFromJson(Map<String, dynamic> json) => _$_IProje
       description: json['description'] as String,
       link: json['link'] as String,
       id: json['id'] as String,
+      percentCompleted: (json['percent_completed'] as num).toDouble(),
       createdBy: json['created_by_id'] as String?,
     );
 
@@ -19,5 +20,6 @@ Map<String, dynamic> _$$_IProjectReadToJson(_$_IProjectRead instance) => <String
       'description': instance.description,
       'link': instance.link,
       'id': instance.id,
+      'percent_completed': instance.percentCompleted,
       'created_by_id': instance.createdBy,
     };

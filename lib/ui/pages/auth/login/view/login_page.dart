@@ -16,7 +16,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LoginBloc(sl.get<ApiAuthRepository>()),
+      create: (context) => LoginBloc(sl.get<IAuthRepository>()),
       child: LoaderOverlay(
         child: Scaffold(
           body: Container(

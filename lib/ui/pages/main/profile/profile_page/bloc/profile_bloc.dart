@@ -19,8 +19,8 @@ part 'profile_state.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ProfileBloc({
-    required this.apiAuthRepository,
-    required this.apiUserRepository,
+    required this.authRepository,
+    required this.userRepository,
     required this.refreshTokenDataRepository,
     required this.logoutInteractor,
   }) : super(const ProfileState.initial()) {
@@ -30,8 +30,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     on<_LogoutEvent>(_onLogoutPushed);
   }
 
-  final ApiAuthRepository apiAuthRepository;
-  final ApiUserRepository apiUserRepository;
+  final IAuthRepository authRepository;
+  final IUserRepository userRepository;
   final RefreshTokenDataRepository refreshTokenDataRepository;
   final LogoutInteractor logoutInteractor;
 
@@ -40,7 +40,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     Emitter<ProfileState> emit,
   ) async {
     try {
-      final user = await apiUserRepository.getCachedData();
+      final user = await userRepository.getCachedData();
       final refreshToken = await refreshTokenDataRepository.getItem();
       if (user == null || refreshToken == null) {
         _logout(emit);
@@ -48,7 +48,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       }
       emit(const ProfileState.loading());
 
-      await apiAuthRepository.refreshToken(body: RefreshToken(refreshToken: refreshToken));
+      await authRepository.refreshToken(body: RefreshToken(refreshToken: refreshToken));
       emit(ProfileState.loaded(user, null));
     } on DioError catch (dioError) {
       _logout(emit);
@@ -61,7 +61,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     Emitter<ProfileState> emit,
   ) async {
     emit(const ProfileState.loading());
-    final user = await apiUserRepository.getCachedData();
+    final user = await userRepository.getCachedData();
     if (user == null) {
       emit(const ProfileState.failure('Unknown error'));
       return;
@@ -74,7 +74,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     Emitter<ProfileState> emit,
   ) async {
     try {
-      final user = await apiUserRepository.loadImage(file: event.file);
+      final user = await userRepository.loadImage(file: event.file);
       emit(ProfileState.loaded(user, null));
     } on DioError catch (dioError) {
       // emit(ProfileState.loaded(_user!, 'Error from server. Try again'));

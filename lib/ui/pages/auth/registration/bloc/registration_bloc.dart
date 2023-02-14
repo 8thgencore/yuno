@@ -12,7 +12,7 @@ part 'registration_event.dart';
 part 'registration_state.dart';
 
 class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
-  RegistrationBloc(this.apiAuthRepository) : super(const RegistrationFieldsInfo()) {
+  RegistrationBloc(this.authRepository) : super(const RegistrationFieldsInfo()) {
     on<RegistrationEmailChanged>(_onEmailChanged);
     on<RegistrationEmailFocusLost>(_onEmailFocusLost);
     on<RegistrationPasswordChanged>(_onPasswordChanged);
@@ -25,7 +25,7 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     on<RegistrationCloseError>(_onCloseError);
   }
 
-  final ApiAuthRepository apiAuthRepository;
+  final IAuthRepository authRepository;
 
   static final _passwordRegexp = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
 
@@ -138,7 +138,7 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
 
       emit(const RegistrationInProgress());
 
-      await apiAuthRepository.register(
+      await authRepository.register(
         email: _email,
         username: _name,
         password: _password,

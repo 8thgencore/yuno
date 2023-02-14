@@ -11,7 +11,7 @@ part 'change_password_state.dart';
 
 class ChangePasswordBloc extends Bloc<ChangePasswordEvent, ChangePasswordState> {
   ChangePasswordBloc({
-    required this.apiAuthRepository,
+    required this.authRepository,
   }) : super(
           const ChangePasswordState(
             currentPassword: '',
@@ -30,7 +30,7 @@ class ChangePasswordBloc extends Bloc<ChangePasswordEvent, ChangePasswordState> 
     );
   }
 
-  final ApiAuthRepository apiAuthRepository;
+  final IAuthRepository authRepository;
 
   FutureOr<void> _onLoaded(
     _StartedEvent event,
@@ -95,7 +95,7 @@ class ChangePasswordBloc extends Bloc<ChangePasswordEvent, ChangePasswordState> 
   ) async {
     emit(state.copyWith(status: ChangePasswordStatus.loading));
     try {
-      final result = await apiAuthRepository.changePassword(
+      final result = await authRepository.changePassword(
         currentPassword: state.currentPassword,
         newPassword: state.newPassword,
       );

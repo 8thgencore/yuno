@@ -7,12 +7,14 @@ import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/domain/repository/api_project_repository.dart';
 
 part 'home_projects_bloc.freezed.dart';
+
 part 'home_projects_event.dart';
+
 part 'home_projects_state.dart';
 
 class HomeProjectsBloc extends Bloc<HomeProjectsEvent, HomeProjectsState> {
   HomeProjectsBloc({
-    required this.apiProjectRepository,
+    required this.projectRepository,
   }) : super(const HomeProjectsState.initial()) {
     on<HomeProjectsEvent>(
       (event, emit) => event.map(
@@ -21,7 +23,7 @@ class HomeProjectsBloc extends Bloc<HomeProjectsEvent, HomeProjectsState> {
     );
   }
 
-  final ApiProjectRepository apiProjectRepository;
+  final IProjectRepository projectRepository;
 
   List<IProjectWithUsers> _projects = [];
 
@@ -31,7 +33,7 @@ class HomeProjectsBloc extends Bloc<HomeProjectsEvent, HomeProjectsState> {
   ) async {
     emit(const HomeProjectsState.loading());
     try {
-      final projects = await apiProjectRepository.getProjects(size: 4, page: 1);
+      final projects = await projectRepository.getProjects(size: 4, page: 1);
 
       if (projects.items.isNotEmpty) {
         _projects = projects.items;

@@ -1,7 +1,38 @@
 import 'package:yuno/api/project/models.dart';
 import 'package:yuno/api/project/rest_client.dart';
 
-class ApiProjectRepository {
+abstract class IProjectRepository {
+  Future<PaginatedDataIProjectWithUsers> getMyProjects({
+    required int page,
+    required int size,
+  });
+
+  Future<PaginatedDataIProjectWithUsers> getProjects({
+    required int page,
+    required int size,
+  });
+
+  Future<IProjectWithUsersTasks> getById({required String id});
+
+  Future<IProjectRead> create({
+    required String name,
+    required String description,
+  });
+
+  Future<IProjectRead> updateById({
+    required String id,
+    required String name,
+    required String description,
+  });
+
+  Future<IProjectRead> deleteById({required String id});
+
+  Future<IProjectWithUsers> joinProject({required String id});
+
+  Future<IProjectWithUsers> leaveProject({required String id});
+}
+
+class ApiProjectRepository implements IProjectRepository {
   ApiProjectRepository({
     required this.projectClient,
   });

@@ -3,7 +3,36 @@ import 'package:yuno/api/task/models/i_task_with_project_name.dart';
 import 'package:yuno/api/task/rest_client.dart';
 import 'package:yuno/data/repository/tasks_data_repository.dart';
 
-class ApiTaskRepository {
+abstract class ITaskRepository {
+  Future<List<ITaskWithProjectName>> getTasks();
+
+  Future<List<ITaskWithProjectName>> getNotDoneTasks();
+
+  Future<List<ITaskWithProjectName>> getTaskByDeadline(String date);
+
+  Future<List<ITaskWithProjectName>?> getCachedNotDoneTasks();
+
+  Future<ITaskRead> getById({required String id});
+
+  Future<ITaskRead> create({
+    required String name,
+    required bool done,
+    DateTime? deadline,
+    String? projectId,
+  });
+
+  Future<ITaskRead> updateById({
+    required String id,
+    String? name,
+    DateTime? deadline,
+    bool? done,
+    String? projectId,
+  });
+
+  Future<ITaskRead> deleteById({required String id});
+}
+
+class ApiTaskRepository implements ITaskRepository {
   ApiTaskRepository({
     required this.taskClient,
     required this.tasksNotDoneDataRepository,

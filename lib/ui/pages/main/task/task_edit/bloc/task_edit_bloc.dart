@@ -13,7 +13,7 @@ part 'task_edit_state.dart';
 
 class TaskEditBloc extends Bloc<TaskEditEvent, TaskEditState> {
   TaskEditBloc({
-    required this.apiTaskRepository,
+    required this.taskRepository,
   }) : super(const TaskEditState(
           status: TaskEditStatus.initial,
           id: '',
@@ -31,7 +31,7 @@ class TaskEditBloc extends Bloc<TaskEditEvent, TaskEditState> {
     );
   }
 
-  final ApiTaskRepository apiTaskRepository;
+  final ITaskRepository taskRepository;
 
   FutureOr<void> _onTaskLoaded(
     _StartedEvent event,
@@ -45,7 +45,7 @@ class TaskEditBloc extends Bloc<TaskEditEvent, TaskEditState> {
           projectId: event.projectId,
         ));
       } else {
-        final task = await apiTaskRepository.getById(id: event.id);
+        final task = await taskRepository.getById(id: event.id);
         emit(state.copyWith(
           status: TaskEditStatus.loaded,
           id: task.id,
@@ -91,7 +91,7 @@ class TaskEditBloc extends Bloc<TaskEditEvent, TaskEditState> {
   ) async {
     emit(state.copyWith(status: TaskEditStatus.loading));
     try {
-      await apiTaskRepository.create(
+      await taskRepository.create(
         name: state.name,
         deadline: state.deadline,
         done: state.done ?? false,
@@ -112,7 +112,7 @@ class TaskEditBloc extends Bloc<TaskEditEvent, TaskEditState> {
   ) async {
     emit(state.copyWith(status: TaskEditStatus.loading));
     try {
-      await apiTaskRepository.updateById(
+      await taskRepository.updateById(
         id: state.id,
         name: state.name,
         deadline: state.deadline,

@@ -24,6 +24,8 @@ mixin _$IProjectRead {
   String get description => throw _privateConstructorUsedError;
   String get link => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'percent_completed')
+  double get percentCompleted => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_by_id')
   String? get createdBy => throw _privateConstructorUsedError;
 
@@ -42,6 +44,7 @@ abstract class $IProjectReadCopyWith<$Res> {
       String description,
       String link,
       String id,
+      @JsonKey(name: 'percent_completed') double percentCompleted,
       @JsonKey(name: 'created_by_id') String? createdBy});
 }
 
@@ -62,6 +65,7 @@ class _$IProjectReadCopyWithImpl<$Res, $Val extends IProjectRead>
     Object? description = null,
     Object? link = null,
     Object? id = null,
+    Object? percentCompleted = null,
     Object? createdBy = freezed,
   }) {
     return _then(_value.copyWith(
@@ -81,6 +85,10 @@ class _$IProjectReadCopyWithImpl<$Res, $Val extends IProjectRead>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      percentCompleted: null == percentCompleted
+          ? _value.percentCompleted
+          : percentCompleted // ignore: cast_nullable_to_non_nullable
+              as double,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -100,6 +108,7 @@ abstract class _$$_IProjectReadCopyWith<$Res> implements $IProjectReadCopyWith<$
       String description,
       String link,
       String id,
+      @JsonKey(name: 'percent_completed') double percentCompleted,
       @JsonKey(name: 'created_by_id') String? createdBy});
 }
 
@@ -116,6 +125,7 @@ class __$$_IProjectReadCopyWithImpl<$Res> extends _$IProjectReadCopyWithImpl<$Re
     Object? description = null,
     Object? link = null,
     Object? id = null,
+    Object? percentCompleted = null,
     Object? createdBy = freezed,
   }) {
     return _then(_$_IProjectRead(
@@ -135,6 +145,10 @@ class __$$_IProjectReadCopyWithImpl<$Res> extends _$IProjectReadCopyWithImpl<$Re
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      percentCompleted: null == percentCompleted
+          ? _value.percentCompleted
+          : percentCompleted // ignore: cast_nullable_to_non_nullable
+              as double,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -151,6 +165,7 @@ class _$_IProjectRead implements _IProjectRead {
       required this.description,
       required this.link,
       required this.id,
+      @JsonKey(name: 'percent_completed') required this.percentCompleted,
       @JsonKey(name: 'created_by_id') this.createdBy});
 
   factory _$_IProjectRead.fromJson(Map<String, dynamic> json) => _$$_IProjectReadFromJson(json);
@@ -164,12 +179,15 @@ class _$_IProjectRead implements _IProjectRead {
   @override
   final String id;
   @override
+  @JsonKey(name: 'percent_completed')
+  final double percentCompleted;
+  @override
   @JsonKey(name: 'created_by_id')
   final String? createdBy;
 
   @override
   String toString() {
-    return 'IProjectRead(name: $name, description: $description, link: $link, id: $id, createdBy: $createdBy)';
+    return 'IProjectRead(name: $name, description: $description, link: $link, id: $id, percentCompleted: $percentCompleted, createdBy: $createdBy)';
   }
 
   @override
@@ -181,12 +199,15 @@ class _$_IProjectRead implements _IProjectRead {
             (identical(other.description, description) || other.description == description) &&
             (identical(other.link, link) || other.link == link) &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.percentCompleted, percentCompleted) ||
+                other.percentCompleted == percentCompleted) &&
             (identical(other.createdBy, createdBy) || other.createdBy == createdBy));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, description, link, id, createdBy);
+  int get hashCode =>
+      Object.hash(runtimeType, name, description, link, id, percentCompleted, createdBy);
 
   @JsonKey(ignore: true)
   @override
@@ -208,6 +229,7 @@ abstract class _IProjectRead implements IProjectRead {
       required final String description,
       required final String link,
       required final String id,
+      @JsonKey(name: 'percent_completed') required final double percentCompleted,
       @JsonKey(name: 'created_by_id') final String? createdBy}) = _$_IProjectRead;
 
   factory _IProjectRead.fromJson(Map<String, dynamic> json) = _$_IProjectRead.fromJson;
@@ -220,6 +242,9 @@ abstract class _IProjectRead implements IProjectRead {
   String get link;
   @override
   String get id;
+  @override
+  @JsonKey(name: 'percent_completed')
+  double get percentCompleted;
   @override
   @JsonKey(name: 'created_by_id')
   String? get createdBy;

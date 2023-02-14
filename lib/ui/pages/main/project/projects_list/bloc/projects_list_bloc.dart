@@ -15,7 +15,7 @@ part 'projects_list_state.dart';
 
 class ProjectsListBloc extends Bloc<ProjectsListEvent, ProjectsListState> {
   ProjectsListBloc({
-    required this.apiProjectRepository,
+    required this.projectRepository,
   }) : super(const ProjectsListState.initial()) {
     on<ProjectsListEvent>(
       (event, emit) => event.map(
@@ -27,7 +27,7 @@ class ProjectsListBloc extends Bloc<ProjectsListEvent, ProjectsListState> {
     );
   }
 
-  final ApiProjectRepository apiProjectRepository;
+  final IProjectRepository projectRepository;
 
   static const _size = 4;
   int _page = 1;
@@ -91,9 +91,9 @@ class ProjectsListBloc extends Bloc<ProjectsListEvent, ProjectsListState> {
     try {
       PaginatedDataIProjectWithUsers projects;
       if (_isSelf) {
-        projects = await apiProjectRepository.getMyProjects(page: _page, size: _size);
+        projects = await projectRepository.getMyProjects(page: _page, size: _size);
       } else {
-        projects = await apiProjectRepository.getProjects(page: _page, size: _size);
+        projects = await projectRepository.getProjects(page: _page, size: _size);
       }
 
       _projects = [..._projects, ...projects.items];

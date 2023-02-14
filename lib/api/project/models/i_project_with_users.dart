@@ -11,6 +11,7 @@ class IProjectWithUsers with _$IProjectWithUsers {
     required String description,
     required String link,
     required String id,
+    @JsonKey(name: 'percent_completed') required double percentCompleted,
     @JsonKey(name: 'created_by_id') String? createdBy,
     List<IUserRead>? users,
   }) = _IProjectWithUsers;

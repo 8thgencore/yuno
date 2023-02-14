@@ -56,7 +56,9 @@ class _TaskCardWidgetState extends State<TaskCardWidget> {
     }
     return Dismissible(
       key: ValueKey(widget.id),
-      direction: widget.isMember ? DismissDirection.startToEnd : DismissDirection.none,
+      direction: (widget.isMember && widget.onDismissible != null)
+          ? DismissDirection.startToEnd
+          : DismissDirection.none,
       confirmDismiss: (DismissDirection dismissDirection) async {
         if (dismissDirection == DismissDirection.startToEnd) {
           if (widget.onDismissible != null) {

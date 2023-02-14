@@ -17,9 +17,9 @@ part 'project_details_state.dart';
 
 class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> {
   ProjectDetailsBloc({
-    required this.apiProjectRepository,
-    required this.apiTaskRepository,
-    required this.apiUserRepository,
+    required this.projectRepository,
+    required this.taskRepository,
+    required this.userRepository,
   }) : super(const ProjectDetailsState.initial()) {
     on<ProjectDetailsEvent>(
       (event, emit) => event.map(
@@ -34,14 +34,14 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
     );
   }
 
-  final ApiUserRepository apiUserRepository;
-  final ApiProjectRepository apiProjectRepository;
-  final ApiTaskRepository apiTaskRepository;
+  final IUserRepository userRepository;
+  final IProjectRepository projectRepository;
+  final ITaskRepository taskRepository;
 
   IProjectWithUsersTasks? _project;
   String _projectId = '';
   final List<ITaskRead> _tasks = [];
-  double _percentDone = 0;
+  double _percentCompleted = 0;
   bool _isMember = false;
   bool _isOwner = false;
 
@@ -66,7 +66,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
       final task = _tasks.firstWhere((task) => task.id == event.id);
       final bool isDone = task.done ?? false;
 
-      await apiTaskRepository.updateById(
+      await taskRepository.updateById(
         id: event.id,
         name: task.name,
         deadline: task.deadline,
@@ -88,14 +88,13 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
     Emitter<ProjectDetailsState> emit,
   ) async {
     try {
-      await apiTaskRepository.deleteById(id: event.id);
+      await taskRepository.deleteById(id: event.id);
       _tasks.removeWhere((task) => task.id == event.id);
 
       emit(const ProjectDetailsState.keep());
       emit(ProjectDetailsState.loaded(
         project: _project!,
         tasks: _tasks,
-        percentDone: _percentDone,
         isMember: _isMember,
         isOwner: _isOwner,
       ));
@@ -120,8 +119,8 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
     Emitter<ProjectDetailsState> emit,
   ) async {
     try {
-      await apiProjectRepository.deleteById(id: _projectId);
-      await apiTaskRepository.getNotDoneTasks();
+      await projectRepository.deleteById(id: _projectId);
+      await taskRepository.getNotDoneTasks();
       emit(const ProjectDetailsState.deleted());
     } on DioError catch (dioError) {
       emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
@@ -133,9 +132,9 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
     Emitter<ProjectDetailsState> emit,
   ) async {
     try {
-      await apiProjectRepository.joinProject(id: _projectId);
+      await projectRepository.joinProject(id: _projectId);
       // get new tasks list
-      await apiTaskRepository.getNotDoneTasks();
+      await taskRepository.getNotDoneTasks();
       await _getProjectInfo(emit);
     } on DioError catch (dioError) {
       emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
@@ -147,9 +146,9 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
     Emitter<ProjectDetailsState> emit,
   ) async {
     try {
-      await apiProjectRepository.leaveProject(id: _projectId);
+      await projectRepository.leaveProject(id: _projectId);
       // get new tasks list
-      await apiTaskRepository.getNotDoneTasks();
+      await taskRepository.getNotDoneTasks();
       await _getProjectInfo(emit);
     } on DioError catch (dioError) {
       emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
@@ -157,27 +156,30 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
   }
 
   Future<void> _getProjectInfo(Emitter<ProjectDetailsState> emit) async {
-    final project = await apiProjectRepository.getById(id: _projectId);
+    final project = await projectRepository.getById(id: _projectId);
     _project = project;
 
     _tasks.clear();
     _tasks.addAll(project.tasks ?? []);
     // Check user member is project
-    final user = await apiUserRepository.getCachedData();
+    final user = await userRepository.getCachedData();
     final users = project.users;
     if (user != null && users != null) {
       _isMember = users.where((u) => u.id == user.id).isNotEmpty;
       _isOwner = project.createdBy == user.id;
     }
+
+    // get percent competed task
     if (_tasks.length != 0) {
-      _percentDone = _tasks.where((t) => t.done == true).length / _tasks.length;
+      _percentCompleted = _tasks.where((t) => t.done == true).length / _tasks.length;
     } else {
-      _percentDone = 0;
+      _percentCompleted = 0;
     }
+    _project = _project!.copyWith(percentCompleted: _percentCompleted);
+
     emit(ProjectDetailsState.loaded(
-      project: project,
+      project: _project!,
       tasks: _tasks,
-      percentDone: _percentDone,
       isMember: _isMember,
       isOwner: _isOwner,
     ));

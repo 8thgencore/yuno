@@ -11,7 +11,7 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc(this.apiAuthRepository) : super(const LoginFieldsInfo()) {
+  LoginBloc(this.authRepository) : super(const LoginFieldsInfo()) {
     on<LoginEmailChanged>(_onEmailChanged);
     on<LoginEmailFocusLost>(_onEmailFocusLost);
     on<LoginPasswordChanged>(_onPasswordChanged);
@@ -20,7 +20,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginCloseError>(_onCloseError);
   }
 
-  final ApiAuthRepository apiAuthRepository;
+  final IAuthRepository authRepository;
 
   static final _passwordRegexp = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
 
@@ -85,7 +85,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
       emit(const LoginInProgress());
 
-      final result = await apiAuthRepository.login(
+      final result = await authRepository.login(
         email: _email,
         password: _password,
       );

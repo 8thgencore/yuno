@@ -5,7 +5,27 @@ import 'package:yuno/data/repository/refresh_token_data_repository.dart';
 import 'package:yuno/data/repository/token_data_repository.dart';
 import 'package:yuno/data/repository/user_data_repository.dart';
 
-class ApiAuthRepository {
+abstract class IAuthRepository {
+  Future<IUserRead> register({
+    required String email,
+    required String username,
+    required String password,
+  });
+
+  Future<IUserRead?> login({
+    required String email,
+    required String password,
+  });
+
+  Future<String> refreshToken({required RefreshToken body});
+
+  Future<IUserRead?> changePassword({
+    required String currentPassword,
+    required String newPassword,
+  });
+}
+
+class ApiAuthRepository implements IAuthRepository {
   ApiAuthRepository({
     required this.authClient,
     required this.authPasswordClient,

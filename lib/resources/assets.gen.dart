@@ -113,7 +113,8 @@ class $AssetsImagesGen {
   AssetGenImage get splashOrnament => const AssetGenImage('assets/images/splash_ornament.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [avatar, checklistEmpty, logo, signOrnament, splashOrnament];
+  List<AssetGenImage> get values =>
+      [addNewTask, avatar, checklistEmpty, logo, signOrnament, splashOrnament];
 }
 
 class $AssetsSvgGen {

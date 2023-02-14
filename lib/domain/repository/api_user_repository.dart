@@ -6,7 +6,24 @@ import 'package:yuno/api/user/rest_client.dart';
 import 'package:yuno/data/repository/token_data_repository.dart';
 import 'package:yuno/data/repository/user_data_repository.dart';
 
-class ApiUserRepository {
+abstract class IUserRepository {
+  Future<IUserRead> getData();
+
+  Future<IUserRead?> getCachedData();
+
+  Future<IUserRead?> updateDataById({
+    required String firstName,
+    required String lastName,
+    required String email,
+    required String username,
+  });
+
+  Future<IUserRead> loadImage({
+    required PlatformFile file,
+  });
+}
+
+class ApiUserRepository implements IUserRepository {
   ApiUserRepository({
     required this.userClient,
     required this.userDataRepository,

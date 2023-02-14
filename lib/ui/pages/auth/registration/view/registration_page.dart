@@ -16,7 +16,7 @@ class RegistrationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => RegistrationBloc(sl.get<ApiAuthRepository>()),
+      create: (context) => RegistrationBloc(sl.get<IAuthRepository>()),
       child: LoaderOverlay(
         child: Scaffold(
           body: Container(

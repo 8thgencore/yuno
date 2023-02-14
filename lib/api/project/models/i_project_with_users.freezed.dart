@@ -24,6 +24,8 @@ mixin _$IProjectWithUsers {
   String get description => throw _privateConstructorUsedError;
   String get link => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'percent_completed')
+  double get percentCompleted => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_by_id')
   String? get createdBy => throw _privateConstructorUsedError;
   List<IUserRead>? get users => throw _privateConstructorUsedError;
@@ -44,6 +46,7 @@ abstract class $IProjectWithUsersCopyWith<$Res> {
       String description,
       String link,
       String id,
+      @JsonKey(name: 'percent_completed') double percentCompleted,
       @JsonKey(name: 'created_by_id') String? createdBy,
       List<IUserRead>? users});
 }
@@ -65,6 +68,7 @@ class _$IProjectWithUsersCopyWithImpl<$Res, $Val extends IProjectWithUsers>
     Object? description = null,
     Object? link = null,
     Object? id = null,
+    Object? percentCompleted = null,
     Object? createdBy = freezed,
     Object? users = freezed,
   }) {
@@ -85,6 +89,10 @@ class _$IProjectWithUsersCopyWithImpl<$Res, $Val extends IProjectWithUsers>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      percentCompleted: null == percentCompleted
+          ? _value.percentCompleted
+          : percentCompleted // ignore: cast_nullable_to_non_nullable
+              as double,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -109,6 +117,7 @@ abstract class _$$_IProjectWithUsersCopyWith<$Res> implements $IProjectWithUsers
       String description,
       String link,
       String id,
+      @JsonKey(name: 'percent_completed') double percentCompleted,
       @JsonKey(name: 'created_by_id') String? createdBy,
       List<IUserRead>? users});
 }
@@ -128,6 +137,7 @@ class __$$_IProjectWithUsersCopyWithImpl<$Res>
     Object? description = null,
     Object? link = null,
     Object? id = null,
+    Object? percentCompleted = null,
     Object? createdBy = freezed,
     Object? users = freezed,
   }) {
@@ -148,6 +158,10 @@ class __$$_IProjectWithUsersCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      percentCompleted: null == percentCompleted
+          ? _value.percentCompleted
+          : percentCompleted // ignore: cast_nullable_to_non_nullable
+              as double,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -168,6 +182,7 @@ class _$_IProjectWithUsers implements _IProjectWithUsers {
       required this.description,
       required this.link,
       required this.id,
+      @JsonKey(name: 'percent_completed') required this.percentCompleted,
       @JsonKey(name: 'created_by_id') this.createdBy,
       final List<IUserRead>? users})
       : _users = users;
@@ -184,6 +199,9 @@ class _$_IProjectWithUsers implements _IProjectWithUsers {
   @override
   final String id;
   @override
+  @JsonKey(name: 'percent_completed')
+  final double percentCompleted;
+  @override
   @JsonKey(name: 'created_by_id')
   final String? createdBy;
   final List<IUserRead>? _users;
@@ -198,7 +216,7 @@ class _$_IProjectWithUsers implements _IProjectWithUsers {
 
   @override
   String toString() {
-    return 'IProjectWithUsers(name: $name, description: $description, link: $link, id: $id, createdBy: $createdBy, users: $users)';
+    return 'IProjectWithUsers(name: $name, description: $description, link: $link, id: $id, percentCompleted: $percentCompleted, createdBy: $createdBy, users: $users)';
   }
 
   @override
@@ -210,14 +228,16 @@ class _$_IProjectWithUsers implements _IProjectWithUsers {
             (identical(other.description, description) || other.description == description) &&
             (identical(other.link, link) || other.link == link) &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.percentCompleted, percentCompleted) ||
+                other.percentCompleted == percentCompleted) &&
             (identical(other.createdBy, createdBy) || other.createdBy == createdBy) &&
             const DeepCollectionEquality().equals(other._users, _users));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, description, link, id, createdBy,
-      const DeepCollectionEquality().hash(_users));
+  int get hashCode => Object.hash(runtimeType, name, description, link, id, percentCompleted,
+      createdBy, const DeepCollectionEquality().hash(_users));
 
   @JsonKey(ignore: true)
   @override
@@ -239,6 +259,7 @@ abstract class _IProjectWithUsers implements IProjectWithUsers {
       required final String description,
       required final String link,
       required final String id,
+      @JsonKey(name: 'percent_completed') required final double percentCompleted,
       @JsonKey(name: 'created_by_id') final String? createdBy,
       final List<IUserRead>? users}) = _$_IProjectWithUsers;
 
@@ -252,6 +273,9 @@ abstract class _IProjectWithUsers implements IProjectWithUsers {
   String get link;
   @override
   String get id;
+  @override
+  @JsonKey(name: 'percent_completed')
+  double get percentCompleted;
   @override
   @JsonKey(name: 'created_by_id')
   String? get createdBy;
