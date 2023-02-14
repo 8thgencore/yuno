@@ -44,7 +44,7 @@ class ProjectDetailsPage extends StatelessWidget {
           }
         },
         builder: (context, state) => state.maybeWhen(
-          loaded: (project, _, isMember, isOwner) => isMember
+          loaded: (project, _, __, isMember, isOwner) => isMember
               ? FloatingActionButton(
                   onPressed: () async {
                     final result = await context.pushNamed<bool>(
@@ -99,13 +99,14 @@ class _ProjectContentWidget extends StatelessWidget {
               builder: (context, state) => state.maybeWhen(
                 initial: () => const LoadingContainer(),
                 loading: () => const LoadingContainer(),
-                loaded: (project, tasks, isMember, isOwner) => Column(
+                loaded: (project, tasks, percentDone, isMember, isOwner) => Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 10),
                     _ProjectFullCardWidget(
                       isMember: isMember,
                       isOwner: isOwner,
+                      percentDone: percentDone,
                       project: IProjectWithUsers(
                         id: project.id,
                         name: project.name,
@@ -137,11 +138,13 @@ class _ProjectContentWidget extends StatelessWidget {
 class _ProjectFullCardWidget extends StatelessWidget {
   const _ProjectFullCardWidget({
     required this.project,
+    required this.percentDone,
     required this.isMember,
     required this.isOwner,
   });
 
   final IProjectWithUsers project;
+  final double percentDone;
   final bool isMember;
   final bool isOwner;
 
@@ -156,9 +159,9 @@ class _ProjectFullCardWidget extends StatelessWidget {
       child: Column(
         children: [
           ProjectCardLargeWidget(project: project),
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(left: 24, right: 24, top: 24, bottom: 12),
-            child: LinearPercentIndicatorWidget(percent: 0.4),
+            child: LinearPercentIndicatorWidget(percent: percentDone),
           ),
           if (isMember)
             const Padding(

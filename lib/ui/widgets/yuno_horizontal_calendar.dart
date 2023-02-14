@@ -138,6 +138,9 @@ class DateWidget extends StatelessWidget {
             onDateSelected!(this.date);
           }
         },
+        customBorder: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(32),
+        ),
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 20),
           child: Column(

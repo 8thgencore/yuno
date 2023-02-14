@@ -11,6 +11,7 @@ class ProjectDetailsState with _$ProjectDetailsState {
   const factory ProjectDetailsState.loaded({
     required IProjectWithUsersTasks project,
     required List<ITaskRead> tasks,
+    required double percentDone,
     required bool isMember,
     required bool isOwner,
   }) = _LoadedState;
