@@ -10,7 +10,9 @@ import 'package:yuno/domain/repository/api_user_repository.dart';
 import 'package:yuno/ui/pages/main/profile/edit_profile/models/errors.dart';
 
 part 'profile_edit_bloc.freezed.dart';
+
 part 'profile_edit_event.dart';
+
 part 'profile_edit_state.dart';
 
 class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
@@ -53,6 +55,12 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
     Emitter<ProfileEditState> emit,
   ) async {
     emit(state.copyWith(status: ProfileEditStatus.loading));
+
+    // The temporary solution is probably wrong.
+    // A pause is required so that the TextField has time to initialize and then the base value is applied.
+    // As a result, we will get a beautiful animation for the TextField when opening the page
+    await Future.delayed(Duration(milliseconds: 100), () {});
+
     final user = await apiUserRepository.getCachedData();
     if (user != null) {
       _user = user;
