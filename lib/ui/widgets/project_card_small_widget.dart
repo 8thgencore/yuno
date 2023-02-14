@@ -67,10 +67,10 @@ class ProjectCardSmallWidget extends StatelessWidget {
             ],
           ),
         ),
-        const Positioned(
+        Positioned(
           left: 24,
           bottom: 0,
-          child: _LinearPercentIndicatorWidget(percent: 0.62),
+          child: _LinearPercentIndicatorWidget(percent: project.percentCompleted),
         ),
       ],
     );

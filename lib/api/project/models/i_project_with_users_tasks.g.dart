@@ -12,6 +12,7 @@ _$_IProjectWithUsersTasks _$$_IProjectWithUsersTasksFromJson(Map<String, dynamic
       description: json['description'] as String,
       link: json['link'] as String,
       id: json['id'] as String,
+      percentCompleted: (json['percent_completed'] as num).toDouble(),
       createdBy: json['created_by_id'] as String?,
       tasks: (json['tasks'] as List<dynamic>?)
           ?.map((e) => ITaskRead.fromJson(e as Map<String, dynamic>))
@@ -27,6 +28,7 @@ Map<String, dynamic> _$$_IProjectWithUsersTasksToJson(_$_IProjectWithUsersTasks 
       'description': instance.description,
       'link': instance.link,
       'id': instance.id,
+      'percent_completed': instance.percentCompleted,
       'created_by_id': instance.createdBy,
       'tasks': instance.tasks,
       'users': instance.users,

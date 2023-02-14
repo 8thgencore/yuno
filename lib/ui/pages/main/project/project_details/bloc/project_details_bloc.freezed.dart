@@ -1124,8 +1124,8 @@ mixin _$ProjectDetailsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks,
-            double percentDone, bool isMember, bool isOwner)
+    required TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)
         loaded,
     required TResult Function(Object error) failure,
     required TResult Function() keep,
@@ -1136,8 +1136,8 @@ mixin _$ProjectDetailsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, double percentDone,
-            bool isMember, bool isOwner)?
+    TResult? Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
         loaded,
     TResult? Function(Object error)? failure,
     TResult? Function()? keep,
@@ -1148,8 +1148,8 @@ mixin _$ProjectDetailsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, double percentDone,
-            bool isMember, bool isOwner)?
+    TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
         loaded,
     TResult Function(Object error)? failure,
     TResult Function()? keep,
@@ -1245,8 +1245,8 @@ class _$_InitialState extends _InitialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks,
-            double percentDone, bool isMember, bool isOwner)
+    required TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)
         loaded,
     required TResult Function(Object error) failure,
     required TResult Function() keep,
@@ -1260,8 +1260,8 @@ class _$_InitialState extends _InitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, double percentDone,
-            bool isMember, bool isOwner)?
+    TResult? Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
         loaded,
     TResult? Function(Object error)? failure,
     TResult? Function()? keep,
@@ -1275,8 +1275,8 @@ class _$_InitialState extends _InitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, double percentDone,
-            bool isMember, bool isOwner)?
+    TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
         loaded,
     TResult Function(Object error)? failure,
     TResult Function()? keep,
@@ -1375,8 +1375,8 @@ class _$_LoadingState extends _LoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks,
-            double percentDone, bool isMember, bool isOwner)
+    required TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)
         loaded,
     required TResult Function(Object error) failure,
     required TResult Function() keep,
@@ -1390,8 +1390,8 @@ class _$_LoadingState extends _LoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, double percentDone,
-            bool isMember, bool isOwner)?
+    TResult? Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
         loaded,
     TResult? Function(Object error)? failure,
     TResult? Function()? keep,
@@ -1405,8 +1405,8 @@ class _$_LoadingState extends _LoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, double percentDone,
-            bool isMember, bool isOwner)?
+    TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
         loaded,
     TResult Function(Object error)? failure,
     TResult Function()? keep,
@@ -1473,12 +1473,7 @@ abstract class _$$_LoadedStateCopyWith<$Res> {
   factory _$$_LoadedStateCopyWith(_$_LoadedState value, $Res Function(_$_LoadedState) then) =
       __$$_LoadedStateCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {IProjectWithUsersTasks project,
-      List<ITaskRead> tasks,
-      double percentDone,
-      bool isMember,
-      bool isOwner});
+  $Res call({IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner});
 
   $IProjectWithUsersTasksCopyWith<$Res> get project;
 }
@@ -1495,7 +1490,6 @@ class __$$_LoadedStateCopyWithImpl<$Res>
   $Res call({
     Object? project = null,
     Object? tasks = null,
-    Object? percentDone = null,
     Object? isMember = null,
     Object? isOwner = null,
   }) {
@@ -1508,10 +1502,6 @@ class __$$_LoadedStateCopyWithImpl<$Res>
           ? _value._tasks
           : tasks // ignore: cast_nullable_to_non_nullable
               as List<ITaskRead>,
-      percentDone: null == percentDone
-          ? _value.percentDone
-          : percentDone // ignore: cast_nullable_to_non_nullable
-              as double,
       isMember: null == isMember
           ? _value.isMember
           : isMember // ignore: cast_nullable_to_non_nullable
@@ -1538,7 +1528,6 @@ class _$_LoadedState extends _LoadedState {
   const _$_LoadedState(
       {required this.project,
       required final List<ITaskRead> tasks,
-      required this.percentDone,
       required this.isMember,
       required this.isOwner})
       : _tasks = tasks,
@@ -1555,15 +1544,13 @@ class _$_LoadedState extends _LoadedState {
   }
 
   @override
-  final double percentDone;
-  @override
   final bool isMember;
   @override
   final bool isOwner;
 
   @override
   String toString() {
-    return 'ProjectDetailsState.loaded(project: $project, tasks: $tasks, percentDone: $percentDone, isMember: $isMember, isOwner: $isOwner)';
+    return 'ProjectDetailsState.loaded(project: $project, tasks: $tasks, isMember: $isMember, isOwner: $isOwner)';
   }
 
   @override
@@ -1573,14 +1560,13 @@ class _$_LoadedState extends _LoadedState {
             other is _$_LoadedState &&
             (identical(other.project, project) || other.project == project) &&
             const DeepCollectionEquality().equals(other._tasks, _tasks) &&
-            (identical(other.percentDone, percentDone) || other.percentDone == percentDone) &&
             (identical(other.isMember, isMember) || other.isMember == isMember) &&
             (identical(other.isOwner, isOwner) || other.isOwner == isOwner));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, project, const DeepCollectionEquality().hash(_tasks),
-      percentDone, isMember, isOwner);
+  int get hashCode => Object.hash(
+      runtimeType, project, const DeepCollectionEquality().hash(_tasks), isMember, isOwner);
 
   @JsonKey(ignore: true)
   @override
@@ -1593,14 +1579,14 @@ class _$_LoadedState extends _LoadedState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks,
-            double percentDone, bool isMember, bool isOwner)
+    required TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)
         loaded,
     required TResult Function(Object error) failure,
     required TResult Function() keep,
     required TResult Function() deleted,
   }) {
-    return loaded(project, tasks, percentDone, isMember, isOwner);
+    return loaded(project, tasks, isMember, isOwner);
   }
 
   @override
@@ -1608,14 +1594,14 @@ class _$_LoadedState extends _LoadedState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, double percentDone,
-            bool isMember, bool isOwner)?
+    TResult? Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
         loaded,
     TResult? Function(Object error)? failure,
     TResult? Function()? keep,
     TResult? Function()? deleted,
   }) {
-    return loaded?.call(project, tasks, percentDone, isMember, isOwner);
+    return loaded?.call(project, tasks, isMember, isOwner);
   }
 
   @override
@@ -1623,8 +1609,8 @@ class _$_LoadedState extends _LoadedState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, double percentDone,
-            bool isMember, bool isOwner)?
+    TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
         loaded,
     TResult Function(Object error)? failure,
     TResult Function()? keep,
@@ -1632,7 +1618,7 @@ class _$_LoadedState extends _LoadedState {
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(project, tasks, percentDone, isMember, isOwner);
+      return loaded(project, tasks, isMember, isOwner);
     }
     return orElse();
   }
@@ -1685,14 +1671,12 @@ abstract class _LoadedState extends ProjectDetailsState {
   const factory _LoadedState(
       {required final IProjectWithUsersTasks project,
       required final List<ITaskRead> tasks,
-      required final double percentDone,
       required final bool isMember,
       required final bool isOwner}) = _$_LoadedState;
   const _LoadedState._() : super._();
 
   IProjectWithUsersTasks get project;
   List<ITaskRead> get tasks;
-  double get percentDone;
   bool get isMember;
   bool get isOwner;
   @JsonKey(ignore: true)
@@ -1760,8 +1744,8 @@ class _$_FailureState extends _FailureState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks,
-            double percentDone, bool isMember, bool isOwner)
+    required TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)
         loaded,
     required TResult Function(Object error) failure,
     required TResult Function() keep,
@@ -1775,8 +1759,8 @@ class _$_FailureState extends _FailureState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, double percentDone,
-            bool isMember, bool isOwner)?
+    TResult? Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
         loaded,
     TResult? Function(Object error)? failure,
     TResult? Function()? keep,
@@ -1790,8 +1774,8 @@ class _$_FailureState extends _FailureState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, double percentDone,
-            bool isMember, bool isOwner)?
+    TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
         loaded,
     TResult Function(Object error)? failure,
     TResult Function()? keep,
@@ -1893,8 +1877,8 @@ class _$_KeepState extends _KeepState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks,
-            double percentDone, bool isMember, bool isOwner)
+    required TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)
         loaded,
     required TResult Function(Object error) failure,
     required TResult Function() keep,
@@ -1908,8 +1892,8 @@ class _$_KeepState extends _KeepState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, double percentDone,
-            bool isMember, bool isOwner)?
+    TResult? Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
         loaded,
     TResult? Function(Object error)? failure,
     TResult? Function()? keep,
@@ -1923,8 +1907,8 @@ class _$_KeepState extends _KeepState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, double percentDone,
-            bool isMember, bool isOwner)?
+    TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
         loaded,
     TResult Function(Object error)? failure,
     TResult Function()? keep,
@@ -2023,8 +2007,8 @@ class _$_DeletedState extends _DeletedState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks,
-            double percentDone, bool isMember, bool isOwner)
+    required TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)
         loaded,
     required TResult Function(Object error) failure,
     required TResult Function() keep,
@@ -2038,8 +2022,8 @@ class _$_DeletedState extends _DeletedState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, double percentDone,
-            bool isMember, bool isOwner)?
+    TResult? Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
         loaded,
     TResult? Function(Object error)? failure,
     TResult? Function()? keep,
@@ -2053,8 +2037,8 @@ class _$_DeletedState extends _DeletedState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(IProjectWithUsersTasks project, List<ITaskRead> tasks, double percentDone,
-            bool isMember, bool isOwner)?
+    TResult Function(
+            IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner)?
         loaded,
     TResult Function(Object error)? failure,
     TResult Function()? keep,

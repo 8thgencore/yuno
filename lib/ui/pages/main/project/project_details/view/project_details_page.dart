@@ -44,7 +44,7 @@ class ProjectDetailsPage extends StatelessWidget {
           }
         },
         builder: (context, state) => state.maybeWhen(
-          loaded: (project, _, __, isMember, isOwner) => isMember
+          loaded: (project, _, isMember, isOwner) => isMember
               ? FloatingActionButton(
                   onPressed: () async {
                     final result = await context.pushNamed<bool>(
@@ -99,19 +99,19 @@ class _ProjectContentWidget extends StatelessWidget {
               builder: (context, state) => state.maybeWhen(
                 initial: () => const LoadingContainer(),
                 loading: () => const LoadingContainer(),
-                loaded: (project, tasks, percentDone, isMember, isOwner) => Column(
+                loaded: (project, tasks, isMember, isOwner) => Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 10),
                     _ProjectFullCardWidget(
                       isMember: isMember,
                       isOwner: isOwner,
-                      percentDone: percentDone,
                       project: IProjectWithUsers(
                         id: project.id,
                         name: project.name,
                         description: project.description,
                         link: project.link,
+                        percentCompleted: project.percentCompleted,
                         users: project.users,
                       ),
                     ),
@@ -138,13 +138,11 @@ class _ProjectContentWidget extends StatelessWidget {
 class _ProjectFullCardWidget extends StatelessWidget {
   const _ProjectFullCardWidget({
     required this.project,
-    required this.percentDone,
     required this.isMember,
     required this.isOwner,
   });
 
   final IProjectWithUsers project;
-  final double percentDone;
   final bool isMember;
   final bool isOwner;
 
@@ -161,7 +159,7 @@ class _ProjectFullCardWidget extends StatelessWidget {
           ProjectCardLargeWidget(project: project),
           Padding(
             padding: EdgeInsets.only(left: 24, right: 24, top: 24, bottom: 12),
-            child: LinearPercentIndicatorWidget(percent: percentDone),
+            child: LinearPercentIndicatorWidget(percent: project.percentCompleted),
           ),
           if (isMember)
             const Padding(

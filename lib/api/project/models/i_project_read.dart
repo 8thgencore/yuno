@@ -10,6 +10,7 @@ class IProjectRead with _$IProjectRead {
     required String description,
     required String link,
     required String id,
+    @JsonKey(name: 'percent_completed') required double percentCompleted,
     @JsonKey(name: 'created_by_id') String? createdBy,
   }) = _IProjectRead;
 
