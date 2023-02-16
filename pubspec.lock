@@ -253,10 +253,10 @@ packages:
     dependency: "direct main"
     description:
       name: dio
-      sha256: "7d328c4d898a61efc3cd93655a0955858e29a0aa647f0f9e02d59b3bb275e2e8"
+      sha256: "9fdbf71baeb250fc9da847f6cb2052196f62c19906a3657adfc18631a667d316"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.6"
+    version: "5.0.0"
   email_validator:
     dependency: "direct main"
     description:
@@ -724,10 +724,10 @@ packages:
     dependency: "direct main"
     description:
       name: pretty_dio_logger
-      sha256: "948f7eeb36e7aa0760b51c1a8e3331d4b21e36fabd39efca81f585ed93893544"
+      sha256: "00b80053063935cf9a6190da344c5373b9d0e92da4c944c878ff2fbef0ef6dc2"
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.0-beta-1"
+    version: "1.3.1"
   process:
     dependency: transitive
     description:
@@ -764,18 +764,18 @@ packages:
     dependency: "direct main"
     description:
       name: retrofit
-      sha256: "9254ec985d5e26a839a9070ae25b98f0781c9c420e4241c5fb8b8965aa1fc7f2"
+      sha256: "5eedbd8f73697f190dabc88520e0bcf2d3b2d9b9ad5c837f1dbb3ee6172d7709"
       url: "https://pub.dev"
     source: hosted
-    version: "3.3.1"
+    version: "4.0.1"
   retrofit_generator:
     dependency: "direct dev"
     description:
       name: retrofit_generator
-      sha256: f5107e842e77ce71c63b995331b43d4597f71df9031389dd93a1197a00118d83
+      sha256: b3c5df182f1f88342089bc576f6abfebf5ff55f477d428e31e385e4822cfda12
       url: "https://pub.dev"
     source: hosted
-    version: "4.2.0"
+    version: "5.0.0"
   rxdart:
     dependency: "direct main"
     description:
@@ -969,10 +969,10 @@ packages:
     dependency: "direct dev"
     description:
       name: swagger_parser
-      sha256: a1afdedaa81dd0072e168846abc578a27bb82bb2e1cbdc19c23f3e51179a27b3
+      sha256: "1c139194841f77ad975090fa398019dbb13cdfee41370d1caf0646414b3c1502"
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.0"
+    version: "0.8.0"
   synchronized:
     dependency: transitive
     description:
