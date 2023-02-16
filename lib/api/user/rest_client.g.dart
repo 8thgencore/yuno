@@ -292,7 +292,6 @@ class _UserClient implements UserClient {
           data: _data,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
