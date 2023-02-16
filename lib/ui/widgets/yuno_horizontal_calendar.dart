@@ -56,9 +56,10 @@ class _YunoHorizontalCalendarWidgetState extends State<YunoHorizontalCalendarWid
     return Container(
       height: 98,
       child: ListView.builder(
-        itemCount: widget.itemCount + 2,
-        scrollDirection: Axis.horizontal,
         controller: _controller,
+        scrollDirection: Axis.horizontal,
+        physics: BouncingScrollPhysics(),
+        itemCount: widget.itemCount + 2,
         itemBuilder: (context, index) {
           if (index == 0 || index == widget.itemCount + 1) {
             return SizedBox(width: 14);
@@ -82,10 +83,7 @@ class _YunoHorizontalCalendarWidgetState extends State<YunoHorizontalCalendarWid
             selectionColor: selectionColor,
             onDateSelected: (selectedDate) {
               // A date is selected
-              // if (widget.onDateChange != null) {
-              //   widget.onDateChange!(selectedDate);
-              // }
-              if (widget.onDateChange != null) {
+              if (widget.onDateChange != null && _selectedDate != selectedDate) {
                 widget.onDateChange!(selectedDate);
               }
               setState(() => _selectedDate = selectedDate);

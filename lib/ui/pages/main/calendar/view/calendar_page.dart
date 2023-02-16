@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:intl/intl.dart';
+import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
 import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/calendar/bloc/calendar_bloc.dart';
@@ -29,30 +30,34 @@ class _CalendarPageContentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          padding: EdgeInsets.only(left: 24, top: 16, right: 24),
-          child: BlocBuilder<CalendarBloc, CalendarState>(
-            builder: (context, state) => state.maybeWhen(
-              loading: () => _HeaderWidget(date: DateTime.now(), taskLength: 0),
-              loaded: (date, tasks) => _HeaderWidget(
-                date: date,
-                taskLength: tasks.length,
+    return removeScrollingGlow(
+      child: ListView(
+        shrinkWrap: true,
+        children: [
+          Container(
+            padding: EdgeInsets.only(left: 24, top: 16, right: 24),
+            child: BlocBuilder<CalendarBloc, CalendarState>(
+              builder: (context, state) => state.maybeWhen(
+                loading: () => _HeaderWidget(date: DateTime.now(), taskLength: 0),
+                loaded: (date, tasks) => _HeaderWidget(
+                  date: date,
+                  taskLength: tasks.length,
+                ),
+                orElse: () => _HeaderWidget(date: DateTime.now(), taskLength: 0),
               ),
-              orElse: () => _HeaderWidget(date: DateTime.now(), taskLength: 0),
             ),
           ),
-        ),
-        SizedBox(height: 26),
-        YunoHorizontalCalendarWidget(
-          itemCount: 50,
-          onDateChange: (selectedDate) =>
-              context.read<CalendarBloc>().add(CalendarEvent.selectedDate(selectedDate)),
-        ),
-        SizedBox(height: 32),
-        _CheckListBuilderWidget(),
-      ],
+          SizedBox(height: 26),
+          YunoHorizontalCalendarWidget(
+            itemCount: 50,
+            onDateChange: (selectedDate) =>
+                context.read<CalendarBloc>().add(CalendarEvent.selectedDate(selectedDate)),
+          ),
+          SizedBox(height: 32),
+          _CheckListBuilderWidget(),
+          SizedBox(height: 24),
+        ],
+      ),
     );
   }
 }
@@ -91,76 +96,73 @@ class _CheckListBuilderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 24, right: 24, bottom: 6),
-          child: Text('Checklist', style: AppTypography.b18d),
-        ),
-        BlocBuilder<CalendarBloc, CalendarState>(
-          builder: (context, state) => state.maybeWhen(
-            loading: () => LoadingContainer(),
-            loaded: (date, tasks) => tasks.isNotEmpty
-                ? ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
-                    itemCount: tasks.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return GestureDetector(
-                        onTap: () async {
-                          final result = await context.pushNamed<bool>(
-                            RouteName.taskEdit,
-                            params: {'id': tasks[index].id},
-                          );
-                          WidgetsBinding.instance.addPostFrameCallback((_) {
-                            if (result ?? false) {
-                              context.read<CalendarBloc>().add(const CalendarEvent.updated());
-                            }
-                          });
-                        },
-                        child: TaskCardWidget(
-                          id: tasks[index].id,
-                          title: tasks[index].name,
-                          projectName: tasks[index].projectName,
-                          done: tasks[index].done,
-                          onClickCheckBox: () => context
-                              .read<CalendarBloc>()
-                              .add(CalendarEvent.checkedItem(tasks[index].id)),
-                          isMember: true,
-                        ),
+    return BlocBuilder<CalendarBloc, CalendarState>(
+      builder: (context, state) => state.maybeWhen(
+        loading: () => LoadingContainer(),
+        loaded: (date, tasks) => tasks.isNotEmpty
+            ? ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                itemCount: tasks.length + 1,
+                itemBuilder: (BuildContext context, int index) {
+                  if (index == 0) {
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 6),
+                      child: Text('Checklist', style: AppTypography.b18d),
+                    );
+                  }
+                  return GestureDetector(
+                    onTap: () async {
+                      final result = await context.pushNamed<bool>(
+                        RouteName.taskEdit,
+                        params: {'id': tasks[index - 1].id},
                       );
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        if (result ?? false) {
+                          context.read<CalendarBloc>().add(const CalendarEvent.updated());
+                        }
+                      });
                     },
-                  )
-                : Container(
-                    padding: EdgeInsets.symmetric(horizontal: 24),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(height: 16),
-                        Image.asset(Assets.images.checklistEmpty.path),
-                        SizedBox(height: 32),
-                        Text(
-                          'Woops, No Checklist Yet!',
-                          textAlign: TextAlign.center,
-                          style: AppTypography.b18d,
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          'No checklist at the moment, feel free to add '
-                          'some checklist by pressing Plus button below.',
-                          textAlign: TextAlign.center,
-                          style: AppTypography.l14g,
-                        ),
-                      ],
+                    child: TaskCardWidget(
+                      id: tasks[index - 1].id,
+                      title: tasks[index - 1].name,
+                      projectName: tasks[index - 1].projectName,
+                      done: tasks[index - 1].done,
+                      onClickCheckBox: () => context
+                          .read<CalendarBloc>()
+                          .add(CalendarEvent.checkedItem(tasks[index - 1].id)),
+                      isMember: true,
                     ),
-                  ),
-            failure: (error) => ErrorContainer(text: '$error'),
-            orElse: () => const ErrorContainer(text: 'Tasks list is empty'),
-          ),
-        ),
-      ],
+                  );
+                },
+              )
+            : Container(
+                padding: EdgeInsets.symmetric(horizontal: 24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 16),
+                    Image.asset(Assets.images.checklistEmpty.path),
+                    SizedBox(height: 32),
+                    Text(
+                      'Woops, No Checklist Yet!',
+                      textAlign: TextAlign.center,
+                      style: AppTypography.b18d,
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      'No checklist at the moment, feel free to add '
+                      'some checklist by pressing Plus button below.',
+                      textAlign: TextAlign.center,
+                      style: AppTypography.l14g,
+                    ),
+                  ],
+                ),
+              ),
+        failure: (error) => ErrorContainer(text: '$error'),
+        orElse: () => const ErrorContainer(text: 'Tasks list is empty'),
+      ),
     );
   }
 }
