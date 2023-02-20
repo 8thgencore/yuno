@@ -8,12 +8,12 @@ part of 'i_auth_change_password.dart';
 
 _$_IAuthChangePassword _$$_IAuthChangePasswordFromJson(Map<String, dynamic> json) =>
     _$_IAuthChangePassword(
-      current: json['current'] as String,
-      newvalue: json['new'] as String,
+      currentPassword: json['current_password'] as String,
+      newPassword: json['new_password'] as String,
     );
 
 Map<String, dynamic> _$$_IAuthChangePasswordToJson(_$_IAuthChangePassword instance) =>
     <String, dynamic>{
-      'current': instance.current,
-      'new': instance.newvalue,
+      'current_password': instance.currentPassword,
+      'new_password': instance.newPassword,
     };

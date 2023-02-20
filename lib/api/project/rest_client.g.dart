@@ -39,7 +39,7 @@ class _ProjectClient implements ProjectClient {
     )
             .compose(
               _dio.options,
-              '/project/my',
+              '/project/me',
               queryParameters: queryParameters,
               data: _data,
             )

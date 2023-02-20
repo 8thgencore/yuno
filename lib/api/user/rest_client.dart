@@ -4,12 +4,8 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:yuno/api/role/models/i_role_read.dart';
-import 'package:yuno/api/shared_models/base_response.dart';
-import 'package:yuno/api/shared_models/i_order_enum.dart';
-import 'package:yuno/api/user/models/i_image_upload.dart';
-import 'package:yuno/api/user/models/i_user_create.dart';
-import 'package:yuno/api/user/models/i_user_read.dart';
-import 'package:yuno/api/user/models/i_user_update.dart';
+import 'package:yuno/api/shared_models/models.dart';
+import 'package:yuno/api/user/models.dart';
 
 part 'rest_client.g.dart';
 

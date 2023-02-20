@@ -93,8 +93,8 @@ class ApiAuthRepository implements IAuthRepository {
   }) async {
     final response = await authPasswordClient.postAuthChangePassword(
       body: IAuthChangePassword(
-        current: currentPassword,
-        newvalue: newPassword,
+        currentPassword: currentPassword,
+        newPassword: newPassword,
       ),
     );
 
