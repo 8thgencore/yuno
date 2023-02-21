@@ -23,6 +23,8 @@ abstract class IAuthRepository {
     required String currentPassword,
     required String newPassword,
   });
+
+  Future<bool> forgotPassword({required String email});
 }
 
 class ApiAuthRepository implements IAuthRepository {
@@ -104,5 +106,12 @@ class ApiAuthRepository implements IAuthRepository {
     await refreshTokenDataRepository.setItem(data.refreshToken);
 
     return data.user;
+  }
+
+  Future<bool> forgotPassword({required String email}) async {
+    await authClient.postAuthForgotPassword(
+      body: IAuthForgotPassword(email: email),
+    );
+    return true;
   }
 }

@@ -10,6 +10,7 @@ import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/domain/repository/api_project_repository.dart';
 import 'package:yuno/domain/repository/api_task_repository.dart';
 import 'package:yuno/domain/repository/api_user_repository.dart';
+import 'package:yuno/ui/pages/auth/forgot_password/view/forgot_password_page.dart';
 import 'package:yuno/ui/pages/auth/login/view/login_page.dart';
 import 'package:yuno/ui/pages/auth/registration/view/registration_page.dart';
 import 'package:yuno/ui/pages/main/calendar/bloc/calendar_bloc.dart';
@@ -250,6 +251,11 @@ mixin RouterMixin on State<App> {
           name: RouteName.register,
           path: RoutePath.register,
           builder: (context, state) => const RegistrationPage(),
+        ),
+        GoRoute(
+          name: RouteName.forgotPassword,
+          path: RoutePath.forgotPassword,
+          builder: (context, state) => const ForgotPassword(),
         ),
       ],
     );

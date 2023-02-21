@@ -286,7 +286,7 @@ class _BottomWidgetState extends State<_BottomWidget> {
               const Spacer(),
               TextButton(
                 child: Text('Forgot Password?', style: AppTypography.l14d),
-                onPressed: () => context.goNamed(RouteName.splash),
+                onPressed: () => context.pushNamed(RouteName.forgotPassword),
               ),
             ],
           ),

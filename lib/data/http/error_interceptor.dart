@@ -15,9 +15,10 @@ dynamic dioErrorInterceptor(DioError e) {
   if (e.response?.statusCode != 200) {
     if (e.response?.data is Map<String, dynamic>) {
       final error = HTTPValidationError.fromJson(e.response?.data as Map<String, dynamic>).detail;
-      return error;
-    } else {
-      return 'Unknown network error';
+      if (error.runtimeType == String) {
+        return error;
+      }
     }
+    return 'Unknown network error';
   }
 }

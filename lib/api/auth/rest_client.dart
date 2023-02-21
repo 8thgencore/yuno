@@ -35,9 +35,9 @@ abstract class AuthClient {
     @Body() required RefreshToken body,
   });
 
-  @POST('/auth/forget-password')
-  Future<void> postAuthForgetPassword({
-    @Body() required IAuthForgetPassword body,
+  @POST('/auth/forgot-password')
+  Future<BaseResponse<dynamic>> postAuthForgotPassword({
+    @Body() required IAuthForgotPassword body,
   });
 
   @POST('/auth/otp')
