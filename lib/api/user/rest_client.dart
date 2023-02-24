@@ -21,6 +21,11 @@ abstract class UserClient {
     @Body() required IUserCreate body,
   });
 
+  @PUT('/user')
+  Future<BaseResponse<IUserRead>> putUser({
+    @Body() required IUserUpdate body,
+  });
+
   @GET('/user/list')
   Future<BaseResponse<IRoleRead>> getUserList({
     @Query('page') int? page = 1,
