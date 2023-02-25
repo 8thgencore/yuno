@@ -1,10 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:yuno/api/shared_models/base_response.dart';
-import 'package:yuno/api/task/models/i_task_create.dart';
-import 'package:yuno/api/task/models/i_task_read.dart';
-import 'package:yuno/api/task/models/i_task_update.dart';
-import 'package:yuno/api/task/models/paginated_data_i_task_with_project_name.dart';
+import 'package:yuno/api/shared_models/models.dart';
+import 'package:yuno/api/task/models.dart';
 
 part 'rest_client.g.dart';
 

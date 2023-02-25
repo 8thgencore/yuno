@@ -54,8 +54,7 @@ class ApiUserRepository implements IUserRepository {
   }) async {
     final user = await userDataRepository.getItem();
     if (user != null) {
-      final response = await userClient.putUserUserId(
-        userId: user.id,
+      final response = await userClient.putUser(
         body: IUserUpdate(
           firstName: firstName,
           lastName: lastName,

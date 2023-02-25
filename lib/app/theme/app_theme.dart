@@ -31,7 +31,8 @@ class AppTheme {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.primary100,
-        disabledBackgroundColor: AppColors.dark10,
+        // disabledBackgroundColor: AppColors.dark10,
+        disabledBackgroundColor: Color.fromRGBO(223, 229, 234, 1),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         textStyle: MaterialStateTextStyle.resolveWith(
           (Set<MaterialState> states) {

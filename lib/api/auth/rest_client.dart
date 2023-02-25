@@ -1,14 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:yuno/api/auth/models/i_auth_change_password.dart';
-import 'package:yuno/api/auth/models/i_auth_login.dart';
-import 'package:yuno/api/auth/models/i_auth_register.dart';
-import 'package:yuno/api/auth/models/i_auth_token.dart';
-import 'package:yuno/api/auth/models/refresh_token.dart';
-import 'package:yuno/api/auth/models/token.dart';
-import 'package:yuno/api/auth/models/token_read.dart';
-import 'package:yuno/api/shared_models/base_response.dart';
-import 'package:yuno/api/user/models/i_user_read.dart';
+import 'package:yuno/api/auth/models.dart';
+import 'package:yuno/api/auth/models/reset_token.dart';
+import 'package:yuno/api/shared_models/models.dart';
+import 'package:yuno/api/user/models.dart';
 
 part 'rest_client.g.dart';
 
@@ -39,6 +34,21 @@ abstract class AuthClient {
   @POST('/auth/refresh-token')
   Future<BaseResponse<TokenRead>> postAuthRefreshToken({
     @Body() required RefreshToken body,
+  });
+
+  @POST('/auth/forgot-password')
+  Future<BaseResponse<dynamic>> postAuthForgotPassword({
+    @Body() required IAuthForgotPassword body,
+  });
+
+  @POST('/auth/otp')
+  Future<BaseResponse<ResetToken>> postAuthOtp({
+    @Body() required IAuthOtpCode body,
+  });
+
+  @POST('/auth/reset-password')
+  Future<BaseResponse<IUserRead>> postAuthResetPassword({
+    @Body() required IAuthResetPassword body,
   });
 }
 

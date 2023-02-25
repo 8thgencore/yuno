@@ -1,12 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:yuno/api/project/models/i_project_create.dart';
-import 'package:yuno/api/project/models/i_project_read.dart';
-import 'package:yuno/api/project/models/i_project_update.dart';
-import 'package:yuno/api/project/models/i_project_with_users.dart';
-import 'package:yuno/api/project/models/i_project_with_users_tasks.dart';
-import 'package:yuno/api/project/models/paginated_data_i_project_with_users.dart';
-import 'package:yuno/api/shared_models/base_response.dart';
+import 'package:yuno/api/project/models.dart';
+import 'package:yuno/api/shared_models/models.dart';
 import 'package:yuno/api/task/models/paginated_data_i_task_read.dart';
 
 part 'rest_client.g.dart';
@@ -15,7 +10,7 @@ part 'rest_client.g.dart';
 abstract class ProjectClient {
   factory ProjectClient(Dio dio, {String baseUrl}) = _ProjectClient;
 
-  @GET('/project/my')
+  @GET('/project/me')
   Future<BaseResponse<PaginatedDataIProjectWithUsers>> getProjectMy({
     @Query('page') int? page = 1,
     @Query('size') int? size = 50,

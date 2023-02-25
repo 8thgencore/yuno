@@ -5,3 +5,6 @@ export 'models/i_auth_token.dart';
 export 'models/refresh_token.dart';
 export 'models/token.dart';
 export 'models/token_read.dart';
+export 'models/i_auth_forgot_password.dart';
+export 'models/i_auth_otp_code.dart';
+export 'models/i_auth_reset_password.dart';

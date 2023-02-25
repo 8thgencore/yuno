@@ -20,9 +20,10 @@ IAuthChangePassword _$IAuthChangePasswordFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$IAuthChangePassword {
-  String get current => throw _privateConstructorUsedError;
-  @JsonKey(name: 'new')
-  String get newvalue => throw _privateConstructorUsedError;
+  @JsonKey(name: 'current_password')
+  String get currentPassword => throw _privateConstructorUsedError;
+  @JsonKey(name: 'new_password')
+  String get newPassword => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,9 @@ abstract class $IAuthChangePasswordCopyWith<$Res> {
           IAuthChangePassword value, $Res Function(IAuthChangePassword) then) =
       _$IAuthChangePasswordCopyWithImpl<$Res, IAuthChangePassword>;
   @useResult
-  $Res call({String current, @JsonKey(name: 'new') String newvalue});
+  $Res call(
+      {@JsonKey(name: 'current_password') String currentPassword,
+      @JsonKey(name: 'new_password') String newPassword});
 }
 
 /// @nodoc
@@ -52,17 +55,17 @@ class _$IAuthChangePasswordCopyWithImpl<$Res, $Val extends IAuthChangePassword>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? current = null,
-    Object? newvalue = null,
+    Object? currentPassword = null,
+    Object? newPassword = null,
   }) {
     return _then(_value.copyWith(
-      current: null == current
-          ? _value.current
-          : current // ignore: cast_nullable_to_non_nullable
+      currentPassword: null == currentPassword
+          ? _value.currentPassword
+          : currentPassword // ignore: cast_nullable_to_non_nullable
               as String,
-      newvalue: null == newvalue
-          ? _value.newvalue
-          : newvalue // ignore: cast_nullable_to_non_nullable
+      newPassword: null == newPassword
+          ? _value.newPassword
+          : newPassword // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -75,7 +78,9 @@ abstract class _$$_IAuthChangePasswordCopyWith<$Res> implements $IAuthChangePass
       __$$_IAuthChangePasswordCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String current, @JsonKey(name: 'new') String newvalue});
+  $Res call(
+      {@JsonKey(name: 'current_password') String currentPassword,
+      @JsonKey(name: 'new_password') String newPassword});
 }
 
 /// @nodoc
@@ -89,17 +94,17 @@ class __$$_IAuthChangePasswordCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? current = null,
-    Object? newvalue = null,
+    Object? currentPassword = null,
+    Object? newPassword = null,
   }) {
     return _then(_$_IAuthChangePassword(
-      current: null == current
-          ? _value.current
-          : current // ignore: cast_nullable_to_non_nullable
+      currentPassword: null == currentPassword
+          ? _value.currentPassword
+          : currentPassword // ignore: cast_nullable_to_non_nullable
               as String,
-      newvalue: null == newvalue
-          ? _value.newvalue
-          : newvalue // ignore: cast_nullable_to_non_nullable
+      newPassword: null == newPassword
+          ? _value.newPassword
+          : newPassword // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -109,20 +114,22 @@ class __$$_IAuthChangePasswordCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_IAuthChangePassword implements _IAuthChangePassword {
   const _$_IAuthChangePassword(
-      {required this.current, @JsonKey(name: 'new') required this.newvalue});
+      {@JsonKey(name: 'current_password') required this.currentPassword,
+      @JsonKey(name: 'new_password') required this.newPassword});
 
   factory _$_IAuthChangePassword.fromJson(Map<String, dynamic> json) =>
       _$$_IAuthChangePasswordFromJson(json);
 
   @override
-  final String current;
+  @JsonKey(name: 'current_password')
+  final String currentPassword;
   @override
-  @JsonKey(name: 'new')
-  final String newvalue;
+  @JsonKey(name: 'new_password')
+  final String newPassword;
 
   @override
   String toString() {
-    return 'IAuthChangePassword(current: $current, newvalue: $newvalue)';
+    return 'IAuthChangePassword(currentPassword: $currentPassword, newPassword: $newPassword)';
   }
 
   @override
@@ -130,13 +137,14 @@ class _$_IAuthChangePassword implements _IAuthChangePassword {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IAuthChangePassword &&
-            (identical(other.current, current) || other.current == current) &&
-            (identical(other.newvalue, newvalue) || other.newvalue == newvalue));
+            (identical(other.currentPassword, currentPassword) ||
+                other.currentPassword == currentPassword) &&
+            (identical(other.newPassword, newPassword) || other.newPassword == newPassword));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, current, newvalue);
+  int get hashCode => Object.hash(runtimeType, currentPassword, newPassword);
 
   @JsonKey(ignore: true)
   @override
@@ -154,17 +162,18 @@ class _$_IAuthChangePassword implements _IAuthChangePassword {
 
 abstract class _IAuthChangePassword implements IAuthChangePassword {
   const factory _IAuthChangePassword(
-      {required final String current,
-      @JsonKey(name: 'new') required final String newvalue}) = _$_IAuthChangePassword;
+      {@JsonKey(name: 'current_password') required final String currentPassword,
+      @JsonKey(name: 'new_password') required final String newPassword}) = _$_IAuthChangePassword;
 
   factory _IAuthChangePassword.fromJson(Map<String, dynamic> json) =
       _$_IAuthChangePassword.fromJson;
 
   @override
-  String get current;
+  @JsonKey(name: 'current_password')
+  String get currentPassword;
   @override
-  @JsonKey(name: 'new')
-  String get newvalue;
+  @JsonKey(name: 'new_password')
+  String get newPassword;
   @override
   @JsonKey(ignore: true)
   _$$_IAuthChangePasswordCopyWith<_$_IAuthChangePassword> get copyWith =>

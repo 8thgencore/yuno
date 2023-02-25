@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:yuno/api/auth/models/reset_token.dart';
 import 'package:yuno/api/auth/models/token.dart';
 import 'package:yuno/api/auth/models/token_read.dart';
 import 'package:yuno/api/project/models/i_project_read.dart';
@@ -19,6 +20,7 @@ class BaseResponse<T> {
 
   final String message;
   final Object meta;
+
   // ignore: inference_failure_on_instance_creation
   @_Converter()
   final T data;
@@ -44,6 +46,8 @@ class _Converter<T> implements JsonConverter<T, Object?> {
           return Token.fromJson(json) as T;
         case TokenRead:
           return TokenRead.fromJson(json) as T;
+        case ResetToken:
+          return ResetToken.fromJson(json) as T;
         case IRoleRead:
           return IRoleRead.fromJson(json) as T;
         case PaginatedDataIRoleRead:

@@ -6,8 +6,8 @@ part 'i_auth_change_password.g.dart';
 @freezed
 class IAuthChangePassword with _$IAuthChangePassword {
   const factory IAuthChangePassword({
-    required String current,
-    @JsonKey(name: 'new') required String newvalue,
+    @JsonKey(name: 'current_password') required String currentPassword,
+    @JsonKey(name: 'new_password') required String newPassword,
   }) = _IAuthChangePassword;
 
   factory IAuthChangePassword.fromJson(Map<String, dynamic> json) =>
