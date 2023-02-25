@@ -19,10 +19,10 @@ class ProjectsListBloc extends Bloc<ProjectsListEvent, ProjectsListState> {
   }) : super(const ProjectsListState.initial()) {
     on<ProjectsListEvent>(
       (event, emit) => event.map(
-        started: (event) => _onProjectsLoaded(event, emit),
-        updated: (event) => _onProjectsUpdated(event, emit),
-        nextLoaded: (event) => _onProjectNextLoaded(event, emit),
-        autoLoaded: (event) => _onProjectAutoLoaded(event, emit),
+        started: (event) async => _onProjectsLoaded(event, emit),
+        updated: (event) async => _onProjectsUpdated(event, emit),
+        nextLoaded: (event) async => _onProjectNextLoaded(event, emit),
+        autoLoaded: (event) async => _onProjectAutoLoaded(event, emit),
       ),
     );
   }

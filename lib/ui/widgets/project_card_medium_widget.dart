@@ -13,7 +13,7 @@ class ProjectCardMediumWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> urlImages = [];
+    final urlImages = <String>[];
     project.users?.forEach((user) {
       urlImages.add(user.image?.media.link ?? '');
     });

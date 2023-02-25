@@ -15,9 +15,9 @@ class OtpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => OtpBloc(sl.get<IAuthRepository>()),
-      child: LoaderOverlay(
+      child: const LoaderOverlay(
         child: Scaffold(
-          body: Container(
+          body: DecoratedBox(
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
@@ -106,7 +106,7 @@ class _TopInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 35),
+      padding: const EdgeInsets.symmetric(horizontal: 35),
       width: MediaQuery.of(context).size.width,
       child: Column(
         children: [
@@ -149,7 +149,7 @@ class _ErrorWidget extends StatelessWidget {
             borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
             color: AppColors.error100,
           ),
-          child: Container(
+          child: SizedBox(
             height: height,
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -176,8 +176,9 @@ class _ErrorWidget extends StatelessWidget {
             behavior: HitTestBehavior.opaque,
             onTap: () => context.read<OtpBloc>().add(const OtpEvent.closedError()),
             child: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                child: Icon(Icons.close, color: AppColors.white80, size: 20)),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: Icon(Icons.close, color: AppColors.white80, size: 20),
+            ),
           ),
         ),
       ],
@@ -220,7 +221,7 @@ class _BottomWidgetState extends State<_BottomWidget> {
         children: [
           Text('Verification Code', style: AppTypography.l12g),
           const SizedBox(height: 12),
-          OtpWidget(),
+          const OtpWidget(),
           const SizedBox(height: 40),
           const _ContinueButton(),
         ],

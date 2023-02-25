@@ -29,12 +29,12 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
         ) {
     on<ProfileEditEvent>(
       (event, emit) => event.map(
-        started: (event) => _onProfileLoaded(event, emit),
-        firstNameChanged: (event) => _onFirstNameChanged(event, emit),
-        lastNameChanged: (event) => _onLastNameChanged(event, emit),
-        usernameChanged: (event) => _onUsernameChanged(event, emit),
-        emailChanged: (event) => _onEmailChanged(event, emit),
-        saved: (event) => _onSaveProfile(event, emit),
+        started: (event) async => _onProfileLoaded(event, emit),
+        firstNameChanged: (event) async => _onFirstNameChanged(event, emit),
+        lastNameChanged: (event) async => _onLastNameChanged(event, emit),
+        usernameChanged: (event) async => _onUsernameChanged(event, emit),
+        emailChanged: (event) async => _onEmailChanged(event, emit),
+        saved: (event) async => _onSaveProfile(event, emit),
       ),
       transformer: sequential(),
     );
@@ -67,14 +67,16 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
       _user = user;
       _emailError = _validateEmail();
       _usernameError = _validateUsername();
-      emit(state.copyWith(
-        status: ProfileEditStatus.loaded,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        username: user.username,
-        email: user.email,
-        role: user.role?.name ?? '',
-      ));
+      emit(
+        state.copyWith(
+          status: ProfileEditStatus.loaded,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          username: user.username,
+          email: user.email,
+          role: user.role?.name ?? '',
+        ),
+      );
     } else {
       emit(state.copyWith(status: ProfileEditStatus.failure));
     }
@@ -108,10 +110,12 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
         _showUnknownError(emit);
       }
     } on DioError catch (dioError) {
-      emit(state.copyWith(
-        status: ProfileEditStatus.failure,
-        serverError: dioErrorInterceptor(dioError).toString(),
-      ));
+      emit(
+        state.copyWith(
+          status: ProfileEditStatus.failure,
+          serverError: dioErrorInterceptor(dioError).toString(),
+        ),
+      );
     }
   }
 
@@ -146,14 +150,16 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
   }
 
   void _calculateFieldsInfo(Emitter<ProfileEditState> emit) {
-    emit(state.copyWith(
-      firstName: _user!.firstName,
-      lastName: _user!.lastName,
-      email: _user!.email,
-      username: _user!.username,
-      emailError: _highlightEmailError ? _emailError : null,
-      usernameError: _highlightUsernameError ? _usernameError : null,
-    ));
+    emit(
+      state.copyWith(
+        firstName: _user!.firstName,
+        lastName: _user!.lastName,
+        email: _user!.email,
+        username: _user!.username,
+        emailError: _highlightEmailError ? _emailError : null,
+        usernameError: _highlightUsernameError ? _usernameError : null,
+      ),
+    );
   }
 
   ProfileEditEmailError? _validateEmail() {
@@ -177,9 +183,11 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
   }
 
   void _showUnknownError(Emitter<ProfileEditState> emit) {
-    emit(state.copyWith(
-      status: ProfileEditStatus.failure,
-      serverError: 'Unknown error',
-    ));
+    emit(
+      state.copyWith(
+        status: ProfileEditStatus.failure,
+        serverError: 'Unknown error',
+      ),
+    );
   }
 }

@@ -50,9 +50,9 @@ extension ToastTypeIcon on ToastType {
 
 class ToastWidget extends StatelessWidget {
   const ToastWidget({
-    super.key,
     required this.text,
     required this.type,
+    super.key,
   });
 
   final String text;
@@ -61,7 +61,7 @@ class ToastWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
         color: type.bgColor,
@@ -70,7 +70,7 @@ class ToastWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(type.icon, color: type.textColor),
-          const SizedBox(width: 12.0),
+          const SizedBox(width: 12),
           Expanded(
             child: Text(
               text,

@@ -17,7 +17,7 @@ class AuthorizationInterceptor extends Interceptor {
   Future<void> onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
     final token = await tokenDataRepository.getItem();
     if (token == null) {
-      logoutInteractor.logout();
+      await logoutInteractor.logout();
       return handler.next(options);
     }
     options.headers[HttpHeaders.authorizationHeader] = 'Bearer $token';

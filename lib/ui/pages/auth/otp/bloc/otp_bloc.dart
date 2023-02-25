@@ -18,23 +18,22 @@ class OtpBloc extends Bloc<OtpEvent, OtpState> {
         ) {
     on<OtpEvent>(
       (event, emit) => event.map(
-        otpChanged: (event) => _onOtpChanged(event, emit),
-        otpFocusLost: (event) => _onOtpFocusLost(event, emit),
-        continued: (event) => _onContinued(event, emit),
-        closedError: (event) => _onCloseError(event, emit),
+        otpChanged: (event) async => _onOtpChanged(event, emit),
+        otpFocusLost: (event) async => _onOtpFocusLost(event, emit),
+        continued: (event) async => _onContinued(event, emit),
+        closedError: (event) async => _onCloseError(event, emit),
       ),
     );
   }
 
   final IAuthRepository authRepository;
-  List<String> _otpList = List<String>.filled(6, '');
+  final List<String> _otpList = List<String>.filled(6, '');
 
   FutureOr<void> _onOtpChanged(
     _OtpChangedEvent event,
     Emitter<OtpState> emit,
   ) {
     _otpList[event.index] = event.text;
-    print(_otpList);
     emit(state.copyWith(otp: _otpList.join()));
     _validateOtp(emit);
   }
@@ -55,10 +54,12 @@ class OtpBloc extends Bloc<OtpEvent, OtpState> {
       await authRepository.sendOtp(otp: state.otp);
       emit(state.copyWith(status: OtpStatus.success, serverError: null));
     } on DioError catch (dioError) {
-      emit(state.copyWith(
-        status: OtpStatus.failure,
-        serverError: dioErrorInterceptor(dioError).toString(),
-      ));
+      emit(
+        state.copyWith(
+          status: OtpStatus.failure,
+          serverError: dioErrorInterceptor(dioError).toString(),
+        ),
+      );
     }
   }
 
@@ -66,9 +67,7 @@ class OtpBloc extends Bloc<OtpEvent, OtpState> {
     final _ClosedErrorEvent event,
     final Emitter<OtpState> emit,
   ) {
-    emit(state.copyWith(
-      serverError: null,
-    ));
+    emit(state.copyWith(serverError: null));
   }
 
   void _validateOtp(Emitter<OtpState> emit) {

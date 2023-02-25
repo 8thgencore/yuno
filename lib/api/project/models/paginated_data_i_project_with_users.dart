@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'i_project_with_users.dart';
+import 'package:yuno/api/project/models/i_project_with_users.dart';
 
 part 'paginated_data_i_project_with_users.freezed.dart';
 

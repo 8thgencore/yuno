@@ -13,10 +13,10 @@ enum ProjectEditStatus {
 @freezed
 class ProjectEditState with _$ProjectEditState {
   const factory ProjectEditState({
-    @Default(ProjectEditStatus.initial) ProjectEditStatus status,
     required String id,
     required String name,
     required String description,
+    @Default(ProjectEditStatus.initial) ProjectEditStatus status,
     String? serverError,
   }) = _ProjectEditState;
 }

@@ -17,9 +17,9 @@ class ForgotPasswordPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => ForgotPasswordBloc(sl.get<IAuthRepository>()),
-      child: LoaderOverlay(
+      child: const LoaderOverlay(
         child: Scaffold(
-          body: Container(
+          body: DecoratedBox(
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
@@ -45,7 +45,7 @@ class _ForgotPasswordPageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<ForgotPasswordBloc, ForgotPasswordState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         switch (state.status) {
           case ForgotPasswordStatus.initial:
             break;
@@ -54,7 +54,7 @@ class _ForgotPasswordPageWidget extends StatelessWidget {
           case ForgotPasswordStatus.failure:
             break;
           case ForgotPasswordStatus.success:
-            context.pushNamed(RouteName.otp);
+            await context.pushNamed(RouteName.otp);
             break;
         }
       },
@@ -108,7 +108,7 @@ class _TopInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 35),
+      padding: const EdgeInsets.symmetric(horizontal: 35),
       width: MediaQuery.of(context).size.width,
       child: Column(
         children: [
@@ -150,7 +150,7 @@ class _ErrorWidget extends StatelessWidget {
             borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
             color: AppColors.error100,
           ),
-          child: Container(
+          child: SizedBox(
             height: height,
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -178,8 +178,9 @@ class _ErrorWidget extends StatelessWidget {
             onTap: () =>
                 context.read<ForgotPasswordBloc>().add(const ForgotPasswordEvent.closedError()),
             child: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                child: Icon(Icons.close, color: AppColors.white80, size: 20)),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: Icon(Icons.close, color: AppColors.white80, size: 20),
+            ),
           ),
         ),
       ],
@@ -248,7 +249,10 @@ class _EmailTextField extends StatelessWidget {
           prefixIcon: IconButton(
             icon: Assets.svg.email.svg(
               height: 26,
-              color: error == null ? AppColors.grey60 : AppColors.error100,
+              colorFilter: ColorFilter.mode(
+                error == null ? AppColors.grey60 : AppColors.error100,
+                BlendMode.srcIn,
+              ),
             ),
             onPressed: () {},
           ),

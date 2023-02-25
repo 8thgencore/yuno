@@ -4,8 +4,8 @@ import 'package:yuno/resources/resources.dart';
 
 class LinearPercentIndicatorWidget extends StatelessWidget {
   const LinearPercentIndicatorWidget({
-    super.key,
     required this.percent,
+    super.key,
   });
 
   final double percent;

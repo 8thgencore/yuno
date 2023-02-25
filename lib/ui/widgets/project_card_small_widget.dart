@@ -5,13 +5,16 @@ import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/widgets/avatar_stacked.dart';
 
 class ProjectCardSmallWidget extends StatelessWidget {
-  const ProjectCardSmallWidget({super.key, required this.project});
+  const ProjectCardSmallWidget({
+    required this.project,
+    super.key,
+  });
 
   final IProjectWithUsers project;
 
   @override
   Widget build(BuildContext context) {
-    final List<String> urlImages = [];
+    final urlImages = <String>[];
     project.users?.forEach((user) {
       urlImages.add(user.image?.media.link ?? '');
     });

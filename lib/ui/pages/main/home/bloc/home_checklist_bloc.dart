@@ -18,9 +18,9 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
   }) : super(const HomeChecklistState.initial()) {
     on<HomeChecklistEvent>(
       (event, emit) => event.map(
-        started: (event) => _onChecklistLoaded(event, emit),
-        checkedItem: (event) => _onCheckedItem(event, emit),
-        deletedItem: (event) => _onDeletedItem(event, emit),
+        started: (event) async => _onChecklistLoaded(event, emit),
+        checkedItem: (event) async => _onCheckedItem(event, emit),
+        deletedItem: (event) async => _onDeletedItem(event, emit),
       ),
     );
   }
@@ -52,7 +52,7 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
   ) async {
     try {
       final task = _tasks.firstWhere((task) => task.id == event.id);
-      final bool isDone = task.done ?? false;
+      final isDone = task.done ?? false;
 
       await taskRepository.updateById(
         id: event.id,

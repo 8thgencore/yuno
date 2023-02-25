@@ -18,10 +18,10 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
   }) : super(const CalendarState.initial()) {
     on<CalendarEvent>(
       (event, emit) => event.map(
-        started: (event) => _onChecklistLoaded(event, emit),
-        updated: (event) => _onChecklistUpdated(event, emit),
-        selectedDate: (event) => _onSelectedDateItem(event, emit),
-        checkedItem: (event) => _onCheckedItem(event, emit),
+        started: (event) async => _onChecklistLoaded(event, emit),
+        updated: (event) async => _onChecklistUpdated(event, emit),
+        selectedDate: (event) async => _onSelectedDateItem(event, emit),
+        checkedItem: (event) async => _onCheckedItem(event, emit),
       ),
     );
   }
@@ -80,7 +80,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
   ) async {
     try {
       final task = _tasks.firstWhere((task) => task.id == event.id);
-      final bool isDone = task.done ?? false;
+      final isDone = task.done ?? false;
 
       await taskRepository.updateById(
         id: event.id,

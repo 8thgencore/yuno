@@ -21,11 +21,11 @@ class ChangePasswordBloc extends Bloc<ChangePasswordEvent, ChangePasswordState> 
         ) {
     on<ChangePasswordEvent>(
       (event, emit) => event.map(
-        started: (event) => _onLoaded(event, emit),
-        currentPasswordChanged: (event) => _onCurrentPasswordChanged(event, emit),
-        newPasswordChanged: (event) => _onNewPasswordChanged(event, emit),
-        confirmNewPasswordChanged: (event) => _onConfirmNewPasswordChanged(event, emit),
-        saved: (event) => _onSavedPassword(event, emit),
+        started: (event) async => _onLoaded(event, emit),
+        currentPasswordChanged: (event) async => _onCurrentPasswordChanged(event, emit),
+        newPasswordChanged: (event) async => _onNewPasswordChanged(event, emit),
+        confirmNewPasswordChanged: (event) async => _onConfirmNewPasswordChanged(event, emit),
+        saved: (event) async => _onSavedPassword(event, emit),
       ),
     );
   }
@@ -43,15 +43,17 @@ class ChangePasswordBloc extends Bloc<ChangePasswordEvent, ChangePasswordState> 
     _CurrentPasswordChangedEvent event,
     Emitter<ChangePasswordState> emit,
   ) async {
-    bool isPasswordMoreLength = false;
+    var isPasswordMoreLength = false;
     if (_isPasswordMoreLength(event.text)) {
       isPasswordMoreLength = true;
     }
-    emit(state.copyWith(
-      status: ChangePasswordStatus.loaded,
-      currentPassword: event.text,
-      isCurrentPasswordMoreLength: isPasswordMoreLength,
-    ));
+    emit(
+      state.copyWith(
+        status: ChangePasswordStatus.loaded,
+        currentPassword: event.text,
+        isCurrentPasswordMoreLength: isPasswordMoreLength,
+      ),
+    );
     _isValid(emit);
   }
 
@@ -59,21 +61,23 @@ class ChangePasswordBloc extends Bloc<ChangePasswordEvent, ChangePasswordState> 
     _NewPasswordChangedEvent event,
     Emitter<ChangePasswordState> emit,
   ) async {
-    bool isPasswordMoreLength = false;
-    bool isPasswordHaveNumber = false;
+    var isPasswordMoreLength = false;
+    var isPasswordHaveNumber = false;
     if (_isPasswordMoreLength(event.text)) {
       isPasswordMoreLength = true;
     }
     if (_isPasswordHaveNumber(event.text)) {
       isPasswordHaveNumber = true;
     }
-    emit(state.copyWith(
-      status: ChangePasswordStatus.loaded,
-      newPassword: event.text,
-      isNewPasswordMoreLength: isPasswordMoreLength,
-      isPasswordHaveNumber: isPasswordHaveNumber,
-      isPasswordConfirm: _isPasswordConfirm(state.newPasswordConfirm, event.text),
-    ));
+    emit(
+      state.copyWith(
+        status: ChangePasswordStatus.loaded,
+        newPassword: event.text,
+        isNewPasswordMoreLength: isPasswordMoreLength,
+        isPasswordHaveNumber: isPasswordHaveNumber,
+        isPasswordConfirm: _isPasswordConfirm(state.newPasswordConfirm, event.text),
+      ),
+    );
     _isValid(emit);
   }
 
@@ -81,11 +85,13 @@ class ChangePasswordBloc extends Bloc<ChangePasswordEvent, ChangePasswordState> 
     _ConfirmNewPasswordChangedEvent event,
     Emitter<ChangePasswordState> emit,
   ) async {
-    emit(state.copyWith(
-      status: ChangePasswordStatus.loaded,
-      newPasswordConfirm: event.text,
-      isPasswordConfirm: _isPasswordConfirm(state.newPassword, event.text),
-    ));
+    emit(
+      state.copyWith(
+        status: ChangePasswordStatus.loaded,
+        newPasswordConfirm: event.text,
+        isPasswordConfirm: _isPasswordConfirm(state.newPassword, event.text),
+      ),
+    );
     _isValid(emit);
   }
 
@@ -105,10 +111,12 @@ class ChangePasswordBloc extends Bloc<ChangePasswordEvent, ChangePasswordState> 
         _showUnknownError(emit);
       }
     } on DioError catch (dioError) {
-      emit(state.copyWith(
-        status: ChangePasswordStatus.failure,
-        serverError: dioErrorInterceptor(dioError).toString(),
-      ));
+      emit(
+        state.copyWith(
+          status: ChangePasswordStatus.failure,
+          serverError: dioErrorInterceptor(dioError).toString(),
+        ),
+      );
     }
   }
 
@@ -143,9 +151,11 @@ class ChangePasswordBloc extends Bloc<ChangePasswordEvent, ChangePasswordState> 
   }
 
   void _showUnknownError(Emitter<ChangePasswordState> emit) {
-    emit(state.copyWith(
-      status: ChangePasswordStatus.failure,
-      serverError: 'Unknown error',
-    ));
+    emit(
+      state.copyWith(
+        status: ChangePasswordStatus.failure,
+        serverError: 'Unknown error',
+      ),
+    );
   }
 }

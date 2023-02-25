@@ -16,7 +16,7 @@ class CalendarPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: AppColors.screen100,
       body: SafeArea(
         child: _CalendarPageContentWidget(),
@@ -35,7 +35,7 @@ class _CalendarPageContentWidget extends StatelessWidget {
         shrinkWrap: true,
         children: [
           Container(
-            padding: EdgeInsets.only(left: 24, top: 16, right: 24),
+            padding: const EdgeInsets.only(left: 24, top: 16, right: 24),
             child: BlocBuilder<CalendarBloc, CalendarState>(
               builder: (context, state) => state.maybeWhen(
                 loading: () => _HeaderWidget(date: DateTime.now(), taskLength: 0),
@@ -47,15 +47,15 @@ class _CalendarPageContentWidget extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 26),
+          const SizedBox(height: 26),
           YunoHorizontalCalendarWidget(
-            itemCount: 50,
+            itemCount: 60,
             onDateChange: (selectedDate) =>
                 context.read<CalendarBloc>().add(CalendarEvent.selectedDate(selectedDate)),
           ),
-          SizedBox(height: 32),
-          _CheckListBuilderWidget(),
-          SizedBox(height: 24),
+          const SizedBox(height: 32),
+          const _CheckListBuilderWidget(),
+          const SizedBox(height: 24),
         ],
       ),
     );
@@ -98,14 +98,14 @@ class _CheckListBuilderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CalendarBloc, CalendarState>(
       builder: (context, state) => state.maybeWhen(
-        loading: () => LoadingContainer(),
+        loading: () => const LoadingContainer(),
         loaded: (date, tasks) => tasks.isNotEmpty
             ? ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 itemCount: tasks.length + 1,
-                itemBuilder: (BuildContext context, int index) {
+                itemBuilder: (context, index) {
                   if (index == 0) {
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 6),
@@ -138,19 +138,18 @@ class _CheckListBuilderWidget extends StatelessWidget {
                 },
               )
             : Container(
-                padding: EdgeInsets.symmetric(horizontal: 24),
+                padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     Image.asset(Assets.images.checklistEmpty.path),
-                    SizedBox(height: 32),
+                    const SizedBox(height: 32),
                     Text(
                       'Woops, No Checklist Yet!',
                       textAlign: TextAlign.center,
                       style: AppTypography.b18d,
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(
                       'No checklist at the moment, feel free to add '
                       'some checklist by pressing Plus button below.',

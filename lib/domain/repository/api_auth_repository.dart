@@ -50,6 +50,7 @@ class ApiAuthRepository implements IAuthRepository {
   final ResetEmailDataRepository resetEmailDataRepository;
   final ResetTokenDataRepository resetTokenDataRepository;
 
+  @override
   Future<IUserRead> register({
     required String email,
     required String username,
@@ -69,6 +70,7 @@ class ApiAuthRepository implements IAuthRepository {
     return user;
   }
 
+  @override
   Future<IUserRead?> login({
     required String email,
     required String password,
@@ -88,6 +90,7 @@ class ApiAuthRepository implements IAuthRepository {
     return data.user;
   }
 
+  @override
   Future<String> refreshToken({required RefreshToken body}) async {
     final response = await authClient.postAuthRefreshToken(body: body);
     final data = response.data;
@@ -97,6 +100,7 @@ class ApiAuthRepository implements IAuthRepository {
     return data.accessToken;
   }
 
+  @override
   Future<IUserRead?> changePassword({
     required String currentPassword,
     required String newPassword,
@@ -116,6 +120,7 @@ class ApiAuthRepository implements IAuthRepository {
     return data.user;
   }
 
+  @override
   Future<bool> forgotPassword({required String email}) async {
     await authClient.postAuthForgotPassword(
       body: IAuthForgotPassword(email: email),
@@ -125,6 +130,7 @@ class ApiAuthRepository implements IAuthRepository {
     return true;
   }
 
+  @override
   Future<String> sendOtp({required String otp}) async {
     final email = await resetEmailDataRepository.getItem() ?? '';
 

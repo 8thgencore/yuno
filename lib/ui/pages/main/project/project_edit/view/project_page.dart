@@ -132,7 +132,7 @@ class _CreateProjectContentWidget extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24),
               decoration: const BoxDecoration(
                 color: AppColors.white60,
-                borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
+                borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
               ),
               child: const SingleChildScrollView(
                 child: _ListTextFieldWidget(),

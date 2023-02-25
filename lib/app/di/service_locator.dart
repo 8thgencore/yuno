@@ -70,7 +70,7 @@ void _setupInteractors() {
 void _setupComplexInteractors() {}
 
 void _setApiRelatedClasses() {
-  sl.registerFactory(() => DioBuilder());
+  sl.registerFactory(DioBuilder.new);
   sl.registerLazySingleton(
     () => AuthorizationInterceptor(
       tokenDataRepository: sl.get<TokenDataRepository>(),

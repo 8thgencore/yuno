@@ -4,7 +4,7 @@ import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/auth/otp/bloc/otp_bloc.dart';
 
 class OtpWidget extends StatefulWidget {
-  const OtpWidget({Key? key}) : super(key: key);
+  const OtpWidget({super.key});
 
   @override
   State<OtpWidget> createState() => _OtpWidgetState();
@@ -41,8 +41,8 @@ class OtpInput extends StatelessWidget {
     required this.controller,
     required this.autoFocus,
     required this.index,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final TextEditingController controller;
   final bool autoFocus;
@@ -52,7 +52,7 @@ class OtpInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<OtpBloc, OtpState>(
       builder: (context, state) {
-        bool error = false;
+        var error = false;
         if (state.status == OtpStatus.failure) {
           error = true;
         }

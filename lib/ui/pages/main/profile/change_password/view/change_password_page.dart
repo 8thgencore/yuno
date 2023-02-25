@@ -12,6 +12,7 @@ import 'package:yuno/utils/toast.dart';
 class ChangePasswordPage extends StatelessWidget {
   const ChangePasswordPage({super.key});
 
+  @override
   Widget build(BuildContext context) {
     return BlocConsumer<ChangePasswordBloc, ChangePasswordState>(
       listener: (context, state) {
@@ -88,7 +89,7 @@ class _ChangePasswordContentWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               GestureDetector(
-                onTap: () => Navigator.maybePop(context, true),
+                onTap: () async => Navigator.maybePop(context, true),
                 child: Assets.svg.backArrow.svg(),
               ),
               const SizedBox(height: 12),
@@ -104,7 +105,7 @@ class _ChangePasswordContentWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 24),
             decoration: const BoxDecoration(
               color: AppColors.white60,
-              borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
             ),
             child: removeScrollingGlow(
               child: const SingleChildScrollView(
@@ -159,7 +160,10 @@ class _ListRoundCheckWidget extends StatelessWidget {
               children: [
                 Assets.svg.roundCheck.svg(
                   height: 26,
-                  color: state.isNewPasswordMoreLength ? AppColors.primary100 : AppColors.grey40,
+                  colorFilter: ColorFilter.mode(
+                    state.isNewPasswordMoreLength ? AppColors.primary100 : AppColors.grey40,
+                    BlendMode.srcIn,
+                  ),
                 ),
                 const SizedBox(width: 8),
                 Text(
@@ -173,7 +177,10 @@ class _ListRoundCheckWidget extends StatelessWidget {
               children: [
                 Assets.svg.roundCheck.svg(
                   height: 26,
-                  color: state.isPasswordHaveNumber ? AppColors.primary100 : AppColors.grey40,
+                  colorFilter: ColorFilter.mode(
+                    state.isPasswordHaveNumber ? AppColors.primary100 : AppColors.grey40,
+                    BlendMode.srcIn,
+                  ),
                 ),
                 const SizedBox(width: 8),
                 Text(
@@ -187,7 +194,10 @@ class _ListRoundCheckWidget extends StatelessWidget {
               children: [
                 Assets.svg.roundCheck.svg(
                   height: 26,
-                  color: state.isPasswordConfirm ? AppColors.primary100 : AppColors.grey40,
+                  colorFilter: ColorFilter.mode(
+                    state.isPasswordConfirm ? AppColors.primary100 : AppColors.grey40,
+                    BlendMode.srcIn,
+                  ),
                 ),
                 const SizedBox(width: 8),
                 Text(
@@ -231,7 +241,10 @@ class _CurrentPasswordTextFieldState extends State<_CurrentPasswordTextField> {
       prefixIcon: IconButton(
         icon: Assets.svg.lock.svg(
           height: 26,
-          color: controller.text.isEmpty ? AppColors.grey40 : AppColors.primary100,
+          colorFilter: ColorFilter.mode(
+            controller.text.isEmpty ? AppColors.grey40 : AppColors.primary100,
+            BlendMode.srcIn,
+          ),
         ),
         onPressed: () {},
       ),
@@ -280,7 +293,10 @@ class _NewPasswordTextFieldState extends State<_NewPasswordTextField> {
       prefixIcon: IconButton(
         icon: Assets.svg.lock.svg(
           height: 26,
-          color: controller.text.isEmpty ? AppColors.grey40 : AppColors.primary100,
+          colorFilter: ColorFilter.mode(
+            controller.text.isEmpty ? AppColors.grey40 : AppColors.primary100,
+            BlendMode.srcIn,
+          ),
         ),
         onPressed: () {},
       ),
@@ -329,7 +345,10 @@ class _ConfirmNewPasswordTextFieldState extends State<_ConfirmNewPasswordTextFie
       prefixIcon: IconButton(
         icon: Assets.svg.lock.svg(
           height: 26,
-          color: controller.text.isEmpty ? AppColors.grey40 : AppColors.primary100,
+          colorFilter: ColorFilter.mode(
+            controller.text.isEmpty ? AppColors.grey40 : AppColors.primary100,
+            BlendMode.srcIn,
+          ),
         ),
         onPressed: () {},
       ),

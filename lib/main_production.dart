@@ -7,5 +7,5 @@ Future<void> main() async {
   await dotenv.load();
   initServiceLocator();
 
-  bootstrap(() => const App());
+  await bootstrap(() => const App());
 }

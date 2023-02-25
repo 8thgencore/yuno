@@ -14,19 +14,21 @@ part 'project_edit_state.dart';
 class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
   ProjectEditBloc({
     required this.projectRepository,
-  }) : super(const ProjectEditState(
-          status: ProjectEditStatus.initial,
-          id: '',
-          name: '',
-          description: '',
-        )) {
+  }) : super(
+          const ProjectEditState(
+            status: ProjectEditStatus.initial,
+            id: '',
+            name: '',
+            description: '',
+          ),
+        ) {
     on<ProjectEditEvent>(
       (event, emit) => event.map(
-        started: (event) => _onProjectLoaded(event, emit),
-        nameChanged: (event) => _onNameChanged(event, emit),
-        descriptionChanged: (event) => _onDescriptionChanged(event, emit),
-        saved: (event) => _onProjectSaved(event, emit),
-        updated: (event) => _onProjectUpdated(event, emit),
+        started: (event) async => _onProjectLoaded(event, emit),
+        nameChanged: (event) async => _onNameChanged(event, emit),
+        descriptionChanged: (event) async => _onDescriptionChanged(event, emit),
+        saved: (event) async => _onProjectSaved(event, emit),
+        updated: (event) async => _onProjectUpdated(event, emit),
       ),
     );
   }
@@ -43,19 +45,23 @@ class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
         emit(state.copyWith(status: ProjectEditStatus.loaded));
       } else {
         final project = await projectRepository.getById(id: event.id);
-        emit(state.copyWith(
-          status: ProjectEditStatus.loaded,
-          id: project.id,
-          name: project.name,
-          description: project.description,
-        ));
+        emit(
+          state.copyWith(
+            status: ProjectEditStatus.loaded,
+            id: project.id,
+            name: project.name,
+            description: project.description,
+          ),
+        );
       }
       emit(state.copyWith(status: ProjectEditStatus.fillingFields));
     } on DioError catch (dioError) {
-      emit(state.copyWith(
-        status: ProjectEditStatus.failure,
-        serverError: dioErrorInterceptor(dioError).toString(),
-      ));
+      emit(
+        state.copyWith(
+          status: ProjectEditStatus.failure,
+          serverError: dioErrorInterceptor(dioError).toString(),
+        ),
+      );
     }
   }
 
@@ -83,15 +89,19 @@ class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
         name: state.name,
         description: state.description,
       );
-      emit(state.copyWith(
-        id: result.id,
-        status: ProjectEditStatus.successCreated,
-      ));
+      emit(
+        state.copyWith(
+          id: result.id,
+          status: ProjectEditStatus.successCreated,
+        ),
+      );
     } on DioError catch (dioError) {
-      emit(state.copyWith(
-        status: ProjectEditStatus.failure,
-        serverError: dioErrorInterceptor(dioError).toString(),
-      ));
+      emit(
+        state.copyWith(
+          status: ProjectEditStatus.failure,
+          serverError: dioErrorInterceptor(dioError).toString(),
+        ),
+      );
     }
   }
 
@@ -108,10 +118,12 @@ class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
       );
       emit(state.copyWith(status: ProjectEditStatus.successUpdated));
     } on DioError catch (dioError) {
-      emit(state.copyWith(
-        status: ProjectEditStatus.failure,
-        serverError: dioErrorInterceptor(dioError).toString(),
-      ));
+      emit(
+        state.copyWith(
+          status: ProjectEditStatus.failure,
+          serverError: dioErrorInterceptor(dioError).toString(),
+        ),
+      );
     }
   }
 }
