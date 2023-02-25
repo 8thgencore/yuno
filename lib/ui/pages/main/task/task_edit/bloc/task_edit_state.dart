@@ -14,9 +14,9 @@ enum TaskEditStatus {
 @freezed
 class TaskEditState with _$TaskEditState {
   const factory TaskEditState({
-    @Default(TaskEditStatus.initial) TaskEditStatus status,
     required String id,
     required String name,
+    @Default(TaskEditStatus.initial) TaskEditStatus status,
     DateTime? deadline,
     String? projectId,
     bool? done,

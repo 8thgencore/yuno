@@ -11,11 +11,11 @@ enum ProfileEditStatus {
 @freezed
 class ProfileEditState with _$ProfileEditState {
   const factory ProfileEditState({
-    @Default(ProfileEditStatus.initial) ProfileEditStatus status,
     required String firstName,
     required String lastName,
     required String username,
     required String email,
+    @Default(ProfileEditStatus.initial) ProfileEditStatus status,
     String? role,
     ProfileEditEmailError? emailError,
     ProfileEditUsernameError? usernameError,

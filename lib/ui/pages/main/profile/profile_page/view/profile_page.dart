@@ -46,8 +46,10 @@ class _ProfileContentWidget extends StatelessWidget {
           const Spacer(),
           ProfileButtonWidget(
             text: 'Edit Profile',
-            icon: Assets.svg.edit.svg(height: 28, color: AppColors.primary100),
-            // onPressed: ()  => context.pushNamed<bool>(RouteName.profileEdit),
+            icon: Assets.svg.edit.svg(
+              height: 28,
+              colorFilter: const ColorFilter.mode(AppColors.primary100, BlendMode.srcIn),
+            ),
             onPressed: () async {
               final result = await context.pushNamed<bool>(RouteName.profileEdit);
               WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -60,19 +62,28 @@ class _ProfileContentWidget extends StatelessWidget {
           const SizedBox(height: 16),
           ProfileButtonWidget(
             text: 'Change Password',
-            icon: Assets.svg.lock.svg(height: 28, color: AppColors.secondary100),
+            icon: Assets.svg.lock.svg(
+              height: 28,
+              colorFilter: const ColorFilter.mode(AppColors.secondary100, BlendMode.srcIn),
+            ),
             onPressed: () => context.goNamed(RouteName.profileChangePassword),
           ),
           const SizedBox(height: 16),
           ProfileButtonWidget(
             text: 'Projects You Are In',
-            icon: Assets.svg.project.svg(height: 28, color: AppColors.primary100),
-            onPressed: () => context.pushNamed(RouteName.profileProjects),
+            icon: Assets.svg.project.svg(
+              height: 28,
+              colorFilter: const ColorFilter.mode(AppColors.primary100, BlendMode.srcIn),
+            ),
+            onPressed: () async => context.pushNamed(RouteName.profileProjects),
           ),
           const SizedBox(height: 16),
           ProfileButtonWidget(
             text: 'Logout',
-            icon: Assets.svg.logout.svg(height: 28, color: AppColors.secondary100),
+            icon: Assets.svg.logout.svg(
+              height: 28,
+              colorFilter: const ColorFilter.mode(AppColors.secondary100, BlendMode.srcIn),
+            ),
             onPressed: () => context.read<ProfileBloc>().add(const ProfileEvent.logout()),
           ),
           const Spacer(),
@@ -151,7 +162,7 @@ class AvatarWidget extends StatelessWidget {
     return Container(
       width: 152,
       height: 152,
-      padding: const EdgeInsets.all(2.0),
+      padding: const EdgeInsets.all(2),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
           begin: Alignment.bottomLeft,
@@ -163,9 +174,9 @@ class AvatarWidget extends StatelessWidget {
       child: ClipOval(
         child: Container(
           color: AppColors.screen100,
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8),
           child: ClipOval(
-            child: Container(
+            child: DecoratedBox(
               decoration: BoxDecoration(
                 color: AppColors.white100,
                 border: Border.all(color: AppColors.white100, width: 4),
@@ -215,7 +226,7 @@ class _EditAvatarWidgetState extends State<_EditAvatarWidget> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async {
-        final FilePickerResult? result = await FilePicker.platform.pickFiles(
+        final result = await FilePicker.platform.pickFiles(
           type: FileType.image,
         );
         if (result != null) {
@@ -235,7 +246,7 @@ class _EditAvatarWidgetState extends State<_EditAvatarWidget> {
           color: AppColors.white60,
         ),
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8),
           child: Assets.svg.pencil.svg(),
         ),
       ),
@@ -245,10 +256,10 @@ class _EditAvatarWidgetState extends State<_EditAvatarWidget> {
 
 class ProfileButtonWidget extends StatelessWidget {
   const ProfileButtonWidget({
-    super.key,
     required this.icon,
     required this.text,
     this.onPressed,
+    super.key,
   });
 
   final Widget icon;
@@ -269,7 +280,7 @@ class ProfileButtonWidget extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
       ),
       icon: Padding(
-        padding: const EdgeInsets.only(right: 6.0),
+        padding: const EdgeInsets.only(right: 6),
         child: icon,
       ),
       label: Text(text),

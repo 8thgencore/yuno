@@ -39,6 +39,7 @@ class ApiProjectRepository implements IProjectRepository {
 
   final ProjectClient projectClient;
 
+  @override
   Future<PaginatedDataIProjectWithUsers> getMyProjects({
     required int page,
     required int size,
@@ -47,6 +48,7 @@ class ApiProjectRepository implements IProjectRepository {
     return response.data;
   }
 
+  @override
   Future<PaginatedDataIProjectWithUsers> getProjects({
     required int page,
     required int size,
@@ -55,11 +57,13 @@ class ApiProjectRepository implements IProjectRepository {
     return response.data;
   }
 
+  @override
   Future<IProjectWithUsersTasks> getById({required String id}) async {
     final response = await projectClient.getProjectId(projectId: id);
     return response.data;
   }
 
+  @override
   Future<IProjectRead> create({
     required String name,
     required String description,
@@ -75,6 +79,7 @@ class ApiProjectRepository implements IProjectRepository {
     return response.data;
   }
 
+  @override
   Future<IProjectRead> updateById({
     required String id,
     required String name,
@@ -91,16 +96,19 @@ class ApiProjectRepository implements IProjectRepository {
     return response.data;
   }
 
+  @override
   Future<IProjectRead> deleteById({required String id}) async {
     final response = await projectClient.deleteProjectId(projectId: id);
     return response.data;
   }
 
+  @override
   Future<IProjectWithUsers> joinProject({required String id}) async {
     final response = await projectClient.projectIdJoin(projectId: id);
     return response.data;
   }
 
+  @override
   Future<IProjectWithUsers> leaveProject({required String id}) async {
     final response = await projectClient.projectIdLeave(projectId: id);
     return response.data;

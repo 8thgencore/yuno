@@ -23,13 +23,13 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
   }) : super(const ProjectDetailsState.initial()) {
     on<ProjectDetailsEvent>(
       (event, emit) => event.map(
-        started: (event) => _onProjectLoaded(event, emit),
-        checkedTask: (event) => _onCheckedTask(event, emit),
-        deletedTask: (event) => _onDeletedTask(event, emit),
-        update: (event) => _onUpdatedProject(event, emit),
-        delete: (event) => _onDeletedProject(event, emit),
-        join: (event) => _onJoinProject(event, emit),
-        leave: (event) => _onLeaveProject(event, emit),
+        started: (event) async => _onProjectLoaded(event, emit),
+        checkedTask: (event) async => _onCheckedTask(event, emit),
+        deletedTask: (event) async => _onDeletedTask(event, emit),
+        update: (event) async => _onUpdatedProject(event, emit),
+        delete: (event) async => _onDeletedProject(event, emit),
+        join: (event) async => _onJoinProject(event, emit),
+        leave: (event) async => _onLeaveProject(event, emit),
       ),
     );
   }
@@ -50,7 +50,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
     Emitter<ProjectDetailsState> emit,
   ) async {
     try {
-      emit(ProjectDetailsState.loading());
+      emit(const ProjectDetailsState.loading());
       _projectId = event.id;
       await _getProjectInfo(emit);
     } on DioError catch (dioError) {
@@ -64,7 +64,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
   ) async {
     try {
       final task = _tasks.firstWhere((task) => task.id == event.id);
-      final bool isDone = task.done ?? false;
+      final isDone = task.done ?? false;
 
       await taskRepository.updateById(
         id: event.id,
@@ -92,12 +92,14 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
       _tasks.removeWhere((task) => task.id == event.id);
 
       emit(const ProjectDetailsState.keep());
-      emit(ProjectDetailsState.loaded(
-        project: _project!,
-        tasks: _tasks,
-        isMember: _isMember,
-        isOwner: _isOwner,
-      ));
+      emit(
+        ProjectDetailsState.loaded(
+          project: _project!,
+          tasks: _tasks,
+          isMember: _isMember,
+          isOwner: _isOwner,
+        ),
+      );
     } on DioError catch (dioError) {
       emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
     }
@@ -170,18 +172,20 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
     }
 
     // get percent competed task
-    if (_tasks.length != 0) {
+    if (_tasks.isNotEmpty) {
       _percentCompleted = _tasks.where((t) => t.done == true).length / _tasks.length;
     } else {
       _percentCompleted = 0;
     }
     _project = _project!.copyWith(percentCompleted: _percentCompleted);
 
-    emit(ProjectDetailsState.loaded(
-      project: _project!,
-      tasks: _tasks,
-      isMember: _isMember,
-      isOwner: _isOwner,
-    ));
+    emit(
+      ProjectDetailsState.loaded(
+        project: _project!,
+        tasks: _tasks,
+        isMember: _isMember,
+        isOwner: _isOwner,
+      ),
+    );
   }
 }

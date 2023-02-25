@@ -20,10 +20,10 @@ class ForgotPasswordBloc extends Bloc<ForgotPasswordEvent, ForgotPasswordState> 
         ) {
     on<ForgotPasswordEvent>(
       (event, emit) => event.map(
-        emailChanged: (event) => _onEmailChanged(event, emit),
-        emailFocusLost: (event) => _onEmailFocusLost(event, emit),
-        continued: (event) => _onContinued(event, emit),
-        closedError: (event) => _onCloseError(event, emit),
+        emailChanged: (event) async => _onEmailChanged(event, emit),
+        emailFocusLost: (event) async => _onEmailFocusLost(event, emit),
+        continued: (event) async => _onContinued(event, emit),
+        closedError: (event) async => _onCloseError(event, emit),
       ),
     );
   }
@@ -54,10 +54,12 @@ class ForgotPasswordBloc extends Bloc<ForgotPasswordEvent, ForgotPasswordState> 
       await authRepository.forgotPassword(email: state.email);
       emit(state.copyWith(status: ForgotPasswordStatus.success));
     } on DioError catch (dioError) {
-      emit(state.copyWith(
-        status: ForgotPasswordStatus.failure,
-        serverError: dioErrorInterceptor(dioError).toString(),
-      ));
+      emit(
+        state.copyWith(
+          status: ForgotPasswordStatus.failure,
+          serverError: dioErrorInterceptor(dioError).toString(),
+        ),
+      );
     }
   }
 
@@ -65,30 +67,38 @@ class ForgotPasswordBloc extends Bloc<ForgotPasswordEvent, ForgotPasswordState> 
     final _ClosedErrorEvent event,
     final Emitter<ForgotPasswordState> emit,
   ) {
-    emit(state.copyWith(
-      serverError: null,
-    ));
+    emit(
+      state.copyWith(
+        serverError: null,
+      ),
+    );
   }
 
   void _validateEmail(Emitter<ForgotPasswordState> emit) {
     if (state.email.isEmpty) {
-      emit(state.copyWith(
-        isValid: false,
-        emailError: ForgotPasswordEmailError.empty,
-      ));
+      emit(
+        state.copyWith(
+          isValid: false,
+          emailError: ForgotPasswordEmailError.empty,
+        ),
+      );
       return;
     }
     if (!EmailValidator.validate(state.email)) {
-      emit(state.copyWith(
-        isValid: false,
-        emailError: ForgotPasswordEmailError.invalid,
-      ));
+      emit(
+        state.copyWith(
+          isValid: false,
+          emailError: ForgotPasswordEmailError.invalid,
+        ),
+      );
       return;
     }
-    emit(state.copyWith(
-      isValid: true,
-      emailError: null,
-    ));
+    emit(
+      state.copyWith(
+        isValid: true,
+        emailError: null,
+      ),
+    );
     return;
   }
 }

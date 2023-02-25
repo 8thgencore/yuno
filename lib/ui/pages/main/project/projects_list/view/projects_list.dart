@@ -93,13 +93,13 @@ class _ProjectListWidgetState extends State<_ProjectListWidget> {
         initial: () => const Center(child: CircularProgressIndicator()),
         loading: () => const Center(child: CircularProgressIndicator()),
         loaded: (projects, isShowLoading, isShowError) {
-          bool _haveExtraWidget = isShowLoading || isShowError;
+          final haveExtraWidget = isShowLoading || isShowError;
           return ListView.builder(
             controller: _scrollController,
             shrinkWrap: true,
             padding: const EdgeInsets.symmetric(horizontal: 24),
-            itemCount: projects.length + (_haveExtraWidget ? 1 : 0),
-            itemBuilder: (BuildContext context, int index) {
+            itemCount: projects.length + (haveExtraWidget ? 1 : 0),
+            itemBuilder: (context, index) {
               if (index == projects.length) {
                 if (isShowLoading) {
                   return Container(
@@ -112,9 +112,8 @@ class _ProjectListWidgetState extends State<_ProjectListWidget> {
                     height: 120,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Spacer(),
+                        const Spacer(),
                         Text('Failed to upload data', style: AppTypography.r16d),
                         TextButton(
                           onPressed: () => context
@@ -125,7 +124,7 @@ class _ProjectListWidgetState extends State<_ProjectListWidget> {
                             style: AppTypography.l14d.copyWith(color: AppColors.primary100),
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                       ],
                     ),
                   );
@@ -156,7 +155,7 @@ class _ProjectFullCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.pushNamed(RouteName.project, params: {'id': project.id}),
+      onTap: () async => context.pushNamed(RouteName.project, params: {'id': project.id}),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
         child: Container(
@@ -169,7 +168,7 @@ class _ProjectFullCardWidget extends StatelessWidget {
             children: [
               ProjectCardMediumWidget(project: project),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
                 child: LinearPercentIndicatorWidget(percent: project.percentCompleted),
               ),
             ],

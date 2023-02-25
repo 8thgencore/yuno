@@ -30,10 +30,10 @@ class YunoHorizontalCalendarWidget extends StatefulWidget {
 }
 
 class _YunoHorizontalCalendarWidgetState extends State<YunoHorizontalCalendarWidget> {
+  final ScrollController _controller = ScrollController();
+
   DateTime? _currentDate;
   DateTime? _selectedDate;
-
-  ScrollController _controller = ScrollController();
 
   @override
   void initState() {
@@ -53,31 +53,32 @@ class _YunoHorizontalCalendarWidgetState extends State<YunoHorizontalCalendarWid
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 98,
       child: ListView.builder(
         controller: _controller,
         scrollDirection: Axis.horizontal,
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         itemCount: widget.itemCount + 2,
         itemBuilder: (context, index) {
           if (index == 0 || index == widget.itemCount + 1) {
-            return SizedBox(width: 14);
+            return const SizedBox(width: 14);
           }
-          DateTime date;
-          DateTime _date = _currentDate!.add(Duration(days: index - 1));
-          date = DateTime(_date.year, _date.month, _date.day);
+          DateTime dateRounded;
+          final date = _currentDate!.add(Duration(days: index - 1));
+          dateRounded = DateTime(date.year, date.month, date.day);
 
           // Check if this date is the one that is currently selected
-          bool isSelected = _selectedDate != null ? _compareDate(date, _selectedDate!) : false;
+          final isSelected =
+              _selectedDate != null ? _compareDate(dateRounded, _selectedDate!) : false;
 
-          TextStyle dayTextStyle = isSelected ? AppTypography.l14l : AppTypography.l14d;
-          TextStyle dateTextStyle = isSelected ? AppTypography.r24l : AppTypography.r24d;
-          Color selectionColor = isSelected ? AppColors.secondary100 : AppColors.white100;
+          final dayTextStyle = isSelected ? AppTypography.l14l : AppTypography.l14d;
+          final dateTextStyle = isSelected ? AppTypography.r24l : AppTypography.r24d;
+          final selectionColor = isSelected ? AppColors.secondary100 : AppColors.white100;
 
           return DateWidget(
             width: 62,
-            date: date,
+            date: dateRounded,
             dayTextStyle: dayTextStyle,
             dateTextStyle: dateTextStyle,
             selectionColor: selectionColor,
@@ -102,14 +103,7 @@ class _YunoHorizontalCalendarWidgetState extends State<YunoHorizontalCalendarWid
 }
 
 class DateWidget extends StatelessWidget {
-  final double? width;
-  final DateTime date;
-  final TextStyle? dayTextStyle, dateTextStyle;
-  final Color selectionColor;
-  final DateSelectionCallback? onDateSelected;
-  final String? locale;
-
-  DateWidget({
+  const DateWidget({
     required this.date,
     required this.dayTextStyle,
     required this.dateTextStyle,
@@ -117,13 +111,22 @@ class DateWidget extends StatelessWidget {
     this.width,
     this.onDateSelected,
     this.locale,
+    super.key,
   });
+
+  final double? width;
+  final DateTime date;
+  final TextStyle? dayTextStyle;
+  final TextStyle? dateTextStyle;
+  final Color selectionColor;
+  final DateSelectionCallback? onDateSelected;
+  final String? locale;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: width,
-      margin: EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(32),
         color: selectionColor,
@@ -133,24 +136,23 @@ class DateWidget extends StatelessWidget {
           // Check if onDateSelected is not null
           if (onDateSelected != null) {
             // Call the onDateSelected Function
-            onDateSelected!(this.date);
+            onDateSelected!(date);
           }
         },
         customBorder: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(32),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 20),
+          padding: const EdgeInsets.symmetric(vertical: 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
                 date.day.toString(), // Date
                 style: dateTextStyle,
               ),
               Text(
-                DateFormat("E", locale).format(date), // WeekDay
+                DateFormat('E', locale).format(date), // WeekDay
                 style: dayTextStyle,
               )
             ],

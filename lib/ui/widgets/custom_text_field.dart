@@ -40,7 +40,7 @@ class CustomTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
+        DecoratedBox(
           // height: 58,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
@@ -60,7 +60,7 @@ class CustomTextField extends StatelessWidget {
             onSubmitted: onSubmitted,
             keyboardType: keyboardType,
             decoration: InputDecoration(
-              contentPadding: const EdgeInsets.fromLTRB(20.0, 12, 20, 12),
+              contentPadding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
               fillColor: Colors.transparent,
               filled: true,
               // decoration: BoxDecoration(

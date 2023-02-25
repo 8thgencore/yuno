@@ -18,7 +18,7 @@ class HomeHeaderBloc extends Bloc<HomeHeaderEvent, HomeHeaderState> {
   }) : super(const HomeHeaderState.initial()) {
     on<HomeHeaderEvent>(
       (event, emit) => event.map(
-        started: (event) => _onHomeHeaderLoaded(event, emit),
+        started: (event) async => _onHomeHeaderLoaded(event, emit),
       ),
     );
   }
@@ -61,11 +61,13 @@ class HomeHeaderBloc extends Bloc<HomeHeaderEvent, HomeHeaderState> {
           }
         }
       }
-      emit(HomeHeaderState.loaded(
-        username: _username,
-        taskLength: tasks?.length ?? 0,
-        task: _task,
-      ));
+      emit(
+        HomeHeaderState.loaded(
+          username: _username,
+          taskLength: tasks?.length ?? 0,
+          task: _task,
+        ),
+      );
     } on DioError catch (dioError) {
       emit(HomeHeaderState.failure(dioErrorInterceptor(dioError).toString()));
     }

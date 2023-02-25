@@ -5,16 +5,6 @@ import 'package:yuno/data/http/authorization_interceptor.dart';
 import 'package:yuno/resources/constants.dart';
 
 class DioBuilder {
-  final Dio _dio = Dio(
-    BaseOptions(
-      baseUrl: baseUrl,
-      connectTimeout: const Duration(milliseconds: 5000),
-      receiveTimeout: const Duration(milliseconds: 5000),
-      sendTimeout: const Duration(milliseconds: 5000),
-      contentType: Headers.jsonContentType,
-    ),
-  );
-
   DioBuilder() {
     if (kDebugMode) {
       _dio.interceptors.addAll([
@@ -31,6 +21,15 @@ class DioBuilder {
       ]);
     }
   }
+  final Dio _dio = Dio(
+    BaseOptions(
+      baseUrl: baseUrl,
+      connectTimeout: const Duration(milliseconds: 5000),
+      receiveTimeout: const Duration(milliseconds: 5000),
+      sendTimeout: const Duration(milliseconds: 5000),
+      contentType: Headers.jsonContentType,
+    ),
+  );
 
   Dio build() => _dio;
 

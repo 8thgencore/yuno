@@ -18,7 +18,7 @@ class HomeProjectsBloc extends Bloc<HomeProjectsEvent, HomeProjectsState> {
   }) : super(const HomeProjectsState.initial()) {
     on<HomeProjectsEvent>(
       (event, emit) => event.map(
-        started: (event) => _onProjectsLoaded(event, emit),
+        started: (event) async => _onProjectsLoaded(event, emit),
       ),
     );
   }

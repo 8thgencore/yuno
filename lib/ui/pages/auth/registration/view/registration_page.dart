@@ -17,9 +17,9 @@ class RegistrationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => RegistrationBloc(sl.get<IAuthRepository>()),
-      child: LoaderOverlay(
+      child: const LoaderOverlay(
         child: Scaffold(
-          body: Container(
+          body: DecoratedBox(
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
@@ -319,7 +319,10 @@ class _EmailTextField extends StatelessWidget {
           prefixIcon: IconButton(
             icon: Assets.svg.email.svg(
               height: 26,
-              color: error == null ? AppColors.grey60 : AppColors.error100,
+              colorFilter: ColorFilter.mode(
+                error == null ? AppColors.grey60 : AppColors.error100,
+                BlendMode.srcIn,
+              ),
             ),
             onPressed: () {},
           ),
@@ -356,7 +359,10 @@ class _NicknameTextField extends StatelessWidget {
           prefixIcon: IconButton(
             icon: Assets.svg.user.svg(
               height: 26,
-              color: error == null ? AppColors.grey60 : AppColors.error100,
+              colorFilter: ColorFilter.mode(
+                error == null ? AppColors.grey60 : AppColors.error100,
+                BlendMode.srcIn,
+              ),
             ),
             onPressed: () {},
           ),
@@ -401,7 +407,10 @@ class _PasswordTextFieldState extends State<_PasswordTextField> {
           prefixIcon: IconButton(
             icon: Assets.svg.lock.svg(
               height: 26,
-              color: error == null ? AppColors.grey60 : AppColors.error100,
+              colorFilter: ColorFilter.mode(
+                error == null ? AppColors.grey60 : AppColors.error100,
+                BlendMode.srcIn,
+              ),
             ),
             onPressed: () {},
           ),
@@ -453,7 +462,10 @@ class _PasswordTextConfirmFieldState extends State<_PasswordTextConfirmField> {
           prefixIcon: IconButton(
             icon: Assets.svg.lock.svg(
               height: 26,
-              color: error == null ? AppColors.grey60 : AppColors.error100,
+              colorFilter: ColorFilter.mode(
+                error == null ? AppColors.grey60 : AppColors.error100,
+                BlendMode.srcIn,
+              ),
             ),
             onPressed: () {},
           ),

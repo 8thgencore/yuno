@@ -14,19 +14,21 @@ part 'task_edit_state.dart';
 class TaskEditBloc extends Bloc<TaskEditEvent, TaskEditState> {
   TaskEditBloc({
     required this.taskRepository,
-  }) : super(const TaskEditState(
-          status: TaskEditStatus.initial,
-          id: '',
-          name: '',
-        )) {
+  }) : super(
+          const TaskEditState(
+            status: TaskEditStatus.initial,
+            id: '',
+            name: '',
+          ),
+        ) {
     on<TaskEditEvent>(
       (event, emit) => event.map(
-        started: (event) => _onTaskLoaded(event, emit),
-        nameChanged: (event) => _onNameChanged(event, emit),
-        deadlineChanged: (event) => _onDeadlineChanged(event, emit),
-        clickSwitch: (event) => _onClickSwitch(event, emit),
-        saved: (event) => _onTaskSaved(event, emit),
-        updated: (event) => _onTaskUpdated(event, emit),
+        started: (event) async => _onTaskLoaded(event, emit),
+        nameChanged: (event) async => _onNameChanged(event, emit),
+        deadlineChanged: (event) async => _onDeadlineChanged(event, emit),
+        clickSwitch: (event) async => _onClickSwitch(event, emit),
+        saved: (event) async => _onTaskSaved(event, emit),
+        updated: (event) async => _onTaskUpdated(event, emit),
       ),
     );
   }
@@ -40,27 +42,33 @@ class TaskEditBloc extends Bloc<TaskEditEvent, TaskEditState> {
     emit(state.copyWith(status: TaskEditStatus.loading));
     try {
       if (event.id.length < 36) {
-        emit(state.copyWith(
-          status: TaskEditStatus.loaded,
-          projectId: event.projectId,
-        ));
+        emit(
+          state.copyWith(
+            status: TaskEditStatus.loaded,
+            projectId: event.projectId,
+          ),
+        );
       } else {
         final task = await taskRepository.getById(id: event.id);
-        emit(state.copyWith(
-          status: TaskEditStatus.loaded,
-          id: task.id,
-          name: task.name,
-          deadline: task.deadline,
-          done: task.done,
-          projectId: task.projectId,
-        ));
+        emit(
+          state.copyWith(
+            status: TaskEditStatus.loaded,
+            id: task.id,
+            name: task.name,
+            deadline: task.deadline,
+            done: task.done,
+            projectId: task.projectId,
+          ),
+        );
       }
       emit(state.copyWith(status: TaskEditStatus.fillingFields));
     } on DioError catch (dioError) {
-      emit(state.copyWith(
-        status: TaskEditStatus.failureLoaded,
-        serverError: dioErrorInterceptor(dioError).toString(),
-      ));
+      emit(
+        state.copyWith(
+          status: TaskEditStatus.failureLoaded,
+          serverError: dioErrorInterceptor(dioError).toString(),
+        ),
+      );
     }
   }
 
@@ -99,10 +107,12 @@ class TaskEditBloc extends Bloc<TaskEditEvent, TaskEditState> {
       );
       emit(state.copyWith(status: TaskEditStatus.successCreated));
     } on DioError catch (dioError) {
-      emit(state.copyWith(
-        status: TaskEditStatus.failure,
-        serverError: dioErrorInterceptor(dioError).toString(),
-      ));
+      emit(
+        state.copyWith(
+          status: TaskEditStatus.failure,
+          serverError: dioErrorInterceptor(dioError).toString(),
+        ),
+      );
     }
   }
 
@@ -121,10 +131,12 @@ class TaskEditBloc extends Bloc<TaskEditEvent, TaskEditState> {
       );
       emit(state.copyWith(status: TaskEditStatus.successUpdated));
     } on DioError catch (dioError) {
-      emit(state.copyWith(
-        status: TaskEditStatus.failure,
-        serverError: dioErrorInterceptor(dioError).toString(),
-      ));
+      emit(
+        state.copyWith(
+          status: TaskEditStatus.failure,
+          serverError: dioErrorInterceptor(dioError).toString(),
+        ),
+      );
     }
   }
 }

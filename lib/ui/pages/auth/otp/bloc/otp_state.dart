@@ -10,8 +10,8 @@ enum OtpStatus {
 @freezed
 class OtpState with _$OtpState {
   const factory OtpState({
-    @Default(OtpStatus.initial) OtpStatus status,
     required String otp,
+    @Default(OtpStatus.initial) OtpStatus status,
     String? serverError,
     @Default(false) bool isValid,
   }) = _OtpState;

@@ -66,7 +66,7 @@ class _TopCardWidget extends StatelessWidget {
         children: [
           Assets.svg.homeTopOrnament.svg(
             width: double.infinity,
-            color: AppColors.white40,
+            colorFilter: const ColorFilter.mode(AppColors.white40, BlendMode.srcIn),
             fit: BoxFit.cover,
           ),
           BlocBuilder<HomeHeaderBloc, HomeHeaderState>(
@@ -210,7 +210,7 @@ class _ProjectsListWidget extends StatelessWidget {
             children: [
               Text('Projects', style: AppTypography.b18d),
               GestureDetector(
-                onTap: () => context.pushNamed(RouteName.projects),
+                onTap: () async => context.pushNamed(RouteName.projects),
                 child: Text(
                   'View All',
                   style: AppTypography.r14d.copyWith(color: AppColors.primary100),
@@ -230,9 +230,9 @@ class _ProjectsListWidget extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       padding: const EdgeInsets.symmetric(horizontal: 12),
                       itemCount: projects.length,
-                      itemBuilder: (BuildContext context, int index) {
+                      itemBuilder: (context, index) {
                         return GestureDetector(
-                          onTap: () => context.pushNamed(
+                          onTap: () async => context.pushNamed(
                             RouteName.project,
                             params: {'id': projects[index].id},
                           ),
@@ -272,7 +272,7 @@ class _CheckListBuilderWidget extends StatelessWidget {
                     physics: const NeverScrollableScrollPhysics(),
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     itemCount: tasks.length,
-                    itemBuilder: (BuildContext context, int index) {
+                    itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () async {
                           final result = await context.pushNamed<bool>(

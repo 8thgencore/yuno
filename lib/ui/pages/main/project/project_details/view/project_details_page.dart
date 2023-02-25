@@ -158,7 +158,7 @@ class _ProjectFullCardWidget extends StatelessWidget {
         children: [
           ProjectCardLargeWidget(project: project),
           Padding(
-            padding: EdgeInsets.only(left: 24, right: 24, top: 24, bottom: 12),
+            padding: const EdgeInsets.only(left: 24, right: 24, top: 24, bottom: 12),
             child: LinearPercentIndicatorWidget(percent: project.percentCompleted),
           ),
           if (isMember)
@@ -206,7 +206,7 @@ class _ButtonsRowWidget extends StatelessWidget {
         GestureDetector(
           onTap: isOwner
               ? () async {
-                  final bool? val = await showDialog<bool?>(
+                  final val = await showDialog<bool?>(
                     context: context,
                     builder: (context) => const YunoAlertDialog(text: 'Delete The Project?'),
                   );
@@ -235,11 +235,15 @@ class _ButtonsRowWidget extends StatelessWidget {
               }
             });
           },
-          child: YunoIconButton(icon: Assets.svg.pencil.svg(color: AppColors.secondary100)),
+          child: YunoIconButton(
+            icon: Assets.svg.pencil.svg(
+              colorFilter: const ColorFilter.mode(AppColors.secondary100, BlendMode.srcIn),
+            ),
+          ),
         ),
         GestureDetector(
           onTap: () async {
-            final bool? val = await showDialog<bool?>(
+            final val = await showDialog<bool?>(
               context: context,
               builder: (context) => const YunoAlertDialog(text: 'Leave The Project?'),
             );
@@ -247,7 +251,11 @@ class _ButtonsRowWidget extends StatelessWidget {
               context.read<ProjectDetailsBloc>().add(const ProjectDetailsEvent.leave());
             }
           },
-          child: YunoIconButton(icon: Assets.svg.logout.svg(color: AppColors.error100)),
+          child: YunoIconButton(
+            icon: Assets.svg.logout.svg(
+              colorFilter: const ColorFilter.mode(AppColors.error100, BlendMode.srcIn),
+            ),
+          ),
         ),
       ],
     );
@@ -278,7 +286,7 @@ class _CheckListWidget extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             padding: const EdgeInsets.symmetric(horizontal: 24),
             itemCount: tasks.length,
-            itemBuilder: (BuildContext context, int index) {
+            itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: isMember
                     ? () async {

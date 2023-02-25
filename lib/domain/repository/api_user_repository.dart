@@ -34,6 +34,7 @@ class ApiUserRepository implements IUserRepository {
   final UserDataRepository userDataRepository;
   final TokenDataRepository tokenDataRepository;
 
+  @override
   Future<IUserRead> getData() async {
     final response = await userClient.getUser();
     final user = response.data;
@@ -41,11 +42,13 @@ class ApiUserRepository implements IUserRepository {
     return user;
   }
 
+  @override
   Future<IUserRead?> getCachedData() async {
     final user = await userDataRepository.getItem();
     return user;
   }
 
+  @override
   Future<IUserRead?> updateDataById({
     required String firstName,
     required String lastName,
@@ -74,6 +77,7 @@ class ApiUserRepository implements IUserRepository {
     return null;
   }
 
+  @override
   Future<IUserRead> loadImage({
     required PlatformFile file,
   }) async {

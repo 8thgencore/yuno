@@ -4,25 +4,27 @@ import 'package:yuno/resources/resources.dart';
 
 class AvatarStacked extends StatelessWidget {
   const AvatarStacked({
-    super.key,
     required this.urlImages,
     this.direction = TextDirection.rtl,
+    this.borderSize = 2,
+    super.key,
   });
 
   final TextDirection direction;
   final List<String> urlImages;
+  final double borderSize;
 
   @override
   Widget build(BuildContext context) {
-    const double size = 32;
-    const double xShift = 6;
+    const size = 32.0;
+    const xShift = 6.0;
 
-    List<Widget> items = [];
+    var items = <Widget>[];
     if (urlImages.length > 5) {
-      items = urlImages.sublist(0, 4).map((urlImage) => buildImage(urlImage)).toList();
+      items = urlImages.sublist(0, 4).map(buildImage).toList();
       items.add(buildNumber(urlImages.length - 4));
     } else {
-      items = urlImages.map((urlImage) => buildImage(urlImage)).toList();
+      items = urlImages.map(buildImage).toList();
     }
 
     return StackedWidgets(
@@ -34,11 +36,9 @@ class AvatarStacked extends StatelessWidget {
   }
 
   Widget buildImage(String urlImage) {
-    const double borderSize = 2;
-
     return ClipOval(
       child: Container(
-        padding: const EdgeInsets.all(borderSize),
+        padding: EdgeInsets.all(borderSize),
         color: AppColors.white100,
         child: ClipOval(
           child: CachedNetworkImage(
@@ -52,11 +52,9 @@ class AvatarStacked extends StatelessWidget {
   }
 
   Widget buildNumber(int number) {
-    const double borderSize = 2;
-
     return ClipOval(
       child: Container(
-        padding: const EdgeInsets.all(borderSize),
+        padding: EdgeInsets.all(borderSize),
         color: AppColors.white100,
         child: ClipOval(
           child: ColoredBox(
@@ -71,11 +69,11 @@ class AvatarStacked extends StatelessWidget {
 
 class StackedWidgets extends StatelessWidget {
   const StackedWidgets({
-    super.key,
     required this.items,
     this.direction = TextDirection.ltr,
     this.size = 100,
     this.xShift = 20,
+    super.key,
   });
 
   final List<Widget> items;

@@ -18,18 +18,18 @@ part 'base_response.g.dart';
 class BaseResponse<T> {
   BaseResponse(this.message, this.meta, this.data);
 
+  factory BaseResponse.fromJson(
+    Map<String, dynamic> json,
+    T Function(Object? json) fromJsonT,
+  ) =>
+      _$BaseResponseFromJson(json, fromJsonT);
+
   final String message;
   final Object meta;
 
   // ignore: inference_failure_on_instance_creation
   @_Converter()
   final T data;
-
-  factory BaseResponse.fromJson(
-    Map<String, dynamic> json,
-    T Function(Object? json) fromJsonT,
-  ) =>
-      _$BaseResponseFromJson(json, fromJsonT);
 
   Map<String, dynamic> toJson(Object Function(T value) toJsonT) =>
       _$BaseResponseToJson(this, toJsonT);

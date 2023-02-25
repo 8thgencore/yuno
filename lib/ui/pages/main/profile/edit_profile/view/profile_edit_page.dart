@@ -52,7 +52,7 @@ class ProfileEditPage extends StatelessWidget {
       child: LoaderOverlay(
         child: Scaffold(
           backgroundColor: AppColors.screen100,
-          body: SafeArea(child: const _ProfileEditContentWidget()),
+          body: const SafeArea(child: _ProfileEditContentWidget()),
           floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
           floatingActionButton: Padding(
             padding: const EdgeInsets.only(left: 15, right: 15),
@@ -104,7 +104,7 @@ class _ProfileEditContentWidget extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24),
               decoration: const BoxDecoration(
                 color: AppColors.white60,
-                borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
+                borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
               ),
               child: const SingleChildScrollView(
                 child: _ListTextFieldWidget(),

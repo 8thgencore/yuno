@@ -32,10 +32,10 @@ class AppTheme {
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.primary100,
         // disabledBackgroundColor: AppColors.dark10,
-        disabledBackgroundColor: Color.fromRGBO(223, 229, 234, 1),
+        disabledBackgroundColor: const Color.fromRGBO(223, 229, 234, 1),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         textStyle: MaterialStateTextStyle.resolveWith(
-          (Set<MaterialState> states) {
+          (states) {
             if (states.contains(MaterialState.disabled)) {
               return AppTypography.b16l.copyWith(color: AppColors.grey100);
             }
@@ -46,7 +46,7 @@ class AppTheme {
     ),
     checkboxTheme: CheckboxThemeData(
       side: MaterialStateBorderSide.resolveWith(
-        (Set<MaterialState> states) {
+        (states) {
           if (states.contains(MaterialState.selected)) {
             return const BorderSide(color: AppColors.primary100);
           }
@@ -64,12 +64,14 @@ class AppTheme {
       SchedulerBinding.instance.window.platformBrightness;
 
   static void setStatusBarAndNavigationBarColors() {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.dark,
-      systemNavigationBarIconBrightness: Brightness.dark,
-      systemNavigationBarColor: AppColors.white100,
-      systemNavigationBarDividerColor: Colors.transparent,
-    ));
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
+        systemNavigationBarIconBrightness: Brightness.dark,
+        systemNavigationBarColor: AppColors.white100,
+        systemNavigationBarDividerColor: Colors.transparent,
+      ),
+    );
   }
 }

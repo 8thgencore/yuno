@@ -5,7 +5,10 @@ import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/resources/resources.dart';
 
 class MainScaffold extends StatefulWidget {
-  const MainScaffold({super.key, required this.child});
+  const MainScaffold({
+    required this.child,
+    super.key,
+  });
 
   final Widget child;
 
@@ -25,7 +28,7 @@ class _MainScaffoldState extends State<MainScaffold> with TickerProviderStateMix
   }
 
   void _onItemTapped(int index) {
-    setState(() {
+    setState(() async {
       if (index == 0) {
         _currentIndex = index;
         context.goNamed(RouteName.home);
@@ -33,7 +36,7 @@ class _MainScaffoldState extends State<MainScaffold> with TickerProviderStateMix
         _currentIndex = index;
         context.goNamed(RouteName.calendar);
       } else if (index == 2) {
-        context.pushNamed(RouteName.projectCreate);
+        await context.pushNamed(RouteName.projectCreate);
       } else if (index == 3) {
         _currentIndex = index;
         context.goNamed(RouteName.statistics);
@@ -62,20 +65,28 @@ class _MainScaffoldState extends State<MainScaffold> with TickerProviderStateMix
         items: [
           TabItem(
             activeIcon: Assets.svg.gridFilled.svg(),
-            icon: Assets.svg.grid.svg(color: AppColors.dark20),
+            icon: Assets.svg.grid.svg(
+              colorFilter: const ColorFilter.mode(AppColors.dark20, BlendMode.srcIn),
+            ),
           ),
           TabItem(
             activeIcon: Assets.svg.calendarFilled.svg(),
-            icon: Assets.svg.calendar.svg(color: AppColors.dark20),
+            icon: Assets.svg.calendar.svg(
+              colorFilter: const ColorFilter.mode(AppColors.dark20, BlendMode.srcIn),
+            ),
           ),
           const TabItem(icon: Icons.add),
           TabItem(
             activeIcon: Assets.svg.statsFilled.svg(),
-            icon: Assets.svg.stats.svg(color: AppColors.dark20),
+            icon: Assets.svg.stats.svg(
+              colorFilter: const ColorFilter.mode(AppColors.dark20, BlendMode.srcIn),
+            ),
           ),
           TabItem(
             activeIcon: Assets.svg.userFilled.svg(),
-            icon: Assets.svg.user.svg(color: AppColors.dark20),
+            icon: Assets.svg.user.svg(
+              colorFilter: const ColorFilter.mode(AppColors.dark20, BlendMode.srcIn),
+            ),
           ),
         ],
         onTap: _onItemTapped,
