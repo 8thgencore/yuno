@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:yuno/api/auth/models.dart';
+import 'package:yuno/api/auth/models/reset_token.dart';
 import 'package:yuno/api/shared_models/models.dart';
 import 'package:yuno/api/user/models.dart';
 
@@ -41,7 +42,7 @@ abstract class AuthClient {
   });
 
   @POST('/auth/otp')
-  Future<void> postAuthOtp({
+  Future<BaseResponse<ResetToken>> postAuthOtp({
     @Body() required IAuthOtpCode body,
   });
 

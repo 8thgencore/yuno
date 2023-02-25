@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router_flow/go_router_flow.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/di/service_locator.dart';
-import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/resources/resources.dart';
-import 'package:yuno/ui/pages/auth/forgot_password/bloc/forgot_password_bloc.dart';
+import 'package:yuno/ui/pages/auth/otp/bloc/otp_bloc.dart';
+import 'package:yuno/ui/pages/auth/otp/widget/otp_widget.dart';
 import 'package:yuno/ui/widgets/buttons/custom_rounded_button.dart';
-import 'package:yuno/ui/widgets/custom_text_field.dart';
 
-class ForgotPasswordPage extends StatelessWidget {
-  const ForgotPasswordPage({super.key});
+class OtpPage extends StatelessWidget {
+  const OtpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ForgotPasswordBloc(sl.get<IAuthRepository>()),
+      create: (context) => OtpBloc(sl.get<IAuthRepository>()),
       child: LoaderOverlay(
         child: Scaffold(
           body: Container(
@@ -28,7 +26,7 @@ class ForgotPasswordPage extends StatelessWidget {
                 colors: [AppColors.primary100, AppColors.screen100],
               ),
             ),
-            child: _ForgotPasswordPageWidget(),
+            child: _OtpPageWidget(),
           ),
         ),
       ),
@@ -36,31 +34,31 @@ class ForgotPasswordPage extends StatelessWidget {
   }
 }
 
-class _ForgotPasswordPageWidget extends StatelessWidget {
-  const _ForgotPasswordPageWidget();
+class _OtpPageWidget extends StatelessWidget {
+  const _OtpPageWidget();
 
-  static const double _credWidgetH = 196;
+  static const double _credWidgetH = 232;
   static const double _errorWidgetH = 86;
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<ForgotPasswordBloc, ForgotPasswordState>(
+    return BlocListener<OtpBloc, OtpState>(
       listener: (context, state) {
         switch (state.status) {
-          case ForgotPasswordStatus.initial:
+          case OtpStatus.initial:
             break;
-          case ForgotPasswordStatus.loading:
+          case OtpStatus.loading:
             break;
-          case ForgotPasswordStatus.failure:
+          case OtpStatus.failure:
             break;
-          case ForgotPasswordStatus.success:
-            context.pushNamed(RouteName.otp);
+          case OtpStatus.success:
+            // context.pushNamed(RouteName.login);
             break;
         }
       },
       child: Stack(
         children: [
-          BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
+          BlocBuilder<OtpBloc, OtpState>(
             builder: (context, state) {
               final error = state.serverError;
               return Column(
@@ -77,7 +75,7 @@ class _ForgotPasswordPageWidget extends StatelessWidget {
             width: double.infinity,
             child: Image.asset(Assets.images.signOrnament.path, fit: BoxFit.cover),
           ),
-          BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
+          BlocBuilder<OtpBloc, OtpState>(
             builder: (context, state) {
               final error = state.serverError;
               return error != null
@@ -112,11 +110,12 @@ class _TopInfoWidget extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       child: Column(
         children: [
-          Text('Don’t Worry, We Got You!', style: AppTypography.b24l),
+          Text('Verify Your Account', style: AppTypography.b24l),
           const SizedBox(height: 12),
           Text(
-            'Forgot your password? We got you so don’t worry! '
-            'Fill up the email and username and follow the next steps!',
+            'One step closer. '
+            'We have sent you an OTP code to your email, '
+            'please check it on your inbox or spam box.',
             style: AppTypography.l14l.copyWith(height: 2),
             textAlign: TextAlign.center,
           ),
@@ -157,7 +156,7 @@ class _ErrorWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Error from server',
+                  'Verification Code Invalid',
                   style: AppTypography.b16l,
                 ),
                 const SizedBox(height: 4),
@@ -175,8 +174,7 @@ class _ErrorWidget extends StatelessWidget {
           right: 24 - 10,
           child: GestureDetector(
             behavior: HitTestBehavior.opaque,
-            onTap: () =>
-                context.read<ForgotPasswordBloc>().add(const ForgotPasswordEvent.closedError()),
+            onTap: () => context.read<OtpBloc>().add(const OtpEvent.closedError()),
             child: const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: Icon(Icons.close, color: AppColors.white80, size: 20)),
@@ -218,50 +216,15 @@ class _BottomWidgetState extends State<_BottomWidget> {
         color: AppColors.screen100,
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _EmailTextField(emailFocusNode: _emailFocusNode),
+          Text('Verification Code', style: AppTypography.l12g),
+          const SizedBox(height: 12),
+          OtpWidget(),
           const SizedBox(height: 40),
           const _ContinueButton(),
         ],
       ),
-    );
-  }
-}
-
-class _EmailTextField extends StatelessWidget {
-  const _EmailTextField({
-    required FocusNode emailFocusNode,
-  }) : _emailFocusNode = emailFocusNode;
-
-  final FocusNode _emailFocusNode;
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
-      builder: (context, state) {
-        final error = state.emailError;
-        return CustomTextField(
-          focusNode: _emailFocusNode,
-          labelText: 'Enter your email address',
-          keyboardType: TextInputType.emailAddress,
-          textColor: error == null ? AppColors.dark100 : AppColors.error100,
-          prefixIcon: IconButton(
-            icon: Assets.svg.email.svg(
-              height: 26,
-              color: error == null ? AppColors.grey60 : AppColors.error100,
-            ),
-            onPressed: () {},
-          ),
-          onChanged: (text) =>
-              context.read<ForgotPasswordBloc>().add(ForgotPasswordEvent.emailChanged(text)),
-          onSubmitted: (_) {
-            if (state.isValid) {
-              FocusManager.instance.primaryFocus?.unfocus();
-              context.read<ForgotPasswordBloc>().add(const ForgotPasswordEvent.continued());
-            }
-          },
-        );
-      },
     );
   }
 }
@@ -271,7 +234,7 @@ class _ContinueButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
+    return BlocBuilder<OtpBloc, OtpState>(
       builder: (context, state) {
         return CustomRoundedButton(
           textButton: 'Continue',
@@ -281,7 +244,7 @@ class _ContinueButton extends StatelessWidget {
                   if (currentNode.focusedChild != null && !currentNode.hasPrimaryFocus) {
                     FocusManager.instance.primaryFocus?.unfocus();
                   }
-                  context.read<ForgotPasswordBloc>().add(const ForgotPasswordEvent.continued());
+                  context.read<OtpBloc>().add(const OtpEvent.continued());
                 }
               : null,
         );

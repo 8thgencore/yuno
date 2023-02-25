@@ -12,6 +12,7 @@ import 'package:yuno/domain/repository/api_task_repository.dart';
 import 'package:yuno/domain/repository/api_user_repository.dart';
 import 'package:yuno/ui/pages/auth/forgot_password/view/forgot_password_page.dart';
 import 'package:yuno/ui/pages/auth/login/view/login_page.dart';
+import 'package:yuno/ui/pages/auth/otp/view/otp_page.dart';
 import 'package:yuno/ui/pages/auth/registration/view/registration_page.dart';
 import 'package:yuno/ui/pages/main/calendar/bloc/calendar_bloc.dart';
 import 'package:yuno/ui/pages/main/calendar/view/calendar_page.dart';
@@ -255,7 +256,12 @@ mixin RouterMixin on State<App> {
         GoRoute(
           name: RouteName.forgotPassword,
           path: RoutePath.forgotPassword,
-          builder: (context, state) => const ForgotPassword(),
+          builder: (context, state) => const ForgotPasswordPage(),
+        ),
+        GoRoute(
+          name: RouteName.otp,
+          path: RoutePath.otp,
+          builder: (context, state) => const OtpPage(),
         ),
       ],
     );

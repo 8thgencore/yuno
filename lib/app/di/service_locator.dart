@@ -7,6 +7,10 @@ import 'package:yuno/api/user/rest_client.dart';
 import 'package:yuno/data/http/authorization_interceptor.dart';
 import 'package:yuno/data/http/dio_provider.dart';
 import 'package:yuno/data/repository/repository.dart';
+import 'package:yuno/data/repository/reset_email_data_repository.dart';
+import 'package:yuno/data/repository/reset_email_provider.dart';
+import 'package:yuno/data/repository/reset_token_data_repository.dart';
+import 'package:yuno/data/repository/reset_token_provider.dart';
 import 'package:yuno/data/storage/shared_preference_data.dart';
 import 'package:yuno/domain/logout_interactor.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
@@ -36,6 +40,8 @@ void _setupDataProviders() {
   sl.registerLazySingleton<TokenProvider>(() => sl.get<SharedPreferenceData>());
   sl.registerLazySingleton<RefreshTokenProvider>(() => sl.get<SharedPreferenceData>());
   sl.registerLazySingleton<TasksProvider>(() => sl.get<SharedPreferenceData>());
+  sl.registerLazySingleton<ResetEmailProvider>(() => sl.get<SharedPreferenceData>());
+  sl.registerLazySingleton<ResetTokenProvider>(() => sl.get<SharedPreferenceData>());
 }
 
 // ONLY SINGLETONS
@@ -44,6 +50,8 @@ void _setupRepositories() {
   sl.registerLazySingleton(() => TokenDataRepository(sl.get<TokenProvider>()));
   sl.registerLazySingleton(() => RefreshTokenDataRepository(sl.get<RefreshTokenProvider>()));
   sl.registerLazySingleton(() => TasksNotDoneDataRepository(sl.get<TasksProvider>()));
+  sl.registerLazySingleton(() => ResetEmailDataRepository(sl.get<ResetEmailProvider>()));
+  sl.registerLazySingleton(() => ResetTokenDataRepository(sl.get<ResetTokenProvider>()));
 }
 
 // ONLY SINGLETONS
@@ -100,6 +108,8 @@ void _setApiRelatedClasses() {
       userDataRepository: sl.get<UserDataRepository>(),
       tokenDataRepository: sl.get<TokenDataRepository>(),
       refreshTokenDataRepository: sl.get<RefreshTokenDataRepository>(),
+      resetEmailDataRepository: sl.get<ResetEmailDataRepository>(),
+      resetTokenDataRepository: sl.get<ResetTokenDataRepository>(),
     ),
   );
   sl.registerLazySingleton<IUserRepository>(

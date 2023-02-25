@@ -2,6 +2,8 @@ import 'package:yuno/api/auth/models.dart';
 import 'package:yuno/api/auth/rest_client.dart';
 import 'package:yuno/api/user/models.dart';
 import 'package:yuno/data/repository/refresh_token_data_repository.dart';
+import 'package:yuno/data/repository/reset_email_data_repository.dart';
+import 'package:yuno/data/repository/reset_token_data_repository.dart';
 import 'package:yuno/data/repository/token_data_repository.dart';
 import 'package:yuno/data/repository/user_data_repository.dart';
 
@@ -25,6 +27,8 @@ abstract class IAuthRepository {
   });
 
   Future<bool> forgotPassword({required String email});
+
+  Future<String> sendOtp({required String otp});
 }
 
 class ApiAuthRepository implements IAuthRepository {
@@ -34,6 +38,8 @@ class ApiAuthRepository implements IAuthRepository {
     required this.userDataRepository,
     required this.tokenDataRepository,
     required this.refreshTokenDataRepository,
+    required this.resetEmailDataRepository,
+    required this.resetTokenDataRepository,
   });
 
   final AuthClient authClient;
@@ -41,6 +47,8 @@ class ApiAuthRepository implements IAuthRepository {
   final UserDataRepository userDataRepository;
   final TokenDataRepository tokenDataRepository;
   final RefreshTokenDataRepository refreshTokenDataRepository;
+  final ResetEmailDataRepository resetEmailDataRepository;
+  final ResetTokenDataRepository resetTokenDataRepository;
 
   Future<IUserRead> register({
     required String email,
@@ -112,6 +120,19 @@ class ApiAuthRepository implements IAuthRepository {
     await authClient.postAuthForgotPassword(
       body: IAuthForgotPassword(email: email),
     );
+    await resetEmailDataRepository.setItem(email);
+
     return true;
+  }
+
+  Future<String> sendOtp({required String otp}) async {
+    final email = await resetEmailDataRepository.getItem() ?? '';
+
+    final response = await authClient.postAuthOtp(body: IAuthOtpCode(email: email, otp: otp));
+    final resetToken = response.data.resetToken;
+
+    await resetTokenDataRepository.setItem(resetToken);
+
+    return resetToken;
   }
 }
