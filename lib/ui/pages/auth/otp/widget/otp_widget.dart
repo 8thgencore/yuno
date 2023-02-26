@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/auth/otp/bloc/otp_bloc.dart';
@@ -64,10 +65,10 @@ class OtpInput extends StatelessWidget {
             color: AppColors.white100,
           ),
           child: TextField(
+            controller: controller,
             autofocus: autoFocus,
             textAlign: TextAlign.center,
             keyboardType: TextInputType.number,
-            controller: controller,
             maxLength: 1,
             style: error
                 ? AppTypography.b22d.copyWith(color: AppColors.error100, height: 35 / 22)
@@ -86,6 +87,10 @@ class OtpInput extends StatelessWidget {
                 } else {
                   FocusManager.instance.primaryFocus?.unfocus();
                   context.read<OtpBloc>().add(const OtpEvent.continued());
+                }
+              } else if (value.length == 0) {
+                if (index != 0) {
+                  FocusScope.of(context).previousFocus();
                 }
               }
             },

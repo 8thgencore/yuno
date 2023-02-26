@@ -29,6 +29,8 @@ abstract class IAuthRepository {
   Future<bool> forgotPassword({required String email});
 
   Future<String> sendOtp({required String otp});
+
+  Future<IUserRead> resetPassword({required String password});
 }
 
 class ApiAuthRepository implements IAuthRepository {
@@ -140,5 +142,19 @@ class ApiAuthRepository implements IAuthRepository {
     await resetTokenDataRepository.setItem(resetToken);
 
     return resetToken;
+  }
+
+  @override
+  Future<IUserRead> resetPassword({required String password}) async {
+    final resetToken = await resetTokenDataRepository.getItem() ?? '';
+
+    final response = await authClient.postAuthResetPassword(
+      body: IAuthResetPassword(
+        resetToken: resetToken,
+        password: password,
+      ),
+    );
+
+    return response.data;
   }
 }

@@ -972,11 +972,11 @@ abstract class _SavedEvent implements ProfileEditEvent {
 
 /// @nodoc
 mixin _$ProfileEditState {
-  ProfileEditStatus get status => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  ProfileEditStatus get status => throw _privateConstructorUsedError;
   String? get role => throw _privateConstructorUsedError;
   ProfileEditEmailError? get emailError => throw _privateConstructorUsedError;
   ProfileEditUsernameError? get usernameError => throw _privateConstructorUsedError;
@@ -992,11 +992,11 @@ abstract class $ProfileEditStateCopyWith<$Res> {
       _$ProfileEditStateCopyWithImpl<$Res, ProfileEditState>;
   @useResult
   $Res call(
-      {ProfileEditStatus status,
-      String firstName,
+      {String firstName,
       String lastName,
       String username,
       String email,
+      ProfileEditStatus status,
       String? role,
       ProfileEditEmailError? emailError,
       ProfileEditUsernameError? usernameError,
@@ -1016,21 +1016,17 @@ class _$ProfileEditStateCopyWithImpl<$Res, $Val extends ProfileEditState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
     Object? firstName = null,
     Object? lastName = null,
     Object? username = null,
     Object? email = null,
+    Object? status = null,
     Object? role = freezed,
     Object? emailError = freezed,
     Object? usernameError = freezed,
     Object? serverError = freezed,
   }) {
     return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as ProfileEditStatus,
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -1047,6 +1043,10 @@ class _$ProfileEditStateCopyWithImpl<$Res, $Val extends ProfileEditState>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as ProfileEditStatus,
       role: freezed == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
@@ -1075,11 +1075,11 @@ abstract class _$$_ProfileEditStateCopyWith<$Res> implements $ProfileEditStateCo
   @override
   @useResult
   $Res call(
-      {ProfileEditStatus status,
-      String firstName,
+      {String firstName,
       String lastName,
       String username,
       String email,
+      ProfileEditStatus status,
       String? role,
       ProfileEditEmailError? emailError,
       ProfileEditUsernameError? usernameError,
@@ -1097,21 +1097,17 @@ class __$$_ProfileEditStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
     Object? firstName = null,
     Object? lastName = null,
     Object? username = null,
     Object? email = null,
+    Object? status = null,
     Object? role = freezed,
     Object? emailError = freezed,
     Object? usernameError = freezed,
     Object? serverError = freezed,
   }) {
     return _then(_$_ProfileEditState(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as ProfileEditStatus,
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -1128,6 +1124,10 @@ class __$$_ProfileEditStateCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as ProfileEditStatus,
       role: freezed == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
@@ -1152,19 +1152,16 @@ class __$$_ProfileEditStateCopyWithImpl<$Res>
 
 class _$_ProfileEditState implements _ProfileEditState {
   const _$_ProfileEditState(
-      {this.status = ProfileEditStatus.initial,
-      required this.firstName,
+      {required this.firstName,
       required this.lastName,
       required this.username,
       required this.email,
+      this.status = ProfileEditStatus.initial,
       this.role,
       this.emailError,
       this.usernameError,
       this.serverError});
 
-  @override
-  @JsonKey()
-  final ProfileEditStatus status;
   @override
   final String firstName;
   @override
@@ -1173,6 +1170,9 @@ class _$_ProfileEditState implements _ProfileEditState {
   final String username;
   @override
   final String email;
+  @override
+  @JsonKey()
+  final ProfileEditStatus status;
   @override
   final String? role;
   @override
@@ -1184,7 +1184,7 @@ class _$_ProfileEditState implements _ProfileEditState {
 
   @override
   String toString() {
-    return 'ProfileEditState(status: $status, firstName: $firstName, lastName: $lastName, username: $username, email: $email, role: $role, emailError: $emailError, usernameError: $usernameError, serverError: $serverError)';
+    return 'ProfileEditState(firstName: $firstName, lastName: $lastName, username: $username, email: $email, status: $status, role: $role, emailError: $emailError, usernameError: $usernameError, serverError: $serverError)';
   }
 
   @override
@@ -1192,11 +1192,11 @@ class _$_ProfileEditState implements _ProfileEditState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ProfileEditState &&
-            (identical(other.status, status) || other.status == status) &&
             (identical(other.firstName, firstName) || other.firstName == firstName) &&
             (identical(other.lastName, lastName) || other.lastName == lastName) &&
             (identical(other.username, username) || other.username == username) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.role, role) || other.role == role) &&
             (identical(other.emailError, emailError) || other.emailError == emailError) &&
             (identical(other.usernameError, usernameError) ||
@@ -1205,7 +1205,7 @@ class _$_ProfileEditState implements _ProfileEditState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, firstName, lastName, username, email, role,
+  int get hashCode => Object.hash(runtimeType, firstName, lastName, username, email, status, role,
       emailError, usernameError, serverError);
 
   @JsonKey(ignore: true)
@@ -1217,18 +1217,16 @@ class _$_ProfileEditState implements _ProfileEditState {
 
 abstract class _ProfileEditState implements ProfileEditState {
   const factory _ProfileEditState(
-      {final ProfileEditStatus status,
-      required final String firstName,
+      {required final String firstName,
       required final String lastName,
       required final String username,
       required final String email,
+      final ProfileEditStatus status,
       final String? role,
       final ProfileEditEmailError? emailError,
       final ProfileEditUsernameError? usernameError,
       final String? serverError}) = _$_ProfileEditState;
 
-  @override
-  ProfileEditStatus get status;
   @override
   String get firstName;
   @override
@@ -1237,6 +1235,8 @@ abstract class _ProfileEditState implements ProfileEditState {
   String get username;
   @override
   String get email;
+  @override
+  ProfileEditStatus get status;
   @override
   String? get role;
   @override

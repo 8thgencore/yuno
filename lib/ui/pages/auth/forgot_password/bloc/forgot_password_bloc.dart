@@ -5,7 +5,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
-import 'package:yuno/ui/pages/auth/forgot_password/model/errors.dart';
+import 'package:yuno/ui/models/auth_errors.dart';
 
 part 'forgot_password_event.dart';
 
@@ -34,7 +34,7 @@ class ForgotPasswordBloc extends Bloc<ForgotPasswordEvent, ForgotPasswordState> 
     _EmailChangedEvent event,
     Emitter<ForgotPasswordState> emit,
   ) {
-    emit(state.copyWith(email: event.text));
+    emit(state.copyWith(email: event.text, status: ForgotPasswordStatus.initial));
     _validateEmail(emit);
   }
 
@@ -76,29 +76,17 @@ class ForgotPasswordBloc extends Bloc<ForgotPasswordEvent, ForgotPasswordState> 
 
   void _validateEmail(Emitter<ForgotPasswordState> emit) {
     if (state.email.isEmpty) {
-      emit(
-        state.copyWith(
-          isValid: false,
-          emailError: ForgotPasswordEmailError.empty,
-        ),
-      );
+      // ignore: require_trailing_commas
+      emit(state.copyWith(isValid: false, emailError: EmailError.empty));
       return;
     }
     if (!EmailValidator.validate(state.email)) {
-      emit(
-        state.copyWith(
-          isValid: false,
-          emailError: ForgotPasswordEmailError.invalid,
-        ),
-      );
+      // ignore: require_trailing_commas
+      emit(state.copyWith(isValid: false, emailError: EmailError.invalid));
       return;
     }
-    emit(
-      state.copyWith(
-        isValid: true,
-        emailError: null,
-      ),
-    );
+    // ignore: require_trailing_commas
+    emit(state.copyWith(isValid: true, emailError: null));
     return;
   }
 }

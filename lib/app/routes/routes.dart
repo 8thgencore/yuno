@@ -7,6 +7,7 @@ abstract class RouteName {
   static const home = 'home';
   static const forgotPassword = 'forgot-password';
   static const otp = 'otp';
+  static const resetPassword = 'reset-password';
   static const calendar = 'calendar';
   static const statistics = 'stat';
   static const profile = 'profile';
@@ -30,6 +31,7 @@ abstract class RoutePath {
   static const home = '/home';
   static const forgotPassword = '/forgot-password';
   static const otp = '/otp';
+  static const resetPassword = '/reset-password';
   static const calendar = '/calendar';
   static const statistics = '/stat';
   static const profile = '/profile';

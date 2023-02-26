@@ -11,8 +11,8 @@ class LoginFieldsInfo extends LoginState {
     this.serverError,
   });
 
-  final LoginEmailError? emailError;
-  final LoginPasswordError? passwordError;
+  final EmailError? emailError;
+  final PasswordError? passwordError;
   final String? serverError;
 
   @override

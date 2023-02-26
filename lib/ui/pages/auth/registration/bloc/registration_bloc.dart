@@ -5,7 +5,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:equatable/equatable.dart';
 import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
-import 'package:yuno/ui/pages/auth/registration/model/errors.dart';
+import 'package:yuno/ui/models/auth_errors.dart';
 
 part 'registration_event.dart';
 
@@ -31,20 +31,19 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
 
   String _email = '';
   bool _highlightEmailError = false;
-  RegistrationEmailError? _emailError = RegistrationEmailError.empty;
+  EmailError? _emailError = EmailError.empty;
 
   String _password = '';
   bool _highlightPasswordError = false;
-  RegistrationPasswordError? _passwordError = RegistrationPasswordError.empty;
+  PasswordError? _passwordError = PasswordError.empty;
 
   String _passwordConfirmation = '';
   bool _highlightPasswordConfirmationError = false;
-  RegistrationPasswordConfirmError? _passwordConfirmationError =
-      RegistrationPasswordConfirmError.empty;
+  PasswordConfirmError? _passwordConfirmationError = PasswordConfirmError.empty;
 
   String _name = '';
   bool _highlightNameError = false;
-  RegistrationNameError? _nameError = RegistrationNameError.empty;
+  NameError? _nameError = NameError.empty;
 
   bool _highlightServerError = false;
   String? _serverError;
@@ -171,42 +170,42 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     );
   }
 
-  RegistrationEmailError? _validateEmail() {
+  EmailError? _validateEmail() {
     if (_email.isEmpty) {
-      return RegistrationEmailError.empty;
+      return EmailError.empty;
     }
     if (!EmailValidator.validate(_email)) {
-      return RegistrationEmailError.invalid;
+      return EmailError.invalid;
     }
     return null;
   }
 
-  RegistrationPasswordError? _validatePassword() {
+  PasswordError? _validatePassword() {
     if (_password.isEmpty) {
-      return RegistrationPasswordError.empty;
+      return PasswordError.empty;
     }
     if (_password.length < 6) {
-      return RegistrationPasswordError.tooShort;
+      return PasswordError.tooShort;
     }
     if (_passwordRegexp.hasMatch(_password)) {
-      return RegistrationPasswordError.wrongSymbols;
+      return PasswordError.wrongSymbols;
     }
     return null;
   }
 
-  RegistrationPasswordConfirmError? _validatePasswordConfirmation() {
+  PasswordConfirmError? _validatePasswordConfirmation() {
     if (_passwordConfirmation.isEmpty) {
-      return RegistrationPasswordConfirmError.empty;
+      return PasswordConfirmError.empty;
     }
     if (_password != _passwordConfirmation) {
-      return RegistrationPasswordConfirmError.different;
+      return PasswordConfirmError.different;
     }
     return null;
   }
 
-  RegistrationNameError? _validateName() {
+  NameError? _validateName() {
     if (_name.isEmpty) {
-      return RegistrationNameError.empty;
+      return NameError.empty;
     }
     return null;
   }

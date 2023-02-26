@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router_flow/go_router_flow.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/di/service_locator.dart';
+import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/auth/otp/bloc/otp_bloc.dart';
@@ -52,7 +54,7 @@ class _OtpPageWidget extends StatelessWidget {
           case OtpStatus.failure:
             break;
           case OtpStatus.success:
-            // context.pushNamed(RouteName.login);
+            context.pushNamed(RouteName.resetPassword);
             break;
         }
       },
