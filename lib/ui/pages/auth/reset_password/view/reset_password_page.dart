@@ -7,17 +7,19 @@ import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/resources/resources.dart';
-import 'package:yuno/ui/pages/auth/forgot_password/bloc/forgot_password_bloc.dart';
+import 'package:yuno/ui/pages/auth/reset_password/bloc/reset_password_bloc.dart';
 import 'package:yuno/ui/widgets/buttons/custom_rounded_button.dart';
 import 'package:yuno/ui/widgets/custom_text_field.dart';
+import 'package:yuno/ui/widgets/toast_widget.dart';
+import 'package:yuno/utils/toast.dart';
 
-class ForgotPasswordPage extends StatelessWidget {
-  const ForgotPasswordPage({super.key});
+class ResetPasswordPage extends StatelessWidget {
+  const ResetPasswordPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ForgotPasswordBloc(sl.get<IAuthRepository>()),
+      create: (context) => ResetPasswordBloc(sl.get<IAuthRepository>()),
       child: const LoaderOverlay(
         child: Scaffold(
           body: DecoratedBox(
@@ -29,7 +31,7 @@ class ForgotPasswordPage extends StatelessWidget {
                 colors: [AppColors.primary100, AppColors.screen100],
               ),
             ),
-            child: _ForgotPasswordPageWidget(),
+            child: _ResetPasswordPageWidget(),
           ),
         ),
       ),
@@ -37,32 +39,38 @@ class ForgotPasswordPage extends StatelessWidget {
   }
 }
 
-class _ForgotPasswordPageWidget extends StatelessWidget {
-  const _ForgotPasswordPageWidget();
+class _ResetPasswordPageWidget extends StatelessWidget {
+  const _ResetPasswordPageWidget();
 
-  static const double _credWidgetH = 208;
+  static const double _credWidgetH = 286;
   static const double _errorWidgetH = 100;
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<ForgotPasswordBloc, ForgotPasswordState>(
+    return BlocListener<ResetPasswordBloc, ResetPasswordState>(
       listener: (context, state) async {
         switch (state.status) {
-          case ForgotPasswordStatus.initial:
+          case ResetPasswordStatus.initial:
             break;
-          case ForgotPasswordStatus.loading:
+          case ResetPasswordStatus.loading:
             break;
-          case ForgotPasswordStatus.failure:
+          case ResetPasswordStatus.failure:
             break;
-          case ForgotPasswordStatus.success:
-            await context.pushNamed(RouteName.otp);
-
+          case ResetPasswordStatus.success:
+            showToast(
+              context,
+              child: const ToastWidget(
+                text: 'Password has been successfully replaced',
+                type: ToastType.success,
+              ),
+            );
+            context.goNamed(RouteName.login);
             break;
         }
       },
       child: Stack(
         children: [
-          BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
+          BlocBuilder<ResetPasswordBloc, ResetPasswordState>(
             builder: (context, state) {
               final error = state.serverError;
               return Column(
@@ -79,7 +87,7 @@ class _ForgotPasswordPageWidget extends StatelessWidget {
             width: double.infinity,
             child: Image.asset(Assets.images.signOrnament.path, fit: BoxFit.cover),
           ),
-          BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
+          BlocBuilder<ResetPasswordBloc, ResetPasswordState>(
             builder: (context, state) {
               final error = state.serverError;
               return error != null
@@ -115,14 +123,14 @@ class _TopInfoWidget extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            'Don’t Worry, We Got You!',
+            'Create New Password!',
             style: AppTypography.b24l,
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 12),
           Text(
-            'Forgot your password? We got you so don’t worry! '
-            'Fill up the email and username and follow the next steps!',
+            'Finally, you’ve come to the last step. '
+            'Now, create your new password and don’t forget to remember it!',
             style: AppTypography.l14l.copyWith(height: 2),
             textAlign: TextAlign.center,
           ),
@@ -182,7 +190,7 @@ class _ErrorWidget extends StatelessWidget {
           child: GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: () =>
-                context.read<ForgotPasswordBloc>().add(const ForgotPasswordEvent.closedError()),
+                context.read<ResetPasswordBloc>().add(const ResetPasswordEvent.closedError()),
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: Icon(Icons.close, color: AppColors.white80, size: 20),
@@ -202,27 +210,35 @@ class _BottomWidget extends StatefulWidget {
 }
 
 class _BottomWidgetState extends State<_BottomWidget> {
-  late final FocusNode _emailFocusNode;
+  late final FocusNode _passwordFocusNode;
+  late final FocusNode _passwordConfirmFocusNode;
 
   @override
   void initState() {
     super.initState();
-    _emailFocusNode = FocusNode();
+    _passwordFocusNode = FocusNode();
+    _passwordConfirmFocusNode = FocusNode();
 
     SchedulerBinding.instance.addPostFrameCallback((_) => _addFocusLostHandlers());
   }
 
   void _addFocusLostHandlers() {
-    _emailFocusNode.addListener(() {
-      if (!_emailFocusNode.hasFocus) {
-        context.read<ForgotPasswordBloc>().add(const ForgotPasswordEvent.emailFocusLost());
+    _passwordFocusNode.addListener(() {
+      if (!_passwordFocusNode.hasFocus) {
+        context.read<ResetPasswordBloc>().add(const ResetPasswordEvent.passwordFocusLost());
+      }
+    });
+    _passwordConfirmFocusNode.addListener(() {
+      if (!_passwordConfirmFocusNode.hasFocus) {
+        context.read<ResetPasswordBloc>().add(const ResetPasswordEvent.passwordConfirmFocusLost());
       }
     });
   }
 
   @override
   void dispose() {
-    _emailFocusNode.dispose();
+    _passwordFocusNode.dispose();
+    _passwordConfirmFocusNode.dispose();
     super.dispose();
   }
 
@@ -236,34 +252,50 @@ class _BottomWidgetState extends State<_BottomWidget> {
       ),
       child: Column(
         children: [
-          _EmailTextField(emailFocusNode: _emailFocusNode),
+          _PasswordTextField(
+            passwordFocusNode: _passwordFocusNode,
+            passwordConfirmFocusNode: _passwordConfirmFocusNode,
+          ),
+          const SizedBox(height: 24),
+          _PasswordConfirmTextField(passwordConfirmFocusNode: _passwordConfirmFocusNode),
           const SizedBox(height: 40),
-          const _ContinueButton(),
+          const _ConfirmButton(),
         ],
       ),
     );
   }
 }
 
-class _EmailTextField extends StatelessWidget {
-  const _EmailTextField({
-    required FocusNode emailFocusNode,
-  }) : _emailFocusNode = emailFocusNode;
+class _PasswordTextField extends StatefulWidget {
+  const _PasswordTextField({
+    required FocusNode passwordFocusNode,
+    required FocusNode passwordConfirmFocusNode,
+  })  : _passwordFocusNode = passwordFocusNode,
+        _passwordConfirmFocusNode = passwordConfirmFocusNode;
 
-  final FocusNode _emailFocusNode;
+  final FocusNode _passwordFocusNode;
+  final FocusNode _passwordConfirmFocusNode;
+
+  @override
+  State<_PasswordTextField> createState() => _PasswordTextFieldState();
+}
+
+class _PasswordTextFieldState extends State<_PasswordTextField> {
+  bool _isObscure = true;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
+    return BlocBuilder<ResetPasswordBloc, ResetPasswordState>(
       builder: (context, state) {
-        final error = state.emailError;
+        final error = state.passwordError;
         return CustomTextField(
-          focusNode: _emailFocusNode,
-          labelText: 'Enter your email address',
-          keyboardType: TextInputType.emailAddress,
+          focusNode: widget._passwordFocusNode,
+          labelText: 'Create new password',
+          obscureText: _isObscure,
+          keyboardType: TextInputType.visiblePassword,
           textColor: error == null ? AppColors.dark100 : AppColors.error100,
           prefixIcon: IconButton(
-            icon: Assets.svg.email.svg(
+            icon: Assets.svg.lock.svg(
               height: 26,
               colorFilter: ColorFilter.mode(
                 error == null ? AppColors.grey60 : AppColors.error100,
@@ -272,12 +304,75 @@ class _EmailTextField extends StatelessWidget {
             ),
             onPressed: () {},
           ),
+          suffixIcon: IconButton(
+            icon: Icon(
+              _isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+              color: AppColors.grey40,
+            ),
+            onPressed: () {
+              setState(() => _isObscure = !_isObscure);
+            },
+          ),
           onChanged: (text) =>
-              context.read<ForgotPasswordBloc>().add(ForgotPasswordEvent.emailChanged(text)),
+              context.read<ResetPasswordBloc>().add(ResetPasswordEvent.passwordChanged(text)),
+          onSubmitted: (_) => widget._passwordConfirmFocusNode.requestFocus(),
+        );
+      },
+    );
+  }
+}
+
+class _PasswordConfirmTextField extends StatefulWidget {
+  const _PasswordConfirmTextField({
+    required FocusNode passwordConfirmFocusNode,
+  }) : _passwordConfirmFocusNode = passwordConfirmFocusNode;
+
+  final FocusNode _passwordConfirmFocusNode;
+
+  @override
+  State<_PasswordConfirmTextField> createState() => _PasswordConfirmTextFieldState();
+}
+
+class _PasswordConfirmTextFieldState extends State<_PasswordConfirmTextField> {
+  bool _isObscure = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ResetPasswordBloc, ResetPasswordState>(
+      builder: (context, state) {
+        final error = state.passwordConfirmError;
+        return CustomTextField(
+          focusNode: widget._passwordConfirmFocusNode,
+          labelText: 'Confirm new password',
+          obscureText: _isObscure,
+          keyboardType: TextInputType.visiblePassword,
+          textColor: error == null ? AppColors.dark100 : AppColors.error100,
+          prefixIcon: IconButton(
+            icon: Assets.svg.lock.svg(
+              height: 26,
+              colorFilter: ColorFilter.mode(
+                error == null ? AppColors.grey60 : AppColors.error100,
+                BlendMode.srcIn,
+              ),
+            ),
+            onPressed: () {},
+          ),
+          onChanged: (text) => context
+              .read<ResetPasswordBloc>()
+              .add(ResetPasswordEvent.passwordConfirmChanged(text)),
+          suffixIcon: IconButton(
+            icon: Icon(
+              _isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+              color: AppColors.grey40,
+            ),
+            onPressed: () {
+              setState(() => _isObscure = !_isObscure);
+            },
+          ),
           onSubmitted: (_) {
             if (state.isValid) {
               FocusManager.instance.primaryFocus?.unfocus();
-              context.read<ForgotPasswordBloc>().add(const ForgotPasswordEvent.continued());
+              context.read<ResetPasswordBloc>().add(const ResetPasswordEvent.continued());
             }
           },
         );
@@ -286,22 +381,22 @@ class _EmailTextField extends StatelessWidget {
   }
 }
 
-class _ContinueButton extends StatelessWidget {
-  const _ContinueButton();
+class _ConfirmButton extends StatelessWidget {
+  const _ConfirmButton();
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
+    return BlocBuilder<ResetPasswordBloc, ResetPasswordState>(
       builder: (context, state) {
         return CustomRoundedButton(
-          textButton: 'Continue',
+          textButton: 'Confirm',
           onPressed: state.isValid
               ? () {
                   final currentNode = FocusScope.of(context);
                   if (currentNode.focusedChild != null && !currentNode.hasPrimaryFocus) {
                     FocusManager.instance.primaryFocus?.unfocus();
                   }
-                  context.read<ForgotPasswordBloc>().add(const ForgotPasswordEvent.continued());
+                  context.read<ResetPasswordBloc>().add(const ResetPasswordEvent.continued());
                 }
               : null,
         );

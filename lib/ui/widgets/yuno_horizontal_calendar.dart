@@ -7,12 +7,12 @@ import 'package:yuno/resources/resources.dart';
 
 /// Signature for a function that detects when a tap is occurred.
 ///
-/// Used by [DatePickerTimeline] for tap detection.
+/// Used by [DateSelectionCallback] for tap detection.
 typedef DateSelectionCallback = void Function(DateTime selectedDate);
 
 /// Signature for a function that is called when selected date is changed
 ///
-/// Used by [DatePickerTimeline] for tap detection.
+/// Used by [DateChangeListener] for tap detection.
 typedef DateChangeListener = void Function(DateTime selectedDate);
 
 class YunoHorizontalCalendarWidget extends StatefulWidget {
@@ -32,8 +32,8 @@ class YunoHorizontalCalendarWidget extends StatefulWidget {
 class _YunoHorizontalCalendarWidgetState extends State<YunoHorizontalCalendarWidget> {
   final ScrollController _controller = ScrollController();
 
-  DateTime? _currentDate;
-  DateTime? _selectedDate;
+  late DateTime _currentDate;
+  late DateTime _selectedDate;
 
   @override
   void initState() {
@@ -65,12 +65,11 @@ class _YunoHorizontalCalendarWidgetState extends State<YunoHorizontalCalendarWid
             return const SizedBox(width: 14);
           }
           DateTime dateRounded;
-          final date = _currentDate!.add(Duration(days: index - 1));
+          final date = _currentDate.add(Duration(days: index - 1));
           dateRounded = DateTime(date.year, date.month, date.day);
 
           // Check if this date is the one that is currently selected
-          final isSelected =
-              _selectedDate != null ? _compareDate(dateRounded, _selectedDate!) : false;
+          final isSelected = _compareDate(dateRounded, _selectedDate);
 
           final dayTextStyle = isSelected ? AppTypography.l14l : AppTypography.l14d;
           final dateTextStyle = isSelected ? AppTypography.r24l : AppTypography.r24d;

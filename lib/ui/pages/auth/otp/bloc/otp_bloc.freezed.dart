@@ -580,8 +580,8 @@ abstract class _ClosedErrorEvent implements OtpEvent {
 
 /// @nodoc
 mixin _$OtpState {
-  OtpStatus get status => throw _privateConstructorUsedError;
   String get otp => throw _privateConstructorUsedError;
+  OtpStatus get status => throw _privateConstructorUsedError;
   String? get serverError => throw _privateConstructorUsedError;
   bool get isValid => throw _privateConstructorUsedError;
 
@@ -594,7 +594,7 @@ abstract class $OtpStateCopyWith<$Res> {
   factory $OtpStateCopyWith(OtpState value, $Res Function(OtpState) then) =
       _$OtpStateCopyWithImpl<$Res, OtpState>;
   @useResult
-  $Res call({OtpStatus status, String otp, String? serverError, bool isValid});
+  $Res call({String otp, OtpStatus status, String? serverError, bool isValid});
 }
 
 /// @nodoc
@@ -609,20 +609,20 @@ class _$OtpStateCopyWithImpl<$Res, $Val extends OtpState> implements $OtpStateCo
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
     Object? otp = null,
+    Object? status = null,
     Object? serverError = freezed,
     Object? isValid = null,
   }) {
     return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as OtpStatus,
       otp: null == otp
           ? _value.otp
           : otp // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as OtpStatus,
       serverError: freezed == serverError
           ? _value.serverError
           : serverError // ignore: cast_nullable_to_non_nullable
@@ -641,7 +641,7 @@ abstract class _$$_OtpStateCopyWith<$Res> implements $OtpStateCopyWith<$Res> {
       __$$_OtpStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({OtpStatus status, String otp, String? serverError, bool isValid});
+  $Res call({String otp, OtpStatus status, String? serverError, bool isValid});
 }
 
 /// @nodoc
@@ -653,20 +653,20 @@ class __$$_OtpStateCopyWithImpl<$Res> extends _$OtpStateCopyWithImpl<$Res, _$_Ot
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
     Object? otp = null,
+    Object? status = null,
     Object? serverError = freezed,
     Object? isValid = null,
   }) {
     return _then(_$_OtpState(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as OtpStatus,
       otp: null == otp
           ? _value.otp
           : otp // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as OtpStatus,
       serverError: freezed == serverError
           ? _value.serverError
           : serverError // ignore: cast_nullable_to_non_nullable
@@ -683,13 +683,13 @@ class __$$_OtpStateCopyWithImpl<$Res> extends _$OtpStateCopyWithImpl<$Res, _$_Ot
 
 class _$_OtpState implements _OtpState {
   const _$_OtpState(
-      {this.status = OtpStatus.initial, required this.otp, this.serverError, this.isValid = false});
+      {required this.otp, this.status = OtpStatus.initial, this.serverError, this.isValid = false});
 
+  @override
+  final String otp;
   @override
   @JsonKey()
   final OtpStatus status;
-  @override
-  final String otp;
   @override
   final String? serverError;
   @override
@@ -698,7 +698,7 @@ class _$_OtpState implements _OtpState {
 
   @override
   String toString() {
-    return 'OtpState(status: $status, otp: $otp, serverError: $serverError, isValid: $isValid)';
+    return 'OtpState(otp: $otp, status: $status, serverError: $serverError, isValid: $isValid)';
   }
 
   @override
@@ -706,14 +706,14 @@ class _$_OtpState implements _OtpState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OtpState &&
-            (identical(other.status, status) || other.status == status) &&
             (identical(other.otp, otp) || other.otp == otp) &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.serverError, serverError) || other.serverError == serverError) &&
             (identical(other.isValid, isValid) || other.isValid == isValid));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, otp, serverError, isValid);
+  int get hashCode => Object.hash(runtimeType, otp, status, serverError, isValid);
 
   @JsonKey(ignore: true)
   @override
@@ -724,15 +724,15 @@ class _$_OtpState implements _OtpState {
 
 abstract class _OtpState implements OtpState {
   const factory _OtpState(
-      {final OtpStatus status,
-      required final String otp,
+      {required final String otp,
+      final OtpStatus status,
       final String? serverError,
       final bool isValid}) = _$_OtpState;
 
   @override
-  OtpStatus get status;
-  @override
   String get otp;
+  @override
+  OtpStatus get status;
   @override
   String? get serverError;
   @override

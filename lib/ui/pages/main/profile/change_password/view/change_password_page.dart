@@ -101,6 +101,7 @@ class _ChangePasswordContentWidget extends StatelessWidget {
           ),
         ),
         Expanded(
+          // ignore: avoid_unnecessary_containers
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             decoration: const BoxDecoration(

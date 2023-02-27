@@ -13,10 +13,10 @@ class RegistrationFieldsInfo extends RegistrationState {
     this.serverError,
   });
 
-  final RegistrationEmailError? emailError;
-  final RegistrationPasswordError? passwordError;
-  final RegistrationPasswordConfirmError? passwordConfirmError;
-  final RegistrationNameError? nameError;
+  final EmailError? emailError;
+  final PasswordError? passwordError;
+  final PasswordConfirmError? passwordConfirmError;
+  final NameError? nameError;
   final String? serverError;
 
   @override

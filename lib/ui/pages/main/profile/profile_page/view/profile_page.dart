@@ -204,12 +204,12 @@ class AvatarWidget extends StatelessWidget {
     if (image != null) {
       return CachedNetworkImage(
         imageUrl: image.media.link ?? '',
-        height: 128,
-        width: 128,
+        height: 132,
+        width: 132,
         fit: BoxFit.cover,
       );
     } else {
-      return Assets.images.avatar.image(height: 128, fit: BoxFit.cover);
+      return Assets.images.avatar.image(height: 132, fit: BoxFit.cover);
     }
   }
 }

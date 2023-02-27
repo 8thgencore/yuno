@@ -41,7 +41,6 @@ class CustomTextField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         DecoratedBox(
-          // height: 58,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
             color: AppColors.white100,

@@ -13,7 +13,10 @@ class TaskCardWidget extends StatefulWidget {
     this.onClickCheckBox,
     this.onDismissible,
     super.key,
-  }) : assert(!(projectName != null && deadline != null));
+  }) : assert(
+          !(projectName != null && deadline != null),
+          'These parameters cannot be null at the same time',
+        );
 
   final String id;
   final String title;

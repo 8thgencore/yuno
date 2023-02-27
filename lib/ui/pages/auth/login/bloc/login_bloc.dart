@@ -5,7 +5,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:equatable/equatable.dart';
 import 'package:yuno/data/http/error_interceptor.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
-import 'package:yuno/ui/pages/auth/login/model/errors.dart';
+import 'package:yuno/ui/models/auth_errors.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
@@ -26,11 +26,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   String _email = '';
   bool _highlightEmailError = false;
-  LoginEmailError? _emailError = LoginEmailError.empty;
+  EmailError? _emailError = EmailError.empty;
 
   String _password = '';
   bool _highlightPasswordError = false;
-  LoginPasswordError? _passwordError = LoginPasswordError.empty;
+  PasswordError? _passwordError = PasswordError.empty;
 
   bool _highlightServerError = false;
   String? _serverError;
@@ -115,25 +115,25 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     );
   }
 
-  LoginEmailError? _validateEmail() {
+  EmailError? _validateEmail() {
     if (_email.isEmpty) {
-      return LoginEmailError.empty;
+      return EmailError.empty;
     }
     if (!EmailValidator.validate(_email)) {
-      return LoginEmailError.invalid;
+      return EmailError.invalid;
     }
     return null;
   }
 
-  LoginPasswordError? _validatePassword() {
+  PasswordError? _validatePassword() {
     if (_password.isEmpty) {
-      return LoginPasswordError.empty;
+      return PasswordError.empty;
     }
     if (_password.length < 6) {
-      return LoginPasswordError.tooShort;
+      return PasswordError.tooShort;
     }
     if (_passwordRegexp.hasMatch(_password)) {
-      return LoginPasswordError.wrongSymbols;
+      return PasswordError.wrongSymbols;
     }
     return null;
   }

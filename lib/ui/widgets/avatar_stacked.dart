@@ -21,8 +21,8 @@ class AvatarStacked extends StatelessWidget {
 
     var items = <Widget>[];
     if (urlImages.length > 5) {
-      items = urlImages.sublist(0, 4).map(buildImage).toList();
-      items.add(buildNumber(urlImages.length - 4));
+      items = urlImages.sublist(0, 4).map(buildImage).toList()
+        ..add(buildNumber(urlImages.length - 4));
     } else {
       items = urlImages.map(buildImage).toList();
     }

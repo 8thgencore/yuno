@@ -310,7 +310,7 @@ class _TaskDoneSwitchState extends State<_TaskDoneSwitch> {
               value: _isDone ?? false,
               activeColor: AppColors.primary100,
               onChanged: (value) {
-                context.read<TaskEditBloc>().add(TaskEditEvent.clickSwitch(value));
+                context.read<TaskEditBloc>().add(TaskEditEvent.clickSwitch(value: value));
                 setState(() => _isDone = value);
               },
             );

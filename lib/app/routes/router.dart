@@ -14,6 +14,7 @@ import 'package:yuno/ui/pages/auth/forgot_password/view/forgot_password_page.dar
 import 'package:yuno/ui/pages/auth/login/view/login_page.dart';
 import 'package:yuno/ui/pages/auth/otp/view/otp_page.dart';
 import 'package:yuno/ui/pages/auth/registration/view/registration_page.dart';
+import 'package:yuno/ui/pages/auth/reset_password/view/reset_password_page.dart';
 import 'package:yuno/ui/pages/main/calendar/bloc/calendar_bloc.dart';
 import 'package:yuno/ui/pages/main/calendar/view/calendar_page.dart';
 import 'package:yuno/ui/pages/main/home/bloc/home_checklist_bloc.dart';
@@ -102,7 +103,7 @@ mixin RouterMixin on State<App> {
                 create: (context) => CalendarBloc(
                   taskRepository: sl.get<ITaskRepository>(),
                 )..add(const CalendarEvent.started()),
-                child: CalendarPage(),
+                child: const CalendarPage(),
               ),
             ),
             GoRoute(
@@ -262,6 +263,11 @@ mixin RouterMixin on State<App> {
           name: RouteName.otp,
           path: RoutePath.otp,
           builder: (context, state) => const OtpPage(),
+        ),
+        GoRoute(
+          name: RouteName.resetPassword,
+          path: RoutePath.resetPassword,
+          builder: (context, state) => const ResetPasswordPage(),
         ),
       ],
     );

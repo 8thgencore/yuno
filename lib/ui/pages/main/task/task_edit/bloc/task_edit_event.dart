@@ -11,7 +11,7 @@ class TaskEditEvent with _$TaskEditEvent {
 
   const factory TaskEditEvent.deadlineChanged(DateTime dateTime) = _DeadlineChangedEvent;
 
-  const factory TaskEditEvent.clickSwitch(bool value) = _ClickSwitchEvent;
+  const factory TaskEditEvent.clickSwitch({required bool value}) = _ClickSwitchEvent;
 
   const factory TaskEditEvent.saved() = _SavedEvent;
 

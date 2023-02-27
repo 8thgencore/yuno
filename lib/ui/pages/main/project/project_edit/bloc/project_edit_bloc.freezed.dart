@@ -776,10 +776,10 @@ abstract class _UpdatedEvent implements ProjectEditEvent {
 
 /// @nodoc
 mixin _$ProjectEditState {
-  ProjectEditStatus get status => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  ProjectEditStatus get status => throw _privateConstructorUsedError;
   String? get serverError => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -792,7 +792,7 @@ abstract class $ProjectEditStateCopyWith<$Res> {
       _$ProjectEditStateCopyWithImpl<$Res, ProjectEditState>;
   @useResult
   $Res call(
-      {ProjectEditStatus status, String id, String name, String description, String? serverError});
+      {String id, String name, String description, ProjectEditStatus status, String? serverError});
 }
 
 /// @nodoc
@@ -808,17 +808,13 @@ class _$ProjectEditStateCopyWithImpl<$Res, $Val extends ProjectEditState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
     Object? id = null,
     Object? name = null,
     Object? description = null,
+    Object? status = null,
     Object? serverError = freezed,
   }) {
     return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as ProjectEditStatus,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -831,6 +827,10 @@ class _$ProjectEditStateCopyWithImpl<$Res, $Val extends ProjectEditState>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as ProjectEditStatus,
       serverError: freezed == serverError
           ? _value.serverError
           : serverError // ignore: cast_nullable_to_non_nullable
@@ -847,7 +847,7 @@ abstract class _$$_ProjectEditStateCopyWith<$Res> implements $ProjectEditStateCo
   @override
   @useResult
   $Res call(
-      {ProjectEditStatus status, String id, String name, String description, String? serverError});
+      {String id, String name, String description, ProjectEditStatus status, String? serverError});
 }
 
 /// @nodoc
@@ -861,17 +861,13 @@ class __$$_ProjectEditStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
     Object? id = null,
     Object? name = null,
     Object? description = null,
+    Object? status = null,
     Object? serverError = freezed,
   }) {
     return _then(_$_ProjectEditState(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as ProjectEditStatus,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -884,6 +880,10 @@ class __$$_ProjectEditStateCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as ProjectEditStatus,
       serverError: freezed == serverError
           ? _value.serverError
           : serverError // ignore: cast_nullable_to_non_nullable
@@ -896,15 +896,12 @@ class __$$_ProjectEditStateCopyWithImpl<$Res>
 
 class _$_ProjectEditState implements _ProjectEditState {
   const _$_ProjectEditState(
-      {this.status = ProjectEditStatus.initial,
-      required this.id,
+      {required this.id,
       required this.name,
       required this.description,
+      this.status = ProjectEditStatus.initial,
       this.serverError});
 
-  @override
-  @JsonKey()
-  final ProjectEditStatus status;
   @override
   final String id;
   @override
@@ -912,11 +909,14 @@ class _$_ProjectEditState implements _ProjectEditState {
   @override
   final String description;
   @override
+  @JsonKey()
+  final ProjectEditStatus status;
+  @override
   final String? serverError;
 
   @override
   String toString() {
-    return 'ProjectEditState(status: $status, id: $id, name: $name, description: $description, serverError: $serverError)';
+    return 'ProjectEditState(id: $id, name: $name, description: $description, status: $status, serverError: $serverError)';
   }
 
   @override
@@ -924,15 +924,15 @@ class _$_ProjectEditState implements _ProjectEditState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ProjectEditState &&
-            (identical(other.status, status) || other.status == status) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) || other.description == description) &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.serverError, serverError) || other.serverError == serverError));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, id, name, description, serverError);
+  int get hashCode => Object.hash(runtimeType, id, name, description, status, serverError);
 
   @JsonKey(ignore: true)
   @override
@@ -943,20 +943,20 @@ class _$_ProjectEditState implements _ProjectEditState {
 
 abstract class _ProjectEditState implements ProjectEditState {
   const factory _ProjectEditState(
-      {final ProjectEditStatus status,
-      required final String id,
+      {required final String id,
       required final String name,
       required final String description,
+      final ProjectEditStatus status,
       final String? serverError}) = _$_ProjectEditState;
 
-  @override
-  ProjectEditStatus get status;
   @override
   String get id;
   @override
   String get name;
   @override
   String get description;
+  @override
+  ProjectEditStatus get status;
   @override
   String? get serverError;
   @override

@@ -161,8 +161,9 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
     final project = await projectRepository.getById(id: _projectId);
     _project = project;
 
-    _tasks.clear();
-    _tasks.addAll(project.tasks ?? []);
+    _tasks
+      ..clear()
+      ..addAll(project.tasks ?? []);
     // Check user member is project
     final user = await userRepository.getCachedData();
     final users = project.users;
@@ -173,7 +174,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
 
     // get percent competed task
     if (_tasks.isNotEmpty) {
-      _percentCompleted = _tasks.where((t) => t.done == true).length / _tasks.length;
+      _percentCompleted = _tasks.where((t) => t.done ?? false).length / _tasks.length;
     } else {
       _percentCompleted = 0;
     }

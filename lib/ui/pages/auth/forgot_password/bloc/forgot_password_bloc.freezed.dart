@@ -574,9 +574,9 @@ abstract class _ClosedErrorEvent implements ForgotPasswordEvent {
 
 /// @nodoc
 mixin _$ForgotPasswordState {
-  ForgotPasswordStatus get status => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  ForgotPasswordEmailError? get emailError => throw _privateConstructorUsedError;
+  ForgotPasswordStatus get status => throw _privateConstructorUsedError;
+  EmailError? get emailError => throw _privateConstructorUsedError;
   String? get serverError => throw _privateConstructorUsedError;
   bool get isValid => throw _privateConstructorUsedError;
 
@@ -592,9 +592,9 @@ abstract class $ForgotPasswordStateCopyWith<$Res> {
       _$ForgotPasswordStateCopyWithImpl<$Res, ForgotPasswordState>;
   @useResult
   $Res call(
-      {ForgotPasswordStatus status,
-      String email,
-      ForgotPasswordEmailError? emailError,
+      {String email,
+      ForgotPasswordStatus status,
+      EmailError? emailError,
       String? serverError,
       bool isValid});
 }
@@ -612,25 +612,25 @@ class _$ForgotPasswordStateCopyWithImpl<$Res, $Val extends ForgotPasswordState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
     Object? email = null,
+    Object? status = null,
     Object? emailError = freezed,
     Object? serverError = freezed,
     Object? isValid = null,
   }) {
     return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as ForgotPasswordStatus,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as ForgotPasswordStatus,
       emailError: freezed == emailError
           ? _value.emailError
           : emailError // ignore: cast_nullable_to_non_nullable
-              as ForgotPasswordEmailError?,
+              as EmailError?,
       serverError: freezed == serverError
           ? _value.serverError
           : serverError // ignore: cast_nullable_to_non_nullable
@@ -651,9 +651,9 @@ abstract class _$$_ForgotPasswordStateCopyWith<$Res> implements $ForgotPasswordS
   @override
   @useResult
   $Res call(
-      {ForgotPasswordStatus status,
-      String email,
-      ForgotPasswordEmailError? emailError,
+      {String email,
+      ForgotPasswordStatus status,
+      EmailError? emailError,
       String? serverError,
       bool isValid});
 }
@@ -669,25 +669,25 @@ class __$$_ForgotPasswordStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
     Object? email = null,
+    Object? status = null,
     Object? emailError = freezed,
     Object? serverError = freezed,
     Object? isValid = null,
   }) {
     return _then(_$_ForgotPasswordState(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as ForgotPasswordStatus,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as ForgotPasswordStatus,
       emailError: freezed == emailError
           ? _value.emailError
           : emailError // ignore: cast_nullable_to_non_nullable
-              as ForgotPasswordEmailError?,
+              as EmailError?,
       serverError: freezed == serverError
           ? _value.serverError
           : serverError // ignore: cast_nullable_to_non_nullable
@@ -704,19 +704,19 @@ class __$$_ForgotPasswordStateCopyWithImpl<$Res>
 
 class _$_ForgotPasswordState implements _ForgotPasswordState {
   const _$_ForgotPasswordState(
-      {this.status = ForgotPasswordStatus.initial,
-      required this.email,
+      {required this.email,
+      this.status = ForgotPasswordStatus.initial,
       this.emailError,
       this.serverError,
       this.isValid = false});
 
   @override
+  final String email;
+  @override
   @JsonKey()
   final ForgotPasswordStatus status;
   @override
-  final String email;
-  @override
-  final ForgotPasswordEmailError? emailError;
+  final EmailError? emailError;
   @override
   final String? serverError;
   @override
@@ -725,7 +725,7 @@ class _$_ForgotPasswordState implements _ForgotPasswordState {
 
   @override
   String toString() {
-    return 'ForgotPasswordState(status: $status, email: $email, emailError: $emailError, serverError: $serverError, isValid: $isValid)';
+    return 'ForgotPasswordState(email: $email, status: $status, emailError: $emailError, serverError: $serverError, isValid: $isValid)';
   }
 
   @override
@@ -733,15 +733,15 @@ class _$_ForgotPasswordState implements _ForgotPasswordState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ForgotPasswordState &&
-            (identical(other.status, status) || other.status == status) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.emailError, emailError) || other.emailError == emailError) &&
             (identical(other.serverError, serverError) || other.serverError == serverError) &&
             (identical(other.isValid, isValid) || other.isValid == isValid));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, email, emailError, serverError, isValid);
+  int get hashCode => Object.hash(runtimeType, email, status, emailError, serverError, isValid);
 
   @JsonKey(ignore: true)
   @override
@@ -752,18 +752,18 @@ class _$_ForgotPasswordState implements _ForgotPasswordState {
 
 abstract class _ForgotPasswordState implements ForgotPasswordState {
   const factory _ForgotPasswordState(
-      {final ForgotPasswordStatus status,
-      required final String email,
-      final ForgotPasswordEmailError? emailError,
+      {required final String email,
+      final ForgotPasswordStatus status,
+      final EmailError? emailError,
       final String? serverError,
       final bool isValid}) = _$_ForgotPasswordState;
 
   @override
-  ForgotPasswordStatus get status;
-  @override
   String get email;
   @override
-  ForgotPasswordEmailError? get emailError;
+  ForgotPasswordStatus get status;
+  @override
+  EmailError? get emailError;
   @override
   String? get serverError;
   @override

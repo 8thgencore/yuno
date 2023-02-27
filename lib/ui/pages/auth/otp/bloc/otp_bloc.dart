@@ -34,7 +34,7 @@ class OtpBloc extends Bloc<OtpEvent, OtpState> {
     Emitter<OtpState> emit,
   ) {
     _otpList[event.index] = event.text;
-    emit(state.copyWith(otp: _otpList.join()));
+    emit(state.copyWith(otp: _otpList.join(), status: OtpStatus.initial));
     _validateOtp(emit);
   }
 

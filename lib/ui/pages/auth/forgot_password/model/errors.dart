@@ -1,1 +1,0 @@
-enum ForgotPasswordEmailError { empty, invalid }

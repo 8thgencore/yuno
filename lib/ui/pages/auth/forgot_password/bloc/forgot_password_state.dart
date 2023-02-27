@@ -12,7 +12,7 @@ class ForgotPasswordState with _$ForgotPasswordState {
   const factory ForgotPasswordState({
     required String email,
     @Default(ForgotPasswordStatus.initial) ForgotPasswordStatus status,
-    ForgotPasswordEmailError? emailError,
+    EmailError? emailError,
     String? serverError,
     @Default(false) bool isValid,
   }) = _ForgotPasswordState;

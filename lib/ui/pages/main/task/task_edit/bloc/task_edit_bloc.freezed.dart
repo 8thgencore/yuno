@@ -597,7 +597,7 @@ class __$$_ClickSwitchEventCopyWithImpl<$Res>
     Object? value = null,
   }) {
     return _then(_$_ClickSwitchEvent(
-      null == value
+      value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -608,7 +608,7 @@ class __$$_ClickSwitchEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ClickSwitchEvent implements _ClickSwitchEvent {
-  const _$_ClickSwitchEvent(this.value);
+  const _$_ClickSwitchEvent({required this.value});
 
   @override
   final bool value;
@@ -723,7 +723,7 @@ class _$_ClickSwitchEvent implements _ClickSwitchEvent {
 }
 
 abstract class _ClickSwitchEvent implements TaskEditEvent {
-  const factory _ClickSwitchEvent(final bool value) = _$_ClickSwitchEvent;
+  const factory _ClickSwitchEvent({required final bool value}) = _$_ClickSwitchEvent;
 
   bool get value;
   @JsonKey(ignore: true)
@@ -977,9 +977,9 @@ abstract class _UpdatedEvent implements TaskEditEvent {
 
 /// @nodoc
 mixin _$TaskEditState {
-  TaskEditStatus get status => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  TaskEditStatus get status => throw _privateConstructorUsedError;
   DateTime? get deadline => throw _privateConstructorUsedError;
   String? get projectId => throw _privateConstructorUsedError;
   bool? get done => throw _privateConstructorUsedError;
@@ -995,9 +995,9 @@ abstract class $TaskEditStateCopyWith<$Res> {
       _$TaskEditStateCopyWithImpl<$Res, TaskEditState>;
   @useResult
   $Res call(
-      {TaskEditStatus status,
-      String id,
+      {String id,
       String name,
+      TaskEditStatus status,
       DateTime? deadline,
       String? projectId,
       bool? done,
@@ -1017,19 +1017,15 @@ class _$TaskEditStateCopyWithImpl<$Res, $Val extends TaskEditState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
     Object? id = null,
     Object? name = null,
+    Object? status = null,
     Object? deadline = freezed,
     Object? projectId = freezed,
     Object? done = freezed,
     Object? serverError = freezed,
   }) {
     return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as TaskEditStatus,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -1038,6 +1034,10 @@ class _$TaskEditStateCopyWithImpl<$Res, $Val extends TaskEditState>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as TaskEditStatus,
       deadline: freezed == deadline
           ? _value.deadline
           : deadline // ignore: cast_nullable_to_non_nullable
@@ -1065,9 +1065,9 @@ abstract class _$$_TaskEditStateCopyWith<$Res> implements $TaskEditStateCopyWith
   @override
   @useResult
   $Res call(
-      {TaskEditStatus status,
-      String id,
+      {String id,
       String name,
+      TaskEditStatus status,
       DateTime? deadline,
       String? projectId,
       bool? done,
@@ -1084,19 +1084,15 @@ class __$$_TaskEditStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
     Object? id = null,
     Object? name = null,
+    Object? status = null,
     Object? deadline = freezed,
     Object? projectId = freezed,
     Object? done = freezed,
     Object? serverError = freezed,
   }) {
     return _then(_$_TaskEditState(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as TaskEditStatus,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -1105,6 +1101,10 @@ class __$$_TaskEditStateCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as TaskEditStatus,
       deadline: freezed == deadline
           ? _value.deadline
           : deadline // ignore: cast_nullable_to_non_nullable
@@ -1129,21 +1129,21 @@ class __$$_TaskEditStateCopyWithImpl<$Res>
 
 class _$_TaskEditState implements _TaskEditState {
   const _$_TaskEditState(
-      {this.status = TaskEditStatus.initial,
-      required this.id,
+      {required this.id,
       required this.name,
+      this.status = TaskEditStatus.initial,
       this.deadline,
       this.projectId,
       this.done,
       this.serverError});
 
   @override
-  @JsonKey()
-  final TaskEditStatus status;
-  @override
   final String id;
   @override
   final String name;
+  @override
+  @JsonKey()
+  final TaskEditStatus status;
   @override
   final DateTime? deadline;
   @override
@@ -1155,7 +1155,7 @@ class _$_TaskEditState implements _TaskEditState {
 
   @override
   String toString() {
-    return 'TaskEditState(status: $status, id: $id, name: $name, deadline: $deadline, projectId: $projectId, done: $done, serverError: $serverError)';
+    return 'TaskEditState(id: $id, name: $name, status: $status, deadline: $deadline, projectId: $projectId, done: $done, serverError: $serverError)';
   }
 
   @override
@@ -1163,9 +1163,9 @@ class _$_TaskEditState implements _TaskEditState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TaskEditState &&
-            (identical(other.status, status) || other.status == status) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.deadline, deadline) || other.deadline == deadline) &&
             (identical(other.projectId, projectId) || other.projectId == projectId) &&
             (identical(other.done, done) || other.done == done) &&
@@ -1174,7 +1174,7 @@ class _$_TaskEditState implements _TaskEditState {
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, status, id, name, deadline, projectId, done, serverError);
+      Object.hash(runtimeType, id, name, status, deadline, projectId, done, serverError);
 
   @JsonKey(ignore: true)
   @override
@@ -1185,20 +1185,20 @@ class _$_TaskEditState implements _TaskEditState {
 
 abstract class _TaskEditState implements TaskEditState {
   const factory _TaskEditState(
-      {final TaskEditStatus status,
-      required final String id,
+      {required final String id,
       required final String name,
+      final TaskEditStatus status,
       final DateTime? deadline,
       final String? projectId,
       final bool? done,
       final String? serverError}) = _$_TaskEditState;
 
   @override
-  TaskEditStatus get status;
-  @override
   String get id;
   @override
   String get name;
+  @override
+  TaskEditStatus get status;
   @override
   DateTime? get deadline;
   @override

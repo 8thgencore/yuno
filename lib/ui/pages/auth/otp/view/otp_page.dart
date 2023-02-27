@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router_flow/go_router_flow.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/di/service_locator.dart';
+import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/auth/otp/bloc/otp_bloc.dart';
@@ -38,12 +40,12 @@ class _OtpPageWidget extends StatelessWidget {
   const _OtpPageWidget();
 
   static const double _credWidgetH = 232;
-  static const double _errorWidgetH = 86;
+  static const double _errorWidgetH = 100;
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<OtpBloc, OtpState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         switch (state.status) {
           case OtpStatus.initial:
             break;
@@ -52,7 +54,7 @@ class _OtpPageWidget extends StatelessWidget {
           case OtpStatus.failure:
             break;
           case OtpStatus.success:
-            // context.pushNamed(RouteName.login);
+            await context.pushNamed(RouteName.resetPassword);
             break;
         }
       },
@@ -84,7 +86,7 @@ class _OtpPageWidget extends StatelessWidget {
                       child: _ErrorWidget(
                         height: _errorWidgetH,
                         paddingBottom: _credWidgetH,
-                        error: error,
+                        text: error,
                       ),
                     )
                   : const SizedBox();
@@ -129,12 +131,12 @@ class _ErrorWidget extends StatelessWidget {
   const _ErrorWidget({
     required this.height,
     required this.paddingBottom,
-    required this.error,
+    required this.text,
   });
 
   final double height;
   final double paddingBottom;
-  final String error;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -161,7 +163,7 @@ class _ErrorWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  error,
+                  text,
                   textAlign: TextAlign.center,
                   style: AppTypography.l14l.copyWith(height: 22 / 14),
                 ),
