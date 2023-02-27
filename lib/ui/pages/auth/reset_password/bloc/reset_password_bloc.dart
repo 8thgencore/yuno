@@ -31,46 +31,47 @@ class ResetPasswordBloc extends Bloc<ResetPasswordEvent, ResetPasswordState> {
 
   final IAuthRepository authRepository;
 
+  String _password = '';
+  bool _highlightPasswordError = false;
+  PasswordError? _passwordError = PasswordError.empty;
+
+  String _passwordConfirm = '';
+  bool _highlightPasswordConfirmError = false;
+  PasswordConfirmError? _passwordConfirmError = PasswordConfirmError.empty;
+
   FutureOr<void> _onPasswordChanged(
     _PasswordChangedEvent event,
     Emitter<ResetPasswordState> emit,
   ) {
-    emit(state.copyWith(
-      password: event.text,
-      passwordError: _validatePassword(event.text),
-    ));
-    _calculateValid(emit);
+    _password = event.text;
+    _passwordError = _validatePassword();
+    _passwordConfirmError = _validateConfirmPassword();
+    _calculateFieldsInfo(emit);
   }
 
   FutureOr<void> _onPasswordFocusLost(
     _PasswordFocusLostEvent event,
     Emitter<ResetPasswordState> emit,
   ) {
-    emit(state.copyWith(
-      passwordError: _validatePassword(state.password),
-    ));
-    _calculateValid(emit);
+    _highlightPasswordError = true;
+    _calculateFieldsInfo(emit);
   }
 
   FutureOr<void> _onPasswordConfirmChanged(
     _PasswordConfirmChangedEvent event,
     Emitter<ResetPasswordState> emit,
   ) {
-    emit(state.copyWith(
-      passwordConfirm: event.text,
-      passwordConfirmError: _validateConfirmPassword(event.text),
-    ));
-    _calculateValid(emit);
+    _passwordConfirm = event.text;
+    _passwordConfirmError = _validateConfirmPassword();
+    _calculateFieldsInfo(emit);
   }
 
   FutureOr<void> _onPasswordConfirmFocusLost(
     _PasswordConfirmFocusLostEvent event,
     Emitter<ResetPasswordState> emit,
   ) {
-    emit(state.copyWith(
-      passwordConfirmError: _validateConfirmPassword(state.passwordConfirm),
-    ));
-    _calculateValid(emit);
+    _highlightPasswordConfirmError = true;
+    _calculateFieldsInfo(emit);
   }
 
   FutureOr<void> _onContinued(
@@ -79,6 +80,14 @@ class ResetPasswordBloc extends Bloc<ResetPasswordEvent, ResetPasswordState> {
   ) async {
     emit(state.copyWith(status: ResetPasswordStatus.loading));
     try {
+      _highlightPasswordError = true;
+      _highlightPasswordConfirmError = true;
+      _calculateFieldsInfo(emit);
+      final haveError = _passwordError != null || _passwordConfirmError != null;
+      if (haveError) {
+        return;
+      }
+
       await authRepository.resetPassword(password: state.password);
       emit(state.copyWith(status: ResetPasswordStatus.success));
     } on DioError catch (dioError) {
@@ -98,28 +107,35 @@ class ResetPasswordBloc extends Bloc<ResetPasswordEvent, ResetPasswordState> {
     emit(state.copyWith(serverError: null));
   }
 
-  PasswordError? _validatePassword(String password) {
-    if (password.isEmpty) {
+  PasswordError? _validatePassword() {
+    if (_password.isEmpty) {
       return PasswordError.empty;
     }
-    if (password.length < 6) {
+    if (_password.length < 6) {
       return PasswordError.tooShort;
     }
     return null;
   }
 
-  PasswordConfirmError? _validateConfirmPassword(String passwordConfirm) {
-    if (passwordConfirm.isEmpty) {
+  PasswordConfirmError? _validateConfirmPassword() {
+    if (_passwordConfirm.isEmpty) {
       return PasswordConfirmError.empty;
     }
-    if (state.password != passwordConfirm) {
+    if (_password != _passwordConfirm) {
       return PasswordConfirmError.different;
     }
     return null;
   }
 
-  void _calculateValid(Emitter<ResetPasswordState> emit) {
-    final isValid = state.passwordError == null && state.passwordConfirmError == null;
-    emit(state.copyWith(isValid: isValid));
+  void _calculateFieldsInfo(Emitter<ResetPasswordState> emit) {
+    emit(
+      state.copyWith(
+        password: _password,
+        passwordError: _highlightPasswordError ? _passwordError : null,
+        passwordConfirm: _passwordConfirm,
+        passwordConfirmError: _highlightPasswordConfirmError ? _passwordConfirmError : null,
+        isValid: _passwordError == null && _passwordConfirmError == null,
+      ),
+    );
   }
 }

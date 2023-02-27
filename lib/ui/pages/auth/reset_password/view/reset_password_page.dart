@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:loader_overlay/loader_overlay.dart';
@@ -6,7 +7,6 @@ import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/resources/resources.dart';
-import 'package:yuno/ui/pages/auth/forgot_password/bloc/forgot_password_bloc.dart';
 import 'package:yuno/ui/pages/auth/reset_password/bloc/reset_password_bloc.dart';
 import 'package:yuno/ui/widgets/buttons/custom_rounded_button.dart';
 import 'package:yuno/ui/widgets/custom_text_field.dart';
@@ -43,7 +43,7 @@ class _ResetPasswordPageWidget extends StatelessWidget {
   const _ResetPasswordPageWidget();
 
   static const double _credWidgetH = 286;
-  static const double _errorWidgetH = 86;
+  static const double _errorWidgetH = 100;
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +96,7 @@ class _ResetPasswordPageWidget extends StatelessWidget {
                       child: _ErrorWidget(
                         height: _errorWidgetH,
                         paddingBottom: _credWidgetH,
-                        error: error,
+                        text: error,
                       ),
                     )
                   : const SizedBox();
@@ -144,12 +144,12 @@ class _ErrorWidget extends StatelessWidget {
   const _ErrorWidget({
     required this.height,
     required this.paddingBottom,
-    required this.error,
+    required this.text,
   });
 
   final double height;
   final double paddingBottom;
-  final String error;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -176,7 +176,7 @@ class _ErrorWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  error,
+                  text,
                   textAlign: TextAlign.center,
                   style: AppTypography.l14l.copyWith(height: 22 / 14),
                 ),
@@ -218,6 +218,21 @@ class _BottomWidgetState extends State<_BottomWidget> {
     super.initState();
     _passwordFocusNode = FocusNode();
     _passwordConfirmFocusNode = FocusNode();
+
+    SchedulerBinding.instance.addPostFrameCallback((_) => _addFocusLostHandlers());
+  }
+
+  void _addFocusLostHandlers() {
+    _passwordFocusNode.addListener(() {
+      if (!_passwordFocusNode.hasFocus) {
+        context.read<ResetPasswordBloc>().add(const ResetPasswordEvent.passwordFocusLost());
+      }
+    });
+    _passwordConfirmFocusNode.addListener(() {
+      if (!_passwordConfirmFocusNode.hasFocus) {
+        context.read<ResetPasswordBloc>().add(const ResetPasswordEvent.passwordConfirmFocusLost());
+      }
+    });
   }
 
   @override
@@ -289,8 +304,6 @@ class _PasswordTextFieldState extends State<_PasswordTextField> {
             ),
             onPressed: () {},
           ),
-          onChanged: (text) =>
-              context.read<ResetPasswordBloc>().add(ResetPasswordEvent.passwordChanged(text)),
           suffixIcon: IconButton(
             icon: Icon(
               _isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined,
@@ -300,6 +313,8 @@ class _PasswordTextFieldState extends State<_PasswordTextField> {
               setState(() => _isObscure = !_isObscure);
             },
           ),
+          onChanged: (text) =>
+              context.read<ResetPasswordBloc>().add(ResetPasswordEvent.passwordChanged(text)),
           onSubmitted: (_) => widget._passwordConfirmFocusNode.requestFocus(),
         );
       },

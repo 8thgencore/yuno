@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/auth/otp/bloc/otp_bloc.dart';
@@ -88,7 +87,7 @@ class OtpInput extends StatelessWidget {
                   FocusManager.instance.primaryFocus?.unfocus();
                   context.read<OtpBloc>().add(const OtpEvent.continued());
                 }
-              } else if (value.length == 0) {
+              } else {
                 if (index != 0) {
                   FocusScope.of(context).previousFocus();
                 }

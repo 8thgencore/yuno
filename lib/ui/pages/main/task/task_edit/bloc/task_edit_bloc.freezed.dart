@@ -597,7 +597,7 @@ class __$$_ClickSwitchEventCopyWithImpl<$Res>
     Object? value = null,
   }) {
     return _then(_$_ClickSwitchEvent(
-      null == value
+      value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -608,7 +608,7 @@ class __$$_ClickSwitchEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ClickSwitchEvent implements _ClickSwitchEvent {
-  const _$_ClickSwitchEvent(this.value);
+  const _$_ClickSwitchEvent({required this.value});
 
   @override
   final bool value;
@@ -723,7 +723,7 @@ class _$_ClickSwitchEvent implements _ClickSwitchEvent {
 }
 
 abstract class _ClickSwitchEvent implements TaskEditEvent {
-  const factory _ClickSwitchEvent(final bool value) = _$_ClickSwitchEvent;
+  const factory _ClickSwitchEvent({required final bool value}) = _$_ClickSwitchEvent;
 
   bool get value;
   @JsonKey(ignore: true)

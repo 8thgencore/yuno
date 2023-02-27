@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:loader_overlay/loader_overlay.dart';
@@ -39,8 +40,8 @@ class ForgotPasswordPage extends StatelessWidget {
 class _ForgotPasswordPageWidget extends StatelessWidget {
   const _ForgotPasswordPageWidget();
 
-  static const double _credWidgetH = 196;
-  static const double _errorWidgetH = 86;
+  static const double _credWidgetH = 208;
+  static const double _errorWidgetH = 100;
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +56,7 @@ class _ForgotPasswordPageWidget extends StatelessWidget {
             break;
           case ForgotPasswordStatus.success:
             await context.pushNamed(RouteName.otp);
+
             break;
         }
       },
@@ -86,7 +88,7 @@ class _ForgotPasswordPageWidget extends StatelessWidget {
                       child: _ErrorWidget(
                         height: _errorWidgetH,
                         paddingBottom: _credWidgetH,
-                        error: error,
+                        text: error,
                       ),
                     )
                   : const SizedBox();
@@ -134,12 +136,12 @@ class _ErrorWidget extends StatelessWidget {
   const _ErrorWidget({
     required this.height,
     required this.paddingBottom,
-    required this.error,
+    required this.text,
   });
 
   final double height;
   final double paddingBottom;
-  final String error;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -166,7 +168,7 @@ class _ErrorWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  error,
+                  text,
                   textAlign: TextAlign.center,
                   style: AppTypography.l14l.copyWith(height: 22 / 14),
                 ),
@@ -206,6 +208,16 @@ class _BottomWidgetState extends State<_BottomWidget> {
   void initState() {
     super.initState();
     _emailFocusNode = FocusNode();
+
+    SchedulerBinding.instance.addPostFrameCallback((_) => _addFocusLostHandlers());
+  }
+
+  void _addFocusLostHandlers() {
+    _emailFocusNode.addListener(() {
+      if (!_emailFocusNode.hasFocus) {
+        context.read<ForgotPasswordBloc>().add(const ForgotPasswordEvent.emailFocusLost());
+      }
+    });
   }
 
   @override

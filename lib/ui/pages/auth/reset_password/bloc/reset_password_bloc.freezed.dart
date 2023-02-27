@@ -1077,8 +1077,8 @@ class _$_ResetPasswordState implements _ResetPasswordState {
       {required this.password,
       required this.passwordConfirm,
       this.status = ResetPasswordStatus.initial,
-      this.passwordError = PasswordError.empty,
-      this.passwordConfirmError = PasswordConfirmError.empty,
+      this.passwordError,
+      this.passwordConfirmError,
       this.serverError,
       this.isValid = false});
 
@@ -1090,10 +1090,8 @@ class _$_ResetPasswordState implements _ResetPasswordState {
   @JsonKey()
   final ResetPasswordStatus status;
   @override
-  @JsonKey()
   final PasswordError? passwordError;
   @override
-  @JsonKey()
   final PasswordConfirmError? passwordConfirmError;
   @override
   final String? serverError;

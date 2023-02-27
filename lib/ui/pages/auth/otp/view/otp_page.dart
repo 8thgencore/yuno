@@ -40,12 +40,12 @@ class _OtpPageWidget extends StatelessWidget {
   const _OtpPageWidget();
 
   static const double _credWidgetH = 232;
-  static const double _errorWidgetH = 86;
+  static const double _errorWidgetH = 100;
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<OtpBloc, OtpState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         switch (state.status) {
           case OtpStatus.initial:
             break;
@@ -54,7 +54,7 @@ class _OtpPageWidget extends StatelessWidget {
           case OtpStatus.failure:
             break;
           case OtpStatus.success:
-            context.pushNamed(RouteName.resetPassword);
+            await context.pushNamed(RouteName.resetPassword);
             break;
         }
       },
@@ -86,7 +86,7 @@ class _OtpPageWidget extends StatelessWidget {
                       child: _ErrorWidget(
                         height: _errorWidgetH,
                         paddingBottom: _credWidgetH,
-                        error: error,
+                        text: error,
                       ),
                     )
                   : const SizedBox();
@@ -131,12 +131,12 @@ class _ErrorWidget extends StatelessWidget {
   const _ErrorWidget({
     required this.height,
     required this.paddingBottom,
-    required this.error,
+    required this.text,
   });
 
   final double height;
   final double paddingBottom;
-  final String error;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -163,7 +163,7 @@ class _ErrorWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  error,
+                  text,
                   textAlign: TextAlign.center,
                   style: AppTypography.l14l.copyWith(height: 22 / 14),
                 ),

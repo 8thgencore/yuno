@@ -103,7 +103,7 @@ mixin RouterMixin on State<App> {
                 create: (context) => CalendarBloc(
                   taskRepository: sl.get<ITaskRepository>(),
                 )..add(const CalendarEvent.started()),
-                child: CalendarPage(),
+                child: const CalendarPage(),
               ),
             ),
             GoRoute(

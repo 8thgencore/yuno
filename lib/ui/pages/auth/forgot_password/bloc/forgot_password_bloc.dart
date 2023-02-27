@@ -30,19 +30,25 @@ class ForgotPasswordBloc extends Bloc<ForgotPasswordEvent, ForgotPasswordState> 
 
   final IAuthRepository authRepository;
 
+  String _email = '';
+  bool _highlightEmailError = false;
+  EmailError? _emailError = EmailError.empty;
+
   FutureOr<void> _onEmailChanged(
     _EmailChangedEvent event,
     Emitter<ForgotPasswordState> emit,
   ) {
-    emit(state.copyWith(email: event.text, status: ForgotPasswordStatus.initial));
-    _validateEmail(emit);
+    _email = event.text;
+    _emailError = _validateEmail();
+    _calculateFieldsInfo(emit);
   }
 
   FutureOr<void> _onEmailFocusLost(
     _EmailFocusLostEvent event,
     Emitter<ForgotPasswordState> emit,
   ) {
-    _validateEmail(emit);
+    _highlightEmailError = true;
+    _calculateFieldsInfo(emit);
   }
 
   FutureOr<void> _onContinued(
@@ -51,6 +57,13 @@ class ForgotPasswordBloc extends Bloc<ForgotPasswordEvent, ForgotPasswordState> 
   ) async {
     emit(state.copyWith(status: ForgotPasswordStatus.loading));
     try {
+      _highlightEmailError = true;
+      _calculateFieldsInfo(emit);
+      final haveError = _emailError != null;
+      if (haveError) {
+        return;
+      }
+
       await authRepository.forgotPassword(email: state.email);
       emit(state.copyWith(status: ForgotPasswordStatus.success));
     } on DioError catch (dioError) {
@@ -67,26 +80,28 @@ class ForgotPasswordBloc extends Bloc<ForgotPasswordEvent, ForgotPasswordState> 
     final _ClosedErrorEvent event,
     final Emitter<ForgotPasswordState> emit,
   ) {
-    emit(
-      state.copyWith(
-        serverError: null,
-      ),
-    );
+    // ignore: require_trailing_commas
+    emit(state.copyWith(serverError: null));
   }
 
-  void _validateEmail(Emitter<ForgotPasswordState> emit) {
-    if (state.email.isEmpty) {
-      // ignore: require_trailing_commas
-      emit(state.copyWith(isValid: false, emailError: EmailError.empty));
-      return;
+  EmailError? _validateEmail() {
+    if (_email.isEmpty) {
+      return EmailError.empty;
     }
-    if (!EmailValidator.validate(state.email)) {
-      // ignore: require_trailing_commas
-      emit(state.copyWith(isValid: false, emailError: EmailError.invalid));
-      return;
+    if (!EmailValidator.validate(_email)) {
+      return EmailError.invalid;
     }
-    // ignore: require_trailing_commas
-    emit(state.copyWith(isValid: true, emailError: null));
-    return;
+    return null;
+  }
+
+  void _calculateFieldsInfo(Emitter<ForgotPasswordState> emit) {
+    emit(
+      state.copyWith(
+        status: ForgotPasswordStatus.initial,
+        email: _email,
+        emailError: _highlightEmailError ? _emailError : null,
+        isValid: _emailError == null,
+      ),
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:loader_overlay/loader_overlay.dart';
@@ -205,11 +206,9 @@ class _BottomWidgetState extends State<_BottomWidget> {
     _passwordFocusNode = FocusNode();
     _passwordConfirmationFocusNode = FocusNode();
 
-    // TODO(8thgencore): called BLoC event, how solve?
-    // SchedulerBinding.instance.addPostFrameCallback((_) => _addFocusLostHandlers());
+    SchedulerBinding.instance.addPostFrameCallback((_) => _addFocusLostHandlers());
   }
 
-  // ignore: unused_element
   void _addFocusLostHandlers() {
     _emailFocusNode.addListener(() {
       if (!_emailFocusNode.hasFocus) {

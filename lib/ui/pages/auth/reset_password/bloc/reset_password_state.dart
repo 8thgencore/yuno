@@ -13,8 +13,8 @@ class ResetPasswordState with _$ResetPasswordState {
     required String password,
     required String passwordConfirm,
     @Default(ResetPasswordStatus.initial) ResetPasswordStatus status,
-    @Default(PasswordError.empty) PasswordError? passwordError,
-    @Default(PasswordConfirmError.empty) PasswordConfirmError? passwordConfirmError,
+    PasswordError? passwordError,
+    PasswordConfirmError? passwordConfirmError,
     String? serverError,
     @Default(false) bool isValid,
   }) = _ResetPasswordState;
