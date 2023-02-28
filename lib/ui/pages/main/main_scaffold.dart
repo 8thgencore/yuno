@@ -28,7 +28,7 @@ class _MainScaffoldState extends State<MainScaffold> with TickerProviderStateMix
   }
 
   void _onItemTapped(int index) {
-    setState(() async {
+    setState(() {
       if (index == 0) {
         _currentIndex = index;
         context.goNamed(RouteName.home);
@@ -36,7 +36,7 @@ class _MainScaffoldState extends State<MainScaffold> with TickerProviderStateMix
         _currentIndex = index;
         context.goNamed(RouteName.calendar);
       } else if (index == 2) {
-        await context.pushNamed(RouteName.projectCreate);
+        context.pushNamed(RouteName.projectCreate);
       } else if (index == 3) {
         _currentIndex = index;
         context.goNamed(RouteName.statistics);
