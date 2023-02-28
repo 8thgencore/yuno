@@ -4,6 +4,10 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:yuno/app/theme/app_theme.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_core/firebase_core.dart';
+
+import 'firebase_options.dart';
 
 class AppBlocObserver extends BlocObserver {
   @override
@@ -26,7 +30,13 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   AppTheme.setStatusBarAndNavigationBarColors();
 
+  // Bloc
   Bloc.observer = AppBlocObserver();
+
+  // Firebase
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
 
   await runZonedGuarded(
     () async => runApp(await builder()),

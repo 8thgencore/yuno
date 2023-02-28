@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "716856738962",
+    "project_id": "yuno-73030",
+    "storage_bucket": "yuno-73030.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716856738962:android:03fccd632efd6dba9a524b",
+        "android_client_info": {
+          "package_name": "ru.axelm.yuno"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "716856738962-9maf3kvfljbertcb0r4a8s2t6nr4dqup.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjthXY6SBkcfLMUIPm8-SRIwHVz7xt1kk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "716856738962-9maf3kvfljbertcb0r4a8s2t6nr4dqup.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716856738962:android:fef45bfb3ecc83409a524b",
+        "android_client_info": {
+          "package_name": "ru.axelm.yuno.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "716856738962-9maf3kvfljbertcb0r4a8s2t6nr4dqup.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjthXY6SBkcfLMUIPm8-SRIwHVz7xt1kk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "716856738962-9maf3kvfljbertcb0r4a8s2t6nr4dqup.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

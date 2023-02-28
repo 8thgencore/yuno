@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:yuno/api/shared_models/http_validation_error.dart';
 
 export 'package:dio/dio.dart';
@@ -12,6 +13,8 @@ class CustomErrorInterceptor extends Interceptor {
 }
 
 dynamic dioErrorInterceptor(DioError e) {
+  FirebaseCrashlytics.instance.recordError(e, e.stackTrace);
+
   if (e.response?.statusCode != 200) {
     if (e.response?.data is Map<String, dynamic>) {
       final error = HTTPValidationError.fromJson(e.response?.data as Map<String, dynamic>).detail;
