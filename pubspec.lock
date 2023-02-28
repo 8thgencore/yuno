@@ -452,10 +452,10 @@ packages:
     dependency: "direct main"
     description:
       name: go_router_flow
-      sha256: cfee88017d6ef890bb18f479a3c30505280a4b6afd399ca9f5885d9875a11676
+      sha256: "56dc958c076dc6ce9c119dd95fc696d179ef9daabd9f94116dee33aea2d7932f"
       url: "https://pub.dev"
     source: hosted
-    version: "6.0.0+3"
+    version: "6.2.0"
   graphs:
     dependency: transitive
     description:

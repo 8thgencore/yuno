@@ -1,4 +1,4 @@
-package ru.axelm.org.yuno
+package ru.axelm.yuno
 
 import io.flutter.embedding.android.FlutterActivity
 

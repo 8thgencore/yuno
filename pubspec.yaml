@@ -28,7 +28,7 @@ dependencies:
 
   # Routers
   # go_router: ^6.0.1
-  go_router_flow: ^6.0.0+3
+  go_router_flow: ^6.2.0
 
   # Local
   shared_preferences: ^2.0.18
