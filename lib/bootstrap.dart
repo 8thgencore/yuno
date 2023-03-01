@@ -24,19 +24,18 @@ class AppBlocObserver extends BlocObserver {
 }
 
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
-  FlutterError.onError = (details) {
-    log(details.exceptionAsString(), stackTrace: details.stack);
-  };
-
+  // This method sets the colors and brightness of the status bar and navigation bar
   AppTheme.setStatusBarAndNavigationBarColors();
 
-  // Bloc
+  // Set the Bloc observer to an instance of AppBlocObserver
   Bloc.observer = AppBlocObserver();
 
-  // Firebase
+  // Initialize Firebase with the default options for the current platform
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
+  // Error
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+  FlutterError.onError = (details) => log(details.exceptionAsString(), stackTrace: details.stack);
 
   await runZonedGuarded(
     () async => runApp(await builder()),

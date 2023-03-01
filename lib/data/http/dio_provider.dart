@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:yuno/data/http/authorization_interceptor.dart';
-import 'package:yuno/resources/constants.dart';
+import 'package:yuno/resources/environment.dart';
 
 class DioBuilder {
   DioBuilder() {
@@ -23,7 +23,7 @@ class DioBuilder {
   }
   final Dio _dio = Dio(
     BaseOptions(
-      baseUrl: baseUrl,
+      baseUrl: Environment.baseUrl,
       connectTimeout: const Duration(milliseconds: 5000),
       receiveTimeout: const Duration(milliseconds: 5000),
       sendTimeout: const Duration(milliseconds: 5000),
