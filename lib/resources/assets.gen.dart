@@ -11,6 +11,44 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
 
+class $AssetsAvatarsGen {
+  const $AssetsAvatarsGen();
+
+  /// File path: assets/avatars/avatar0.png
+  AssetGenImage get avatar0 => const AssetGenImage('assets/avatars/avatar0.png');
+
+  /// File path: assets/avatars/avatar1.png
+  AssetGenImage get avatar1 => const AssetGenImage('assets/avatars/avatar1.png');
+
+  /// File path: assets/avatars/avatar2.png
+  AssetGenImage get avatar2 => const AssetGenImage('assets/avatars/avatar2.png');
+
+  /// File path: assets/avatars/avatar3.png
+  AssetGenImage get avatar3 => const AssetGenImage('assets/avatars/avatar3.png');
+
+  /// File path: assets/avatars/avatar4.png
+  AssetGenImage get avatar4 => const AssetGenImage('assets/avatars/avatar4.png');
+
+  /// File path: assets/avatars/avatar5.png
+  AssetGenImage get avatar5 => const AssetGenImage('assets/avatars/avatar5.png');
+
+  /// File path: assets/avatars/avatar6.png
+  AssetGenImage get avatar6 => const AssetGenImage('assets/avatars/avatar6.png');
+
+  /// File path: assets/avatars/avatar7.png
+  AssetGenImage get avatar7 => const AssetGenImage('assets/avatars/avatar7.png');
+
+  /// File path: assets/avatars/avatar8.png
+  AssetGenImage get avatar8 => const AssetGenImage('assets/avatars/avatar8.png');
+
+  /// File path: assets/avatars/avatar9.png
+  AssetGenImage get avatar9 => const AssetGenImage('assets/avatars/avatar9.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values =>
+      [avatar0, avatar1, avatar2, avatar3, avatar4, avatar5, avatar6, avatar7, avatar8, avatar9];
+}
+
 class $AssetsFontsGen {
   const $AssetsFontsGen();
 
@@ -208,6 +246,7 @@ class $AssetsSvgGen {
 class Assets {
   Assets._();
 
+  static const $AssetsAvatarsGen avatars = $AssetsAvatarsGen();
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsSvgGen svg = $AssetsSvgGen();

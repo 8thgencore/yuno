@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yuno/api/project/models.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/widgets/avatar_stacked.dart';
+import 'package:yuno/utils/random_avatar.dart';
 
 class ProjectCardMediumWidget extends StatelessWidget {
   const ProjectCardMediumWidget({
@@ -15,7 +16,8 @@ class ProjectCardMediumWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final urlImages = <String>[];
     project.users?.forEach((user) {
-      urlImages.add(user.image?.media.link ?? '');
+      // urlImages.add(user.image?.media.link ?? '');
+      urlImages.add(RandomAvatar().getAvatars(user.id));
     });
 
     return Container(

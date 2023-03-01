@@ -3,6 +3,7 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:yuno/api/project/models.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/widgets/avatar_stacked.dart';
+import 'package:yuno/utils/random_avatar.dart';
 
 class ProjectCardSmallWidget extends StatelessWidget {
   const ProjectCardSmallWidget({
@@ -16,7 +17,7 @@ class ProjectCardSmallWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final urlImages = <String>[];
     project.users?.forEach((user) {
-      urlImages.add(user.image?.media.link ?? '');
+      urlImages.add(RandomAvatar().getAvatars(user.id));
     });
 
     return Stack(
