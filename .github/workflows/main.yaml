@@ -91,6 +91,8 @@ jobs:
           BACKEND_URL: ${{ secrets.BACKEND_URL }}
         run: |
           if [[ -n "$BACKEND_URL" ]] ; then echo "$BACKEND_URL" > .env ; fi
+          cat .env
+          echo "$BACKEND_URL"
 
       - if: ${{ matrix.java-version }}
         uses: actions/setup-java@v3
