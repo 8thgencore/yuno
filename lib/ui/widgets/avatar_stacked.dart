@@ -10,8 +10,8 @@ class AvatarStacked extends StatelessWidget {
     super.key,
   });
 
-  final TextDirection direction;
   final List<String> urlImages;
+  final TextDirection direction;
   final double borderSize;
 
   @override
@@ -41,11 +41,13 @@ class AvatarStacked extends StatelessWidget {
         padding: EdgeInsets.all(borderSize),
         color: AppColors.white100,
         child: ClipOval(
-          child: CachedNetworkImage(
-            imageUrl: urlImage,
-            fit: BoxFit.cover,
-            errorWidget: (context, _, __) => Assets.images.avatar.image(fit: BoxFit.cover),
-          ),
+          child: urlImage.startsWith('http')
+              ? CachedNetworkImage(
+                  imageUrl: urlImage,
+                  fit: BoxFit.cover,
+                  errorWidget: (context, _, __) => Assets.images.avatar.image(fit: BoxFit.cover),
+                )
+              : Image.asset(urlImage),
         ),
       ),
     );
