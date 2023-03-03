@@ -1,11 +1,11 @@
 // Get random avatar by hash(user_id)
 import 'dart:convert';
 
-import 'package:yuno/resources/resources.dart';
 import 'package:crypto/crypto.dart';
+import 'package:yuno/resources/resources.dart';
 
 class RandomAvatar {
-  List<String> _avatars = [
+  final List<String> _avatars = [
     Assets.avatars.avatar0.path,
     Assets.avatars.avatar1.path,
     Assets.avatars.avatar2.path,

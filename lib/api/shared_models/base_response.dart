@@ -11,6 +11,7 @@ import 'package:yuno/api/role/models/paginated_data_i_role_read.dart';
 import 'package:yuno/api/task/models/i_task_read.dart';
 import 'package:yuno/api/task/models/paginated_data_i_task_with_project_name.dart';
 import 'package:yuno/api/user/models/i_user_read.dart';
+import 'package:yuno/api/user/models/paginated_data_i_user_read.dart';
 
 part 'base_response.g.dart';
 
@@ -54,6 +55,8 @@ class _Converter<T> implements JsonConverter<T, Object?> {
           return PaginatedDataIRoleRead.fromJson(json) as T;
         case IUserRead:
           return IUserRead.fromJson(json) as T;
+        case PaginatedDataIUserRead:
+          return PaginatedDataIUserRead.fromJson(json) as T;
         case IProjectRead:
           return IProjectRead.fromJson(json) as T;
         case IProjectWithUsers:

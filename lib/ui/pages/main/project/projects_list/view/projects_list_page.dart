@@ -130,7 +130,10 @@ class _ProjectListWidgetState extends State<_ProjectListWidget> {
                   );
                 }
               } else {
-                return _ProjectFullCardWidget(project: projects[index]);
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: _ProjectFullCardWidget(project: projects[index]),
+                );
               }
               return null;
             },
@@ -155,24 +158,24 @@ class _ProjectFullCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () async => context.pushNamed(RouteName.project, params: {'id': project.id}),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        child: Container(
-          height: 200,
-          decoration: BoxDecoration(
-            color: AppColors.white60,
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: Column(
-            children: [
-              ProjectCardMediumWidget(project: project),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
-                child: LinearPercentIndicatorWidget(percent: project.percentCompleted),
-              ),
-            ],
-          ),
+      onTap: () async => context.pushNamed(
+        RouteName.project,
+        params: {'id': project.id},
+      ),
+      child: Container(
+        height: 200,
+        decoration: BoxDecoration(
+          color: AppColors.white60,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Column(
+          children: [
+            ProjectCardMediumWidget(project: project),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+              child: LinearPercentIndicatorWidget(percent: project.percentCompleted),
+            ),
+          ],
         ),
       ),
     );

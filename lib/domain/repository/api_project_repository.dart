@@ -1,5 +1,6 @@
 import 'package:yuno/api/project/models.dart';
 import 'package:yuno/api/project/rest_client.dart';
+import 'package:yuno/api/user/models/paginated_data_i_user_read.dart';
 
 abstract class IProjectRepository {
   Future<PaginatedDataIProjectWithUsers> getMyProjects({
@@ -30,6 +31,8 @@ abstract class IProjectRepository {
   Future<IProjectWithUsers> joinProject({required String id});
 
   Future<IProjectWithUsers> leaveProject({required String id});
+
+  Future<PaginatedDataIUserRead> getMembers({required String id});
 }
 
 class ApiProjectRepository implements IProjectRepository {
@@ -111,6 +114,12 @@ class ApiProjectRepository implements IProjectRepository {
   @override
   Future<IProjectWithUsers> leaveProject({required String id}) async {
     final response = await projectClient.projectIdLeave(projectId: id);
+    return response.data;
+  }
+
+  @override
+  Future<PaginatedDataIUserRead> getMembers({required String id}) async {
+    final response = await projectClient.getProjectIdMembers(projectId: id);
     return response.data;
   }
 }

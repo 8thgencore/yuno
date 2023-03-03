@@ -3,8 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 class Environment {
   //load environment variables
   Future<void> init() async {
-    String envFileName = '.env';
-    await dotenv.load(fileName: envFileName);
+    await dotenv.load();
   }
 
   // function to get data

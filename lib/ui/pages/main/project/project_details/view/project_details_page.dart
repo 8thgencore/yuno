@@ -162,9 +162,15 @@ class _ProjectFullCardWidget extends StatelessWidget {
             child: LinearPercentIndicatorWidget(percent: project.percentCompleted),
           ),
           if (isMember)
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-              child: YunoWhiteTextButton(text: 'Invite People'),
+              child: GestureDetector(
+                onTap: () => context.pushNamed(
+                  RouteName.projectMembers,
+                  params: {'id': project.id},
+                ),
+                child: YunoWhiteTextButton(text: 'Project Members'),
+              ),
             )
           else
             Padding(
