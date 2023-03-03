@@ -35,23 +35,25 @@ void initServiceLocator() {
 
 // ONLY SINGLETONS
 void _setupDataProviders() {
-  sl.registerLazySingleton(() => SharedPreferenceData());
-  sl.registerLazySingleton<UserProvider>(() => sl.get<SharedPreferenceData>());
-  sl.registerLazySingleton<TokenProvider>(() => sl.get<SharedPreferenceData>());
-  sl.registerLazySingleton<RefreshTokenProvider>(() => sl.get<SharedPreferenceData>());
-  sl.registerLazySingleton<TasksProvider>(() => sl.get<SharedPreferenceData>());
-  sl.registerLazySingleton<ResetEmailProvider>(() => sl.get<SharedPreferenceData>());
-  sl.registerLazySingleton<ResetTokenProvider>(() => sl.get<SharedPreferenceData>());
+  sl
+    ..registerLazySingleton(SharedPreferenceData.new)
+    ..registerLazySingleton<UserProvider>(() => sl.get<SharedPreferenceData>())
+    ..registerLazySingleton<TokenProvider>(() => sl.get<SharedPreferenceData>())
+    ..registerLazySingleton<RefreshTokenProvider>(() => sl.get<SharedPreferenceData>())
+    ..registerLazySingleton<TasksProvider>(() => sl.get<SharedPreferenceData>())
+    ..registerLazySingleton<ResetEmailProvider>(() => sl.get<SharedPreferenceData>())
+    ..registerLazySingleton<ResetTokenProvider>(() => sl.get<SharedPreferenceData>());
 }
 
 // ONLY SINGLETONS
 void _setupRepositories() {
-  sl.registerLazySingleton(() => UserDataRepository(sl.get<UserProvider>()));
-  sl.registerLazySingleton(() => TokenDataRepository(sl.get<TokenProvider>()));
-  sl.registerLazySingleton(() => RefreshTokenDataRepository(sl.get<RefreshTokenProvider>()));
-  sl.registerLazySingleton(() => TasksNotDoneDataRepository(sl.get<TasksProvider>()));
-  sl.registerLazySingleton(() => ResetEmailDataRepository(sl.get<ResetEmailProvider>()));
-  sl.registerLazySingleton(() => ResetTokenDataRepository(sl.get<ResetTokenProvider>()));
+  sl
+    ..registerLazySingleton(() => UserDataRepository(sl.get<UserProvider>()))
+    ..registerLazySingleton(() => TokenDataRepository(sl.get<TokenProvider>()))
+    ..registerLazySingleton(() => RefreshTokenDataRepository(sl.get<RefreshTokenProvider>()))
+    ..registerLazySingleton(() => TasksNotDoneDataRepository(sl.get<TasksProvider>()))
+    ..registerLazySingleton(() => ResetEmailDataRepository(sl.get<ResetEmailProvider>()))
+    ..registerLazySingleton(() => ResetTokenDataRepository(sl.get<ResetTokenProvider>()));
 }
 
 // ONLY SINGLETONS
@@ -70,72 +72,66 @@ void _setupInteractors() {
 void _setupComplexInteractors() {}
 
 void _setApiRelatedClasses() {
-  sl.registerFactory(DioBuilder.new);
-  sl.registerLazySingleton(
-    () => AuthorizationInterceptor(
-      tokenDataRepository: sl.get<TokenDataRepository>(),
-      logoutInteractor: sl.get<LogoutInteractor>(),
-    ),
-  );
-
-  // 1 способ
-  sl.registerSingleton<Dio>(sl.get<DioBuilder>().build(), instanceName: _notAuthorizedDio);
-  sl.registerSingleton<Dio>(
-    sl.get<DioBuilder>().addAuthorizationInterceptor(sl.get<AuthorizationInterceptor>()).build(),
-    instanceName: _authorizedDio,
-  );
-
-  sl.registerLazySingleton<AuthClient>(
-    () => AuthClient(sl.get<Dio>(instanceName: _notAuthorizedDio)),
-  );
-  sl.registerLazySingleton<AuthPasswordClient>(
-    () => AuthPasswordClient(sl.get<Dio>(instanceName: _authorizedDio)),
-  );
-  sl.registerLazySingleton<UserClient>(
-    () => UserClient(sl.get<Dio>(instanceName: _authorizedDio)),
-  );
-  sl.registerLazySingleton<TaskClient>(
-    () => TaskClient(sl.get<Dio>(instanceName: _authorizedDio)),
-  );
-  sl.registerLazySingleton<ProjectClient>(
-    () => ProjectClient(sl.get<Dio>(instanceName: _authorizedDio)),
-  );
-
-  sl.registerLazySingleton<IAuthRepository>(
-    () => ApiAuthRepository(
-      authClient: sl.get<AuthClient>(),
-      authPasswordClient: sl.get<AuthPasswordClient>(),
-      userDataRepository: sl.get<UserDataRepository>(),
-      tokenDataRepository: sl.get<TokenDataRepository>(),
-      refreshTokenDataRepository: sl.get<RefreshTokenDataRepository>(),
-      resetEmailDataRepository: sl.get<ResetEmailDataRepository>(),
-      resetTokenDataRepository: sl.get<ResetTokenDataRepository>(),
-    ),
-  );
-  sl.registerLazySingleton<IUserRepository>(
-    () => ApiUserRepository(
-      userClient: sl.get<UserClient>(),
-      userDataRepository: sl.get<UserDataRepository>(),
-      tokenDataRepository: sl.get<TokenDataRepository>(),
-    ),
-  );
-  sl.registerLazySingleton<ITaskRepository>(
-    () => ApiTaskRepository(
-      taskClient: sl.get<TaskClient>(),
-      tasksNotDoneDataRepository: sl.get<TasksNotDoneDataRepository>(),
-    ),
-  );
-  sl.registerLazySingleton<IProjectRepository>(
-    () => ApiProjectRepository(
-      projectClient: sl.get<ProjectClient>(),
-    ),
-  );
-
-  // 2 способ
-  // sl.registerLazySingleton(() => UnauthorizedApiService(sl.get<DioBuilder>().build()));
-  // sl.registerLazySingleton(() => AuthorizedApiService(sl.get<DioBuilder>()
-  //     .addAuthorizationInterceptor(sl.get<AuthorizationInterceptor>())
-  //     .build()));
+  sl
+    ..registerFactory(DioBuilder.new)
+    ..registerLazySingleton(
+      () => AuthorizationInterceptor(
+        tokenDataRepository: sl.get<TokenDataRepository>(),
+        logoutInteractor: sl.get<LogoutInteractor>(),
+      ),
+    )
+    // Dio initialization
+    ..registerSingleton<Dio>(sl.get<DioBuilder>().build(), instanceName: _notAuthorizedDio)
+    ..registerSingleton<Dio>(
+      sl.get<DioBuilder>().addAuthorizationInterceptor(sl.get<AuthorizationInterceptor>()).build(),
+      instanceName: _authorizedDio,
+    )
+    // Dio client`s
+    ..registerLazySingleton<AuthClient>(
+      () => AuthClient(sl.get<Dio>(instanceName: _notAuthorizedDio)),
+    )
+    ..registerLazySingleton<AuthPasswordClient>(
+      () => AuthPasswordClient(sl.get<Dio>(instanceName: _authorizedDio)),
+    )
+    ..registerLazySingleton<UserClient>(
+      () => UserClient(sl.get<Dio>(instanceName: _authorizedDio)),
+    )
+    ..registerLazySingleton<TaskClient>(
+      () => TaskClient(sl.get<Dio>(instanceName: _authorizedDio)),
+    )
+    ..registerLazySingleton<ProjectClient>(
+      () => ProjectClient(sl.get<Dio>(instanceName: _authorizedDio)),
+    )
+    // Repository
+    ..registerLazySingleton<IAuthRepository>(
+      () => ApiAuthRepository(
+        authClient: sl.get<AuthClient>(),
+        authPasswordClient: sl.get<AuthPasswordClient>(),
+        userDataRepository: sl.get<UserDataRepository>(),
+        tokenDataRepository: sl.get<TokenDataRepository>(),
+        refreshTokenDataRepository: sl.get<RefreshTokenDataRepository>(),
+        resetEmailDataRepository: sl.get<ResetEmailDataRepository>(),
+        resetTokenDataRepository: sl.get<ResetTokenDataRepository>(),
+      ),
+    )
+    ..registerLazySingleton<IUserRepository>(
+      () => ApiUserRepository(
+        userClient: sl.get<UserClient>(),
+        userDataRepository: sl.get<UserDataRepository>(),
+        tokenDataRepository: sl.get<TokenDataRepository>(),
+      ),
+    )
+    ..registerLazySingleton<ITaskRepository>(
+      () => ApiTaskRepository(
+        taskClient: sl.get<TaskClient>(),
+        tasksNotDoneDataRepository: sl.get<TasksNotDoneDataRepository>(),
+      ),
+    )
+    ..registerLazySingleton<IProjectRepository>(
+      () => ApiProjectRepository(
+        projectClient: sl.get<ProjectClient>(),
+      ),
+    );
 }
 
 // ONLY FACTORIES

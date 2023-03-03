@@ -65,6 +65,7 @@ class _TaskCardWidgetState extends State<TaskCardWidget> {
       confirmDismiss: (dismissDirection) async {
         if (dismissDirection == DismissDirection.startToEnd) {
           if (widget.onDismissible != null) {
+            // ignore: prefer_null_aware_method_calls
             widget.onDismissible!();
           }
           return true;
@@ -123,6 +124,7 @@ class _TaskCardWidgetState extends State<TaskCardWidget> {
                   value: value,
                   onChanged: (b) {
                     if (widget.onClickCheckBox != null) {
+                      // ignore: prefer_null_aware_method_calls
                       widget.onClickCheckBox!();
                     }
                     setState(() => value = !value);

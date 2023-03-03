@@ -1,3 +1,5 @@
+// ignore_for_file: use_late_for_private_fields_and_variables
+
 part of 'project_details_bloc.dart';
 
 @freezed

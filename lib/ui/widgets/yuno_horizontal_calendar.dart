@@ -135,6 +135,7 @@ class DateWidget extends StatelessWidget {
           // Check if onDateSelected is not null
           if (onDateSelected != null) {
             // Call the onDateSelected Function
+            // ignore: prefer_null_aware_method_calls
             onDateSelected!(date);
           }
         },

@@ -163,13 +163,13 @@ class _ProjectFullCardWidget extends StatelessWidget {
           ),
           if (isMember)
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
               child: GestureDetector(
-                onTap: () => context.pushNamed(
+                onTap: () async => context.pushNamed(
                   RouteName.projectMembers,
                   params: {'id': project.id},
                 ),
-                child: YunoWhiteTextButton(text: 'Project Members'),
+                child: const YunoWhiteTextButton(text: 'Project Members'),
               ),
             )
           else
@@ -217,7 +217,9 @@ class _ButtonsRowWidget extends StatelessWidget {
                     builder: (context) => const YunoAlertDialog(text: 'Delete The Project?'),
                   );
                   if (val ?? true) {
-                    context.read<ProjectDetailsBloc>().add(const ProjectDetailsEvent.delete());
+                    if (context.mounted) {
+                      context.read<ProjectDetailsBloc>().add(const ProjectDetailsEvent.delete());
+                    }
                   }
                 }
               : null,
@@ -254,7 +256,9 @@ class _ButtonsRowWidget extends StatelessWidget {
               builder: (context) => const YunoAlertDialog(text: 'Leave The Project?'),
             );
             if (val ?? true) {
-              context.read<ProjectDetailsBloc>().add(const ProjectDetailsEvent.leave());
+              if (context.mounted) {
+                context.read<ProjectDetailsBloc>().add(const ProjectDetailsEvent.leave());
+              }
             }
           },
           child: YunoIconButton(

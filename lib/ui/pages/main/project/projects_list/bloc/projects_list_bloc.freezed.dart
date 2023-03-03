@@ -898,15 +898,15 @@ class __$$_LoadedStateCopyWithImpl<$Res>
     Object? isShowError = null,
   }) {
     return _then(_$_LoadedState(
-      null == projects
+      projects: null == projects
           ? _value._projects
           : projects // ignore: cast_nullable_to_non_nullable
               as List<IProjectWithUsers>,
-      null == isShowLoading
+      isShowLoading: null == isShowLoading
           ? _value.isShowLoading
           : isShowLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      null == isShowError
+      isShowError: null == isShowError
           ? _value.isShowError
           : isShowError // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -917,7 +917,10 @@ class __$$_LoadedStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LoadedState extends _LoadedState {
-  const _$_LoadedState(final List<IProjectWithUsers> projects, this.isShowLoading, this.isShowError)
+  const _$_LoadedState(
+      {required final List<IProjectWithUsers> projects,
+      required this.isShowLoading,
+      required this.isShowError})
       : _projects = projects,
         super._();
 
@@ -1040,8 +1043,10 @@ class _$_LoadedState extends _LoadedState {
 }
 
 abstract class _LoadedState extends ProjectsListState {
-  const factory _LoadedState(final List<IProjectWithUsers> projects, final bool isShowLoading,
-      final bool isShowError) = _$_LoadedState;
+  const factory _LoadedState(
+      {required final List<IProjectWithUsers> projects,
+      required final bool isShowLoading,
+      required final bool isShowError}) = _$_LoadedState;
   const _LoadedState._() : super._();
 
   List<IProjectWithUsers> get projects;
