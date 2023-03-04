@@ -33,6 +33,8 @@ abstract class IProjectRepository {
   Future<IProjectWithUsers> leaveProject({required String id});
 
   Future<PaginatedDataIUserRead> getMembers({required String id});
+
+  Future<StatisticsRead> getStats();
 }
 
 class ApiProjectRepository implements IProjectRepository {
@@ -120,6 +122,12 @@ class ApiProjectRepository implements IProjectRepository {
   @override
   Future<PaginatedDataIUserRead> getMembers({required String id}) async {
     final response = await projectClient.getProjectIdMembers(projectId: id);
+    return response.data;
+  }
+
+  @override
+  Future<StatisticsRead> getStats() async {
+    final response = await projectClient.getProjectStats();
     return response.data;
   }
 }

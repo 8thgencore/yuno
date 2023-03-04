@@ -23,6 +23,9 @@ abstract class ProjectClient {
     @Query('size') int? size = 50,
   });
 
+  @GET('/project/stats')
+  Future<BaseResponse<StatisticsRead>> getProjectStats();
+
   @POST('/project')
   Future<BaseResponse<IProjectRead>> postProject({
     @Body() required IProject body,

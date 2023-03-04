@@ -33,8 +33,8 @@ class ProjectMembersBloc extends Bloc<ProjectMembersEvent, ProjectMembersState> 
     try {
       final members = await projectRepository.getMembers(id: event.id);
       emit(ProjectMembersState.loaded(members.items));
-    } on DioError catch (_) {
-      // emit(ProjectMembersState.loaded(members));
+    } on DioError catch (dioError) {
+      emit(ProjectMembersState.failure(dioErrorInterceptor(dioError).toString()));
     }
   }
 }

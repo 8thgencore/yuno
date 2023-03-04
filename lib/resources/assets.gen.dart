@@ -132,9 +132,6 @@ class $AssetsFontsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/add_new_task.png
-  AssetGenImage get addNewTask => const AssetGenImage('assets/images/add_new_task.png');
-
   /// File path: assets/images/avatar.jpg
   AssetGenImage get avatar => const AssetGenImage('assets/images/avatar.jpg');
 
@@ -150,9 +147,12 @@ class $AssetsImagesGen {
   /// File path: assets/images/splash_ornament.png
   AssetGenImage get splashOrnament => const AssetGenImage('assets/images/splash_ornament.png');
 
+  /// File path: assets/images/statistics_empty.png
+  AssetGenImage get statisticsEmpty => const AssetGenImage('assets/images/statistics_empty.png');
+
   /// List of all assets
   List<AssetGenImage> get values =>
-      [addNewTask, avatar, checklistEmpty, logo, signOrnament, splashOrnament];
+      [avatar, checklistEmpty, logo, signOrnament, splashOrnament, statisticsEmpty];
 }
 
 class $AssetsSvgGen {
