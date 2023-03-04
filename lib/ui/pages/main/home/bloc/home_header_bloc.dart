@@ -8,7 +8,9 @@ import 'package:yuno/domain/repository/api_task_repository.dart';
 import 'package:yuno/domain/repository/api_user_repository.dart';
 
 part 'home_header_bloc.freezed.dart';
+
 part 'home_header_event.dart';
+
 part 'home_header_state.dart';
 
 class HomeHeaderBloc extends Bloc<HomeHeaderEvent, HomeHeaderState> {
@@ -45,8 +47,7 @@ class HomeHeaderBloc extends Bloc<HomeHeaderEvent, HomeHeaderState> {
 
       // get a task close in time
       if (tasks != null) {
-        final tasksWithDeadline = [...tasks];
-        tasksWithDeadline.removeWhere((e) => e.deadline == null);
+        final tasksWithDeadline = [...tasks]..removeWhere((e) => e.deadline == null);
         if (tasksWithDeadline.isNotEmpty) {
           tasksWithDeadline.sort((a, b) {
             final aDate = a.deadline!.microsecondsSinceEpoch;

@@ -85,6 +85,32 @@ class _ProjectClient implements ProjectClient {
   }
 
   @override
+  Future<BaseResponse<StatisticsRead>> getProjectStats() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<StatisticsRead>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/project/stats',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = BaseResponse<StatisticsRead>.fromJson(
+      _result.data!,
+      (json) => StatisticsRead.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
   Future<BaseResponse<IProjectRead>> postProject({required body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -275,6 +301,40 @@ class _ProjectClient implements ProjectClient {
     final value = BaseResponse<PaginatedDataITaskRead>.fromJson(
       _result.data!,
       (json) => PaginatedDataITaskRead.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
+  Future<BaseResponse<PaginatedDataIUserRead>> getProjectIdMembers({
+    required projectId,
+    page = 1,
+    size = 50,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'page': page,
+      r'size': size,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<PaginatedDataIUserRead>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/project/${projectId}/members',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = BaseResponse<PaginatedDataIUserRead>.fromJson(
+      _result.data!,
+      (json) => PaginatedDataIUserRead.fromJson(json as Map<String, dynamic>),
     );
     return value;
   }

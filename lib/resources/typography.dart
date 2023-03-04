@@ -4,6 +4,12 @@ import 'package:yuno/resources/resources.dart';
 abstract class AppTypography {
   const AppTypography._();
 
+  static TextStyle b26d = const TextStyle(
+    color: AppColors.dark100,
+    fontSize: 26,
+    fontWeight: FontWeight.w600,
+  );
+
   static TextStyle b24l = const TextStyle(
     color: AppColors.white100,
     fontSize: 24,
@@ -62,6 +68,12 @@ abstract class AppTypography {
     color: AppColors.dark100,
     fontSize: 16,
     fontWeight: FontWeight.w500,
+  );
+
+  static TextStyle l16d = const TextStyle(
+    color: AppColors.dark100,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
   );
 
   static TextStyle r14d = const TextStyle(

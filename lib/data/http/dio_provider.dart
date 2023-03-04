@@ -11,12 +11,12 @@ class DioBuilder {
         // CustomErrorInterceptor(),
         if (kDebugMode)
           PrettyDioLogger(
-            request: true,
-            requestHeader: false,
+            // request: true,
+            // requestHeader: false,
             requestBody: true,
-            responseHeader: false,
-            responseBody: true,
-            error: true,
+            // responseHeader: false,
+            // responseBody: true,
+            // error: true,
           ),
       ]);
     }
@@ -35,6 +35,7 @@ class DioBuilder {
 
   DioBuilder addAuthorizationInterceptor(final AuthorizationInterceptor interceptor) {
     _dio.interceptors.add(interceptor);
+    // ignore: avoid_returning_this
     return this;
   }
 }

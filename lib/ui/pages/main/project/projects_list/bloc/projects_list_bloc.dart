@@ -61,7 +61,7 @@ class ProjectsListBloc extends Bloc<ProjectsListEvent, ProjectsListState> {
     if (_loading) {
       return;
     }
-    emit(ProjectsListState.loaded(_projects, true, false));
+    emit(ProjectsListState.loaded(projects: _projects, isShowLoading: true, isShowError: false));
     _loading = true;
     await _loadProject(emit);
     _loading = false;
@@ -79,7 +79,7 @@ class ProjectsListBloc extends Bloc<ProjectsListEvent, ProjectsListState> {
     } else {
       return;
     }
-    emit(ProjectsListState.loaded(_projects, true, false));
+    emit(ProjectsListState.loaded(projects: _projects, isShowLoading: true, isShowError: false));
     _loading = true;
     await _loadProject(emit);
     _loading = false;
@@ -98,9 +98,9 @@ class ProjectsListBloc extends Bloc<ProjectsListEvent, ProjectsListState> {
 
       _projects = [..._projects, ...projects.items];
       _pages = projects.pages;
-      emit(ProjectsListState.loaded(_projects, false, false));
+      emit(ProjectsListState.loaded(projects: _projects, isShowLoading: false, isShowError: false));
     } on DioError catch (_) {
-      emit(ProjectsListState.loaded(_projects, false, true));
+      emit(ProjectsListState.loaded(projects: _projects, isShowLoading: false, isShowError: true));
     }
   }
 }

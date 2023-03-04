@@ -31,8 +31,11 @@ import 'package:yuno/ui/pages/main/project/project_details/bloc/project_details_
 import 'package:yuno/ui/pages/main/project/project_details/view/project_details_page.dart';
 import 'package:yuno/ui/pages/main/project/project_edit/bloc/project_edit_bloc.dart';
 import 'package:yuno/ui/pages/main/project/project_edit/view/project_page.dart';
+import 'package:yuno/ui/pages/main/project/project_members/bloc/project_members_bloc.dart';
+import 'package:yuno/ui/pages/main/project/project_members/view/project_members_page.dart';
 import 'package:yuno/ui/pages/main/project/projects_list/bloc/projects_list_bloc.dart';
-import 'package:yuno/ui/pages/main/project/projects_list/view/projects_list.dart';
+import 'package:yuno/ui/pages/main/project/projects_list/view/projects_list_page.dart';
+import 'package:yuno/ui/pages/main/statistics/bloc/statistics_bloc.dart';
 import 'package:yuno/ui/pages/main/statistics/view/statistics_page.dart';
 import 'package:yuno/ui/pages/main/task/task_edit/bloc/task_edit_bloc.dart';
 import 'package:yuno/ui/pages/main/task/task_edit/view/task_page.dart';
@@ -109,7 +112,12 @@ mixin RouterMixin on State<App> {
             GoRoute(
               name: RouteName.statistics,
               path: RoutePath.statistics,
-              builder: (_, __) => const StatisticsPage(),
+              builder: (context, state) => BlocProvider(
+                create: (context) => StatisticsBloc(
+                  projectRepository: sl.get<IProjectRepository>(),
+                )..add(const StatisticsEvent.started()),
+                child: const StatisticsPage(),
+              ),
             ),
             GoRoute(
               name: RouteName.profile,
@@ -200,6 +208,17 @@ mixin RouterMixin on State<App> {
                       projectRepository: sl.get<IProjectRepository>(),
                     )..add(ProjectEditEvent.started(state.params['id'] ?? '')),
                     child: const ProjectEditPage(isUpdate: true),
+                  ),
+                ),
+                GoRoute(
+                  name: RouteName.projectMembers,
+                  path: RoutePath.projectMembers,
+                  parentNavigatorKey: rootNavigatorKey,
+                  builder: (context, state) => BlocProvider(
+                    create: (context) => ProjectMembersBloc(
+                      projectRepository: sl.get<IProjectRepository>(),
+                    )..add(ProjectMembersEvent.started(state.params['id'] ?? '')),
+                    child: const ProjectMembersPage(),
                   ),
                 ),
               ],

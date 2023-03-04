@@ -36,19 +36,23 @@ class AvatarStacked extends StatelessWidget {
   }
 
   Widget buildImage(String urlImage) {
+    Widget image;
+    if (urlImage.startsWith('http')) {
+      image = CachedNetworkImage(
+        imageUrl: urlImage,
+        fit: BoxFit.cover,
+        errorWidget: (context, _, __) => Assets.images.avatar.image(fit: BoxFit.cover),
+      );
+    } else if (urlImage.isNotEmpty) {
+      image = Image.asset(urlImage);
+    } else {
+      image = Assets.images.avatar.image();
+    }
     return ClipOval(
       child: Container(
         padding: EdgeInsets.all(borderSize),
         color: AppColors.white100,
-        child: ClipOval(
-          child: urlImage.startsWith('http')
-              ? CachedNetworkImage(
-                  imageUrl: urlImage,
-                  fit: BoxFit.cover,
-                  errorWidget: (context, _, __) => Assets.images.avatar.image(fit: BoxFit.cover),
-                )
-              : Image.asset(urlImage),
-        ),
+        child: ClipOval(child: image),
       ),
     );
   }
