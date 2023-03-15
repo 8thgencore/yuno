@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:yuno/api/user/models.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
+import 'package:yuno/l10n/l10n.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/project/project_members/bloc/project_members_bloc.dart';
 import 'package:yuno/ui/widgets/error_container.dart';
@@ -43,7 +44,7 @@ class _ProjectMembersContentWidget extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Text(
-                'In This Project',
+                context.l10n.projectMembersPageTitle,
                 style: AppTypography.b18d,
               ),
             ],
@@ -60,6 +61,7 @@ class _MembersListViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return BlocBuilder<ProjectMembersBloc, ProjectMembersState>(
       builder: (context, state) => state.maybeWhen(
         initial: () => const Center(child: CircularProgressIndicator()),
@@ -77,12 +79,8 @@ class _MembersListViewWidget extends StatelessWidget {
             },
           );
         },
-        failure: (error) => ErrorContainer(
-          text: 'Failed to get a project from the server\n$error',
-        ),
-        orElse: () => const ErrorContainer(
-          text: 'Failed to get a project from the server',
-        ),
+        failure: (error) => ErrorContainer(text: '${l10n.errorFailedGetData}\n$error'),
+        orElse: () => ErrorContainer(text: l10n.errorFailedGetData),
       ),
     );
   }

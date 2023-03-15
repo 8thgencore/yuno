@@ -6,6 +6,7 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
+import 'package:yuno/l10n/l10n.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/auth/reset_password/bloc/reset_password_bloc.dart';
 import 'package:yuno/ui/widgets/buttons/custom_rounded_button.dart';
@@ -59,8 +60,8 @@ class _ResetPasswordPageWidget extends StatelessWidget {
           case ResetPasswordStatus.success:
             showToast(
               context,
-              child: const ToastWidget(
-                text: 'Password has been successfully replaced',
+              child: ToastWidget(
+                text: context.l10n.resetPassPageSuccess,
                 type: ToastType.success,
               ),
             );
@@ -117,20 +118,20 @@ class _TopInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 35),
       width: MediaQuery.of(context).size.width,
       child: Column(
         children: [
           Text(
-            'Create New Password!',
+            l10n.resetPassPageTitle,
             style: AppTypography.b24l,
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 12),
           Text(
-            'Finally, you’ve come to the last step. '
-            'Now, create your new password and don’t forget to remember it!',
+            l10n.resetPassPageDescription,
             style: AppTypography.l14l.copyWith(height: 2),
             textAlign: TextAlign.center,
           ),
@@ -171,7 +172,7 @@ class _ErrorWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Error from server',
+                  context.l10n.errorServerError,
                   style: AppTypography.b16l,
                 ),
                 const SizedBox(height: 4),
@@ -290,7 +291,7 @@ class _PasswordTextFieldState extends State<_PasswordTextField> {
         final error = state.passwordError;
         return CustomTextField(
           focusNode: widget._passwordFocusNode,
-          labelText: 'Create new password',
+          labelText: context.l10n.resetPassPageConfirmPassword,
           obscureText: _isObscure,
           keyboardType: TextInputType.visiblePassword,
           textColor: error == null ? AppColors.dark100 : AppColors.error100,
@@ -343,7 +344,7 @@ class _PasswordConfirmTextFieldState extends State<_PasswordConfirmTextField> {
         final error = state.passwordConfirmError;
         return CustomTextField(
           focusNode: widget._passwordConfirmFocusNode,
-          labelText: 'Confirm new password',
+          labelText: context.l10n.resetPassPageConfirmPassword,
           obscureText: _isObscure,
           keyboardType: TextInputType.visiblePassword,
           textColor: error == null ? AppColors.dark100 : AppColors.error100,
@@ -389,7 +390,7 @@ class _ConfirmButton extends StatelessWidget {
     return BlocBuilder<ResetPasswordBloc, ResetPasswordState>(
       builder: (context, state) {
         return CustomRoundedButton(
-          textButton: 'Confirm',
+          textButton: context.l10n.resetPassPageConfirmButton,
           onPressed: state.isValid
               ? () {
                   final currentNode = FocusScope.of(context);

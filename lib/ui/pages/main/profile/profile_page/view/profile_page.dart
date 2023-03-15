@@ -6,6 +6,7 @@ import 'package:go_router_flow/go_router_flow.dart';
 import 'package:yuno/api/user/models.dart';
 import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/routes.dart';
+import 'package:yuno/l10n/l10n.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/profile/profile_page/bloc/profile_bloc.dart';
 import 'package:yuno/ui/widgets/error_container.dart';
@@ -36,6 +37,7 @@ class _ProfileContentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
       child: Column(
@@ -45,7 +47,7 @@ class _ProfileContentWidget extends StatelessWidget {
           const _HeaderWidget(),
           const Spacer(),
           ProfileButtonWidget(
-            text: 'Edit Profile',
+            text: l10n.profilePageEditProfile,
             icon: Assets.svg.edit.svg(
               height: 28,
               colorFilter: const ColorFilter.mode(AppColors.primary100, BlendMode.srcIn),
@@ -61,7 +63,7 @@ class _ProfileContentWidget extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           ProfileButtonWidget(
-            text: 'Change Password',
+            text: l10n.profilePageChangePassword,
             icon: Assets.svg.lock.svg(
               height: 28,
               colorFilter: const ColorFilter.mode(AppColors.secondary100, BlendMode.srcIn),
@@ -70,7 +72,7 @@ class _ProfileContentWidget extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           ProfileButtonWidget(
-            text: 'Projects You Are In',
+            text: l10n.profilePageMyProject,
             icon: Assets.svg.project.svg(
               height: 28,
               colorFilter: const ColorFilter.mode(AppColors.primary100, BlendMode.srcIn),
@@ -79,7 +81,7 @@ class _ProfileContentWidget extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           ProfileButtonWidget(
-            text: 'Logout',
+            text: l10n.profilePageLogout,
             icon: Assets.svg.logout.svg(
               height: 28,
               colorFilter: const ColorFilter.mode(AppColors.secondary100, BlendMode.srcIn),

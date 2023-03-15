@@ -54,7 +54,8 @@ class _TaskCardWidgetState extends State<TaskCardWidget> {
   Widget build(BuildContext context) {
     var deadline = '';
     if (widget.deadline != null) {
-      final outputFormat = DateFormat('dd MMMM yyyy, HH:mm');
+      final languageCode = Localizations.localeOf(context).languageCode;
+      final outputFormat = DateFormat('dd MMMM yyyy, HH:mm', languageCode);
       deadline = outputFormat.format(widget.deadline!);
     }
     return Dismissible(

@@ -5,6 +5,7 @@ import 'package:yuno/api/project/models.dart';
 import 'package:yuno/api/task/models.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
 import 'package:yuno/app/routes/routes.dart';
+import 'package:yuno/l10n/l10n.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/project/project_details/bloc/project_details_bloc.dart';
 import 'package:yuno/ui/widgets/buttons/yuno_icon_button.dart';
@@ -35,9 +36,9 @@ class ProjectDetailsPage extends StatelessWidget {
           if (state == const ProjectDetailsState.deleted()) {
             showToast(
               context,
-              child: const ToastWidget(
-                text: 'Project has been successfully deleted',
-                type: ToastType.info,
+              child: ToastWidget(
+                text: context.l10n.projectDetailsPageSuccessDeleted,
+                type: ToastType.warning,
               ),
             );
             context.pop(true);
@@ -73,6 +74,7 @@ class _ProjectContentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -87,7 +89,7 @@ class _ProjectContentWidget extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Text(
-                'Project Details',
+                context.l10n.projectDetailsPageTitle,
                 style: AppTypography.b18d,
               ),
             ],
@@ -120,12 +122,8 @@ class _ProjectContentWidget extends StatelessWidget {
                     const SizedBox(height: 80),
                   ],
                 ),
-                failure: (error) => const ErrorContainer(
-                  text: 'Failed to get a project from the server',
-                ),
-                orElse: () => const ErrorContainer(
-                  text: 'Failed to get a project from the server',
-                ),
+                failure: (error) => ErrorContainer(text: l10n.errorFailedGetData),
+                orElse: () => ErrorContainer(text: l10n.errorFailedGetData),
               ),
             ),
           ),
@@ -148,6 +146,7 @@ class _ProjectFullCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 24),
       decoration: BoxDecoration(
@@ -169,7 +168,7 @@ class _ProjectFullCardWidget extends StatelessWidget {
                   RouteName.projectMembers,
                   params: {'id': project.id},
                 ),
-                child: const YunoWhiteTextButton(text: 'Project Members'),
+                child: YunoWhiteTextButton(text: l10n.projectDetailsPageProjectMembers),
               ),
             )
           else
@@ -179,7 +178,7 @@ class _ProjectFullCardWidget extends StatelessWidget {
                 onTap: () {
                   context.read<ProjectDetailsBloc>().add(const ProjectDetailsEvent.join());
                 },
-                child: const YunoWhiteTextButton(text: 'Join The Project'),
+                child: YunoWhiteTextButton(text: l10n.projectDetailsPageJoinProject),
               ),
             ),
           if (isMember)
@@ -206,6 +205,7 @@ class _ButtonsRowWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -214,7 +214,8 @@ class _ButtonsRowWidget extends StatelessWidget {
               ? () async {
                   final val = await showDialog<bool?>(
                     context: context,
-                    builder: (context) => const YunoAlertDialog(text: 'Delete The Project?'),
+                    builder: (context) =>
+                        YunoAlertDialog(text: l10n.projectDetailsPageDeleteProject),
                   );
                   if (val ?? true) {
                     if (context.mounted) {
@@ -253,7 +254,7 @@ class _ButtonsRowWidget extends StatelessWidget {
           onTap: () async {
             final val = await showDialog<bool?>(
               context: context,
-              builder: (context) => const YunoAlertDialog(text: 'Leave The Project?'),
+              builder: (context) => YunoAlertDialog(text: l10n.projectDetailsPageLeaveProject),
             );
             if (val ?? true) {
               if (context.mounted) {
@@ -283,12 +284,13 @@ class _CheckListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 24, right: 24, bottom: 6),
-          child: Text('Checklist', style: AppTypography.b18d),
+          child: Text(l10n.projectDetailsPageChecklist, style: AppTypography.b18d),
         ),
         if (tasks.isNotEmpty)
           ListView.builder(
@@ -330,7 +332,7 @@ class _CheckListWidget extends StatelessWidget {
             },
           )
         else
-          const ErrorContainer(text: 'Tasks list is empty'),
+          ErrorContainer(text: l10n.projectDetailsPageChecklistEmpty),
       ],
     );
   }

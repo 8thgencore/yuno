@@ -4,6 +4,7 @@ import 'package:go_router_flow/go_router_flow.dart';
 import 'package:intl/intl.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
 import 'package:yuno/app/routes/routes.dart';
+import 'package:yuno/l10n/l10n.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/calendar/bloc/calendar_bloc.dart';
 import 'package:yuno/ui/widgets/error_container.dart';
@@ -73,7 +74,8 @@ class _HeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final outputFormat = DateFormat('MMM dd, yyyy');
+    final languageCode = Localizations.localeOf(context).languageCode;
+    final outputFormat = DateFormat('MMM dd, yyyy', languageCode);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -83,7 +85,7 @@ class _HeaderWidget extends StatelessWidget {
           style: AppTypography.b22d,
         ),
         Text(
-          '$taskLength Checklist Today',
+          '$taskLength ${context.l10n.calendarPageChecklistToday}',
           style: AppTypography.l14g,
         ),
       ],
@@ -96,6 +98,7 @@ class _CheckListBuilderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return BlocBuilder<CalendarBloc, CalendarState>(
       builder: (context, state) => state.maybeWhen(
         loading: () => const LoadingContainer(),
@@ -109,7 +112,10 @@ class _CheckListBuilderWidget extends StatelessWidget {
                   if (index == 0) {
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 6),
-                      child: Text('Checklist', style: AppTypography.b18d),
+                      child: Text(
+                        l10n.calendarPageChecklist,
+                        style: AppTypography.b18d,
+                      ),
                     );
                   }
                   return GestureDetector(
@@ -145,14 +151,13 @@ class _CheckListBuilderWidget extends StatelessWidget {
                     Image.asset(Assets.images.checklistEmpty.path),
                     const SizedBox(height: 32),
                     Text(
-                      'Woops, No Checklist Yet!',
+                      l10n.calendarPageChecklistEmptyTitle,
                       textAlign: TextAlign.center,
                       style: AppTypography.b18d,
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'No checklist at the moment, feel free to add '
-                      'some checklist by pressing Plus button below.',
+                      l10n.calendarPageChecklistEmptyDesc,
                       textAlign: TextAlign.center,
                       style: AppTypography.l14g,
                     ),
@@ -160,7 +165,7 @@ class _CheckListBuilderWidget extends StatelessWidget {
                 ),
               ),
         failure: (error) => ErrorContainer(text: '$error'),
-        orElse: () => const ErrorContainer(text: 'Tasks list is empty'),
+        orElse: () => ErrorContainer(text: context.l10n.errorFailedGetData),
       ),
     );
   }

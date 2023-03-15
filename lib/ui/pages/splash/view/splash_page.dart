@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:yuno/app/routes/routes.dart';
+import 'package:yuno/l10n/l10n.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/splash/bloc/splash_bloc.dart';
 
@@ -62,7 +63,7 @@ class _SplashPageWidgetState extends State<_SplashPageWidget> {
                   const CircularProgressIndicator(color: AppColors.primary100),
                   const SizedBox(height: 20),
                   Text(
-                    'The Coolest Task Manager App',
+                    context.l10n.splash,
                     style: AppTypography.l14d,
                   ),
                   SizedBox(height: _deviceHeight * 0.2),

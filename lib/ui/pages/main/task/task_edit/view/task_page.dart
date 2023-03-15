@@ -6,6 +6,7 @@ import 'package:go_router_flow/go_router_flow.dart';
 import 'package:intl/intl.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
+import 'package:yuno/l10n/l10n.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/task/task_edit/bloc/task_edit_bloc.dart';
 import 'package:yuno/ui/widgets/buttons/custom_rounded_button.dart';
@@ -23,6 +24,7 @@ class TaskEditPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return BlocConsumer<TaskEditBloc, TaskEditState>(
       listener: (context, state) {
         switch (state.status) {
@@ -39,7 +41,7 @@ class TaskEditPage extends StatelessWidget {
             showToast(
               context,
               child: ToastWidget(
-                text: state.serverError ?? 'Server Error',
+                text: state.serverError ?? l10n.errorServerError,
                 type: ToastType.failure,
               ),
             );
@@ -49,7 +51,7 @@ class TaskEditPage extends StatelessWidget {
             showToast(
               context,
               child: ToastWidget(
-                text: state.serverError ?? 'Server Error',
+                text: state.serverError ?? l10n.errorServerError,
                 type: ToastType.failure,
               ),
             );
@@ -62,8 +64,8 @@ class TaskEditPage extends StatelessWidget {
             context.loaderOverlay.hide();
             showToast(
               context,
-              child: const ToastWidget(
-                text: 'Project information has been successfully updated',
+              child: ToastWidget(
+                text: l10n.taskEditPageSuccessUpdated,
                 type: ToastType.success,
               ),
             );
@@ -73,8 +75,8 @@ class TaskEditPage extends StatelessWidget {
             context.loaderOverlay.hide();
             showToast(
               context,
-              child: const ToastWidget(
-                text: 'The project was successfully created',
+              child: ToastWidget(
+                text: l10n.taskEditPageSuccessCreated,
                 type: ToastType.success,
               ),
             );
@@ -91,7 +93,7 @@ class TaskEditPage extends StatelessWidget {
             floatingActionButton: Padding(
               padding: const EdgeInsets.only(left: 15, right: 15),
               child: CustomRoundedButton(
-                textButton: isUpdate ? 'Update' : 'Create task',
+                textButton: isUpdate ? l10n.taskEditPageUpdate : l10n.taskEditPageCreate,
                 onPressed: state.name.isNotEmpty
                     ? () {
                         final currentNode = FocusScope.of(context);
@@ -119,6 +121,7 @@ class _CreateTaskContentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -133,7 +136,7 @@ class _CreateTaskContentWidget extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Text(
-                isUpdate ? 'Update task' : 'Create new task',
+                isUpdate ? l10n.taskEditPageUpdateTask : l10n.taskEditPageCreateNewTask,
                 style: AppTypography.b18d,
               ),
             ],
@@ -215,7 +218,7 @@ class _TaskNameTextFieldState extends State<_TaskNameTextField> {
         _controller.value = TextEditingValue(text: state.name);
         return CustomTextField(
           controller: _controller,
-          labelText: 'Task Name',
+          labelText: context.l10n.taskEditPageTaskName,
           keyboardType: TextInputType.text,
           textColor: AppColors.dark100,
           onChanged: (text) => context.read<TaskEditBloc>().add(
@@ -256,14 +259,15 @@ class _TaskDeadlineTextFieldState extends State<_TaskDeadlineTextField> {
       builder: (context, state) {
         if (_controller.text == '') {
           if (state.deadline != null) {
-            final outputFormat = DateFormat('dd MMMM yyyy, HH:mm');
+            final languageCode = Localizations.localeOf(context).languageCode;
+            final outputFormat = DateFormat('dd MMMM yyyy, HH:mm', languageCode);
             _controller.value = TextEditingValue(text: outputFormat.format(state.deadline!));
           }
         }
         return CustomTextField(
           controller: _controller,
           readOnly: true,
-          labelText: 'Deadline',
+          labelText: context.l10n.taskEditPageTaskDeadline,
           textColor: AppColors.dark100,
           onPressedFunction: () async {
             final datePicked = await DatePicker.showDateTimePicker(
@@ -275,7 +279,8 @@ class _TaskDeadlineTextFieldState extends State<_TaskDeadlineTextField> {
             );
             if (datePicked != null) {
               setState(() {
-                final outputFormat = DateFormat('dd MMMM yyyy, HH:mm');
+                final languageCode = Localizations.localeOf(context).languageCode;
+                final outputFormat = DateFormat('dd MMMM yyyy, HH:mm', languageCode);
                 _controller.text = outputFormat.format(datePicked);
               });
             }
@@ -301,7 +306,7 @@ class _TaskDoneSwitchState extends State<_TaskDoneSwitch> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text('Completed', style: AppTypography.r14d),
+        Text(context.l10n.taskEditPageTaskCompleted, style: AppTypography.r14d),
         BlocBuilder<TaskEditBloc, TaskEditState>(
           buildWhen: (_, current) => current.status == TaskEditStatus.loaded,
           builder: (context, state) {

@@ -4,6 +4,7 @@ import 'package:go_router_flow/go_router_flow.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
 import 'package:yuno/app/routes/routes.dart';
+import 'package:yuno/l10n/l10n.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/project/project_edit/bloc/project_edit_bloc.dart';
 import 'package:yuno/ui/widgets/buttons/custom_rounded_button.dart';
@@ -21,6 +22,7 @@ class ProjectEditPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return BlocConsumer<ProjectEditBloc, ProjectEditState>(
       listener: (context, state) {
         switch (state.status) {
@@ -37,7 +39,7 @@ class ProjectEditPage extends StatelessWidget {
             showToast(
               context,
               child: ToastWidget(
-                text: state.serverError ?? 'Server Error',
+                text: state.serverError ?? l10n.errorServerError,
                 type: ToastType.failure,
               ),
             );
@@ -48,8 +50,8 @@ class ProjectEditPage extends StatelessWidget {
             context.loaderOverlay.hide();
             showToast(
               context,
-              child: const ToastWidget(
-                text: 'Project information has been successfully updated',
+              child: ToastWidget(
+                text: l10n.projectEditPageSuccessUpdated,
                 type: ToastType.success,
               ),
             );
@@ -59,8 +61,8 @@ class ProjectEditPage extends StatelessWidget {
             context.loaderOverlay.hide();
             showToast(
               context,
-              child: const ToastWidget(
-                text: 'The project was successfully created',
+              child: ToastWidget(
+                text: l10n.projectEditPageSuccessCreated,
                 type: ToastType.success,
               ),
             );
@@ -77,7 +79,7 @@ class ProjectEditPage extends StatelessWidget {
             floatingActionButton: Padding(
               padding: const EdgeInsets.only(left: 15, right: 15),
               child: CustomRoundedButton(
-                textButton: isUpdate ? 'Update' : 'Create project',
+                textButton: isUpdate ? l10n.projectEditPageUpdate : l10n.projectEditPageCreate,
                 onPressed: state.name.isNotEmpty
                     ? () {
                         final currentNode = FocusScope.of(context);
@@ -105,6 +107,7 @@ class _CreateProjectContentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -119,7 +122,7 @@ class _CreateProjectContentWidget extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Text(
-                isUpdate ? 'Update project' : 'Create new project',
+                isUpdate ? l10n.projectEditPageUpdateProject : l10n.projectEditPageCreateNewProject,
                 style: AppTypography.b18d,
               ),
             ],
@@ -177,7 +180,7 @@ class _ProjectNameTextField extends StatelessWidget {
       builder: (context, state) {
         return CustomTextField(
           controller: TextEditingController(text: state.name),
-          labelText: 'Project Name',
+          labelText: context.l10n.projectEditPageProjectName,
           keyboardType: TextInputType.text,
           textColor: AppColors.dark100,
           onChanged: (text) => context.read<ProjectEditBloc>().add(
@@ -199,7 +202,7 @@ class _ProjectDescriptionTextField extends StatelessWidget {
       builder: (context, state) {
         return CustomTextField(
           controller: TextEditingController(text: state.description),
-          labelText: 'Project Description',
+          labelText: context.l10n.projectEditPageProjectDescription,
           keyboardType: TextInputType.text,
           textColor: AppColors.dark100,
           onChanged: (text) => context.read<ProjectEditBloc>().add(

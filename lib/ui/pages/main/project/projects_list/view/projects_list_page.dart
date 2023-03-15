@@ -4,6 +4,7 @@ import 'package:go_router_flow/go_router_flow.dart';
 import 'package:yuno/api/project/models.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
 import 'package:yuno/app/routes/routes.dart';
+import 'package:yuno/l10n/l10n.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/project/projects_list/bloc/projects_list_bloc.dart';
 import 'package:yuno/ui/widgets/error_container.dart';
@@ -45,7 +46,7 @@ class _ProjectsListContentWidget extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Text(
-                'Projects List',
+                context.l10n.projectsListPageTitle,
                 style: AppTypography.b18d,
               ),
             ],
@@ -88,6 +89,7 @@ class _ProjectListWidgetState extends State<_ProjectListWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return BlocBuilder<ProjectsListBloc, ProjectsListState>(
       builder: (context, state) => state.maybeWhen(
         initial: () => const Center(child: CircularProgressIndicator()),
@@ -114,13 +116,16 @@ class _ProjectListWidgetState extends State<_ProjectListWidget> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Spacer(),
-                        Text('Failed to upload data', style: AppTypography.r16d),
+                        Text(
+                          l10n.projectsListPageFailedUpload,
+                          style: AppTypography.r16d,
+                        ),
                         TextButton(
                           onPressed: () => context
                               .read<ProjectsListBloc>()
                               .add(const ProjectsListEvent.nextLoaded()),
                           child: Text(
-                            'Try again',
+                            l10n.projectsListPageTryAgain,
                             style: AppTypography.l14d.copyWith(color: AppColors.primary100),
                           ),
                         ),
@@ -139,12 +144,8 @@ class _ProjectListWidgetState extends State<_ProjectListWidget> {
             },
           );
         },
-        failure: (error) => ErrorContainer(
-          text: 'Failed to get a project from the server\n$error',
-        ),
-        orElse: () => const ErrorContainer(
-          text: 'Failed to get a project from the server',
-        ),
+        failure: (error) => ErrorContainer(text: '${l10n.errorFailedGetData}\n$error'),
+        orElse: () => ErrorContainer(text: l10n.errorFailedGetData),
       ),
     );
   }

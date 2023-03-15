@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router_flow/go_router_flow.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
+import 'package:yuno/l10n/l10n.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/profile/edit_profile/bloc/profile_edit_bloc.dart';
 import 'package:yuno/ui/widgets/buttons/custom_rounded_button.dart';
@@ -15,6 +16,7 @@ class ProfileEditPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return BlocListener<ProfileEditBloc, ProfileEditState>(
       listener: (context, state) {
         switch (state.status) {
@@ -31,8 +33,8 @@ class ProfileEditPage extends StatelessWidget {
             context.loaderOverlay.hide();
             showToast(
               context,
-              child: const ToastWidget(
-                text: 'User information has been successfully updated',
+              child: ToastWidget(
+                text: l10n.profileEditPageSuccessUpdate,
                 type: ToastType.success,
               ),
             );
@@ -42,7 +44,7 @@ class ProfileEditPage extends StatelessWidget {
             showToast(
               context,
               child: ToastWidget(
-                text: state.serverError ?? 'Server Error',
+                text: state.serverError ?? l10n.errorServerError,
                 type: ToastType.failure,
               ),
             );
@@ -57,7 +59,7 @@ class ProfileEditPage extends StatelessWidget {
           floatingActionButton: Padding(
             padding: const EdgeInsets.only(left: 15, right: 15),
             child: CustomRoundedButton(
-              textButton: 'Save Changes',
+              textButton: l10n.profileEditPageSaveButton,
               onPressed: () {
                 final currentNode = FocusScope.of(context);
                 if (currentNode.focusedChild != null && !currentNode.hasPrimaryFocus) {
@@ -78,6 +80,7 @@ class _ProfileEditContentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -92,7 +95,7 @@ class _ProfileEditContentWidget extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Text(
-                'Edit Profile',
+                l10n.profileEditPageTitle,
                 style: AppTypography.b18d,
               ),
             ],
@@ -181,7 +184,7 @@ class _FirstNameTextFieldState extends State<_FirstNameTextField> {
         _controller.value = TextEditingValue(text: state.firstName);
         return CustomTextField(
           controller: _controller,
-          labelText: 'First Name',
+          labelText: context.l10n.profileEditPageFirstName,
           keyboardType: TextInputType.text,
           textColor: AppColors.dark100,
           onChanged: (text) => context.read<ProfileEditBloc>().add(
@@ -223,7 +226,7 @@ class _LastNameTextFieldState extends State<_LastNameTextField> {
         _controller.value = TextEditingValue(text: state.lastName);
         return CustomTextField(
           controller: _controller,
-          labelText: 'Last Name',
+          labelText: context.l10n.profileEditPageLastName,
           keyboardType: TextInputType.text,
           textColor: AppColors.dark100,
           onChanged: (text) => context.read<ProfileEditBloc>().add(
@@ -266,7 +269,7 @@ class _UsernameTextFieldState extends State<_UsernameTextField> {
         _controller.value = TextEditingValue(text: state.username);
         return CustomTextField(
           controller: _controller,
-          labelText: 'Nickname',
+          labelText: context.l10n.profileEditPageNickname,
           errorText: error?.toString(),
           keyboardType: TextInputType.text,
           textColor: AppColors.dark100,
@@ -310,7 +313,7 @@ class _EmailTextFieldState extends State<_EmailTextField> {
         _controller.value = TextEditingValue(text: state.email);
         return CustomTextField(
           controller: _controller,
-          labelText: 'Email',
+          labelText: context.l10n.profileEditPageEmail,
           errorText: error?.toString(),
           keyboardType: TextInputType.emailAddress,
           textColor: AppColors.dark100,
@@ -353,7 +356,7 @@ class _RoleTextFieldState extends State<_RoleTextField> {
         _controller.value = TextEditingValue(text: state.role ?? '');
         return CustomTextField(
           controller: _controller,
-          labelText: 'Role',
+          labelText: context.l10n.profileEditPageRole,
           textColor: AppColors.dark60,
           enabled: false,
         );

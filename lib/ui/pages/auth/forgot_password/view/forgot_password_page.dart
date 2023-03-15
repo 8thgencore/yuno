@@ -6,6 +6,7 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
+import 'package:yuno/l10n/l10n.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/auth/forgot_password/bloc/forgot_password_bloc.dart';
 import 'package:yuno/ui/widgets/buttons/custom_rounded_button.dart';
@@ -109,20 +110,20 @@ class _TopInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 35),
       width: MediaQuery.of(context).size.width,
       child: Column(
         children: [
           Text(
-            'Don’t Worry, We Got You!',
+            l10n.forgotPassPageTitle,
             style: AppTypography.b24l,
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 12),
           Text(
-            'Forgot your password? We got you so don’t worry! '
-            'Fill up the email and username and follow the next steps!',
+            l10n.forgotPassPageDescription,
             style: AppTypography.l14l.copyWith(height: 2),
             textAlign: TextAlign.center,
           ),
@@ -163,7 +164,7 @@ class _ErrorWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Error from server',
+                  context.l10n.errorServerError,
                   style: AppTypography.b16l,
                 ),
                 const SizedBox(height: 4),
@@ -259,7 +260,7 @@ class _EmailTextField extends StatelessWidget {
         final error = state.emailError;
         return CustomTextField(
           focusNode: _emailFocusNode,
-          labelText: 'Enter your email address',
+          labelText: context.l10n.forgotPassPageEmail,
           keyboardType: TextInputType.emailAddress,
           textColor: error == null ? AppColors.dark100 : AppColors.error100,
           prefixIcon: IconButton(
@@ -294,7 +295,7 @@ class _ContinueButton extends StatelessWidget {
     return BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
       builder: (context, state) {
         return CustomRoundedButton(
-          textButton: 'Continue',
+          textButton: context.l10n.forgotPassPageContinueButton,
           onPressed: state.isValid
               ? () {
                   final currentNode = FocusScope.of(context);

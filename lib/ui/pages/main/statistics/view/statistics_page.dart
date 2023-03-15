@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yuno/l10n/l10n.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/statistics/bloc/statistics_bloc.dart';
 import 'package:yuno/ui/widgets/error_container.dart';
@@ -19,7 +20,7 @@ class StatisticsPage extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                'Project Statistics',
+                context.l10n.statsPageTitle,
                 style: AppTypography.b22d,
               ),
               const Spacer(),
@@ -45,18 +46,19 @@ class _PieChartContainer extends StatelessWidget {
           initial: () => const Center(child: CircularProgressIndicator()),
           loading: () => const Center(child: CircularProgressIndicator()),
           loaded: (stats) {
+            final l10n = context.l10n;
             if (stats.projectsCount == 0) {
               return Column(
                 children: [
                   Assets.images.statisticsEmpty.image(),
                   const SizedBox(height: 24),
                   Text(
-                    'Woops, No Statistic Yet!',
+                    l10n.statsPageEmptyTitle,
                     style: AppTypography.b18d,
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'No statistic listed here, finish some task or checklist and it will appear here.',
+                    l10n.statsPageEmptyDesc,
                     style: AppTypography.l14g,
                     textAlign: TextAlign.center,
                   ),
@@ -97,7 +99,7 @@ class _PieChartContainer extends StatelessWidget {
                           style: AppTypography.b26d,
                         ),
                         Text(
-                          'Projects',
+                          l10n.statsPageProjects,
                           style: AppTypography.l16d,
                         ),
                       ],
@@ -115,10 +117,10 @@ class _PieChartContainer extends StatelessWidget {
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      _StatsCategory(text: 'Done', color: AppColors.primary100),
-                      _StatsCategory(text: 'Ongoing', color: AppColors.secondary100),
-                      _StatsCategory(text: 'Missed', color: AppColors.dark100),
+                    children: [
+                      _StatsCategory(text: l10n.statsPageDone, color: AppColors.primary100),
+                      _StatsCategory(text: l10n.statsPageOngoing, color: AppColors.secondary100),
+                      _StatsCategory(text: l10n.statsPageMissed, color: AppColors.dark100),
                     ],
                   ),
                 ),
@@ -126,10 +128,10 @@ class _PieChartContainer extends StatelessWidget {
             );
           },
           failure: (error) => ErrorContainer(
-            text: 'Failed to get a project from the server\n$error',
+            text: '${context.l10n.errorFailedGetData}\n$error',
           ),
-          orElse: () => const ErrorContainer(
-            text: 'Failed to get a project from the server',
+          orElse: () => ErrorContainer(
+            text: context.l10n.errorFailedGetData,
           ),
         ),
       ),
@@ -154,7 +156,7 @@ class PieChart extends StatelessWidget {
     this.child,
     super.key,
   }) : assert(
-          data.fold<double>(0, (sum, data) => sum + data.percent) > 100,
+          data.fold<double>(0, (sum, data) => sum + data.percent) <= 100,
           'The total percentage value cannot be more than 100',
         );
 

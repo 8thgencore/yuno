@@ -5,6 +5,7 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
+import 'package:yuno/l10n/l10n.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/auth/login/bloc/login_bloc.dart';
 import 'package:yuno/ui/widgets/buttons/custom_rounded_button.dart';
@@ -126,16 +127,16 @@ class _TopInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    final l10n = context.l10n;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
       width: MediaQuery.of(context).size.width,
       child: Column(
         children: [
-          Text('Welcome Back!', style: AppTypography.b24l),
+          Text(l10n.loginPageTitle, style: AppTypography.b24l),
           const SizedBox(height: 12),
           Text(
-            'Login to your account by entering your email\n'
-            'and password below, we are really happy\n'
-            'to see you come back!',
+            l10n.loginPageDescription,
             style: AppTypography.l14l.copyWith(height: 2),
             textAlign: TextAlign.center,
           ),
@@ -171,7 +172,7 @@ class _ErrorWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'Error from server',
+                context.l10n.errorServerError,
                 style: AppTypography.b16l,
               ),
               const SizedBox(height: 4),
@@ -205,6 +206,7 @@ class _FingerprintWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -221,7 +223,7 @@ class _FingerprintWidget extends StatelessWidget {
           ),
         ),
         Text(
-          'New! Fingerprint\nFast-Login',
+          l10n.loginPageFingerprint,
           style: AppTypography.l14l,
         ),
         const SizedBox(width: 10),
@@ -231,9 +233,9 @@ class _FingerprintWidget extends StatelessWidget {
             backgroundColor: AppColors.white100,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           ),
-          child: const Text(
-            'Set Up',
-            style: TextStyle(fontWeight: FontWeight.w600, color: AppColors.primary100),
+          child: Text(
+            l10n.loginPageSetUp,
+            style: const TextStyle(fontWeight: FontWeight.w600, color: AppColors.primary100),
           ),
         ),
       ],
@@ -268,6 +270,7 @@ class _BottomWidgetState extends State<_BottomWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Container(
       padding: const EdgeInsets.only(top: 20, left: 24, right: 24),
       decoration: const BoxDecoration(
@@ -286,7 +289,7 @@ class _BottomWidgetState extends State<_BottomWidget> {
             children: [
               const Spacer(),
               TextButton(
-                child: Text('Forgot Password?', style: AppTypography.l14d),
+                child: Text(l10n.loginPageForgotPass, style: AppTypography.l14d),
                 onPressed: () async => context.pushNamed(RouteName.forgotPassword),
               ),
             ],
@@ -296,12 +299,12 @@ class _BottomWidgetState extends State<_BottomWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Doesn't have an account yet?",
+                l10n.loginPageDoesNotHaveAccount,
                 style: AppTypography.l14d,
               ),
               TextButton(
                 child: Text(
-                  'Sign Up',
+                  l10n.loginPageSignUp,
                   style: AppTypography.l14d.copyWith(color: AppColors.primary100),
                 ),
                 onPressed: () => context.goNamed(RouteName.register),
@@ -333,7 +336,7 @@ class _EmailTextField extends StatelessWidget {
         final error = fieldsInfo.emailError;
         return CustomTextField(
           focusNode: _emailFocusNode,
-          labelText: 'Enter your email address',
+          labelText: context.l10n.loginPageEmail,
           keyboardType: TextInputType.emailAddress,
           textColor: error == null ? AppColors.dark100 : AppColors.error100,
           prefixIcon: IconButton(
@@ -377,7 +380,7 @@ class _PasswordTextFieldState extends State<_PasswordTextField> {
         final error = fieldsInfo.passwordError;
         return CustomTextField(
           focusNode: widget._passwordFocusNode,
-          labelText: 'Confirm your password',
+          labelText: context.l10n.loginPagePassword,
           obscureText: _isObscure,
           keyboardType: TextInputType.visiblePassword,
           textColor: error == null ? AppColors.dark100 : AppColors.error100,
@@ -420,7 +423,7 @@ class _LoginButton extends StatelessWidget {
     //   selector: (state) => state is LoginInProgress,
     //   builder: (context, inProgress) {
     return CustomRoundedButton(
-      textButton: 'Login',
+      textButton: context.l10n.loginPageLoginButton,
       onPressed: () {
         final currentNode = FocusScope.of(context);
         if (currentNode.focusedChild != null && !currentNode.hasPrimaryFocus) {

@@ -88,6 +88,7 @@ class _YunoHorizontalCalendarWidgetState extends State<YunoHorizontalCalendarWid
               }
               setState(() => _selectedDate = selectedDate);
             },
+            locale: Localizations.localeOf(context).languageCode,
           );
         },
       ),

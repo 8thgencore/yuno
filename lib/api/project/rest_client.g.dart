@@ -30,7 +30,7 @@ class _ProjectClient implements ProjectClient {
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<BaseResponse<PaginatedDataIProjectWithUsers>>(Options(
       method: 'GET',
@@ -63,7 +63,7 @@ class _ProjectClient implements ProjectClient {
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<BaseResponse<PaginatedDataIProjectWithUsers>>(Options(
       method: 'GET',
@@ -89,7 +89,7 @@ class _ProjectClient implements ProjectClient {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<StatisticsRead>>(Options(
       method: 'GET',
@@ -142,7 +142,7 @@ class _ProjectClient implements ProjectClient {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IProjectWithUsersTasks>>(Options(
       method: 'GET',
@@ -198,7 +198,7 @@ class _ProjectClient implements ProjectClient {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IProjectRead>>(Options(
       method: 'DELETE',
@@ -224,7 +224,7 @@ class _ProjectClient implements ProjectClient {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IProjectWithUsers>>(Options(
       method: 'GET',
@@ -250,7 +250,7 @@ class _ProjectClient implements ProjectClient {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IProjectWithUsers>>(Options(
       method: 'GET',
@@ -284,7 +284,7 @@ class _ProjectClient implements ProjectClient {
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<PaginatedDataITaskRead>>(Options(
       method: 'GET',
@@ -318,7 +318,7 @@ class _ProjectClient implements ProjectClient {
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<PaginatedDataIUserRead>>(Options(
       method: 'GET',
