@@ -81,7 +81,7 @@ class _TopCardWidget extends StatelessWidget {
                 children: [
                   const SizedBox(height: 30),
                   Text(
-                    '${l10n.homePageHello}, $username!',
+                    '${l10n.hi}, $username!',
                     style: AppTypography.b18l,
                   ),
                   const SizedBox(height: 12),
@@ -213,7 +213,7 @@ class _ProjectsListWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(l10n.homePageProjects, style: AppTypography.b18d),
+              Text(l10n.projects, style: AppTypography.b18d),
               GestureDetector(
                 onTap: () async => context.pushNamed(RouteName.projects),
                 child: Text(
@@ -267,7 +267,7 @@ class _CheckListBuilderWidget extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 24, right: 24, bottom: 6),
-          child: Text(l10n.homePageChecklist, style: AppTypography.b18d),
+          child: Text(l10n.checklist, style: AppTypography.b18d),
         ),
         BlocBuilder<HomeChecklistBloc, HomeChecklistState>(
           builder: (context, state) => state.maybeWhen(

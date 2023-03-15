@@ -295,7 +295,7 @@ class _ContinueButton extends StatelessWidget {
     return BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
       builder: (context, state) {
         return CustomRoundedButton(
-          textButton: context.l10n.forgotPassPageContinueButton,
+          textButton: context.l10n.continueBtn,
           onPressed: state.isValid
               ? () {
                   final currentNode = FocusScope.of(context);

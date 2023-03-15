@@ -79,7 +79,7 @@ class ProjectEditPage extends StatelessWidget {
             floatingActionButton: Padding(
               padding: const EdgeInsets.only(left: 15, right: 15),
               child: CustomRoundedButton(
-                textButton: isUpdate ? l10n.projectEditPageUpdate : l10n.projectEditPageCreate,
+                textButton: isUpdate ? l10n.update : l10n.projectEditPageCreate,
                 onPressed: state.name.isNotEmpty
                     ? () {
                         final currentNode = FocusScope.of(context);

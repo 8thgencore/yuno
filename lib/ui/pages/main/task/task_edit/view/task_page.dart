@@ -93,7 +93,7 @@ class TaskEditPage extends StatelessWidget {
             floatingActionButton: Padding(
               padding: const EdgeInsets.only(left: 15, right: 15),
               child: CustomRoundedButton(
-                textButton: isUpdate ? l10n.taskEditPageUpdate : l10n.taskEditPageCreate,
+                textButton: isUpdate ? l10n.update : l10n.taskEditPageCreate,
                 onPressed: state.name.isNotEmpty
                     ? () {
                         final currentNode = FocusScope.of(context);

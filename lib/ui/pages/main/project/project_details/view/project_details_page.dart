@@ -290,7 +290,7 @@ class _CheckListWidget extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 24, right: 24, bottom: 6),
-          child: Text(l10n.projectDetailsPageChecklist, style: AppTypography.b18d),
+          child: Text(l10n.checklist, style: AppTypography.b18d),
         ),
         if (tasks.isNotEmpty)
           ListView.builder(

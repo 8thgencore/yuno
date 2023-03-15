@@ -81,7 +81,7 @@ class _ProfileContentWidget extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           ProfileButtonWidget(
-            text: l10n.profilePageLogout,
+            text: l10n.logout,
             icon: Assets.svg.logout.svg(
               height: 28,
               colorFilter: const ColorFilter.mode(AppColors.secondary100, BlendMode.srcIn),

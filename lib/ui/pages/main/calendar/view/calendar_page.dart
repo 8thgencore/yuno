@@ -113,7 +113,7 @@ class _CheckListBuilderWidget extends StatelessWidget {
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 6),
                       child: Text(
-                        l10n.calendarPageChecklist,
+                        l10n.checklist,
                         style: AppTypography.b18d,
                       ),
                     );

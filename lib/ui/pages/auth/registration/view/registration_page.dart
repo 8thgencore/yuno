@@ -283,7 +283,7 @@ class _BottomWidgetState extends State<_BottomWidget> {
               ),
               TextButton(
                 child: Text(
-                  l10n.regPageLogin,
+                  l10n.login,
                   style: const TextStyle(color: AppColors.primary100),
                 ),
                 onPressed: () => context.goNamed(RouteName.login),
@@ -501,7 +501,7 @@ class _RegistrationButton extends StatelessWidget {
       selector: (state) => state is RegistrationInProgress,
       builder: (context, inProgress) {
         return CustomRoundedButton(
-          textButton: context.l10n.regPageSignUpButton,
+          textButton: context.l10n.signUp,
           onPressed: () {
             final currentNode = FocusScope.of(context);
             if (currentNode.focusedChild != null && !currentNode.hasPrimaryFocus) {

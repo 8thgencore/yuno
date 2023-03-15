@@ -390,7 +390,7 @@ class _ConfirmButton extends StatelessWidget {
     return BlocBuilder<ResetPasswordBloc, ResetPasswordState>(
       builder: (context, state) {
         return CustomRoundedButton(
-          textButton: context.l10n.resetPassPageConfirmButton,
+          textButton: context.l10n.confirm,
           onPressed: state.isValid
               ? () {
                   final currentNode = FocusScope.of(context);

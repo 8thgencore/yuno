@@ -244,7 +244,7 @@ class _ContinueButton extends StatelessWidget {
     return BlocBuilder<OtpBloc, OtpState>(
       builder: (context, state) {
         return CustomRoundedButton(
-          textButton: context.l10n.otpPageContinueButton,
+          textButton: context.l10n.continueBtn,
           onPressed: state.isValid
               ? () {
                   final currentNode = FocusScope.of(context);
