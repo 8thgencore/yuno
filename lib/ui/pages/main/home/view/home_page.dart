@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:yuno/api/task/models/i_task_with_project_name.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
 import 'package:yuno/app/routes/routes.dart';
+import 'package:yuno/l10n/l10n.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/home/bloc/home_checklist_bloc.dart';
 import 'package:yuno/ui/pages/main/home/bloc/home_header_bloc.dart';
@@ -54,6 +55,7 @@ class _TopCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Container(
       margin: const EdgeInsets.all(10),
       height: 245,
@@ -79,7 +81,7 @@ class _TopCardWidget extends StatelessWidget {
                 children: [
                   const SizedBox(height: 30),
                   Text(
-                    'Hi, $username!',
+                    '${l10n.hi}, $username!',
                     style: AppTypography.b18l,
                   ),
                   const SizedBox(height: 12),
@@ -91,7 +93,7 @@ class _TopCardWidget extends StatelessWidget {
                       color: AppColors.dark100,
                     ),
                     child: Text(
-                      '$taskLength Active Task',
+                      '$taskLength ${l10n.homePageActiveTask}',
                       style: AppTypography.l18l,
                     ),
                   ),
@@ -133,10 +135,12 @@ class _LastTaskWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var deadline = 'Has no deadline';
+    final l10n = context.l10n;
+    var deadline = l10n.homePageNoDeadline;
     if (task != null) {
       if (task!.deadline != null) {
-        final outputFormat = DateFormat('dd MMMM yyyy, HH:mm');
+        final languageCode = Localizations.localeOf(context).languageCode;
+        final outputFormat = DateFormat('dd MMMM yyyy, HH:mm', languageCode);
         deadline = outputFormat.format(task!.deadline!);
       }
     }
@@ -188,7 +192,7 @@ class _LastTaskWidget extends StatelessWidget {
               alignment: Alignment.center,
               width: double.infinity,
               child: Text(
-                'No upcoming task',
+                l10n.homePageChecklistEmpty,
                 style: AppTypography.l14g,
               ),
             ),
@@ -201,6 +205,7 @@ class _ProjectsListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Column(
       children: [
         Padding(
@@ -208,11 +213,11 @@ class _ProjectsListWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Projects', style: AppTypography.b18d),
+              Text(l10n.projects, style: AppTypography.b18d),
               GestureDetector(
                 onTap: () async => context.pushNamed(RouteName.projects),
                 child: Text(
-                  'View All',
+                  l10n.homePageViewAll,
                   style: AppTypography.r14d.copyWith(color: AppColors.primary100),
                 ),
               ),
@@ -240,7 +245,7 @@ class _ProjectsListWidget extends StatelessWidget {
                         );
                       },
                     )
-                  : const ErrorContainer(text: 'Projects list is empty'),
+                  : ErrorContainer(text: l10n.homePageProjectsEmpty),
               failure: (error) => Text(error.toString(), style: AppTypography.l14g),
               orElse: () => Text('Error', style: AppTypography.l14g),
             ),
@@ -256,12 +261,13 @@ class _CheckListBuilderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 24, right: 24, bottom: 6),
-          child: Text('Checklist', style: AppTypography.b18d),
+          child: Text(l10n.checklist, style: AppTypography.b18d),
         ),
         BlocBuilder<HomeChecklistBloc, HomeChecklistState>(
           builder: (context, state) => state.maybeWhen(
@@ -303,9 +309,9 @@ class _CheckListBuilderWidget extends StatelessWidget {
                       );
                     },
                   )
-                : const ErrorContainer(text: 'Checklist is empty'),
+                : ErrorContainer(text: l10n.homePageChecklistEmpty),
             failure: (error) => ErrorContainer(text: '$error'),
-            orElse: () => const ErrorContainer(text: 'Tasks list is empty'),
+            orElse: () => ErrorContainer(text: l10n.homePageChecklistEmpty),
           ),
         ),
       ],

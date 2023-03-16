@@ -30,7 +30,7 @@ class _TaskClient implements TaskClient {
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<BaseResponse<PaginatedDataITaskWithProjectName>>(Options(
       method: 'GET',
@@ -63,7 +63,7 @@ class _TaskClient implements TaskClient {
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<BaseResponse<PaginatedDataITaskWithProjectName>>(Options(
       method: 'GET',
@@ -98,7 +98,7 @@ class _TaskClient implements TaskClient {
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<BaseResponse<PaginatedDataITaskWithProjectName>>(Options(
       method: 'GET',
@@ -151,7 +151,7 @@ class _TaskClient implements TaskClient {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<ITaskRead>>(Options(
       method: 'GET',
@@ -207,7 +207,7 @@ class _TaskClient implements TaskClient {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<ITaskRead>>(Options(
       method: 'DELETE',

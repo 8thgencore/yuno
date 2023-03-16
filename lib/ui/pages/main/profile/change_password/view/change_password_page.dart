@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
+import 'package:yuno/l10n/l10n.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/profile/change_password/bloc/change_password_bloc.dart';
 import 'package:yuno/ui/widgets/buttons/custom_rounded_button.dart';
@@ -14,6 +15,7 @@ class ChangePasswordPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return BlocConsumer<ChangePasswordBloc, ChangePasswordState>(
       listener: (context, state) {
         switch (state.status) {
@@ -29,8 +31,8 @@ class ChangePasswordPage extends StatelessWidget {
             context.loaderOverlay.hide();
             showToast(
               context,
-              child: const ToastWidget(
-                text: 'Password has been successfully updated',
+              child: ToastWidget(
+                text: l10n.profileChangePassSuccessUpdate,
                 type: ToastType.success,
               ),
             );
@@ -40,7 +42,7 @@ class ChangePasswordPage extends StatelessWidget {
             showToast(
               context,
               child: ToastWidget(
-                text: state.serverError ?? 'Server Error',
+                text: state.serverError ?? l10n.errorServerError,
                 type: ToastType.failure,
               ),
             );
@@ -56,7 +58,7 @@ class ChangePasswordPage extends StatelessWidget {
             floatingActionButton: Padding(
               padding: const EdgeInsets.only(left: 15, right: 15),
               child: CustomRoundedButton(
-                textButton: 'Change Password',
+                textButton: l10n.profileChangePassTitle,
                 onPressed: state.isValid
                     ? () {
                         final currentNode = FocusScope.of(context);
@@ -94,7 +96,7 @@ class _ChangePasswordContentWidget extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Text(
-                'Change Password',
+                context.l10n.profileChangePassTitle,
                 style: AppTypography.b18d,
               ),
             ],
@@ -153,6 +155,7 @@ class _ListRoundCheckWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return BlocBuilder<ChangePasswordBloc, ChangePasswordState>(
       builder: (context, state) {
         return Column(
@@ -168,7 +171,7 @@ class _ListRoundCheckWidget extends StatelessWidget {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  'Must be 6 characters or longer',
+                  l10n.profileChangePassMust6Char,
                   style: AppTypography.l14d,
                 )
               ],
@@ -185,7 +188,7 @@ class _ListRoundCheckWidget extends StatelessWidget {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  'Must contains at least 1 number',
+                  l10n.profileChangePassMust1Num,
                   style: AppTypography.l14d,
                 )
               ],
@@ -202,7 +205,7 @@ class _ListRoundCheckWidget extends StatelessWidget {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  'The password must match',
+                  l10n.profileChangePassMustMatch,
                   style: AppTypography.l14d,
                 )
               ],
@@ -235,7 +238,7 @@ class _CurrentPasswordTextFieldState extends State<_CurrentPasswordTextField> {
   Widget build(BuildContext context) {
     return CustomTextField(
       controller: controller,
-      labelText: 'Current Password',
+      labelText: context.l10n.profileChangePassCurrent,
       keyboardType: TextInputType.text,
       textColor: AppColors.dark100,
       obscureText: _isObscure,
@@ -287,7 +290,7 @@ class _NewPasswordTextFieldState extends State<_NewPasswordTextField> {
   Widget build(BuildContext context) {
     return CustomTextField(
       controller: controller,
-      labelText: 'New Password',
+      labelText: context.l10n.profileChangePassNew,
       keyboardType: TextInputType.text,
       textColor: AppColors.dark100,
       obscureText: _isObscure,
@@ -339,7 +342,7 @@ class _ConfirmNewPasswordTextFieldState extends State<_ConfirmNewPasswordTextFie
   Widget build(BuildContext context) {
     return CustomTextField(
       controller: controller,
-      labelText: 'Confirm New Password',
+      labelText: context.l10n.profileChangePassConfirm,
       keyboardType: TextInputType.text,
       textColor: AppColors.dark100,
       obscureText: _isObscure,

@@ -5,6 +5,7 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
+import 'package:yuno/l10n/l10n.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/auth/otp/bloc/otp_bloc.dart';
 import 'package:yuno/ui/pages/auth/otp/widget/otp_widget.dart';
@@ -107,17 +108,20 @@ class _TopInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 35),
       width: MediaQuery.of(context).size.width,
       child: Column(
         children: [
-          Text('Verify Your Account', style: AppTypography.b24l),
+          Text(
+            l10n.otpPageTitle,
+            style: AppTypography.b24l,
+            textAlign: TextAlign.center,
+          ),
           const SizedBox(height: 12),
           Text(
-            'One step closer. '
-            'We have sent you an OTP code to your email, '
-            'please check it on your inbox or spam box.',
+            l10n.otpPageDescription,
             style: AppTypography.l14l.copyWith(height: 2),
             textAlign: TextAlign.center,
           ),
@@ -158,7 +162,7 @@ class _ErrorWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Verification Code Invalid',
+                  context.l10n.otpPageVerificationCodeError,
                   style: AppTypography.b16l,
                 ),
                 const SizedBox(height: 4),
@@ -221,7 +225,7 @@ class _BottomWidgetState extends State<_BottomWidget> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Verification Code', style: AppTypography.l12g),
+          Text(context.l10n.otpPageVerificationCode, style: AppTypography.l12g),
           const SizedBox(height: 12),
           const OtpWidget(),
           const SizedBox(height: 40),
@@ -240,7 +244,7 @@ class _ContinueButton extends StatelessWidget {
     return BlocBuilder<OtpBloc, OtpState>(
       builder: (context, state) {
         return CustomRoundedButton(
-          textButton: 'Continue',
+          textButton: context.l10n.continueBtn,
           onPressed: state.isValid
               ? () {
                   final currentNode = FocusScope.of(context);

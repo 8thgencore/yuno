@@ -12,8 +12,9 @@ class CustomErrorInterceptor extends Interceptor {
   }
 }
 
-dynamic dioErrorInterceptor(DioError e) async {
-  await FirebaseCrashlytics.instance.recordError(e, e.stackTrace);
+dynamic dioErrorInterceptor(DioError e) {
+  // ignore: discarded_futures
+  FirebaseCrashlytics.instance.recordError(e, e.stackTrace);
 
   if (e.response?.statusCode != 200) {
     if (e.response?.data is Map<String, dynamic>) {

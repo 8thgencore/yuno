@@ -57,7 +57,7 @@ class _Client implements Client {
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IRoleRead>>(Options(
       method: 'GET',
@@ -83,7 +83,7 @@ class _Client implements Client {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IRoleRead>>(Options(
       method: 'GET',

@@ -6,6 +6,7 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/di/service_locator.dart';
 import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/domain/repository/api_auth_repository.dart';
+import 'package:yuno/l10n/l10n.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/auth/registration/bloc/registration_bloc.dart';
 import 'package:yuno/ui/widgets/buttons/custom_rounded_button.dart';
@@ -130,7 +131,7 @@ class _ErrorWidget extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                'Error from server',
+                context.l10n.errorServerError,
                 style: AppTypography.b16l,
               ),
               const SizedBox(height: 4),
@@ -164,17 +165,17 @@ class _TopInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    final l10n = context.l10n;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
       width: MediaQuery.of(context).size.width,
       child: Column(
         children: [
-          Text('Hey, Welcome!', style: AppTypography.b24l),
+          Text(l10n.regPageTitle, style: AppTypography.b24l),
           const SizedBox(height: 12),
           Center(
             child: Text(
-              'Welcome to Yuno! Enter all the details\n'
-              'below to continue enjoying all Yuno\n'
-              'amazing features.',
+              l10n.regPageDescription,
               style: AppTypography.l14l.copyWith(height: 2),
               textAlign: TextAlign.center,
             ),
@@ -244,6 +245,7 @@ class _BottomWidgetState extends State<_BottomWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Container(
       padding: const EdgeInsets.only(top: 20, left: 24, right: 24),
       decoration: const BoxDecoration(
@@ -276,13 +278,13 @@ class _BottomWidgetState extends State<_BottomWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Already have an account?',
+                l10n.regPageAlreadyHaveAccount,
                 style: AppTypography.l14d,
               ),
               TextButton(
-                child: const Text(
-                  'Login',
-                  style: TextStyle(color: AppColors.primary100),
+                child: Text(
+                  l10n.login,
+                  style: const TextStyle(color: AppColors.primary100),
                 ),
                 onPressed: () => context.goNamed(RouteName.login),
               ),
@@ -313,7 +315,7 @@ class _EmailTextField extends StatelessWidget {
         final error = fieldsInfo.emailError;
         return CustomTextField(
           focusNode: _emailFocusNode,
-          labelText: 'Enter your email address',
+          labelText: context.l10n.regPageEmail,
           keyboardType: TextInputType.emailAddress,
           textColor: error == null ? AppColors.dark100 : AppColors.error100,
           prefixIcon: IconButton(
@@ -353,7 +355,7 @@ class _NicknameTextField extends StatelessWidget {
         final error = fieldsInfo.nameError;
         return CustomTextField(
           focusNode: _usernameFocusNode,
-          labelText: 'Create your username',
+          labelText: context.l10n.regPageUsername,
           keyboardType: TextInputType.name,
           textColor: error == null ? AppColors.dark100 : AppColors.error100,
           prefixIcon: IconButton(
@@ -400,7 +402,7 @@ class _PasswordTextFieldState extends State<_PasswordTextField> {
         final error = fieldsInfo.passwordError;
         return CustomTextField(
           focusNode: widget._passwordFocusNode,
-          labelText: 'Confirm your password',
+          labelText: context.l10n.regPagePassword,
           obscureText: _isObscure,
           keyboardType: TextInputType.visiblePassword,
           textColor: error == null ? AppColors.dark100 : AppColors.error100,
@@ -455,7 +457,7 @@ class _PasswordTextConfirmFieldState extends State<_PasswordTextConfirmField> {
         final error = fieldsInfo.passwordConfirmError;
         return CustomTextField(
           focusNode: widget._passwordConfirmationFocusNode,
-          labelText: 'Create your password',
+          labelText: context.l10n.regPageConfirmPassword,
           obscureText: _isObscure,
           keyboardType: TextInputType.visiblePassword,
           textColor: error == null ? AppColors.dark100 : AppColors.error100,
@@ -499,7 +501,7 @@ class _RegistrationButton extends StatelessWidget {
       selector: (state) => state is RegistrationInProgress,
       builder: (context, inProgress) {
         return CustomRoundedButton(
-          textButton: 'Sign Me Up!',
+          textButton: context.l10n.signUp,
           onPressed: () {
             final currentNode = FocusScope.of(context);
             if (currentNode.focusedChild != null && !currentNode.hasPrimaryFocus) {
