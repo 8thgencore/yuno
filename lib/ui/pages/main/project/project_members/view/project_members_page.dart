@@ -125,7 +125,7 @@ class _MemberCard extends StatelessWidget {
                   style: AppTypography.b16d,
                 ),
                 Text(
-                  user.email,
+                  user.username,
                   style: AppTypography.l12g,
                 ),
               ],
