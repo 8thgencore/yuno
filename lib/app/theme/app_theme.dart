@@ -8,19 +8,6 @@ class AppTheme {
 
   static final lightTheme = ThemeData(
     fontFamily: FontFamily.poppins,
-    // colorScheme: ColorScheme(
-    //   brightness: Brightness.light,
-    //   primary: AppColors.primary100,
-    //   onPrimary: AppColors.primary100,
-    //   secondary: AppColors.secondary100,
-    //   onSecondary: AppColors.secondary100,
-    //   error: AppColors.error100,
-    //   onError: AppColors.error100,
-    //   background: AppColors.white100,
-    //   onBackground: AppColors.white100,
-    //   surface: AppColors.screen100,
-    //   onSurface: AppColors.screen100,
-    // ),
     appBarTheme: const AppBarTheme(
       elevation: 0,
       color: Colors.transparent,

@@ -1,10 +1,10 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/widgets.dart';
+import 'package:yuno/app/logger.dart';
 import 'package:yuno/app/theme/app_theme.dart';
 
 import 'firebase_options.dart';
@@ -13,17 +13,20 @@ class AppBlocObserver extends BlocObserver {
   @override
   void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
     super.onChange(bloc, change);
-    log('onChange(${bloc.runtimeType}, $change)');
+    l.info('onChange(${bloc.runtimeType}, $change)');
   }
 
   @override
   void onError(BlocBase<dynamic> bloc, Object error, StackTrace stackTrace) {
-    log('onError(${bloc.runtimeType}, $error, $stackTrace)');
+    l.info('onError(${bloc.runtimeType}, $error, $stackTrace)');
     super.onError(bloc, error, stackTrace);
   }
 }
 
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
+  // Init logger
+  initLogger();
+
   // This method sets the colors and brightness of the status bar and navigation bar
   AppTheme.setStatusBarAndNavigationBarColors();
 
@@ -35,10 +38,10 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   // Error
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
-  FlutterError.onError = (details) => log(details.exceptionAsString(), stackTrace: details.stack);
+  FlutterError.onError = (details) => l.error(details.exceptionAsString(), details.stack);
 
   await runZonedGuarded(
     () async => runApp(await builder()),
-    (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
+    (error, stackTrace) => l.error(error.toString(), stackTrace),
   );
 }
