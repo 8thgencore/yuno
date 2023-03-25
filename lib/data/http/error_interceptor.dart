@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:yuno/api/shared_models/http_validation_error.dart';
+import 'package:yuno/app/logger.dart';
 
 export 'package:dio/dio.dart';
 
@@ -14,7 +14,7 @@ class CustomErrorInterceptor extends Interceptor {
 
 dynamic dioErrorInterceptor(DioError e) {
   // ignore: discarded_futures
-  FirebaseCrashlytics.instance.recordError(e, e.stackTrace);
+  l.error(e, e.stackTrace);
 
   if (e.response?.statusCode != 200) {
     if (e.response?.data is Map<String, dynamic>) {

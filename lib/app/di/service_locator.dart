@@ -17,6 +17,7 @@ import 'package:yuno/domain/repository/api_auth_repository.dart';
 import 'package:yuno/domain/repository/api_project_repository.dart';
 import 'package:yuno/domain/repository/api_task_repository.dart';
 import 'package:yuno/domain/repository/api_user_repository.dart';
+import 'package:yuno/domain/services/remote_config_service.dart';
 import 'package:yuno/ui/pages/main/profile/profile_page/bloc/profile_bloc.dart';
 
 final sl = GetIt.instance;
@@ -58,14 +59,16 @@ void _setupRepositories() {
 
 // ONLY SINGLETONS
 void _setupInteractors() {
-  sl.registerLazySingleton(
-    () => LogoutInteractor(
-      userDataRepository: sl.get<UserDataRepository>(),
-      tokenDataRepository: sl.get<TokenDataRepository>(),
-      refreshTokenDataRepository: sl.get<RefreshTokenDataRepository>(),
-      tasksDataRepository: sl.get<TasksNotDoneDataRepository>(),
-    ),
-  );
+  sl
+    ..registerLazySingleton(
+      () => LogoutInteractor(
+        userDataRepository: sl.get<UserDataRepository>(),
+        tokenDataRepository: sl.get<TokenDataRepository>(),
+        refreshTokenDataRepository: sl.get<RefreshTokenDataRepository>(),
+        tasksDataRepository: sl.get<TasksNotDoneDataRepository>(),
+      ),
+    )
+    ..registerSingleton<RemoteConfigService>(RemoteConfigService());
 }
 
 // ONLY SINGLETONS
@@ -73,7 +76,7 @@ void _setupComplexInteractors() {}
 
 void _setApiRelatedClasses() {
   sl
-    ..registerFactory(DioBuilder.new)
+    ..registerFactory(DioProvider.new)
     ..registerLazySingleton(
       () => AuthorizationInterceptor(
         tokenDataRepository: sl.get<TokenDataRepository>(),
@@ -81,9 +84,12 @@ void _setApiRelatedClasses() {
       ),
     )
     // Dio initialization
-    ..registerSingleton<Dio>(sl.get<DioBuilder>().build(), instanceName: _notAuthorizedDio)
     ..registerSingleton<Dio>(
-      sl.get<DioBuilder>().addAuthorizationInterceptor(sl.get<AuthorizationInterceptor>()).build(),
+      sl.get<DioProvider>().createInstance(),
+      instanceName: _notAuthorizedDio,
+    )
+    ..registerSingleton<Dio>(
+      sl.get<DioProvider>().addAuthorizationInterceptor(sl.get<AuthorizationInterceptor>()),
       instanceName: _authorizedDio,
     )
     // Dio client`s

@@ -361,6 +361,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.3.17"
+  firebase_remote_config:
+    dependency: "direct main"
+    description:
+      name: firebase_remote_config
+      sha256: "191aa5376ccf512d12e124dc7a99abcb6bd5d4e2b073d102253dd94d5a513e57"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.15"
+  firebase_remote_config_platform_interface:
+    dependency: transitive
+    description:
+      name: firebase_remote_config_platform_interface
+      sha256: "3f23e4944011852da5fdd073758009c52d468d78a5a4e3c28752c11de430941a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.35"
+  firebase_remote_config_web:
+    dependency: transitive
+    description:
+      name: firebase_remote_config_web
+      sha256: e79a73c7b42ba283de122f1aed79a8923ec526e6bc8a554e798520b453fca351
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.24"
   fixnum:
     dependency: transitive
     description:
@@ -509,14 +533,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
-  go_router_flow:
+  go_router:
     dependency: "direct main"
     description:
-      name: go_router_flow
-      sha256: "56dc958c076dc6ce9c119dd95fc696d179ef9daabd9f94116dee33aea2d7932f"
+      name: go_router
+      sha256: "432409518740645ce7f28802171b78783197d01149fad44f9b8ae55f40277139"
       url: "https://pub.dev"
     source: hosted
-    version: "6.2.0"
+    version: "6.5.0"
   graphs:
     dependency: transitive
     description:
@@ -598,13 +622,13 @@ packages:
     source: hosted
     version: "2.1.0"
   logging:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: logging
-      sha256: c0bbfe94d46aedf9b8b3e695cf3bd48c8e14b35e3b2c639e0aa7755d589ba946
+      sha256: "04094f2eb032cbb06c6f6e8d3607edcfcb0455e2bb6cbc010cb01171dcb64e6d"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.0"
+    version: "1.1.1"
   matcher:
     dependency: transitive
     description:
@@ -857,10 +881,10 @@ packages:
     dependency: "direct main"
     description:
       name: shared_preferences
-      sha256: ee6257848f822b8481691f20c3e6d2bfee2e9eccb2a3d249907fcfb198c55b41
+      sha256: "78528fd87d0d08ffd3e69551173c026e8eacc7b7079c82eb6a77413957b7e394"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.18"
+    version: "2.0.20"
   shared_preferences_android:
     dependency: transitive
     description:
