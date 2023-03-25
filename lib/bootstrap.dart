@@ -6,7 +6,9 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/widgets.dart';
 import 'package:yuno/app/logger.dart';
 import 'package:yuno/app/theme/app_theme.dart';
+import 'package:yuno/resources/environment.dart';
 
+import 'app/di/service_locator.dart';
 import 'firebase_options.dart';
 
 class AppBlocObserver extends BlocObserver {
@@ -24,6 +26,8 @@ class AppBlocObserver extends BlocObserver {
 }
 
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   // Init logger
   initLogger();
 
@@ -35,6 +39,12 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   // Initialize Firebase with the default options for the current platform
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  // Load environment variables
+  await Environment.init();
+
+  // Init Service Locator
+  initServiceLocator();
 
   // Error
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;

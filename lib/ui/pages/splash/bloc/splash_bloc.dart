@@ -8,6 +8,7 @@ import 'package:yuno/domain/repository/api_task_repository.dart';
 import 'package:yuno/domain/repository/api_user_repository.dart';
 
 part 'splash_event.dart';
+
 part 'splash_state.dart';
 
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
@@ -29,8 +30,6 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   ) async {
     try {
       await userRepository.getData();
-
-      // await Future.delayed(const Duration(seconds: 1));
 
       final token = await tokenDataRepository.getItem();
       if (token == null || token.isEmpty) {
