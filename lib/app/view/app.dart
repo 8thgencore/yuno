@@ -18,6 +18,7 @@ class _AppState extends State<App> with RouterMixin {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       routerConfig: router,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
