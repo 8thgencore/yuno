@@ -20,7 +20,6 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
     required this.userRepository,
   }) : super(
           const ProfileEditState(
-            status: ProfileEditStatus.initial,
             firstName: '',
             lastName: '',
             username: '',

@@ -50,7 +50,7 @@ class ProjectDetailsPage extends StatelessWidget {
                   onPressed: () async {
                     final result = await context.pushNamed<bool>(
                       RouteName.taskCreate,
-                      queryParams: {'project_id': project.id},
+                      queryParameters: {'project_id': project.id},
                     );
                     WidgetsBinding.instance.addPostFrameCallback((_) {
                       if (result ?? false) {
@@ -166,7 +166,7 @@ class _ProjectFullCardWidget extends StatelessWidget {
               child: GestureDetector(
                 onTap: () async => context.pushNamed(
                   RouteName.projectMembers,
-                  params: {'id': project.id},
+                  pathParameters: {'id': project.id},
                 ),
                 child: YunoWhiteTextButton(text: l10n.projectDetailsPageProjectMembers),
               ),
@@ -236,7 +236,7 @@ class _ButtonsRowWidget extends StatelessWidget {
           onTap: () async {
             final result = await context.pushNamed<bool>(
               RouteName.projectEdit,
-              params: {'id': projectId},
+              pathParameters: {'id': projectId},
             );
             WidgetsBinding.instance.addPostFrameCallback((_) {
               if (result ?? false) {
@@ -304,7 +304,7 @@ class _CheckListWidget extends StatelessWidget {
                     ? () async {
                         final result = await context.pushNamed<bool>(
                           RouteName.taskEdit,
-                          params: {'id': tasks[index].id},
+                          pathParameters: {'id': tasks[index].id},
                         );
                         WidgetsBinding.instance.addPostFrameCallback((_) {
                           if (result ?? false) {

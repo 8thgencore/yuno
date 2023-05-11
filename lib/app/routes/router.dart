@@ -195,7 +195,7 @@ mixin RouterMixin on State<App> {
                   userRepository: sl.get<IUserRepository>(),
                   projectRepository: sl.get<IProjectRepository>(),
                   taskRepository: sl.get<ITaskRepository>(),
-                )..add(ProjectDetailsEvent.started(state.params['id'] ?? '')),
+                )..add(ProjectDetailsEvent.started(state.pathParameters['id'] ?? '')),
                 child: const ProjectDetailsPage(),
               ),
               routes: [
@@ -206,7 +206,7 @@ mixin RouterMixin on State<App> {
                   builder: (context, state) => BlocProvider(
                     create: (context) => ProjectEditBloc(
                       projectRepository: sl.get<IProjectRepository>(),
-                    )..add(ProjectEditEvent.started(state.params['id'] ?? '')),
+                    )..add(ProjectEditEvent.started(state.pathParameters['id'] ?? '')),
                     child: const ProjectEditPage(isUpdate: true),
                   ),
                 ),
@@ -217,7 +217,7 @@ mixin RouterMixin on State<App> {
                   builder: (context, state) => BlocProvider(
                     create: (context) => ProjectMembersBloc(
                       projectRepository: sl.get<IProjectRepository>(),
-                    )..add(ProjectMembersEvent.started(state.params['id'] ?? '')),
+                    )..add(ProjectMembersEvent.started(state.pathParameters['id'] ?? '')),
                     child: const ProjectMembersPage(),
                   ),
                 ),
@@ -237,7 +237,7 @@ mixin RouterMixin on State<App> {
               taskRepository: sl.get<ITaskRepository>(),
             )..add(
                 TaskEditEvent.started(
-                  id: state.params['id'] ?? '',
+                  id: state.pathParameters['id'] ?? '',
                   projectId: '',
                 ),
               ),
@@ -254,7 +254,7 @@ mixin RouterMixin on State<App> {
             )..add(
                 TaskEditEvent.started(
                   id: '',
-                  projectId: state.queryParams['project_id'] ?? '',
+                  projectId: state.queryParameters['project_id'] ?? '',
                 ),
               ),
             child: const TaskEditPage(),

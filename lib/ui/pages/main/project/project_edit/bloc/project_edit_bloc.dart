@@ -16,7 +16,6 @@ class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
     required this.projectRepository,
   }) : super(
           const ProjectEditState(
-            status: ProjectEditStatus.initial,
             id: '',
             name: '',
             description: '',

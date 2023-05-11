@@ -16,7 +16,6 @@ class TaskEditBloc extends Bloc<TaskEditEvent, TaskEditState> {
     required this.taskRepository,
   }) : super(
           const TaskEditState(
-            status: TaskEditStatus.initial,
             id: '',
             name: '',
           ),

@@ -66,7 +66,7 @@ class ProjectEditPage extends StatelessWidget {
                 type: ToastType.success,
               ),
             );
-            context.pushReplacementNamed(RouteName.project, params: {'id': state.id});
+            context.pushReplacementNamed(RouteName.project, pathParameters: {'id': state.id});
             break;
         }
       },
@@ -153,8 +153,8 @@ class _ListTextFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const [
+    return const Column(
+      children: [
         SizedBox(height: 14),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 14),

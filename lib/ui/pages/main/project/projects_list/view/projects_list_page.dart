@@ -161,7 +161,7 @@ class _ProjectFullCardWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () async => context.pushNamed(
         RouteName.project,
-        params: {'id': project.id},
+        pathParameters: {'id': project.id},
       ),
       child: Container(
         height: 200,
