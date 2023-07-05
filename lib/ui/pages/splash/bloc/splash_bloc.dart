@@ -39,7 +39,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
         await taskRepository.getNotDoneTasks();
         emit(const SplashAuthorized());
       }
-    } on DioError catch (_) {
+    } on DioException catch (_) {
       emit(const SplashUnauthorized());
     }
   }

@@ -61,7 +61,7 @@ class TaskEditBloc extends Bloc<TaskEditEvent, TaskEditState> {
         );
       }
       emit(state.copyWith(status: TaskEditStatus.fillingFields));
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(
         state.copyWith(
           status: TaskEditStatus.failureLoaded,
@@ -105,7 +105,7 @@ class TaskEditBloc extends Bloc<TaskEditEvent, TaskEditState> {
         projectId: state.projectId,
       );
       emit(state.copyWith(status: TaskEditStatus.successCreated));
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(
         state.copyWith(
           status: TaskEditStatus.failure,
@@ -129,7 +129,7 @@ class TaskEditBloc extends Bloc<TaskEditEvent, TaskEditState> {
         projectId: state.projectId,
       );
       emit(state.copyWith(status: TaskEditStatus.successUpdated));
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(
         state.copyWith(
           status: TaskEditStatus.failure,

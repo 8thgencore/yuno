@@ -108,7 +108,7 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
       } else {
         _showUnknownError(emit);
       }
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(
         state.copyWith(
           status: ProfileEditStatus.failure,

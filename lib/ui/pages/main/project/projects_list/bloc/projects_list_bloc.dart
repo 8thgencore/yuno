@@ -99,7 +99,7 @@ class ProjectsListBloc extends Bloc<ProjectsListEvent, ProjectsListState> {
       _projects = [..._projects, ...projects.items];
       _pages = projects.pages;
       emit(ProjectsListState.loaded(projects: _projects, isShowLoading: false, isShowError: false));
-    } on DioError catch (_) {
+    } on DioException catch (_) {
       emit(ProjectsListState.loaded(projects: _projects, isShowLoading: false, isShowError: true));
     }
   }

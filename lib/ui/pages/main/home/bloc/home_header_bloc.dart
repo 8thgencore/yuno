@@ -69,7 +69,7 @@ class HomeHeaderBloc extends Bloc<HomeHeaderEvent, HomeHeaderState> {
           task: _task,
         ),
       );
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(HomeHeaderState.failure(dioErrorInterceptor(dioError).toString()));
     }
   }

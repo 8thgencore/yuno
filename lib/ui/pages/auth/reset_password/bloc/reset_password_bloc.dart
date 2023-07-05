@@ -90,7 +90,7 @@ class ResetPasswordBloc extends Bloc<ResetPasswordEvent, ResetPasswordState> {
 
       await authRepository.resetPassword(password: state.password);
       emit(state.copyWith(status: ResetPasswordStatus.success));
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(
         state.copyWith(
           status: ResetPasswordStatus.failure,

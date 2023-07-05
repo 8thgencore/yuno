@@ -53,7 +53,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
       emit(const ProjectDetailsState.loading());
       _projectId = event.id;
       await _getProjectInfo(emit);
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
     }
   }
@@ -78,7 +78,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
       if (index >= 0) {
         _tasks[index] = task.copyWith(done: !isDone);
       }
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
     }
   }
@@ -100,7 +100,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
           isOwner: _isOwner,
         ),
       );
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
     }
   }
@@ -111,7 +111,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
   ) async {
     try {
       await _getProjectInfo(emit);
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
     }
   }
@@ -124,7 +124,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
       await projectRepository.deleteById(id: _projectId);
       await taskRepository.getNotDoneTasks();
       emit(const ProjectDetailsState.deleted());
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
     }
   }
@@ -138,7 +138,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
       // get new tasks list
       await taskRepository.getNotDoneTasks();
       await _getProjectInfo(emit);
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
     }
   }
@@ -152,7 +152,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
       // get new tasks list
       await taskRepository.getNotDoneTasks();
       await _getProjectInfo(emit);
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(ProjectDetailsState.failure(dioErrorInterceptor(dioError).toString()));
     }
   }

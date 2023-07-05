@@ -66,7 +66,7 @@ class ForgotPasswordBloc extends Bloc<ForgotPasswordEvent, ForgotPasswordState> 
 
       await authRepository.forgotPassword(email: state.email);
       emit(state.copyWith(status: ForgotPasswordStatus.success));
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(
         state.copyWith(
           status: ForgotPasswordStatus.failure,

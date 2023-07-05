@@ -54,7 +54,7 @@ class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
         );
       }
       emit(state.copyWith(status: ProjectEditStatus.fillingFields));
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(
         state.copyWith(
           status: ProjectEditStatus.failure,
@@ -94,7 +94,7 @@ class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
           status: ProjectEditStatus.successCreated,
         ),
       );
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(
         state.copyWith(
           status: ProjectEditStatus.failure,
@@ -116,7 +116,7 @@ class ProjectEditBloc extends Bloc<ProjectEditEvent, ProjectEditState> {
         description: state.description,
       );
       emit(state.copyWith(status: ProjectEditStatus.successUpdated));
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(
         state.copyWith(
           status: ProjectEditStatus.failure,

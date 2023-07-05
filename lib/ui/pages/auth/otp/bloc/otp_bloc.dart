@@ -53,7 +53,7 @@ class OtpBloc extends Bloc<OtpEvent, OtpState> {
     try {
       await authRepository.sendOtp(otp: state.otp);
       emit(state.copyWith(status: OtpStatus.success, serverError: null));
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(
         state.copyWith(
           status: OtpStatus.failure,

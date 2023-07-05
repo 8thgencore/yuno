@@ -33,7 +33,7 @@ class StatisticsBloc extends Bloc<StatisticsEvent, StatisticsState> {
     try {
       final stats = await projectRepository.getStats();
       emit(StatisticsState.loaded(stats));
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(StatisticsState.failure(dioErrorInterceptor(dioError).toString()));
     }
   }

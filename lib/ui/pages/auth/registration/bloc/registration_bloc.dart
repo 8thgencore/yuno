@@ -145,7 +145,7 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
 
       _highlightServerError = false;
       emit(const RegistrationCompleted());
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       _serverError = dioErrorInterceptor(dioError).toString();
       _highlightServerError = true;
       emit(_calculateFieldsInfo());
