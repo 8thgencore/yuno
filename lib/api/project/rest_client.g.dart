@@ -20,8 +20,8 @@ class _ProjectClient implements ProjectClient {
 
   @override
   Future<BaseResponse<PaginatedDataIProjectWithUsers>> getProjectMy({
-    page = 1,
-    size = 50,
+    int? page = 1,
+    int? size = 50,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -43,7 +43,11 @@ class _ProjectClient implements ProjectClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<PaginatedDataIProjectWithUsers>.fromJson(
       _result.data!,
       (json) => PaginatedDataIProjectWithUsers.fromJson(json as Map<String, dynamic>),
@@ -53,8 +57,8 @@ class _ProjectClient implements ProjectClient {
 
   @override
   Future<BaseResponse<PaginatedDataIProjectWithUsers>> getProjectList({
-    page = 1,
-    size = 50,
+    int? page = 1,
+    int? size = 50,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -76,7 +80,11 @@ class _ProjectClient implements ProjectClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<PaginatedDataIProjectWithUsers>.fromJson(
       _result.data!,
       (json) => PaginatedDataIProjectWithUsers.fromJson(json as Map<String, dynamic>),
@@ -102,7 +110,11 @@ class _ProjectClient implements ProjectClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<StatisticsRead>.fromJson(
       _result.data!,
       (json) => StatisticsRead.fromJson(json as Map<String, dynamic>),
@@ -111,12 +123,11 @@ class _ProjectClient implements ProjectClient {
   }
 
   @override
-  Future<BaseResponse<IProjectRead>> postProject({required body}) async {
+  Future<BaseResponse<IProjectRead>> postProject({required IProject body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    final _data = body;
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IProjectRead>>(Options(
       method: 'POST',
@@ -129,7 +140,11 @@ class _ProjectClient implements ProjectClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<IProjectRead>.fromJson(
       _result.data!,
       (json) => IProjectRead.fromJson(json as Map<String, dynamic>),
@@ -138,7 +153,7 @@ class _ProjectClient implements ProjectClient {
   }
 
   @override
-  Future<BaseResponse<IProjectWithUsersTasks>> getProjectId({required projectId}) async {
+  Future<BaseResponse<IProjectWithUsersTasks>> getProjectId({required String projectId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -155,7 +170,11 @@ class _ProjectClient implements ProjectClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<IProjectWithUsersTasks>.fromJson(
       _result.data!,
       (json) => IProjectWithUsersTasks.fromJson(json as Map<String, dynamic>),
@@ -165,14 +184,13 @@ class _ProjectClient implements ProjectClient {
 
   @override
   Future<BaseResponse<IProjectRead>> putProjectId({
-    required projectId,
-    required body,
+    required String projectId,
+    required IProjectUpdate body,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    final _data = body;
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IProjectRead>>(Options(
       method: 'PUT',
@@ -185,7 +203,11 @@ class _ProjectClient implements ProjectClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<IProjectRead>.fromJson(
       _result.data!,
       (json) => IProjectRead.fromJson(json as Map<String, dynamic>),
@@ -194,7 +216,7 @@ class _ProjectClient implements ProjectClient {
   }
 
   @override
-  Future<BaseResponse<IProjectRead>> deleteProjectId({required projectId}) async {
+  Future<BaseResponse<IProjectRead>> deleteProjectId({required String projectId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -211,7 +233,11 @@ class _ProjectClient implements ProjectClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<IProjectRead>.fromJson(
       _result.data!,
       (json) => IProjectRead.fromJson(json as Map<String, dynamic>),
@@ -220,7 +246,7 @@ class _ProjectClient implements ProjectClient {
   }
 
   @override
-  Future<BaseResponse<IProjectWithUsers>> projectIdJoin({required projectId}) async {
+  Future<BaseResponse<IProjectWithUsers>> projectIdJoin({required String projectId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -237,7 +263,11 @@ class _ProjectClient implements ProjectClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<IProjectWithUsers>.fromJson(
       _result.data!,
       (json) => IProjectWithUsers.fromJson(json as Map<String, dynamic>),
@@ -246,7 +276,7 @@ class _ProjectClient implements ProjectClient {
   }
 
   @override
-  Future<BaseResponse<IProjectWithUsers>> projectIdLeave({required projectId}) async {
+  Future<BaseResponse<IProjectWithUsers>> projectIdLeave({required String projectId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -263,7 +293,11 @@ class _ProjectClient implements ProjectClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<IProjectWithUsers>.fromJson(
       _result.data!,
       (json) => IProjectWithUsers.fromJson(json as Map<String, dynamic>),
@@ -273,9 +307,9 @@ class _ProjectClient implements ProjectClient {
 
   @override
   Future<BaseResponse<PaginatedDataITaskRead>> getProjectIdTasks({
-    required projectId,
-    page = 1,
-    size = 50,
+    required String projectId,
+    int? page = 1,
+    int? size = 50,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -297,7 +331,11 @@ class _ProjectClient implements ProjectClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<PaginatedDataITaskRead>.fromJson(
       _result.data!,
       (json) => PaginatedDataITaskRead.fromJson(json as Map<String, dynamic>),
@@ -307,9 +345,9 @@ class _ProjectClient implements ProjectClient {
 
   @override
   Future<BaseResponse<PaginatedDataIUserRead>> getProjectIdMembers({
-    required projectId,
-    page = 1,
-    size = 50,
+    required String projectId,
+    int? page = 1,
+    int? size = 50,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -331,7 +369,11 @@ class _ProjectClient implements ProjectClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<PaginatedDataIUserRead>.fromJson(
       _result.data!,
       (json) => PaginatedDataIUserRead.fromJson(json as Map<String, dynamic>),
@@ -350,5 +392,22 @@ class _ProjectClient implements ProjectClient {
       }
     }
     return requestOptions;
+  }
+
+  String _combineBaseUrls(
+    String dioBaseUrl,
+    String? baseUrl,
+  ) {
+    if (baseUrl == null || baseUrl.trim().isEmpty) {
+      return dioBaseUrl;
+    }
+
+    final url = Uri.parse(baseUrl);
+
+    if (url.isAbsolute) {
+      return url.toString();
+    }
+
+    return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }

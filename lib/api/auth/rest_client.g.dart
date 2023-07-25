@@ -19,12 +19,11 @@ class _AuthClient implements AuthClient {
   String? baseUrl;
 
   @override
-  Future<BaseResponse<Token>> postAuthLogin({required body}) async {
+  Future<BaseResponse<Token>> postAuthLogin({required IAuthLogin body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    final _data = body;
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<Token>>(Options(
       method: 'POST',
@@ -37,7 +36,11 @@ class _AuthClient implements AuthClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<Token>.fromJson(
       _result.data!,
       (json) => Token.fromJson(json as Map<String, dynamic>),
@@ -46,12 +49,11 @@ class _AuthClient implements AuthClient {
   }
 
   @override
-  Future<BaseResponse<IUserRead>> postAuthRegister({required body}) async {
+  Future<BaseResponse<IUserRead>> postAuthRegister({required IAuthRegister body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    final _data = body;
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IUserRead>>(Options(
       method: 'POST',
@@ -64,7 +66,11 @@ class _AuthClient implements AuthClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<IUserRead>.fromJson(
       _result.data!,
       (json) => IUserRead.fromJson(json as Map<String, dynamic>),
@@ -73,12 +79,11 @@ class _AuthClient implements AuthClient {
   }
 
   @override
-  Future<BaseResponse<Token>> postAuthChangePassword({required body}) async {
+  Future<BaseResponse<Token>> postAuthChangePassword({required IAuthChangePassword body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    final _data = body;
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<Token>>(Options(
       method: 'POST',
@@ -91,7 +96,11 @@ class _AuthClient implements AuthClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<Token>.fromJson(
       _result.data!,
       (json) => Token.fromJson(json as Map<String, dynamic>),
@@ -100,12 +109,11 @@ class _AuthClient implements AuthClient {
   }
 
   @override
-  Future<TokenRead> postAuthToken({required body}) async {
+  Future<TokenRead> postAuthToken({required IAuthToken body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    final _data = body;
     final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<TokenRead>(Options(
       method: 'POST',
       headers: _headers,
@@ -117,18 +125,21 @@ class _AuthClient implements AuthClient {
           queryParameters: queryParameters,
           data: _data,
         )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
     final value = TokenRead.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<BaseResponse<TokenRead>> postAuthRefreshToken({required body}) async {
+  Future<BaseResponse<TokenRead>> postAuthRefreshToken({required RefreshToken body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    final _data = body;
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<TokenRead>>(Options(
       method: 'POST',
@@ -141,7 +152,11 @@ class _AuthClient implements AuthClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<TokenRead>.fromJson(
       _result.data!,
       (json) => TokenRead.fromJson(json as Map<String, dynamic>),
@@ -150,12 +165,11 @@ class _AuthClient implements AuthClient {
   }
 
   @override
-  Future<BaseResponse<dynamic>> postAuthForgotPassword({required body}) async {
+  Future<BaseResponse<dynamic>> postAuthForgotPassword({required IAuthForgotPassword body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    final _data = body;
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<dynamic>>(Options(
       method: 'POST',
@@ -168,7 +182,11 @@ class _AuthClient implements AuthClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<dynamic>.fromJson(
       _result.data!,
       (json) => json as dynamic,
@@ -177,12 +195,11 @@ class _AuthClient implements AuthClient {
   }
 
   @override
-  Future<BaseResponse<ResetToken>> postAuthOtp({required body}) async {
+  Future<BaseResponse<ResetToken>> postAuthOtp({required IAuthOtpCode body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    final _data = body;
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<ResetToken>>(Options(
       method: 'POST',
@@ -195,7 +212,11 @@ class _AuthClient implements AuthClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<ResetToken>.fromJson(
       _result.data!,
       (json) => ResetToken.fromJson(json as Map<String, dynamic>),
@@ -204,12 +225,11 @@ class _AuthClient implements AuthClient {
   }
 
   @override
-  Future<BaseResponse<IUserRead>> postAuthResetPassword({required body}) async {
+  Future<BaseResponse<IUserRead>> postAuthResetPassword({required IAuthResetPassword body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    final _data = body;
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IUserRead>>(Options(
       method: 'POST',
@@ -222,7 +242,11 @@ class _AuthClient implements AuthClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<IUserRead>.fromJson(
       _result.data!,
       (json) => IUserRead.fromJson(json as Map<String, dynamic>),
@@ -241,6 +265,23 @@ class _AuthClient implements AuthClient {
       }
     }
     return requestOptions;
+  }
+
+  String _combineBaseUrls(
+    String dioBaseUrl,
+    String? baseUrl,
+  ) {
+    if (baseUrl == null || baseUrl.trim().isEmpty) {
+      return dioBaseUrl;
+    }
+
+    final url = Uri.parse(baseUrl);
+
+    if (url.isAbsolute) {
+      return url.toString();
+    }
+
+    return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }
 
@@ -257,12 +298,11 @@ class _AuthPasswordClient implements AuthPasswordClient {
   String? baseUrl;
 
   @override
-  Future<BaseResponse<Token>> postAuthChangePassword({required body}) async {
+  Future<BaseResponse<Token>> postAuthChangePassword({required IAuthChangePassword body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    final _data = body;
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<Token>>(Options(
       method: 'POST',
@@ -275,7 +315,11 @@ class _AuthPasswordClient implements AuthPasswordClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<Token>.fromJson(
       _result.data!,
       (json) => Token.fromJson(json as Map<String, dynamic>),
@@ -294,5 +338,22 @@ class _AuthPasswordClient implements AuthPasswordClient {
       }
     }
     return requestOptions;
+  }
+
+  String _combineBaseUrls(
+    String dioBaseUrl,
+    String? baseUrl,
+  ) {
+    if (baseUrl == null || baseUrl.trim().isEmpty) {
+      return dioBaseUrl;
+    }
+
+    final url = Uri.parse(baseUrl);
+
+    if (url.isAbsolute) {
+      return url.toString();
+    }
+
+    return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }

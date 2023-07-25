@@ -254,7 +254,7 @@ mixin RouterMixin on State<App> {
             )..add(
                 TaskEditEvent.started(
                   id: '',
-                  projectId: state.queryParameters['project_id'] ?? '',
+                  projectId: state.uri.queryParameters['project_id'] ?? '',
                 ),
               ),
             child: const TaskEditPage(),

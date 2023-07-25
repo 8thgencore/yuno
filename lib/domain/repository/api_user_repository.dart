@@ -82,10 +82,6 @@ class ApiUserRepository implements IUserRepository {
     required PlatformFile file,
   }) async {
     final response = await userClient.postUserImage(
-      file: const IImageUpload(
-        title: '',
-        description: '',
-      ),
       imageFile: File(file.path!),
     );
 
