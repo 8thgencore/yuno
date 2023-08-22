@@ -32,10 +32,8 @@ class TaskEditPage extends StatelessWidget {
             break;
           case TaskEditStatus.loading:
             context.loaderOverlay.show();
-            break;
           case TaskEditStatus.loaded:
             context.loaderOverlay.hide();
-            break;
           case TaskEditStatus.failure:
             context.loaderOverlay.hide();
             showToast(
@@ -45,7 +43,6 @@ class TaskEditPage extends StatelessWidget {
                 type: ToastType.failure,
               ),
             );
-            break;
           case TaskEditStatus.failureLoaded:
             context.loaderOverlay.hide();
             showToast(
@@ -56,10 +53,8 @@ class TaskEditPage extends StatelessWidget {
               ),
             );
             context.pop();
-            break;
           case TaskEditStatus.fillingFields:
             context.loaderOverlay.hide();
-            break;
           case TaskEditStatus.successUpdated:
             context.loaderOverlay.hide();
             showToast(
@@ -70,7 +65,6 @@ class TaskEditPage extends StatelessWidget {
               ),
             );
             context.pop(true);
-            break;
           case TaskEditStatus.successCreated:
             context.loaderOverlay.hide();
             showToast(
@@ -81,7 +75,6 @@ class TaskEditPage extends StatelessWidget {
               ),
             );
             context.pop(true);
-            break;
         }
       },
       builder: (context, state) {

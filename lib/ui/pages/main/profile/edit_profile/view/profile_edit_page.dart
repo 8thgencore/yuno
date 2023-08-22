@@ -22,13 +22,10 @@ class ProfileEditPage extends StatelessWidget {
         switch (state.status) {
           case ProfileEditStatus.initial:
             context.loaderOverlay.show();
-            break;
           case ProfileEditStatus.loading:
             context.loaderOverlay.show();
-            break;
           case ProfileEditStatus.loaded:
             context.loaderOverlay.hide();
-            break;
           case ProfileEditStatus.success:
             context.loaderOverlay.hide();
             showToast(
@@ -38,7 +35,6 @@ class ProfileEditPage extends StatelessWidget {
                 type: ToastType.success,
               ),
             );
-            break;
           case ProfileEditStatus.failure:
             context.loaderOverlay.hide();
             showToast(
@@ -48,7 +44,6 @@ class ProfileEditPage extends StatelessWidget {
                 type: ToastType.failure,
               ),
             );
-            break;
         }
       },
       child: LoaderOverlay(

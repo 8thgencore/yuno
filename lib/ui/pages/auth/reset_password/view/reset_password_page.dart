@@ -66,7 +66,6 @@ class _ResetPasswordPageWidget extends StatelessWidget {
               ),
             );
             context.goNamed(RouteName.login);
-            break;
         }
       },
       child: Stack(

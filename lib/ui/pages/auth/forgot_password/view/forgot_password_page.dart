@@ -57,8 +57,6 @@ class _ForgotPasswordPageWidget extends StatelessWidget {
             break;
           case ForgotPasswordStatus.success:
             await context.pushNamed(RouteName.otp);
-
-            break;
         }
       },
       child: Stack(

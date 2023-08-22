@@ -56,7 +56,6 @@ class _OtpPageWidget extends StatelessWidget {
             break;
           case OtpStatus.success:
             await context.pushNamed(RouteName.resetPassword);
-            break;
         }
       },
       child: Stack(

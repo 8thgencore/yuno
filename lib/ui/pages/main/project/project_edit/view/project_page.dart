@@ -30,10 +30,8 @@ class ProjectEditPage extends StatelessWidget {
             break;
           case ProjectEditStatus.loading:
             context.loaderOverlay.show();
-            break;
           case ProjectEditStatus.loaded:
             context.loaderOverlay.hide();
-            break;
           case ProjectEditStatus.failure:
             context.loaderOverlay.hide();
             showToast(
@@ -43,7 +41,6 @@ class ProjectEditPage extends StatelessWidget {
                 type: ToastType.failure,
               ),
             );
-            break;
           case ProjectEditStatus.fillingFields:
             break;
           case ProjectEditStatus.successUpdated:
@@ -56,7 +53,6 @@ class ProjectEditPage extends StatelessWidget {
               ),
             );
             context.pop(true);
-            break;
           case ProjectEditStatus.successCreated:
             context.loaderOverlay.hide();
             showToast(
@@ -67,7 +63,6 @@ class ProjectEditPage extends StatelessWidget {
               ),
             );
             context.pushReplacementNamed(RouteName.project, pathParameters: {'id': state.id});
-            break;
         }
       },
       builder: (context, state) {

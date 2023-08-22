@@ -23,10 +23,8 @@ class ChangePasswordPage extends StatelessWidget {
             break;
           case ChangePasswordStatus.loading:
             context.loaderOverlay.show();
-            break;
           case ChangePasswordStatus.loaded:
             context.loaderOverlay.hide();
-            break;
           case ChangePasswordStatus.success:
             context.loaderOverlay.hide();
             showToast(
@@ -36,7 +34,6 @@ class ChangePasswordPage extends StatelessWidget {
                 type: ToastType.success,
               ),
             );
-            break;
           case ChangePasswordStatus.failure:
             context.loaderOverlay.hide();
             showToast(
@@ -46,7 +43,6 @@ class ChangePasswordPage extends StatelessWidget {
                 type: ToastType.failure,
               ),
             );
-            break;
         }
       },
       builder: (context, state) {
