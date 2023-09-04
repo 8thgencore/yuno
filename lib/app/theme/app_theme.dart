@@ -41,7 +41,14 @@ class AppTheme {
         },
       ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-      fillColor: MaterialStateProperty.all(AppColors.primary100),
+      fillColor: MaterialStateColor.resolveWith(
+        (states) {
+          if (states.contains(MaterialState.selected)) {
+            return AppColors.primary100;
+          }
+          return AppColors.white100;
+        },
+      ),
       checkColor: MaterialStateProperty.all(AppColors.white100),
     ),
     progressIndicatorTheme: const ProgressIndicatorThemeData(color: AppColors.primary100),
