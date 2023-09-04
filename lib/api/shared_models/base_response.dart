@@ -40,33 +40,33 @@ class _Converter<T> implements JsonConverter<T, Object?> {
   T fromJson(Object? json) {
     if (json is Map<String, dynamic>) {
       switch (T) {
-        case Token _:
+        case const (Token):
           return Token.fromJson(json) as T;
-        case TokenRead _:
+        case const (TokenRead):
           return TokenRead.fromJson(json) as T;
-        case ResetToken _:
+        case const (ResetToken):
           return ResetToken.fromJson(json) as T;
-        case IRoleRead _:
+        case const (IRoleRead):
           return IRoleRead.fromJson(json) as T;
-        case PaginatedDataIRoleRead _:
+        case const (PaginatedDataIRoleRead):
           return PaginatedDataIRoleRead.fromJson(json) as T;
-        case IUserRead _:
+        case const (IUserRead):
           return IUserRead.fromJson(json) as T;
-        case PaginatedDataIUserRead _:
+        case const (PaginatedDataIUserRead):
           return PaginatedDataIUserRead.fromJson(json) as T;
-        case IProjectRead _:
+        case const (IProjectRead):
           return IProjectRead.fromJson(json) as T;
-        case IProjectWithUsers _:
+        case const (IProjectWithUsers):
           return IProjectWithUsers.fromJson(json) as T;
-        case IProjectWithUsersTasks _:
+        case const (IProjectWithUsersTasks):
           return IProjectWithUsersTasks.fromJson(json) as T;
-        case PaginatedDataIProjectWithUsers _:
+        case const (PaginatedDataIProjectWithUsers):
           return PaginatedDataIProjectWithUsers.fromJson(json) as T;
-        case PaginatedDataITaskWithProjectName _:
+        case const (PaginatedDataITaskWithProjectName):
           return PaginatedDataITaskWithProjectName.fromJson(json) as T;
-        case StatisticsRead _:
+        case const (StatisticsRead):
           return StatisticsRead.fromJson(json) as T;
-        case ITaskRead _:
+        case const (ITaskRead):
           return ITaskRead.fromJson(json) as T;
       }
     }
