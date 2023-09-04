@@ -55,7 +55,6 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
   ) async {
     emit(state.copyWith(status: ProfileEditStatus.loading));
 
-    // TODO:
     // The temporary solution is probably wrong.
     // A pause is required so that the TextField has time to initialize and then the base value is applied.
     // As a result, we will get a beautiful animation for the TextField when opening the page
