@@ -195,7 +195,7 @@ class _ErrorWidget extends StatelessWidget {
               child: Icon(Icons.close, color: AppColors.white80, size: 20),
             ),
           ),
-        )
+        ),
       ],
     );
   }

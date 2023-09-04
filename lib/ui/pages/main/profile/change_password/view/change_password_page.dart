@@ -166,10 +166,12 @@ class _ListRoundCheckWidget extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                Text(
-                  l10n.profileChangePassMust6Char,
-                  style: AppTypography.l14d,
-                )
+                Expanded(
+                  child: Text(
+                    l10n.profileChangePassMust6Char,
+                    style: AppTypography.l14d,
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 12),
@@ -183,10 +185,12 @@ class _ListRoundCheckWidget extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                Text(
-                  l10n.profileChangePassMust1Num,
-                  style: AppTypography.l14d,
-                )
+                Expanded(
+                  child: Text(
+                    l10n.profileChangePassMust1Num,
+                    style: AppTypography.l14d,
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 12),
@@ -200,10 +204,12 @@ class _ListRoundCheckWidget extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                Text(
-                  l10n.profileChangePassMustMatch,
-                  style: AppTypography.l14d,
-                )
+                Expanded(
+                  child: Text(
+                    l10n.profileChangePassMustMatch,
+                    style: AppTypography.l14d,
+                  ),
+                ),
               ],
             ),
           ],
