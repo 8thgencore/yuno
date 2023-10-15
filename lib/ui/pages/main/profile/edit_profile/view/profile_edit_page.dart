@@ -47,6 +47,7 @@ class ProfileEditPage extends StatelessWidget {
         }
       },
       child: LoaderOverlay(
+        overlayColor: Colors.black.withOpacity(0.4),
         child: Scaffold(
           backgroundColor: AppColors.screen100,
           body: const SafeArea(child: _ProfileEditContentWidget()),

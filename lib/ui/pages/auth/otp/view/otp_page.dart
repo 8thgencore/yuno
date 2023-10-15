@@ -18,8 +18,9 @@ class OtpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => OtpBloc(sl.get<IAuthRepository>()),
-      child: const LoaderOverlay(
-        child: Scaffold(
+      child: LoaderOverlay(
+        overlayColor: Colors.black.withOpacity(0.4),
+        child: const Scaffold(
           body: DecoratedBox(
             decoration: BoxDecoration(
               gradient: LinearGradient(

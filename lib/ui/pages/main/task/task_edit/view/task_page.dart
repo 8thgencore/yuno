@@ -79,6 +79,7 @@ class TaskEditPage extends StatelessWidget {
       },
       builder: (context, state) {
         return LoaderOverlay(
+          overlayColor: Colors.black.withOpacity(0.4),
           child: Scaffold(
             backgroundColor: AppColors.screen100,
             body: SafeArea(child: _CreateTaskContentWidget(isUpdate: isUpdate)),
