@@ -601,10 +601,10 @@ packages:
     dependency: "direct main"
     description:
       name: loader_overlay
-      sha256: "78ad270c3092d9144d8cfb97912bacb4dc4ab4c3cc9def8e1bdfffdcf318c3b0"
+      sha256: "74fab08c4f2f686e2cc32887cbc76a90d685afd2ffb79526221fc9e7cf027320"
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.1"
+    version: "2.3.2"
   logging:
     dependency: "direct main"
     description:
