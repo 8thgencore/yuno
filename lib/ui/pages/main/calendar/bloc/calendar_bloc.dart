@@ -42,7 +42,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
       final tasks = await taskRepository.getTaskByDeadline(_date.toIso8601String());
       _tasks.addAll(tasks);
       emit(CalendarState.loaded(date: _date, tasks: _tasks));
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(CalendarState.failure(dioErrorInterceptor(dioError).toString()));
     }
   }
@@ -55,7 +55,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
       final tasks = await taskRepository.getTaskByDeadline(_date.toIso8601String());
       _tasks = [...tasks];
       emit(CalendarState.loaded(date: _date, tasks: _tasks));
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(CalendarState.failure(dioErrorInterceptor(dioError).toString()));
     }
   }
@@ -69,7 +69,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
       final tasks = await taskRepository.getTaskByDeadline(_date.toIso8601String());
       _tasks = [...tasks];
       emit(CalendarState.loaded(date: _date, tasks: _tasks));
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(CalendarState.failure(dioErrorInterceptor(dioError).toString()));
     }
   }
@@ -94,7 +94,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
       if (index >= 0) {
         _tasks[index] = task.copyWith(done: !isDone);
       }
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(CalendarState.failure(dioErrorInterceptor(dioError).toString()));
     }
   }

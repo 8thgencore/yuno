@@ -30,10 +30,8 @@ class ProjectEditPage extends StatelessWidget {
             break;
           case ProjectEditStatus.loading:
             context.loaderOverlay.show();
-            break;
           case ProjectEditStatus.loaded:
             context.loaderOverlay.hide();
-            break;
           case ProjectEditStatus.failure:
             context.loaderOverlay.hide();
             showToast(
@@ -43,7 +41,6 @@ class ProjectEditPage extends StatelessWidget {
                 type: ToastType.failure,
               ),
             );
-            break;
           case ProjectEditStatus.fillingFields:
             break;
           case ProjectEditStatus.successUpdated:
@@ -56,7 +53,6 @@ class ProjectEditPage extends StatelessWidget {
               ),
             );
             context.pop(true);
-            break;
           case ProjectEditStatus.successCreated:
             context.loaderOverlay.hide();
             showToast(
@@ -66,12 +62,12 @@ class ProjectEditPage extends StatelessWidget {
                 type: ToastType.success,
               ),
             );
-            context.pushReplacementNamed(RouteName.project, params: {'id': state.id});
-            break;
+            context.pushReplacementNamed(RouteName.project, pathParameters: {'id': state.id});
         }
       },
       builder: (context, state) {
         return LoaderOverlay(
+          overlayColor: Colors.black.withOpacity(0.4),
           child: Scaffold(
             backgroundColor: AppColors.screen100,
             body: SafeArea(child: _CreateProjectContentWidget(isUpdate: isUpdate)),
@@ -153,8 +149,8 @@ class _ListTextFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const [
+    return const Column(
+      children: [
         SizedBox(height: 14),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 14),

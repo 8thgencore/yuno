@@ -39,7 +39,7 @@ class HomeProjectsBloc extends Bloc<HomeProjectsEvent, HomeProjectsState> {
         _projects = projects.items;
       }
       emit(HomeProjectsState.loaded(_projects));
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(HomeProjectsState.failure(dioErrorInterceptor(dioError).toString()));
     }
   }

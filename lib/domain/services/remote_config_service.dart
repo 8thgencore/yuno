@@ -43,7 +43,7 @@ class RemoteConfigService {
       } else if (e.toString().contains('The request timed out')) {
         await l.error("Can't fetch: The request timed out");
       } else {
-        await l.error("Can't fetch remote config");
+        await l.error("Can't fetch remote config $e");
       }
       // alternative fetch status
       //       if (_remoteConfig!.lastFetchStatus ==

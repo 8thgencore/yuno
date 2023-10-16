@@ -20,8 +20,8 @@ class _TaskClient implements TaskClient {
 
   @override
   Future<BaseResponse<PaginatedDataITaskWithProjectName>> getTaskList({
-    page = 1,
-    size = 50,
+    int? page = 1,
+    int? size = 50,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -43,7 +43,11 @@ class _TaskClient implements TaskClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<PaginatedDataITaskWithProjectName>.fromJson(
       _result.data!,
       (json) => PaginatedDataITaskWithProjectName.fromJson(json as Map<String, dynamic>),
@@ -53,8 +57,8 @@ class _TaskClient implements TaskClient {
 
   @override
   Future<BaseResponse<PaginatedDataITaskWithProjectName>> getNotDoneTaskList({
-    page = 1,
-    size = 50,
+    int? page = 1,
+    int? size = 50,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -76,7 +80,11 @@ class _TaskClient implements TaskClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<PaginatedDataITaskWithProjectName>.fromJson(
       _result.data!,
       (json) => PaginatedDataITaskWithProjectName.fromJson(json as Map<String, dynamic>),
@@ -86,9 +94,9 @@ class _TaskClient implements TaskClient {
 
   @override
   Future<BaseResponse<PaginatedDataITaskWithProjectName>> getTaskByDeadline({
-    required date,
-    page = 1,
-    size = 50,
+    required String date,
+    int? page = 1,
+    int? size = 50,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -111,7 +119,11 @@ class _TaskClient implements TaskClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<PaginatedDataITaskWithProjectName>.fromJson(
       _result.data!,
       (json) => PaginatedDataITaskWithProjectName.fromJson(json as Map<String, dynamic>),
@@ -120,12 +132,11 @@ class _TaskClient implements TaskClient {
   }
 
   @override
-  Future<BaseResponse<ITaskRead>> postTask({required body}) async {
+  Future<BaseResponse<ITaskRead>> postTask({required ITaskCreate body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    final _data = body;
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<ITaskRead>>(Options(
       method: 'POST',
@@ -138,7 +149,11 @@ class _TaskClient implements TaskClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<ITaskRead>.fromJson(
       _result.data!,
       (json) => ITaskRead.fromJson(json as Map<String, dynamic>),
@@ -147,7 +162,7 @@ class _TaskClient implements TaskClient {
   }
 
   @override
-  Future<BaseResponse<ITaskRead>> getTaskTaskId({required taskId}) async {
+  Future<BaseResponse<ITaskRead>> getTaskTaskId({required String taskId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -164,7 +179,11 @@ class _TaskClient implements TaskClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<ITaskRead>.fromJson(
       _result.data!,
       (json) => ITaskRead.fromJson(json as Map<String, dynamic>),
@@ -174,14 +193,13 @@ class _TaskClient implements TaskClient {
 
   @override
   Future<BaseResponse<ITaskRead>> putTaskTaskId({
-    required taskId,
-    required body,
+    required String taskId,
+    required ITaskUpdate body,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    final _data = body;
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<ITaskRead>>(Options(
       method: 'PUT',
@@ -194,7 +212,11 @@ class _TaskClient implements TaskClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<ITaskRead>.fromJson(
       _result.data!,
       (json) => ITaskRead.fromJson(json as Map<String, dynamic>),
@@ -203,7 +225,7 @@ class _TaskClient implements TaskClient {
   }
 
   @override
-  Future<BaseResponse<ITaskRead>> deleteTaskTaskId({required taskId}) async {
+  Future<BaseResponse<ITaskRead>> deleteTaskTaskId({required String taskId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -220,7 +242,11 @@ class _TaskClient implements TaskClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<ITaskRead>.fromJson(
       _result.data!,
       (json) => ITaskRead.fromJson(json as Map<String, dynamic>),
@@ -239,5 +265,22 @@ class _TaskClient implements TaskClient {
       }
     }
     return requestOptions;
+  }
+
+  String _combineBaseUrls(
+    String dioBaseUrl,
+    String? baseUrl,
+  ) {
+    if (baseUrl == null || baseUrl.trim().isEmpty) {
+      return dioBaseUrl;
+    }
+
+    final url = Uri.parse(baseUrl);
+
+    if (url.isAbsolute) {
+      return url.toString();
+    }
+
+    return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }

@@ -36,7 +36,11 @@ class _UserClient implements UserClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<IUserRead>.fromJson(
       _result.data!,
       (json) => IUserRead.fromJson(json as Map<String, dynamic>),
@@ -45,12 +49,11 @@ class _UserClient implements UserClient {
   }
 
   @override
-  Future<IUserRead> postUser({required body}) async {
+  Future<IUserRead> postUser({required IUserCreate body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    final _data = body;
     final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<IUserRead>(Options(
       method: 'POST',
       headers: _headers,
@@ -62,18 +65,21 @@ class _UserClient implements UserClient {
           queryParameters: queryParameters,
           data: _data,
         )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
     final value = IUserRead.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<BaseResponse<IUserRead>> putUser({required body}) async {
+  Future<BaseResponse<IUserRead>> putUser({required IUserUpdate body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    final _data = body;
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IUserRead>>(Options(
       method: 'PUT',
@@ -86,7 +92,11 @@ class _UserClient implements UserClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<IUserRead>.fromJson(
       _result.data!,
       (json) => IUserRead.fromJson(json as Map<String, dynamic>),
@@ -96,8 +106,8 @@ class _UserClient implements UserClient {
 
   @override
   Future<BaseResponse<IRoleRead>> getUserList({
-    page = 1,
-    size = 50,
+    int? page = 1,
+    int? size = 50,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -119,7 +129,11 @@ class _UserClient implements UserClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<IRoleRead>.fromJson(
       _result.data!,
       (json) => IRoleRead.fromJson(json as Map<String, dynamic>),
@@ -129,9 +143,9 @@ class _UserClient implements UserClient {
 
   @override
   Future<BaseResponse<IRoleRead>> getUserListByCreatedAt({
-    order = IOrderEnum.asc,
-    page = 1,
-    size = 50,
+    IOrderEnum? order = IOrderEnum.asc,
+    int? page = 1,
+    int? size = 50,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -154,7 +168,11 @@ class _UserClient implements UserClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<IRoleRead>.fromJson(
       _result.data!,
       (json) => IRoleRead.fromJson(json as Map<String, dynamic>),
@@ -163,7 +181,7 @@ class _UserClient implements UserClient {
   }
 
   @override
-  Future<BaseResponse<IUserRead>> getUserUserId({required userId}) async {
+  Future<BaseResponse<IUserRead>> getUserUserId({required String userId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -180,7 +198,11 @@ class _UserClient implements UserClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<IUserRead>.fromJson(
       _result.data!,
       (json) => IUserRead.fromJson(json as Map<String, dynamic>),
@@ -190,14 +212,13 @@ class _UserClient implements UserClient {
 
   @override
   Future<BaseResponse<IUserRead>> putUserUserId({
-    required userId,
-    required body,
+    required String userId,
+    required IUserUpdate body,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    final _data = body;
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IUserRead>>(Options(
       method: 'PUT',
@@ -210,7 +231,11 @@ class _UserClient implements UserClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<IUserRead>.fromJson(
       _result.data!,
       (json) => IUserRead.fromJson(json as Map<String, dynamic>),
@@ -219,7 +244,7 @@ class _UserClient implements UserClient {
   }
 
   @override
-  Future<BaseResponse<IUserRead>> deleteUserUserId({required userId}) async {
+  Future<BaseResponse<IUserRead>> deleteUserUserId({required String userId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -236,7 +261,11 @@ class _UserClient implements UserClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<IUserRead>.fromJson(
       _result.data!,
       (json) => IUserRead.fromJson(json as Map<String, dynamic>),
@@ -245,18 +274,11 @@ class _UserClient implements UserClient {
   }
 
   @override
-  Future<BaseResponse<IUserRead>> postUserImage({
-    required file,
-    required imageFile,
-  }) async {
+  Future<BaseResponse<IUserRead>> postUserImage({required File imageFile}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = FormData();
-    _data.fields.add(MapEntry(
-      'file',
-      jsonEncode(file),
-    ));
     _data.files.add(MapEntry(
       'image_file',
       MultipartFile.fromFileSync(
@@ -277,7 +299,11 @@ class _UserClient implements UserClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<IUserRead>.fromJson(
       _result.data!,
       (json) => IUserRead.fromJson(json as Map<String, dynamic>),
@@ -287,18 +313,13 @@ class _UserClient implements UserClient {
 
   @override
   Future<void> postUserIdImage({
-    required userId,
-    required body,
-    required file,
+    required String userId,
+    required File file,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = FormData();
-    _data.fields.add(MapEntry(
-      'body',
-      jsonEncode(body),
-    ));
     _data.files.add(MapEntry(
       'file',
       MultipartFile.fromFileSync(
@@ -318,7 +339,11 @@ class _UserClient implements UserClient {
           queryParameters: queryParameters,
           data: _data,
         )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
@@ -332,5 +357,22 @@ class _UserClient implements UserClient {
       }
     }
     return requestOptions;
+  }
+
+  String _combineBaseUrls(
+    String dioBaseUrl,
+    String? baseUrl,
+  ) {
+    if (baseUrl == null || baseUrl.trim().isEmpty) {
+      return dioBaseUrl;
+    }
+
+    final url = Uri.parse(baseUrl);
+
+    if (url.isAbsolute) {
+      return url.toString();
+    }
+
+    return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }

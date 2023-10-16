@@ -122,7 +122,7 @@ class _CheckListBuilderWidget extends StatelessWidget {
                     onTap: () async {
                       final result = await context.pushNamed<bool>(
                         RouteName.taskEdit,
-                        params: {'id': tasks[index - 1].id},
+                        pathParameters: {'id': tasks[index - 1].id},
                       );
                       WidgetsBinding.instance.addPostFrameCallback((_) {
                         if (result ?? false) {

@@ -92,7 +92,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       if (result != null) {
         emit(const LoginCompleted());
       }
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       _serverError = dioErrorInterceptor(dioError).toString();
       _highlightServerError = true;
       emit(_calculateFieldsInfo());

@@ -19,12 +19,11 @@ class _Client implements Client {
   String? baseUrl;
 
   @override
-  Future<BaseResponse<IRoleRead>> postApiV1Role({required body}) async {
+  Future<BaseResponse<IRoleRead>> postApiV1Role({required IRoleCreate body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    final _data = body;
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IRoleRead>>(Options(
       method: 'POST',
@@ -37,7 +36,11 @@ class _Client implements Client {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<IRoleRead>.fromJson(
       _result.data!,
       (json) => IRoleRead.fromJson(json as Map<String, dynamic>),
@@ -47,8 +50,8 @@ class _Client implements Client {
 
   @override
   Future<BaseResponse<IRoleRead>> getApiV1RoleList({
-    page = 1,
-    size = 50,
+    int? page = 1,
+    int? size = 50,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -70,7 +73,11 @@ class _Client implements Client {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<IRoleRead>.fromJson(
       _result.data!,
       (json) => IRoleRead.fromJson(json as Map<String, dynamic>),
@@ -79,7 +86,7 @@ class _Client implements Client {
   }
 
   @override
-  Future<BaseResponse<IRoleRead>> getApiV1RoleRoleId({required roleId}) async {
+  Future<BaseResponse<IRoleRead>> getApiV1RoleRoleId({required String roleId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -96,7 +103,11 @@ class _Client implements Client {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<IRoleRead>.fromJson(
       _result.data!,
       (json) => IRoleRead.fromJson(json as Map<String, dynamic>),
@@ -106,14 +117,13 @@ class _Client implements Client {
 
   @override
   Future<BaseResponse<IRoleRead>> putApiV1RoleRoleId({
-    required roleId,
-    required body,
+    required String roleId,
+    required IRoleUpdate body,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    final _data = body;
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<IRoleRead>>(Options(
       method: 'PUT',
@@ -126,7 +136,11 @@ class _Client implements Client {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BaseResponse<IRoleRead>.fromJson(
       _result.data!,
       (json) => IRoleRead.fromJson(json as Map<String, dynamic>),
@@ -145,5 +159,22 @@ class _Client implements Client {
       }
     }
     return requestOptions;
+  }
+
+  String _combineBaseUrls(
+    String dioBaseUrl,
+    String? baseUrl,
+  ) {
+    if (baseUrl == null || baseUrl.trim().isEmpty) {
+      return dioBaseUrl;
+    }
+
+    final url = Uri.parse(baseUrl);
+
+    if (url.isAbsolute) {
+      return url.toString();
+    }
+
+    return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }

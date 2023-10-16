@@ -22,13 +22,10 @@ class ProfileEditPage extends StatelessWidget {
         switch (state.status) {
           case ProfileEditStatus.initial:
             context.loaderOverlay.show();
-            break;
           case ProfileEditStatus.loading:
             context.loaderOverlay.show();
-            break;
           case ProfileEditStatus.loaded:
             context.loaderOverlay.hide();
-            break;
           case ProfileEditStatus.success:
             context.loaderOverlay.hide();
             showToast(
@@ -38,7 +35,6 @@ class ProfileEditPage extends StatelessWidget {
                 type: ToastType.success,
               ),
             );
-            break;
           case ProfileEditStatus.failure:
             context.loaderOverlay.hide();
             showToast(
@@ -48,10 +44,10 @@ class ProfileEditPage extends StatelessWidget {
                 type: ToastType.failure,
               ),
             );
-            break;
         }
       },
       child: LoaderOverlay(
+        overlayColor: Colors.black.withOpacity(0.4),
         child: Scaffold(
           backgroundColor: AppColors.screen100,
           body: const SafeArea(child: _ProfileEditContentWidget()),
@@ -125,8 +121,8 @@ class _ListTextFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const [
+    return const Column(
+      children: [
         SizedBox(height: 14),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 14),

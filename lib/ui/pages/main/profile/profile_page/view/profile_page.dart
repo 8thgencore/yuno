@@ -191,7 +191,7 @@ class AvatarWidget extends StatelessWidget {
                       left: 44,
                       bottom: 8,
                       child: _EditAvatarWidget(),
-                    )
+                    ),
                   ],
                 ),
               ),

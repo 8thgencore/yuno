@@ -20,7 +20,6 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
     required this.userRepository,
   }) : super(
           const ProfileEditState(
-            status: ProfileEditStatus.initial,
             firstName: '',
             lastName: '',
             username: '',
@@ -56,7 +55,6 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
   ) async {
     emit(state.copyWith(status: ProfileEditStatus.loading));
 
-    // TODO:
     // The temporary solution is probably wrong.
     // A pause is required so that the TextField has time to initialize and then the base value is applied.
     // As a result, we will get a beautiful animation for the TextField when opening the page
@@ -109,7 +107,7 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
       } else {
         _showUnknownError(emit);
       }
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(
         state.copyWith(
           status: ProfileEditStatus.failure,

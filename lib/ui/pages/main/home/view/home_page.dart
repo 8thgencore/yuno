@@ -34,9 +34,9 @@ class _HomeContentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return removeScrollingGlow(
-      child: SingleChildScrollView(
+      child: const SingleChildScrollView(
         child: Column(
-          children: const [
+          children: [
             _TopCardWidget(),
             SizedBox(height: 18),
             _ProjectsListWidget(),
@@ -102,7 +102,7 @@ class _TopCardWidget extends StatelessWidget {
                         ? () async {
                             final result = await context.pushNamed<bool>(
                               RouteName.taskEdit,
-                              params: {'id': lastTask.id},
+                              pathParameters: {'id': lastTask.id},
                             );
                             WidgetsBinding.instance.addPostFrameCallback((_) {
                               if (result ?? false) {
@@ -239,7 +239,7 @@ class _ProjectsListWidget extends StatelessWidget {
                         return GestureDetector(
                           onTap: () async => context.pushNamed(
                             RouteName.project,
-                            params: {'id': projects[index].id},
+                            pathParameters: {'id': projects[index].id},
                           ),
                           child: ProjectCardSmallWidget(project: projects[index]),
                         );
@@ -283,7 +283,7 @@ class _CheckListBuilderWidget extends StatelessWidget {
                         onTap: () async {
                           final result = await context.pushNamed<bool>(
                             RouteName.taskEdit,
-                            params: {'id': tasks[index].id},
+                            pathParameters: {'id': tasks[index].id},
                           );
                           WidgetsBinding.instance.addPostFrameCallback((_) {
                             if (result ?? false) {

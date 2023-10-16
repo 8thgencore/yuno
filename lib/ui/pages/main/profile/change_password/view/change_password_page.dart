@@ -23,10 +23,8 @@ class ChangePasswordPage extends StatelessWidget {
             break;
           case ChangePasswordStatus.loading:
             context.loaderOverlay.show();
-            break;
           case ChangePasswordStatus.loaded:
             context.loaderOverlay.hide();
-            break;
           case ChangePasswordStatus.success:
             context.loaderOverlay.hide();
             showToast(
@@ -36,7 +34,6 @@ class ChangePasswordPage extends StatelessWidget {
                 type: ToastType.success,
               ),
             );
-            break;
           case ChangePasswordStatus.failure:
             context.loaderOverlay.hide();
             showToast(
@@ -46,11 +43,11 @@ class ChangePasswordPage extends StatelessWidget {
                 type: ToastType.failure,
               ),
             );
-            break;
         }
       },
       builder: (context, state) {
         return LoaderOverlay(
+          overlayColor: Colors.black.withOpacity(0.4),
           child: Scaffold(
             backgroundColor: AppColors.screen100,
             body: const SafeArea(child: _ChangePasswordContentWidget()),
@@ -127,8 +124,8 @@ class _ListTextFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const [
+    return const Column(
+      children: [
         SizedBox(height: 14),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 14),
@@ -170,10 +167,12 @@ class _ListRoundCheckWidget extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                Text(
-                  l10n.profileChangePassMust6Char,
-                  style: AppTypography.l14d,
-                )
+                Expanded(
+                  child: Text(
+                    l10n.profileChangePassMust6Char,
+                    style: AppTypography.l14d,
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 12),
@@ -187,10 +186,12 @@ class _ListRoundCheckWidget extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                Text(
-                  l10n.profileChangePassMust1Num,
-                  style: AppTypography.l14d,
-                )
+                Expanded(
+                  child: Text(
+                    l10n.profileChangePassMust1Num,
+                    style: AppTypography.l14d,
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 12),
@@ -204,10 +205,12 @@ class _ListRoundCheckWidget extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                Text(
-                  l10n.profileChangePassMustMatch,
-                  style: AppTypography.l14d,
-                )
+                Expanded(
+                  child: Text(
+                    l10n.profileChangePassMustMatch,
+                    style: AppTypography.l14d,
+                  ),
+                ),
               ],
             ),
           ],

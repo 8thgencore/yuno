@@ -50,7 +50,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
       await authRepository.refreshToken(body: RefreshToken(refreshToken: refreshToken));
       emit(ProfileState.loaded(user, null));
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       _logout(emit);
       emit(ProfileState.failure(dioErrorInterceptor(dioError).toString()));
     }
@@ -76,7 +76,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     try {
       final user = await userRepository.loadImage(file: event.file);
       emit(ProfileState.loaded(user, null));
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       // emit(ProfileState.loaded(_user!, 'Error from server. Try again'));
       emit(ProfileState.failure(dioErrorInterceptor(dioError).toString()));
     }

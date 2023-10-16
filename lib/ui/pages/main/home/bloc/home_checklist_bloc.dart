@@ -41,7 +41,7 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
         _tasks.addAll(tasks);
       }
       emit(HomeChecklistState.loaded(tasks: _tasks));
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(HomeChecklistState.failure(dioErrorInterceptor(dioError).toString()));
     }
   }
@@ -66,7 +66,7 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
       if (index >= 0) {
         _tasks[index] = task.copyWith(done: !isDone);
       }
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(HomeChecklistState.failure(dioErrorInterceptor(dioError).toString()));
     }
   }
@@ -81,7 +81,7 @@ class HomeChecklistBloc extends Bloc<HomeChecklistEvent, HomeChecklistState> {
 
       emit(const HomeChecklistState.keep());
       emit(HomeChecklistState.loaded(tasks: _tasks));
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(HomeChecklistState.failure(dioErrorInterceptor(dioError).toString()));
     }
   }

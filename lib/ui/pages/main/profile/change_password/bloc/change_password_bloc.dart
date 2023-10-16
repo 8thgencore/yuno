@@ -110,7 +110,7 @@ class ChangePasswordBloc extends Bloc<ChangePasswordEvent, ChangePasswordState> 
       } else {
         _showUnknownError(emit);
       }
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       emit(
         state.copyWith(
           status: ChangePasswordStatus.failure,

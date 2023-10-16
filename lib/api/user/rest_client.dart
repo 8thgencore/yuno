@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -58,7 +57,6 @@ abstract class UserClient {
   @MultiPart()
   @POST('/user/image')
   Future<BaseResponse<IUserRead>> postUserImage({
-    @Part() required IImageUpload file,
     @Part(name: 'image_file') required File imageFile,
   });
 
@@ -66,7 +64,6 @@ abstract class UserClient {
   @POST('/user/{user_id}/image')
   Future<void> postUserIdImage({
     @Path('user_id') required String userId,
-    @Part() required IImageUpload body,
     @Part() required File file,
   });
 }

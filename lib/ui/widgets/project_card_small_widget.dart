@@ -63,7 +63,7 @@ class ProjectCardSmallWidget extends StatelessWidget {
                         ),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
               const SizedBox(height: 16),

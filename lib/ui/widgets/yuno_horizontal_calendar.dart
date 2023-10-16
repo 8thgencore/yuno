@@ -155,7 +155,7 @@ class DateWidget extends StatelessWidget {
               Text(
                 DateFormat('E', locale).format(date), // WeekDay
                 style: dayTextStyle,
-              )
+              ),
             ],
           ),
         ),

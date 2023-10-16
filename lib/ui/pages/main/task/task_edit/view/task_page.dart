@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:loader_overlay/loader_overlay.dart';
@@ -32,10 +32,8 @@ class TaskEditPage extends StatelessWidget {
             break;
           case TaskEditStatus.loading:
             context.loaderOverlay.show();
-            break;
           case TaskEditStatus.loaded:
             context.loaderOverlay.hide();
-            break;
           case TaskEditStatus.failure:
             context.loaderOverlay.hide();
             showToast(
@@ -45,7 +43,6 @@ class TaskEditPage extends StatelessWidget {
                 type: ToastType.failure,
               ),
             );
-            break;
           case TaskEditStatus.failureLoaded:
             context.loaderOverlay.hide();
             showToast(
@@ -56,10 +53,8 @@ class TaskEditPage extends StatelessWidget {
               ),
             );
             context.pop();
-            break;
           case TaskEditStatus.fillingFields:
             context.loaderOverlay.hide();
-            break;
           case TaskEditStatus.successUpdated:
             context.loaderOverlay.hide();
             showToast(
@@ -70,7 +65,6 @@ class TaskEditPage extends StatelessWidget {
               ),
             );
             context.pop(true);
-            break;
           case TaskEditStatus.successCreated:
             context.loaderOverlay.hide();
             showToast(
@@ -81,11 +75,11 @@ class TaskEditPage extends StatelessWidget {
               ),
             );
             context.pop(true);
-            break;
         }
       },
       builder: (context, state) {
         return LoaderOverlay(
+          overlayColor: Colors.black.withOpacity(0.4),
           child: Scaffold(
             backgroundColor: AppColors.screen100,
             body: SafeArea(child: _CreateTaskContentWidget(isUpdate: isUpdate)),
@@ -167,8 +161,8 @@ class _ListTextFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const [
+    return const Column(
+      children: [
         SizedBox(height: 14),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 14),

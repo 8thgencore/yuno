@@ -26,32 +26,34 @@ class AppBlocObserver extends BlocObserver {
 }
 
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  // Init logger
-  initLogger();
-
-  // This method sets the colors and brightness of the status bar and navigation bar
-  AppTheme.setStatusBarAndNavigationBarColors();
-
-  // Set the Bloc observer to an instance of AppBlocObserver
-  Bloc.observer = AppBlocObserver();
-
-  // Initialize Firebase with the default options for the current platform
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
-  // Load environment variables
-  await Environment.init();
-
-  // Init Service Locator
-  initServiceLocator();
-
-  // Error
-  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
-  FlutterError.onError = (details) => l.error(details.exceptionAsString(), details.stack);
-
   await runZonedGuarded(
-    () async => runApp(await builder()),
+    () async {
+      WidgetsFlutterBinding.ensureInitialized();
+
+      // Init logger
+      initLogger();
+
+      // This method sets the colors and brightness of the status bar and navigation bar
+      AppTheme.setStatusBarAndNavigationBarColors();
+
+      // Set the Bloc observer to an instance of AppBlocObserver
+      Bloc.observer = AppBlocObserver();
+
+      // Initialize Firebase with the default options for the current platform
+      await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+      // Load environment variables
+      await Environment.init();
+
+      // Init Service Locator
+      initServiceLocator();
+
+      // Error
+      FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+      FlutterError.onError = (details) => l.error(details.exceptionAsString(), details.stack);
+
+      runApp(await builder());
+    },
     (error, stackTrace) => l.error(error.toString(), stackTrace),
   );
 }
