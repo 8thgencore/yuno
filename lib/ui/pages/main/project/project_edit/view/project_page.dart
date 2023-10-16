@@ -66,7 +66,8 @@ class ProjectEditPage extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return LoaderOverlay( overlayColor: Colors.black.withOpacity(0.4),
+        return LoaderOverlay(
+          overlayColor: Colors.black.withOpacity(0.4),
           child: Scaffold(
             backgroundColor: AppColors.screen100,
             body: SafeArea(child: _CreateProjectContentWidget(isUpdate: isUpdate)),

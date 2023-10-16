@@ -18,7 +18,8 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => LoginBloc(sl.get<IAuthRepository>()),
-      child:  LoaderOverlay( overlayColor: Colors.black.withOpacity(0.4),
+      child: LoaderOverlay(
+        overlayColor: Colors.black.withOpacity(0.4),
         child: const Scaffold(
           body: DecoratedBox(
             decoration: BoxDecoration(
