@@ -18,7 +18,8 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => LoginBloc(sl.get<IAuthRepository>()),
-      child:  LoaderOverlay( overlayColor: Colors.black.withOpacity(0.4),
+      child: LoaderOverlay(
+        overlayColor: Colors.black.withOpacity(0.4),
         child: const Scaffold(
           body: DecoratedBox(
             decoration: BoxDecoration(
@@ -130,7 +131,7 @@ class _TopInfoWidget extends StatelessWidget {
     final l10n = context.l10n;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 24),
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery.sizeOf(context).width,
       child: Column(
         children: [
           Text(l10n.loginPageTitle, style: AppTypography.b24l),

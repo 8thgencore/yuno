@@ -298,6 +298,7 @@ class _CheckListBuilderWidget extends StatelessWidget {
                           id: tasks[index].id,
                           title: tasks[index].name,
                           projectName: tasks[index].projectName,
+                          done: tasks[index].done,
                           onClickCheckBox: () => context
                               .read<HomeChecklistBloc>()
                               .add(HomeChecklistEvent.checkedItem(tasks[index].id)),

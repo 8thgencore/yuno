@@ -48,21 +48,27 @@ class ProfileEditPage extends StatelessWidget {
       },
       child: LoaderOverlay(
         overlayColor: Colors.black.withOpacity(0.4),
-        child: Scaffold(
-          backgroundColor: AppColors.screen100,
-          body: const SafeArea(child: _ProfileEditContentWidget()),
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-          floatingActionButton: Padding(
-            padding: const EdgeInsets.only(left: 15, right: 15),
-            child: CustomRoundedButton(
-              textButton: l10n.profileEditPageSaveButton,
-              onPressed: () {
-                final currentNode = FocusScope.of(context);
-                if (currentNode.focusedChild != null && !currentNode.hasPrimaryFocus) {
-                  FocusManager.instance.primaryFocus?.unfocus();
-                }
-                context.read<ProfileEditBloc>().add(const ProfileEditEvent.saved());
-              },
+        child: WillPopScope(
+          onWillPop: () async {
+            context.pop(true);
+            return true;
+          },
+          child: Scaffold(
+            backgroundColor: AppColors.screen100,
+            body: const SafeArea(child: _ProfileEditContentWidget()),
+            floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+            floatingActionButton: Padding(
+              padding: const EdgeInsets.only(left: 15, right: 15),
+              child: CustomRoundedButton(
+                textButton: l10n.profileEditPageSaveButton,
+                onPressed: () {
+                  final currentNode = FocusScope.of(context);
+                  if (currentNode.focusedChild != null && !currentNode.hasPrimaryFocus) {
+                    FocusManager.instance.primaryFocus?.unfocus();
+                  }
+                  context.read<ProfileEditBloc>().add(const ProfileEditEvent.saved());
+                },
+              ),
             ),
           ),
         ),

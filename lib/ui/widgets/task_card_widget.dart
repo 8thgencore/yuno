@@ -43,11 +43,9 @@ class _TaskCardWidgetState extends State<TaskCardWidget> {
   @override
   void didUpdateWidget(TaskCardWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.done != widget.done) {
-      setState(() {
-        value = widget.done ?? false;
-      });
-    }
+    setState(() {
+      value = widget.done ?? false;
+    });
   }
 
   @override
@@ -123,7 +121,7 @@ class _TaskCardWidgetState extends State<TaskCardWidget> {
                 scale: 1.4,
                 child: Checkbox(
                   value: value,
-                  onChanged: (b) {
+                  onChanged: (_) {
                     if (widget.onClickCheckBox != null) {
                       // ignore: prefer_null_aware_method_calls
                       widget.onClickCheckBox!();

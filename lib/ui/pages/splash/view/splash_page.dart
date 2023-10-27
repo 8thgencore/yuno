@@ -28,14 +28,14 @@ class _SplashPageWidgetState extends State<_SplashPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    _deviceHeight = MediaQuery.of(context).size.height;
-    _deviceWidth = MediaQuery.of(context).size.width;
+    _deviceHeight = MediaQuery.sizeOf(context).height;
+    _deviceWidth = MediaQuery.sizeOf(context).width;
     return BlocListener<SplashBloc, SplashState>(
       listener: (context, state) {
         if (state is SplashUnauthorized) {
           context.goNamed(RouteName.login);
         } else if (state is SplashAuthorized) {
-          context.goNamed(RouteName.profile);
+          context.goNamed(RouteName.home);
         }
       },
       child: Scaffold(

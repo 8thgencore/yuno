@@ -43,14 +43,21 @@ import 'package:yuno/ui/pages/splash/bloc/splash_bloc.dart';
 import 'package:yuno/ui/pages/splash/view/splash_page.dart';
 
 mixin RouterMixin on State<App> {
-  final rootNavigatorKey = GlobalKey<NavigatorState>();
+  final _rootNavigatorKey = GlobalKey<NavigatorState>();
+  final _shellNavigatorHomeScreenKey = GlobalKey<NavigatorState>(debugLabel: 'shellHomeScreen');
+  final _shellNavigatorCalendarScreenKey =
+      GlobalKey<NavigatorState>(debugLabel: 'shellCalendarScreen');
+  final _shellNavigatorStatisticsScreenKey =
+      GlobalKey<NavigatorState>(debugLabel: 'shellStatisticsScreen');
+  final _shellNavigatorProfileScreenKey =
+      GlobalKey<NavigatorState>(debugLabel: 'shellProfileScreen');
 
   GoRouter? _router;
 
   GoRouter get router {
     _router ??= GoRouter(
       initialLocation: RoutePath.splash,
-      navigatorKey: rootNavigatorKey,
+      navigatorKey: _rootNavigatorKey,
       observers: [
         GoRouterObserver(),
       ],
@@ -68,94 +75,114 @@ mixin RouterMixin on State<App> {
             child: const SplashPage(),
           ),
         ),
-        ShellRoute(
+        StatefulShellRoute.indexedStack(
           builder: (_, __, child) => MainScaffold(child: child),
-          routes: [
-            GoRoute(
-              name: RouteName.home,
-              path: RoutePath.home,
-              builder: (_, __) => MultiBlocProvider(
-                providers: [
-                  BlocProvider(
-                    create: (context) => HomeHeaderBloc(
-                      userRepository: sl.get<IUserRepository>(),
-                      taskRepository: sl.get<ITaskRepository>(),
-                    )..add(const HomeHeaderEvent.started()),
-                    child: const HomePage(),
-                  ),
-                  BlocProvider(
-                    create: (context) => HomeChecklistBloc(
-                      taskRepository: sl.get<ITaskRepository>(),
-                    )..add(const HomeChecklistEvent.started()),
-                    child: const HomePage(),
-                  ),
-                  BlocProvider(
-                    create: (context) => HomeProjectsBloc(
-                      projectRepository: sl.get<IProjectRepository>(),
-                    )..add(const HomeProjectsEvent.started()),
-                    child: const HomePage(),
-                  ),
-                ],
-                child: const HomePage(),
-              ),
-            ),
-            GoRoute(
-              name: RouteName.calendar,
-              path: RoutePath.calendar,
-              builder: (context, state) => BlocProvider(
-                create: (context) => CalendarBloc(
-                  taskRepository: sl.get<ITaskRepository>(),
-                )..add(const CalendarEvent.started()),
-                child: const CalendarPage(),
-              ),
-            ),
-            GoRoute(
-              name: RouteName.statistics,
-              path: RoutePath.statistics,
-              builder: (context, state) => BlocProvider(
-                create: (context) => StatisticsBloc(
-                  projectRepository: sl.get<IProjectRepository>(),
-                )..add(const StatisticsEvent.started()),
-                child: const StatisticsPage(),
-              ),
-            ),
-            GoRoute(
-              name: RouteName.profile,
-              path: RoutePath.profile,
-              builder: (_, __) => const ProfilePage(),
+          branches: [
+            StatefulShellBranch(
+              navigatorKey: _shellNavigatorHomeScreenKey,
               routes: [
                 GoRoute(
-                  name: RouteName.profileEdit,
-                  path: RoutePath.profileEdit,
-                  parentNavigatorKey: rootNavigatorKey,
-                  builder: (context, state) => BlocProvider(
-                    create: (context) => ProfileEditBloc(
-                      userRepository: sl.get<IUserRepository>(),
-                    )..add(const ProfileEditEvent.started()),
-                    child: const ProfileEditPage(),
+                  name: RouteName.home,
+                  path: RoutePath.home,
+                  builder: (_, __) => MultiBlocProvider(
+                    providers: [
+                      BlocProvider(
+                        create: (context) => HomeHeaderBloc(
+                          userRepository: sl.get<IUserRepository>(),
+                          taskRepository: sl.get<ITaskRepository>(),
+                        )..add(const HomeHeaderEvent.started()),
+                        child: const HomePage(),
+                      ),
+                      BlocProvider(
+                        create: (context) => HomeChecklistBloc(
+                          taskRepository: sl.get<ITaskRepository>(),
+                        )..add(const HomeChecklistEvent.started()),
+                        child: const HomePage(),
+                      ),
+                      BlocProvider(
+                        create: (context) => HomeProjectsBloc(
+                          projectRepository: sl.get<IProjectRepository>(),
+                        )..add(const HomeProjectsEvent.started()),
+                        child: const HomePage(),
+                      ),
+                    ],
+                    child: const HomePage(),
                   ),
                 ),
+              ],
+            ),
+            StatefulShellBranch(
+              navigatorKey: _shellNavigatorCalendarScreenKey,
+              routes: [
                 GoRoute(
-                  name: RouteName.profileChangePassword,
-                  path: RoutePath.profileChangePassword,
-                  parentNavigatorKey: rootNavigatorKey,
+                  name: RouteName.calendar,
+                  path: RoutePath.calendar,
                   builder: (context, state) => BlocProvider(
-                    create: (context) => ChangePasswordBloc(
-                      authRepository: sl.get<IAuthRepository>(),
-                    ),
-                    child: const ChangePasswordPage(),
+                    create: (context) => CalendarBloc(
+                      taskRepository: sl.get<ITaskRepository>(),
+                    )..add(const CalendarEvent.started()),
+                    child: const CalendarPage(),
                   ),
                 ),
+              ],
+            ),
+            StatefulShellBranch(
+              navigatorKey: _shellNavigatorStatisticsScreenKey,
+              routes: [
                 GoRoute(
-                  name: RouteName.profileProjects,
-                  path: RoutePath.profileProjects,
-                  parentNavigatorKey: rootNavigatorKey,
+                  name: RouteName.statistics,
+                  path: RoutePath.statistics,
                   builder: (context, state) => BlocProvider(
-                    create: (context) => ProjectsListBloc(
+                    create: (context) => StatisticsBloc(
                       projectRepository: sl.get<IProjectRepository>(),
-                    )..add(const ProjectsListEvent.started(isSelf: true)),
-                    child: const ProjectsListPage(),
+                    )..add(const StatisticsEvent.started()),
+                    child: const StatisticsPage(),
                   ),
+                ),
+              ],
+            ),
+            StatefulShellBranch(
+              navigatorKey: _shellNavigatorProfileScreenKey,
+              routes: [
+                GoRoute(
+                  name: RouteName.profile,
+                  path: RoutePath.profile,
+                  builder: (_, __) => const ProfilePage(),
+                  routes: [
+                    GoRoute(
+                      name: RouteName.profileEdit,
+                      path: RoutePath.profileEdit,
+                      parentNavigatorKey: _rootNavigatorKey,
+                      builder: (context, state) => BlocProvider(
+                        create: (context) => ProfileEditBloc(
+                          userRepository: sl.get<IUserRepository>(),
+                        )..add(const ProfileEditEvent.started()),
+                        child: const ProfileEditPage(),
+                      ),
+                    ),
+                    GoRoute(
+                      name: RouteName.profileChangePassword,
+                      path: RoutePath.profileChangePassword,
+                      parentNavigatorKey: _rootNavigatorKey,
+                      builder: (context, state) => BlocProvider(
+                        create: (context) => ChangePasswordBloc(
+                          authRepository: sl.get<IAuthRepository>(),
+                        ),
+                        child: const ChangePasswordPage(),
+                      ),
+                    ),
+                    GoRoute(
+                      name: RouteName.profileProjects,
+                      path: RoutePath.profileProjects,
+                      parentNavigatorKey: _rootNavigatorKey,
+                      builder: (context, state) => BlocProvider(
+                        create: (context) => ProjectsListBloc(
+                          projectRepository: sl.get<IProjectRepository>(),
+                        )..add(const ProjectsListEvent.started(isSelf: true)),
+                        child: const ProjectsListPage(),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -167,7 +194,7 @@ mixin RouterMixin on State<App> {
         GoRoute(
           name: RouteName.projects,
           path: RoutePath.projects,
-          parentNavigatorKey: rootNavigatorKey,
+          parentNavigatorKey: _rootNavigatorKey,
           builder: (context, state) => BlocProvider(
             create: (context) => ProjectsListBloc(
               projectRepository: sl.get<IProjectRepository>(),
@@ -178,7 +205,7 @@ mixin RouterMixin on State<App> {
             GoRoute(
               name: RouteName.projectCreate,
               path: RoutePath.projectCreate,
-              parentNavigatorKey: rootNavigatorKey,
+              parentNavigatorKey: _rootNavigatorKey,
               builder: (context, state) => BlocProvider(
                 create: (context) => ProjectEditBloc(
                   projectRepository: sl.get<IProjectRepository>(),
@@ -189,7 +216,7 @@ mixin RouterMixin on State<App> {
             GoRoute(
               name: RouteName.project,
               path: RoutePath.project,
-              parentNavigatorKey: rootNavigatorKey,
+              parentNavigatorKey: _rootNavigatorKey,
               builder: (context, state) => BlocProvider(
                 create: (context) => ProjectDetailsBloc(
                   userRepository: sl.get<IUserRepository>(),
@@ -202,7 +229,7 @@ mixin RouterMixin on State<App> {
                 GoRoute(
                   name: RouteName.projectEdit,
                   path: RoutePath.projectEdit,
-                  parentNavigatorKey: rootNavigatorKey,
+                  parentNavigatorKey: _rootNavigatorKey,
                   builder: (context, state) => BlocProvider(
                     create: (context) => ProjectEditBloc(
                       projectRepository: sl.get<IProjectRepository>(),
@@ -213,7 +240,7 @@ mixin RouterMixin on State<App> {
                 GoRoute(
                   name: RouteName.projectMembers,
                   path: RoutePath.projectMembers,
-                  parentNavigatorKey: rootNavigatorKey,
+                  parentNavigatorKey: _rootNavigatorKey,
                   builder: (context, state) => BlocProvider(
                     create: (context) => ProjectMembersBloc(
                       projectRepository: sl.get<IProjectRepository>(),
@@ -231,7 +258,7 @@ mixin RouterMixin on State<App> {
         GoRoute(
           name: RouteName.taskEdit,
           path: RoutePath.taskEdit,
-          parentNavigatorKey: rootNavigatorKey,
+          parentNavigatorKey: _rootNavigatorKey,
           builder: (context, state) => BlocProvider(
             create: (context) => TaskEditBloc(
               taskRepository: sl.get<ITaskRepository>(),
@@ -247,7 +274,7 @@ mixin RouterMixin on State<App> {
         GoRoute(
           name: RouteName.taskCreate,
           path: RoutePath.taskCreate,
-          parentNavigatorKey: rootNavigatorKey,
+          parentNavigatorKey: _rootNavigatorKey,
           builder: (context, state) => BlocProvider(
             create: (context) => TaskEditBloc(
               taskRepository: sl.get<ITaskRepository>(),

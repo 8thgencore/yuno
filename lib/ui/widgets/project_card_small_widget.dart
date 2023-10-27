@@ -100,7 +100,7 @@ class _LinearPercentIndicatorWidget extends StatelessWidget {
       child: Row(
         children: [
           LinearPercentIndicator(
-            // width: MediaQuery.of(context).size.width - 50,
+            // width: MediaQuery.sizeOf(context).width - 50,
             width: 168,
             lineHeight: 8,
             percent: percent,

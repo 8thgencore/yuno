@@ -22,7 +22,7 @@ class LinearPercentIndicatorWidget extends StatelessWidget {
       child: Row(
         children: [
           LinearPercentIndicator(
-            width: MediaQuery.of(context).size.width - 140,
+            width: MediaQuery.sizeOf(context).width - 140,
             lineHeight: 8,
             percent: percent,
             barRadius: const Radius.circular(16),

@@ -18,7 +18,7 @@ class MainScaffold extends StatefulWidget {
 
 class _MainScaffoldState extends State<MainScaffold> with TickerProviderStateMixin {
   late final TabController _tabController;
-  int _currentIndex = 4;
+  int _currentIndex = 0;
 
   @override
   void initState() {

@@ -121,7 +121,7 @@ class _TopInfoWidget extends StatelessWidget {
     final l10n = context.l10n;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 35),
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery.sizeOf(context).width,
       child: Column(
         children: [
           Text(
