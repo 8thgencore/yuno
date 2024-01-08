@@ -100,11 +100,11 @@ class _$ITaskWithProjectNameCopyWithImpl<$Res, $Val extends ITaskWithProjectName
 }
 
 /// @nodoc
-abstract class _$$_ITaskWithProjectNameCopyWith<$Res>
+abstract class _$$ITaskWithProjectNameImplCopyWith<$Res>
     implements $ITaskWithProjectNameCopyWith<$Res> {
-  factory _$$_ITaskWithProjectNameCopyWith(
-          _$_ITaskWithProjectName value, $Res Function(_$_ITaskWithProjectName) then) =
-      __$$_ITaskWithProjectNameCopyWithImpl<$Res>;
+  factory _$$ITaskWithProjectNameImplCopyWith(
+          _$ITaskWithProjectNameImpl value, $Res Function(_$ITaskWithProjectNameImpl) then) =
+      __$$ITaskWithProjectNameImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -117,11 +117,11 @@ abstract class _$$_ITaskWithProjectNameCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ITaskWithProjectNameCopyWithImpl<$Res>
-    extends _$ITaskWithProjectNameCopyWithImpl<$Res, _$_ITaskWithProjectName>
-    implements _$$_ITaskWithProjectNameCopyWith<$Res> {
-  __$$_ITaskWithProjectNameCopyWithImpl(
-      _$_ITaskWithProjectName _value, $Res Function(_$_ITaskWithProjectName) _then)
+class __$$ITaskWithProjectNameImplCopyWithImpl<$Res>
+    extends _$ITaskWithProjectNameCopyWithImpl<$Res, _$ITaskWithProjectNameImpl>
+    implements _$$ITaskWithProjectNameImplCopyWith<$Res> {
+  __$$ITaskWithProjectNameImplCopyWithImpl(
+      _$ITaskWithProjectNameImpl _value, $Res Function(_$ITaskWithProjectNameImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -134,7 +134,7 @@ class __$$_ITaskWithProjectNameCopyWithImpl<$Res>
     Object? projectId = freezed,
     Object? projectName = freezed,
   }) {
-    return _then(_$_ITaskWithProjectName(
+    return _then(_$ITaskWithProjectNameImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -165,8 +165,8 @@ class __$$_ITaskWithProjectNameCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ITaskWithProjectName implements _ITaskWithProjectName {
-  const _$_ITaskWithProjectName(
+class _$ITaskWithProjectNameImpl implements _ITaskWithProjectName {
+  const _$ITaskWithProjectNameImpl(
       {required this.name,
       required this.id,
       this.done = false,
@@ -174,8 +174,8 @@ class _$_ITaskWithProjectName implements _ITaskWithProjectName {
       @JsonKey(name: 'project_id') this.projectId,
       @JsonKey(name: 'project_name') this.projectName});
 
-  factory _$_ITaskWithProjectName.fromJson(Map<String, dynamic> json) =>
-      _$$_ITaskWithProjectNameFromJson(json);
+  factory _$ITaskWithProjectNameImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ITaskWithProjectNameImplFromJson(json);
 
   @override
   final String name;
@@ -199,10 +199,10 @@ class _$_ITaskWithProjectName implements _ITaskWithProjectName {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ITaskWithProjectName &&
+            other is _$ITaskWithProjectNameImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.done, done) || other.done == done) &&
@@ -218,12 +218,12 @@ class _$_ITaskWithProjectName implements _ITaskWithProjectName {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ITaskWithProjectNameCopyWith<_$_ITaskWithProjectName> get copyWith =>
-      __$$_ITaskWithProjectNameCopyWithImpl<_$_ITaskWithProjectName>(this, _$identity);
+  _$$ITaskWithProjectNameImplCopyWith<_$ITaskWithProjectNameImpl> get copyWith =>
+      __$$ITaskWithProjectNameImplCopyWithImpl<_$ITaskWithProjectNameImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ITaskWithProjectNameToJson(
+    return _$$ITaskWithProjectNameImplToJson(
       this,
     );
   }
@@ -236,10 +236,10 @@ abstract class _ITaskWithProjectName implements ITaskWithProjectName {
       final bool? done,
       final DateTime? deadline,
       @JsonKey(name: 'project_id') final String? projectId,
-      @JsonKey(name: 'project_name') final String? projectName}) = _$_ITaskWithProjectName;
+      @JsonKey(name: 'project_name') final String? projectName}) = _$ITaskWithProjectNameImpl;
 
   factory _ITaskWithProjectName.fromJson(Map<String, dynamic> json) =
-      _$_ITaskWithProjectName.fromJson;
+      _$ITaskWithProjectNameImpl.fromJson;
 
   @override
   String get name;
@@ -257,6 +257,6 @@ abstract class _ITaskWithProjectName implements ITaskWithProjectName {
   String? get projectName;
   @override
   @JsonKey(ignore: true)
-  _$$_ITaskWithProjectNameCopyWith<_$_ITaskWithProjectName> get copyWith =>
+  _$$ITaskWithProjectNameImplCopyWith<_$ITaskWithProjectNameImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

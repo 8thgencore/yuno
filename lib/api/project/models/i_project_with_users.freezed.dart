@@ -106,10 +106,10 @@ class _$IProjectWithUsersCopyWithImpl<$Res, $Val extends IProjectWithUsers>
 }
 
 /// @nodoc
-abstract class _$$_IProjectWithUsersCopyWith<$Res> implements $IProjectWithUsersCopyWith<$Res> {
-  factory _$$_IProjectWithUsersCopyWith(
-          _$_IProjectWithUsers value, $Res Function(_$_IProjectWithUsers) then) =
-      __$$_IProjectWithUsersCopyWithImpl<$Res>;
+abstract class _$$IProjectWithUsersImplCopyWith<$Res> implements $IProjectWithUsersCopyWith<$Res> {
+  factory _$$IProjectWithUsersImplCopyWith(
+          _$IProjectWithUsersImpl value, $Res Function(_$IProjectWithUsersImpl) then) =
+      __$$IProjectWithUsersImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -123,11 +123,11 @@ abstract class _$$_IProjectWithUsersCopyWith<$Res> implements $IProjectWithUsers
 }
 
 /// @nodoc
-class __$$_IProjectWithUsersCopyWithImpl<$Res>
-    extends _$IProjectWithUsersCopyWithImpl<$Res, _$_IProjectWithUsers>
-    implements _$$_IProjectWithUsersCopyWith<$Res> {
-  __$$_IProjectWithUsersCopyWithImpl(
-      _$_IProjectWithUsers _value, $Res Function(_$_IProjectWithUsers) _then)
+class __$$IProjectWithUsersImplCopyWithImpl<$Res>
+    extends _$IProjectWithUsersCopyWithImpl<$Res, _$IProjectWithUsersImpl>
+    implements _$$IProjectWithUsersImplCopyWith<$Res> {
+  __$$IProjectWithUsersImplCopyWithImpl(
+      _$IProjectWithUsersImpl _value, $Res Function(_$IProjectWithUsersImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -141,7 +141,7 @@ class __$$_IProjectWithUsersCopyWithImpl<$Res>
     Object? createdBy = freezed,
     Object? users = freezed,
   }) {
-    return _then(_$_IProjectWithUsers(
+    return _then(_$IProjectWithUsersImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -176,8 +176,8 @@ class __$$_IProjectWithUsersCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_IProjectWithUsers implements _IProjectWithUsers {
-  const _$_IProjectWithUsers(
+class _$IProjectWithUsersImpl implements _IProjectWithUsers {
+  const _$IProjectWithUsersImpl(
       {required this.name,
       required this.description,
       required this.link,
@@ -187,8 +187,8 @@ class _$_IProjectWithUsers implements _IProjectWithUsers {
       final List<IUserRead>? users})
       : _users = users;
 
-  factory _$_IProjectWithUsers.fromJson(Map<String, dynamic> json) =>
-      _$$_IProjectWithUsersFromJson(json);
+  factory _$IProjectWithUsersImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IProjectWithUsersImplFromJson(json);
 
   @override
   final String name;
@@ -220,10 +220,10 @@ class _$_IProjectWithUsers implements _IProjectWithUsers {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IProjectWithUsers &&
+            other is _$IProjectWithUsersImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) || other.description == description) &&
             (identical(other.link, link) || other.link == link) &&
@@ -242,12 +242,12 @@ class _$_IProjectWithUsers implements _IProjectWithUsers {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IProjectWithUsersCopyWith<_$_IProjectWithUsers> get copyWith =>
-      __$$_IProjectWithUsersCopyWithImpl<_$_IProjectWithUsers>(this, _$identity);
+  _$$IProjectWithUsersImplCopyWith<_$IProjectWithUsersImpl> get copyWith =>
+      __$$IProjectWithUsersImplCopyWithImpl<_$IProjectWithUsersImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_IProjectWithUsersToJson(
+    return _$$IProjectWithUsersImplToJson(
       this,
     );
   }
@@ -261,9 +261,9 @@ abstract class _IProjectWithUsers implements IProjectWithUsers {
       required final String id,
       @JsonKey(name: 'percent_completed') required final double percentCompleted,
       @JsonKey(name: 'created_by_id') final String? createdBy,
-      final List<IUserRead>? users}) = _$_IProjectWithUsers;
+      final List<IUserRead>? users}) = _$IProjectWithUsersImpl;
 
-  factory _IProjectWithUsers.fromJson(Map<String, dynamic> json) = _$_IProjectWithUsers.fromJson;
+  factory _IProjectWithUsers.fromJson(Map<String, dynamic> json) = _$IProjectWithUsersImpl.fromJson;
 
   @override
   String get name;
@@ -283,6 +283,6 @@ abstract class _IProjectWithUsers implements IProjectWithUsers {
   List<IUserRead>? get users;
   @override
   @JsonKey(ignore: true)
-  _$$_IProjectWithUsersCopyWith<_$_IProjectWithUsers> get copyWith =>
+  _$$IProjectWithUsersImplCopyWith<_$IProjectWithUsersImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

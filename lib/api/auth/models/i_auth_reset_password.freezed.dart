@@ -69,21 +69,22 @@ class _$IAuthResetPasswordCopyWithImpl<$Res, $Val extends IAuthResetPassword>
 }
 
 /// @nodoc
-abstract class _$$_IAuthResetPasswordCopyWith<$Res> implements $IAuthResetPasswordCopyWith<$Res> {
-  factory _$$_IAuthResetPasswordCopyWith(
-          _$_IAuthResetPassword value, $Res Function(_$_IAuthResetPassword) then) =
-      __$$_IAuthResetPasswordCopyWithImpl<$Res>;
+abstract class _$$IAuthResetPasswordImplCopyWith<$Res>
+    implements $IAuthResetPasswordCopyWith<$Res> {
+  factory _$$IAuthResetPasswordImplCopyWith(
+          _$IAuthResetPasswordImpl value, $Res Function(_$IAuthResetPasswordImpl) then) =
+      __$$IAuthResetPasswordImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'reset_token') String resetToken, String password});
 }
 
 /// @nodoc
-class __$$_IAuthResetPasswordCopyWithImpl<$Res>
-    extends _$IAuthResetPasswordCopyWithImpl<$Res, _$_IAuthResetPassword>
-    implements _$$_IAuthResetPasswordCopyWith<$Res> {
-  __$$_IAuthResetPasswordCopyWithImpl(
-      _$_IAuthResetPassword _value, $Res Function(_$_IAuthResetPassword) _then)
+class __$$IAuthResetPasswordImplCopyWithImpl<$Res>
+    extends _$IAuthResetPasswordCopyWithImpl<$Res, _$IAuthResetPasswordImpl>
+    implements _$$IAuthResetPasswordImplCopyWith<$Res> {
+  __$$IAuthResetPasswordImplCopyWithImpl(
+      _$IAuthResetPasswordImpl _value, $Res Function(_$IAuthResetPasswordImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +93,7 @@ class __$$_IAuthResetPasswordCopyWithImpl<$Res>
     Object? resetToken = null,
     Object? password = null,
   }) {
-    return _then(_$_IAuthResetPassword(
+    return _then(_$IAuthResetPasswordImpl(
       resetToken: null == resetToken
           ? _value.resetToken
           : resetToken // ignore: cast_nullable_to_non_nullable
@@ -107,12 +108,12 @@ class __$$_IAuthResetPasswordCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_IAuthResetPassword implements _IAuthResetPassword {
-  const _$_IAuthResetPassword(
+class _$IAuthResetPasswordImpl implements _IAuthResetPassword {
+  const _$IAuthResetPasswordImpl(
       {@JsonKey(name: 'reset_token') required this.resetToken, required this.password});
 
-  factory _$_IAuthResetPassword.fromJson(Map<String, dynamic> json) =>
-      _$$_IAuthResetPasswordFromJson(json);
+  factory _$IAuthResetPasswordImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IAuthResetPasswordImplFromJson(json);
 
   @override
   @JsonKey(name: 'reset_token')
@@ -126,10 +127,10 @@ class _$_IAuthResetPassword implements _IAuthResetPassword {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IAuthResetPassword &&
+            other is _$IAuthResetPasswordImpl &&
             (identical(other.resetToken, resetToken) || other.resetToken == resetToken) &&
             (identical(other.password, password) || other.password == password));
   }
@@ -141,12 +142,12 @@ class _$_IAuthResetPassword implements _IAuthResetPassword {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IAuthResetPasswordCopyWith<_$_IAuthResetPassword> get copyWith =>
-      __$$_IAuthResetPasswordCopyWithImpl<_$_IAuthResetPassword>(this, _$identity);
+  _$$IAuthResetPasswordImplCopyWith<_$IAuthResetPasswordImpl> get copyWith =>
+      __$$IAuthResetPasswordImplCopyWithImpl<_$IAuthResetPasswordImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_IAuthResetPasswordToJson(
+    return _$$IAuthResetPasswordImplToJson(
       this,
     );
   }
@@ -155,9 +156,10 @@ class _$_IAuthResetPassword implements _IAuthResetPassword {
 abstract class _IAuthResetPassword implements IAuthResetPassword {
   const factory _IAuthResetPassword(
       {@JsonKey(name: 'reset_token') required final String resetToken,
-      required final String password}) = _$_IAuthResetPassword;
+      required final String password}) = _$IAuthResetPasswordImpl;
 
-  factory _IAuthResetPassword.fromJson(Map<String, dynamic> json) = _$_IAuthResetPassword.fromJson;
+  factory _IAuthResetPassword.fromJson(Map<String, dynamic> json) =
+      _$IAuthResetPasswordImpl.fromJson;
 
   @override
   @JsonKey(name: 'reset_token')
@@ -166,6 +168,6 @@ abstract class _IAuthResetPassword implements IAuthResetPassword {
   String get password;
   @override
   @JsonKey(ignore: true)
-  _$$_IAuthResetPasswordCopyWith<_$_IAuthResetPassword> get copyWith =>
+  _$$IAuthResetPasswordImplCopyWith<_$IAuthResetPasswordImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -89,9 +89,9 @@ class _$ITaskReadCopyWithImpl<$Res, $Val extends ITaskRead> implements $ITaskRea
 }
 
 /// @nodoc
-abstract class _$$_ITaskReadCopyWith<$Res> implements $ITaskReadCopyWith<$Res> {
-  factory _$$_ITaskReadCopyWith(_$_ITaskRead value, $Res Function(_$_ITaskRead) then) =
-      __$$_ITaskReadCopyWithImpl<$Res>;
+abstract class _$$ITaskReadImplCopyWith<$Res> implements $ITaskReadCopyWith<$Res> {
+  factory _$$ITaskReadImplCopyWith(_$ITaskReadImpl value, $Res Function(_$ITaskReadImpl) then) =
+      __$$ITaskReadImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -103,9 +103,9 @@ abstract class _$$_ITaskReadCopyWith<$Res> implements $ITaskReadCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ITaskReadCopyWithImpl<$Res> extends _$ITaskReadCopyWithImpl<$Res, _$_ITaskRead>
-    implements _$$_ITaskReadCopyWith<$Res> {
-  __$$_ITaskReadCopyWithImpl(_$_ITaskRead _value, $Res Function(_$_ITaskRead) _then)
+class __$$ITaskReadImplCopyWithImpl<$Res> extends _$ITaskReadCopyWithImpl<$Res, _$ITaskReadImpl>
+    implements _$$ITaskReadImplCopyWith<$Res> {
+  __$$ITaskReadImplCopyWithImpl(_$ITaskReadImpl _value, $Res Function(_$ITaskReadImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -117,7 +117,7 @@ class __$$_ITaskReadCopyWithImpl<$Res> extends _$ITaskReadCopyWithImpl<$Res, _$_
     Object? deadline = freezed,
     Object? projectId = freezed,
   }) {
-    return _then(_$_ITaskRead(
+    return _then(_$ITaskReadImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -144,15 +144,15 @@ class __$$_ITaskReadCopyWithImpl<$Res> extends _$ITaskReadCopyWithImpl<$Res, _$_
 
 /// @nodoc
 @JsonSerializable()
-class _$_ITaskRead implements _ITaskRead {
-  const _$_ITaskRead(
+class _$ITaskReadImpl implements _ITaskRead {
+  const _$ITaskReadImpl(
       {required this.name,
       required this.id,
       this.done = false,
       this.deadline,
       @JsonKey(name: 'project_id') this.projectId});
 
-  factory _$_ITaskRead.fromJson(Map<String, dynamic> json) => _$$_ITaskReadFromJson(json);
+  factory _$ITaskReadImpl.fromJson(Map<String, dynamic> json) => _$$ITaskReadImplFromJson(json);
 
   @override
   final String name;
@@ -173,10 +173,10 @@ class _$_ITaskRead implements _ITaskRead {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ITaskRead &&
+            other is _$ITaskReadImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.done, done) || other.done == done) &&
@@ -191,12 +191,12 @@ class _$_ITaskRead implements _ITaskRead {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ITaskReadCopyWith<_$_ITaskRead> get copyWith =>
-      __$$_ITaskReadCopyWithImpl<_$_ITaskRead>(this, _$identity);
+  _$$ITaskReadImplCopyWith<_$ITaskReadImpl> get copyWith =>
+      __$$ITaskReadImplCopyWithImpl<_$ITaskReadImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ITaskReadToJson(
+    return _$$ITaskReadImplToJson(
       this,
     );
   }
@@ -208,9 +208,9 @@ abstract class _ITaskRead implements ITaskRead {
       required final String id,
       final bool? done,
       final DateTime? deadline,
-      @JsonKey(name: 'project_id') final String? projectId}) = _$_ITaskRead;
+      @JsonKey(name: 'project_id') final String? projectId}) = _$ITaskReadImpl;
 
-  factory _ITaskRead.fromJson(Map<String, dynamic> json) = _$_ITaskRead.fromJson;
+  factory _ITaskRead.fromJson(Map<String, dynamic> json) = _$ITaskReadImpl.fromJson;
 
   @override
   String get name;
@@ -225,5 +225,5 @@ abstract class _ITaskRead implements ITaskRead {
   String? get projectId;
   @override
   @JsonKey(ignore: true)
-  _$$_ITaskReadCopyWith<_$_ITaskRead> get copyWith => throw _privateConstructorUsedError;
+  _$$ITaskReadImplCopyWith<_$ITaskReadImpl> get copyWith => throw _privateConstructorUsedError;
 }

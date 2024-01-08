@@ -90,10 +90,10 @@ class _$IImageMediaReadCopyWithImpl<$Res, $Val extends IImageMediaRead>
 }
 
 /// @nodoc
-abstract class _$$_IImageMediaReadCopyWith<$Res> implements $IImageMediaReadCopyWith<$Res> {
-  factory _$$_IImageMediaReadCopyWith(
-          _$_IImageMediaRead value, $Res Function(_$_IImageMediaRead) then) =
-      __$$_IImageMediaReadCopyWithImpl<$Res>;
+abstract class _$$IImageMediaReadImplCopyWith<$Res> implements $IImageMediaReadCopyWith<$Res> {
+  factory _$$IImageMediaReadImplCopyWith(
+          _$IImageMediaReadImpl value, $Res Function(_$IImageMediaReadImpl) then) =
+      __$$IImageMediaReadImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -104,11 +104,11 @@ abstract class _$$_IImageMediaReadCopyWith<$Res> implements $IImageMediaReadCopy
 }
 
 /// @nodoc
-class __$$_IImageMediaReadCopyWithImpl<$Res>
-    extends _$IImageMediaReadCopyWithImpl<$Res, _$_IImageMediaRead>
-    implements _$$_IImageMediaReadCopyWith<$Res> {
-  __$$_IImageMediaReadCopyWithImpl(
-      _$_IImageMediaRead _value, $Res Function(_$_IImageMediaRead) _then)
+class __$$IImageMediaReadImplCopyWithImpl<$Res>
+    extends _$IImageMediaReadCopyWithImpl<$Res, _$IImageMediaReadImpl>
+    implements _$$IImageMediaReadImplCopyWith<$Res> {
+  __$$IImageMediaReadImplCopyWithImpl(
+      _$IImageMediaReadImpl _value, $Res Function(_$IImageMediaReadImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -119,7 +119,7 @@ class __$$_IImageMediaReadCopyWithImpl<$Res>
     Object? width = freezed,
     Object? height = freezed,
   }) {
-    return _then(_$_IImageMediaRead(
+    return _then(_$IImageMediaReadImpl(
       fileFormat: null == fileFormat
           ? _value.fileFormat
           : fileFormat // ignore: cast_nullable_to_non_nullable
@@ -142,15 +142,15 @@ class __$$_IImageMediaReadCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_IImageMediaRead implements _IImageMediaRead {
-  const _$_IImageMediaRead(
+class _$IImageMediaReadImpl implements _IImageMediaRead {
+  const _$IImageMediaReadImpl(
       {@JsonKey(name: 'file_format') required this.fileFormat,
       required this.media,
       this.width,
       this.height});
 
-  factory _$_IImageMediaRead.fromJson(Map<String, dynamic> json) =>
-      _$$_IImageMediaReadFromJson(json);
+  factory _$IImageMediaReadImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IImageMediaReadImplFromJson(json);
 
   @override
   @JsonKey(name: 'file_format')
@@ -168,10 +168,10 @@ class _$_IImageMediaRead implements _IImageMediaRead {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IImageMediaRead &&
+            other is _$IImageMediaReadImpl &&
             (identical(other.fileFormat, fileFormat) || other.fileFormat == fileFormat) &&
             (identical(other.media, media) || other.media == media) &&
             (identical(other.width, width) || other.width == width) &&
@@ -185,12 +185,12 @@ class _$_IImageMediaRead implements _IImageMediaRead {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IImageMediaReadCopyWith<_$_IImageMediaRead> get copyWith =>
-      __$$_IImageMediaReadCopyWithImpl<_$_IImageMediaRead>(this, _$identity);
+  _$$IImageMediaReadImplCopyWith<_$IImageMediaReadImpl> get copyWith =>
+      __$$IImageMediaReadImplCopyWithImpl<_$IImageMediaReadImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_IImageMediaReadToJson(
+    return _$$IImageMediaReadImplToJson(
       this,
     );
   }
@@ -201,9 +201,9 @@ abstract class _IImageMediaRead implements IImageMediaRead {
       {@JsonKey(name: 'file_format') required final String fileFormat,
       required final IMediaRead media,
       final int? width,
-      final int? height}) = _$_IImageMediaRead;
+      final int? height}) = _$IImageMediaReadImpl;
 
-  factory _IImageMediaRead.fromJson(Map<String, dynamic> json) = _$_IImageMediaRead.fromJson;
+  factory _IImageMediaRead.fromJson(Map<String, dynamic> json) = _$IImageMediaReadImpl.fromJson;
 
   @override
   @JsonKey(name: 'file_format')
@@ -216,6 +216,6 @@ abstract class _IImageMediaRead implements IImageMediaRead {
   int? get height;
   @override
   @JsonKey(ignore: true)
-  _$$_IImageMediaReadCopyWith<_$_IImageMediaRead> get copyWith =>
+  _$$IImageMediaReadImplCopyWith<_$IImageMediaReadImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

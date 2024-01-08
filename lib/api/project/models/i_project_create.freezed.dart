@@ -71,18 +71,18 @@ class _$IProjectCopyWithImpl<$Res, $Val extends IProject> implements $IProjectCo
 }
 
 /// @nodoc
-abstract class _$$_IProjectCopyWith<$Res> implements $IProjectCopyWith<$Res> {
-  factory _$$_IProjectCopyWith(_$_IProject value, $Res Function(_$_IProject) then) =
-      __$$_IProjectCopyWithImpl<$Res>;
+abstract class _$$IProjectImplCopyWith<$Res> implements $IProjectCopyWith<$Res> {
+  factory _$$IProjectImplCopyWith(_$IProjectImpl value, $Res Function(_$IProjectImpl) then) =
+      __$$IProjectImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, String description, String link});
 }
 
 /// @nodoc
-class __$$_IProjectCopyWithImpl<$Res> extends _$IProjectCopyWithImpl<$Res, _$_IProject>
-    implements _$$_IProjectCopyWith<$Res> {
-  __$$_IProjectCopyWithImpl(_$_IProject _value, $Res Function(_$_IProject) _then)
+class __$$IProjectImplCopyWithImpl<$Res> extends _$IProjectCopyWithImpl<$Res, _$IProjectImpl>
+    implements _$$IProjectImplCopyWith<$Res> {
+  __$$IProjectImplCopyWithImpl(_$IProjectImpl _value, $Res Function(_$IProjectImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$_IProjectCopyWithImpl<$Res> extends _$IProjectCopyWithImpl<$Res, _$_IP
     Object? description = null,
     Object? link = null,
   }) {
-    return _then(_$_IProject(
+    return _then(_$IProjectImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -111,10 +111,10 @@ class __$$_IProjectCopyWithImpl<$Res> extends _$IProjectCopyWithImpl<$Res, _$_IP
 
 /// @nodoc
 @JsonSerializable()
-class _$_IProject implements _IProject {
-  const _$_IProject({required this.name, required this.description, required this.link});
+class _$IProjectImpl implements _IProject {
+  const _$IProjectImpl({required this.name, required this.description, required this.link});
 
-  factory _$_IProject.fromJson(Map<String, dynamic> json) => _$$_IProjectFromJson(json);
+  factory _$IProjectImpl.fromJson(Map<String, dynamic> json) => _$$IProjectImplFromJson(json);
 
   @override
   final String name;
@@ -129,10 +129,10 @@ class _$_IProject implements _IProject {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IProject &&
+            other is _$IProjectImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) || other.description == description) &&
             (identical(other.link, link) || other.link == link));
@@ -145,12 +145,12 @@ class _$_IProject implements _IProject {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IProjectCopyWith<_$_IProject> get copyWith =>
-      __$$_IProjectCopyWithImpl<_$_IProject>(this, _$identity);
+  _$$IProjectImplCopyWith<_$IProjectImpl> get copyWith =>
+      __$$IProjectImplCopyWithImpl<_$IProjectImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_IProjectToJson(
+    return _$$IProjectImplToJson(
       this,
     );
   }
@@ -160,9 +160,9 @@ abstract class _IProject implements IProject {
   const factory _IProject(
       {required final String name,
       required final String description,
-      required final String link}) = _$_IProject;
+      required final String link}) = _$IProjectImpl;
 
-  factory _IProject.fromJson(Map<String, dynamic> json) = _$_IProject.fromJson;
+  factory _IProject.fromJson(Map<String, dynamic> json) = _$IProjectImpl.fromJson;
 
   @override
   String get name;
@@ -172,5 +172,5 @@ abstract class _IProject implements IProject {
   String get link;
   @override
   @JsonKey(ignore: true)
-  _$$_IProjectCopyWith<_$_IProject> get copyWith => throw _privateConstructorUsedError;
+  _$$IProjectImplCopyWith<_$IProjectImpl> get copyWith => throw _privateConstructorUsedError;
 }

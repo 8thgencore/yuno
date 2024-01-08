@@ -17,22 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$HomeHeaderEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
   }) =>
@@ -51,40 +35,9 @@ mixin _$HomeHeaderEvent {
 }
 
 /// @nodoc
-abstract class $HomeHeaderEventCopyWith<$Res> {
-  factory $HomeHeaderEventCopyWith(HomeHeaderEvent value, $Res Function(HomeHeaderEvent) then) =
-      _$HomeHeaderEventCopyWithImpl<$Res, HomeHeaderEvent>;
-}
 
-/// @nodoc
-class _$HomeHeaderEventCopyWithImpl<$Res, $Val extends HomeHeaderEvent>
-    implements $HomeHeaderEventCopyWith<$Res> {
-  _$HomeHeaderEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_StartedEventCopyWith<$Res> {
-  factory _$$_StartedEventCopyWith(_$_StartedEvent value, $Res Function(_$_StartedEvent) then) =
-      __$$_StartedEventCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_StartedEventCopyWithImpl<$Res>
-    extends _$HomeHeaderEventCopyWithImpl<$Res, _$_StartedEvent>
-    implements _$$_StartedEventCopyWith<$Res> {
-  __$$_StartedEventCopyWithImpl(_$_StartedEvent _value, $Res Function(_$_StartedEvent) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_StartedEvent implements _StartedEvent {
-  const _$_StartedEvent();
+class _$StartedEventImpl implements _StartedEvent {
+  const _$StartedEventImpl();
 
   @override
   String toString() {
@@ -92,40 +45,13 @@ class _$_StartedEvent implements _StartedEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_StartedEvent);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$StartedEventImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -157,36 +83,16 @@ class _$_StartedEvent implements _StartedEvent {
 }
 
 abstract class _StartedEvent implements HomeHeaderEvent {
-  const factory _StartedEvent() = _$_StartedEvent;
+  const factory _StartedEvent() = _$StartedEventImpl;
 }
 
 /// @nodoc
 mixin _$HomeHeaderState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String username, int taskLength, ITaskWithProjectName? task) loaded,
-    required TResult Function(Object error) failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String username, int taskLength, ITaskWithProjectName? task)? loaded,
-    TResult? Function(Object error)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String username, int taskLength, ITaskWithProjectName? task)? loaded,
-    TResult Function(Object error)? failure,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  String get username => throw _privateConstructorUsedError;
+  int get taskLength => throw _privateConstructorUsedError;
+  ITaskWithProjectName? get task => throw _privateConstructorUsedError;
+  Object? get error => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
@@ -212,12 +118,19 @@ mixin _$HomeHeaderState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $HomeHeaderStateCopyWith<HomeHeaderState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $HomeHeaderStateCopyWith<$Res> {
   factory $HomeHeaderStateCopyWith(HomeHeaderState value, $Res Function(HomeHeaderState) then) =
       _$HomeHeaderStateCopyWithImpl<$Res, HomeHeaderState>;
+  @useResult
+  $Res call({String username, int taskLength, ITaskWithProjectName? task, Object? error});
+
+  $ITaskWithProjectNameCopyWith<$Res>? get task;
 }
 
 /// @nodoc
@@ -229,76 +142,133 @@ class _$HomeHeaderStateCopyWithImpl<$Res, $Val extends HomeHeaderState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? username = null,
+    Object? taskLength = null,
+    Object? task = freezed,
+    Object? error = freezed,
+  }) {
+    return _then(_value.copyWith(
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+      taskLength: null == taskLength
+          ? _value.taskLength
+          : taskLength // ignore: cast_nullable_to_non_nullable
+              as int,
+      task: freezed == task
+          ? _value.task
+          : task // ignore: cast_nullable_to_non_nullable
+              as ITaskWithProjectName?,
+      error: freezed == error ? _value.error : error,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ITaskWithProjectNameCopyWith<$Res>? get task {
+    if (_value.task == null) {
+      return null;
+    }
+
+    return $ITaskWithProjectNameCopyWith<$Res>(_value.task!, (value) {
+      return _then(_value.copyWith(task: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$_InitialStateCopyWith<$Res> {
-  factory _$$_InitialStateCopyWith(_$_InitialState value, $Res Function(_$_InitialState) then) =
-      __$$_InitialStateCopyWithImpl<$Res>;
+abstract class _$$InitialStateImplCopyWith<$Res> implements $HomeHeaderStateCopyWith<$Res> {
+  factory _$$InitialStateImplCopyWith(
+          _$InitialStateImpl value, $Res Function(_$InitialStateImpl) then) =
+      __$$InitialStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String username, int taskLength, ITaskWithProjectName? task, Object? error});
+
+  @override
+  $ITaskWithProjectNameCopyWith<$Res>? get task;
 }
 
 /// @nodoc
-class __$$_InitialStateCopyWithImpl<$Res>
-    extends _$HomeHeaderStateCopyWithImpl<$Res, _$_InitialState>
-    implements _$$_InitialStateCopyWith<$Res> {
-  __$$_InitialStateCopyWithImpl(_$_InitialState _value, $Res Function(_$_InitialState) _then)
+class __$$InitialStateImplCopyWithImpl<$Res>
+    extends _$HomeHeaderStateCopyWithImpl<$Res, _$InitialStateImpl>
+    implements _$$InitialStateImplCopyWith<$Res> {
+  __$$InitialStateImplCopyWithImpl(
+      _$InitialStateImpl _value, $Res Function(_$InitialStateImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? username = null,
+    Object? taskLength = null,
+    Object? task = freezed,
+    Object? error = freezed,
+  }) {
+    return _then(_$InitialStateImpl(
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+      taskLength: null == taskLength
+          ? _value.taskLength
+          : taskLength // ignore: cast_nullable_to_non_nullable
+              as int,
+      task: freezed == task
+          ? _value.task
+          : task // ignore: cast_nullable_to_non_nullable
+              as ITaskWithProjectName?,
+      error: freezed == error ? _value.error : error,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_InitialState extends _InitialState {
-  const _$_InitialState() : super._();
+class _$InitialStateImpl extends _InitialState {
+  const _$InitialStateImpl(
+      {required this.username, required this.taskLength, this.task, this.error})
+      : super._();
+
+  @override
+  final String username;
+  @override
+  final int taskLength;
+  @override
+  final ITaskWithProjectName? task;
+  @override
+  final Object? error;
 
   @override
   String toString() {
-    return 'HomeHeaderState.initial()';
+    return 'HomeHeaderState.initial(username: $username, taskLength: $taskLength, task: $task, error: $error)';
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_InitialState);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InitialStateImpl &&
+            (identical(other.username, username) || other.username == username) &&
+            (identical(other.taskLength, taskLength) || other.taskLength == taskLength) &&
+            (identical(other.task, task) || other.task == task) &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, username, taskLength, task, const DeepCollectionEquality().hash(error));
 
+  @JsonKey(ignore: true)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String username, int taskLength, ITaskWithProjectName? task) loaded,
-    required TResult Function(Object error) failure,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String username, int taskLength, ITaskWithProjectName? task)? loaded,
-    TResult? Function(Object error)? failure,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String username, int taskLength, ITaskWithProjectName? task)? loaded,
-    TResult Function(Object error)? failure,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
+  @pragma('vm:prefer-inline')
+  _$$InitialStateImplCopyWith<_$InitialStateImpl> get copyWith =>
+      __$$InitialStateImplCopyWithImpl<_$InitialStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -339,78 +309,115 @@ class _$_InitialState extends _InitialState {
 }
 
 abstract class _InitialState extends HomeHeaderState {
-  const factory _InitialState() = _$_InitialState;
+  const factory _InitialState(
+      {required final String username,
+      required final int taskLength,
+      final ITaskWithProjectName? task,
+      final Object? error}) = _$InitialStateImpl;
   const _InitialState._() : super._();
+
+  @override
+  String get username;
+  @override
+  int get taskLength;
+  @override
+  ITaskWithProjectName? get task;
+  @override
+  Object? get error;
+  @override
+  @JsonKey(ignore: true)
+  _$$InitialStateImplCopyWith<_$InitialStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LoadingStateCopyWith<$Res> {
-  factory _$$_LoadingStateCopyWith(_$_LoadingState value, $Res Function(_$_LoadingState) then) =
-      __$$_LoadingStateCopyWithImpl<$Res>;
+abstract class _$$LoadingStateImplCopyWith<$Res> implements $HomeHeaderStateCopyWith<$Res> {
+  factory _$$LoadingStateImplCopyWith(
+          _$LoadingStateImpl value, $Res Function(_$LoadingStateImpl) then) =
+      __$$LoadingStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String username, int taskLength, ITaskWithProjectName? task, Object? error});
+
+  @override
+  $ITaskWithProjectNameCopyWith<$Res>? get task;
 }
 
 /// @nodoc
-class __$$_LoadingStateCopyWithImpl<$Res>
-    extends _$HomeHeaderStateCopyWithImpl<$Res, _$_LoadingState>
-    implements _$$_LoadingStateCopyWith<$Res> {
-  __$$_LoadingStateCopyWithImpl(_$_LoadingState _value, $Res Function(_$_LoadingState) _then)
+class __$$LoadingStateImplCopyWithImpl<$Res>
+    extends _$HomeHeaderStateCopyWithImpl<$Res, _$LoadingStateImpl>
+    implements _$$LoadingStateImplCopyWith<$Res> {
+  __$$LoadingStateImplCopyWithImpl(
+      _$LoadingStateImpl _value, $Res Function(_$LoadingStateImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? username = null,
+    Object? taskLength = null,
+    Object? task = freezed,
+    Object? error = freezed,
+  }) {
+    return _then(_$LoadingStateImpl(
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+      taskLength: null == taskLength
+          ? _value.taskLength
+          : taskLength // ignore: cast_nullable_to_non_nullable
+              as int,
+      task: freezed == task
+          ? _value.task
+          : task // ignore: cast_nullable_to_non_nullable
+              as ITaskWithProjectName?,
+      error: freezed == error ? _value.error : error,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_LoadingState extends _LoadingState {
-  const _$_LoadingState() : super._();
+class _$LoadingStateImpl extends _LoadingState {
+  const _$LoadingStateImpl(
+      {required this.username, required this.taskLength, this.task, this.error})
+      : super._();
+
+  @override
+  final String username;
+  @override
+  final int taskLength;
+  @override
+  final ITaskWithProjectName? task;
+  @override
+  final Object? error;
 
   @override
   String toString() {
-    return 'HomeHeaderState.loading()';
+    return 'HomeHeaderState.loading(username: $username, taskLength: $taskLength, task: $task, error: $error)';
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_LoadingState);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadingStateImpl &&
+            (identical(other.username, username) || other.username == username) &&
+            (identical(other.taskLength, taskLength) || other.taskLength == taskLength) &&
+            (identical(other.task, task) || other.task == task) &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, username, taskLength, task, const DeepCollectionEquality().hash(error));
 
+  @JsonKey(ignore: true)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String username, int taskLength, ITaskWithProjectName? task) loaded,
-    required TResult Function(Object error) failure,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String username, int taskLength, ITaskWithProjectName? task)? loaded,
-    TResult? Function(Object error)? failure,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String username, int taskLength, ITaskWithProjectName? task)? loaded,
-    TResult Function(Object error)? failure,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
+  @pragma('vm:prefer-inline')
+  _$$LoadingStateImplCopyWith<_$LoadingStateImpl> get copyWith =>
+      __$$LoadingStateImplCopyWithImpl<_$LoadingStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -451,24 +458,45 @@ class _$_LoadingState extends _LoadingState {
 }
 
 abstract class _LoadingState extends HomeHeaderState {
-  const factory _LoadingState() = _$_LoadingState;
+  const factory _LoadingState(
+      {required final String username,
+      required final int taskLength,
+      final ITaskWithProjectName? task,
+      final Object? error}) = _$LoadingStateImpl;
   const _LoadingState._() : super._();
+
+  @override
+  String get username;
+  @override
+  int get taskLength;
+  @override
+  ITaskWithProjectName? get task;
+  @override
+  Object? get error;
+  @override
+  @JsonKey(ignore: true)
+  _$$LoadingStateImplCopyWith<_$LoadingStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LoadedStateCopyWith<$Res> {
-  factory _$$_LoadedStateCopyWith(_$_LoadedState value, $Res Function(_$_LoadedState) then) =
-      __$$_LoadedStateCopyWithImpl<$Res>;
+abstract class _$$LoadedStateImplCopyWith<$Res> implements $HomeHeaderStateCopyWith<$Res> {
+  factory _$$LoadedStateImplCopyWith(
+          _$LoadedStateImpl value, $Res Function(_$LoadedStateImpl) then) =
+      __$$LoadedStateImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({String username, int taskLength, ITaskWithProjectName? task});
+  $Res call({String username, int taskLength, ITaskWithProjectName? task, Object? error});
 
+  @override
   $ITaskWithProjectNameCopyWith<$Res>? get task;
 }
 
 /// @nodoc
-class __$$_LoadedStateCopyWithImpl<$Res> extends _$HomeHeaderStateCopyWithImpl<$Res, _$_LoadedState>
-    implements _$$_LoadedStateCopyWith<$Res> {
-  __$$_LoadedStateCopyWithImpl(_$_LoadedState _value, $Res Function(_$_LoadedState) _then)
+class __$$LoadedStateImplCopyWithImpl<$Res>
+    extends _$HomeHeaderStateCopyWithImpl<$Res, _$LoadedStateImpl>
+    implements _$$LoadedStateImplCopyWith<$Res> {
+  __$$LoadedStateImplCopyWithImpl(_$LoadedStateImpl _value, $Res Function(_$LoadedStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -477,8 +505,9 @@ class __$$_LoadedStateCopyWithImpl<$Res> extends _$HomeHeaderStateCopyWithImpl<$
     Object? username = null,
     Object? taskLength = null,
     Object? task = freezed,
+    Object? error = freezed,
   }) {
-    return _then(_$_LoadedState(
+    return _then(_$LoadedStateImpl(
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -491,26 +520,16 @@ class __$$_LoadedStateCopyWithImpl<$Res> extends _$HomeHeaderStateCopyWithImpl<$
           ? _value.task
           : task // ignore: cast_nullable_to_non_nullable
               as ITaskWithProjectName?,
+      error: freezed == error ? _value.error : error,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ITaskWithProjectNameCopyWith<$Res>? get task {
-    if (_value.task == null) {
-      return null;
-    }
-
-    return $ITaskWithProjectNameCopyWith<$Res>(_value.task!, (value) {
-      return _then(_value.copyWith(task: value));
-    });
   }
 }
 
 /// @nodoc
 
-class _$_LoadedState extends _LoadedState {
-  const _$_LoadedState({required this.username, required this.taskLength, this.task}) : super._();
+class _$LoadedStateImpl extends _LoadedState {
+  const _$LoadedStateImpl({required this.username, required this.taskLength, this.task, this.error})
+      : super._();
 
   @override
   final String username;
@@ -518,67 +537,34 @@ class _$_LoadedState extends _LoadedState {
   final int taskLength;
   @override
   final ITaskWithProjectName? task;
+  @override
+  final Object? error;
 
   @override
   String toString() {
-    return 'HomeHeaderState.loaded(username: $username, taskLength: $taskLength, task: $task)';
+    return 'HomeHeaderState.loaded(username: $username, taskLength: $taskLength, task: $task, error: $error)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoadedState &&
+            other is _$LoadedStateImpl &&
             (identical(other.username, username) || other.username == username) &&
             (identical(other.taskLength, taskLength) || other.taskLength == taskLength) &&
-            (identical(other.task, task) || other.task == task));
+            (identical(other.task, task) || other.task == task) &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, username, taskLength, task);
+  int get hashCode => Object.hash(
+      runtimeType, username, taskLength, task, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith =>
-      __$$_LoadedStateCopyWithImpl<_$_LoadedState>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String username, int taskLength, ITaskWithProjectName? task) loaded,
-    required TResult Function(Object error) failure,
-  }) {
-    return loaded(username, taskLength, task);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String username, int taskLength, ITaskWithProjectName? task)? loaded,
-    TResult? Function(Object error)? failure,
-  }) {
-    return loaded?.call(username, taskLength, task);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String username, int taskLength, ITaskWithProjectName? task)? loaded,
-    TResult Function(Object error)? failure,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(username, taskLength, task);
-    }
-    return orElse();
-  }
+  _$$LoadedStateImplCopyWith<_$LoadedStateImpl> get copyWith =>
+      __$$LoadedStateImplCopyWithImpl<_$LoadedStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -622,108 +608,111 @@ abstract class _LoadedState extends HomeHeaderState {
   const factory _LoadedState(
       {required final String username,
       required final int taskLength,
-      final ITaskWithProjectName? task}) = _$_LoadedState;
+      final ITaskWithProjectName? task,
+      final Object? error}) = _$LoadedStateImpl;
   const _LoadedState._() : super._();
 
+  @override
   String get username;
+  @override
   int get taskLength;
+  @override
   ITaskWithProjectName? get task;
+  @override
+  Object? get error;
+  @override
   @JsonKey(ignore: true)
-  _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith => throw _privateConstructorUsedError;
+  _$$LoadedStateImplCopyWith<_$LoadedStateImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_FailureStateCopyWith<$Res> {
-  factory _$$_FailureStateCopyWith(_$_FailureState value, $Res Function(_$_FailureState) then) =
-      __$$_FailureStateCopyWithImpl<$Res>;
+abstract class _$$FailureStateImplCopyWith<$Res> implements $HomeHeaderStateCopyWith<$Res> {
+  factory _$$FailureStateImplCopyWith(
+          _$FailureStateImpl value, $Res Function(_$FailureStateImpl) then) =
+      __$$FailureStateImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({Object error});
+  $Res call({String username, int taskLength, ITaskWithProjectName? task, Object? error});
+
+  @override
+  $ITaskWithProjectNameCopyWith<$Res>? get task;
 }
 
 /// @nodoc
-class __$$_FailureStateCopyWithImpl<$Res>
-    extends _$HomeHeaderStateCopyWithImpl<$Res, _$_FailureState>
-    implements _$$_FailureStateCopyWith<$Res> {
-  __$$_FailureStateCopyWithImpl(_$_FailureState _value, $Res Function(_$_FailureState) _then)
+class __$$FailureStateImplCopyWithImpl<$Res>
+    extends _$HomeHeaderStateCopyWithImpl<$Res, _$FailureStateImpl>
+    implements _$$FailureStateImplCopyWith<$Res> {
+  __$$FailureStateImplCopyWithImpl(
+      _$FailureStateImpl _value, $Res Function(_$FailureStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = null,
+    Object? username = null,
+    Object? taskLength = null,
+    Object? task = freezed,
+    Object? error = freezed,
   }) {
-    return _then(_$_FailureState(
-      null == error ? _value.error : error,
+    return _then(_$FailureStateImpl(
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+      taskLength: null == taskLength
+          ? _value.taskLength
+          : taskLength // ignore: cast_nullable_to_non_nullable
+              as int,
+      task: freezed == task
+          ? _value.task
+          : task // ignore: cast_nullable_to_non_nullable
+              as ITaskWithProjectName?,
+      error: freezed == error ? _value.error : error,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_FailureState extends _FailureState {
-  const _$_FailureState(this.error) : super._();
+class _$FailureStateImpl extends _FailureState {
+  const _$FailureStateImpl(
+      {required this.username, required this.taskLength, this.task, this.error})
+      : super._();
 
   @override
-  final Object error;
+  final String username;
+  @override
+  final int taskLength;
+  @override
+  final ITaskWithProjectName? task;
+  @override
+  final Object? error;
 
   @override
   String toString() {
-    return 'HomeHeaderState.failure(error: $error)';
+    return 'HomeHeaderState.failure(username: $username, taskLength: $taskLength, task: $task, error: $error)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FailureState &&
+            other is _$FailureStateImpl &&
+            (identical(other.username, username) || other.username == username) &&
+            (identical(other.taskLength, taskLength) || other.taskLength == taskLength) &&
+            (identical(other.task, task) || other.task == task) &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(
+      runtimeType, username, taskLength, task, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FailureStateCopyWith<_$_FailureState> get copyWith =>
-      __$$_FailureStateCopyWithImpl<_$_FailureState>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String username, int taskLength, ITaskWithProjectName? task) loaded,
-    required TResult Function(Object error) failure,
-  }) {
-    return failure(error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String username, int taskLength, ITaskWithProjectName? task)? loaded,
-    TResult? Function(Object error)? failure,
-  }) {
-    return failure?.call(error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String username, int taskLength, ITaskWithProjectName? task)? loaded,
-    TResult Function(Object error)? failure,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(error);
-    }
-    return orElse();
-  }
+  _$$FailureStateImplCopyWith<_$FailureStateImpl> get copyWith =>
+      __$$FailureStateImplCopyWithImpl<_$FailureStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -764,10 +753,23 @@ class _$_FailureState extends _FailureState {
 }
 
 abstract class _FailureState extends HomeHeaderState {
-  const factory _FailureState(final Object error) = _$_FailureState;
+  const factory _FailureState(
+      {required final String username,
+      required final int taskLength,
+      final ITaskWithProjectName? task,
+      final Object? error}) = _$FailureStateImpl;
   const _FailureState._() : super._();
 
-  Object get error;
+  @override
+  String get username;
+  @override
+  int get taskLength;
+  @override
+  ITaskWithProjectName? get task;
+  @override
+  Object? get error;
+  @override
   @JsonKey(ignore: true)
-  _$$_FailureStateCopyWith<_$_FailureState> get copyWith => throw _privateConstructorUsedError;
+  _$$FailureStateImplCopyWith<_$FailureStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

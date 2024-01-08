@@ -109,11 +109,12 @@ class _$PaginatedDataITaskWithProjectNameCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PaginatedDataITaskWithProjectNameCopyWith<$Res>
+abstract class _$$PaginatedDataITaskWithProjectNameImplCopyWith<$Res>
     implements $PaginatedDataITaskWithProjectNameCopyWith<$Res> {
-  factory _$$_PaginatedDataITaskWithProjectNameCopyWith(_$_PaginatedDataITaskWithProjectName value,
-          $Res Function(_$_PaginatedDataITaskWithProjectName) then) =
-      __$$_PaginatedDataITaskWithProjectNameCopyWithImpl<$Res>;
+  factory _$$PaginatedDataITaskWithProjectNameImplCopyWith(
+          _$PaginatedDataITaskWithProjectNameImpl value,
+          $Res Function(_$PaginatedDataITaskWithProjectNameImpl) then) =
+      __$$PaginatedDataITaskWithProjectNameImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -127,12 +128,13 @@ abstract class _$$_PaginatedDataITaskWithProjectNameCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PaginatedDataITaskWithProjectNameCopyWithImpl<$Res>
+class __$$PaginatedDataITaskWithProjectNameImplCopyWithImpl<$Res>
     extends _$PaginatedDataITaskWithProjectNameCopyWithImpl<$Res,
-        _$_PaginatedDataITaskWithProjectName>
-    implements _$$_PaginatedDataITaskWithProjectNameCopyWith<$Res> {
-  __$$_PaginatedDataITaskWithProjectNameCopyWithImpl(_$_PaginatedDataITaskWithProjectName _value,
-      $Res Function(_$_PaginatedDataITaskWithProjectName) _then)
+        _$PaginatedDataITaskWithProjectNameImpl>
+    implements _$$PaginatedDataITaskWithProjectNameImplCopyWith<$Res> {
+  __$$PaginatedDataITaskWithProjectNameImplCopyWithImpl(
+      _$PaginatedDataITaskWithProjectNameImpl _value,
+      $Res Function(_$PaginatedDataITaskWithProjectNameImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -146,7 +148,7 @@ class __$$_PaginatedDataITaskWithProjectNameCopyWithImpl<$Res>
     Object? nextPage = freezed,
     Object? previousPage = freezed,
   }) {
-    return _then(_$_PaginatedDataITaskWithProjectName(
+    return _then(_$PaginatedDataITaskWithProjectNameImpl(
       items: null == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
@@ -181,8 +183,8 @@ class __$$_PaginatedDataITaskWithProjectNameCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PaginatedDataITaskWithProjectName implements _PaginatedDataITaskWithProjectName {
-  const _$_PaginatedDataITaskWithProjectName(
+class _$PaginatedDataITaskWithProjectNameImpl implements _PaginatedDataITaskWithProjectName {
+  const _$PaginatedDataITaskWithProjectNameImpl(
       {required final List<ITaskWithProjectName> items,
       required this.total,
       required this.page,
@@ -192,8 +194,8 @@ class _$_PaginatedDataITaskWithProjectName implements _PaginatedDataITaskWithPro
       @JsonKey(name: 'previous_page') this.previousPage})
       : _items = items;
 
-  factory _$_PaginatedDataITaskWithProjectName.fromJson(Map<String, dynamic> json) =>
-      _$$_PaginatedDataITaskWithProjectNameFromJson(json);
+  factory _$PaginatedDataITaskWithProjectNameImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PaginatedDataITaskWithProjectNameImplFromJson(json);
 
   final List<ITaskWithProjectName> _items;
   @override
@@ -224,10 +226,10 @@ class _$_PaginatedDataITaskWithProjectName implements _PaginatedDataITaskWithPro
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaginatedDataITaskWithProjectName &&
+            other is _$PaginatedDataITaskWithProjectNameImpl &&
             const DeepCollectionEquality().equals(other._items, _items) &&
             (identical(other.total, total) || other.total == total) &&
             (identical(other.page, page) || other.page == page) &&
@@ -245,14 +247,13 @@ class _$_PaginatedDataITaskWithProjectName implements _PaginatedDataITaskWithPro
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaginatedDataITaskWithProjectNameCopyWith<_$_PaginatedDataITaskWithProjectName>
-      get copyWith =>
-          __$$_PaginatedDataITaskWithProjectNameCopyWithImpl<_$_PaginatedDataITaskWithProjectName>(
-              this, _$identity);
+  _$$PaginatedDataITaskWithProjectNameImplCopyWith<_$PaginatedDataITaskWithProjectNameImpl>
+      get copyWith => __$$PaginatedDataITaskWithProjectNameImplCopyWithImpl<
+          _$PaginatedDataITaskWithProjectNameImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaginatedDataITaskWithProjectNameToJson(
+    return _$$PaginatedDataITaskWithProjectNameImplToJson(
       this,
     );
   }
@@ -267,10 +268,10 @@ abstract class _PaginatedDataITaskWithProjectName implements PaginatedDataITaskW
           required final int pages,
           @JsonKey(name: 'next_page') final int? nextPage,
           @JsonKey(name: 'previous_page') final int? previousPage}) =
-      _$_PaginatedDataITaskWithProjectName;
+      _$PaginatedDataITaskWithProjectNameImpl;
 
   factory _PaginatedDataITaskWithProjectName.fromJson(Map<String, dynamic> json) =
-      _$_PaginatedDataITaskWithProjectName.fromJson;
+      _$PaginatedDataITaskWithProjectNameImpl.fromJson;
 
   @override
   List<ITaskWithProjectName> get items;
@@ -290,6 +291,6 @@ abstract class _PaginatedDataITaskWithProjectName implements PaginatedDataITaskW
   int? get previousPage;
   @override
   @JsonKey(ignore: true)
-  _$$_PaginatedDataITaskWithProjectNameCopyWith<_$_PaginatedDataITaskWithProjectName>
+  _$$PaginatedDataITaskWithProjectNameImplCopyWith<_$PaginatedDataITaskWithProjectNameImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

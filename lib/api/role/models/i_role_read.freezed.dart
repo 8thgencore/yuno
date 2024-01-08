@@ -71,18 +71,18 @@ class _$IRoleReadCopyWithImpl<$Res, $Val extends IRoleRead> implements $IRoleRea
 }
 
 /// @nodoc
-abstract class _$$_IRoleReadCopyWith<$Res> implements $IRoleReadCopyWith<$Res> {
-  factory _$$_IRoleReadCopyWith(_$_IRoleRead value, $Res Function(_$_IRoleRead) then) =
-      __$$_IRoleReadCopyWithImpl<$Res>;
+abstract class _$$IRoleReadImplCopyWith<$Res> implements $IRoleReadCopyWith<$Res> {
+  factory _$$IRoleReadImplCopyWith(_$IRoleReadImpl value, $Res Function(_$IRoleReadImpl) then) =
+      __$$IRoleReadImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, String description, String id});
 }
 
 /// @nodoc
-class __$$_IRoleReadCopyWithImpl<$Res> extends _$IRoleReadCopyWithImpl<$Res, _$_IRoleRead>
-    implements _$$_IRoleReadCopyWith<$Res> {
-  __$$_IRoleReadCopyWithImpl(_$_IRoleRead _value, $Res Function(_$_IRoleRead) _then)
+class __$$IRoleReadImplCopyWithImpl<$Res> extends _$IRoleReadCopyWithImpl<$Res, _$IRoleReadImpl>
+    implements _$$IRoleReadImplCopyWith<$Res> {
+  __$$IRoleReadImplCopyWithImpl(_$IRoleReadImpl _value, $Res Function(_$IRoleReadImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$_IRoleReadCopyWithImpl<$Res> extends _$IRoleReadCopyWithImpl<$Res, _$_
     Object? description = null,
     Object? id = null,
   }) {
-    return _then(_$_IRoleRead(
+    return _then(_$IRoleReadImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -111,10 +111,10 @@ class __$$_IRoleReadCopyWithImpl<$Res> extends _$IRoleReadCopyWithImpl<$Res, _$_
 
 /// @nodoc
 @JsonSerializable()
-class _$_IRoleRead implements _IRoleRead {
-  const _$_IRoleRead({required this.name, required this.description, required this.id});
+class _$IRoleReadImpl implements _IRoleRead {
+  const _$IRoleReadImpl({required this.name, required this.description, required this.id});
 
-  factory _$_IRoleRead.fromJson(Map<String, dynamic> json) => _$$_IRoleReadFromJson(json);
+  factory _$IRoleReadImpl.fromJson(Map<String, dynamic> json) => _$$IRoleReadImplFromJson(json);
 
   @override
   final String name;
@@ -129,10 +129,10 @@ class _$_IRoleRead implements _IRoleRead {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IRoleRead &&
+            other is _$IRoleReadImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) || other.description == description) &&
             (identical(other.id, id) || other.id == id));
@@ -145,12 +145,12 @@ class _$_IRoleRead implements _IRoleRead {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IRoleReadCopyWith<_$_IRoleRead> get copyWith =>
-      __$$_IRoleReadCopyWithImpl<_$_IRoleRead>(this, _$identity);
+  _$$IRoleReadImplCopyWith<_$IRoleReadImpl> get copyWith =>
+      __$$IRoleReadImplCopyWithImpl<_$IRoleReadImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_IRoleReadToJson(
+    return _$$IRoleReadImplToJson(
       this,
     );
   }
@@ -160,9 +160,9 @@ abstract class _IRoleRead implements IRoleRead {
   const factory _IRoleRead(
       {required final String name,
       required final String description,
-      required final String id}) = _$_IRoleRead;
+      required final String id}) = _$IRoleReadImpl;
 
-  factory _IRoleRead.fromJson(Map<String, dynamic> json) = _$_IRoleRead.fromJson;
+  factory _IRoleRead.fromJson(Map<String, dynamic> json) = _$IRoleReadImpl.fromJson;
 
   @override
   String get name;
@@ -172,5 +172,5 @@ abstract class _IRoleRead implements IRoleRead {
   String get id;
   @override
   @JsonKey(ignore: true)
-  _$$_IRoleReadCopyWith<_$_IRoleRead> get copyWith => throw _privateConstructorUsedError;
+  _$$IRoleReadImplCopyWith<_$IRoleReadImpl> get copyWith => throw _privateConstructorUsedError;
 }

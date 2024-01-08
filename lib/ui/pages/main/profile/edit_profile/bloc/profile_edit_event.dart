@@ -1,6 +1,6 @@
 part of 'profile_edit_bloc.dart';
 
-@freezed
+@Freezed(copyWith: false)
 class ProfileEditEvent with _$ProfileEditEvent {
   const factory ProfileEditEvent.started() = _StartedEvent;
 

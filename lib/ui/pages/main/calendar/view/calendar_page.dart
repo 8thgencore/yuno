@@ -38,11 +38,11 @@ class _CalendarPageContentWidget extends StatelessWidget {
           Container(
             padding: const EdgeInsets.only(left: 24, top: 16, right: 24),
             child: BlocBuilder<CalendarBloc, CalendarState>(
-              builder: (context, state) => state.maybeWhen(
-                loading: () => _HeaderWidget(date: DateTime.now(), taskLength: 0),
-                loaded: (date, tasks) => _HeaderWidget(
-                  date: date,
-                  taskLength: tasks.length,
+              builder: (context, state) => state.maybeMap(
+                loading: (_) => _HeaderWidget(date: DateTime.now(), taskLength: 0),
+                loaded: (state) => _HeaderWidget(
+                  date: state.date,
+                  taskLength: state.tasks.length,
                 ),
                 orElse: () => _HeaderWidget(date: DateTime.now(), taskLength: 0),
               ),
@@ -100,70 +100,73 @@ class _CheckListBuilderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     return BlocBuilder<CalendarBloc, CalendarState>(
-      builder: (context, state) => state.maybeWhen(
-        loading: () => const LoadingContainer(),
-        loaded: (date, tasks) => tasks.isNotEmpty
-            ? ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                itemCount: tasks.length + 1,
-                itemBuilder: (context, index) {
-                  if (index == 0) {
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: 6),
-                      child: Text(
-                        l10n.checklist,
-                        style: AppTypography.b18d,
+      builder: (context, state) => state.maybeMap(
+        loading: (_) => const LoadingContainer(),
+        loaded: (state) {
+          final tasks = state.tasks;
+          return tasks.isNotEmpty
+              ? ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  itemCount: tasks.length + 1,
+                  itemBuilder: (context, index) {
+                    if (index == 0) {
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 6),
+                        child: Text(
+                          l10n.checklist,
+                          style: AppTypography.b18d,
+                        ),
+                      );
+                    }
+                    return GestureDetector(
+                      onTap: () async {
+                        final result = await context.pushNamed<bool>(
+                          RouteName.taskEdit,
+                          pathParameters: {'id': tasks[index - 1].id},
+                        );
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          if (result ?? false) {
+                            context.read<CalendarBloc>().add(const CalendarEvent.updated());
+                          }
+                        });
+                      },
+                      child: TaskCardWidget(
+                        id: tasks[index - 1].id,
+                        title: tasks[index - 1].name,
+                        projectName: tasks[index - 1].projectName,
+                        done: tasks[index - 1].done,
+                        onClickCheckBox: () => context
+                            .read<CalendarBloc>()
+                            .add(CalendarEvent.checkedItem(tasks[index - 1].id)),
+                        isMember: true,
                       ),
                     );
-                  }
-                  return GestureDetector(
-                    onTap: () async {
-                      final result = await context.pushNamed<bool>(
-                        RouteName.taskEdit,
-                        pathParameters: {'id': tasks[index - 1].id},
-                      );
-                      WidgetsBinding.instance.addPostFrameCallback((_) {
-                        if (result ?? false) {
-                          context.read<CalendarBloc>().add(const CalendarEvent.updated());
-                        }
-                      });
-                    },
-                    child: TaskCardWidget(
-                      id: tasks[index - 1].id,
-                      title: tasks[index - 1].name,
-                      projectName: tasks[index - 1].projectName,
-                      done: tasks[index - 1].done,
-                      onClickCheckBox: () => context
-                          .read<CalendarBloc>()
-                          .add(CalendarEvent.checkedItem(tasks[index - 1].id)),
-                      isMember: true,
-                    ),
-                  );
-                },
-              )
-            : Container(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Column(
-                  children: [
-                    const SizedBox(height: 16),
-                    Image.asset(Assets.images.checklistEmpty.path),
-                    const SizedBox(height: 32),
-                    Text(
-                      l10n.calendarPageChecklistEmptyTitle,
-                      textAlign: TextAlign.center,
-                      style: AppTypography.b18d,
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      l10n.calendarPageChecklistEmptyDesc,
-                      textAlign: TextAlign.center,
-                      style: AppTypography.l14g,
-                    ),
-                  ],
-                ),
-              ),
+                  },
+                )
+              : Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 16),
+                      Image.asset(Assets.images.checklistEmpty.path),
+                      const SizedBox(height: 32),
+                      Text(
+                        l10n.calendarPageChecklistEmptyTitle,
+                        textAlign: TextAlign.center,
+                        style: AppTypography.b18d,
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        l10n.calendarPageChecklistEmptyDesc,
+                        textAlign: TextAlign.center,
+                        style: AppTypography.l14g,
+                      ),
+                    ],
+                  ),
+                );
+        },
         failure: (error) => ErrorContainer(text: '$error'),
         orElse: () => ErrorContainer(text: context.l10n.errorFailedGetData),
       ),

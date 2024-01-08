@@ -17,28 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$HomeChecklistEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(String id) checkedItem,
-    required TResult Function(String id) deletedItem,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(String id)? checkedItem,
-    TResult? Function(String id)? deletedItem,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String id)? checkedItem,
-    TResult Function(String id)? deletedItem,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
     required TResult Function(_CheckedItemEvent value) checkedItem,
@@ -63,41 +41,9 @@ mixin _$HomeChecklistEvent {
 }
 
 /// @nodoc
-abstract class $HomeChecklistEventCopyWith<$Res> {
-  factory $HomeChecklistEventCopyWith(
-          HomeChecklistEvent value, $Res Function(HomeChecklistEvent) then) =
-      _$HomeChecklistEventCopyWithImpl<$Res, HomeChecklistEvent>;
-}
 
-/// @nodoc
-class _$HomeChecklistEventCopyWithImpl<$Res, $Val extends HomeChecklistEvent>
-    implements $HomeChecklistEventCopyWith<$Res> {
-  _$HomeChecklistEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_StartedEventCopyWith<$Res> {
-  factory _$$_StartedEventCopyWith(_$_StartedEvent value, $Res Function(_$_StartedEvent) then) =
-      __$$_StartedEventCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_StartedEventCopyWithImpl<$Res>
-    extends _$HomeChecklistEventCopyWithImpl<$Res, _$_StartedEvent>
-    implements _$$_StartedEventCopyWith<$Res> {
-  __$$_StartedEventCopyWithImpl(_$_StartedEvent _value, $Res Function(_$_StartedEvent) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_StartedEvent implements _StartedEvent {
-  const _$_StartedEvent();
+class _$StartedEventImpl implements _StartedEvent {
+  const _$StartedEventImpl();
 
   @override
   String toString() {
@@ -105,46 +51,13 @@ class _$_StartedEvent implements _StartedEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_StartedEvent);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$StartedEventImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(String id) checkedItem,
-    required TResult Function(String id) deletedItem,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(String id)? checkedItem,
-    TResult? Function(String id)? deletedItem,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String id)? checkedItem,
-    TResult Function(String id)? deletedItem,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -182,44 +95,13 @@ class _$_StartedEvent implements _StartedEvent {
 }
 
 abstract class _StartedEvent implements HomeChecklistEvent {
-  const factory _StartedEvent() = _$_StartedEvent;
-}
-
-/// @nodoc
-abstract class _$$_CheckedItemEventCopyWith<$Res> {
-  factory _$$_CheckedItemEventCopyWith(
-          _$_CheckedItemEvent value, $Res Function(_$_CheckedItemEvent) then) =
-      __$$_CheckedItemEventCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String id});
-}
-
-/// @nodoc
-class __$$_CheckedItemEventCopyWithImpl<$Res>
-    extends _$HomeChecklistEventCopyWithImpl<$Res, _$_CheckedItemEvent>
-    implements _$$_CheckedItemEventCopyWith<$Res> {
-  __$$_CheckedItemEventCopyWithImpl(
-      _$_CheckedItemEvent _value, $Res Function(_$_CheckedItemEvent) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-  }) {
-    return _then(_$_CheckedItemEvent(
-      null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
+  const factory _StartedEvent() = _$StartedEventImpl;
 }
 
 /// @nodoc
 
-class _$_CheckedItemEvent implements _CheckedItemEvent {
-  const _$_CheckedItemEvent(this.id);
+class _$CheckedItemEventImpl implements _CheckedItemEvent {
+  const _$CheckedItemEventImpl(this.id);
 
   @override
   final String id;
@@ -230,55 +112,15 @@ class _$_CheckedItemEvent implements _CheckedItemEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CheckedItemEvent &&
+            other is _$CheckedItemEventImpl &&
             (identical(other.id, id) || other.id == id));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_CheckedItemEventCopyWith<_$_CheckedItemEvent> get copyWith =>
-      __$$_CheckedItemEventCopyWithImpl<_$_CheckedItemEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(String id) checkedItem,
-    required TResult Function(String id) deletedItem,
-  }) {
-    return checkedItem(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(String id)? checkedItem,
-    TResult? Function(String id)? deletedItem,
-  }) {
-    return checkedItem?.call(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String id)? checkedItem,
-    TResult Function(String id)? deletedItem,
-    required TResult orElse(),
-  }) {
-    if (checkedItem != null) {
-      return checkedItem(id);
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -316,49 +158,15 @@ class _$_CheckedItemEvent implements _CheckedItemEvent {
 }
 
 abstract class _CheckedItemEvent implements HomeChecklistEvent {
-  const factory _CheckedItemEvent(final String id) = _$_CheckedItemEvent;
+  const factory _CheckedItemEvent(final String id) = _$CheckedItemEventImpl;
 
   String get id;
-  @JsonKey(ignore: true)
-  _$$_CheckedItemEventCopyWith<_$_CheckedItemEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_DeletedItemEventCopyWith<$Res> {
-  factory _$$_DeletedItemEventCopyWith(
-          _$_DeletedItemEvent value, $Res Function(_$_DeletedItemEvent) then) =
-      __$$_DeletedItemEventCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String id});
-}
-
-/// @nodoc
-class __$$_DeletedItemEventCopyWithImpl<$Res>
-    extends _$HomeChecklistEventCopyWithImpl<$Res, _$_DeletedItemEvent>
-    implements _$$_DeletedItemEventCopyWith<$Res> {
-  __$$_DeletedItemEventCopyWithImpl(
-      _$_DeletedItemEvent _value, $Res Function(_$_DeletedItemEvent) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-  }) {
-    return _then(_$_DeletedItemEvent(
-      null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$_DeletedItemEvent implements _DeletedItemEvent {
-  const _$_DeletedItemEvent(this.id);
+class _$DeletedItemEventImpl implements _DeletedItemEvent {
+  const _$DeletedItemEventImpl(this.id);
 
   @override
   final String id;
@@ -369,55 +177,15 @@ class _$_DeletedItemEvent implements _DeletedItemEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DeletedItemEvent &&
+            other is _$DeletedItemEventImpl &&
             (identical(other.id, id) || other.id == id));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_DeletedItemEventCopyWith<_$_DeletedItemEvent> get copyWith =>
-      __$$_DeletedItemEventCopyWithImpl<_$_DeletedItemEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(String id) checkedItem,
-    required TResult Function(String id) deletedItem,
-  }) {
-    return deletedItem(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(String id)? checkedItem,
-    TResult? Function(String id)? deletedItem,
-  }) {
-    return deletedItem?.call(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String id)? checkedItem,
-    TResult Function(String id)? deletedItem,
-    required TResult orElse(),
-  }) {
-    if (deletedItem != null) {
-      return deletedItem(id);
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -455,44 +223,13 @@ class _$_DeletedItemEvent implements _DeletedItemEvent {
 }
 
 abstract class _DeletedItemEvent implements HomeChecklistEvent {
-  const factory _DeletedItemEvent(final String id) = _$_DeletedItemEvent;
+  const factory _DeletedItemEvent(final String id) = _$DeletedItemEventImpl;
 
   String get id;
-  @JsonKey(ignore: true)
-  _$$_DeletedItemEventCopyWith<_$_DeletedItemEvent> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$HomeChecklistState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() keep,
-    required TResult Function(List<ITaskWithProjectName> tasks) loaded,
-    required TResult Function(Object error) failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? keep,
-    TResult? Function(List<ITaskWithProjectName> tasks)? loaded,
-    TResult? Function(Object error)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? keep,
-    TResult Function(List<ITaskWithProjectName> tasks)? loaded,
-    TResult Function(Object error)? failure,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
@@ -542,23 +279,25 @@ class _$HomeChecklistStateCopyWithImpl<$Res, $Val extends HomeChecklistState>
 }
 
 /// @nodoc
-abstract class _$$_InitialStateCopyWith<$Res> {
-  factory _$$_InitialStateCopyWith(_$_InitialState value, $Res Function(_$_InitialState) then) =
-      __$$_InitialStateCopyWithImpl<$Res>;
+abstract class _$$InitialStateImplCopyWith<$Res> {
+  factory _$$InitialStateImplCopyWith(
+          _$InitialStateImpl value, $Res Function(_$InitialStateImpl) then) =
+      __$$InitialStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialStateCopyWithImpl<$Res>
-    extends _$HomeChecklistStateCopyWithImpl<$Res, _$_InitialState>
-    implements _$$_InitialStateCopyWith<$Res> {
-  __$$_InitialStateCopyWithImpl(_$_InitialState _value, $Res Function(_$_InitialState) _then)
+class __$$InitialStateImplCopyWithImpl<$Res>
+    extends _$HomeChecklistStateCopyWithImpl<$Res, _$InitialStateImpl>
+    implements _$$InitialStateImplCopyWith<$Res> {
+  __$$InitialStateImplCopyWithImpl(
+      _$InitialStateImpl _value, $Res Function(_$InitialStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_InitialState extends _InitialState {
-  const _$_InitialState() : super._();
+class _$InitialStateImpl extends _InitialState {
+  const _$InitialStateImpl() : super._();
 
   @override
   String toString() {
@@ -566,52 +305,13 @@ class _$_InitialState extends _InitialState {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_InitialState);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InitialStateImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() keep,
-    required TResult Function(List<ITaskWithProjectName> tasks) loaded,
-    required TResult Function(Object error) failure,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? keep,
-    TResult? Function(List<ITaskWithProjectName> tasks)? loaded,
-    TResult? Function(Object error)? failure,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? keep,
-    TResult Function(List<ITaskWithProjectName> tasks)? loaded,
-    TResult Function(Object error)? failure,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -655,28 +355,30 @@ class _$_InitialState extends _InitialState {
 }
 
 abstract class _InitialState extends HomeChecklistState {
-  const factory _InitialState() = _$_InitialState;
+  const factory _InitialState() = _$InitialStateImpl;
   const _InitialState._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_LoadingStateCopyWith<$Res> {
-  factory _$$_LoadingStateCopyWith(_$_LoadingState value, $Res Function(_$_LoadingState) then) =
-      __$$_LoadingStateCopyWithImpl<$Res>;
+abstract class _$$LoadingStateImplCopyWith<$Res> {
+  factory _$$LoadingStateImplCopyWith(
+          _$LoadingStateImpl value, $Res Function(_$LoadingStateImpl) then) =
+      __$$LoadingStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingStateCopyWithImpl<$Res>
-    extends _$HomeChecklistStateCopyWithImpl<$Res, _$_LoadingState>
-    implements _$$_LoadingStateCopyWith<$Res> {
-  __$$_LoadingStateCopyWithImpl(_$_LoadingState _value, $Res Function(_$_LoadingState) _then)
+class __$$LoadingStateImplCopyWithImpl<$Res>
+    extends _$HomeChecklistStateCopyWithImpl<$Res, _$LoadingStateImpl>
+    implements _$$LoadingStateImplCopyWith<$Res> {
+  __$$LoadingStateImplCopyWithImpl(
+      _$LoadingStateImpl _value, $Res Function(_$LoadingStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_LoadingState extends _LoadingState {
-  const _$_LoadingState() : super._();
+class _$LoadingStateImpl extends _LoadingState {
+  const _$LoadingStateImpl() : super._();
 
   @override
   String toString() {
@@ -684,52 +386,13 @@ class _$_LoadingState extends _LoadingState {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_LoadingState);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingStateImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() keep,
-    required TResult Function(List<ITaskWithProjectName> tasks) loaded,
-    required TResult Function(Object error) failure,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? keep,
-    TResult? Function(List<ITaskWithProjectName> tasks)? loaded,
-    TResult? Function(Object error)? failure,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? keep,
-    TResult Function(List<ITaskWithProjectName> tasks)? loaded,
-    TResult Function(Object error)? failure,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -773,27 +436,28 @@ class _$_LoadingState extends _LoadingState {
 }
 
 abstract class _LoadingState extends HomeChecklistState {
-  const factory _LoadingState() = _$_LoadingState;
+  const factory _LoadingState() = _$LoadingStateImpl;
   const _LoadingState._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_KeepStateCopyWith<$Res> {
-  factory _$$_KeepStateCopyWith(_$_KeepState value, $Res Function(_$_KeepState) then) =
-      __$$_KeepStateCopyWithImpl<$Res>;
+abstract class _$$KeepStateImplCopyWith<$Res> {
+  factory _$$KeepStateImplCopyWith(_$KeepStateImpl value, $Res Function(_$KeepStateImpl) then) =
+      __$$KeepStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_KeepStateCopyWithImpl<$Res> extends _$HomeChecklistStateCopyWithImpl<$Res, _$_KeepState>
-    implements _$$_KeepStateCopyWith<$Res> {
-  __$$_KeepStateCopyWithImpl(_$_KeepState _value, $Res Function(_$_KeepState) _then)
+class __$$KeepStateImplCopyWithImpl<$Res>
+    extends _$HomeChecklistStateCopyWithImpl<$Res, _$KeepStateImpl>
+    implements _$$KeepStateImplCopyWith<$Res> {
+  __$$KeepStateImplCopyWithImpl(_$KeepStateImpl _value, $Res Function(_$KeepStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_KeepState extends _KeepState {
-  const _$_KeepState() : super._();
+class _$KeepStateImpl extends _KeepState {
+  const _$KeepStateImpl() : super._();
 
   @override
   String toString() {
@@ -801,52 +465,12 @@ class _$_KeepState extends _KeepState {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_KeepState);
+  bool operator ==(Object other) {
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$KeepStateImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() keep,
-    required TResult Function(List<ITaskWithProjectName> tasks) loaded,
-    required TResult Function(Object error) failure,
-  }) {
-    return keep();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? keep,
-    TResult? Function(List<ITaskWithProjectName> tasks)? loaded,
-    TResult? Function(Object error)? failure,
-  }) {
-    return keep?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? keep,
-    TResult Function(List<ITaskWithProjectName> tasks)? loaded,
-    TResult Function(Object error)? failure,
-    required TResult orElse(),
-  }) {
-    if (keep != null) {
-      return keep();
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -890,23 +514,24 @@ class _$_KeepState extends _KeepState {
 }
 
 abstract class _KeepState extends HomeChecklistState {
-  const factory _KeepState() = _$_KeepState;
+  const factory _KeepState() = _$KeepStateImpl;
   const _KeepState._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_LoadedStateCopyWith<$Res> {
-  factory _$$_LoadedStateCopyWith(_$_LoadedState value, $Res Function(_$_LoadedState) then) =
-      __$$_LoadedStateCopyWithImpl<$Res>;
+abstract class _$$LoadedStateImplCopyWith<$Res> {
+  factory _$$LoadedStateImplCopyWith(
+          _$LoadedStateImpl value, $Res Function(_$LoadedStateImpl) then) =
+      __$$LoadedStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<ITaskWithProjectName> tasks});
 }
 
 /// @nodoc
-class __$$_LoadedStateCopyWithImpl<$Res>
-    extends _$HomeChecklistStateCopyWithImpl<$Res, _$_LoadedState>
-    implements _$$_LoadedStateCopyWith<$Res> {
-  __$$_LoadedStateCopyWithImpl(_$_LoadedState _value, $Res Function(_$_LoadedState) _then)
+class __$$LoadedStateImplCopyWithImpl<$Res>
+    extends _$HomeChecklistStateCopyWithImpl<$Res, _$LoadedStateImpl>
+    implements _$$LoadedStateImplCopyWith<$Res> {
+  __$$LoadedStateImplCopyWithImpl(_$LoadedStateImpl _value, $Res Function(_$LoadedStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -914,7 +539,7 @@ class __$$_LoadedStateCopyWithImpl<$Res>
   $Res call({
     Object? tasks = null,
   }) {
-    return _then(_$_LoadedState(
+    return _then(_$LoadedStateImpl(
       tasks: null == tasks
           ? _value._tasks
           : tasks // ignore: cast_nullable_to_non_nullable
@@ -925,8 +550,8 @@ class __$$_LoadedStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadedState extends _LoadedState {
-  const _$_LoadedState({required final List<ITaskWithProjectName> tasks})
+class _$LoadedStateImpl extends _LoadedState {
+  const _$LoadedStateImpl({required final List<ITaskWithProjectName> tasks})
       : _tasks = tasks,
         super._();
 
@@ -944,10 +569,10 @@ class _$_LoadedState extends _LoadedState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoadedState &&
+            other is _$LoadedStateImpl &&
             const DeepCollectionEquality().equals(other._tasks, _tasks));
   }
 
@@ -957,48 +582,8 @@ class _$_LoadedState extends _LoadedState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith =>
-      __$$_LoadedStateCopyWithImpl<_$_LoadedState>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() keep,
-    required TResult Function(List<ITaskWithProjectName> tasks) loaded,
-    required TResult Function(Object error) failure,
-  }) {
-    return loaded(tasks);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? keep,
-    TResult? Function(List<ITaskWithProjectName> tasks)? loaded,
-    TResult? Function(Object error)? failure,
-  }) {
-    return loaded?.call(tasks);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? keep,
-    TResult Function(List<ITaskWithProjectName> tasks)? loaded,
-    TResult Function(Object error)? failure,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(tasks);
-    }
-    return orElse();
-  }
+  _$$LoadedStateImplCopyWith<_$LoadedStateImpl> get copyWith =>
+      __$$LoadedStateImplCopyWithImpl<_$LoadedStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1042,27 +627,29 @@ class _$_LoadedState extends _LoadedState {
 }
 
 abstract class _LoadedState extends HomeChecklistState {
-  const factory _LoadedState({required final List<ITaskWithProjectName> tasks}) = _$_LoadedState;
+  const factory _LoadedState({required final List<ITaskWithProjectName> tasks}) = _$LoadedStateImpl;
   const _LoadedState._() : super._();
 
   List<ITaskWithProjectName> get tasks;
   @JsonKey(ignore: true)
-  _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith => throw _privateConstructorUsedError;
+  _$$LoadedStateImplCopyWith<_$LoadedStateImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_FailureStateCopyWith<$Res> {
-  factory _$$_FailureStateCopyWith(_$_FailureState value, $Res Function(_$_FailureState) then) =
-      __$$_FailureStateCopyWithImpl<$Res>;
+abstract class _$$FailureStateImplCopyWith<$Res> {
+  factory _$$FailureStateImplCopyWith(
+          _$FailureStateImpl value, $Res Function(_$FailureStateImpl) then) =
+      __$$FailureStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Object error});
 }
 
 /// @nodoc
-class __$$_FailureStateCopyWithImpl<$Res>
-    extends _$HomeChecklistStateCopyWithImpl<$Res, _$_FailureState>
-    implements _$$_FailureStateCopyWith<$Res> {
-  __$$_FailureStateCopyWithImpl(_$_FailureState _value, $Res Function(_$_FailureState) _then)
+class __$$FailureStateImplCopyWithImpl<$Res>
+    extends _$HomeChecklistStateCopyWithImpl<$Res, _$FailureStateImpl>
+    implements _$$FailureStateImplCopyWith<$Res> {
+  __$$FailureStateImplCopyWithImpl(
+      _$FailureStateImpl _value, $Res Function(_$FailureStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1070,7 +657,7 @@ class __$$_FailureStateCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$_FailureState(
+    return _then(_$FailureStateImpl(
       null == error ? _value.error : error,
     ));
   }
@@ -1078,8 +665,8 @@ class __$$_FailureStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FailureState extends _FailureState {
-  const _$_FailureState(this.error) : super._();
+class _$FailureStateImpl extends _FailureState {
+  const _$FailureStateImpl(this.error) : super._();
 
   @override
   final Object error;
@@ -1090,10 +677,10 @@ class _$_FailureState extends _FailureState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FailureState &&
+            other is _$FailureStateImpl &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
@@ -1103,48 +690,8 @@ class _$_FailureState extends _FailureState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FailureStateCopyWith<_$_FailureState> get copyWith =>
-      __$$_FailureStateCopyWithImpl<_$_FailureState>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() keep,
-    required TResult Function(List<ITaskWithProjectName> tasks) loaded,
-    required TResult Function(Object error) failure,
-  }) {
-    return failure(error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? keep,
-    TResult? Function(List<ITaskWithProjectName> tasks)? loaded,
-    TResult? Function(Object error)? failure,
-  }) {
-    return failure?.call(error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? keep,
-    TResult Function(List<ITaskWithProjectName> tasks)? loaded,
-    TResult Function(Object error)? failure,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(error);
-    }
-    return orElse();
-  }
+  _$$FailureStateImplCopyWith<_$FailureStateImpl> get copyWith =>
+      __$$FailureStateImplCopyWithImpl<_$FailureStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1188,10 +735,11 @@ class _$_FailureState extends _FailureState {
 }
 
 abstract class _FailureState extends HomeChecklistState {
-  const factory _FailureState(final Object error) = _$_FailureState;
+  const factory _FailureState(final Object error) = _$FailureStateImpl;
   const _FailureState._() : super._();
 
   Object get error;
   @JsonKey(ignore: true)
-  _$$_FailureStateCopyWith<_$_FailureState> get copyWith => throw _privateConstructorUsedError;
+  _$$FailureStateImplCopyWith<_$FailureStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

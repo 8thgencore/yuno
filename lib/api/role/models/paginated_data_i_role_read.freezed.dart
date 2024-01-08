@@ -107,11 +107,11 @@ class _$PaginatedDataIRoleReadCopyWithImpl<$Res, $Val extends PaginatedDataIRole
 }
 
 /// @nodoc
-abstract class _$$_PaginatedDataIRoleReadCopyWith<$Res>
+abstract class _$$PaginatedDataIRoleReadImplCopyWith<$Res>
     implements $PaginatedDataIRoleReadCopyWith<$Res> {
-  factory _$$_PaginatedDataIRoleReadCopyWith(
-          _$_PaginatedDataIRoleRead value, $Res Function(_$_PaginatedDataIRoleRead) then) =
-      __$$_PaginatedDataIRoleReadCopyWithImpl<$Res>;
+  factory _$$PaginatedDataIRoleReadImplCopyWith(
+          _$PaginatedDataIRoleReadImpl value, $Res Function(_$PaginatedDataIRoleReadImpl) then) =
+      __$$PaginatedDataIRoleReadImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -125,11 +125,11 @@ abstract class _$$_PaginatedDataIRoleReadCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PaginatedDataIRoleReadCopyWithImpl<$Res>
-    extends _$PaginatedDataIRoleReadCopyWithImpl<$Res, _$_PaginatedDataIRoleRead>
-    implements _$$_PaginatedDataIRoleReadCopyWith<$Res> {
-  __$$_PaginatedDataIRoleReadCopyWithImpl(
-      _$_PaginatedDataIRoleRead _value, $Res Function(_$_PaginatedDataIRoleRead) _then)
+class __$$PaginatedDataIRoleReadImplCopyWithImpl<$Res>
+    extends _$PaginatedDataIRoleReadCopyWithImpl<$Res, _$PaginatedDataIRoleReadImpl>
+    implements _$$PaginatedDataIRoleReadImplCopyWith<$Res> {
+  __$$PaginatedDataIRoleReadImplCopyWithImpl(
+      _$PaginatedDataIRoleReadImpl _value, $Res Function(_$PaginatedDataIRoleReadImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -143,7 +143,7 @@ class __$$_PaginatedDataIRoleReadCopyWithImpl<$Res>
     Object? nextPage = freezed,
     Object? previousPage = freezed,
   }) {
-    return _then(_$_PaginatedDataIRoleRead(
+    return _then(_$PaginatedDataIRoleReadImpl(
       items: null == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
@@ -178,8 +178,8 @@ class __$$_PaginatedDataIRoleReadCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PaginatedDataIRoleRead implements _PaginatedDataIRoleRead {
-  const _$_PaginatedDataIRoleRead(
+class _$PaginatedDataIRoleReadImpl implements _PaginatedDataIRoleRead {
+  const _$PaginatedDataIRoleReadImpl(
       {required final List<IRoleRead> items,
       required this.total,
       required this.page,
@@ -189,8 +189,8 @@ class _$_PaginatedDataIRoleRead implements _PaginatedDataIRoleRead {
       @JsonKey(name: 'previous_page') this.previousPage})
       : _items = items;
 
-  factory _$_PaginatedDataIRoleRead.fromJson(Map<String, dynamic> json) =>
-      _$$_PaginatedDataIRoleReadFromJson(json);
+  factory _$PaginatedDataIRoleReadImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PaginatedDataIRoleReadImplFromJson(json);
 
   final List<IRoleRead> _items;
   @override
@@ -221,10 +221,10 @@ class _$_PaginatedDataIRoleRead implements _PaginatedDataIRoleRead {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaginatedDataIRoleRead &&
+            other is _$PaginatedDataIRoleReadImpl &&
             const DeepCollectionEquality().equals(other._items, _items) &&
             (identical(other.total, total) || other.total == total) &&
             (identical(other.page, page) || other.page == page) &&
@@ -242,12 +242,12 @@ class _$_PaginatedDataIRoleRead implements _PaginatedDataIRoleRead {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaginatedDataIRoleReadCopyWith<_$_PaginatedDataIRoleRead> get copyWith =>
-      __$$_PaginatedDataIRoleReadCopyWithImpl<_$_PaginatedDataIRoleRead>(this, _$identity);
+  _$$PaginatedDataIRoleReadImplCopyWith<_$PaginatedDataIRoleReadImpl> get copyWith =>
+      __$$PaginatedDataIRoleReadImplCopyWithImpl<_$PaginatedDataIRoleReadImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaginatedDataIRoleReadToJson(
+    return _$$PaginatedDataIRoleReadImplToJson(
       this,
     );
   }
@@ -261,10 +261,10 @@ abstract class _PaginatedDataIRoleRead implements PaginatedDataIRoleRead {
       required final int size,
       required final int pages,
       @JsonKey(name: 'next_page') final int? nextPage,
-      @JsonKey(name: 'previous_page') final int? previousPage}) = _$_PaginatedDataIRoleRead;
+      @JsonKey(name: 'previous_page') final int? previousPage}) = _$PaginatedDataIRoleReadImpl;
 
   factory _PaginatedDataIRoleRead.fromJson(Map<String, dynamic> json) =
-      _$_PaginatedDataIRoleRead.fromJson;
+      _$PaginatedDataIRoleReadImpl.fromJson;
 
   @override
   List<IRoleRead> get items;
@@ -284,6 +284,6 @@ abstract class _PaginatedDataIRoleRead implements PaginatedDataIRoleRead {
   int? get previousPage;
   @override
   @JsonKey(ignore: true)
-  _$$_PaginatedDataIRoleReadCopyWith<_$_PaginatedDataIRoleRead> get copyWith =>
+  _$$PaginatedDataIRoleReadImplCopyWith<_$PaginatedDataIRoleReadImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

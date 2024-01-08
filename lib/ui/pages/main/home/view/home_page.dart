@@ -72,16 +72,16 @@ class _TopCardWidget extends StatelessWidget {
             fit: BoxFit.cover,
           ),
           BlocBuilder<HomeHeaderBloc, HomeHeaderState>(
-            builder: (context, state) => state.maybeWhen(
-              loading: () => const Center(
+            builder: (context, state) => state.maybeMap(
+              loading: (_) => const Center(
                 child: CircularProgressIndicator(color: AppColors.white100),
               ),
-              loaded: (username, taskLength, lastTask) => Column(
+              loaded: (state) => Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const SizedBox(height: 30),
                   Text(
-                    '${l10n.hi}, $username!',
+                    '${l10n.hi}, ${state.username}',
                     style: AppTypography.b18l,
                   ),
                   const SizedBox(height: 12),
@@ -93,16 +93,16 @@ class _TopCardWidget extends StatelessWidget {
                       color: AppColors.dark100,
                     ),
                     child: Text(
-                      '$taskLength ${l10n.homePageActiveTask}',
+                      '${state.taskLength} ${l10n.homePageActiveTask}',
                       style: AppTypography.l18l,
                     ),
                   ),
                   GestureDetector(
-                    onTap: lastTask != null
+                    onTap: state.task != null
                         ? () async {
                             final result = await context.pushNamed<bool>(
                               RouteName.taskEdit,
-                              pathParameters: {'id': lastTask.id},
+                              pathParameters: {'id': state.task!.id},
                             );
                             WidgetsBinding.instance.addPostFrameCallback((_) {
                               if (result ?? false) {
@@ -114,11 +114,12 @@ class _TopCardWidget extends StatelessWidget {
                             });
                           }
                         : null,
-                    child: _LastTaskWidget(task: lastTask),
+                    child: _LastTaskWidget(task: state.task),
                   ),
                 ],
               ),
-              failure: (text) => Center(child: Text(text.toString(), style: AppTypography.b16l)),
+              failure: (state) =>
+                  Center(child: Text(state.task.toString(), style: AppTypography.b16l)),
               orElse: () => Center(child: Text('Error', style: AppTypography.b16l)),
             ),
           ),
@@ -228,24 +229,27 @@ class _ProjectsListWidget extends StatelessWidget {
         SizedBox(
           height: 164,
           child: BlocBuilder<HomeProjectsBloc, HomeProjectsState>(
-            builder: (context, state) => state.maybeWhen(
-              loading: () => const Center(child: CircularProgressIndicator()),
-              loaded: (projects) => projects.isNotEmpty
-                  ? ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                      itemCount: projects.length,
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                          onTap: () async => context.pushNamed(
-                            RouteName.project,
-                            pathParameters: {'id': projects[index].id},
-                          ),
-                          child: ProjectCardSmallWidget(project: projects[index]),
-                        );
-                      },
-                    )
-                  : ErrorContainer(text: l10n.homePageProjectsEmpty),
+            builder: (context, state) => state.maybeMap(
+              loading: (_) => const Center(child: CircularProgressIndicator()),
+              loaded: (state) {
+                final projects = state.projects;
+                return projects.isNotEmpty
+                    ? ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        itemCount: projects.length,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            onTap: () async => context.pushNamed(
+                              RouteName.project,
+                              pathParameters: {'id': projects[index].id},
+                            ),
+                            child: ProjectCardSmallWidget(project: projects[index]),
+                          );
+                        },
+                      )
+                    : ErrorContainer(text: l10n.homePageProjectsEmpty);
+              },
               failure: (error) => Text(error.toString(), style: AppTypography.l14g),
               orElse: () => Text('Error', style: AppTypography.l14g),
             ),
@@ -270,47 +274,50 @@ class _CheckListBuilderWidget extends StatelessWidget {
           child: Text(l10n.checklist, style: AppTypography.b18d),
         ),
         BlocBuilder<HomeChecklistBloc, HomeChecklistState>(
-          builder: (context, state) => state.maybeWhen(
-            loading: () => const Center(child: CircularProgressIndicator()),
-            loaded: (tasks) => tasks.isNotEmpty
-                ? ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
-                    itemCount: tasks.length,
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () async {
-                          final result = await context.pushNamed<bool>(
-                            RouteName.taskEdit,
-                            pathParameters: {'id': tasks[index].id},
-                          );
-                          WidgetsBinding.instance.addPostFrameCallback((_) {
-                            if (result ?? false) {
-                              context.read<HomeHeaderBloc>().add(const HomeHeaderEvent.started());
-                              context
-                                  .read<HomeChecklistBloc>()
-                                  .add(const HomeChecklistEvent.started());
-                            }
-                          });
-                        },
-                        child: TaskCardWidget(
-                          id: tasks[index].id,
-                          title: tasks[index].name,
-                          projectName: tasks[index].projectName,
-                          done: tasks[index].done,
-                          onClickCheckBox: () => context
-                              .read<HomeChecklistBloc>()
-                              .add(HomeChecklistEvent.checkedItem(tasks[index].id)),
-                          onDismissible: () => context
-                              .read<HomeChecklistBloc>()
-                              .add(HomeChecklistEvent.deletedItem(tasks[index].id)),
-                          isMember: true,
-                        ),
-                      );
-                    },
-                  )
-                : ErrorContainer(text: l10n.homePageChecklistEmpty),
+          builder: (context, state) => state.maybeMap(
+            loading: (_) => const Center(child: CircularProgressIndicator()),
+            loaded: (state) {
+              final tasks = state.tasks;
+              return tasks.isNotEmpty
+                  ? ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      itemCount: tasks.length,
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () async {
+                            final result = await context.pushNamed<bool>(
+                              RouteName.taskEdit,
+                              pathParameters: {'id': tasks[index].id},
+                            );
+                            WidgetsBinding.instance.addPostFrameCallback((_) {
+                              if (result ?? false) {
+                                context.read<HomeHeaderBloc>().add(const HomeHeaderEvent.started());
+                                context
+                                    .read<HomeChecklistBloc>()
+                                    .add(const HomeChecklistEvent.started());
+                              }
+                            });
+                          },
+                          child: TaskCardWidget(
+                            id: tasks[index].id,
+                            title: tasks[index].name,
+                            projectName: tasks[index].projectName,
+                            done: tasks[index].done,
+                            onClickCheckBox: () => context
+                                .read<HomeChecklistBloc>()
+                                .add(HomeChecklistEvent.checkedItem(tasks[index].id)),
+                            onDismissible: () => context
+                                .read<HomeChecklistBloc>()
+                                .add(HomeChecklistEvent.deletedItem(tasks[index].id)),
+                            isMember: true,
+                          ),
+                        );
+                      },
+                    )
+                  : ErrorContainer(text: l10n.homePageChecklistEmpty);
+            },
             failure: (error) => ErrorContainer(text: '$error'),
             orElse: () => ErrorContainer(text: l10n.homePageChecklistEmpty),
           ),

@@ -17,7 +17,7 @@ class HomeHeaderBloc extends Bloc<HomeHeaderEvent, HomeHeaderState> {
   HomeHeaderBloc({
     required this.userRepository,
     required this.taskRepository,
-  }) : super(const HomeHeaderState.initial()) {
+  }) : super(const HomeHeaderState.initial(username: '', taskLength: 0)) {
     on<HomeHeaderEvent>(
       (event, emit) => event.map(
         started: (event) async => _onHomeHeaderLoaded(event, emit),
@@ -35,7 +35,7 @@ class HomeHeaderBloc extends Bloc<HomeHeaderEvent, HomeHeaderState> {
     _StartedEvent event,
     Emitter<HomeHeaderState> emit,
   ) async {
-    emit(const HomeHeaderState.loading());
+    emit(const HomeHeaderState.loading(username: '', taskLength: 0));
     try {
       final user = await userRepository.getCachedData();
       if (user != null) {
@@ -70,7 +70,13 @@ class HomeHeaderBloc extends Bloc<HomeHeaderEvent, HomeHeaderState> {
         ),
       );
     } on DioException catch (dioError) {
-      emit(HomeHeaderState.failure(dioErrorInterceptor(dioError).toString()));
+      emit(
+        HomeHeaderState.failure(
+          username: '',
+          taskLength: 0,
+          error: dioErrorInterceptor(dioError).toString(),
+        ),
+      );
     }
   }
 }

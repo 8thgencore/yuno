@@ -1,6 +1,6 @@
 part of 'statistics_bloc.dart';
 
-@freezed
+@Freezed(copyWith: false)
 class StatisticsEvent with _$StatisticsEvent {
   const factory StatisticsEvent.started() = _StartedEvent;
 }

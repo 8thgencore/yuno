@@ -65,18 +65,18 @@ class _$IAuthLoginCopyWithImpl<$Res, $Val extends IAuthLogin> implements $IAuthL
 }
 
 /// @nodoc
-abstract class _$$_IAuthLoginCopyWith<$Res> implements $IAuthLoginCopyWith<$Res> {
-  factory _$$_IAuthLoginCopyWith(_$_IAuthLogin value, $Res Function(_$_IAuthLogin) then) =
-      __$$_IAuthLoginCopyWithImpl<$Res>;
+abstract class _$$IAuthLoginImplCopyWith<$Res> implements $IAuthLoginCopyWith<$Res> {
+  factory _$$IAuthLoginImplCopyWith(_$IAuthLoginImpl value, $Res Function(_$IAuthLoginImpl) then) =
+      __$$IAuthLoginImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String email, String password});
 }
 
 /// @nodoc
-class __$$_IAuthLoginCopyWithImpl<$Res> extends _$IAuthLoginCopyWithImpl<$Res, _$_IAuthLogin>
-    implements _$$_IAuthLoginCopyWith<$Res> {
-  __$$_IAuthLoginCopyWithImpl(_$_IAuthLogin _value, $Res Function(_$_IAuthLogin) _then)
+class __$$IAuthLoginImplCopyWithImpl<$Res> extends _$IAuthLoginCopyWithImpl<$Res, _$IAuthLoginImpl>
+    implements _$$IAuthLoginImplCopyWith<$Res> {
+  __$$IAuthLoginImplCopyWithImpl(_$IAuthLoginImpl _value, $Res Function(_$IAuthLoginImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +85,7 @@ class __$$_IAuthLoginCopyWithImpl<$Res> extends _$IAuthLoginCopyWithImpl<$Res, _
     Object? email = null,
     Object? password = null,
   }) {
-    return _then(_$_IAuthLogin(
+    return _then(_$IAuthLoginImpl(
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -100,10 +100,10 @@ class __$$_IAuthLoginCopyWithImpl<$Res> extends _$IAuthLoginCopyWithImpl<$Res, _
 
 /// @nodoc
 @JsonSerializable()
-class _$_IAuthLogin implements _IAuthLogin {
-  const _$_IAuthLogin({required this.email, required this.password});
+class _$IAuthLoginImpl implements _IAuthLogin {
+  const _$IAuthLoginImpl({required this.email, required this.password});
 
-  factory _$_IAuthLogin.fromJson(Map<String, dynamic> json) => _$$_IAuthLoginFromJson(json);
+  factory _$IAuthLoginImpl.fromJson(Map<String, dynamic> json) => _$$IAuthLoginImplFromJson(json);
 
   @override
   final String email;
@@ -116,10 +116,10 @@ class _$_IAuthLogin implements _IAuthLogin {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IAuthLogin &&
+            other is _$IAuthLoginImpl &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) || other.password == password));
   }
@@ -131,12 +131,12 @@ class _$_IAuthLogin implements _IAuthLogin {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IAuthLoginCopyWith<_$_IAuthLogin> get copyWith =>
-      __$$_IAuthLoginCopyWithImpl<_$_IAuthLogin>(this, _$identity);
+  _$$IAuthLoginImplCopyWith<_$IAuthLoginImpl> get copyWith =>
+      __$$IAuthLoginImplCopyWithImpl<_$IAuthLoginImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_IAuthLoginToJson(
+    return _$$IAuthLoginImplToJson(
       this,
     );
   }
@@ -144,9 +144,9 @@ class _$_IAuthLogin implements _IAuthLogin {
 
 abstract class _IAuthLogin implements IAuthLogin {
   const factory _IAuthLogin({required final String email, required final String password}) =
-      _$_IAuthLogin;
+      _$IAuthLoginImpl;
 
-  factory _IAuthLogin.fromJson(Map<String, dynamic> json) = _$_IAuthLogin.fromJson;
+  factory _IAuthLogin.fromJson(Map<String, dynamic> json) = _$IAuthLoginImpl.fromJson;
 
   @override
   String get email;
@@ -154,5 +154,5 @@ abstract class _IAuthLogin implements IAuthLogin {
   String get password;
   @override
   @JsonKey(ignore: true)
-  _$$_IAuthLoginCopyWith<_$_IAuthLogin> get copyWith => throw _privateConstructorUsedError;
+  _$$IAuthLoginImplCopyWith<_$IAuthLoginImpl> get copyWith => throw _privateConstructorUsedError;
 }

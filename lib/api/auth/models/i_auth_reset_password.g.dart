@@ -6,13 +6,13 @@ part of 'i_auth_reset_password.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_IAuthResetPassword _$$_IAuthResetPasswordFromJson(Map<String, dynamic> json) =>
-    _$_IAuthResetPassword(
+_$IAuthResetPasswordImpl _$$IAuthResetPasswordImplFromJson(Map<String, dynamic> json) =>
+    _$IAuthResetPasswordImpl(
       resetToken: json['reset_token'] as String,
       password: json['password'] as String,
     );
 
-Map<String, dynamic> _$$_IAuthResetPasswordToJson(_$_IAuthResetPassword instance) =>
+Map<String, dynamic> _$$IAuthResetPasswordImplToJson(_$IAuthResetPasswordImpl instance) =>
     <String, dynamic>{
       'reset_token': instance.resetToken,
       'password': instance.password,

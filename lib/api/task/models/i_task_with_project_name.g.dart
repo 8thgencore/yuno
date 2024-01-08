@@ -6,8 +6,8 @@ part of 'i_task_with_project_name.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ITaskWithProjectName _$$_ITaskWithProjectNameFromJson(Map<String, dynamic> json) =>
-    _$_ITaskWithProjectName(
+_$ITaskWithProjectNameImpl _$$ITaskWithProjectNameImplFromJson(Map<String, dynamic> json) =>
+    _$ITaskWithProjectNameImpl(
       name: json['name'] as String,
       id: json['id'] as String,
       done: json['done'] as bool? ?? false,
@@ -16,7 +16,7 @@ _$_ITaskWithProjectName _$$_ITaskWithProjectNameFromJson(Map<String, dynamic> js
       projectName: json['project_name'] as String?,
     );
 
-Map<String, dynamic> _$$_ITaskWithProjectNameToJson(_$_ITaskWithProjectName instance) =>
+Map<String, dynamic> _$$ITaskWithProjectNameImplToJson(_$ITaskWithProjectNameImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'id': instance.id,

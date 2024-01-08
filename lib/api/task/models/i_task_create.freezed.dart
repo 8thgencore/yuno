@@ -84,9 +84,10 @@ class _$ITaskCreateCopyWithImpl<$Res, $Val extends ITaskCreate>
 }
 
 /// @nodoc
-abstract class _$$_ITaskCreateCopyWith<$Res> implements $ITaskCreateCopyWith<$Res> {
-  factory _$$_ITaskCreateCopyWith(_$_ITaskCreate value, $Res Function(_$_ITaskCreate) then) =
-      __$$_ITaskCreateCopyWithImpl<$Res>;
+abstract class _$$ITaskCreateImplCopyWith<$Res> implements $ITaskCreateCopyWith<$Res> {
+  factory _$$ITaskCreateImplCopyWith(
+          _$ITaskCreateImpl value, $Res Function(_$ITaskCreateImpl) then) =
+      __$$ITaskCreateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -97,9 +98,10 @@ abstract class _$$_ITaskCreateCopyWith<$Res> implements $ITaskCreateCopyWith<$Re
 }
 
 /// @nodoc
-class __$$_ITaskCreateCopyWithImpl<$Res> extends _$ITaskCreateCopyWithImpl<$Res, _$_ITaskCreate>
-    implements _$$_ITaskCreateCopyWith<$Res> {
-  __$$_ITaskCreateCopyWithImpl(_$_ITaskCreate _value, $Res Function(_$_ITaskCreate) _then)
+class __$$ITaskCreateImplCopyWithImpl<$Res>
+    extends _$ITaskCreateCopyWithImpl<$Res, _$ITaskCreateImpl>
+    implements _$$ITaskCreateImplCopyWith<$Res> {
+  __$$ITaskCreateImplCopyWithImpl(_$ITaskCreateImpl _value, $Res Function(_$ITaskCreateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -110,7 +112,7 @@ class __$$_ITaskCreateCopyWithImpl<$Res> extends _$ITaskCreateCopyWithImpl<$Res,
     Object? deadline = freezed,
     Object? projectId = freezed,
   }) {
-    return _then(_$_ITaskCreate(
+    return _then(_$ITaskCreateImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -133,14 +135,14 @@ class __$$_ITaskCreateCopyWithImpl<$Res> extends _$ITaskCreateCopyWithImpl<$Res,
 
 /// @nodoc
 @JsonSerializable()
-class _$_ITaskCreate implements _ITaskCreate {
-  const _$_ITaskCreate(
+class _$ITaskCreateImpl implements _ITaskCreate {
+  const _$ITaskCreateImpl(
       {required this.name,
       this.done = false,
       @JsonKey(includeIfNull: false) this.deadline,
       @JsonKey(name: 'project_id', includeIfNull: false) this.projectId});
 
-  factory _$_ITaskCreate.fromJson(Map<String, dynamic> json) => _$$_ITaskCreateFromJson(json);
+  factory _$ITaskCreateImpl.fromJson(Map<String, dynamic> json) => _$$ITaskCreateImplFromJson(json);
 
   @override
   final String name;
@@ -160,10 +162,10 @@ class _$_ITaskCreate implements _ITaskCreate {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ITaskCreate &&
+            other is _$ITaskCreateImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.done, done) || other.done == done) &&
             (identical(other.deadline, deadline) || other.deadline == deadline) &&
@@ -177,12 +179,12 @@ class _$_ITaskCreate implements _ITaskCreate {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ITaskCreateCopyWith<_$_ITaskCreate> get copyWith =>
-      __$$_ITaskCreateCopyWithImpl<_$_ITaskCreate>(this, _$identity);
+  _$$ITaskCreateImplCopyWith<_$ITaskCreateImpl> get copyWith =>
+      __$$ITaskCreateImplCopyWithImpl<_$ITaskCreateImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ITaskCreateToJson(
+    return _$$ITaskCreateImplToJson(
       this,
     );
   }
@@ -190,12 +192,13 @@ class _$_ITaskCreate implements _ITaskCreate {
 
 abstract class _ITaskCreate implements ITaskCreate {
   const factory _ITaskCreate(
-      {required final String name,
-      final bool? done,
-      @JsonKey(includeIfNull: false) final DateTime? deadline,
-      @JsonKey(name: 'project_id', includeIfNull: false) final String? projectId}) = _$_ITaskCreate;
+          {required final String name,
+          final bool? done,
+          @JsonKey(includeIfNull: false) final DateTime? deadline,
+          @JsonKey(name: 'project_id', includeIfNull: false) final String? projectId}) =
+      _$ITaskCreateImpl;
 
-  factory _ITaskCreate.fromJson(Map<String, dynamic> json) = _$_ITaskCreate.fromJson;
+  factory _ITaskCreate.fromJson(Map<String, dynamic> json) = _$ITaskCreateImpl.fromJson;
 
   @override
   String get name;
@@ -209,5 +212,5 @@ abstract class _ITaskCreate implements ITaskCreate {
   String? get projectId;
   @override
   @JsonKey(ignore: true)
-  _$$_ITaskCreateCopyWith<_$_ITaskCreate> get copyWith => throw _privateConstructorUsedError;
+  _$$ITaskCreateImplCopyWith<_$ITaskCreateImpl> get copyWith => throw _privateConstructorUsedError;
 }

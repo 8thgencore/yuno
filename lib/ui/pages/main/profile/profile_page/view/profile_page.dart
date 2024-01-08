@@ -106,13 +106,13 @@ class _HeaderWidgetState extends State<_HeaderWidget> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileBloc, ProfileState>(
-      builder: (context, state) => state.maybeWhen(
-        loading: () => const SizedBox(
+      builder: (context, state) => state.maybeMap(
+        loading: (_) => const SizedBox(
           height: 255,
           child: Center(child: CircularProgressIndicator()),
         ),
-        loaded: (user, error) {
-          if (error != null) {
+        loaded: (state) {
+          if (state.error != null) {
             // showToast(
             //   context,
             //   child: ToastWidget(
@@ -121,6 +121,7 @@ class _HeaderWidgetState extends State<_HeaderWidget> {
             //   ),
             // );
           }
+          final user = state.user;
           return Column(
             children: [
               AvatarWidget(image: user.image),

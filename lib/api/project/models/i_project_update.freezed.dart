@@ -66,20 +66,21 @@ class _$IProjectUpdateCopyWithImpl<$Res, $Val extends IProjectUpdate>
 }
 
 /// @nodoc
-abstract class _$$_IProjectUpdateCopyWith<$Res> implements $IProjectUpdateCopyWith<$Res> {
-  factory _$$_IProjectUpdateCopyWith(
-          _$_IProjectUpdate value, $Res Function(_$_IProjectUpdate) then) =
-      __$$_IProjectUpdateCopyWithImpl<$Res>;
+abstract class _$$IProjectUpdateImplCopyWith<$Res> implements $IProjectUpdateCopyWith<$Res> {
+  factory _$$IProjectUpdateImplCopyWith(
+          _$IProjectUpdateImpl value, $Res Function(_$IProjectUpdateImpl) then) =
+      __$$IProjectUpdateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, String description});
 }
 
 /// @nodoc
-class __$$_IProjectUpdateCopyWithImpl<$Res>
-    extends _$IProjectUpdateCopyWithImpl<$Res, _$_IProjectUpdate>
-    implements _$$_IProjectUpdateCopyWith<$Res> {
-  __$$_IProjectUpdateCopyWithImpl(_$_IProjectUpdate _value, $Res Function(_$_IProjectUpdate) _then)
+class __$$IProjectUpdateImplCopyWithImpl<$Res>
+    extends _$IProjectUpdateCopyWithImpl<$Res, _$IProjectUpdateImpl>
+    implements _$$IProjectUpdateImplCopyWith<$Res> {
+  __$$IProjectUpdateImplCopyWithImpl(
+      _$IProjectUpdateImpl _value, $Res Function(_$IProjectUpdateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -88,7 +89,7 @@ class __$$_IProjectUpdateCopyWithImpl<$Res>
     Object? name = null,
     Object? description = null,
   }) {
-    return _then(_$_IProjectUpdate(
+    return _then(_$IProjectUpdateImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -103,10 +104,11 @@ class __$$_IProjectUpdateCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_IProjectUpdate implements _IProjectUpdate {
-  const _$_IProjectUpdate({required this.name, required this.description});
+class _$IProjectUpdateImpl implements _IProjectUpdate {
+  const _$IProjectUpdateImpl({required this.name, required this.description});
 
-  factory _$_IProjectUpdate.fromJson(Map<String, dynamic> json) => _$$_IProjectUpdateFromJson(json);
+  factory _$IProjectUpdateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IProjectUpdateImplFromJson(json);
 
   @override
   final String name;
@@ -119,10 +121,10 @@ class _$_IProjectUpdate implements _IProjectUpdate {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IProjectUpdate &&
+            other is _$IProjectUpdateImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) || other.description == description));
   }
@@ -134,12 +136,12 @@ class _$_IProjectUpdate implements _IProjectUpdate {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IProjectUpdateCopyWith<_$_IProjectUpdate> get copyWith =>
-      __$$_IProjectUpdateCopyWithImpl<_$_IProjectUpdate>(this, _$identity);
+  _$$IProjectUpdateImplCopyWith<_$IProjectUpdateImpl> get copyWith =>
+      __$$IProjectUpdateImplCopyWithImpl<_$IProjectUpdateImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_IProjectUpdateToJson(
+    return _$$IProjectUpdateImplToJson(
       this,
     );
   }
@@ -147,9 +149,9 @@ class _$_IProjectUpdate implements _IProjectUpdate {
 
 abstract class _IProjectUpdate implements IProjectUpdate {
   const factory _IProjectUpdate({required final String name, required final String description}) =
-      _$_IProjectUpdate;
+      _$IProjectUpdateImpl;
 
-  factory _IProjectUpdate.fromJson(Map<String, dynamic> json) = _$_IProjectUpdate.fromJson;
+  factory _IProjectUpdate.fromJson(Map<String, dynamic> json) = _$IProjectUpdateImpl.fromJson;
 
   @override
   String get name;
@@ -157,5 +159,6 @@ abstract class _IProjectUpdate implements IProjectUpdate {
   String get description;
   @override
   @JsonKey(ignore: true)
-  _$$_IProjectUpdateCopyWith<_$_IProjectUpdate> get copyWith => throw _privateConstructorUsedError;
+  _$$IProjectUpdateImplCopyWith<_$IProjectUpdateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

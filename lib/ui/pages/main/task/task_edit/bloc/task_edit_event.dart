@@ -1,6 +1,6 @@
 part of 'task_edit_bloc.dart';
 
-@freezed
+@Freezed(copyWith: false)
 class TaskEditEvent with _$TaskEditEvent {
   const factory TaskEditEvent.started({
     required String id,

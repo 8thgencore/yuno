@@ -72,18 +72,20 @@ class _$ITaskUpdateCopyWithImpl<$Res, $Val extends ITaskUpdate>
 }
 
 /// @nodoc
-abstract class _$$_ITaskUpdateCopyWith<$Res> implements $ITaskUpdateCopyWith<$Res> {
-  factory _$$_ITaskUpdateCopyWith(_$_ITaskUpdate value, $Res Function(_$_ITaskUpdate) then) =
-      __$$_ITaskUpdateCopyWithImpl<$Res>;
+abstract class _$$ITaskUpdateImplCopyWith<$Res> implements $ITaskUpdateCopyWith<$Res> {
+  factory _$$ITaskUpdateImplCopyWith(
+          _$ITaskUpdateImpl value, $Res Function(_$ITaskUpdateImpl) then) =
+      __$$ITaskUpdateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? name, bool? done, DateTime? deadline});
 }
 
 /// @nodoc
-class __$$_ITaskUpdateCopyWithImpl<$Res> extends _$ITaskUpdateCopyWithImpl<$Res, _$_ITaskUpdate>
-    implements _$$_ITaskUpdateCopyWith<$Res> {
-  __$$_ITaskUpdateCopyWithImpl(_$_ITaskUpdate _value, $Res Function(_$_ITaskUpdate) _then)
+class __$$ITaskUpdateImplCopyWithImpl<$Res>
+    extends _$ITaskUpdateCopyWithImpl<$Res, _$ITaskUpdateImpl>
+    implements _$$ITaskUpdateImplCopyWith<$Res> {
+  __$$ITaskUpdateImplCopyWithImpl(_$ITaskUpdateImpl _value, $Res Function(_$ITaskUpdateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -93,7 +95,7 @@ class __$$_ITaskUpdateCopyWithImpl<$Res> extends _$ITaskUpdateCopyWithImpl<$Res,
     Object? done = freezed,
     Object? deadline = freezed,
   }) {
-    return _then(_$_ITaskUpdate(
+    return _then(_$ITaskUpdateImpl(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -112,10 +114,10 @@ class __$$_ITaskUpdateCopyWithImpl<$Res> extends _$ITaskUpdateCopyWithImpl<$Res,
 
 /// @nodoc
 @JsonSerializable()
-class _$_ITaskUpdate implements _ITaskUpdate {
-  const _$_ITaskUpdate({this.name, this.done = false, this.deadline});
+class _$ITaskUpdateImpl implements _ITaskUpdate {
+  const _$ITaskUpdateImpl({this.name, this.done = false, this.deadline});
 
-  factory _$_ITaskUpdate.fromJson(Map<String, dynamic> json) => _$$_ITaskUpdateFromJson(json);
+  factory _$ITaskUpdateImpl.fromJson(Map<String, dynamic> json) => _$$ITaskUpdateImplFromJson(json);
 
   @override
   final String? name;
@@ -131,10 +133,10 @@ class _$_ITaskUpdate implements _ITaskUpdate {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ITaskUpdate &&
+            other is _$ITaskUpdateImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.done, done) || other.done == done) &&
             (identical(other.deadline, deadline) || other.deadline == deadline));
@@ -147,12 +149,12 @@ class _$_ITaskUpdate implements _ITaskUpdate {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ITaskUpdateCopyWith<_$_ITaskUpdate> get copyWith =>
-      __$$_ITaskUpdateCopyWithImpl<_$_ITaskUpdate>(this, _$identity);
+  _$$ITaskUpdateImplCopyWith<_$ITaskUpdateImpl> get copyWith =>
+      __$$ITaskUpdateImplCopyWithImpl<_$ITaskUpdateImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ITaskUpdateToJson(
+    return _$$ITaskUpdateImplToJson(
       this,
     );
   }
@@ -160,9 +162,9 @@ class _$_ITaskUpdate implements _ITaskUpdate {
 
 abstract class _ITaskUpdate implements ITaskUpdate {
   const factory _ITaskUpdate({final String? name, final bool? done, final DateTime? deadline}) =
-      _$_ITaskUpdate;
+      _$ITaskUpdateImpl;
 
-  factory _ITaskUpdate.fromJson(Map<String, dynamic> json) = _$_ITaskUpdate.fromJson;
+  factory _ITaskUpdate.fromJson(Map<String, dynamic> json) = _$ITaskUpdateImpl.fromJson;
 
   @override
   String? get name;
@@ -172,5 +174,5 @@ abstract class _ITaskUpdate implements ITaskUpdate {
   DateTime? get deadline;
   @override
   @JsonKey(ignore: true)
-  _$$_ITaskUpdateCopyWith<_$_ITaskUpdate> get copyWith => throw _privateConstructorUsedError;
+  _$$ITaskUpdateImplCopyWith<_$ITaskUpdateImpl> get copyWith => throw _privateConstructorUsedError;
 }

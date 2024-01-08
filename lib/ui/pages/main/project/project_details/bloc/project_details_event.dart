@@ -1,6 +1,6 @@
 part of 'project_details_bloc.dart';
 
-@freezed
+@Freezed(copyWith: false)
 class ProjectDetailsEvent with _$ProjectDetailsEvent {
   const factory ProjectDetailsEvent.started(String id) = _StartedEvent;
 

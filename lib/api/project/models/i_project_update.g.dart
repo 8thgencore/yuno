@@ -6,12 +6,14 @@ part of 'i_project_update.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_IProjectUpdate _$$_IProjectUpdateFromJson(Map<String, dynamic> json) => _$_IProjectUpdate(
+_$IProjectUpdateImpl _$$IProjectUpdateImplFromJson(Map<String, dynamic> json) =>
+    _$IProjectUpdateImpl(
       name: json['name'] as String,
       description: json['description'] as String,
     );
 
-Map<String, dynamic> _$$_IProjectUpdateToJson(_$_IProjectUpdate instance) => <String, dynamic>{
+Map<String, dynamic> _$$IProjectUpdateImplToJson(_$IProjectUpdateImpl instance) =>
+    <String, dynamic>{
       'name': instance.name,
       'description': instance.description,
     };

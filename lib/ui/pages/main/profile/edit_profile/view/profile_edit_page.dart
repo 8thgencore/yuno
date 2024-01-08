@@ -48,10 +48,13 @@ class ProfileEditPage extends StatelessWidget {
       },
       child: LoaderOverlay(
         overlayColor: Colors.black.withOpacity(0.4),
-        child: WillPopScope(
-          onWillPop: () async {
+        child: PopScope(
+          canPop: false,
+          onPopInvoked: (didPop) {
+            if (didPop) {
+              return;
+            }
             context.pop(true);
-            return true;
           },
           child: Scaffold(
             backgroundColor: AppColors.screen100,

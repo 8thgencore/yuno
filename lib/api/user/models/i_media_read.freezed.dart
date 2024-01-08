@@ -80,18 +80,18 @@ class _$IMediaReadCopyWithImpl<$Res, $Val extends IMediaRead> implements $IMedia
 }
 
 /// @nodoc
-abstract class _$$_IMediaReadCopyWith<$Res> implements $IMediaReadCopyWith<$Res> {
-  factory _$$_IMediaReadCopyWith(_$_IMediaRead value, $Res Function(_$_IMediaRead) then) =
-      __$$_IMediaReadCopyWithImpl<$Res>;
+abstract class _$$IMediaReadImplCopyWith<$Res> implements $IMediaReadCopyWith<$Res> {
+  factory _$$IMediaReadImplCopyWith(_$IMediaReadImpl value, $Res Function(_$IMediaReadImpl) then) =
+      __$$IMediaReadImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Object id, String? title, String? description, String? path, String? link});
 }
 
 /// @nodoc
-class __$$_IMediaReadCopyWithImpl<$Res> extends _$IMediaReadCopyWithImpl<$Res, _$_IMediaRead>
-    implements _$$_IMediaReadCopyWith<$Res> {
-  __$$_IMediaReadCopyWithImpl(_$_IMediaRead _value, $Res Function(_$_IMediaRead) _then)
+class __$$IMediaReadImplCopyWithImpl<$Res> extends _$IMediaReadCopyWithImpl<$Res, _$IMediaReadImpl>
+    implements _$$IMediaReadImplCopyWith<$Res> {
+  __$$IMediaReadImplCopyWithImpl(_$IMediaReadImpl _value, $Res Function(_$IMediaReadImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -103,7 +103,7 @@ class __$$_IMediaReadCopyWithImpl<$Res> extends _$IMediaReadCopyWithImpl<$Res, _
     Object? path = freezed,
     Object? link = freezed,
   }) {
-    return _then(_$_IMediaRead(
+    return _then(_$IMediaReadImpl(
       id: null == id ? _value.id : id,
       title: freezed == title
           ? _value.title
@@ -127,10 +127,10 @@ class __$$_IMediaReadCopyWithImpl<$Res> extends _$IMediaReadCopyWithImpl<$Res, _
 
 /// @nodoc
 @JsonSerializable()
-class _$_IMediaRead implements _IMediaRead {
-  const _$_IMediaRead({required this.id, this.title, this.description, this.path, this.link});
+class _$IMediaReadImpl implements _IMediaRead {
+  const _$IMediaReadImpl({required this.id, this.title, this.description, this.path, this.link});
 
-  factory _$_IMediaRead.fromJson(Map<String, dynamic> json) => _$$_IMediaReadFromJson(json);
+  factory _$IMediaReadImpl.fromJson(Map<String, dynamic> json) => _$$IMediaReadImplFromJson(json);
 
   @override
   final Object id;
@@ -149,10 +149,10 @@ class _$_IMediaRead implements _IMediaRead {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IMediaRead &&
+            other is _$IMediaReadImpl &&
             const DeepCollectionEquality().equals(other.id, id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) || other.description == description) &&
@@ -168,12 +168,12 @@ class _$_IMediaRead implements _IMediaRead {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IMediaReadCopyWith<_$_IMediaRead> get copyWith =>
-      __$$_IMediaReadCopyWithImpl<_$_IMediaRead>(this, _$identity);
+  _$$IMediaReadImplCopyWith<_$IMediaReadImpl> get copyWith =>
+      __$$IMediaReadImplCopyWithImpl<_$IMediaReadImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_IMediaReadToJson(
+    return _$$IMediaReadImplToJson(
       this,
     );
   }
@@ -185,9 +185,9 @@ abstract class _IMediaRead implements IMediaRead {
       final String? title,
       final String? description,
       final String? path,
-      final String? link}) = _$_IMediaRead;
+      final String? link}) = _$IMediaReadImpl;
 
-  factory _IMediaRead.fromJson(Map<String, dynamic> json) = _$_IMediaRead.fromJson;
+  factory _IMediaRead.fromJson(Map<String, dynamic> json) = _$IMediaReadImpl.fromJson;
 
   @override
   Object get id;
@@ -201,5 +201,5 @@ abstract class _IMediaRead implements IMediaRead {
   String? get link;
   @override
   @JsonKey(ignore: true)
-  _$$_IMediaReadCopyWith<_$_IMediaRead> get copyWith => throw _privateConstructorUsedError;
+  _$$IMediaReadImplCopyWith<_$IMediaReadImpl> get copyWith => throw _privateConstructorUsedError;
 }
