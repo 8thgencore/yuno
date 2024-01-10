@@ -104,13 +104,15 @@ class _MemberCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16),
             child: ClipOval(
-              child: user.image != null
-                  ? CachedNetworkImage(
-                      width: 48,
-                      height: 48,
-                      fit: BoxFit.cover,
-                      imageUrl: user.image!.media.link!,
-                    )
+              child: (user.image != null)
+                  ? (user.image!.media.link != null)
+                      ? CachedNetworkImage(
+                          width: 48,
+                          height: 48,
+                          fit: BoxFit.cover,
+                          imageUrl: user.image!.media.link!,
+                        )
+                      : Assets.images.avatar.image()
                   : Assets.images.avatar.image(),
             ),
           ),

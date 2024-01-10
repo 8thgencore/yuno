@@ -58,7 +58,7 @@ class ProjectDetailsPage extends StatelessWidget {
                       }
                     });
                   },
-                  child: const Icon(Icons.add, size: 32),
+                  child: const Icon(Icons.add, size: 32, color: AppColors.white100),
                 )
               : const SizedBox(),
           orElse: () => const SizedBox(),
