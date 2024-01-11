@@ -66,18 +66,20 @@ class _$IRoleUpdateCopyWithImpl<$Res, $Val extends IRoleUpdate>
 }
 
 /// @nodoc
-abstract class _$$_IRoleUpdateCopyWith<$Res> implements $IRoleUpdateCopyWith<$Res> {
-  factory _$$_IRoleUpdateCopyWith(_$_IRoleUpdate value, $Res Function(_$_IRoleUpdate) then) =
-      __$$_IRoleUpdateCopyWithImpl<$Res>;
+abstract class _$$IRoleUpdateImplCopyWith<$Res> implements $IRoleUpdateCopyWith<$Res> {
+  factory _$$IRoleUpdateImplCopyWith(
+          _$IRoleUpdateImpl value, $Res Function(_$IRoleUpdateImpl) then) =
+      __$$IRoleUpdateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, String description});
 }
 
 /// @nodoc
-class __$$_IRoleUpdateCopyWithImpl<$Res> extends _$IRoleUpdateCopyWithImpl<$Res, _$_IRoleUpdate>
-    implements _$$_IRoleUpdateCopyWith<$Res> {
-  __$$_IRoleUpdateCopyWithImpl(_$_IRoleUpdate _value, $Res Function(_$_IRoleUpdate) _then)
+class __$$IRoleUpdateImplCopyWithImpl<$Res>
+    extends _$IRoleUpdateCopyWithImpl<$Res, _$IRoleUpdateImpl>
+    implements _$$IRoleUpdateImplCopyWith<$Res> {
+  __$$IRoleUpdateImplCopyWithImpl(_$IRoleUpdateImpl _value, $Res Function(_$IRoleUpdateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -86,7 +88,7 @@ class __$$_IRoleUpdateCopyWithImpl<$Res> extends _$IRoleUpdateCopyWithImpl<$Res,
     Object? name = null,
     Object? description = null,
   }) {
-    return _then(_$_IRoleUpdate(
+    return _then(_$IRoleUpdateImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -101,10 +103,10 @@ class __$$_IRoleUpdateCopyWithImpl<$Res> extends _$IRoleUpdateCopyWithImpl<$Res,
 
 /// @nodoc
 @JsonSerializable()
-class _$_IRoleUpdate implements _IRoleUpdate {
-  const _$_IRoleUpdate({required this.name, required this.description});
+class _$IRoleUpdateImpl implements _IRoleUpdate {
+  const _$IRoleUpdateImpl({required this.name, required this.description});
 
-  factory _$_IRoleUpdate.fromJson(Map<String, dynamic> json) => _$$_IRoleUpdateFromJson(json);
+  factory _$IRoleUpdateImpl.fromJson(Map<String, dynamic> json) => _$$IRoleUpdateImplFromJson(json);
 
   @override
   final String name;
@@ -117,10 +119,10 @@ class _$_IRoleUpdate implements _IRoleUpdate {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IRoleUpdate &&
+            other is _$IRoleUpdateImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) || other.description == description));
   }
@@ -132,12 +134,12 @@ class _$_IRoleUpdate implements _IRoleUpdate {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IRoleUpdateCopyWith<_$_IRoleUpdate> get copyWith =>
-      __$$_IRoleUpdateCopyWithImpl<_$_IRoleUpdate>(this, _$identity);
+  _$$IRoleUpdateImplCopyWith<_$IRoleUpdateImpl> get copyWith =>
+      __$$IRoleUpdateImplCopyWithImpl<_$IRoleUpdateImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_IRoleUpdateToJson(
+    return _$$IRoleUpdateImplToJson(
       this,
     );
   }
@@ -145,9 +147,9 @@ class _$_IRoleUpdate implements _IRoleUpdate {
 
 abstract class _IRoleUpdate implements IRoleUpdate {
   const factory _IRoleUpdate({required final String name, required final String description}) =
-      _$_IRoleUpdate;
+      _$IRoleUpdateImpl;
 
-  factory _IRoleUpdate.fromJson(Map<String, dynamic> json) = _$_IRoleUpdate.fromJson;
+  factory _IRoleUpdate.fromJson(Map<String, dynamic> json) = _$IRoleUpdateImpl.fromJson;
 
   @override
   String get name;
@@ -155,5 +157,5 @@ abstract class _IRoleUpdate implements IRoleUpdate {
   String get description;
   @override
   @JsonKey(ignore: true)
-  _$$_IRoleUpdateCopyWith<_$_IRoleUpdate> get copyWith => throw _privateConstructorUsedError;
+  _$$IRoleUpdateImplCopyWith<_$IRoleUpdateImpl> get copyWith => throw _privateConstructorUsedError;
 }

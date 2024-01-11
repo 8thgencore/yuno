@@ -17,22 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$HomeProjectsEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
   }) =>
@@ -51,41 +35,9 @@ mixin _$HomeProjectsEvent {
 }
 
 /// @nodoc
-abstract class $HomeProjectsEventCopyWith<$Res> {
-  factory $HomeProjectsEventCopyWith(
-          HomeProjectsEvent value, $Res Function(HomeProjectsEvent) then) =
-      _$HomeProjectsEventCopyWithImpl<$Res, HomeProjectsEvent>;
-}
 
-/// @nodoc
-class _$HomeProjectsEventCopyWithImpl<$Res, $Val extends HomeProjectsEvent>
-    implements $HomeProjectsEventCopyWith<$Res> {
-  _$HomeProjectsEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_StartedEventCopyWith<$Res> {
-  factory _$$_StartedEventCopyWith(_$_StartedEvent value, $Res Function(_$_StartedEvent) then) =
-      __$$_StartedEventCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_StartedEventCopyWithImpl<$Res>
-    extends _$HomeProjectsEventCopyWithImpl<$Res, _$_StartedEvent>
-    implements _$$_StartedEventCopyWith<$Res> {
-  __$$_StartedEventCopyWithImpl(_$_StartedEvent _value, $Res Function(_$_StartedEvent) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_StartedEvent implements _StartedEvent {
-  const _$_StartedEvent();
+class _$StartedEventImpl implements _StartedEvent {
+  const _$StartedEventImpl();
 
   @override
   String toString() {
@@ -93,40 +45,13 @@ class _$_StartedEvent implements _StartedEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_StartedEvent);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$StartedEventImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -158,36 +83,11 @@ class _$_StartedEvent implements _StartedEvent {
 }
 
 abstract class _StartedEvent implements HomeProjectsEvent {
-  const factory _StartedEvent() = _$_StartedEvent;
+  const factory _StartedEvent() = _$StartedEventImpl;
 }
 
 /// @nodoc
 mixin _$HomeProjectsState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<IProjectWithUsers> projects) loaded,
-    required TResult Function(Object error) failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<IProjectWithUsers> projects)? loaded,
-    TResult? Function(Object error)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<IProjectWithUsers> projects)? loaded,
-    TResult Function(Object error)? failure,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
@@ -234,23 +134,25 @@ class _$HomeProjectsStateCopyWithImpl<$Res, $Val extends HomeProjectsState>
 }
 
 /// @nodoc
-abstract class _$$_InitialStateCopyWith<$Res> {
-  factory _$$_InitialStateCopyWith(_$_InitialState value, $Res Function(_$_InitialState) then) =
-      __$$_InitialStateCopyWithImpl<$Res>;
+abstract class _$$InitialStateImplCopyWith<$Res> {
+  factory _$$InitialStateImplCopyWith(
+          _$InitialStateImpl value, $Res Function(_$InitialStateImpl) then) =
+      __$$InitialStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialStateCopyWithImpl<$Res>
-    extends _$HomeProjectsStateCopyWithImpl<$Res, _$_InitialState>
-    implements _$$_InitialStateCopyWith<$Res> {
-  __$$_InitialStateCopyWithImpl(_$_InitialState _value, $Res Function(_$_InitialState) _then)
+class __$$InitialStateImplCopyWithImpl<$Res>
+    extends _$HomeProjectsStateCopyWithImpl<$Res, _$InitialStateImpl>
+    implements _$$InitialStateImplCopyWith<$Res> {
+  __$$InitialStateImplCopyWithImpl(
+      _$InitialStateImpl _value, $Res Function(_$InitialStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_InitialState extends _InitialState {
-  const _$_InitialState() : super._();
+class _$InitialStateImpl extends _InitialState {
+  const _$InitialStateImpl() : super._();
 
   @override
   String toString() {
@@ -258,49 +160,13 @@ class _$_InitialState extends _InitialState {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_InitialState);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InitialStateImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<IProjectWithUsers> projects) loaded,
-    required TResult Function(Object error) failure,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<IProjectWithUsers> projects)? loaded,
-    TResult? Function(Object error)? failure,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<IProjectWithUsers> projects)? loaded,
-    TResult Function(Object error)? failure,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -341,28 +207,30 @@ class _$_InitialState extends _InitialState {
 }
 
 abstract class _InitialState extends HomeProjectsState {
-  const factory _InitialState() = _$_InitialState;
+  const factory _InitialState() = _$InitialStateImpl;
   const _InitialState._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_LoadingStateCopyWith<$Res> {
-  factory _$$_LoadingStateCopyWith(_$_LoadingState value, $Res Function(_$_LoadingState) then) =
-      __$$_LoadingStateCopyWithImpl<$Res>;
+abstract class _$$LoadingStateImplCopyWith<$Res> {
+  factory _$$LoadingStateImplCopyWith(
+          _$LoadingStateImpl value, $Res Function(_$LoadingStateImpl) then) =
+      __$$LoadingStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingStateCopyWithImpl<$Res>
-    extends _$HomeProjectsStateCopyWithImpl<$Res, _$_LoadingState>
-    implements _$$_LoadingStateCopyWith<$Res> {
-  __$$_LoadingStateCopyWithImpl(_$_LoadingState _value, $Res Function(_$_LoadingState) _then)
+class __$$LoadingStateImplCopyWithImpl<$Res>
+    extends _$HomeProjectsStateCopyWithImpl<$Res, _$LoadingStateImpl>
+    implements _$$LoadingStateImplCopyWith<$Res> {
+  __$$LoadingStateImplCopyWithImpl(
+      _$LoadingStateImpl _value, $Res Function(_$LoadingStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_LoadingState extends _LoadingState {
-  const _$_LoadingState() : super._();
+class _$LoadingStateImpl extends _LoadingState {
+  const _$LoadingStateImpl() : super._();
 
   @override
   String toString() {
@@ -370,49 +238,13 @@ class _$_LoadingState extends _LoadingState {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_LoadingState);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingStateImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<IProjectWithUsers> projects) loaded,
-    required TResult Function(Object error) failure,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<IProjectWithUsers> projects)? loaded,
-    TResult? Function(Object error)? failure,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<IProjectWithUsers> projects)? loaded,
-    TResult Function(Object error)? failure,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -453,23 +285,24 @@ class _$_LoadingState extends _LoadingState {
 }
 
 abstract class _LoadingState extends HomeProjectsState {
-  const factory _LoadingState() = _$_LoadingState;
+  const factory _LoadingState() = _$LoadingStateImpl;
   const _LoadingState._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_LoadedStateCopyWith<$Res> {
-  factory _$$_LoadedStateCopyWith(_$_LoadedState value, $Res Function(_$_LoadedState) then) =
-      __$$_LoadedStateCopyWithImpl<$Res>;
+abstract class _$$LoadedStateImplCopyWith<$Res> {
+  factory _$$LoadedStateImplCopyWith(
+          _$LoadedStateImpl value, $Res Function(_$LoadedStateImpl) then) =
+      __$$LoadedStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<IProjectWithUsers> projects});
 }
 
 /// @nodoc
-class __$$_LoadedStateCopyWithImpl<$Res>
-    extends _$HomeProjectsStateCopyWithImpl<$Res, _$_LoadedState>
-    implements _$$_LoadedStateCopyWith<$Res> {
-  __$$_LoadedStateCopyWithImpl(_$_LoadedState _value, $Res Function(_$_LoadedState) _then)
+class __$$LoadedStateImplCopyWithImpl<$Res>
+    extends _$HomeProjectsStateCopyWithImpl<$Res, _$LoadedStateImpl>
+    implements _$$LoadedStateImplCopyWith<$Res> {
+  __$$LoadedStateImplCopyWithImpl(_$LoadedStateImpl _value, $Res Function(_$LoadedStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -477,7 +310,7 @@ class __$$_LoadedStateCopyWithImpl<$Res>
   $Res call({
     Object? projects = null,
   }) {
-    return _then(_$_LoadedState(
+    return _then(_$LoadedStateImpl(
       null == projects
           ? _value._projects
           : projects // ignore: cast_nullable_to_non_nullable
@@ -488,8 +321,8 @@ class __$$_LoadedStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadedState extends _LoadedState {
-  const _$_LoadedState(final List<IProjectWithUsers> projects)
+class _$LoadedStateImpl extends _LoadedState {
+  const _$LoadedStateImpl(final List<IProjectWithUsers> projects)
       : _projects = projects,
         super._();
 
@@ -507,10 +340,10 @@ class _$_LoadedState extends _LoadedState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoadedState &&
+            other is _$LoadedStateImpl &&
             const DeepCollectionEquality().equals(other._projects, _projects));
   }
 
@@ -520,45 +353,8 @@ class _$_LoadedState extends _LoadedState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith =>
-      __$$_LoadedStateCopyWithImpl<_$_LoadedState>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<IProjectWithUsers> projects) loaded,
-    required TResult Function(Object error) failure,
-  }) {
-    return loaded(projects);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<IProjectWithUsers> projects)? loaded,
-    TResult? Function(Object error)? failure,
-  }) {
-    return loaded?.call(projects);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<IProjectWithUsers> projects)? loaded,
-    TResult Function(Object error)? failure,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(projects);
-    }
-    return orElse();
-  }
+  _$$LoadedStateImplCopyWith<_$LoadedStateImpl> get copyWith =>
+      __$$LoadedStateImplCopyWithImpl<_$LoadedStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -599,27 +395,29 @@ class _$_LoadedState extends _LoadedState {
 }
 
 abstract class _LoadedState extends HomeProjectsState {
-  const factory _LoadedState(final List<IProjectWithUsers> projects) = _$_LoadedState;
+  const factory _LoadedState(final List<IProjectWithUsers> projects) = _$LoadedStateImpl;
   const _LoadedState._() : super._();
 
   List<IProjectWithUsers> get projects;
   @JsonKey(ignore: true)
-  _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith => throw _privateConstructorUsedError;
+  _$$LoadedStateImplCopyWith<_$LoadedStateImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_FailureStateCopyWith<$Res> {
-  factory _$$_FailureStateCopyWith(_$_FailureState value, $Res Function(_$_FailureState) then) =
-      __$$_FailureStateCopyWithImpl<$Res>;
+abstract class _$$FailureStateImplCopyWith<$Res> {
+  factory _$$FailureStateImplCopyWith(
+          _$FailureStateImpl value, $Res Function(_$FailureStateImpl) then) =
+      __$$FailureStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Object error});
 }
 
 /// @nodoc
-class __$$_FailureStateCopyWithImpl<$Res>
-    extends _$HomeProjectsStateCopyWithImpl<$Res, _$_FailureState>
-    implements _$$_FailureStateCopyWith<$Res> {
-  __$$_FailureStateCopyWithImpl(_$_FailureState _value, $Res Function(_$_FailureState) _then)
+class __$$FailureStateImplCopyWithImpl<$Res>
+    extends _$HomeProjectsStateCopyWithImpl<$Res, _$FailureStateImpl>
+    implements _$$FailureStateImplCopyWith<$Res> {
+  __$$FailureStateImplCopyWithImpl(
+      _$FailureStateImpl _value, $Res Function(_$FailureStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -627,7 +425,7 @@ class __$$_FailureStateCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$_FailureState(
+    return _then(_$FailureStateImpl(
       null == error ? _value.error : error,
     ));
   }
@@ -635,8 +433,8 @@ class __$$_FailureStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FailureState extends _FailureState {
-  const _$_FailureState(this.error) : super._();
+class _$FailureStateImpl extends _FailureState {
+  const _$FailureStateImpl(this.error) : super._();
 
   @override
   final Object error;
@@ -647,10 +445,10 @@ class _$_FailureState extends _FailureState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FailureState &&
+            other is _$FailureStateImpl &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
@@ -660,45 +458,8 @@ class _$_FailureState extends _FailureState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FailureStateCopyWith<_$_FailureState> get copyWith =>
-      __$$_FailureStateCopyWithImpl<_$_FailureState>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<IProjectWithUsers> projects) loaded,
-    required TResult Function(Object error) failure,
-  }) {
-    return failure(error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<IProjectWithUsers> projects)? loaded,
-    TResult? Function(Object error)? failure,
-  }) {
-    return failure?.call(error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<IProjectWithUsers> projects)? loaded,
-    TResult Function(Object error)? failure,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(error);
-    }
-    return orElse();
-  }
+  _$$FailureStateImplCopyWith<_$FailureStateImpl> get copyWith =>
+      __$$FailureStateImplCopyWithImpl<_$FailureStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -739,10 +500,11 @@ class _$_FailureState extends _FailureState {
 }
 
 abstract class _FailureState extends HomeProjectsState {
-  const factory _FailureState(final Object error) = _$_FailureState;
+  const factory _FailureState(final Object error) = _$FailureStateImpl;
   const _FailureState._() : super._();
 
   Object get error;
   @JsonKey(ignore: true)
-  _$$_FailureStateCopyWith<_$_FailureState> get copyWith => throw _privateConstructorUsedError;
+  _$$FailureStateImplCopyWith<_$FailureStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -108,11 +108,11 @@ class _$PaginatedDataIProjectWithUsersCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PaginatedDataIProjectWithUsersCopyWith<$Res>
+abstract class _$$PaginatedDataIProjectWithUsersImplCopyWith<$Res>
     implements $PaginatedDataIProjectWithUsersCopyWith<$Res> {
-  factory _$$_PaginatedDataIProjectWithUsersCopyWith(_$_PaginatedDataIProjectWithUsers value,
-          $Res Function(_$_PaginatedDataIProjectWithUsers) then) =
-      __$$_PaginatedDataIProjectWithUsersCopyWithImpl<$Res>;
+  factory _$$PaginatedDataIProjectWithUsersImplCopyWith(_$PaginatedDataIProjectWithUsersImpl value,
+          $Res Function(_$PaginatedDataIProjectWithUsersImpl) then) =
+      __$$PaginatedDataIProjectWithUsersImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -126,11 +126,11 @@ abstract class _$$_PaginatedDataIProjectWithUsersCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PaginatedDataIProjectWithUsersCopyWithImpl<$Res>
-    extends _$PaginatedDataIProjectWithUsersCopyWithImpl<$Res, _$_PaginatedDataIProjectWithUsers>
-    implements _$$_PaginatedDataIProjectWithUsersCopyWith<$Res> {
-  __$$_PaginatedDataIProjectWithUsersCopyWithImpl(_$_PaginatedDataIProjectWithUsers _value,
-      $Res Function(_$_PaginatedDataIProjectWithUsers) _then)
+class __$$PaginatedDataIProjectWithUsersImplCopyWithImpl<$Res>
+    extends _$PaginatedDataIProjectWithUsersCopyWithImpl<$Res, _$PaginatedDataIProjectWithUsersImpl>
+    implements _$$PaginatedDataIProjectWithUsersImplCopyWith<$Res> {
+  __$$PaginatedDataIProjectWithUsersImplCopyWithImpl(_$PaginatedDataIProjectWithUsersImpl _value,
+      $Res Function(_$PaginatedDataIProjectWithUsersImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -144,7 +144,7 @@ class __$$_PaginatedDataIProjectWithUsersCopyWithImpl<$Res>
     Object? nextPage = freezed,
     Object? previousPage = freezed,
   }) {
-    return _then(_$_PaginatedDataIProjectWithUsers(
+    return _then(_$PaginatedDataIProjectWithUsersImpl(
       items: null == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
@@ -179,8 +179,8 @@ class __$$_PaginatedDataIProjectWithUsersCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PaginatedDataIProjectWithUsers implements _PaginatedDataIProjectWithUsers {
-  const _$_PaginatedDataIProjectWithUsers(
+class _$PaginatedDataIProjectWithUsersImpl implements _PaginatedDataIProjectWithUsers {
+  const _$PaginatedDataIProjectWithUsersImpl(
       {required final List<IProjectWithUsers> items,
       required this.total,
       required this.page,
@@ -190,8 +190,8 @@ class _$_PaginatedDataIProjectWithUsers implements _PaginatedDataIProjectWithUse
       @JsonKey(name: 'previous_page') this.previousPage})
       : _items = items;
 
-  factory _$_PaginatedDataIProjectWithUsers.fromJson(Map<String, dynamic> json) =>
-      _$$_PaginatedDataIProjectWithUsersFromJson(json);
+  factory _$PaginatedDataIProjectWithUsersImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PaginatedDataIProjectWithUsersImplFromJson(json);
 
   final List<IProjectWithUsers> _items;
   @override
@@ -222,10 +222,10 @@ class _$_PaginatedDataIProjectWithUsers implements _PaginatedDataIProjectWithUse
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaginatedDataIProjectWithUsers &&
+            other is _$PaginatedDataIProjectWithUsersImpl &&
             const DeepCollectionEquality().equals(other._items, _items) &&
             (identical(other.total, total) || other.total == total) &&
             (identical(other.page, page) || other.page == page) &&
@@ -243,13 +243,14 @@ class _$_PaginatedDataIProjectWithUsers implements _PaginatedDataIProjectWithUse
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaginatedDataIProjectWithUsersCopyWith<_$_PaginatedDataIProjectWithUsers> get copyWith =>
-      __$$_PaginatedDataIProjectWithUsersCopyWithImpl<_$_PaginatedDataIProjectWithUsers>(
-          this, _$identity);
+  _$$PaginatedDataIProjectWithUsersImplCopyWith<_$PaginatedDataIProjectWithUsersImpl>
+      get copyWith =>
+          __$$PaginatedDataIProjectWithUsersImplCopyWithImpl<_$PaginatedDataIProjectWithUsersImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaginatedDataIProjectWithUsersToJson(
+    return _$$PaginatedDataIProjectWithUsersImplToJson(
       this,
     );
   }
@@ -257,16 +258,17 @@ class _$_PaginatedDataIProjectWithUsers implements _PaginatedDataIProjectWithUse
 
 abstract class _PaginatedDataIProjectWithUsers implements PaginatedDataIProjectWithUsers {
   const factory _PaginatedDataIProjectWithUsers(
-      {required final List<IProjectWithUsers> items,
-      required final int total,
-      required final int page,
-      required final int size,
-      required final int pages,
-      @JsonKey(name: 'next_page') final int? nextPage,
-      @JsonKey(name: 'previous_page') final int? previousPage}) = _$_PaginatedDataIProjectWithUsers;
+          {required final List<IProjectWithUsers> items,
+          required final int total,
+          required final int page,
+          required final int size,
+          required final int pages,
+          @JsonKey(name: 'next_page') final int? nextPage,
+          @JsonKey(name: 'previous_page') final int? previousPage}) =
+      _$PaginatedDataIProjectWithUsersImpl;
 
   factory _PaginatedDataIProjectWithUsers.fromJson(Map<String, dynamic> json) =
-      _$_PaginatedDataIProjectWithUsers.fromJson;
+      _$PaginatedDataIProjectWithUsersImpl.fromJson;
 
   @override
   List<IProjectWithUsers> get items;
@@ -286,6 +288,6 @@ abstract class _PaginatedDataIProjectWithUsers implements PaginatedDataIProjectW
   int? get previousPage;
   @override
   @JsonKey(ignore: true)
-  _$$_PaginatedDataIProjectWithUsersCopyWith<_$_PaginatedDataIProjectWithUsers> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PaginatedDataIProjectWithUsersImplCopyWith<_$PaginatedDataIProjectWithUsersImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

@@ -1,6 +1,6 @@
 part of 'profile_bloc.dart';
 
-@freezed
+@Freezed(copyWith: false)
 class ProfileEvent with _$ProfileEvent {
   const factory ProfileEvent.started() = _StartedEvent;
 

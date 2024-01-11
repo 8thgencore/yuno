@@ -1,6 +1,6 @@
 part of 'project_edit_bloc.dart';
 
-@freezed
+@Freezed(copyWith: false)
 class ProjectEditEvent with _$ProjectEditEvent {
   const factory ProjectEditEvent.started(String id) = _StartedEvent;
 

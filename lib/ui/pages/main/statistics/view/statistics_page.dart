@@ -42,11 +42,12 @@ class _PieChartContainer extends StatelessWidget {
     return SizedBox(
       height: 480,
       child: BlocBuilder<StatisticsBloc, StatisticsState>(
-        builder: (context, state) => state.maybeWhen(
-          initial: () => const Center(child: CircularProgressIndicator()),
-          loading: () => const Center(child: CircularProgressIndicator()),
-          loaded: (stats) {
+        builder: (context, state) => state.maybeMap(
+          initial: (_) => const Center(child: CircularProgressIndicator()),
+          loading: (_) => const Center(child: CircularProgressIndicator()),
+          loaded: (state) {
             final l10n = context.l10n;
+            final stats = state.stats;
             if (stats.projectsCount == 0) {
               return Column(
                 children: [

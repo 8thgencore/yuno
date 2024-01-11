@@ -60,18 +60,18 @@ class _$ResetTokenCopyWithImpl<$Res, $Val extends ResetToken> implements $ResetT
 }
 
 /// @nodoc
-abstract class _$$_ResetTokenCopyWith<$Res> implements $ResetTokenCopyWith<$Res> {
-  factory _$$_ResetTokenCopyWith(_$_ResetToken value, $Res Function(_$_ResetToken) then) =
-      __$$_ResetTokenCopyWithImpl<$Res>;
+abstract class _$$ResetTokenImplCopyWith<$Res> implements $ResetTokenCopyWith<$Res> {
+  factory _$$ResetTokenImplCopyWith(_$ResetTokenImpl value, $Res Function(_$ResetTokenImpl) then) =
+      __$$ResetTokenImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'reset_token') String resetToken});
 }
 
 /// @nodoc
-class __$$_ResetTokenCopyWithImpl<$Res> extends _$ResetTokenCopyWithImpl<$Res, _$_ResetToken>
-    implements _$$_ResetTokenCopyWith<$Res> {
-  __$$_ResetTokenCopyWithImpl(_$_ResetToken _value, $Res Function(_$_ResetToken) _then)
+class __$$ResetTokenImplCopyWithImpl<$Res> extends _$ResetTokenCopyWithImpl<$Res, _$ResetTokenImpl>
+    implements _$$ResetTokenImplCopyWith<$Res> {
+  __$$ResetTokenImplCopyWithImpl(_$ResetTokenImpl _value, $Res Function(_$ResetTokenImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -79,7 +79,7 @@ class __$$_ResetTokenCopyWithImpl<$Res> extends _$ResetTokenCopyWithImpl<$Res, _
   $Res call({
     Object? resetToken = null,
   }) {
-    return _then(_$_ResetToken(
+    return _then(_$ResetTokenImpl(
       resetToken: null == resetToken
           ? _value.resetToken
           : resetToken // ignore: cast_nullable_to_non_nullable
@@ -90,10 +90,10 @@ class __$$_ResetTokenCopyWithImpl<$Res> extends _$ResetTokenCopyWithImpl<$Res, _
 
 /// @nodoc
 @JsonSerializable()
-class _$_ResetToken implements _ResetToken {
-  const _$_ResetToken({@JsonKey(name: 'reset_token') required this.resetToken});
+class _$ResetTokenImpl implements _ResetToken {
+  const _$ResetTokenImpl({@JsonKey(name: 'reset_token') required this.resetToken});
 
-  factory _$_ResetToken.fromJson(Map<String, dynamic> json) => _$$_ResetTokenFromJson(json);
+  factory _$ResetTokenImpl.fromJson(Map<String, dynamic> json) => _$$ResetTokenImplFromJson(json);
 
   @override
   @JsonKey(name: 'reset_token')
@@ -105,10 +105,10 @@ class _$_ResetToken implements _ResetToken {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ResetToken &&
+            other is _$ResetTokenImpl &&
             (identical(other.resetToken, resetToken) || other.resetToken == resetToken));
   }
 
@@ -119,12 +119,12 @@ class _$_ResetToken implements _ResetToken {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ResetTokenCopyWith<_$_ResetToken> get copyWith =>
-      __$$_ResetTokenCopyWithImpl<_$_ResetToken>(this, _$identity);
+  _$$ResetTokenImplCopyWith<_$ResetTokenImpl> get copyWith =>
+      __$$ResetTokenImplCopyWithImpl<_$ResetTokenImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ResetTokenToJson(
+    return _$$ResetTokenImplToJson(
       this,
     );
   }
@@ -132,14 +132,14 @@ class _$_ResetToken implements _ResetToken {
 
 abstract class _ResetToken implements ResetToken {
   const factory _ResetToken({@JsonKey(name: 'reset_token') required final String resetToken}) =
-      _$_ResetToken;
+      _$ResetTokenImpl;
 
-  factory _ResetToken.fromJson(Map<String, dynamic> json) = _$_ResetToken.fromJson;
+  factory _ResetToken.fromJson(Map<String, dynamic> json) = _$ResetTokenImpl.fromJson;
 
   @override
   @JsonKey(name: 'reset_token')
   String get resetToken;
   @override
   @JsonKey(ignore: true)
-  _$$_ResetTokenCopyWith<_$_ResetToken> get copyWith => throw _privateConstructorUsedError;
+  _$$ResetTokenImplCopyWith<_$ResetTokenImpl> get copyWith => throw _privateConstructorUsedError;
 }

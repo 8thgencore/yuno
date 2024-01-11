@@ -44,13 +44,13 @@ class ProjectDetailsPage extends StatelessWidget {
             context.pop(true);
           }
         },
-        builder: (context, state) => state.maybeWhen(
-          loaded: (project, _, isMember, isOwner) => isMember
+        builder: (context, state) => state.maybeMap(
+          loaded: (state) => state.isMember
               ? FloatingActionButton(
                   onPressed: () async {
                     final result = await context.pushNamed<bool>(
                       RouteName.taskCreate,
-                      queryParameters: {'project_id': project.id},
+                      queryParameters: {'project_id': state.project.id},
                     );
                     WidgetsBinding.instance.addPostFrameCallback((_) {
                       if (result ?? false) {
@@ -58,7 +58,7 @@ class ProjectDetailsPage extends StatelessWidget {
                       }
                     });
                   },
-                  child: const Icon(Icons.add, size: 32),
+                  child: const Icon(Icons.add, size: 32, color: AppColors.white100),
                 )
               : const SizedBox(),
           orElse: () => const SizedBox(),
@@ -98,27 +98,27 @@ class _ProjectContentWidget extends StatelessWidget {
         Expanded(
           child: SingleChildScrollView(
             child: BlocBuilder<ProjectDetailsBloc, ProjectDetailsState>(
-              builder: (context, state) => state.maybeWhen(
-                initial: () => const LoadingContainer(),
-                loading: () => const LoadingContainer(),
-                loaded: (project, tasks, isMember, isOwner) => Column(
+              builder: (context, state) => state.maybeMap(
+                initial: (_) => const LoadingContainer(),
+                loading: (_) => const LoadingContainer(),
+                loaded: (state) => Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 10),
                     _ProjectFullCardWidget(
-                      isMember: isMember,
-                      isOwner: isOwner,
+                      isMember: state.isMember,
+                      isOwner: state.isOwner,
                       project: IProjectWithUsers(
-                        id: project.id,
-                        name: project.name,
-                        description: project.description,
-                        link: project.link,
-                        percentCompleted: project.percentCompleted,
-                        users: project.users,
+                        id: state.project.id,
+                        name: state.project.name,
+                        description: state.project.description,
+                        link: state.project.link,
+                        percentCompleted: state.project.percentCompleted,
+                        users: state.project.users,
                       ),
                     ),
                     const SizedBox(height: 28),
-                    _CheckListWidget(tasks: tasks, isMember: isMember),
+                    _CheckListWidget(tasks: state.tasks, isMember: state.isMember),
                     const SizedBox(height: 80),
                   ],
                 ),

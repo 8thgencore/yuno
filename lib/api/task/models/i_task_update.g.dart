@@ -6,13 +6,13 @@ part of 'i_task_update.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ITaskUpdate _$$_ITaskUpdateFromJson(Map<String, dynamic> json) => _$_ITaskUpdate(
+_$ITaskUpdateImpl _$$ITaskUpdateImplFromJson(Map<String, dynamic> json) => _$ITaskUpdateImpl(
       name: json['name'] as String?,
       done: json['done'] as bool? ?? false,
       deadline: json['deadline'] == null ? null : DateTime.parse(json['deadline'] as String),
     );
 
-Map<String, dynamic> _$$_ITaskUpdateToJson(_$_ITaskUpdate instance) => <String, dynamic>{
+Map<String, dynamic> _$$ITaskUpdateImplToJson(_$ITaskUpdateImpl instance) => <String, dynamic>{
       'name': instance.name,
       'done': instance.done,
       'deadline': instance.deadline?.toIso8601String(),

@@ -61,18 +61,21 @@ class _$RefreshTokenCopyWithImpl<$Res, $Val extends RefreshToken>
 }
 
 /// @nodoc
-abstract class _$$_RefreshTokenCopyWith<$Res> implements $RefreshTokenCopyWith<$Res> {
-  factory _$$_RefreshTokenCopyWith(_$_RefreshToken value, $Res Function(_$_RefreshToken) then) =
-      __$$_RefreshTokenCopyWithImpl<$Res>;
+abstract class _$$RefreshTokenImplCopyWith<$Res> implements $RefreshTokenCopyWith<$Res> {
+  factory _$$RefreshTokenImplCopyWith(
+          _$RefreshTokenImpl value, $Res Function(_$RefreshTokenImpl) then) =
+      __$$RefreshTokenImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'refresh_token') String refreshToken});
 }
 
 /// @nodoc
-class __$$_RefreshTokenCopyWithImpl<$Res> extends _$RefreshTokenCopyWithImpl<$Res, _$_RefreshToken>
-    implements _$$_RefreshTokenCopyWith<$Res> {
-  __$$_RefreshTokenCopyWithImpl(_$_RefreshToken _value, $Res Function(_$_RefreshToken) _then)
+class __$$RefreshTokenImplCopyWithImpl<$Res>
+    extends _$RefreshTokenCopyWithImpl<$Res, _$RefreshTokenImpl>
+    implements _$$RefreshTokenImplCopyWith<$Res> {
+  __$$RefreshTokenImplCopyWithImpl(
+      _$RefreshTokenImpl _value, $Res Function(_$RefreshTokenImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +83,7 @@ class __$$_RefreshTokenCopyWithImpl<$Res> extends _$RefreshTokenCopyWithImpl<$Re
   $Res call({
     Object? refreshToken = null,
   }) {
-    return _then(_$_RefreshToken(
+    return _then(_$RefreshTokenImpl(
       refreshToken: null == refreshToken
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
@@ -91,10 +94,11 @@ class __$$_RefreshTokenCopyWithImpl<$Res> extends _$RefreshTokenCopyWithImpl<$Re
 
 /// @nodoc
 @JsonSerializable()
-class _$_RefreshToken implements _RefreshToken {
-  const _$_RefreshToken({@JsonKey(name: 'refresh_token') required this.refreshToken});
+class _$RefreshTokenImpl implements _RefreshToken {
+  const _$RefreshTokenImpl({@JsonKey(name: 'refresh_token') required this.refreshToken});
 
-  factory _$_RefreshToken.fromJson(Map<String, dynamic> json) => _$$_RefreshTokenFromJson(json);
+  factory _$RefreshTokenImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RefreshTokenImplFromJson(json);
 
   @override
   @JsonKey(name: 'refresh_token')
@@ -106,10 +110,10 @@ class _$_RefreshToken implements _RefreshToken {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RefreshToken &&
+            other is _$RefreshTokenImpl &&
             (identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken));
   }
 
@@ -120,12 +124,12 @@ class _$_RefreshToken implements _RefreshToken {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RefreshTokenCopyWith<_$_RefreshToken> get copyWith =>
-      __$$_RefreshTokenCopyWithImpl<_$_RefreshToken>(this, _$identity);
+  _$$RefreshTokenImplCopyWith<_$RefreshTokenImpl> get copyWith =>
+      __$$RefreshTokenImplCopyWithImpl<_$RefreshTokenImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RefreshTokenToJson(
+    return _$$RefreshTokenImplToJson(
       this,
     );
   }
@@ -133,14 +137,15 @@ class _$_RefreshToken implements _RefreshToken {
 
 abstract class _RefreshToken implements RefreshToken {
   const factory _RefreshToken(
-      {@JsonKey(name: 'refresh_token') required final String refreshToken}) = _$_RefreshToken;
+      {@JsonKey(name: 'refresh_token') required final String refreshToken}) = _$RefreshTokenImpl;
 
-  factory _RefreshToken.fromJson(Map<String, dynamic> json) = _$_RefreshToken.fromJson;
+  factory _RefreshToken.fromJson(Map<String, dynamic> json) = _$RefreshTokenImpl.fromJson;
 
   @override
   @JsonKey(name: 'refresh_token')
   String get refreshToken;
   @override
   @JsonKey(ignore: true)
-  _$$_RefreshTokenCopyWith<_$_RefreshToken> get copyWith => throw _privateConstructorUsedError;
+  _$$RefreshTokenImplCopyWith<_$RefreshTokenImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -17,22 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ProjectMembersEvent {
   String get id => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String id) started,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? started,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? started,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
@@ -49,79 +34,12 @@ mixin _$ProjectMembersEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ProjectMembersEventCopyWith<ProjectMembersEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ProjectMembersEventCopyWith<$Res> {
-  factory $ProjectMembersEventCopyWith(
-          ProjectMembersEvent value, $Res Function(ProjectMembersEvent) then) =
-      _$ProjectMembersEventCopyWithImpl<$Res, ProjectMembersEvent>;
-  @useResult
-  $Res call({String id});
-}
-
-/// @nodoc
-class _$ProjectMembersEventCopyWithImpl<$Res, $Val extends ProjectMembersEvent>
-    implements $ProjectMembersEventCopyWith<$Res> {
-  _$ProjectMembersEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$_StartedEventCopyWith<$Res> implements $ProjectMembersEventCopyWith<$Res> {
-  factory _$$_StartedEventCopyWith(_$_StartedEvent value, $Res Function(_$_StartedEvent) then) =
-      __$$_StartedEventCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String id});
-}
-
-/// @nodoc
-class __$$_StartedEventCopyWithImpl<$Res>
-    extends _$ProjectMembersEventCopyWithImpl<$Res, _$_StartedEvent>
-    implements _$$_StartedEventCopyWith<$Res> {
-  __$$_StartedEventCopyWithImpl(_$_StartedEvent _value, $Res Function(_$_StartedEvent) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-  }) {
-    return _then(_$_StartedEvent(
-      null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$_StartedEvent implements _StartedEvent {
-  const _$_StartedEvent(this.id);
+class _$StartedEventImpl implements _StartedEvent {
+  const _$StartedEventImpl(this.id);
 
   @override
   final String id;
@@ -132,49 +50,15 @@ class _$_StartedEvent implements _StartedEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StartedEvent &&
+            other is _$StartedEventImpl &&
             (identical(other.id, id) || other.id == id));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_StartedEventCopyWith<_$_StartedEvent> get copyWith =>
-      __$$_StartedEventCopyWithImpl<_$_StartedEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String id) started,
-  }) {
-    return started(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? started,
-  }) {
-    return started?.call(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? started,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(id);
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -206,42 +90,17 @@ class _$_StartedEvent implements _StartedEvent {
 }
 
 abstract class _StartedEvent implements ProjectMembersEvent {
-  const factory _StartedEvent(final String id) = _$_StartedEvent;
+  const factory _StartedEvent(final String id) = _$StartedEventImpl;
 
   @override
   String get id;
-  @override
-  @JsonKey(ignore: true)
-  _$$_StartedEventCopyWith<_$_StartedEvent> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$ProjectMembersState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<IUserRead> projects) loaded,
-    required TResult Function(Object error) failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<IUserRead> projects)? loaded,
-    TResult? Function(Object error)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<IUserRead> projects)? loaded,
-    TResult Function(Object error)? failure,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  List<IUserRead> get projects => throw _privateConstructorUsedError;
+  Object? get error => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
@@ -267,6 +126,10 @@ mixin _$ProjectMembersState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ProjectMembersStateCopyWith<ProjectMembersState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -274,6 +137,8 @@ abstract class $ProjectMembersStateCopyWith<$Res> {
   factory $ProjectMembersStateCopyWith(
           ProjectMembersState value, $Res Function(ProjectMembersState) then) =
       _$ProjectMembersStateCopyWithImpl<$Res, ProjectMembersState>;
+  @useResult
+  $Res call({List<IUserRead> projects, Object? error});
 }
 
 /// @nodoc
@@ -285,76 +150,98 @@ class _$ProjectMembersStateCopyWithImpl<$Res, $Val extends ProjectMembersState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? projects = null,
+    Object? error = freezed,
+  }) {
+    return _then(_value.copyWith(
+      projects: null == projects
+          ? _value.projects
+          : projects // ignore: cast_nullable_to_non_nullable
+              as List<IUserRead>,
+      error: freezed == error ? _value.error : error,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$_InitialStateCopyWith<$Res> {
-  factory _$$_InitialStateCopyWith(_$_InitialState value, $Res Function(_$_InitialState) then) =
-      __$$_InitialStateCopyWithImpl<$Res>;
+abstract class _$$InitialStateImplCopyWith<$Res> implements $ProjectMembersStateCopyWith<$Res> {
+  factory _$$InitialStateImplCopyWith(
+          _$InitialStateImpl value, $Res Function(_$InitialStateImpl) then) =
+      __$$InitialStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<IUserRead> projects, Object? error});
 }
 
 /// @nodoc
-class __$$_InitialStateCopyWithImpl<$Res>
-    extends _$ProjectMembersStateCopyWithImpl<$Res, _$_InitialState>
-    implements _$$_InitialStateCopyWith<$Res> {
-  __$$_InitialStateCopyWithImpl(_$_InitialState _value, $Res Function(_$_InitialState) _then)
+class __$$InitialStateImplCopyWithImpl<$Res>
+    extends _$ProjectMembersStateCopyWithImpl<$Res, _$InitialStateImpl>
+    implements _$$InitialStateImplCopyWith<$Res> {
+  __$$InitialStateImplCopyWithImpl(
+      _$InitialStateImpl _value, $Res Function(_$InitialStateImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? projects = null,
+    Object? error = freezed,
+  }) {
+    return _then(_$InitialStateImpl(
+      projects: null == projects
+          ? _value._projects
+          : projects // ignore: cast_nullable_to_non_nullable
+              as List<IUserRead>,
+      error: freezed == error ? _value.error : error,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_InitialState extends _InitialState {
-  const _$_InitialState() : super._();
+class _$InitialStateImpl extends _InitialState {
+  const _$InitialStateImpl({required final List<IUserRead> projects, this.error})
+      : _projects = projects,
+        super._();
+
+  final List<IUserRead> _projects;
+  @override
+  List<IUserRead> get projects {
+    if (_projects is EqualUnmodifiableListView) return _projects;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_projects);
+  }
+
+  @override
+  final Object? error;
 
   @override
   String toString() {
-    return 'ProjectMembersState.initial()';
+    return 'ProjectMembersState.initial(projects: $projects, error: $error)';
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_InitialState);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InitialStateImpl &&
+            const DeepCollectionEquality().equals(other._projects, _projects) &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_projects),
+      const DeepCollectionEquality().hash(error));
 
+  @JsonKey(ignore: true)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<IUserRead> projects) loaded,
-    required TResult Function(Object error) failure,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<IUserRead> projects)? loaded,
-    TResult? Function(Object error)? failure,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<IUserRead> projects)? loaded,
-    TResult Function(Object error)? failure,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
+  @pragma('vm:prefer-inline')
+  _$$InitialStateImplCopyWith<_$InitialStateImpl> get copyWith =>
+      __$$InitialStateImplCopyWithImpl<_$InitialStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -395,78 +282,95 @@ class _$_InitialState extends _InitialState {
 }
 
 abstract class _InitialState extends ProjectMembersState {
-  const factory _InitialState() = _$_InitialState;
+  const factory _InitialState({required final List<IUserRead> projects, final Object? error}) =
+      _$InitialStateImpl;
   const _InitialState._() : super._();
+
+  @override
+  List<IUserRead> get projects;
+  @override
+  Object? get error;
+  @override
+  @JsonKey(ignore: true)
+  _$$InitialStateImplCopyWith<_$InitialStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LoadingStateCopyWith<$Res> {
-  factory _$$_LoadingStateCopyWith(_$_LoadingState value, $Res Function(_$_LoadingState) then) =
-      __$$_LoadingStateCopyWithImpl<$Res>;
+abstract class _$$LoadingStateImplCopyWith<$Res> implements $ProjectMembersStateCopyWith<$Res> {
+  factory _$$LoadingStateImplCopyWith(
+          _$LoadingStateImpl value, $Res Function(_$LoadingStateImpl) then) =
+      __$$LoadingStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<IUserRead> projects, Object? error});
 }
 
 /// @nodoc
-class __$$_LoadingStateCopyWithImpl<$Res>
-    extends _$ProjectMembersStateCopyWithImpl<$Res, _$_LoadingState>
-    implements _$$_LoadingStateCopyWith<$Res> {
-  __$$_LoadingStateCopyWithImpl(_$_LoadingState _value, $Res Function(_$_LoadingState) _then)
+class __$$LoadingStateImplCopyWithImpl<$Res>
+    extends _$ProjectMembersStateCopyWithImpl<$Res, _$LoadingStateImpl>
+    implements _$$LoadingStateImplCopyWith<$Res> {
+  __$$LoadingStateImplCopyWithImpl(
+      _$LoadingStateImpl _value, $Res Function(_$LoadingStateImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? projects = null,
+    Object? error = freezed,
+  }) {
+    return _then(_$LoadingStateImpl(
+      projects: null == projects
+          ? _value._projects
+          : projects // ignore: cast_nullable_to_non_nullable
+              as List<IUserRead>,
+      error: freezed == error ? _value.error : error,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_LoadingState extends _LoadingState {
-  const _$_LoadingState() : super._();
+class _$LoadingStateImpl extends _LoadingState {
+  const _$LoadingStateImpl({required final List<IUserRead> projects, this.error})
+      : _projects = projects,
+        super._();
+
+  final List<IUserRead> _projects;
+  @override
+  List<IUserRead> get projects {
+    if (_projects is EqualUnmodifiableListView) return _projects;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_projects);
+  }
+
+  @override
+  final Object? error;
 
   @override
   String toString() {
-    return 'ProjectMembersState.loading()';
+    return 'ProjectMembersState.loading(projects: $projects, error: $error)';
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_LoadingState);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadingStateImpl &&
+            const DeepCollectionEquality().equals(other._projects, _projects) &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_projects),
+      const DeepCollectionEquality().hash(error));
 
+  @JsonKey(ignore: true)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<IUserRead> projects) loaded,
-    required TResult Function(Object error) failure,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<IUserRead> projects)? loaded,
-    TResult? Function(Object error)? failure,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<IUserRead> projects)? loaded,
-    TResult Function(Object error)? failure,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
+  @pragma('vm:prefer-inline')
+  _$$LoadingStateImplCopyWith<_$LoadingStateImpl> get copyWith =>
+      __$$LoadingStateImplCopyWithImpl<_$LoadingStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -507,43 +411,57 @@ class _$_LoadingState extends _LoadingState {
 }
 
 abstract class _LoadingState extends ProjectMembersState {
-  const factory _LoadingState() = _$_LoadingState;
+  const factory _LoadingState({required final List<IUserRead> projects, final Object? error}) =
+      _$LoadingStateImpl;
   const _LoadingState._() : super._();
+
+  @override
+  List<IUserRead> get projects;
+  @override
+  Object? get error;
+  @override
+  @JsonKey(ignore: true)
+  _$$LoadingStateImplCopyWith<_$LoadingStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LoadedStateCopyWith<$Res> {
-  factory _$$_LoadedStateCopyWith(_$_LoadedState value, $Res Function(_$_LoadedState) then) =
-      __$$_LoadedStateCopyWithImpl<$Res>;
+abstract class _$$LoadedStateImplCopyWith<$Res> implements $ProjectMembersStateCopyWith<$Res> {
+  factory _$$LoadedStateImplCopyWith(
+          _$LoadedStateImpl value, $Res Function(_$LoadedStateImpl) then) =
+      __$$LoadedStateImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({List<IUserRead> projects});
+  $Res call({List<IUserRead> projects, Object? error});
 }
 
 /// @nodoc
-class __$$_LoadedStateCopyWithImpl<$Res>
-    extends _$ProjectMembersStateCopyWithImpl<$Res, _$_LoadedState>
-    implements _$$_LoadedStateCopyWith<$Res> {
-  __$$_LoadedStateCopyWithImpl(_$_LoadedState _value, $Res Function(_$_LoadedState) _then)
+class __$$LoadedStateImplCopyWithImpl<$Res>
+    extends _$ProjectMembersStateCopyWithImpl<$Res, _$LoadedStateImpl>
+    implements _$$LoadedStateImplCopyWith<$Res> {
+  __$$LoadedStateImplCopyWithImpl(_$LoadedStateImpl _value, $Res Function(_$LoadedStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? projects = null,
+    Object? error = freezed,
   }) {
-    return _then(_$_LoadedState(
-      null == projects
+    return _then(_$LoadedStateImpl(
+      projects: null == projects
           ? _value._projects
           : projects // ignore: cast_nullable_to_non_nullable
               as List<IUserRead>,
+      error: freezed == error ? _value.error : error,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_LoadedState extends _LoadedState {
-  const _$_LoadedState(final List<IUserRead> projects)
+class _$LoadedStateImpl extends _LoadedState {
+  const _$LoadedStateImpl({required final List<IUserRead> projects, this.error})
       : _projects = projects,
         super._();
 
@@ -556,63 +474,31 @@ class _$_LoadedState extends _LoadedState {
   }
 
   @override
+  final Object? error;
+
+  @override
   String toString() {
-    return 'ProjectMembersState.loaded(projects: $projects)';
+    return 'ProjectMembersState.loaded(projects: $projects, error: $error)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoadedState &&
-            const DeepCollectionEquality().equals(other._projects, _projects));
+            other is _$LoadedStateImpl &&
+            const DeepCollectionEquality().equals(other._projects, _projects) &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_projects));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_projects),
+      const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith =>
-      __$$_LoadedStateCopyWithImpl<_$_LoadedState>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<IUserRead> projects) loaded,
-    required TResult Function(Object error) failure,
-  }) {
-    return loaded(projects);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<IUserRead> projects)? loaded,
-    TResult? Function(Object error)? failure,
-  }) {
-    return loaded?.call(projects);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<IUserRead> projects)? loaded,
-    TResult Function(Object error)? failure,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(projects);
-    }
-    return orElse();
-  }
+  _$$LoadedStateImplCopyWith<_$LoadedStateImpl> get copyWith =>
+      __$$LoadedStateImplCopyWithImpl<_$LoadedStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -653,106 +539,94 @@ class _$_LoadedState extends _LoadedState {
 }
 
 abstract class _LoadedState extends ProjectMembersState {
-  const factory _LoadedState(final List<IUserRead> projects) = _$_LoadedState;
+  const factory _LoadedState({required final List<IUserRead> projects, final Object? error}) =
+      _$LoadedStateImpl;
   const _LoadedState._() : super._();
 
+  @override
   List<IUserRead> get projects;
+  @override
+  Object? get error;
+  @override
   @JsonKey(ignore: true)
-  _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith => throw _privateConstructorUsedError;
+  _$$LoadedStateImplCopyWith<_$LoadedStateImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_FailureStateCopyWith<$Res> {
-  factory _$$_FailureStateCopyWith(_$_FailureState value, $Res Function(_$_FailureState) then) =
-      __$$_FailureStateCopyWithImpl<$Res>;
+abstract class _$$FailureStateImplCopyWith<$Res> implements $ProjectMembersStateCopyWith<$Res> {
+  factory _$$FailureStateImplCopyWith(
+          _$FailureStateImpl value, $Res Function(_$FailureStateImpl) then) =
+      __$$FailureStateImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({Object error});
+  $Res call({List<IUserRead> projects, Object? error});
 }
 
 /// @nodoc
-class __$$_FailureStateCopyWithImpl<$Res>
-    extends _$ProjectMembersStateCopyWithImpl<$Res, _$_FailureState>
-    implements _$$_FailureStateCopyWith<$Res> {
-  __$$_FailureStateCopyWithImpl(_$_FailureState _value, $Res Function(_$_FailureState) _then)
+class __$$FailureStateImplCopyWithImpl<$Res>
+    extends _$ProjectMembersStateCopyWithImpl<$Res, _$FailureStateImpl>
+    implements _$$FailureStateImplCopyWith<$Res> {
+  __$$FailureStateImplCopyWithImpl(
+      _$FailureStateImpl _value, $Res Function(_$FailureStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = null,
+    Object? projects = null,
+    Object? error = freezed,
   }) {
-    return _then(_$_FailureState(
-      null == error ? _value.error : error,
+    return _then(_$FailureStateImpl(
+      projects: null == projects
+          ? _value._projects
+          : projects // ignore: cast_nullable_to_non_nullable
+              as List<IUserRead>,
+      error: freezed == error ? _value.error : error,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_FailureState extends _FailureState {
-  const _$_FailureState(this.error) : super._();
+class _$FailureStateImpl extends _FailureState {
+  const _$FailureStateImpl({required final List<IUserRead> projects, this.error})
+      : _projects = projects,
+        super._();
 
+  final List<IUserRead> _projects;
   @override
-  final Object error;
-
-  @override
-  String toString() {
-    return 'ProjectMembersState.failure(error: $error)';
+  List<IUserRead> get projects {
+    if (_projects is EqualUnmodifiableListView) return _projects;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_projects);
   }
 
   @override
-  bool operator ==(dynamic other) {
+  final Object? error;
+
+  @override
+  String toString() {
+    return 'ProjectMembersState.failure(projects: $projects, error: $error)';
+  }
+
+  @override
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FailureState &&
+            other is _$FailureStateImpl &&
+            const DeepCollectionEquality().equals(other._projects, _projects) &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_projects),
+      const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FailureStateCopyWith<_$_FailureState> get copyWith =>
-      __$$_FailureStateCopyWithImpl<_$_FailureState>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<IUserRead> projects) loaded,
-    required TResult Function(Object error) failure,
-  }) {
-    return failure(error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<IUserRead> projects)? loaded,
-    TResult? Function(Object error)? failure,
-  }) {
-    return failure?.call(error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<IUserRead> projects)? loaded,
-    TResult Function(Object error)? failure,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(error);
-    }
-    return orElse();
-  }
+  _$$FailureStateImplCopyWith<_$FailureStateImpl> get copyWith =>
+      __$$FailureStateImplCopyWithImpl<_$FailureStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -793,10 +667,16 @@ class _$_FailureState extends _FailureState {
 }
 
 abstract class _FailureState extends ProjectMembersState {
-  const factory _FailureState(final Object error) = _$_FailureState;
+  const factory _FailureState({required final List<IUserRead> projects, final Object? error}) =
+      _$FailureStateImpl;
   const _FailureState._() : super._();
 
-  Object get error;
+  @override
+  List<IUserRead> get projects;
+  @override
+  Object? get error;
+  @override
   @JsonKey(ignore: true)
-  _$$_FailureStateCopyWith<_$_FailureState> get copyWith => throw _privateConstructorUsedError;
+  _$$FailureStateImplCopyWith<_$FailureStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

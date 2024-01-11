@@ -7,7 +7,7 @@ enum ForgotPasswordStatus {
   success,
 }
 
-@freezed
+@Freezed()
 class ForgotPasswordState with _$ForgotPasswordState {
   const factory ForgotPasswordState({
     required String email,

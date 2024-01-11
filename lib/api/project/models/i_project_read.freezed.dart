@@ -98,9 +98,10 @@ class _$IProjectReadCopyWithImpl<$Res, $Val extends IProjectRead>
 }
 
 /// @nodoc
-abstract class _$$_IProjectReadCopyWith<$Res> implements $IProjectReadCopyWith<$Res> {
-  factory _$$_IProjectReadCopyWith(_$_IProjectRead value, $Res Function(_$_IProjectRead) then) =
-      __$$_IProjectReadCopyWithImpl<$Res>;
+abstract class _$$IProjectReadImplCopyWith<$Res> implements $IProjectReadCopyWith<$Res> {
+  factory _$$IProjectReadImplCopyWith(
+          _$IProjectReadImpl value, $Res Function(_$IProjectReadImpl) then) =
+      __$$IProjectReadImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -113,9 +114,11 @@ abstract class _$$_IProjectReadCopyWith<$Res> implements $IProjectReadCopyWith<$
 }
 
 /// @nodoc
-class __$$_IProjectReadCopyWithImpl<$Res> extends _$IProjectReadCopyWithImpl<$Res, _$_IProjectRead>
-    implements _$$_IProjectReadCopyWith<$Res> {
-  __$$_IProjectReadCopyWithImpl(_$_IProjectRead _value, $Res Function(_$_IProjectRead) _then)
+class __$$IProjectReadImplCopyWithImpl<$Res>
+    extends _$IProjectReadCopyWithImpl<$Res, _$IProjectReadImpl>
+    implements _$$IProjectReadImplCopyWith<$Res> {
+  __$$IProjectReadImplCopyWithImpl(
+      _$IProjectReadImpl _value, $Res Function(_$IProjectReadImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -128,7 +131,7 @@ class __$$_IProjectReadCopyWithImpl<$Res> extends _$IProjectReadCopyWithImpl<$Re
     Object? percentCompleted = null,
     Object? createdBy = freezed,
   }) {
-    return _then(_$_IProjectRead(
+    return _then(_$IProjectReadImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -159,8 +162,8 @@ class __$$_IProjectReadCopyWithImpl<$Res> extends _$IProjectReadCopyWithImpl<$Re
 
 /// @nodoc
 @JsonSerializable()
-class _$_IProjectRead implements _IProjectRead {
-  const _$_IProjectRead(
+class _$IProjectReadImpl implements _IProjectRead {
+  const _$IProjectReadImpl(
       {required this.name,
       required this.description,
       required this.link,
@@ -168,7 +171,8 @@ class _$_IProjectRead implements _IProjectRead {
       @JsonKey(name: 'percent_completed') required this.percentCompleted,
       @JsonKey(name: 'created_by_id') this.createdBy});
 
-  factory _$_IProjectRead.fromJson(Map<String, dynamic> json) => _$$_IProjectReadFromJson(json);
+  factory _$IProjectReadImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IProjectReadImplFromJson(json);
 
   @override
   final String name;
@@ -191,10 +195,10 @@ class _$_IProjectRead implements _IProjectRead {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IProjectRead &&
+            other is _$IProjectReadImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) || other.description == description) &&
             (identical(other.link, link) || other.link == link) &&
@@ -212,12 +216,12 @@ class _$_IProjectRead implements _IProjectRead {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IProjectReadCopyWith<_$_IProjectRead> get copyWith =>
-      __$$_IProjectReadCopyWithImpl<_$_IProjectRead>(this, _$identity);
+  _$$IProjectReadImplCopyWith<_$IProjectReadImpl> get copyWith =>
+      __$$IProjectReadImplCopyWithImpl<_$IProjectReadImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_IProjectReadToJson(
+    return _$$IProjectReadImplToJson(
       this,
     );
   }
@@ -230,9 +234,9 @@ abstract class _IProjectRead implements IProjectRead {
       required final String link,
       required final String id,
       @JsonKey(name: 'percent_completed') required final double percentCompleted,
-      @JsonKey(name: 'created_by_id') final String? createdBy}) = _$_IProjectRead;
+      @JsonKey(name: 'created_by_id') final String? createdBy}) = _$IProjectReadImpl;
 
-  factory _IProjectRead.fromJson(Map<String, dynamic> json) = _$_IProjectRead.fromJson;
+  factory _IProjectRead.fromJson(Map<String, dynamic> json) = _$IProjectReadImpl.fromJson;
 
   @override
   String get name;
@@ -250,5 +254,6 @@ abstract class _IProjectRead implements IProjectRead {
   String? get createdBy;
   @override
   @JsonKey(ignore: true)
-  _$$_IProjectReadCopyWith<_$_IProjectRead> get copyWith => throw _privateConstructorUsedError;
+  _$$IProjectReadImplCopyWith<_$IProjectReadImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

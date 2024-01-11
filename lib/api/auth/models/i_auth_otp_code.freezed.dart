@@ -66,18 +66,21 @@ class _$IAuthOtpCodeCopyWithImpl<$Res, $Val extends IAuthOtpCode>
 }
 
 /// @nodoc
-abstract class _$$_IAuthOtpCodeCopyWith<$Res> implements $IAuthOtpCodeCopyWith<$Res> {
-  factory _$$_IAuthOtpCodeCopyWith(_$_IAuthOtpCode value, $Res Function(_$_IAuthOtpCode) then) =
-      __$$_IAuthOtpCodeCopyWithImpl<$Res>;
+abstract class _$$IAuthOtpCodeImplCopyWith<$Res> implements $IAuthOtpCodeCopyWith<$Res> {
+  factory _$$IAuthOtpCodeImplCopyWith(
+          _$IAuthOtpCodeImpl value, $Res Function(_$IAuthOtpCodeImpl) then) =
+      __$$IAuthOtpCodeImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String email, String otp});
 }
 
 /// @nodoc
-class __$$_IAuthOtpCodeCopyWithImpl<$Res> extends _$IAuthOtpCodeCopyWithImpl<$Res, _$_IAuthOtpCode>
-    implements _$$_IAuthOtpCodeCopyWith<$Res> {
-  __$$_IAuthOtpCodeCopyWithImpl(_$_IAuthOtpCode _value, $Res Function(_$_IAuthOtpCode) _then)
+class __$$IAuthOtpCodeImplCopyWithImpl<$Res>
+    extends _$IAuthOtpCodeCopyWithImpl<$Res, _$IAuthOtpCodeImpl>
+    implements _$$IAuthOtpCodeImplCopyWith<$Res> {
+  __$$IAuthOtpCodeImplCopyWithImpl(
+      _$IAuthOtpCodeImpl _value, $Res Function(_$IAuthOtpCodeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -86,7 +89,7 @@ class __$$_IAuthOtpCodeCopyWithImpl<$Res> extends _$IAuthOtpCodeCopyWithImpl<$Re
     Object? email = null,
     Object? otp = null,
   }) {
-    return _then(_$_IAuthOtpCode(
+    return _then(_$IAuthOtpCodeImpl(
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -101,10 +104,11 @@ class __$$_IAuthOtpCodeCopyWithImpl<$Res> extends _$IAuthOtpCodeCopyWithImpl<$Re
 
 /// @nodoc
 @JsonSerializable()
-class _$_IAuthOtpCode implements _IAuthOtpCode {
-  const _$_IAuthOtpCode({required this.email, required this.otp});
+class _$IAuthOtpCodeImpl implements _IAuthOtpCode {
+  const _$IAuthOtpCodeImpl({required this.email, required this.otp});
 
-  factory _$_IAuthOtpCode.fromJson(Map<String, dynamic> json) => _$$_IAuthOtpCodeFromJson(json);
+  factory _$IAuthOtpCodeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IAuthOtpCodeImplFromJson(json);
 
   @override
   final String email;
@@ -117,10 +121,10 @@ class _$_IAuthOtpCode implements _IAuthOtpCode {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IAuthOtpCode &&
+            other is _$IAuthOtpCodeImpl &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.otp, otp) || other.otp == otp));
   }
@@ -132,12 +136,12 @@ class _$_IAuthOtpCode implements _IAuthOtpCode {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IAuthOtpCodeCopyWith<_$_IAuthOtpCode> get copyWith =>
-      __$$_IAuthOtpCodeCopyWithImpl<_$_IAuthOtpCode>(this, _$identity);
+  _$$IAuthOtpCodeImplCopyWith<_$IAuthOtpCodeImpl> get copyWith =>
+      __$$IAuthOtpCodeImplCopyWithImpl<_$IAuthOtpCodeImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_IAuthOtpCodeToJson(
+    return _$$IAuthOtpCodeImplToJson(
       this,
     );
   }
@@ -145,9 +149,9 @@ class _$_IAuthOtpCode implements _IAuthOtpCode {
 
 abstract class _IAuthOtpCode implements IAuthOtpCode {
   const factory _IAuthOtpCode({required final String email, required final String otp}) =
-      _$_IAuthOtpCode;
+      _$IAuthOtpCodeImpl;
 
-  factory _IAuthOtpCode.fromJson(Map<String, dynamic> json) = _$_IAuthOtpCode.fromJson;
+  factory _IAuthOtpCode.fromJson(Map<String, dynamic> json) = _$IAuthOtpCodeImpl.fromJson;
 
   @override
   String get email;
@@ -155,5 +159,6 @@ abstract class _IAuthOtpCode implements IAuthOtpCode {
   String get otp;
   @override
   @JsonKey(ignore: true)
-  _$$_IAuthOtpCodeCopyWith<_$_IAuthOtpCode> get copyWith => throw _privateConstructorUsedError;
+  _$$IAuthOtpCodeImplCopyWith<_$IAuthOtpCodeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

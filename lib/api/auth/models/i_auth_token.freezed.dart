@@ -99,9 +99,9 @@ class _$IAuthTokenCopyWithImpl<$Res, $Val extends IAuthToken> implements $IAuthT
 }
 
 /// @nodoc
-abstract class _$$_IAuthTokenCopyWith<$Res> implements $IAuthTokenCopyWith<$Res> {
-  factory _$$_IAuthTokenCopyWith(_$_IAuthToken value, $Res Function(_$_IAuthToken) then) =
-      __$$_IAuthTokenCopyWithImpl<$Res>;
+abstract class _$$IAuthTokenImplCopyWith<$Res> implements $IAuthTokenCopyWith<$Res> {
+  factory _$$IAuthTokenImplCopyWith(_$IAuthTokenImpl value, $Res Function(_$IAuthTokenImpl) then) =
+      __$$IAuthTokenImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -114,9 +114,9 @@ abstract class _$$_IAuthTokenCopyWith<$Res> implements $IAuthTokenCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_IAuthTokenCopyWithImpl<$Res> extends _$IAuthTokenCopyWithImpl<$Res, _$_IAuthToken>
-    implements _$$_IAuthTokenCopyWith<$Res> {
-  __$$_IAuthTokenCopyWithImpl(_$_IAuthToken _value, $Res Function(_$_IAuthToken) _then)
+class __$$IAuthTokenImplCopyWithImpl<$Res> extends _$IAuthTokenCopyWithImpl<$Res, _$IAuthTokenImpl>
+    implements _$$IAuthTokenImplCopyWith<$Res> {
+  __$$IAuthTokenImplCopyWithImpl(_$IAuthTokenImpl _value, $Res Function(_$IAuthTokenImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -129,7 +129,7 @@ class __$$_IAuthTokenCopyWithImpl<$Res> extends _$IAuthTokenCopyWithImpl<$Res, _
     Object? clientId = freezed,
     Object? clientSecret = freezed,
   }) {
-    return _then(_$_IAuthToken(
+    return _then(_$IAuthTokenImpl(
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -160,8 +160,8 @@ class __$$_IAuthTokenCopyWithImpl<$Res> extends _$IAuthTokenCopyWithImpl<$Res, _
 
 /// @nodoc
 @JsonSerializable()
-class _$_IAuthToken implements _IAuthToken {
-  const _$_IAuthToken(
+class _$IAuthTokenImpl implements _IAuthToken {
+  const _$IAuthTokenImpl(
       {required this.username,
       required this.password,
       @JsonKey(name: 'grant_type') this.grantType,
@@ -169,7 +169,7 @@ class _$_IAuthToken implements _IAuthToken {
       @JsonKey(name: 'client_id') this.clientId,
       @JsonKey(name: 'client_secret') this.clientSecret});
 
-  factory _$_IAuthToken.fromJson(Map<String, dynamic> json) => _$$_IAuthTokenFromJson(json);
+  factory _$IAuthTokenImpl.fromJson(Map<String, dynamic> json) => _$$IAuthTokenImplFromJson(json);
 
   @override
   final String username;
@@ -194,10 +194,10 @@ class _$_IAuthToken implements _IAuthToken {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IAuthToken &&
+            other is _$IAuthTokenImpl &&
             (identical(other.username, username) || other.username == username) &&
             (identical(other.password, password) || other.password == password) &&
             (identical(other.grantType, grantType) || other.grantType == grantType) &&
@@ -214,12 +214,12 @@ class _$_IAuthToken implements _IAuthToken {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IAuthTokenCopyWith<_$_IAuthToken> get copyWith =>
-      __$$_IAuthTokenCopyWithImpl<_$_IAuthToken>(this, _$identity);
+  _$$IAuthTokenImplCopyWith<_$IAuthTokenImpl> get copyWith =>
+      __$$IAuthTokenImplCopyWithImpl<_$IAuthTokenImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_IAuthTokenToJson(
+    return _$$IAuthTokenImplToJson(
       this,
     );
   }
@@ -232,9 +232,9 @@ abstract class _IAuthToken implements IAuthToken {
       @JsonKey(name: 'grant_type') final String? grantType,
       @JsonKey(defaultValue: '') final String? scope,
       @JsonKey(name: 'client_id') final String? clientId,
-      @JsonKey(name: 'client_secret') final String? clientSecret}) = _$_IAuthToken;
+      @JsonKey(name: 'client_secret') final String? clientSecret}) = _$IAuthTokenImpl;
 
-  factory _IAuthToken.fromJson(Map<String, dynamic> json) = _$_IAuthToken.fromJson;
+  factory _IAuthToken.fromJson(Map<String, dynamic> json) = _$IAuthTokenImpl.fromJson;
 
   @override
   String get username;
@@ -254,5 +254,5 @@ abstract class _IAuthToken implements IAuthToken {
   String? get clientSecret;
   @override
   @JsonKey(ignore: true)
-  _$$_IAuthTokenCopyWith<_$_IAuthToken> get copyWith => throw _privateConstructorUsedError;
+  _$$IAuthTokenImplCopyWith<_$IAuthTokenImpl> get copyWith => throw _privateConstructorUsedError;
 }

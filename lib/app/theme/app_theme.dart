@@ -12,8 +12,9 @@ class AppTheme {
       elevation: 0,
       color: Colors.transparent,
     ),
-    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: AppColors.primary100,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(64)),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(

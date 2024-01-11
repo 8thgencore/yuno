@@ -1,6 +1,6 @@
 part of 'change_password_bloc.dart';
 
-@freezed
+@Freezed(copyWith: false)
 class ChangePasswordEvent with _$ChangePasswordEvent {
   const factory ChangePasswordEvent.started() = _StartedEvent;
 

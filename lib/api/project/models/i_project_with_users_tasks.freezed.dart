@@ -114,11 +114,11 @@ class _$IProjectWithUsersTasksCopyWithImpl<$Res, $Val extends IProjectWithUsersT
 }
 
 /// @nodoc
-abstract class _$$_IProjectWithUsersTasksCopyWith<$Res>
+abstract class _$$IProjectWithUsersTasksImplCopyWith<$Res>
     implements $IProjectWithUsersTasksCopyWith<$Res> {
-  factory _$$_IProjectWithUsersTasksCopyWith(
-          _$_IProjectWithUsersTasks value, $Res Function(_$_IProjectWithUsersTasks) then) =
-      __$$_IProjectWithUsersTasksCopyWithImpl<$Res>;
+  factory _$$IProjectWithUsersTasksImplCopyWith(
+          _$IProjectWithUsersTasksImpl value, $Res Function(_$IProjectWithUsersTasksImpl) then) =
+      __$$IProjectWithUsersTasksImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -133,11 +133,11 @@ abstract class _$$_IProjectWithUsersTasksCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_IProjectWithUsersTasksCopyWithImpl<$Res>
-    extends _$IProjectWithUsersTasksCopyWithImpl<$Res, _$_IProjectWithUsersTasks>
-    implements _$$_IProjectWithUsersTasksCopyWith<$Res> {
-  __$$_IProjectWithUsersTasksCopyWithImpl(
-      _$_IProjectWithUsersTasks _value, $Res Function(_$_IProjectWithUsersTasks) _then)
+class __$$IProjectWithUsersTasksImplCopyWithImpl<$Res>
+    extends _$IProjectWithUsersTasksCopyWithImpl<$Res, _$IProjectWithUsersTasksImpl>
+    implements _$$IProjectWithUsersTasksImplCopyWith<$Res> {
+  __$$IProjectWithUsersTasksImplCopyWithImpl(
+      _$IProjectWithUsersTasksImpl _value, $Res Function(_$IProjectWithUsersTasksImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -152,7 +152,7 @@ class __$$_IProjectWithUsersTasksCopyWithImpl<$Res>
     Object? tasks = freezed,
     Object? users = freezed,
   }) {
-    return _then(_$_IProjectWithUsersTasks(
+    return _then(_$IProjectWithUsersTasksImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -191,8 +191,8 @@ class __$$_IProjectWithUsersTasksCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_IProjectWithUsersTasks implements _IProjectWithUsersTasks {
-  const _$_IProjectWithUsersTasks(
+class _$IProjectWithUsersTasksImpl implements _IProjectWithUsersTasks {
+  const _$IProjectWithUsersTasksImpl(
       {required this.name,
       required this.description,
       required this.link,
@@ -204,8 +204,8 @@ class _$_IProjectWithUsersTasks implements _IProjectWithUsersTasks {
       : _tasks = tasks,
         _users = users;
 
-  factory _$_IProjectWithUsersTasks.fromJson(Map<String, dynamic> json) =>
-      _$$_IProjectWithUsersTasksFromJson(json);
+  factory _$IProjectWithUsersTasksImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IProjectWithUsersTasksImplFromJson(json);
 
   @override
   final String name;
@@ -247,10 +247,10 @@ class _$_IProjectWithUsersTasks implements _IProjectWithUsersTasks {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IProjectWithUsersTasks &&
+            other is _$IProjectWithUsersTasksImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) || other.description == description) &&
             (identical(other.link, link) || other.link == link) &&
@@ -278,12 +278,12 @@ class _$_IProjectWithUsersTasks implements _IProjectWithUsersTasks {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IProjectWithUsersTasksCopyWith<_$_IProjectWithUsersTasks> get copyWith =>
-      __$$_IProjectWithUsersTasksCopyWithImpl<_$_IProjectWithUsersTasks>(this, _$identity);
+  _$$IProjectWithUsersTasksImplCopyWith<_$IProjectWithUsersTasksImpl> get copyWith =>
+      __$$IProjectWithUsersTasksImplCopyWithImpl<_$IProjectWithUsersTasksImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_IProjectWithUsersTasksToJson(
+    return _$$IProjectWithUsersTasksImplToJson(
       this,
     );
   }
@@ -298,10 +298,10 @@ abstract class _IProjectWithUsersTasks implements IProjectWithUsersTasks {
       @JsonKey(name: 'percent_completed') required final double percentCompleted,
       @JsonKey(name: 'created_by_id') final String? createdBy,
       final List<ITaskRead>? tasks,
-      final List<IUserRead>? users}) = _$_IProjectWithUsersTasks;
+      final List<IUserRead>? users}) = _$IProjectWithUsersTasksImpl;
 
   factory _IProjectWithUsersTasks.fromJson(Map<String, dynamic> json) =
-      _$_IProjectWithUsersTasks.fromJson;
+      _$IProjectWithUsersTasksImpl.fromJson;
 
   @override
   String get name;
@@ -323,6 +323,6 @@ abstract class _IProjectWithUsersTasks implements IProjectWithUsersTasks {
   List<IUserRead>? get users;
   @override
   @JsonKey(ignore: true)
-  _$$_IProjectWithUsersTasksCopyWith<_$_IProjectWithUsersTasks> get copyWith =>
+  _$$IProjectWithUsersTasksImplCopyWith<_$IProjectWithUsersTasksImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

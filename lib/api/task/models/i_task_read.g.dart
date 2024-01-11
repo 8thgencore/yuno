@@ -6,7 +6,7 @@ part of 'i_task_read.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ITaskRead _$$_ITaskReadFromJson(Map<String, dynamic> json) => _$_ITaskRead(
+_$ITaskReadImpl _$$ITaskReadImplFromJson(Map<String, dynamic> json) => _$ITaskReadImpl(
       name: json['name'] as String,
       id: json['id'] as String,
       done: json['done'] as bool? ?? false,
@@ -14,7 +14,7 @@ _$_ITaskRead _$$_ITaskReadFromJson(Map<String, dynamic> json) => _$_ITaskRead(
       projectId: json['project_id'] as String?,
     );
 
-Map<String, dynamic> _$$_ITaskReadToJson(_$_ITaskRead instance) => <String, dynamic>{
+Map<String, dynamic> _$$ITaskReadImplToJson(_$ITaskReadImpl instance) => <String, dynamic>{
       'name': instance.name,
       'id': instance.id,
       'done': instance.done,

@@ -86,10 +86,10 @@ class _$StatisticsReadCopyWithImpl<$Res, $Val extends StatisticsRead>
 }
 
 /// @nodoc
-abstract class _$$_StatisticsReadCopyWith<$Res> implements $StatisticsReadCopyWith<$Res> {
-  factory _$$_StatisticsReadCopyWith(
-          _$_StatisticsRead value, $Res Function(_$_StatisticsRead) then) =
-      __$$_StatisticsReadCopyWithImpl<$Res>;
+abstract class _$$StatisticsReadImplCopyWith<$Res> implements $StatisticsReadCopyWith<$Res> {
+  factory _$$StatisticsReadImplCopyWith(
+          _$StatisticsReadImpl value, $Res Function(_$StatisticsReadImpl) then) =
+      __$$StatisticsReadImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -100,10 +100,11 @@ abstract class _$$_StatisticsReadCopyWith<$Res> implements $StatisticsReadCopyWi
 }
 
 /// @nodoc
-class __$$_StatisticsReadCopyWithImpl<$Res>
-    extends _$StatisticsReadCopyWithImpl<$Res, _$_StatisticsRead>
-    implements _$$_StatisticsReadCopyWith<$Res> {
-  __$$_StatisticsReadCopyWithImpl(_$_StatisticsRead _value, $Res Function(_$_StatisticsRead) _then)
+class __$$StatisticsReadImplCopyWithImpl<$Res>
+    extends _$StatisticsReadCopyWithImpl<$Res, _$StatisticsReadImpl>
+    implements _$$StatisticsReadImplCopyWith<$Res> {
+  __$$StatisticsReadImplCopyWithImpl(
+      _$StatisticsReadImpl _value, $Res Function(_$StatisticsReadImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -114,7 +115,7 @@ class __$$_StatisticsReadCopyWithImpl<$Res>
     Object? ongoingCount = null,
     Object? completedCount = null,
   }) {
-    return _then(_$_StatisticsRead(
+    return _then(_$StatisticsReadImpl(
       projectsCount: null == projectsCount
           ? _value.projectsCount
           : projectsCount // ignore: cast_nullable_to_non_nullable
@@ -137,14 +138,15 @@ class __$$_StatisticsReadCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_StatisticsRead implements _StatisticsRead {
-  const _$_StatisticsRead(
+class _$StatisticsReadImpl implements _StatisticsRead {
+  const _$StatisticsReadImpl(
       {@JsonKey(name: 'projects_count') required this.projectsCount,
       @JsonKey(name: 'missing_count') required this.missingCount,
       @JsonKey(name: 'ongoing_count') required this.ongoingCount,
       @JsonKey(name: 'completed_count') required this.completedCount});
 
-  factory _$_StatisticsRead.fromJson(Map<String, dynamic> json) => _$$_StatisticsReadFromJson(json);
+  factory _$StatisticsReadImpl.fromJson(Map<String, dynamic> json) =>
+      _$$StatisticsReadImplFromJson(json);
 
   @override
   @JsonKey(name: 'projects_count')
@@ -165,10 +167,10 @@ class _$_StatisticsRead implements _StatisticsRead {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StatisticsRead &&
+            other is _$StatisticsReadImpl &&
             (identical(other.projectsCount, projectsCount) ||
                 other.projectsCount == projectsCount) &&
             (identical(other.missingCount, missingCount) || other.missingCount == missingCount) &&
@@ -185,12 +187,12 @@ class _$_StatisticsRead implements _StatisticsRead {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StatisticsReadCopyWith<_$_StatisticsRead> get copyWith =>
-      __$$_StatisticsReadCopyWithImpl<_$_StatisticsRead>(this, _$identity);
+  _$$StatisticsReadImplCopyWith<_$StatisticsReadImpl> get copyWith =>
+      __$$StatisticsReadImplCopyWithImpl<_$StatisticsReadImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_StatisticsReadToJson(
+    return _$$StatisticsReadImplToJson(
       this,
     );
   }
@@ -201,9 +203,9 @@ abstract class _StatisticsRead implements StatisticsRead {
       {@JsonKey(name: 'projects_count') required final int projectsCount,
       @JsonKey(name: 'missing_count') required final int missingCount,
       @JsonKey(name: 'ongoing_count') required final int ongoingCount,
-      @JsonKey(name: 'completed_count') required final int completedCount}) = _$_StatisticsRead;
+      @JsonKey(name: 'completed_count') required final int completedCount}) = _$StatisticsReadImpl;
 
-  factory _StatisticsRead.fromJson(Map<String, dynamic> json) = _$_StatisticsRead.fromJson;
+  factory _StatisticsRead.fromJson(Map<String, dynamic> json) = _$StatisticsReadImpl.fromJson;
 
   @override
   @JsonKey(name: 'projects_count')
@@ -219,5 +221,6 @@ abstract class _StatisticsRead implements StatisticsRead {
   int get completedCount;
   @override
   @JsonKey(ignore: true)
-  _$$_StatisticsReadCopyWith<_$_StatisticsRead> get copyWith => throw _privateConstructorUsedError;
+  _$$StatisticsReadImplCopyWith<_$StatisticsReadImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

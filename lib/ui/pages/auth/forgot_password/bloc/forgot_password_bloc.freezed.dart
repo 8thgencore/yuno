@@ -17,31 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ForgotPasswordEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String text) emailChanged,
-    required TResult Function() emailFocusLost,
-    required TResult Function() continued,
-    required TResult Function() closedError,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String text)? emailChanged,
-    TResult? Function()? emailFocusLost,
-    TResult? Function()? continued,
-    TResult? Function()? closedError,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String text)? emailChanged,
-    TResult Function()? emailFocusLost,
-    TResult Function()? continued,
-    TResult Function()? closedError,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_EmailChangedEvent value) emailChanged,
     required TResult Function(_EmailFocusLostEvent value) emailFocusLost,
@@ -69,58 +44,9 @@ mixin _$ForgotPasswordEvent {
 }
 
 /// @nodoc
-abstract class $ForgotPasswordEventCopyWith<$Res> {
-  factory $ForgotPasswordEventCopyWith(
-          ForgotPasswordEvent value, $Res Function(ForgotPasswordEvent) then) =
-      _$ForgotPasswordEventCopyWithImpl<$Res, ForgotPasswordEvent>;
-}
 
-/// @nodoc
-class _$ForgotPasswordEventCopyWithImpl<$Res, $Val extends ForgotPasswordEvent>
-    implements $ForgotPasswordEventCopyWith<$Res> {
-  _$ForgotPasswordEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_EmailChangedEventCopyWith<$Res> {
-  factory _$$_EmailChangedEventCopyWith(
-          _$_EmailChangedEvent value, $Res Function(_$_EmailChangedEvent) then) =
-      __$$_EmailChangedEventCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String text});
-}
-
-/// @nodoc
-class __$$_EmailChangedEventCopyWithImpl<$Res>
-    extends _$ForgotPasswordEventCopyWithImpl<$Res, _$_EmailChangedEvent>
-    implements _$$_EmailChangedEventCopyWith<$Res> {
-  __$$_EmailChangedEventCopyWithImpl(
-      _$_EmailChangedEvent _value, $Res Function(_$_EmailChangedEvent) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? text = null,
-  }) {
-    return _then(_$_EmailChangedEvent(
-      null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_EmailChangedEvent implements _EmailChangedEvent {
-  const _$_EmailChangedEvent(this.text);
+class _$EmailChangedEventImpl implements _EmailChangedEvent {
+  const _$EmailChangedEventImpl(this.text);
 
   @override
   final String text;
@@ -131,58 +57,15 @@ class _$_EmailChangedEvent implements _EmailChangedEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EmailChangedEvent &&
+            other is _$EmailChangedEventImpl &&
             (identical(other.text, text) || other.text == text));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, text);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_EmailChangedEventCopyWith<_$_EmailChangedEvent> get copyWith =>
-      __$$_EmailChangedEventCopyWithImpl<_$_EmailChangedEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String text) emailChanged,
-    required TResult Function() emailFocusLost,
-    required TResult Function() continued,
-    required TResult Function() closedError,
-  }) {
-    return emailChanged(text);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String text)? emailChanged,
-    TResult? Function()? emailFocusLost,
-    TResult? Function()? continued,
-    TResult? Function()? closedError,
-  }) {
-    return emailChanged?.call(text);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String text)? emailChanged,
-    TResult Function()? emailFocusLost,
-    TResult Function()? continued,
-    TResult Function()? closedError,
-    required TResult orElse(),
-  }) {
-    if (emailChanged != null) {
-      return emailChanged(text);
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -223,34 +106,15 @@ class _$_EmailChangedEvent implements _EmailChangedEvent {
 }
 
 abstract class _EmailChangedEvent implements ForgotPasswordEvent {
-  const factory _EmailChangedEvent(final String text) = _$_EmailChangedEvent;
+  const factory _EmailChangedEvent(final String text) = _$EmailChangedEventImpl;
 
   String get text;
-  @JsonKey(ignore: true)
-  _$$_EmailChangedEventCopyWith<_$_EmailChangedEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_EmailFocusLostEventCopyWith<$Res> {
-  factory _$$_EmailFocusLostEventCopyWith(
-          _$_EmailFocusLostEvent value, $Res Function(_$_EmailFocusLostEvent) then) =
-      __$$_EmailFocusLostEventCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_EmailFocusLostEventCopyWithImpl<$Res>
-    extends _$ForgotPasswordEventCopyWithImpl<$Res, _$_EmailFocusLostEvent>
-    implements _$$_EmailFocusLostEventCopyWith<$Res> {
-  __$$_EmailFocusLostEventCopyWithImpl(
-      _$_EmailFocusLostEvent _value, $Res Function(_$_EmailFocusLostEvent) _then)
-      : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_EmailFocusLostEvent implements _EmailFocusLostEvent {
-  const _$_EmailFocusLostEvent();
+class _$EmailFocusLostEventImpl implements _EmailFocusLostEvent {
+  const _$EmailFocusLostEventImpl();
 
   @override
   String toString() {
@@ -258,50 +122,13 @@ class _$_EmailFocusLostEvent implements _EmailFocusLostEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_EmailFocusLostEvent);
+        (other.runtimeType == runtimeType && other is _$EmailFocusLostEventImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String text) emailChanged,
-    required TResult Function() emailFocusLost,
-    required TResult Function() continued,
-    required TResult Function() closedError,
-  }) {
-    return emailFocusLost();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String text)? emailChanged,
-    TResult? Function()? emailFocusLost,
-    TResult? Function()? continued,
-    TResult? Function()? closedError,
-  }) {
-    return emailFocusLost?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String text)? emailChanged,
-    TResult Function()? emailFocusLost,
-    TResult Function()? continued,
-    TResult Function()? closedError,
-    required TResult orElse(),
-  }) {
-    if (emailFocusLost != null) {
-      return emailFocusLost();
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -342,28 +169,13 @@ class _$_EmailFocusLostEvent implements _EmailFocusLostEvent {
 }
 
 abstract class _EmailFocusLostEvent implements ForgotPasswordEvent {
-  const factory _EmailFocusLostEvent() = _$_EmailFocusLostEvent;
-}
-
-/// @nodoc
-abstract class _$$_ContinuedEventCopyWith<$Res> {
-  factory _$$_ContinuedEventCopyWith(
-          _$_ContinuedEvent value, $Res Function(_$_ContinuedEvent) then) =
-      __$$_ContinuedEventCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_ContinuedEventCopyWithImpl<$Res>
-    extends _$ForgotPasswordEventCopyWithImpl<$Res, _$_ContinuedEvent>
-    implements _$$_ContinuedEventCopyWith<$Res> {
-  __$$_ContinuedEventCopyWithImpl(_$_ContinuedEvent _value, $Res Function(_$_ContinuedEvent) _then)
-      : super(_value, _then);
+  const factory _EmailFocusLostEvent() = _$EmailFocusLostEventImpl;
 }
 
 /// @nodoc
 
-class _$_ContinuedEvent implements _ContinuedEvent {
-  const _$_ContinuedEvent();
+class _$ContinuedEventImpl implements _ContinuedEvent {
+  const _$ContinuedEventImpl();
 
   @override
   String toString() {
@@ -371,50 +183,13 @@ class _$_ContinuedEvent implements _ContinuedEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ContinuedEvent);
+        (other.runtimeType == runtimeType && other is _$ContinuedEventImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String text) emailChanged,
-    required TResult Function() emailFocusLost,
-    required TResult Function() continued,
-    required TResult Function() closedError,
-  }) {
-    return continued();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String text)? emailChanged,
-    TResult? Function()? emailFocusLost,
-    TResult? Function()? continued,
-    TResult? Function()? closedError,
-  }) {
-    return continued?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String text)? emailChanged,
-    TResult Function()? emailFocusLost,
-    TResult Function()? continued,
-    TResult Function()? closedError,
-    required TResult orElse(),
-  }) {
-    if (continued != null) {
-      return continued();
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -455,29 +230,13 @@ class _$_ContinuedEvent implements _ContinuedEvent {
 }
 
 abstract class _ContinuedEvent implements ForgotPasswordEvent {
-  const factory _ContinuedEvent() = _$_ContinuedEvent;
-}
-
-/// @nodoc
-abstract class _$$_ClosedErrorEventCopyWith<$Res> {
-  factory _$$_ClosedErrorEventCopyWith(
-          _$_ClosedErrorEvent value, $Res Function(_$_ClosedErrorEvent) then) =
-      __$$_ClosedErrorEventCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_ClosedErrorEventCopyWithImpl<$Res>
-    extends _$ForgotPasswordEventCopyWithImpl<$Res, _$_ClosedErrorEvent>
-    implements _$$_ClosedErrorEventCopyWith<$Res> {
-  __$$_ClosedErrorEventCopyWithImpl(
-      _$_ClosedErrorEvent _value, $Res Function(_$_ClosedErrorEvent) _then)
-      : super(_value, _then);
+  const factory _ContinuedEvent() = _$ContinuedEventImpl;
 }
 
 /// @nodoc
 
-class _$_ClosedErrorEvent implements _ClosedErrorEvent {
-  const _$_ClosedErrorEvent();
+class _$ClosedErrorEventImpl implements _ClosedErrorEvent {
+  const _$ClosedErrorEventImpl();
 
   @override
   String toString() {
@@ -485,50 +244,13 @@ class _$_ClosedErrorEvent implements _ClosedErrorEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ClosedErrorEvent);
+        (other.runtimeType == runtimeType && other is _$ClosedErrorEventImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String text) emailChanged,
-    required TResult Function() emailFocusLost,
-    required TResult Function() continued,
-    required TResult Function() closedError,
-  }) {
-    return closedError();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String text)? emailChanged,
-    TResult? Function()? emailFocusLost,
-    TResult? Function()? continued,
-    TResult? Function()? closedError,
-  }) {
-    return closedError?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String text)? emailChanged,
-    TResult Function()? emailFocusLost,
-    TResult Function()? continued,
-    TResult Function()? closedError,
-    required TResult orElse(),
-  }) {
-    if (closedError != null) {
-      return closedError();
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -569,7 +291,7 @@ class _$_ClosedErrorEvent implements _ClosedErrorEvent {
 }
 
 abstract class _ClosedErrorEvent implements ForgotPasswordEvent {
-  const factory _ClosedErrorEvent() = _$_ClosedErrorEvent;
+  const factory _ClosedErrorEvent() = _$ClosedErrorEventImpl;
 }
 
 /// @nodoc
@@ -644,10 +366,11 @@ class _$ForgotPasswordStateCopyWithImpl<$Res, $Val extends ForgotPasswordState>
 }
 
 /// @nodoc
-abstract class _$$_ForgotPasswordStateCopyWith<$Res> implements $ForgotPasswordStateCopyWith<$Res> {
-  factory _$$_ForgotPasswordStateCopyWith(
-          _$_ForgotPasswordState value, $Res Function(_$_ForgotPasswordState) then) =
-      __$$_ForgotPasswordStateCopyWithImpl<$Res>;
+abstract class _$$ForgotPasswordStateImplCopyWith<$Res>
+    implements $ForgotPasswordStateCopyWith<$Res> {
+  factory _$$ForgotPasswordStateImplCopyWith(
+          _$ForgotPasswordStateImpl value, $Res Function(_$ForgotPasswordStateImpl) then) =
+      __$$ForgotPasswordStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -659,11 +382,11 @@ abstract class _$$_ForgotPasswordStateCopyWith<$Res> implements $ForgotPasswordS
 }
 
 /// @nodoc
-class __$$_ForgotPasswordStateCopyWithImpl<$Res>
-    extends _$ForgotPasswordStateCopyWithImpl<$Res, _$_ForgotPasswordState>
-    implements _$$_ForgotPasswordStateCopyWith<$Res> {
-  __$$_ForgotPasswordStateCopyWithImpl(
-      _$_ForgotPasswordState _value, $Res Function(_$_ForgotPasswordState) _then)
+class __$$ForgotPasswordStateImplCopyWithImpl<$Res>
+    extends _$ForgotPasswordStateCopyWithImpl<$Res, _$ForgotPasswordStateImpl>
+    implements _$$ForgotPasswordStateImplCopyWith<$Res> {
+  __$$ForgotPasswordStateImplCopyWithImpl(
+      _$ForgotPasswordStateImpl _value, $Res Function(_$ForgotPasswordStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -675,7 +398,7 @@ class __$$_ForgotPasswordStateCopyWithImpl<$Res>
     Object? serverError = freezed,
     Object? isValid = null,
   }) {
-    return _then(_$_ForgotPasswordState(
+    return _then(_$ForgotPasswordStateImpl(
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -702,8 +425,8 @@ class __$$_ForgotPasswordStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ForgotPasswordState implements _ForgotPasswordState {
-  const _$_ForgotPasswordState(
+class _$ForgotPasswordStateImpl implements _ForgotPasswordState {
+  const _$ForgotPasswordStateImpl(
       {required this.email,
       this.status = ForgotPasswordStatus.initial,
       this.emailError,
@@ -729,10 +452,10 @@ class _$_ForgotPasswordState implements _ForgotPasswordState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ForgotPasswordState &&
+            other is _$ForgotPasswordStateImpl &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.emailError, emailError) || other.emailError == emailError) &&
@@ -746,8 +469,8 @@ class _$_ForgotPasswordState implements _ForgotPasswordState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ForgotPasswordStateCopyWith<_$_ForgotPasswordState> get copyWith =>
-      __$$_ForgotPasswordStateCopyWithImpl<_$_ForgotPasswordState>(this, _$identity);
+  _$$ForgotPasswordStateImplCopyWith<_$ForgotPasswordStateImpl> get copyWith =>
+      __$$ForgotPasswordStateImplCopyWithImpl<_$ForgotPasswordStateImpl>(this, _$identity);
 }
 
 abstract class _ForgotPasswordState implements ForgotPasswordState {
@@ -756,7 +479,7 @@ abstract class _ForgotPasswordState implements ForgotPasswordState {
       final ForgotPasswordStatus status,
       final EmailError? emailError,
       final String? serverError,
-      final bool isValid}) = _$_ForgotPasswordState;
+      final bool isValid}) = _$ForgotPasswordStateImpl;
 
   @override
   String get email;
@@ -770,6 +493,6 @@ abstract class _ForgotPasswordState implements ForgotPasswordState {
   bool get isValid;
   @override
   @JsonKey(ignore: true)
-  _$$_ForgotPasswordStateCopyWith<_$_ForgotPasswordState> get copyWith =>
+  _$$ForgotPasswordStateImplCopyWith<_$ForgotPasswordStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

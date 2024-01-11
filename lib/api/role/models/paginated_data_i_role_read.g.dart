@@ -6,8 +6,8 @@ part of 'paginated_data_i_role_read.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PaginatedDataIRoleRead _$$_PaginatedDataIRoleReadFromJson(Map<String, dynamic> json) =>
-    _$_PaginatedDataIRoleRead(
+_$PaginatedDataIRoleReadImpl _$$PaginatedDataIRoleReadImplFromJson(Map<String, dynamic> json) =>
+    _$PaginatedDataIRoleReadImpl(
       items: (json['items'] as List<dynamic>)
           .map((e) => IRoleRead.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -19,7 +19,7 @@ _$_PaginatedDataIRoleRead _$$_PaginatedDataIRoleReadFromJson(Map<String, dynamic
       previousPage: json['previous_page'] as int?,
     );
 
-Map<String, dynamic> _$$_PaginatedDataIRoleReadToJson(_$_PaginatedDataIRoleRead instance) =>
+Map<String, dynamic> _$$PaginatedDataIRoleReadImplToJson(_$PaginatedDataIRoleReadImpl instance) =>
     <String, dynamic>{
       'items': instance.items,
       'total': instance.total,

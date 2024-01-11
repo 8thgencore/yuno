@@ -1,6 +1,6 @@
 part of 'projects_list_bloc.dart';
 
-@freezed
+@Freezed(copyWith: false)
 class ProjectsListEvent with _$ProjectsListEvent {
   const factory ProjectsListEvent.started({required bool isSelf}) = _StartedEvent;
 

@@ -17,34 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ProjectEditEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String id) started,
-    required TResult Function(String text) nameChanged,
-    required TResult Function(String text) descriptionChanged,
-    required TResult Function() saved,
-    required TResult Function() updated,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? started,
-    TResult? Function(String text)? nameChanged,
-    TResult? Function(String text)? descriptionChanged,
-    TResult? Function()? saved,
-    TResult? Function()? updated,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? started,
-    TResult Function(String text)? nameChanged,
-    TResult Function(String text)? descriptionChanged,
-    TResult Function()? saved,
-    TResult Function()? updated,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
     required TResult Function(_NameChangedEvent value) nameChanged,
@@ -75,55 +47,9 @@ mixin _$ProjectEditEvent {
 }
 
 /// @nodoc
-abstract class $ProjectEditEventCopyWith<$Res> {
-  factory $ProjectEditEventCopyWith(ProjectEditEvent value, $Res Function(ProjectEditEvent) then) =
-      _$ProjectEditEventCopyWithImpl<$Res, ProjectEditEvent>;
-}
 
-/// @nodoc
-class _$ProjectEditEventCopyWithImpl<$Res, $Val extends ProjectEditEvent>
-    implements $ProjectEditEventCopyWith<$Res> {
-  _$ProjectEditEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_StartedEventCopyWith<$Res> {
-  factory _$$_StartedEventCopyWith(_$_StartedEvent value, $Res Function(_$_StartedEvent) then) =
-      __$$_StartedEventCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String id});
-}
-
-/// @nodoc
-class __$$_StartedEventCopyWithImpl<$Res>
-    extends _$ProjectEditEventCopyWithImpl<$Res, _$_StartedEvent>
-    implements _$$_StartedEventCopyWith<$Res> {
-  __$$_StartedEventCopyWithImpl(_$_StartedEvent _value, $Res Function(_$_StartedEvent) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-  }) {
-    return _then(_$_StartedEvent(
-      null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_StartedEvent implements _StartedEvent {
-  const _$_StartedEvent(this.id);
+class _$StartedEventImpl implements _StartedEvent {
+  const _$StartedEventImpl(this.id);
 
   @override
   final String id;
@@ -134,61 +60,15 @@ class _$_StartedEvent implements _StartedEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StartedEvent &&
+            other is _$StartedEventImpl &&
             (identical(other.id, id) || other.id == id));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_StartedEventCopyWith<_$_StartedEvent> get copyWith =>
-      __$$_StartedEventCopyWithImpl<_$_StartedEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String id) started,
-    required TResult Function(String text) nameChanged,
-    required TResult Function(String text) descriptionChanged,
-    required TResult Function() saved,
-    required TResult Function() updated,
-  }) {
-    return started(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? started,
-    TResult? Function(String text)? nameChanged,
-    TResult? Function(String text)? descriptionChanged,
-    TResult? Function()? saved,
-    TResult? Function()? updated,
-  }) {
-    return started?.call(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? started,
-    TResult Function(String text)? nameChanged,
-    TResult Function(String text)? descriptionChanged,
-    TResult Function()? saved,
-    TResult Function()? updated,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(id);
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -232,48 +112,15 @@ class _$_StartedEvent implements _StartedEvent {
 }
 
 abstract class _StartedEvent implements ProjectEditEvent {
-  const factory _StartedEvent(final String id) = _$_StartedEvent;
+  const factory _StartedEvent(final String id) = _$StartedEventImpl;
 
   String get id;
-  @JsonKey(ignore: true)
-  _$$_StartedEventCopyWith<_$_StartedEvent> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_NameChangedEventCopyWith<$Res> {
-  factory _$$_NameChangedEventCopyWith(
-          _$_NameChangedEvent value, $Res Function(_$_NameChangedEvent) then) =
-      __$$_NameChangedEventCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String text});
-}
-
-/// @nodoc
-class __$$_NameChangedEventCopyWithImpl<$Res>
-    extends _$ProjectEditEventCopyWithImpl<$Res, _$_NameChangedEvent>
-    implements _$$_NameChangedEventCopyWith<$Res> {
-  __$$_NameChangedEventCopyWithImpl(
-      _$_NameChangedEvent _value, $Res Function(_$_NameChangedEvent) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? text = null,
-  }) {
-    return _then(_$_NameChangedEvent(
-      null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$_NameChangedEvent implements _NameChangedEvent {
-  const _$_NameChangedEvent(this.text);
+class _$NameChangedEventImpl implements _NameChangedEvent {
+  const _$NameChangedEventImpl(this.text);
 
   @override
   final String text;
@@ -284,61 +131,15 @@ class _$_NameChangedEvent implements _NameChangedEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NameChangedEvent &&
+            other is _$NameChangedEventImpl &&
             (identical(other.text, text) || other.text == text));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, text);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_NameChangedEventCopyWith<_$_NameChangedEvent> get copyWith =>
-      __$$_NameChangedEventCopyWithImpl<_$_NameChangedEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String id) started,
-    required TResult Function(String text) nameChanged,
-    required TResult Function(String text) descriptionChanged,
-    required TResult Function() saved,
-    required TResult Function() updated,
-  }) {
-    return nameChanged(text);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? started,
-    TResult? Function(String text)? nameChanged,
-    TResult? Function(String text)? descriptionChanged,
-    TResult? Function()? saved,
-    TResult? Function()? updated,
-  }) {
-    return nameChanged?.call(text);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? started,
-    TResult Function(String text)? nameChanged,
-    TResult Function(String text)? descriptionChanged,
-    TResult Function()? saved,
-    TResult Function()? updated,
-    required TResult orElse(),
-  }) {
-    if (nameChanged != null) {
-      return nameChanged(text);
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -382,49 +183,15 @@ class _$_NameChangedEvent implements _NameChangedEvent {
 }
 
 abstract class _NameChangedEvent implements ProjectEditEvent {
-  const factory _NameChangedEvent(final String text) = _$_NameChangedEvent;
+  const factory _NameChangedEvent(final String text) = _$NameChangedEventImpl;
 
   String get text;
-  @JsonKey(ignore: true)
-  _$$_NameChangedEventCopyWith<_$_NameChangedEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_DescriptionChangedEventCopyWith<$Res> {
-  factory _$$_DescriptionChangedEventCopyWith(
-          _$_DescriptionChangedEvent value, $Res Function(_$_DescriptionChangedEvent) then) =
-      __$$_DescriptionChangedEventCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String text});
-}
-
-/// @nodoc
-class __$$_DescriptionChangedEventCopyWithImpl<$Res>
-    extends _$ProjectEditEventCopyWithImpl<$Res, _$_DescriptionChangedEvent>
-    implements _$$_DescriptionChangedEventCopyWith<$Res> {
-  __$$_DescriptionChangedEventCopyWithImpl(
-      _$_DescriptionChangedEvent _value, $Res Function(_$_DescriptionChangedEvent) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? text = null,
-  }) {
-    return _then(_$_DescriptionChangedEvent(
-      null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$_DescriptionChangedEvent implements _DescriptionChangedEvent {
-  const _$_DescriptionChangedEvent(this.text);
+class _$DescriptionChangedEventImpl implements _DescriptionChangedEvent {
+  const _$DescriptionChangedEventImpl(this.text);
 
   @override
   final String text;
@@ -435,61 +202,15 @@ class _$_DescriptionChangedEvent implements _DescriptionChangedEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DescriptionChangedEvent &&
+            other is _$DescriptionChangedEventImpl &&
             (identical(other.text, text) || other.text == text));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, text);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_DescriptionChangedEventCopyWith<_$_DescriptionChangedEvent> get copyWith =>
-      __$$_DescriptionChangedEventCopyWithImpl<_$_DescriptionChangedEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String id) started,
-    required TResult Function(String text) nameChanged,
-    required TResult Function(String text) descriptionChanged,
-    required TResult Function() saved,
-    required TResult Function() updated,
-  }) {
-    return descriptionChanged(text);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? started,
-    TResult? Function(String text)? nameChanged,
-    TResult? Function(String text)? descriptionChanged,
-    TResult? Function()? saved,
-    TResult? Function()? updated,
-  }) {
-    return descriptionChanged?.call(text);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? started,
-    TResult Function(String text)? nameChanged,
-    TResult Function(String text)? descriptionChanged,
-    TResult Function()? saved,
-    TResult Function()? updated,
-    required TResult orElse(),
-  }) {
-    if (descriptionChanged != null) {
-      return descriptionChanged(text);
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -533,31 +254,15 @@ class _$_DescriptionChangedEvent implements _DescriptionChangedEvent {
 }
 
 abstract class _DescriptionChangedEvent implements ProjectEditEvent {
-  const factory _DescriptionChangedEvent(final String text) = _$_DescriptionChangedEvent;
+  const factory _DescriptionChangedEvent(final String text) = _$DescriptionChangedEventImpl;
 
   String get text;
-  @JsonKey(ignore: true)
-  _$$_DescriptionChangedEventCopyWith<_$_DescriptionChangedEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_SavedEventCopyWith<$Res> {
-  factory _$$_SavedEventCopyWith(_$_SavedEvent value, $Res Function(_$_SavedEvent) then) =
-      __$$_SavedEventCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_SavedEventCopyWithImpl<$Res> extends _$ProjectEditEventCopyWithImpl<$Res, _$_SavedEvent>
-    implements _$$_SavedEventCopyWith<$Res> {
-  __$$_SavedEventCopyWithImpl(_$_SavedEvent _value, $Res Function(_$_SavedEvent) _then)
-      : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_SavedEvent implements _SavedEvent {
-  const _$_SavedEvent();
+class _$SavedEventImpl implements _SavedEvent {
+  const _$SavedEventImpl();
 
   @override
   String toString() {
@@ -565,52 +270,13 @@ class _$_SavedEvent implements _SavedEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_SavedEvent);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SavedEventImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String id) started,
-    required TResult Function(String text) nameChanged,
-    required TResult Function(String text) descriptionChanged,
-    required TResult Function() saved,
-    required TResult Function() updated,
-  }) {
-    return saved();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? started,
-    TResult? Function(String text)? nameChanged,
-    TResult? Function(String text)? descriptionChanged,
-    TResult? Function()? saved,
-    TResult? Function()? updated,
-  }) {
-    return saved?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? started,
-    TResult Function(String text)? nameChanged,
-    TResult Function(String text)? descriptionChanged,
-    TResult Function()? saved,
-    TResult Function()? updated,
-    required TResult orElse(),
-  }) {
-    if (saved != null) {
-      return saved();
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -654,27 +320,13 @@ class _$_SavedEvent implements _SavedEvent {
 }
 
 abstract class _SavedEvent implements ProjectEditEvent {
-  const factory _SavedEvent() = _$_SavedEvent;
-}
-
-/// @nodoc
-abstract class _$$_UpdatedEventCopyWith<$Res> {
-  factory _$$_UpdatedEventCopyWith(_$_UpdatedEvent value, $Res Function(_$_UpdatedEvent) then) =
-      __$$_UpdatedEventCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_UpdatedEventCopyWithImpl<$Res>
-    extends _$ProjectEditEventCopyWithImpl<$Res, _$_UpdatedEvent>
-    implements _$$_UpdatedEventCopyWith<$Res> {
-  __$$_UpdatedEventCopyWithImpl(_$_UpdatedEvent _value, $Res Function(_$_UpdatedEvent) _then)
-      : super(_value, _then);
+  const factory _SavedEvent() = _$SavedEventImpl;
 }
 
 /// @nodoc
 
-class _$_UpdatedEvent implements _UpdatedEvent {
-  const _$_UpdatedEvent();
+class _$UpdatedEventImpl implements _UpdatedEvent {
+  const _$UpdatedEventImpl();
 
   @override
   String toString() {
@@ -682,52 +334,13 @@ class _$_UpdatedEvent implements _UpdatedEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_UpdatedEvent);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UpdatedEventImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String id) started,
-    required TResult Function(String text) nameChanged,
-    required TResult Function(String text) descriptionChanged,
-    required TResult Function() saved,
-    required TResult Function() updated,
-  }) {
-    return updated();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? started,
-    TResult? Function(String text)? nameChanged,
-    TResult? Function(String text)? descriptionChanged,
-    TResult? Function()? saved,
-    TResult? Function()? updated,
-  }) {
-    return updated?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? started,
-    TResult Function(String text)? nameChanged,
-    TResult Function(String text)? descriptionChanged,
-    TResult Function()? saved,
-    TResult Function()? updated,
-    required TResult orElse(),
-  }) {
-    if (updated != null) {
-      return updated();
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -771,7 +384,7 @@ class _$_UpdatedEvent implements _UpdatedEvent {
 }
 
 abstract class _UpdatedEvent implements ProjectEditEvent {
-  const factory _UpdatedEvent() = _$_UpdatedEvent;
+  const factory _UpdatedEvent() = _$UpdatedEventImpl;
 }
 
 /// @nodoc
@@ -840,10 +453,10 @@ class _$ProjectEditStateCopyWithImpl<$Res, $Val extends ProjectEditState>
 }
 
 /// @nodoc
-abstract class _$$_ProjectEditStateCopyWith<$Res> implements $ProjectEditStateCopyWith<$Res> {
-  factory _$$_ProjectEditStateCopyWith(
-          _$_ProjectEditState value, $Res Function(_$_ProjectEditState) then) =
-      __$$_ProjectEditStateCopyWithImpl<$Res>;
+abstract class _$$ProjectEditStateImplCopyWith<$Res> implements $ProjectEditStateCopyWith<$Res> {
+  factory _$$ProjectEditStateImplCopyWith(
+          _$ProjectEditStateImpl value, $Res Function(_$ProjectEditStateImpl) then) =
+      __$$ProjectEditStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -851,11 +464,11 @@ abstract class _$$_ProjectEditStateCopyWith<$Res> implements $ProjectEditStateCo
 }
 
 /// @nodoc
-class __$$_ProjectEditStateCopyWithImpl<$Res>
-    extends _$ProjectEditStateCopyWithImpl<$Res, _$_ProjectEditState>
-    implements _$$_ProjectEditStateCopyWith<$Res> {
-  __$$_ProjectEditStateCopyWithImpl(
-      _$_ProjectEditState _value, $Res Function(_$_ProjectEditState) _then)
+class __$$ProjectEditStateImplCopyWithImpl<$Res>
+    extends _$ProjectEditStateCopyWithImpl<$Res, _$ProjectEditStateImpl>
+    implements _$$ProjectEditStateImplCopyWith<$Res> {
+  __$$ProjectEditStateImplCopyWithImpl(
+      _$ProjectEditStateImpl _value, $Res Function(_$ProjectEditStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -867,7 +480,7 @@ class __$$_ProjectEditStateCopyWithImpl<$Res>
     Object? status = null,
     Object? serverError = freezed,
   }) {
-    return _then(_$_ProjectEditState(
+    return _then(_$ProjectEditStateImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -894,8 +507,8 @@ class __$$_ProjectEditStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ProjectEditState implements _ProjectEditState {
-  const _$_ProjectEditState(
+class _$ProjectEditStateImpl implements _ProjectEditState {
+  const _$ProjectEditStateImpl(
       {required this.id,
       required this.name,
       required this.description,
@@ -920,10 +533,10 @@ class _$_ProjectEditState implements _ProjectEditState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProjectEditState &&
+            other is _$ProjectEditStateImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) || other.description == description) &&
@@ -937,8 +550,8 @@ class _$_ProjectEditState implements _ProjectEditState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProjectEditStateCopyWith<_$_ProjectEditState> get copyWith =>
-      __$$_ProjectEditStateCopyWithImpl<_$_ProjectEditState>(this, _$identity);
+  _$$ProjectEditStateImplCopyWith<_$ProjectEditStateImpl> get copyWith =>
+      __$$ProjectEditStateImplCopyWithImpl<_$ProjectEditStateImpl>(this, _$identity);
 }
 
 abstract class _ProjectEditState implements ProjectEditState {
@@ -947,7 +560,7 @@ abstract class _ProjectEditState implements ProjectEditState {
       required final String name,
       required final String description,
       final ProjectEditStatus status,
-      final String? serverError}) = _$_ProjectEditState;
+      final String? serverError}) = _$ProjectEditStateImpl;
 
   @override
   String get id;
@@ -961,6 +574,6 @@ abstract class _ProjectEditState implements ProjectEditState {
   String? get serverError;
   @override
   @JsonKey(ignore: true)
-  _$$_ProjectEditStateCopyWith<_$_ProjectEditState> get copyWith =>
+  _$$ProjectEditStateImplCopyWith<_$ProjectEditStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

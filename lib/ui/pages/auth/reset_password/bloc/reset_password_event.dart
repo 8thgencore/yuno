@@ -1,6 +1,6 @@
 part of 'reset_password_bloc.dart';
 
-@freezed
+@Freezed(copyWith: false)
 class ResetPasswordEvent with _$ResetPasswordEvent {
   const factory ResetPasswordEvent.passwordChanged(String text) = _PasswordChangedEvent;
 

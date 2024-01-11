@@ -1,6 +1,6 @@
 part of 'otp_bloc.dart';
 
-@freezed
+@Freezed(copyWith: false)
 class OtpEvent with _$OtpEvent {
   const factory OtpEvent.otpChanged(String text, int index) = _OtpChangedEvent;
 

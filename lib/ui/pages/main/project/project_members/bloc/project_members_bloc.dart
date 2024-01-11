@@ -15,7 +15,7 @@ part 'project_members_bloc.freezed.dart';
 class ProjectMembersBloc extends Bloc<ProjectMembersEvent, ProjectMembersState> {
   ProjectMembersBloc({
     required this.projectRepository,
-  }) : super(const ProjectMembersState.initial()) {
+  }) : super(const ProjectMembersState.initial(projects: [])) {
     on<ProjectMembersEvent>(
       (event, emit) => event.map(
         started: (event) async => _onMembersLoaded(event, emit),
@@ -29,12 +29,17 @@ class ProjectMembersBloc extends Bloc<ProjectMembersEvent, ProjectMembersState> 
     _StartedEvent event,
     Emitter<ProjectMembersState> emit,
   ) async {
-    emit(const ProjectMembersState.loading());
+    emit(const ProjectMembersState.loading(projects: []));
     try {
       final members = await projectRepository.getMembers(id: event.id);
-      emit(ProjectMembersState.loaded(members.items));
+      emit(ProjectMembersState.loaded(projects: members.items));
     } on DioException catch (dioError) {
-      emit(ProjectMembersState.failure(dioErrorInterceptor(dioError).toString()));
+      emit(
+        ProjectMembersState.failure(
+          projects: [],
+          error: dioErrorInterceptor(dioError).toString(),
+        ),
+      );
     }
   }
 }

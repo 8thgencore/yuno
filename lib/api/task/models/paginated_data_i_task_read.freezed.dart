@@ -107,11 +107,11 @@ class _$PaginatedDataITaskReadCopyWithImpl<$Res, $Val extends PaginatedDataITask
 }
 
 /// @nodoc
-abstract class _$$_PaginatedDataITaskReadCopyWith<$Res>
+abstract class _$$PaginatedDataITaskReadImplCopyWith<$Res>
     implements $PaginatedDataITaskReadCopyWith<$Res> {
-  factory _$$_PaginatedDataITaskReadCopyWith(
-          _$_PaginatedDataITaskRead value, $Res Function(_$_PaginatedDataITaskRead) then) =
-      __$$_PaginatedDataITaskReadCopyWithImpl<$Res>;
+  factory _$$PaginatedDataITaskReadImplCopyWith(
+          _$PaginatedDataITaskReadImpl value, $Res Function(_$PaginatedDataITaskReadImpl) then) =
+      __$$PaginatedDataITaskReadImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -125,11 +125,11 @@ abstract class _$$_PaginatedDataITaskReadCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PaginatedDataITaskReadCopyWithImpl<$Res>
-    extends _$PaginatedDataITaskReadCopyWithImpl<$Res, _$_PaginatedDataITaskRead>
-    implements _$$_PaginatedDataITaskReadCopyWith<$Res> {
-  __$$_PaginatedDataITaskReadCopyWithImpl(
-      _$_PaginatedDataITaskRead _value, $Res Function(_$_PaginatedDataITaskRead) _then)
+class __$$PaginatedDataITaskReadImplCopyWithImpl<$Res>
+    extends _$PaginatedDataITaskReadCopyWithImpl<$Res, _$PaginatedDataITaskReadImpl>
+    implements _$$PaginatedDataITaskReadImplCopyWith<$Res> {
+  __$$PaginatedDataITaskReadImplCopyWithImpl(
+      _$PaginatedDataITaskReadImpl _value, $Res Function(_$PaginatedDataITaskReadImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -143,7 +143,7 @@ class __$$_PaginatedDataITaskReadCopyWithImpl<$Res>
     Object? nextPage = freezed,
     Object? previousPage = freezed,
   }) {
-    return _then(_$_PaginatedDataITaskRead(
+    return _then(_$PaginatedDataITaskReadImpl(
       items: null == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
@@ -178,8 +178,8 @@ class __$$_PaginatedDataITaskReadCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PaginatedDataITaskRead implements _PaginatedDataITaskRead {
-  const _$_PaginatedDataITaskRead(
+class _$PaginatedDataITaskReadImpl implements _PaginatedDataITaskRead {
+  const _$PaginatedDataITaskReadImpl(
       {required final List<ITaskRead> items,
       required this.total,
       required this.page,
@@ -189,8 +189,8 @@ class _$_PaginatedDataITaskRead implements _PaginatedDataITaskRead {
       @JsonKey(name: 'previous_page') this.previousPage})
       : _items = items;
 
-  factory _$_PaginatedDataITaskRead.fromJson(Map<String, dynamic> json) =>
-      _$$_PaginatedDataITaskReadFromJson(json);
+  factory _$PaginatedDataITaskReadImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PaginatedDataITaskReadImplFromJson(json);
 
   final List<ITaskRead> _items;
   @override
@@ -221,10 +221,10 @@ class _$_PaginatedDataITaskRead implements _PaginatedDataITaskRead {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaginatedDataITaskRead &&
+            other is _$PaginatedDataITaskReadImpl &&
             const DeepCollectionEquality().equals(other._items, _items) &&
             (identical(other.total, total) || other.total == total) &&
             (identical(other.page, page) || other.page == page) &&
@@ -242,12 +242,12 @@ class _$_PaginatedDataITaskRead implements _PaginatedDataITaskRead {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaginatedDataITaskReadCopyWith<_$_PaginatedDataITaskRead> get copyWith =>
-      __$$_PaginatedDataITaskReadCopyWithImpl<_$_PaginatedDataITaskRead>(this, _$identity);
+  _$$PaginatedDataITaskReadImplCopyWith<_$PaginatedDataITaskReadImpl> get copyWith =>
+      __$$PaginatedDataITaskReadImplCopyWithImpl<_$PaginatedDataITaskReadImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaginatedDataITaskReadToJson(
+    return _$$PaginatedDataITaskReadImplToJson(
       this,
     );
   }
@@ -261,10 +261,10 @@ abstract class _PaginatedDataITaskRead implements PaginatedDataITaskRead {
       required final int size,
       required final int pages,
       @JsonKey(name: 'next_page') final int? nextPage,
-      @JsonKey(name: 'previous_page') final int? previousPage}) = _$_PaginatedDataITaskRead;
+      @JsonKey(name: 'previous_page') final int? previousPage}) = _$PaginatedDataITaskReadImpl;
 
   factory _PaginatedDataITaskRead.fromJson(Map<String, dynamic> json) =
-      _$_PaginatedDataITaskRead.fromJson;
+      _$PaginatedDataITaskReadImpl.fromJson;
 
   @override
   List<ITaskRead> get items;
@@ -284,6 +284,6 @@ abstract class _PaginatedDataITaskRead implements PaginatedDataITaskRead {
   int? get previousPage;
   @override
   @JsonKey(ignore: true)
-  _$$_PaginatedDataITaskReadCopyWith<_$_PaginatedDataITaskRead> get copyWith =>
+  _$$PaginatedDataITaskReadImplCopyWith<_$PaginatedDataITaskReadImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

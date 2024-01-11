@@ -1,6 +1,6 @@
 part of 'forgot_password_bloc.dart';
 
-@freezed
+@Freezed(copyWith: false)
 class ForgotPasswordEvent with _$ForgotPasswordEvent {
   const factory ForgotPasswordEvent.emailChanged(String text) = _EmailChangedEvent;
 

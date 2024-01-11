@@ -66,18 +66,20 @@ class _$IRoleCreateCopyWithImpl<$Res, $Val extends IRoleCreate>
 }
 
 /// @nodoc
-abstract class _$$_IRoleCreateCopyWith<$Res> implements $IRoleCreateCopyWith<$Res> {
-  factory _$$_IRoleCreateCopyWith(_$_IRoleCreate value, $Res Function(_$_IRoleCreate) then) =
-      __$$_IRoleCreateCopyWithImpl<$Res>;
+abstract class _$$IRoleCreateImplCopyWith<$Res> implements $IRoleCreateCopyWith<$Res> {
+  factory _$$IRoleCreateImplCopyWith(
+          _$IRoleCreateImpl value, $Res Function(_$IRoleCreateImpl) then) =
+      __$$IRoleCreateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, String description});
 }
 
 /// @nodoc
-class __$$_IRoleCreateCopyWithImpl<$Res> extends _$IRoleCreateCopyWithImpl<$Res, _$_IRoleCreate>
-    implements _$$_IRoleCreateCopyWith<$Res> {
-  __$$_IRoleCreateCopyWithImpl(_$_IRoleCreate _value, $Res Function(_$_IRoleCreate) _then)
+class __$$IRoleCreateImplCopyWithImpl<$Res>
+    extends _$IRoleCreateCopyWithImpl<$Res, _$IRoleCreateImpl>
+    implements _$$IRoleCreateImplCopyWith<$Res> {
+  __$$IRoleCreateImplCopyWithImpl(_$IRoleCreateImpl _value, $Res Function(_$IRoleCreateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -86,7 +88,7 @@ class __$$_IRoleCreateCopyWithImpl<$Res> extends _$IRoleCreateCopyWithImpl<$Res,
     Object? name = null,
     Object? description = null,
   }) {
-    return _then(_$_IRoleCreate(
+    return _then(_$IRoleCreateImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -101,10 +103,10 @@ class __$$_IRoleCreateCopyWithImpl<$Res> extends _$IRoleCreateCopyWithImpl<$Res,
 
 /// @nodoc
 @JsonSerializable()
-class _$_IRoleCreate implements _IRoleCreate {
-  const _$_IRoleCreate({required this.name, required this.description});
+class _$IRoleCreateImpl implements _IRoleCreate {
+  const _$IRoleCreateImpl({required this.name, required this.description});
 
-  factory _$_IRoleCreate.fromJson(Map<String, dynamic> json) => _$$_IRoleCreateFromJson(json);
+  factory _$IRoleCreateImpl.fromJson(Map<String, dynamic> json) => _$$IRoleCreateImplFromJson(json);
 
   @override
   final String name;
@@ -117,10 +119,10 @@ class _$_IRoleCreate implements _IRoleCreate {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IRoleCreate &&
+            other is _$IRoleCreateImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) || other.description == description));
   }
@@ -132,12 +134,12 @@ class _$_IRoleCreate implements _IRoleCreate {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IRoleCreateCopyWith<_$_IRoleCreate> get copyWith =>
-      __$$_IRoleCreateCopyWithImpl<_$_IRoleCreate>(this, _$identity);
+  _$$IRoleCreateImplCopyWith<_$IRoleCreateImpl> get copyWith =>
+      __$$IRoleCreateImplCopyWithImpl<_$IRoleCreateImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_IRoleCreateToJson(
+    return _$$IRoleCreateImplToJson(
       this,
     );
   }
@@ -145,9 +147,9 @@ class _$_IRoleCreate implements _IRoleCreate {
 
 abstract class _IRoleCreate implements IRoleCreate {
   const factory _IRoleCreate({required final String name, required final String description}) =
-      _$_IRoleCreate;
+      _$IRoleCreateImpl;
 
-  factory _IRoleCreate.fromJson(Map<String, dynamic> json) = _$_IRoleCreate.fromJson;
+  factory _IRoleCreate.fromJson(Map<String, dynamic> json) = _$IRoleCreateImpl.fromJson;
 
   @override
   String get name;
@@ -155,5 +157,5 @@ abstract class _IRoleCreate implements IRoleCreate {
   String get description;
   @override
   @JsonKey(ignore: true)
-  _$$_IRoleCreateCopyWith<_$_IRoleCreate> get copyWith => throw _privateConstructorUsedError;
+  _$$IRoleCreateImplCopyWith<_$IRoleCreateImpl> get copyWith => throw _privateConstructorUsedError;
 }

@@ -17,34 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ChangePasswordEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(String text) currentPasswordChanged,
-    required TResult Function(String text) newPasswordChanged,
-    required TResult Function(String text) confirmNewPasswordChanged,
-    required TResult Function() saved,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(String text)? currentPasswordChanged,
-    TResult? Function(String text)? newPasswordChanged,
-    TResult? Function(String text)? confirmNewPasswordChanged,
-    TResult? Function()? saved,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String text)? currentPasswordChanged,
-    TResult Function(String text)? newPasswordChanged,
-    TResult Function(String text)? confirmNewPasswordChanged,
-    TResult Function()? saved,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
     required TResult Function(_CurrentPasswordChangedEvent value) currentPasswordChanged,
@@ -75,41 +47,9 @@ mixin _$ChangePasswordEvent {
 }
 
 /// @nodoc
-abstract class $ChangePasswordEventCopyWith<$Res> {
-  factory $ChangePasswordEventCopyWith(
-          ChangePasswordEvent value, $Res Function(ChangePasswordEvent) then) =
-      _$ChangePasswordEventCopyWithImpl<$Res, ChangePasswordEvent>;
-}
 
-/// @nodoc
-class _$ChangePasswordEventCopyWithImpl<$Res, $Val extends ChangePasswordEvent>
-    implements $ChangePasswordEventCopyWith<$Res> {
-  _$ChangePasswordEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_StartedEventCopyWith<$Res> {
-  factory _$$_StartedEventCopyWith(_$_StartedEvent value, $Res Function(_$_StartedEvent) then) =
-      __$$_StartedEventCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_StartedEventCopyWithImpl<$Res>
-    extends _$ChangePasswordEventCopyWithImpl<$Res, _$_StartedEvent>
-    implements _$$_StartedEventCopyWith<$Res> {
-  __$$_StartedEventCopyWithImpl(_$_StartedEvent _value, $Res Function(_$_StartedEvent) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_StartedEvent implements _StartedEvent {
-  const _$_StartedEvent();
+class _$StartedEventImpl implements _StartedEvent {
+  const _$StartedEventImpl();
 
   @override
   String toString() {
@@ -117,52 +57,13 @@ class _$_StartedEvent implements _StartedEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_StartedEvent);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$StartedEventImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(String text) currentPasswordChanged,
-    required TResult Function(String text) newPasswordChanged,
-    required TResult Function(String text) confirmNewPasswordChanged,
-    required TResult Function() saved,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(String text)? currentPasswordChanged,
-    TResult? Function(String text)? newPasswordChanged,
-    TResult? Function(String text)? confirmNewPasswordChanged,
-    TResult? Function()? saved,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String text)? currentPasswordChanged,
-    TResult Function(String text)? newPasswordChanged,
-    TResult Function(String text)? confirmNewPasswordChanged,
-    TResult Function()? saved,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -206,44 +107,13 @@ class _$_StartedEvent implements _StartedEvent {
 }
 
 abstract class _StartedEvent implements ChangePasswordEvent {
-  const factory _StartedEvent() = _$_StartedEvent;
-}
-
-/// @nodoc
-abstract class _$$_CurrentPasswordChangedEventCopyWith<$Res> {
-  factory _$$_CurrentPasswordChangedEventCopyWith(_$_CurrentPasswordChangedEvent value,
-          $Res Function(_$_CurrentPasswordChangedEvent) then) =
-      __$$_CurrentPasswordChangedEventCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String text});
-}
-
-/// @nodoc
-class __$$_CurrentPasswordChangedEventCopyWithImpl<$Res>
-    extends _$ChangePasswordEventCopyWithImpl<$Res, _$_CurrentPasswordChangedEvent>
-    implements _$$_CurrentPasswordChangedEventCopyWith<$Res> {
-  __$$_CurrentPasswordChangedEventCopyWithImpl(
-      _$_CurrentPasswordChangedEvent _value, $Res Function(_$_CurrentPasswordChangedEvent) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? text = null,
-  }) {
-    return _then(_$_CurrentPasswordChangedEvent(
-      null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
+  const factory _StartedEvent() = _$StartedEventImpl;
 }
 
 /// @nodoc
 
-class _$_CurrentPasswordChangedEvent implements _CurrentPasswordChangedEvent {
-  const _$_CurrentPasswordChangedEvent(this.text);
+class _$CurrentPasswordChangedEventImpl implements _CurrentPasswordChangedEvent {
+  const _$CurrentPasswordChangedEventImpl(this.text);
 
   @override
   final String text;
@@ -254,62 +124,15 @@ class _$_CurrentPasswordChangedEvent implements _CurrentPasswordChangedEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CurrentPasswordChangedEvent &&
+            other is _$CurrentPasswordChangedEventImpl &&
             (identical(other.text, text) || other.text == text));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, text);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_CurrentPasswordChangedEventCopyWith<_$_CurrentPasswordChangedEvent> get copyWith =>
-      __$$_CurrentPasswordChangedEventCopyWithImpl<_$_CurrentPasswordChangedEvent>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(String text) currentPasswordChanged,
-    required TResult Function(String text) newPasswordChanged,
-    required TResult Function(String text) confirmNewPasswordChanged,
-    required TResult Function() saved,
-  }) {
-    return currentPasswordChanged(text);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(String text)? currentPasswordChanged,
-    TResult? Function(String text)? newPasswordChanged,
-    TResult? Function(String text)? confirmNewPasswordChanged,
-    TResult? Function()? saved,
-  }) {
-    return currentPasswordChanged?.call(text);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String text)? currentPasswordChanged,
-    TResult Function(String text)? newPasswordChanged,
-    TResult Function(String text)? confirmNewPasswordChanged,
-    TResult Function()? saved,
-    required TResult orElse(),
-  }) {
-    if (currentPasswordChanged != null) {
-      return currentPasswordChanged(text);
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -353,49 +176,15 @@ class _$_CurrentPasswordChangedEvent implements _CurrentPasswordChangedEvent {
 }
 
 abstract class _CurrentPasswordChangedEvent implements ChangePasswordEvent {
-  const factory _CurrentPasswordChangedEvent(final String text) = _$_CurrentPasswordChangedEvent;
+  const factory _CurrentPasswordChangedEvent(final String text) = _$CurrentPasswordChangedEventImpl;
 
   String get text;
-  @JsonKey(ignore: true)
-  _$$_CurrentPasswordChangedEventCopyWith<_$_CurrentPasswordChangedEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_NewPasswordChangedEventCopyWith<$Res> {
-  factory _$$_NewPasswordChangedEventCopyWith(
-          _$_NewPasswordChangedEvent value, $Res Function(_$_NewPasswordChangedEvent) then) =
-      __$$_NewPasswordChangedEventCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String text});
-}
-
-/// @nodoc
-class __$$_NewPasswordChangedEventCopyWithImpl<$Res>
-    extends _$ChangePasswordEventCopyWithImpl<$Res, _$_NewPasswordChangedEvent>
-    implements _$$_NewPasswordChangedEventCopyWith<$Res> {
-  __$$_NewPasswordChangedEventCopyWithImpl(
-      _$_NewPasswordChangedEvent _value, $Res Function(_$_NewPasswordChangedEvent) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? text = null,
-  }) {
-    return _then(_$_NewPasswordChangedEvent(
-      null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$_NewPasswordChangedEvent implements _NewPasswordChangedEvent {
-  const _$_NewPasswordChangedEvent(this.text);
+class _$NewPasswordChangedEventImpl implements _NewPasswordChangedEvent {
+  const _$NewPasswordChangedEventImpl(this.text);
 
   @override
   final String text;
@@ -406,61 +195,15 @@ class _$_NewPasswordChangedEvent implements _NewPasswordChangedEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NewPasswordChangedEvent &&
+            other is _$NewPasswordChangedEventImpl &&
             (identical(other.text, text) || other.text == text));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, text);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_NewPasswordChangedEventCopyWith<_$_NewPasswordChangedEvent> get copyWith =>
-      __$$_NewPasswordChangedEventCopyWithImpl<_$_NewPasswordChangedEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(String text) currentPasswordChanged,
-    required TResult Function(String text) newPasswordChanged,
-    required TResult Function(String text) confirmNewPasswordChanged,
-    required TResult Function() saved,
-  }) {
-    return newPasswordChanged(text);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(String text)? currentPasswordChanged,
-    TResult? Function(String text)? newPasswordChanged,
-    TResult? Function(String text)? confirmNewPasswordChanged,
-    TResult? Function()? saved,
-  }) {
-    return newPasswordChanged?.call(text);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String text)? currentPasswordChanged,
-    TResult Function(String text)? newPasswordChanged,
-    TResult Function(String text)? confirmNewPasswordChanged,
-    TResult Function()? saved,
-    required TResult orElse(),
-  }) {
-    if (newPasswordChanged != null) {
-      return newPasswordChanged(text);
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -504,49 +247,15 @@ class _$_NewPasswordChangedEvent implements _NewPasswordChangedEvent {
 }
 
 abstract class _NewPasswordChangedEvent implements ChangePasswordEvent {
-  const factory _NewPasswordChangedEvent(final String text) = _$_NewPasswordChangedEvent;
+  const factory _NewPasswordChangedEvent(final String text) = _$NewPasswordChangedEventImpl;
 
   String get text;
-  @JsonKey(ignore: true)
-  _$$_NewPasswordChangedEventCopyWith<_$_NewPasswordChangedEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_ConfirmNewPasswordChangedEventCopyWith<$Res> {
-  factory _$$_ConfirmNewPasswordChangedEventCopyWith(_$_ConfirmNewPasswordChangedEvent value,
-          $Res Function(_$_ConfirmNewPasswordChangedEvent) then) =
-      __$$_ConfirmNewPasswordChangedEventCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String text});
-}
-
-/// @nodoc
-class __$$_ConfirmNewPasswordChangedEventCopyWithImpl<$Res>
-    extends _$ChangePasswordEventCopyWithImpl<$Res, _$_ConfirmNewPasswordChangedEvent>
-    implements _$$_ConfirmNewPasswordChangedEventCopyWith<$Res> {
-  __$$_ConfirmNewPasswordChangedEventCopyWithImpl(_$_ConfirmNewPasswordChangedEvent _value,
-      $Res Function(_$_ConfirmNewPasswordChangedEvent) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? text = null,
-  }) {
-    return _then(_$_ConfirmNewPasswordChangedEvent(
-      null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$_ConfirmNewPasswordChangedEvent implements _ConfirmNewPasswordChangedEvent {
-  const _$_ConfirmNewPasswordChangedEvent(this.text);
+class _$ConfirmNewPasswordChangedEventImpl implements _ConfirmNewPasswordChangedEvent {
+  const _$ConfirmNewPasswordChangedEventImpl(this.text);
 
   @override
   final String text;
@@ -557,62 +266,15 @@ class _$_ConfirmNewPasswordChangedEvent implements _ConfirmNewPasswordChangedEve
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ConfirmNewPasswordChangedEvent &&
+            other is _$ConfirmNewPasswordChangedEventImpl &&
             (identical(other.text, text) || other.text == text));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, text);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_ConfirmNewPasswordChangedEventCopyWith<_$_ConfirmNewPasswordChangedEvent> get copyWith =>
-      __$$_ConfirmNewPasswordChangedEventCopyWithImpl<_$_ConfirmNewPasswordChangedEvent>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(String text) currentPasswordChanged,
-    required TResult Function(String text) newPasswordChanged,
-    required TResult Function(String text) confirmNewPasswordChanged,
-    required TResult Function() saved,
-  }) {
-    return confirmNewPasswordChanged(text);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(String text)? currentPasswordChanged,
-    TResult? Function(String text)? newPasswordChanged,
-    TResult? Function(String text)? confirmNewPasswordChanged,
-    TResult? Function()? saved,
-  }) {
-    return confirmNewPasswordChanged?.call(text);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String text)? currentPasswordChanged,
-    TResult Function(String text)? newPasswordChanged,
-    TResult Function(String text)? confirmNewPasswordChanged,
-    TResult Function()? saved,
-    required TResult orElse(),
-  }) {
-    if (confirmNewPasswordChanged != null) {
-      return confirmNewPasswordChanged(text);
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -657,32 +319,15 @@ class _$_ConfirmNewPasswordChangedEvent implements _ConfirmNewPasswordChangedEve
 
 abstract class _ConfirmNewPasswordChangedEvent implements ChangePasswordEvent {
   const factory _ConfirmNewPasswordChangedEvent(final String text) =
-      _$_ConfirmNewPasswordChangedEvent;
+      _$ConfirmNewPasswordChangedEventImpl;
 
   String get text;
-  @JsonKey(ignore: true)
-  _$$_ConfirmNewPasswordChangedEventCopyWith<_$_ConfirmNewPasswordChangedEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_SavedEventCopyWith<$Res> {
-  factory _$$_SavedEventCopyWith(_$_SavedEvent value, $Res Function(_$_SavedEvent) then) =
-      __$$_SavedEventCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_SavedEventCopyWithImpl<$Res>
-    extends _$ChangePasswordEventCopyWithImpl<$Res, _$_SavedEvent>
-    implements _$$_SavedEventCopyWith<$Res> {
-  __$$_SavedEventCopyWithImpl(_$_SavedEvent _value, $Res Function(_$_SavedEvent) _then)
-      : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_SavedEvent implements _SavedEvent {
-  const _$_SavedEvent();
+class _$SavedEventImpl implements _SavedEvent {
+  const _$SavedEventImpl();
 
   @override
   String toString() {
@@ -690,52 +335,13 @@ class _$_SavedEvent implements _SavedEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_SavedEvent);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SavedEventImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(String text) currentPasswordChanged,
-    required TResult Function(String text) newPasswordChanged,
-    required TResult Function(String text) confirmNewPasswordChanged,
-    required TResult Function() saved,
-  }) {
-    return saved();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(String text)? currentPasswordChanged,
-    TResult? Function(String text)? newPasswordChanged,
-    TResult? Function(String text)? confirmNewPasswordChanged,
-    TResult? Function()? saved,
-  }) {
-    return saved?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String text)? currentPasswordChanged,
-    TResult Function(String text)? newPasswordChanged,
-    TResult Function(String text)? confirmNewPasswordChanged,
-    TResult Function()? saved,
-    required TResult orElse(),
-  }) {
-    if (saved != null) {
-      return saved();
-    }
-    return orElse();
-  }
 
   @override
   @optionalTypeArgs
@@ -779,7 +385,7 @@ class _$_SavedEvent implements _SavedEvent {
 }
 
 abstract class _SavedEvent implements ChangePasswordEvent {
-  const factory _SavedEvent() = _$_SavedEvent;
+  const factory _SavedEvent() = _$SavedEventImpl;
 }
 
 /// @nodoc
@@ -889,10 +495,11 @@ class _$ChangePasswordStateCopyWithImpl<$Res, $Val extends ChangePasswordState>
 }
 
 /// @nodoc
-abstract class _$$_ChangePasswordStateCopyWith<$Res> implements $ChangePasswordStateCopyWith<$Res> {
-  factory _$$_ChangePasswordStateCopyWith(
-          _$_ChangePasswordState value, $Res Function(_$_ChangePasswordState) then) =
-      __$$_ChangePasswordStateCopyWithImpl<$Res>;
+abstract class _$$ChangePasswordStateImplCopyWith<$Res>
+    implements $ChangePasswordStateCopyWith<$Res> {
+  factory _$$ChangePasswordStateImplCopyWith(
+          _$ChangePasswordStateImpl value, $Res Function(_$ChangePasswordStateImpl) then) =
+      __$$ChangePasswordStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -909,11 +516,11 @@ abstract class _$$_ChangePasswordStateCopyWith<$Res> implements $ChangePasswordS
 }
 
 /// @nodoc
-class __$$_ChangePasswordStateCopyWithImpl<$Res>
-    extends _$ChangePasswordStateCopyWithImpl<$Res, _$_ChangePasswordState>
-    implements _$$_ChangePasswordStateCopyWith<$Res> {
-  __$$_ChangePasswordStateCopyWithImpl(
-      _$_ChangePasswordState _value, $Res Function(_$_ChangePasswordState) _then)
+class __$$ChangePasswordStateImplCopyWithImpl<$Res>
+    extends _$ChangePasswordStateCopyWithImpl<$Res, _$ChangePasswordStateImpl>
+    implements _$$ChangePasswordStateImplCopyWith<$Res> {
+  __$$ChangePasswordStateImplCopyWithImpl(
+      _$ChangePasswordStateImpl _value, $Res Function(_$ChangePasswordStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -930,7 +537,7 @@ class __$$_ChangePasswordStateCopyWithImpl<$Res>
     Object? isValid = null,
     Object? serverError = freezed,
   }) {
-    return _then(_$_ChangePasswordState(
+    return _then(_$ChangePasswordStateImpl(
       currentPassword: null == currentPassword
           ? _value.currentPassword
           : currentPassword // ignore: cast_nullable_to_non_nullable
@@ -977,8 +584,8 @@ class __$$_ChangePasswordStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChangePasswordState implements _ChangePasswordState {
-  const _$_ChangePasswordState(
+class _$ChangePasswordStateImpl implements _ChangePasswordState {
+  const _$ChangePasswordStateImpl(
       {required this.currentPassword,
       required this.newPassword,
       required this.newPasswordConfirm,
@@ -1023,10 +630,10 @@ class _$_ChangePasswordState implements _ChangePasswordState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChangePasswordState &&
+            other is _$ChangePasswordStateImpl &&
             (identical(other.currentPassword, currentPassword) ||
                 other.currentPassword == currentPassword) &&
             (identical(other.newPassword, newPassword) || other.newPassword == newPassword) &&
@@ -1062,8 +669,8 @@ class _$_ChangePasswordState implements _ChangePasswordState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChangePasswordStateCopyWith<_$_ChangePasswordState> get copyWith =>
-      __$$_ChangePasswordStateCopyWithImpl<_$_ChangePasswordState>(this, _$identity);
+  _$$ChangePasswordStateImplCopyWith<_$ChangePasswordStateImpl> get copyWith =>
+      __$$ChangePasswordStateImplCopyWithImpl<_$ChangePasswordStateImpl>(this, _$identity);
 }
 
 abstract class _ChangePasswordState implements ChangePasswordState {
@@ -1077,7 +684,7 @@ abstract class _ChangePasswordState implements ChangePasswordState {
       final bool isPasswordHaveNumber,
       final bool isPasswordConfirm,
       final bool isValid,
-      final String? serverError}) = _$_ChangePasswordState;
+      final String? serverError}) = _$ChangePasswordStateImpl;
 
   @override
   String get currentPassword;
@@ -1101,6 +708,6 @@ abstract class _ChangePasswordState implements ChangePasswordState {
   String? get serverError;
   @override
   @JsonKey(ignore: true)
-  _$$_ChangePasswordStateCopyWith<_$_ChangePasswordState> get copyWith =>
+  _$$ChangePasswordStateImplCopyWith<_$ChangePasswordStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

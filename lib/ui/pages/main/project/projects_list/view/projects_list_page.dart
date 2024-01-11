@@ -91,25 +91,25 @@ class _ProjectListWidgetState extends State<_ProjectListWidget> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     return BlocBuilder<ProjectsListBloc, ProjectsListState>(
-      builder: (context, state) => state.maybeWhen(
-        initial: () => const Center(child: CircularProgressIndicator()),
-        loading: () => const Center(child: CircularProgressIndicator()),
-        loaded: (projects, isShowLoading, isShowError) {
-          final haveExtraWidget = isShowLoading || isShowError;
+      builder: (context, state) => state.maybeMap(
+        initial: (_) => const Center(child: CircularProgressIndicator()),
+        loading: (_) => const Center(child: CircularProgressIndicator()),
+        loaded: (state) {
+          final haveExtraWidget = state.isShowLoading || state.isShowError;
           return ListView.builder(
             controller: _scrollController,
             shrinkWrap: true,
             padding: const EdgeInsets.symmetric(horizontal: 24),
-            itemCount: projects.length + (haveExtraWidget ? 1 : 0),
+            itemCount: state.projects.length + (haveExtraWidget ? 1 : 0),
             itemBuilder: (context, index) {
-              if (index == projects.length) {
-                if (isShowLoading) {
+              if (index == state.projects.length) {
+                if (state.isShowLoading) {
                   return Container(
                     height: 120,
                     alignment: Alignment.center,
                     child: const CircularProgressIndicator(),
                   );
-                } else if (isShowError) {
+                } else if (state.isShowError) {
                   return SizedBox(
                     height: 120,
                     child: Column(
@@ -137,7 +137,7 @@ class _ProjectListWidgetState extends State<_ProjectListWidget> {
               } else {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: _ProjectFullCardWidget(project: projects[index]),
+                  child: _ProjectFullCardWidget(project: state.projects[index]),
                 );
               }
               return null;

@@ -6,9 +6,9 @@ part of 'paginated_data_i_task_with_project_name.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PaginatedDataITaskWithProjectName _$$_PaginatedDataITaskWithProjectNameFromJson(
+_$PaginatedDataITaskWithProjectNameImpl _$$PaginatedDataITaskWithProjectNameImplFromJson(
         Map<String, dynamic> json) =>
-    _$_PaginatedDataITaskWithProjectName(
+    _$PaginatedDataITaskWithProjectNameImpl(
       items: (json['items'] as List<dynamic>)
           .map((e) => ITaskWithProjectName.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -20,8 +20,8 @@ _$_PaginatedDataITaskWithProjectName _$$_PaginatedDataITaskWithProjectNameFromJs
       previousPage: json['previous_page'] as int?,
     );
 
-Map<String, dynamic> _$$_PaginatedDataITaskWithProjectNameToJson(
-        _$_PaginatedDataITaskWithProjectName instance) =>
+Map<String, dynamic> _$$PaginatedDataITaskWithProjectNameImplToJson(
+        _$PaginatedDataITaskWithProjectNameImpl instance) =>
     <String, dynamic>{
       'items': instance.items,
       'total': instance.total,

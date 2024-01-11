@@ -6,13 +6,13 @@ part of 'i_auth_change_password.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_IAuthChangePassword _$$_IAuthChangePasswordFromJson(Map<String, dynamic> json) =>
-    _$_IAuthChangePassword(
+_$IAuthChangePasswordImpl _$$IAuthChangePasswordImplFromJson(Map<String, dynamic> json) =>
+    _$IAuthChangePasswordImpl(
       currentPassword: json['current_password'] as String,
       newPassword: json['new_password'] as String,
     );
 
-Map<String, dynamic> _$$_IAuthChangePasswordToJson(_$_IAuthChangePassword instance) =>
+Map<String, dynamic> _$$IAuthChangePasswordImplToJson(_$IAuthChangePasswordImpl instance) =>
     <String, dynamic>{
       'current_password': instance.currentPassword,
       'new_password': instance.newPassword,

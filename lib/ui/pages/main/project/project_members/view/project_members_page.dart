@@ -63,18 +63,18 @@ class _MembersListViewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     return BlocBuilder<ProjectMembersBloc, ProjectMembersState>(
-      builder: (context, state) => state.maybeWhen(
-        initial: () => const Center(child: CircularProgressIndicator()),
-        loading: () => const Center(child: CircularProgressIndicator()),
-        loaded: (members) {
+      builder: (context, state) => state.maybeMap(
+        initial: (_) => const Center(child: CircularProgressIndicator()),
+        loading: (_) => const Center(child: CircularProgressIndicator()),
+        loaded: (state) {
           return ListView.builder(
             shrinkWrap: true,
-            itemCount: members.length,
+            itemCount: state.projects.length,
             padding: const EdgeInsets.symmetric(horizontal: 24),
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8),
-                child: _MemberCard(user: members[index]),
+                child: _MemberCard(user: state.projects[index]),
               );
             },
           );
@@ -104,13 +104,15 @@ class _MemberCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16),
             child: ClipOval(
-              child: user.image != null
-                  ? CachedNetworkImage(
-                      width: 48,
-                      height: 48,
-                      fit: BoxFit.cover,
-                      imageUrl: user.image!.media.link!,
-                    )
+              child: (user.image != null)
+                  ? (user.image!.media.link != null)
+                      ? CachedNetworkImage(
+                          width: 48,
+                          height: 48,
+                          fit: BoxFit.cover,
+                          imageUrl: user.image!.media.link!,
+                        )
+                      : Assets.images.avatar.image()
                   : Assets.images.avatar.image(),
             ),
           ),

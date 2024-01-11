@@ -6,12 +6,12 @@ part of 'i_auth_forgot_password.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_IAuthForgotPassword _$$_IAuthForgotPasswordFromJson(Map<String, dynamic> json) =>
-    _$_IAuthForgotPassword(
+_$IAuthForgotPasswordImpl _$$IAuthForgotPasswordImplFromJson(Map<String, dynamic> json) =>
+    _$IAuthForgotPasswordImpl(
       email: json['email'] as String,
     );
 
-Map<String, dynamic> _$$_IAuthForgotPasswordToJson(_$_IAuthForgotPassword instance) =>
+Map<String, dynamic> _$$IAuthForgotPasswordImplToJson(_$IAuthForgotPasswordImpl instance) =>
     <String, dynamic>{
       'email': instance.email,
     };
