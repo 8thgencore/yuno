@@ -12,7 +12,7 @@ part of 'profile_edit_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ProfileEditEvent {
@@ -24,6 +24,7 @@ mixin _$ProfileEditEvent {
     required TResult Function(_UsernameChangedEvent value) usernameChanged,
     required TResult Function(_EmailChangedEvent value) emailChanged,
     required TResult Function(_SavedEvent value) saved,
+    required TResult Function(_DeleteMyAccountEvent value) deleteMyAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,7 @@ mixin _$ProfileEditEvent {
     TResult? Function(_UsernameChangedEvent value)? usernameChanged,
     TResult? Function(_EmailChangedEvent value)? emailChanged,
     TResult? Function(_SavedEvent value)? saved,
+    TResult? Function(_DeleteMyAccountEvent value)? deleteMyAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +46,7 @@ mixin _$ProfileEditEvent {
     TResult Function(_UsernameChangedEvent value)? usernameChanged,
     TResult Function(_EmailChangedEvent value)? emailChanged,
     TResult Function(_SavedEvent value)? saved,
+    TResult Function(_DeleteMyAccountEvent value)? deleteMyAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -77,6 +80,7 @@ class _$StartedEventImpl implements _StartedEvent {
     required TResult Function(_UsernameChangedEvent value) usernameChanged,
     required TResult Function(_EmailChangedEvent value) emailChanged,
     required TResult Function(_SavedEvent value) saved,
+    required TResult Function(_DeleteMyAccountEvent value) deleteMyAccount,
   }) {
     return started(this);
   }
@@ -90,6 +94,7 @@ class _$StartedEventImpl implements _StartedEvent {
     TResult? Function(_UsernameChangedEvent value)? usernameChanged,
     TResult? Function(_EmailChangedEvent value)? emailChanged,
     TResult? Function(_SavedEvent value)? saved,
+    TResult? Function(_DeleteMyAccountEvent value)? deleteMyAccount,
   }) {
     return started?.call(this);
   }
@@ -103,6 +108,7 @@ class _$StartedEventImpl implements _StartedEvent {
     TResult Function(_UsernameChangedEvent value)? usernameChanged,
     TResult Function(_EmailChangedEvent value)? emailChanged,
     TResult Function(_SavedEvent value)? saved,
+    TResult Function(_DeleteMyAccountEvent value)? deleteMyAccount,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -149,6 +155,7 @@ class _$FirstNameChangedEventImpl implements _FirstNameChangedEvent {
     required TResult Function(_UsernameChangedEvent value) usernameChanged,
     required TResult Function(_EmailChangedEvent value) emailChanged,
     required TResult Function(_SavedEvent value) saved,
+    required TResult Function(_DeleteMyAccountEvent value) deleteMyAccount,
   }) {
     return firstNameChanged(this);
   }
@@ -162,6 +169,7 @@ class _$FirstNameChangedEventImpl implements _FirstNameChangedEvent {
     TResult? Function(_UsernameChangedEvent value)? usernameChanged,
     TResult? Function(_EmailChangedEvent value)? emailChanged,
     TResult? Function(_SavedEvent value)? saved,
+    TResult? Function(_DeleteMyAccountEvent value)? deleteMyAccount,
   }) {
     return firstNameChanged?.call(this);
   }
@@ -175,6 +183,7 @@ class _$FirstNameChangedEventImpl implements _FirstNameChangedEvent {
     TResult Function(_UsernameChangedEvent value)? usernameChanged,
     TResult Function(_EmailChangedEvent value)? emailChanged,
     TResult Function(_SavedEvent value)? saved,
+    TResult Function(_DeleteMyAccountEvent value)? deleteMyAccount,
     required TResult orElse(),
   }) {
     if (firstNameChanged != null) {
@@ -185,7 +194,8 @@ class _$FirstNameChangedEventImpl implements _FirstNameChangedEvent {
 }
 
 abstract class _FirstNameChangedEvent implements ProfileEditEvent {
-  const factory _FirstNameChangedEvent(final String text) = _$FirstNameChangedEventImpl;
+  const factory _FirstNameChangedEvent(final String text) =
+      _$FirstNameChangedEventImpl;
 
   String get text;
 }
@@ -223,6 +233,7 @@ class _$LastNameChangedEventImpl implements _LastNameChangedEvent {
     required TResult Function(_UsernameChangedEvent value) usernameChanged,
     required TResult Function(_EmailChangedEvent value) emailChanged,
     required TResult Function(_SavedEvent value) saved,
+    required TResult Function(_DeleteMyAccountEvent value) deleteMyAccount,
   }) {
     return lastNameChanged(this);
   }
@@ -236,6 +247,7 @@ class _$LastNameChangedEventImpl implements _LastNameChangedEvent {
     TResult? Function(_UsernameChangedEvent value)? usernameChanged,
     TResult? Function(_EmailChangedEvent value)? emailChanged,
     TResult? Function(_SavedEvent value)? saved,
+    TResult? Function(_DeleteMyAccountEvent value)? deleteMyAccount,
   }) {
     return lastNameChanged?.call(this);
   }
@@ -249,6 +261,7 @@ class _$LastNameChangedEventImpl implements _LastNameChangedEvent {
     TResult Function(_UsernameChangedEvent value)? usernameChanged,
     TResult Function(_EmailChangedEvent value)? emailChanged,
     TResult Function(_SavedEvent value)? saved,
+    TResult Function(_DeleteMyAccountEvent value)? deleteMyAccount,
     required TResult orElse(),
   }) {
     if (lastNameChanged != null) {
@@ -259,7 +272,8 @@ class _$LastNameChangedEventImpl implements _LastNameChangedEvent {
 }
 
 abstract class _LastNameChangedEvent implements ProfileEditEvent {
-  const factory _LastNameChangedEvent(final String text) = _$LastNameChangedEventImpl;
+  const factory _LastNameChangedEvent(final String text) =
+      _$LastNameChangedEventImpl;
 
   String get text;
 }
@@ -297,6 +311,7 @@ class _$UsernameChangedEventImpl implements _UsernameChangedEvent {
     required TResult Function(_UsernameChangedEvent value) usernameChanged,
     required TResult Function(_EmailChangedEvent value) emailChanged,
     required TResult Function(_SavedEvent value) saved,
+    required TResult Function(_DeleteMyAccountEvent value) deleteMyAccount,
   }) {
     return usernameChanged(this);
   }
@@ -310,6 +325,7 @@ class _$UsernameChangedEventImpl implements _UsernameChangedEvent {
     TResult? Function(_UsernameChangedEvent value)? usernameChanged,
     TResult? Function(_EmailChangedEvent value)? emailChanged,
     TResult? Function(_SavedEvent value)? saved,
+    TResult? Function(_DeleteMyAccountEvent value)? deleteMyAccount,
   }) {
     return usernameChanged?.call(this);
   }
@@ -323,6 +339,7 @@ class _$UsernameChangedEventImpl implements _UsernameChangedEvent {
     TResult Function(_UsernameChangedEvent value)? usernameChanged,
     TResult Function(_EmailChangedEvent value)? emailChanged,
     TResult Function(_SavedEvent value)? saved,
+    TResult Function(_DeleteMyAccountEvent value)? deleteMyAccount,
     required TResult orElse(),
   }) {
     if (usernameChanged != null) {
@@ -333,7 +350,8 @@ class _$UsernameChangedEventImpl implements _UsernameChangedEvent {
 }
 
 abstract class _UsernameChangedEvent implements ProfileEditEvent {
-  const factory _UsernameChangedEvent(final String text) = _$UsernameChangedEventImpl;
+  const factory _UsernameChangedEvent(final String text) =
+      _$UsernameChangedEventImpl;
 
   String get text;
 }
@@ -371,6 +389,7 @@ class _$EmailChangedEventImpl implements _EmailChangedEvent {
     required TResult Function(_UsernameChangedEvent value) usernameChanged,
     required TResult Function(_EmailChangedEvent value) emailChanged,
     required TResult Function(_SavedEvent value) saved,
+    required TResult Function(_DeleteMyAccountEvent value) deleteMyAccount,
   }) {
     return emailChanged(this);
   }
@@ -384,6 +403,7 @@ class _$EmailChangedEventImpl implements _EmailChangedEvent {
     TResult? Function(_UsernameChangedEvent value)? usernameChanged,
     TResult? Function(_EmailChangedEvent value)? emailChanged,
     TResult? Function(_SavedEvent value)? saved,
+    TResult? Function(_DeleteMyAccountEvent value)? deleteMyAccount,
   }) {
     return emailChanged?.call(this);
   }
@@ -397,6 +417,7 @@ class _$EmailChangedEventImpl implements _EmailChangedEvent {
     TResult Function(_UsernameChangedEvent value)? usernameChanged,
     TResult Function(_EmailChangedEvent value)? emailChanged,
     TResult Function(_SavedEvent value)? saved,
+    TResult Function(_DeleteMyAccountEvent value)? deleteMyAccount,
     required TResult orElse(),
   }) {
     if (emailChanged != null) {
@@ -440,6 +461,7 @@ class _$SavedEventImpl implements _SavedEvent {
     required TResult Function(_UsernameChangedEvent value) usernameChanged,
     required TResult Function(_EmailChangedEvent value) emailChanged,
     required TResult Function(_SavedEvent value) saved,
+    required TResult Function(_DeleteMyAccountEvent value) deleteMyAccount,
   }) {
     return saved(this);
   }
@@ -453,6 +475,7 @@ class _$SavedEventImpl implements _SavedEvent {
     TResult? Function(_UsernameChangedEvent value)? usernameChanged,
     TResult? Function(_EmailChangedEvent value)? emailChanged,
     TResult? Function(_SavedEvent value)? saved,
+    TResult? Function(_DeleteMyAccountEvent value)? deleteMyAccount,
   }) {
     return saved?.call(this);
   }
@@ -466,6 +489,7 @@ class _$SavedEventImpl implements _SavedEvent {
     TResult Function(_UsernameChangedEvent value)? usernameChanged,
     TResult Function(_EmailChangedEvent value)? emailChanged,
     TResult Function(_SavedEvent value)? saved,
+    TResult Function(_DeleteMyAccountEvent value)? deleteMyAccount,
     required TResult orElse(),
   }) {
     if (saved != null) {
@@ -480,6 +504,77 @@ abstract class _SavedEvent implements ProfileEditEvent {
 }
 
 /// @nodoc
+
+class _$DeleteMyAccountEventImpl implements _DeleteMyAccountEvent {
+  const _$DeleteMyAccountEventImpl();
+
+  @override
+  String toString() {
+    return 'ProfileEditEvent.deleteMyAccount()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteMyAccountEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StartedEvent value) started,
+    required TResult Function(_FirstNameChangedEvent value) firstNameChanged,
+    required TResult Function(_LastNameChangedEvent value) lastNameChanged,
+    required TResult Function(_UsernameChangedEvent value) usernameChanged,
+    required TResult Function(_EmailChangedEvent value) emailChanged,
+    required TResult Function(_SavedEvent value) saved,
+    required TResult Function(_DeleteMyAccountEvent value) deleteMyAccount,
+  }) {
+    return deleteMyAccount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_StartedEvent value)? started,
+    TResult? Function(_FirstNameChangedEvent value)? firstNameChanged,
+    TResult? Function(_LastNameChangedEvent value)? lastNameChanged,
+    TResult? Function(_UsernameChangedEvent value)? usernameChanged,
+    TResult? Function(_EmailChangedEvent value)? emailChanged,
+    TResult? Function(_SavedEvent value)? saved,
+    TResult? Function(_DeleteMyAccountEvent value)? deleteMyAccount,
+  }) {
+    return deleteMyAccount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_StartedEvent value)? started,
+    TResult Function(_FirstNameChangedEvent value)? firstNameChanged,
+    TResult Function(_LastNameChangedEvent value)? lastNameChanged,
+    TResult Function(_UsernameChangedEvent value)? usernameChanged,
+    TResult Function(_EmailChangedEvent value)? emailChanged,
+    TResult Function(_SavedEvent value)? saved,
+    TResult Function(_DeleteMyAccountEvent value)? deleteMyAccount,
+    required TResult orElse(),
+  }) {
+    if (deleteMyAccount != null) {
+      return deleteMyAccount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteMyAccountEvent implements ProfileEditEvent {
+  const factory _DeleteMyAccountEvent() = _$DeleteMyAccountEventImpl;
+}
+
+/// @nodoc
 mixin _$ProfileEditState {
   String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
@@ -488,16 +583,21 @@ mixin _$ProfileEditState {
   ProfileEditStatus get status => throw _privateConstructorUsedError;
   String? get role => throw _privateConstructorUsedError;
   ProfileEditEmailError? get emailError => throw _privateConstructorUsedError;
-  ProfileEditUsernameError? get usernameError => throw _privateConstructorUsedError;
+  ProfileEditUsernameError? get usernameError =>
+      throw _privateConstructorUsedError;
   String? get serverError => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
-  $ProfileEditStateCopyWith<ProfileEditState> get copyWith => throw _privateConstructorUsedError;
+  /// Create a copy of ProfileEditState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ProfileEditStateCopyWith<ProfileEditState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ProfileEditStateCopyWith<$Res> {
-  factory $ProfileEditStateCopyWith(ProfileEditState value, $Res Function(ProfileEditState) then) =
+  factory $ProfileEditStateCopyWith(
+          ProfileEditState value, $Res Function(ProfileEditState) then) =
       _$ProfileEditStateCopyWithImpl<$Res, ProfileEditState>;
   @useResult
   $Res call(
@@ -522,6 +622,8 @@ class _$ProfileEditStateCopyWithImpl<$Res, $Val extends ProfileEditState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProfileEditState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -577,9 +679,10 @@ class _$ProfileEditStateCopyWithImpl<$Res, $Val extends ProfileEditState>
 }
 
 /// @nodoc
-abstract class _$$ProfileEditStateImplCopyWith<$Res> implements $ProfileEditStateCopyWith<$Res> {
-  factory _$$ProfileEditStateImplCopyWith(
-          _$ProfileEditStateImpl value, $Res Function(_$ProfileEditStateImpl) then) =
+abstract class _$$ProfileEditStateImplCopyWith<$Res>
+    implements $ProfileEditStateCopyWith<$Res> {
+  factory _$$ProfileEditStateImplCopyWith(_$ProfileEditStateImpl value,
+          $Res Function(_$ProfileEditStateImpl) then) =
       __$$ProfileEditStateImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -599,10 +702,12 @@ abstract class _$$ProfileEditStateImplCopyWith<$Res> implements $ProfileEditStat
 class __$$ProfileEditStateImplCopyWithImpl<$Res>
     extends _$ProfileEditStateCopyWithImpl<$Res, _$ProfileEditStateImpl>
     implements _$$ProfileEditStateImplCopyWith<$Res> {
-  __$$ProfileEditStateImplCopyWithImpl(
-      _$ProfileEditStateImpl _value, $Res Function(_$ProfileEditStateImpl) _then)
+  __$$ProfileEditStateImplCopyWithImpl(_$ProfileEditStateImpl _value,
+      $Res Function(_$ProfileEditStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProfileEditState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -701,27 +806,35 @@ class _$ProfileEditStateImpl implements _ProfileEditState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProfileEditStateImpl &&
-            (identical(other.firstName, firstName) || other.firstName == firstName) &&
-            (identical(other.lastName, lastName) || other.lastName == lastName) &&
-            (identical(other.username, username) || other.username == username) &&
+            (identical(other.firstName, firstName) ||
+                other.firstName == firstName) &&
+            (identical(other.lastName, lastName) ||
+                other.lastName == lastName) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.role, role) || other.role == role) &&
-            (identical(other.emailError, emailError) || other.emailError == emailError) &&
+            (identical(other.emailError, emailError) ||
+                other.emailError == emailError) &&
             (identical(other.usernameError, usernameError) ||
                 other.usernameError == usernameError) &&
-            (identical(other.serverError, serverError) || other.serverError == serverError));
+            (identical(other.serverError, serverError) ||
+                other.serverError == serverError));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, firstName, lastName, username, email, status, role,
-      emailError, usernameError, serverError);
+  int get hashCode => Object.hash(runtimeType, firstName, lastName, username,
+      email, status, role, emailError, usernameError, serverError);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProfileEditState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProfileEditStateImplCopyWith<_$ProfileEditStateImpl> get copyWith =>
-      __$$ProfileEditStateImplCopyWithImpl<_$ProfileEditStateImpl>(this, _$identity);
+      __$$ProfileEditStateImplCopyWithImpl<_$ProfileEditStateImpl>(
+          this, _$identity);
 }
 
 abstract class _ProfileEditState implements ProfileEditState {
@@ -754,8 +867,11 @@ abstract class _ProfileEditState implements ProfileEditState {
   ProfileEditUsernameError? get usernameError;
   @override
   String? get serverError;
+
+  /// Create a copy of ProfileEditState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProfileEditStateImplCopyWith<_$ProfileEditStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

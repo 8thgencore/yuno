@@ -7,6 +7,7 @@ enum ProfileEditStatus {
   loading,
   loaded,
   failure,
+  deleted,
   success,
 }
 

@@ -12,7 +12,7 @@ part of 'i_auth_register.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 IAuthRegister _$IAuthRegisterFromJson(Map<String, dynamic> json) {
   return _IAuthRegister.fromJson(json);
@@ -24,14 +24,20 @@ mixin _$IAuthRegister {
   String get username => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
 
+  /// Serializes this IAuthRegister to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $IAuthRegisterCopyWith<IAuthRegister> get copyWith => throw _privateConstructorUsedError;
+
+  /// Create a copy of IAuthRegister
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $IAuthRegisterCopyWith<IAuthRegister> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $IAuthRegisterCopyWith<$Res> {
-  factory $IAuthRegisterCopyWith(IAuthRegister value, $Res Function(IAuthRegister) then) =
+  factory $IAuthRegisterCopyWith(
+          IAuthRegister value, $Res Function(IAuthRegister) then) =
       _$IAuthRegisterCopyWithImpl<$Res, IAuthRegister>;
   @useResult
   $Res call({String email, String username, String password});
@@ -47,6 +53,8 @@ class _$IAuthRegisterCopyWithImpl<$Res, $Val extends IAuthRegister>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IAuthRegister
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -72,7 +80,8 @@ class _$IAuthRegisterCopyWithImpl<$Res, $Val extends IAuthRegister>
 }
 
 /// @nodoc
-abstract class _$$IAuthRegisterImplCopyWith<$Res> implements $IAuthRegisterCopyWith<$Res> {
+abstract class _$$IAuthRegisterImplCopyWith<$Res>
+    implements $IAuthRegisterCopyWith<$Res> {
   factory _$$IAuthRegisterImplCopyWith(
           _$IAuthRegisterImpl value, $Res Function(_$IAuthRegisterImpl) then) =
       __$$IAuthRegisterImplCopyWithImpl<$Res>;
@@ -89,6 +98,8 @@ class __$$IAuthRegisterImplCopyWithImpl<$Res>
       _$IAuthRegisterImpl _value, $Res Function(_$IAuthRegisterImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IAuthRegister
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -116,7 +127,8 @@ class __$$IAuthRegisterImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$IAuthRegisterImpl implements _IAuthRegister {
-  const _$IAuthRegisterImpl({required this.email, required this.username, required this.password});
+  const _$IAuthRegisterImpl(
+      {required this.email, required this.username, required this.password});
 
   factory _$IAuthRegisterImpl.fromJson(Map<String, dynamic> json) =>
       _$$IAuthRegisterImplFromJson(json);
@@ -139,15 +151,19 @@ class _$IAuthRegisterImpl implements _IAuthRegister {
         (other.runtimeType == runtimeType &&
             other is _$IAuthRegisterImpl &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.username, username) || other.username == username) &&
-            (identical(other.password, password) || other.password == password));
+            (identical(other.username, username) ||
+                other.username == username) &&
+            (identical(other.password, password) ||
+                other.password == password));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, email, username, password);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IAuthRegister
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IAuthRegisterImplCopyWith<_$IAuthRegisterImpl> get copyWith =>
@@ -167,7 +183,8 @@ abstract class _IAuthRegister implements IAuthRegister {
       required final String username,
       required final String password}) = _$IAuthRegisterImpl;
 
-  factory _IAuthRegister.fromJson(Map<String, dynamic> json) = _$IAuthRegisterImpl.fromJson;
+  factory _IAuthRegister.fromJson(Map<String, dynamic> json) =
+      _$IAuthRegisterImpl.fromJson;
 
   @override
   String get email;
@@ -175,8 +192,11 @@ abstract class _IAuthRegister implements IAuthRegister {
   String get username;
   @override
   String get password;
+
+  /// Create a copy of IAuthRegister
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$IAuthRegisterImplCopyWith<_$IAuthRegisterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

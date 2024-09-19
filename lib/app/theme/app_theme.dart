@@ -22,9 +22,9 @@ class AppTheme {
         // disabledBackgroundColor: AppColors.dark10,
         disabledBackgroundColor: const Color.fromRGBO(223, 229, 234, 1),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-        textStyle: MaterialStateTextStyle.resolveWith(
+        textStyle: WidgetStateTextStyle.resolveWith(
           (states) {
-            if (states.contains(MaterialState.disabled)) {
+            if (states.contains(WidgetState.disabled)) {
               return AppTypography.b16l.copyWith(color: AppColors.grey100);
             }
             return AppTypography.b16l;
@@ -33,24 +33,24 @@ class AppTheme {
       ),
     ),
     checkboxTheme: CheckboxThemeData(
-      side: MaterialStateBorderSide.resolveWith(
+      side: WidgetStateBorderSide.resolveWith(
         (states) {
-          if (states.contains(MaterialState.selected)) {
+          if (states.contains(WidgetState.selected)) {
             return const BorderSide(color: AppColors.primary100);
           }
           return const BorderSide(color: AppColors.grey20);
         },
       ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-      fillColor: MaterialStateColor.resolveWith(
+      fillColor: WidgetStateColor.resolveWith(
         (states) {
-          if (states.contains(MaterialState.selected)) {
+          if (states.contains(WidgetState.selected)) {
             return AppColors.primary100;
           }
           return AppColors.white100;
         },
       ),
-      checkColor: MaterialStateProperty.all(AppColors.white100),
+      checkColor: WidgetStateProperty.all(AppColors.white100),
     ),
     progressIndicatorTheme: const ProgressIndicatorThemeData(color: AppColors.primary100),
   );

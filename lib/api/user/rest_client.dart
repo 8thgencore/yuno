@@ -49,6 +49,9 @@ abstract class UserClient {
     @Body() required IUserUpdate body,
   });
 
+  @DELETE('/user/me')
+  Future<BaseResponse<IUserRead>> deleteMyAccount();
+
   @DELETE('/user/{user_id}')
   Future<BaseResponse<IUserRead>> deleteUserUserId({
     @Path('user_id') required String userId,

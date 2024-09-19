@@ -12,7 +12,7 @@ part of 'i_auth_login.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 IAuthLogin _$IAuthLoginFromJson(Map<String, dynamic> json) {
   return _IAuthLogin.fromJson(json);
@@ -23,21 +23,28 @@ mixin _$IAuthLogin {
   String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
 
+  /// Serializes this IAuthLogin to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $IAuthLoginCopyWith<IAuthLogin> get copyWith => throw _privateConstructorUsedError;
+
+  /// Create a copy of IAuthLogin
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $IAuthLoginCopyWith<IAuthLogin> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $IAuthLoginCopyWith<$Res> {
-  factory $IAuthLoginCopyWith(IAuthLogin value, $Res Function(IAuthLogin) then) =
+  factory $IAuthLoginCopyWith(
+          IAuthLogin value, $Res Function(IAuthLogin) then) =
       _$IAuthLoginCopyWithImpl<$Res, IAuthLogin>;
   @useResult
   $Res call({String email, String password});
 }
 
 /// @nodoc
-class _$IAuthLoginCopyWithImpl<$Res, $Val extends IAuthLogin> implements $IAuthLoginCopyWith<$Res> {
+class _$IAuthLoginCopyWithImpl<$Res, $Val extends IAuthLogin>
+    implements $IAuthLoginCopyWith<$Res> {
   _$IAuthLoginCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -45,6 +52,8 @@ class _$IAuthLoginCopyWithImpl<$Res, $Val extends IAuthLogin> implements $IAuthL
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IAuthLogin
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -65,8 +74,10 @@ class _$IAuthLoginCopyWithImpl<$Res, $Val extends IAuthLogin> implements $IAuthL
 }
 
 /// @nodoc
-abstract class _$$IAuthLoginImplCopyWith<$Res> implements $IAuthLoginCopyWith<$Res> {
-  factory _$$IAuthLoginImplCopyWith(_$IAuthLoginImpl value, $Res Function(_$IAuthLoginImpl) then) =
+abstract class _$$IAuthLoginImplCopyWith<$Res>
+    implements $IAuthLoginCopyWith<$Res> {
+  factory _$$IAuthLoginImplCopyWith(
+          _$IAuthLoginImpl value, $Res Function(_$IAuthLoginImpl) then) =
       __$$IAuthLoginImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -74,11 +85,15 @@ abstract class _$$IAuthLoginImplCopyWith<$Res> implements $IAuthLoginCopyWith<$R
 }
 
 /// @nodoc
-class __$$IAuthLoginImplCopyWithImpl<$Res> extends _$IAuthLoginCopyWithImpl<$Res, _$IAuthLoginImpl>
+class __$$IAuthLoginImplCopyWithImpl<$Res>
+    extends _$IAuthLoginCopyWithImpl<$Res, _$IAuthLoginImpl>
     implements _$$IAuthLoginImplCopyWith<$Res> {
-  __$$IAuthLoginImplCopyWithImpl(_$IAuthLoginImpl _value, $Res Function(_$IAuthLoginImpl) _then)
+  __$$IAuthLoginImplCopyWithImpl(
+      _$IAuthLoginImpl _value, $Res Function(_$IAuthLoginImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IAuthLogin
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -103,7 +118,8 @@ class __$$IAuthLoginImplCopyWithImpl<$Res> extends _$IAuthLoginCopyWithImpl<$Res
 class _$IAuthLoginImpl implements _IAuthLogin {
   const _$IAuthLoginImpl({required this.email, required this.password});
 
-  factory _$IAuthLoginImpl.fromJson(Map<String, dynamic> json) => _$$IAuthLoginImplFromJson(json);
+  factory _$IAuthLoginImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IAuthLoginImplFromJson(json);
 
   @override
   final String email;
@@ -121,14 +137,17 @@ class _$IAuthLoginImpl implements _IAuthLogin {
         (other.runtimeType == runtimeType &&
             other is _$IAuthLoginImpl &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.password, password) || other.password == password));
+            (identical(other.password, password) ||
+                other.password == password));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, email, password);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IAuthLogin
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IAuthLoginImplCopyWith<_$IAuthLoginImpl> get copyWith =>
@@ -143,16 +162,22 @@ class _$IAuthLoginImpl implements _IAuthLogin {
 }
 
 abstract class _IAuthLogin implements IAuthLogin {
-  const factory _IAuthLogin({required final String email, required final String password}) =
-      _$IAuthLoginImpl;
+  const factory _IAuthLogin(
+      {required final String email,
+      required final String password}) = _$IAuthLoginImpl;
 
-  factory _IAuthLogin.fromJson(Map<String, dynamic> json) = _$IAuthLoginImpl.fromJson;
+  factory _IAuthLogin.fromJson(Map<String, dynamic> json) =
+      _$IAuthLoginImpl.fromJson;
 
   @override
   String get email;
   @override
   String get password;
+
+  /// Create a copy of IAuthLogin
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$IAuthLoginImplCopyWith<_$IAuthLoginImpl> get copyWith => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$IAuthLoginImplCopyWith<_$IAuthLoginImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

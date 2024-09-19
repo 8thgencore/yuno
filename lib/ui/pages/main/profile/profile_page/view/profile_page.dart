@@ -233,7 +233,7 @@ class _EditAvatarWidgetState extends State<_EditAvatarWidget> {
           type: FileType.image,
         );
         if (result != null) {
-          if (!mounted) {
+          if (!context.mounted) {
             return;
           }
           context.read<ProfileBloc>().add(ProfileEvent.loadImage(result.files.first));

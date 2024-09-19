@@ -12,7 +12,7 @@ part of 'project_details_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ProjectDetailsEvent {
@@ -614,6 +614,9 @@ class _$ProjectDetailsStateCopyWithImpl<$Res, $Val extends ProjectDetailsState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ProjectDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -630,6 +633,9 @@ class __$$InitialStateImplCopyWithImpl<$Res>
   __$$InitialStateImplCopyWithImpl(
       _$InitialStateImpl _value, $Res Function(_$InitialStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ProjectDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -714,6 +720,9 @@ class __$$LoadingStateImplCopyWithImpl<$Res>
   __$$LoadingStateImplCopyWithImpl(
       _$LoadingStateImpl _value, $Res Function(_$LoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ProjectDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -790,7 +799,11 @@ abstract class _$$LoadedStateImplCopyWith<$Res> {
           _$LoadedStateImpl value, $Res Function(_$LoadedStateImpl) then) =
       __$$LoadedStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({IProjectWithUsersTasks project, List<ITaskRead> tasks, bool isMember, bool isOwner});
+  $Res call(
+      {IProjectWithUsersTasks project,
+      List<ITaskRead> tasks,
+      bool isMember,
+      bool isOwner});
 
   $IProjectWithUsersTasksCopyWith<$Res> get project;
 }
@@ -799,9 +812,12 @@ abstract class _$$LoadedStateImplCopyWith<$Res> {
 class __$$LoadedStateImplCopyWithImpl<$Res>
     extends _$ProjectDetailsStateCopyWithImpl<$Res, _$LoadedStateImpl>
     implements _$$LoadedStateImplCopyWith<$Res> {
-  __$$LoadedStateImplCopyWithImpl(_$LoadedStateImpl _value, $Res Function(_$LoadedStateImpl) _then)
+  __$$LoadedStateImplCopyWithImpl(
+      _$LoadedStateImpl _value, $Res Function(_$LoadedStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProjectDetailsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -830,6 +846,8 @@ class __$$LoadedStateImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of ProjectDetailsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $IProjectWithUsersTasksCopyWith<$Res> get project {
@@ -877,15 +895,18 @@ class _$LoadedStateImpl extends _LoadedState {
             other is _$LoadedStateImpl &&
             (identical(other.project, project) || other.project == project) &&
             const DeepCollectionEquality().equals(other._tasks, _tasks) &&
-            (identical(other.isMember, isMember) || other.isMember == isMember) &&
+            (identical(other.isMember, isMember) ||
+                other.isMember == isMember) &&
             (identical(other.isOwner, isOwner) || other.isOwner == isOwner));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, project, const DeepCollectionEquality().hash(_tasks), isMember, isOwner);
+  int get hashCode => Object.hash(runtimeType, project,
+      const DeepCollectionEquality().hash(_tasks), isMember, isOwner);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProjectDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LoadedStateImplCopyWith<_$LoadedStateImpl> get copyWith =>
@@ -947,8 +968,12 @@ abstract class _LoadedState extends ProjectDetailsState {
   List<ITaskRead> get tasks;
   bool get isMember;
   bool get isOwner;
-  @JsonKey(ignore: true)
-  _$$LoadedStateImplCopyWith<_$LoadedStateImpl> get copyWith => throw _privateConstructorUsedError;
+
+  /// Create a copy of ProjectDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LoadedStateImplCopyWith<_$LoadedStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -968,6 +993,8 @@ class __$$FailureStateImplCopyWithImpl<$Res>
       _$FailureStateImpl _value, $Res Function(_$FailureStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProjectDetailsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1001,9 +1028,12 @@ class _$FailureStateImpl extends _FailureState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProjectDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FailureStateImplCopyWith<_$FailureStateImpl> get copyWith =>
@@ -1058,14 +1088,18 @@ abstract class _FailureState extends ProjectDetailsState {
   const _FailureState._() : super._();
 
   Object get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ProjectDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FailureStateImplCopyWith<_$FailureStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$KeepStateImplCopyWith<$Res> {
-  factory _$$KeepStateImplCopyWith(_$KeepStateImpl value, $Res Function(_$KeepStateImpl) then) =
+  factory _$$KeepStateImplCopyWith(
+          _$KeepStateImpl value, $Res Function(_$KeepStateImpl) then) =
       __$$KeepStateImplCopyWithImpl<$Res>;
 }
 
@@ -1073,8 +1107,12 @@ abstract class _$$KeepStateImplCopyWith<$Res> {
 class __$$KeepStateImplCopyWithImpl<$Res>
     extends _$ProjectDetailsStateCopyWithImpl<$Res, _$KeepStateImpl>
     implements _$$KeepStateImplCopyWith<$Res> {
-  __$$KeepStateImplCopyWithImpl(_$KeepStateImpl _value, $Res Function(_$KeepStateImpl) _then)
+  __$$KeepStateImplCopyWithImpl(
+      _$KeepStateImpl _value, $Res Function(_$KeepStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ProjectDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1089,7 +1127,8 @@ class _$KeepStateImpl extends _KeepState {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$KeepStateImpl);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$KeepStateImpl);
   }
 
   @override
@@ -1158,6 +1197,9 @@ class __$$DeletedStateImplCopyWithImpl<$Res>
   __$$DeletedStateImplCopyWithImpl(
       _$DeletedStateImpl _value, $Res Function(_$DeletedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ProjectDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

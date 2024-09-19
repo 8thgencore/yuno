@@ -12,7 +12,7 @@ part of 'projects_list_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ProjectsListEvent {
@@ -106,7 +106,8 @@ class _$StartedEventImpl implements _StartedEvent {
 }
 
 abstract class _StartedEvent implements ProjectsListEvent {
-  const factory _StartedEvent({required final bool isSelf}) = _$StartedEventImpl;
+  const factory _StartedEvent({required final bool isSelf}) =
+      _$StartedEventImpl;
 
   bool get isSelf;
 }
@@ -339,6 +340,9 @@ class _$ProjectsListStateCopyWithImpl<$Res, $Val extends ProjectsListState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ProjectsListState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -355,6 +359,9 @@ class __$$InitialStateImplCopyWithImpl<$Res>
   __$$InitialStateImplCopyWithImpl(
       _$InitialStateImpl _value, $Res Function(_$InitialStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ProjectsListState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -433,6 +440,9 @@ class __$$LoadingStateImplCopyWithImpl<$Res>
   __$$LoadingStateImplCopyWithImpl(
       _$LoadingStateImpl _value, $Res Function(_$LoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ProjectsListState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -503,16 +513,20 @@ abstract class _$$LoadedStateImplCopyWith<$Res> {
           _$LoadedStateImpl value, $Res Function(_$LoadedStateImpl) then) =
       __$$LoadedStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<IProjectWithUsers> projects, bool isShowLoading, bool isShowError});
+  $Res call(
+      {List<IProjectWithUsers> projects, bool isShowLoading, bool isShowError});
 }
 
 /// @nodoc
 class __$$LoadedStateImplCopyWithImpl<$Res>
     extends _$ProjectsListStateCopyWithImpl<$Res, _$LoadedStateImpl>
     implements _$$LoadedStateImplCopyWith<$Res> {
-  __$$LoadedStateImplCopyWithImpl(_$LoadedStateImpl _value, $Res Function(_$LoadedStateImpl) _then)
+  __$$LoadedStateImplCopyWithImpl(
+      _$LoadedStateImpl _value, $Res Function(_$LoadedStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProjectsListState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -573,14 +587,20 @@ class _$LoadedStateImpl extends _LoadedState {
             const DeepCollectionEquality().equals(other._projects, _projects) &&
             (identical(other.isShowLoading, isShowLoading) ||
                 other.isShowLoading == isShowLoading) &&
-            (identical(other.isShowError, isShowError) || other.isShowError == isShowError));
+            (identical(other.isShowError, isShowError) ||
+                other.isShowError == isShowError));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_projects), isShowLoading, isShowError);
+      runtimeType,
+      const DeepCollectionEquality().hash(_projects),
+      isShowLoading,
+      isShowError);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProjectsListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LoadedStateImplCopyWith<_$LoadedStateImpl> get copyWith =>
@@ -634,8 +654,12 @@ abstract class _LoadedState extends ProjectsListState {
   List<IProjectWithUsers> get projects;
   bool get isShowLoading;
   bool get isShowError;
-  @JsonKey(ignore: true)
-  _$$LoadedStateImplCopyWith<_$LoadedStateImpl> get copyWith => throw _privateConstructorUsedError;
+
+  /// Create a copy of ProjectsListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LoadedStateImplCopyWith<_$LoadedStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -655,6 +679,8 @@ class __$$FailureStateImplCopyWithImpl<$Res>
       _$FailureStateImpl _value, $Res Function(_$FailureStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProjectsListState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -688,9 +714,12 @@ class _$FailureStateImpl extends _FailureState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProjectsListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FailureStateImplCopyWith<_$FailureStateImpl> get copyWith =>
@@ -739,7 +768,10 @@ abstract class _FailureState extends ProjectsListState {
   const _FailureState._() : super._();
 
   Object get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ProjectsListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FailureStateImplCopyWith<_$FailureStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -6,32 +6,35 @@ part of 'rest_client.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
 
 class _TaskClient implements TaskClient {
   _TaskClient(
     this._dio, {
     this.baseUrl,
+    this.errorLogger,
   });
 
   final Dio _dio;
 
   String? baseUrl;
 
+  final ParseErrorLogger? errorLogger;
+
   @override
   Future<BaseResponse<PaginatedDataITaskWithProjectName>> getTaskList({
     int? page = 1,
     int? size = 50,
   }) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'page': page,
       r'size': size,
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
-    final _result = await _dio.fetch<Map<String, dynamic>>(
+    const Map<String, dynamic>? _data = null;
+    final _options =
         _setStreamType<BaseResponse<PaginatedDataITaskWithProjectName>>(Options(
       method: 'GET',
       headers: _headers,
@@ -47,12 +50,20 @@ class _TaskClient implements TaskClient {
                 baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
-            ))));
-    final value = BaseResponse<PaginatedDataITaskWithProjectName>.fromJson(
-      _result.data!,
-      (json) => PaginatedDataITaskWithProjectName.fromJson(json as Map<String, dynamic>),
-    );
-    return value;
+            )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponse<PaginatedDataITaskWithProjectName> _value;
+    try {
+      _value = BaseResponse<PaginatedDataITaskWithProjectName>.fromJson(
+        _result.data!,
+        (json) => PaginatedDataITaskWithProjectName.fromJson(
+            json as Map<String, dynamic>),
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
   }
 
   @override
@@ -60,15 +71,15 @@ class _TaskClient implements TaskClient {
     int? page = 1,
     int? size = 50,
   }) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'page': page,
       r'size': size,
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
-    final _result = await _dio.fetch<Map<String, dynamic>>(
+    const Map<String, dynamic>? _data = null;
+    final _options =
         _setStreamType<BaseResponse<PaginatedDataITaskWithProjectName>>(Options(
       method: 'GET',
       headers: _headers,
@@ -84,12 +95,20 @@ class _TaskClient implements TaskClient {
                 baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
-            ))));
-    final value = BaseResponse<PaginatedDataITaskWithProjectName>.fromJson(
-      _result.data!,
-      (json) => PaginatedDataITaskWithProjectName.fromJson(json as Map<String, dynamic>),
-    );
-    return value;
+            )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponse<PaginatedDataITaskWithProjectName> _value;
+    try {
+      _value = BaseResponse<PaginatedDataITaskWithProjectName>.fromJson(
+        _result.data!,
+        (json) => PaginatedDataITaskWithProjectName.fromJson(
+            json as Map<String, dynamic>),
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
   }
 
   @override
@@ -98,7 +117,7 @@ class _TaskClient implements TaskClient {
     int? page = 1,
     int? size = 50,
   }) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'date': date,
       r'page': page,
@@ -106,8 +125,8 @@ class _TaskClient implements TaskClient {
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
-    final _result = await _dio.fetch<Map<String, dynamic>>(
+    const Map<String, dynamic>? _data = null;
+    final _options =
         _setStreamType<BaseResponse<PaginatedDataITaskWithProjectName>>(Options(
       method: 'GET',
       headers: _headers,
@@ -123,72 +142,93 @@ class _TaskClient implements TaskClient {
                 baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
-            ))));
-    final value = BaseResponse<PaginatedDataITaskWithProjectName>.fromJson(
-      _result.data!,
-      (json) => PaginatedDataITaskWithProjectName.fromJson(json as Map<String, dynamic>),
-    );
-    return value;
+            )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponse<PaginatedDataITaskWithProjectName> _value;
+    try {
+      _value = BaseResponse<PaginatedDataITaskWithProjectName>.fromJson(
+        _result.data!,
+        (json) => PaginatedDataITaskWithProjectName.fromJson(
+            json as Map<String, dynamic>),
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
   }
 
   @override
   Future<BaseResponse<ITaskRead>> postTask({required ITaskCreate body}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = body;
-    final _result =
-        await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<ITaskRead>>(Options(
+    final _options = _setStreamType<BaseResponse<ITaskRead>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/task',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = BaseResponse<ITaskRead>.fromJson(
-      _result.data!,
-      (json) => ITaskRead.fromJson(json as Map<String, dynamic>),
-    );
-    return value;
+        .compose(
+          _dio.options,
+          '/task',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponse<ITaskRead> _value;
+    try {
+      _value = BaseResponse<ITaskRead>.fromJson(
+        _result.data!,
+        (json) => ITaskRead.fromJson(json as Map<String, dynamic>),
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
   }
 
   @override
-  Future<BaseResponse<ITaskRead>> getTaskTaskId({required String taskId}) async {
-    const _extra = <String, dynamic>{};
+  Future<BaseResponse<ITaskRead>> getTaskTaskId(
+      {required String taskId}) async {
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
-    final _result =
-        await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<ITaskRead>>(Options(
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<BaseResponse<ITaskRead>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/task/${taskId}',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = BaseResponse<ITaskRead>.fromJson(
-      _result.data!,
-      (json) => ITaskRead.fromJson(json as Map<String, dynamic>),
-    );
-    return value;
+        .compose(
+          _dio.options,
+          '/task/${taskId}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponse<ITaskRead> _value;
+    try {
+      _value = BaseResponse<ITaskRead>.fromJson(
+        _result.data!,
+        (json) => ITaskRead.fromJson(json as Map<String, dynamic>),
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
   }
 
   @override
@@ -196,62 +236,75 @@ class _TaskClient implements TaskClient {
     required String taskId,
     required ITaskUpdate body,
   }) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = body;
-    final _result =
-        await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<ITaskRead>>(Options(
+    final _options = _setStreamType<BaseResponse<ITaskRead>>(Options(
       method: 'PUT',
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/task/${taskId}',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = BaseResponse<ITaskRead>.fromJson(
-      _result.data!,
-      (json) => ITaskRead.fromJson(json as Map<String, dynamic>),
-    );
-    return value;
+        .compose(
+          _dio.options,
+          '/task/${taskId}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponse<ITaskRead> _value;
+    try {
+      _value = BaseResponse<ITaskRead>.fromJson(
+        _result.data!,
+        (json) => ITaskRead.fromJson(json as Map<String, dynamic>),
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
   }
 
   @override
-  Future<BaseResponse<ITaskRead>> deleteTaskTaskId({required String taskId}) async {
-    const _extra = <String, dynamic>{};
+  Future<BaseResponse<ITaskRead>> deleteTaskTaskId(
+      {required String taskId}) async {
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
-    final _result =
-        await _dio.fetch<Map<String, dynamic>>(_setStreamType<BaseResponse<ITaskRead>>(Options(
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<BaseResponse<ITaskRead>>(Options(
       method: 'DELETE',
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/task/${taskId}',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = BaseResponse<ITaskRead>.fromJson(
-      _result.data!,
-      (json) => ITaskRead.fromJson(json as Map<String, dynamic>),
-    );
-    return value;
+        .compose(
+          _dio.options,
+          '/task/${taskId}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponse<ITaskRead> _value;
+    try {
+      _value = BaseResponse<ITaskRead>.fromJson(
+        _result.data!,
+        (json) => ITaskRead.fromJson(json as Map<String, dynamic>),
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

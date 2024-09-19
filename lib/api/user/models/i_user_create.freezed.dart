@@ -12,7 +12,7 @@ part of 'i_user_create.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 IUserCreate _$IUserCreateFromJson(Map<String, dynamic> json) {
   return _IUserCreate.fromJson(json);
@@ -32,14 +32,20 @@ mixin _$IUserCreate {
   String? get roleId => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
 
+  /// Serializes this IUserCreate to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $IUserCreateCopyWith<IUserCreate> get copyWith => throw _privateConstructorUsedError;
+
+  /// Create a copy of IUserCreate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $IUserCreateCopyWith<IUserCreate> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $IUserCreateCopyWith<$Res> {
-  factory $IUserCreateCopyWith(IUserCreate value, $Res Function(IUserCreate) then) =
+  factory $IUserCreateCopyWith(
+          IUserCreate value, $Res Function(IUserCreate) then) =
       _$IUserCreateCopyWithImpl<$Res, IUserCreate>;
   @useResult
   $Res call(
@@ -63,6 +69,8 @@ class _$IUserCreateCopyWithImpl<$Res, $Val extends IUserCreate>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IUserCreate
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -113,7 +121,8 @@ class _$IUserCreateCopyWithImpl<$Res, $Val extends IUserCreate>
 }
 
 /// @nodoc
-abstract class _$$IUserCreateImplCopyWith<$Res> implements $IUserCreateCopyWith<$Res> {
+abstract class _$$IUserCreateImplCopyWith<$Res>
+    implements $IUserCreateCopyWith<$Res> {
   factory _$$IUserCreateImplCopyWith(
           _$IUserCreateImpl value, $Res Function(_$IUserCreateImpl) then) =
       __$$IUserCreateImplCopyWithImpl<$Res>;
@@ -134,9 +143,12 @@ abstract class _$$IUserCreateImplCopyWith<$Res> implements $IUserCreateCopyWith<
 class __$$IUserCreateImplCopyWithImpl<$Res>
     extends _$IUserCreateCopyWithImpl<$Res, _$IUserCreateImpl>
     implements _$$IUserCreateImplCopyWith<$Res> {
-  __$$IUserCreateImplCopyWithImpl(_$IUserCreateImpl _value, $Res Function(_$IUserCreateImpl) _then)
+  __$$IUserCreateImplCopyWithImpl(
+      _$IUserCreateImpl _value, $Res Function(_$IUserCreateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IUserCreate
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -199,7 +211,8 @@ class _$IUserCreateImpl implements _IUserCreate {
       @JsonKey(name: 'role_id') this.roleId,
       this.password});
 
-  factory _$IUserCreateImpl.fromJson(Map<String, dynamic> json) => _$$IUserCreateImplFromJson(json);
+  factory _$IUserCreateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IUserCreateImplFromJson(json);
 
   @override
   @JsonKey(name: 'first_name')
@@ -231,22 +244,29 @@ class _$IUserCreateImpl implements _IUserCreate {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$IUserCreateImpl &&
-            (identical(other.firstName, firstName) || other.firstName == firstName) &&
-            (identical(other.lastName, lastName) || other.lastName == lastName) &&
-            (identical(other.username, username) || other.username == username) &&
+            (identical(other.firstName, firstName) ||
+                other.firstName == firstName) &&
+            (identical(other.lastName, lastName) ||
+                other.lastName == lastName) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.birthdate, birthdate) || other.birthdate == birthdate) &&
+            (identical(other.birthdate, birthdate) ||
+                other.birthdate == birthdate) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.roleId, roleId) || other.roleId == roleId) &&
-            (identical(other.password, password) || other.password == password));
+            (identical(other.password, password) ||
+                other.password == password));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, firstName, lastName, username, email, birthdate, phone, roleId, password);
+  int get hashCode => Object.hash(runtimeType, firstName, lastName, username,
+      email, birthdate, phone, roleId, password);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IUserCreate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IUserCreateImplCopyWith<_$IUserCreateImpl> get copyWith =>
@@ -271,7 +291,8 @@ abstract class _IUserCreate implements IUserCreate {
       @JsonKey(name: 'role_id') final String? roleId,
       final String? password}) = _$IUserCreateImpl;
 
-  factory _IUserCreate.fromJson(Map<String, dynamic> json) = _$IUserCreateImpl.fromJson;
+  factory _IUserCreate.fromJson(Map<String, dynamic> json) =
+      _$IUserCreateImpl.fromJson;
 
   @override
   @JsonKey(name: 'first_name')
@@ -292,7 +313,11 @@ abstract class _IUserCreate implements IUserCreate {
   String? get roleId;
   @override
   String? get password;
+
+  /// Create a copy of IUserCreate
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$IUserCreateImplCopyWith<_$IUserCreateImpl> get copyWith => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$IUserCreateImplCopyWith<_$IUserCreateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

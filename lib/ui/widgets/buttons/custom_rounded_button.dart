@@ -4,11 +4,13 @@ import 'package:yuno/resources/colors.dart';
 class CustomRoundedButton extends StatelessWidget {
   const CustomRoundedButton({
     required this.textButton,
+    this.backgroundColor,
     this.onPressed,
     super.key,
   });
 
   final String textButton;
+  final Color? backgroundColor;
   final VoidCallback? onPressed;
 
   @override
@@ -21,6 +23,7 @@ class CustomRoundedButton extends StatelessWidget {
       ),
       child: ElevatedButton(
         onPressed: onPressed,
+        style: ElevatedButton.styleFrom(backgroundColor: backgroundColor ?? AppColors.primary100),
         child: Text(
           textButton,
           style: const TextStyle(

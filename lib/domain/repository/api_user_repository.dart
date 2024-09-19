@@ -21,6 +21,8 @@ abstract class IUserRepository {
   Future<IUserRead> loadImage({
     required PlatformFile file,
   });
+
+  Future<IUserRead> deleteMyAccount();
 }
 
 class ApiUserRepository implements IUserRepository {
@@ -89,5 +91,10 @@ class ApiUserRepository implements IUserRepository {
     await userDataRepository.setItem(user);
 
     return user;
+  }
+
+  Future<IUserRead> deleteMyAccount() async {
+    final response = await userClient.deleteMyAccount();
+    return response.data;
   }
 }

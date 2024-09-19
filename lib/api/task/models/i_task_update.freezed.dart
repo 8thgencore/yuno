@@ -12,7 +12,7 @@ part of 'i_task_update.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ITaskUpdate _$ITaskUpdateFromJson(Map<String, dynamic> json) {
   return _ITaskUpdate.fromJson(json);
@@ -24,14 +24,20 @@ mixin _$ITaskUpdate {
   bool? get done => throw _privateConstructorUsedError;
   DateTime? get deadline => throw _privateConstructorUsedError;
 
+  /// Serializes this ITaskUpdate to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $ITaskUpdateCopyWith<ITaskUpdate> get copyWith => throw _privateConstructorUsedError;
+
+  /// Create a copy of ITaskUpdate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ITaskUpdateCopyWith<ITaskUpdate> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ITaskUpdateCopyWith<$Res> {
-  factory $ITaskUpdateCopyWith(ITaskUpdate value, $Res Function(ITaskUpdate) then) =
+  factory $ITaskUpdateCopyWith(
+          ITaskUpdate value, $Res Function(ITaskUpdate) then) =
       _$ITaskUpdateCopyWithImpl<$Res, ITaskUpdate>;
   @useResult
   $Res call({String? name, bool? done, DateTime? deadline});
@@ -47,6 +53,8 @@ class _$ITaskUpdateCopyWithImpl<$Res, $Val extends ITaskUpdate>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ITaskUpdate
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -72,7 +80,8 @@ class _$ITaskUpdateCopyWithImpl<$Res, $Val extends ITaskUpdate>
 }
 
 /// @nodoc
-abstract class _$$ITaskUpdateImplCopyWith<$Res> implements $ITaskUpdateCopyWith<$Res> {
+abstract class _$$ITaskUpdateImplCopyWith<$Res>
+    implements $ITaskUpdateCopyWith<$Res> {
   factory _$$ITaskUpdateImplCopyWith(
           _$ITaskUpdateImpl value, $Res Function(_$ITaskUpdateImpl) then) =
       __$$ITaskUpdateImplCopyWithImpl<$Res>;
@@ -85,9 +94,12 @@ abstract class _$$ITaskUpdateImplCopyWith<$Res> implements $ITaskUpdateCopyWith<
 class __$$ITaskUpdateImplCopyWithImpl<$Res>
     extends _$ITaskUpdateCopyWithImpl<$Res, _$ITaskUpdateImpl>
     implements _$$ITaskUpdateImplCopyWith<$Res> {
-  __$$ITaskUpdateImplCopyWithImpl(_$ITaskUpdateImpl _value, $Res Function(_$ITaskUpdateImpl) _then)
+  __$$ITaskUpdateImplCopyWithImpl(
+      _$ITaskUpdateImpl _value, $Res Function(_$ITaskUpdateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ITaskUpdate
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -117,7 +129,8 @@ class __$$ITaskUpdateImplCopyWithImpl<$Res>
 class _$ITaskUpdateImpl implements _ITaskUpdate {
   const _$ITaskUpdateImpl({this.name, this.done = false, this.deadline});
 
-  factory _$ITaskUpdateImpl.fromJson(Map<String, dynamic> json) => _$$ITaskUpdateImplFromJson(json);
+  factory _$ITaskUpdateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ITaskUpdateImplFromJson(json);
 
   @override
   final String? name;
@@ -139,14 +152,17 @@ class _$ITaskUpdateImpl implements _ITaskUpdate {
             other is _$ITaskUpdateImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.done, done) || other.done == done) &&
-            (identical(other.deadline, deadline) || other.deadline == deadline));
+            (identical(other.deadline, deadline) ||
+                other.deadline == deadline));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, done, deadline);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ITaskUpdate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ITaskUpdateImplCopyWith<_$ITaskUpdateImpl> get copyWith =>
@@ -161,10 +177,13 @@ class _$ITaskUpdateImpl implements _ITaskUpdate {
 }
 
 abstract class _ITaskUpdate implements ITaskUpdate {
-  const factory _ITaskUpdate({final String? name, final bool? done, final DateTime? deadline}) =
-      _$ITaskUpdateImpl;
+  const factory _ITaskUpdate(
+      {final String? name,
+      final bool? done,
+      final DateTime? deadline}) = _$ITaskUpdateImpl;
 
-  factory _ITaskUpdate.fromJson(Map<String, dynamic> json) = _$ITaskUpdateImpl.fromJson;
+  factory _ITaskUpdate.fromJson(Map<String, dynamic> json) =
+      _$ITaskUpdateImpl.fromJson;
 
   @override
   String? get name;
@@ -172,7 +191,11 @@ abstract class _ITaskUpdate implements ITaskUpdate {
   bool? get done;
   @override
   DateTime? get deadline;
+
+  /// Create a copy of ITaskUpdate
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$ITaskUpdateImplCopyWith<_$ITaskUpdateImpl> get copyWith => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ITaskUpdateImplCopyWith<_$ITaskUpdateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

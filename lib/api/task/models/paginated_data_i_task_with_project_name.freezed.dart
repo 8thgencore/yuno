@@ -12,7 +12,7 @@ part of 'paginated_data_i_task_with_project_name.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 PaginatedDataITaskWithProjectName _$PaginatedDataITaskWithProjectNameFromJson(
     Map<String, dynamic> json) {
@@ -31,17 +31,23 @@ mixin _$PaginatedDataITaskWithProjectName {
   @JsonKey(name: 'previous_page')
   int? get previousPage => throw _privateConstructorUsedError;
 
+  /// Serializes this PaginatedDataITaskWithProjectName to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $PaginatedDataITaskWithProjectNameCopyWith<PaginatedDataITaskWithProjectName> get copyWith =>
-      throw _privateConstructorUsedError;
+
+  /// Create a copy of PaginatedDataITaskWithProjectName
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $PaginatedDataITaskWithProjectNameCopyWith<PaginatedDataITaskWithProjectName>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PaginatedDataITaskWithProjectNameCopyWith<$Res> {
-  factory $PaginatedDataITaskWithProjectNameCopyWith(PaginatedDataITaskWithProjectName value,
+  factory $PaginatedDataITaskWithProjectNameCopyWith(
+          PaginatedDataITaskWithProjectName value,
           $Res Function(PaginatedDataITaskWithProjectName) then) =
-      _$PaginatedDataITaskWithProjectNameCopyWithImpl<$Res, PaginatedDataITaskWithProjectName>;
+      _$PaginatedDataITaskWithProjectNameCopyWithImpl<$Res,
+          PaginatedDataITaskWithProjectName>;
   @useResult
   $Res call(
       {List<ITaskWithProjectName> items,
@@ -64,6 +70,8 @@ class _$PaginatedDataITaskWithProjectNameCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaginatedDataITaskWithProjectName
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -137,6 +145,8 @@ class __$$PaginatedDataITaskWithProjectNameImplCopyWithImpl<$Res>
       $Res Function(_$PaginatedDataITaskWithProjectNameImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaginatedDataITaskWithProjectName
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -183,7 +193,8 @@ class __$$PaginatedDataITaskWithProjectNameImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$PaginatedDataITaskWithProjectNameImpl implements _PaginatedDataITaskWithProjectName {
+class _$PaginatedDataITaskWithProjectNameImpl
+    implements _PaginatedDataITaskWithProjectName {
   const _$PaginatedDataITaskWithProjectNameImpl(
       {required final List<ITaskWithProjectName> items,
       required this.total,
@@ -194,7 +205,8 @@ class _$PaginatedDataITaskWithProjectNameImpl implements _PaginatedDataITaskWith
       @JsonKey(name: 'previous_page') this.previousPage})
       : _items = items;
 
-  factory _$PaginatedDataITaskWithProjectNameImpl.fromJson(Map<String, dynamic> json) =>
+  factory _$PaginatedDataITaskWithProjectNameImpl.fromJson(
+          Map<String, dynamic> json) =>
       _$$PaginatedDataITaskWithProjectNameImplFromJson(json);
 
   final List<ITaskWithProjectName> _items;
@@ -235,19 +247,31 @@ class _$PaginatedDataITaskWithProjectNameImpl implements _PaginatedDataITaskWith
             (identical(other.page, page) || other.page == page) &&
             (identical(other.size, size) || other.size == size) &&
             (identical(other.pages, pages) || other.pages == pages) &&
-            (identical(other.nextPage, nextPage) || other.nextPage == nextPage) &&
-            (identical(other.previousPage, previousPage) || other.previousPage == previousPage));
+            (identical(other.nextPage, nextPage) ||
+                other.nextPage == nextPage) &&
+            (identical(other.previousPage, previousPage) ||
+                other.previousPage == previousPage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_items), total,
-      page, size, pages, nextPage, previousPage);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_items),
+      total,
+      page,
+      size,
+      pages,
+      nextPage,
+      previousPage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaginatedDataITaskWithProjectName
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$PaginatedDataITaskWithProjectNameImplCopyWith<_$PaginatedDataITaskWithProjectNameImpl>
+  _$$PaginatedDataITaskWithProjectNameImplCopyWith<
+          _$PaginatedDataITaskWithProjectNameImpl>
       get copyWith => __$$PaginatedDataITaskWithProjectNameImplCopyWithImpl<
           _$PaginatedDataITaskWithProjectNameImpl>(this, _$identity);
 
@@ -259,7 +283,8 @@ class _$PaginatedDataITaskWithProjectNameImpl implements _PaginatedDataITaskWith
   }
 }
 
-abstract class _PaginatedDataITaskWithProjectName implements PaginatedDataITaskWithProjectName {
+abstract class _PaginatedDataITaskWithProjectName
+    implements PaginatedDataITaskWithProjectName {
   const factory _PaginatedDataITaskWithProjectName(
           {required final List<ITaskWithProjectName> items,
           required final int total,
@@ -270,7 +295,8 @@ abstract class _PaginatedDataITaskWithProjectName implements PaginatedDataITaskW
           @JsonKey(name: 'previous_page') final int? previousPage}) =
       _$PaginatedDataITaskWithProjectNameImpl;
 
-  factory _PaginatedDataITaskWithProjectName.fromJson(Map<String, dynamic> json) =
+  factory _PaginatedDataITaskWithProjectName.fromJson(
+          Map<String, dynamic> json) =
       _$PaginatedDataITaskWithProjectNameImpl.fromJson;
 
   @override
@@ -289,8 +315,12 @@ abstract class _PaginatedDataITaskWithProjectName implements PaginatedDataITaskW
   @override
   @JsonKey(name: 'previous_page')
   int? get previousPage;
+
+  /// Create a copy of PaginatedDataITaskWithProjectName
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$PaginatedDataITaskWithProjectNameImplCopyWith<_$PaginatedDataITaskWithProjectNameImpl>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PaginatedDataITaskWithProjectNameImplCopyWith<
+          _$PaginatedDataITaskWithProjectNameImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

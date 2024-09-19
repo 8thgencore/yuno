@@ -12,7 +12,7 @@ part of 'otp_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$OtpEvent {
@@ -109,7 +109,8 @@ class _$OtpChangedEventImpl implements _OtpChangedEvent {
 }
 
 abstract class _OtpChangedEvent implements OtpEvent {
-  const factory _OtpChangedEvent(final String text, final int index) = _$OtpChangedEventImpl;
+  const factory _OtpChangedEvent(final String text, final int index) =
+      _$OtpChangedEventImpl;
 
   String get text;
   int get index;
@@ -305,8 +306,11 @@ mixin _$OtpState {
   String? get serverError => throw _privateConstructorUsedError;
   bool get isValid => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
-  $OtpStateCopyWith<OtpState> get copyWith => throw _privateConstructorUsedError;
+  /// Create a copy of OtpState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $OtpStateCopyWith<OtpState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -318,7 +322,8 @@ abstract class $OtpStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$OtpStateCopyWithImpl<$Res, $Val extends OtpState> implements $OtpStateCopyWith<$Res> {
+class _$OtpStateCopyWithImpl<$Res, $Val extends OtpState>
+    implements $OtpStateCopyWith<$Res> {
   _$OtpStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -326,6 +331,8 @@ class _$OtpStateCopyWithImpl<$Res, $Val extends OtpState> implements $OtpStateCo
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OtpState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -356,8 +363,10 @@ class _$OtpStateCopyWithImpl<$Res, $Val extends OtpState> implements $OtpStateCo
 }
 
 /// @nodoc
-abstract class _$$OtpStateImplCopyWith<$Res> implements $OtpStateCopyWith<$Res> {
-  factory _$$OtpStateImplCopyWith(_$OtpStateImpl value, $Res Function(_$OtpStateImpl) then) =
+abstract class _$$OtpStateImplCopyWith<$Res>
+    implements $OtpStateCopyWith<$Res> {
+  factory _$$OtpStateImplCopyWith(
+          _$OtpStateImpl value, $Res Function(_$OtpStateImpl) then) =
       __$$OtpStateImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -365,11 +374,15 @@ abstract class _$$OtpStateImplCopyWith<$Res> implements $OtpStateCopyWith<$Res> 
 }
 
 /// @nodoc
-class __$$OtpStateImplCopyWithImpl<$Res> extends _$OtpStateCopyWithImpl<$Res, _$OtpStateImpl>
+class __$$OtpStateImplCopyWithImpl<$Res>
+    extends _$OtpStateCopyWithImpl<$Res, _$OtpStateImpl>
     implements _$$OtpStateImplCopyWith<$Res> {
-  __$$OtpStateImplCopyWithImpl(_$OtpStateImpl _value, $Res Function(_$OtpStateImpl) _then)
+  __$$OtpStateImplCopyWithImpl(
+      _$OtpStateImpl _value, $Res Function(_$OtpStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OtpState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -403,7 +416,10 @@ class __$$OtpStateImplCopyWithImpl<$Res> extends _$OtpStateCopyWithImpl<$Res, _$
 
 class _$OtpStateImpl implements _OtpState {
   const _$OtpStateImpl(
-      {required this.otp, this.status = OtpStatus.initial, this.serverError, this.isValid = false});
+      {required this.otp,
+      this.status = OtpStatus.initial,
+      this.serverError,
+      this.isValid = false});
 
   @override
   final String otp;
@@ -428,14 +444,18 @@ class _$OtpStateImpl implements _OtpState {
             other is _$OtpStateImpl &&
             (identical(other.otp, otp) || other.otp == otp) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.serverError, serverError) || other.serverError == serverError) &&
+            (identical(other.serverError, serverError) ||
+                other.serverError == serverError) &&
             (identical(other.isValid, isValid) || other.isValid == isValid));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, otp, status, serverError, isValid);
+  int get hashCode =>
+      Object.hash(runtimeType, otp, status, serverError, isValid);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OtpState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OtpStateImplCopyWith<_$OtpStateImpl> get copyWith =>
@@ -457,7 +477,11 @@ abstract class _OtpState implements OtpState {
   String? get serverError;
   @override
   bool get isValid;
+
+  /// Create a copy of OtpState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$OtpStateImplCopyWith<_$OtpStateImpl> get copyWith => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OtpStateImplCopyWith<_$OtpStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

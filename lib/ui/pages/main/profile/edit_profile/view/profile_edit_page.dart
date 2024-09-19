@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:yuno/app/helpers/remove_scrolling_glow.dart';
+import 'package:yuno/app/routes/routes.dart';
 import 'package:yuno/l10n/l10n.dart';
 import 'package:yuno/resources/resources.dart';
 import 'package:yuno/ui/pages/main/profile/edit_profile/bloc/profile_edit_bloc.dart';
@@ -18,7 +19,7 @@ class ProfileEditPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     return BlocListener<ProfileEditBloc, ProfileEditState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         switch (state.status) {
           case ProfileEditStatus.initial:
             context.loaderOverlay.show();
@@ -44,13 +45,16 @@ class ProfileEditPage extends StatelessWidget {
                 type: ToastType.failure,
               ),
             );
+
+          case ProfileEditStatus.deleted:
+            await context.pushNamed(RouteName.login);
         }
       },
       child: LoaderOverlay(
         overlayColor: Colors.black.withOpacity(0.4),
         child: PopScope(
           canPop: false,
-          onPopInvoked: (didPop) {
+          onPopInvokedWithResult: (didPop, _) {
             if (didPop) {
               return;
             }
@@ -153,8 +157,61 @@ class _ListTextFieldWidget extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 14),
           child: _RoleTextField(),
         ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 14),
+          child: _DeleteAccountWidget(),
+        ),
         SizedBox(height: 90),
       ],
+    );
+  }
+}
+
+class _DeleteAccountWidget extends StatelessWidget {
+  const _DeleteAccountWidget();
+
+  Future<void> _showDeleteConfirmationDialog(BuildContext context) async {
+    final confirmed = await showDialog<bool>(
+          context: context,
+          builder: (dialogContext) {
+            return AlertDialog(
+              title: const Text('Confirm Delete'),
+              content: const Text(
+                'Are you sure you want to delete your account? This action cannot be undone.',
+              ),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(dialogContext).pop(false);
+                  },
+                  child: const Text('Cancel'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(dialogContext).pop(true);
+                  },
+                  style: TextButton.styleFrom(
+                    foregroundColor: AppColors.error60,
+                  ),
+                  child: const Text('Delete'),
+                ),
+              ],
+            );
+          },
+        ) ??
+        false;
+
+    if (confirmed && context.mounted) {
+      context.read<ProfileEditBloc>().add(const ProfileEditEvent.deleteMyAccount());
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomRoundedButton(
+      textButton: 'Delete account',
+      backgroundColor: AppColors.error60,
+      onPressed: () async => _showDeleteConfirmationDialog(context),
     );
   }
 }

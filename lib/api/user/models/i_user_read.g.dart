@@ -6,7 +6,8 @@ part of 'i_user_read.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$IUserReadImpl _$$IUserReadImplFromJson(Map<String, dynamic> json) => _$IUserReadImpl(
+_$IUserReadImpl _$$IUserReadImplFromJson(Map<String, dynamic> json) =>
+    _$IUserReadImpl(
       firstName: json['first_name'] as String,
       lastName: json['last_name'] as String,
       username: json['username'] as String,
@@ -15,13 +16,16 @@ _$IUserReadImpl _$$IUserReadImplFromJson(Map<String, dynamic> json) => _$IUserRe
       birthdate: json['birthdate'] as String?,
       phone: json['phone'] as String?,
       roleId: json['role_id'] as String?,
-      role: json['role'] == null ? null : IRoleRead.fromJson(json['role'] as Map<String, dynamic>),
+      role: json['role'] == null
+          ? null
+          : IRoleRead.fromJson(json['role'] as Map<String, dynamic>),
       image: json['image'] == null
           ? null
           : IImageMediaRead.fromJson(json['image'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$IUserReadImplToJson(_$IUserReadImpl instance) => <String, dynamic>{
+Map<String, dynamic> _$$IUserReadImplToJson(_$IUserReadImpl instance) =>
+    <String, dynamic>{
       'first_name': instance.firstName,
       'last_name': instance.lastName,
       'username': instance.username,

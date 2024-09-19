@@ -6,7 +6,8 @@ part of 'i_project_with_users.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$IProjectWithUsersImpl _$$IProjectWithUsersImplFromJson(Map<String, dynamic> json) =>
+_$IProjectWithUsersImpl _$$IProjectWithUsersImplFromJson(
+        Map<String, dynamic> json) =>
     _$IProjectWithUsersImpl(
       name: json['name'] as String,
       description: json['description'] as String,
@@ -19,7 +20,8 @@ _$IProjectWithUsersImpl _$$IProjectWithUsersImplFromJson(Map<String, dynamic> js
           .toList(),
     );
 
-Map<String, dynamic> _$$IProjectWithUsersImplToJson(_$IProjectWithUsersImpl instance) =>
+Map<String, dynamic> _$$IProjectWithUsersImplToJson(
+        _$IProjectWithUsersImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'description': instance.description,

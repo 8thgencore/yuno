@@ -12,7 +12,7 @@ part of 'i_task_read.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ITaskRead _$ITaskReadFromJson(Map<String, dynamic> json) {
   return _ITaskRead.fromJson(json);
@@ -27,9 +27,14 @@ mixin _$ITaskRead {
   @JsonKey(name: 'project_id')
   String? get projectId => throw _privateConstructorUsedError;
 
+  /// Serializes this ITaskRead to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $ITaskReadCopyWith<ITaskRead> get copyWith => throw _privateConstructorUsedError;
+
+  /// Create a copy of ITaskRead
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ITaskReadCopyWith<ITaskRead> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -46,7 +51,8 @@ abstract class $ITaskReadCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ITaskReadCopyWithImpl<$Res, $Val extends ITaskRead> implements $ITaskReadCopyWith<$Res> {
+class _$ITaskReadCopyWithImpl<$Res, $Val extends ITaskRead>
+    implements $ITaskReadCopyWith<$Res> {
   _$ITaskReadCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -54,6 +60,8 @@ class _$ITaskReadCopyWithImpl<$Res, $Val extends ITaskRead> implements $ITaskRea
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ITaskRead
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -89,8 +97,10 @@ class _$ITaskReadCopyWithImpl<$Res, $Val extends ITaskRead> implements $ITaskRea
 }
 
 /// @nodoc
-abstract class _$$ITaskReadImplCopyWith<$Res> implements $ITaskReadCopyWith<$Res> {
-  factory _$$ITaskReadImplCopyWith(_$ITaskReadImpl value, $Res Function(_$ITaskReadImpl) then) =
+abstract class _$$ITaskReadImplCopyWith<$Res>
+    implements $ITaskReadCopyWith<$Res> {
+  factory _$$ITaskReadImplCopyWith(
+          _$ITaskReadImpl value, $Res Function(_$ITaskReadImpl) then) =
       __$$ITaskReadImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -103,11 +113,15 @@ abstract class _$$ITaskReadImplCopyWith<$Res> implements $ITaskReadCopyWith<$Res
 }
 
 /// @nodoc
-class __$$ITaskReadImplCopyWithImpl<$Res> extends _$ITaskReadCopyWithImpl<$Res, _$ITaskReadImpl>
+class __$$ITaskReadImplCopyWithImpl<$Res>
+    extends _$ITaskReadCopyWithImpl<$Res, _$ITaskReadImpl>
     implements _$$ITaskReadImplCopyWith<$Res> {
-  __$$ITaskReadImplCopyWithImpl(_$ITaskReadImpl _value, $Res Function(_$ITaskReadImpl) _then)
+  __$$ITaskReadImplCopyWithImpl(
+      _$ITaskReadImpl _value, $Res Function(_$ITaskReadImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ITaskRead
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -152,7 +166,8 @@ class _$ITaskReadImpl implements _ITaskRead {
       this.deadline,
       @JsonKey(name: 'project_id') this.projectId});
 
-  factory _$ITaskReadImpl.fromJson(Map<String, dynamic> json) => _$$ITaskReadImplFromJson(json);
+  factory _$ITaskReadImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ITaskReadImplFromJson(json);
 
   @override
   final String name;
@@ -180,15 +195,20 @@ class _$ITaskReadImpl implements _ITaskRead {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.done, done) || other.done == done) &&
-            (identical(other.deadline, deadline) || other.deadline == deadline) &&
-            (identical(other.projectId, projectId) || other.projectId == projectId));
+            (identical(other.deadline, deadline) ||
+                other.deadline == deadline) &&
+            (identical(other.projectId, projectId) ||
+                other.projectId == projectId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, name, id, done, deadline, projectId);
+  int get hashCode =>
+      Object.hash(runtimeType, name, id, done, deadline, projectId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ITaskRead
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ITaskReadImplCopyWith<_$ITaskReadImpl> get copyWith =>
@@ -210,7 +230,8 @@ abstract class _ITaskRead implements ITaskRead {
       final DateTime? deadline,
       @JsonKey(name: 'project_id') final String? projectId}) = _$ITaskReadImpl;
 
-  factory _ITaskRead.fromJson(Map<String, dynamic> json) = _$ITaskReadImpl.fromJson;
+  factory _ITaskRead.fromJson(Map<String, dynamic> json) =
+      _$ITaskReadImpl.fromJson;
 
   @override
   String get name;
@@ -223,7 +244,11 @@ abstract class _ITaskRead implements ITaskRead {
   @override
   @JsonKey(name: 'project_id')
   String? get projectId;
+
+  /// Create a copy of ITaskRead
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$ITaskReadImplCopyWith<_$ITaskReadImpl> get copyWith => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ITaskReadImplCopyWith<_$ITaskReadImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

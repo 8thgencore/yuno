@@ -12,7 +12,7 @@ part of 'i_auth_forgot_password.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 IAuthForgotPassword _$IAuthForgotPasswordFromJson(Map<String, dynamic> json) {
   return _IAuthForgotPassword.fromJson(json);
@@ -22,8 +22,12 @@ IAuthForgotPassword _$IAuthForgotPasswordFromJson(Map<String, dynamic> json) {
 mixin _$IAuthForgotPassword {
   String get email => throw _privateConstructorUsedError;
 
+  /// Serializes this IAuthForgotPassword to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of IAuthForgotPassword
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $IAuthForgotPasswordCopyWith<IAuthForgotPassword> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -47,6 +51,8 @@ class _$IAuthForgotPasswordCopyWithImpl<$Res, $Val extends IAuthForgotPassword>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IAuthForgotPassword
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -64,8 +70,8 @@ class _$IAuthForgotPasswordCopyWithImpl<$Res, $Val extends IAuthForgotPassword>
 /// @nodoc
 abstract class _$$IAuthForgotPasswordImplCopyWith<$Res>
     implements $IAuthForgotPasswordCopyWith<$Res> {
-  factory _$$IAuthForgotPasswordImplCopyWith(
-          _$IAuthForgotPasswordImpl value, $Res Function(_$IAuthForgotPasswordImpl) then) =
+  factory _$$IAuthForgotPasswordImplCopyWith(_$IAuthForgotPasswordImpl value,
+          $Res Function(_$IAuthForgotPasswordImpl) then) =
       __$$IAuthForgotPasswordImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -76,10 +82,12 @@ abstract class _$$IAuthForgotPasswordImplCopyWith<$Res>
 class __$$IAuthForgotPasswordImplCopyWithImpl<$Res>
     extends _$IAuthForgotPasswordCopyWithImpl<$Res, _$IAuthForgotPasswordImpl>
     implements _$$IAuthForgotPasswordImplCopyWith<$Res> {
-  __$$IAuthForgotPasswordImplCopyWithImpl(
-      _$IAuthForgotPasswordImpl _value, $Res Function(_$IAuthForgotPasswordImpl) _then)
+  __$$IAuthForgotPasswordImplCopyWithImpl(_$IAuthForgotPasswordImpl _value,
+      $Res Function(_$IAuthForgotPasswordImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IAuthForgotPassword
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -118,15 +126,18 @@ class _$IAuthForgotPasswordImpl implements _IAuthForgotPassword {
             (identical(other.email, email) || other.email == email));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, email);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IAuthForgotPassword
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IAuthForgotPasswordImplCopyWith<_$IAuthForgotPasswordImpl> get copyWith =>
-      __$$IAuthForgotPasswordImplCopyWithImpl<_$IAuthForgotPasswordImpl>(this, _$identity);
+      __$$IAuthForgotPasswordImplCopyWithImpl<_$IAuthForgotPasswordImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -137,15 +148,19 @@ class _$IAuthForgotPasswordImpl implements _IAuthForgotPassword {
 }
 
 abstract class _IAuthForgotPassword implements IAuthForgotPassword {
-  const factory _IAuthForgotPassword({required final String email}) = _$IAuthForgotPasswordImpl;
+  const factory _IAuthForgotPassword({required final String email}) =
+      _$IAuthForgotPasswordImpl;
 
   factory _IAuthForgotPassword.fromJson(Map<String, dynamic> json) =
       _$IAuthForgotPasswordImpl.fromJson;
 
   @override
   String get email;
+
+  /// Create a copy of IAuthForgotPassword
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$IAuthForgotPasswordImplCopyWith<_$IAuthForgotPasswordImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

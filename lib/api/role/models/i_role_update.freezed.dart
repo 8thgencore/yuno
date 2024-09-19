@@ -12,7 +12,7 @@ part of 'i_role_update.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 IRoleUpdate _$IRoleUpdateFromJson(Map<String, dynamic> json) {
   return _IRoleUpdate.fromJson(json);
@@ -23,14 +23,20 @@ mixin _$IRoleUpdate {
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
 
+  /// Serializes this IRoleUpdate to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $IRoleUpdateCopyWith<IRoleUpdate> get copyWith => throw _privateConstructorUsedError;
+
+  /// Create a copy of IRoleUpdate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $IRoleUpdateCopyWith<IRoleUpdate> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $IRoleUpdateCopyWith<$Res> {
-  factory $IRoleUpdateCopyWith(IRoleUpdate value, $Res Function(IRoleUpdate) then) =
+  factory $IRoleUpdateCopyWith(
+          IRoleUpdate value, $Res Function(IRoleUpdate) then) =
       _$IRoleUpdateCopyWithImpl<$Res, IRoleUpdate>;
   @useResult
   $Res call({String name, String description});
@@ -46,6 +52,8 @@ class _$IRoleUpdateCopyWithImpl<$Res, $Val extends IRoleUpdate>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IRoleUpdate
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -66,7 +74,8 @@ class _$IRoleUpdateCopyWithImpl<$Res, $Val extends IRoleUpdate>
 }
 
 /// @nodoc
-abstract class _$$IRoleUpdateImplCopyWith<$Res> implements $IRoleUpdateCopyWith<$Res> {
+abstract class _$$IRoleUpdateImplCopyWith<$Res>
+    implements $IRoleUpdateCopyWith<$Res> {
   factory _$$IRoleUpdateImplCopyWith(
           _$IRoleUpdateImpl value, $Res Function(_$IRoleUpdateImpl) then) =
       __$$IRoleUpdateImplCopyWithImpl<$Res>;
@@ -79,9 +88,12 @@ abstract class _$$IRoleUpdateImplCopyWith<$Res> implements $IRoleUpdateCopyWith<
 class __$$IRoleUpdateImplCopyWithImpl<$Res>
     extends _$IRoleUpdateCopyWithImpl<$Res, _$IRoleUpdateImpl>
     implements _$$IRoleUpdateImplCopyWith<$Res> {
-  __$$IRoleUpdateImplCopyWithImpl(_$IRoleUpdateImpl _value, $Res Function(_$IRoleUpdateImpl) _then)
+  __$$IRoleUpdateImplCopyWithImpl(
+      _$IRoleUpdateImpl _value, $Res Function(_$IRoleUpdateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IRoleUpdate
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -106,7 +118,8 @@ class __$$IRoleUpdateImplCopyWithImpl<$Res>
 class _$IRoleUpdateImpl implements _IRoleUpdate {
   const _$IRoleUpdateImpl({required this.name, required this.description});
 
-  factory _$IRoleUpdateImpl.fromJson(Map<String, dynamic> json) => _$$IRoleUpdateImplFromJson(json);
+  factory _$IRoleUpdateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IRoleUpdateImplFromJson(json);
 
   @override
   final String name;
@@ -124,14 +137,17 @@ class _$IRoleUpdateImpl implements _IRoleUpdate {
         (other.runtimeType == runtimeType &&
             other is _$IRoleUpdateImpl &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) || other.description == description));
+            (identical(other.description, description) ||
+                other.description == description));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, description);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IRoleUpdate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IRoleUpdateImplCopyWith<_$IRoleUpdateImpl> get copyWith =>
@@ -146,16 +162,22 @@ class _$IRoleUpdateImpl implements _IRoleUpdate {
 }
 
 abstract class _IRoleUpdate implements IRoleUpdate {
-  const factory _IRoleUpdate({required final String name, required final String description}) =
-      _$IRoleUpdateImpl;
+  const factory _IRoleUpdate(
+      {required final String name,
+      required final String description}) = _$IRoleUpdateImpl;
 
-  factory _IRoleUpdate.fromJson(Map<String, dynamic> json) = _$IRoleUpdateImpl.fromJson;
+  factory _IRoleUpdate.fromJson(Map<String, dynamic> json) =
+      _$IRoleUpdateImpl.fromJson;
 
   @override
   String get name;
   @override
   String get description;
+
+  /// Create a copy of IRoleUpdate
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$IRoleUpdateImplCopyWith<_$IRoleUpdateImpl> get copyWith => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$IRoleUpdateImplCopyWith<_$IRoleUpdateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

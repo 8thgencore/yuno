@@ -12,7 +12,7 @@ part of 'i_image_media_read.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 IImageMediaRead _$IImageMediaReadFromJson(Map<String, dynamic> json) {
   return _IImageMediaRead.fromJson(json);
@@ -26,18 +26,27 @@ mixin _$IImageMediaRead {
   int? get width => throw _privateConstructorUsedError;
   int? get height => throw _privateConstructorUsedError;
 
+  /// Serializes this IImageMediaRead to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $IImageMediaReadCopyWith<IImageMediaRead> get copyWith => throw _privateConstructorUsedError;
+
+  /// Create a copy of IImageMediaRead
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $IImageMediaReadCopyWith<IImageMediaRead> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $IImageMediaReadCopyWith<$Res> {
-  factory $IImageMediaReadCopyWith(IImageMediaRead value, $Res Function(IImageMediaRead) then) =
+  factory $IImageMediaReadCopyWith(
+          IImageMediaRead value, $Res Function(IImageMediaRead) then) =
       _$IImageMediaReadCopyWithImpl<$Res, IImageMediaRead>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'file_format') String fileFormat, IMediaRead media, int? width, int? height});
+      {@JsonKey(name: 'file_format') String fileFormat,
+      IMediaRead media,
+      int? width,
+      int? height});
 
   $IMediaReadCopyWith<$Res> get media;
 }
@@ -52,6 +61,8 @@ class _$IImageMediaReadCopyWithImpl<$Res, $Val extends IImageMediaRead>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IImageMediaRead
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -80,6 +91,8 @@ class _$IImageMediaReadCopyWithImpl<$Res, $Val extends IImageMediaRead>
     ) as $Val);
   }
 
+  /// Create a copy of IImageMediaRead
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $IMediaReadCopyWith<$Res> get media {
@@ -90,14 +103,18 @@ class _$IImageMediaReadCopyWithImpl<$Res, $Val extends IImageMediaRead>
 }
 
 /// @nodoc
-abstract class _$$IImageMediaReadImplCopyWith<$Res> implements $IImageMediaReadCopyWith<$Res> {
-  factory _$$IImageMediaReadImplCopyWith(
-          _$IImageMediaReadImpl value, $Res Function(_$IImageMediaReadImpl) then) =
+abstract class _$$IImageMediaReadImplCopyWith<$Res>
+    implements $IImageMediaReadCopyWith<$Res> {
+  factory _$$IImageMediaReadImplCopyWith(_$IImageMediaReadImpl value,
+          $Res Function(_$IImageMediaReadImpl) then) =
       __$$IImageMediaReadImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'file_format') String fileFormat, IMediaRead media, int? width, int? height});
+      {@JsonKey(name: 'file_format') String fileFormat,
+      IMediaRead media,
+      int? width,
+      int? height});
 
   @override
   $IMediaReadCopyWith<$Res> get media;
@@ -111,6 +128,8 @@ class __$$IImageMediaReadImplCopyWithImpl<$Res>
       _$IImageMediaReadImpl _value, $Res Function(_$IImageMediaReadImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IImageMediaRead
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -172,21 +191,26 @@ class _$IImageMediaReadImpl implements _IImageMediaRead {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$IImageMediaReadImpl &&
-            (identical(other.fileFormat, fileFormat) || other.fileFormat == fileFormat) &&
+            (identical(other.fileFormat, fileFormat) ||
+                other.fileFormat == fileFormat) &&
             (identical(other.media, media) || other.media == media) &&
             (identical(other.width, width) || other.width == width) &&
             (identical(other.height, height) || other.height == height));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, fileFormat, media, width, height);
+  int get hashCode =>
+      Object.hash(runtimeType, fileFormat, media, width, height);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IImageMediaRead
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IImageMediaReadImplCopyWith<_$IImageMediaReadImpl> get copyWith =>
-      __$$IImageMediaReadImplCopyWithImpl<_$IImageMediaReadImpl>(this, _$identity);
+      __$$IImageMediaReadImplCopyWithImpl<_$IImageMediaReadImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -203,7 +227,8 @@ abstract class _IImageMediaRead implements IImageMediaRead {
       final int? width,
       final int? height}) = _$IImageMediaReadImpl;
 
-  factory _IImageMediaRead.fromJson(Map<String, dynamic> json) = _$IImageMediaReadImpl.fromJson;
+  factory _IImageMediaRead.fromJson(Map<String, dynamic> json) =
+      _$IImageMediaReadImpl.fromJson;
 
   @override
   @JsonKey(name: 'file_format')
@@ -214,8 +239,11 @@ abstract class _IImageMediaRead implements IImageMediaRead {
   int? get width;
   @override
   int? get height;
+
+  /// Create a copy of IImageMediaRead
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$IImageMediaReadImplCopyWith<_$IImageMediaReadImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

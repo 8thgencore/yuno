@@ -12,7 +12,7 @@ part of 'i_role_read.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 IRoleRead _$IRoleReadFromJson(Map<String, dynamic> json) {
   return _IRoleRead.fromJson(json);
@@ -24,9 +24,14 @@ mixin _$IRoleRead {
   String get description => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
 
+  /// Serializes this IRoleRead to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $IRoleReadCopyWith<IRoleRead> get copyWith => throw _privateConstructorUsedError;
+
+  /// Create a copy of IRoleRead
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $IRoleReadCopyWith<IRoleRead> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -38,7 +43,8 @@ abstract class $IRoleReadCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$IRoleReadCopyWithImpl<$Res, $Val extends IRoleRead> implements $IRoleReadCopyWith<$Res> {
+class _$IRoleReadCopyWithImpl<$Res, $Val extends IRoleRead>
+    implements $IRoleReadCopyWith<$Res> {
   _$IRoleReadCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -46,6 +52,8 @@ class _$IRoleReadCopyWithImpl<$Res, $Val extends IRoleRead> implements $IRoleRea
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IRoleRead
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -71,8 +79,10 @@ class _$IRoleReadCopyWithImpl<$Res, $Val extends IRoleRead> implements $IRoleRea
 }
 
 /// @nodoc
-abstract class _$$IRoleReadImplCopyWith<$Res> implements $IRoleReadCopyWith<$Res> {
-  factory _$$IRoleReadImplCopyWith(_$IRoleReadImpl value, $Res Function(_$IRoleReadImpl) then) =
+abstract class _$$IRoleReadImplCopyWith<$Res>
+    implements $IRoleReadCopyWith<$Res> {
+  factory _$$IRoleReadImplCopyWith(
+          _$IRoleReadImpl value, $Res Function(_$IRoleReadImpl) then) =
       __$$IRoleReadImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -80,11 +90,15 @@ abstract class _$$IRoleReadImplCopyWith<$Res> implements $IRoleReadCopyWith<$Res
 }
 
 /// @nodoc
-class __$$IRoleReadImplCopyWithImpl<$Res> extends _$IRoleReadCopyWithImpl<$Res, _$IRoleReadImpl>
+class __$$IRoleReadImplCopyWithImpl<$Res>
+    extends _$IRoleReadCopyWithImpl<$Res, _$IRoleReadImpl>
     implements _$$IRoleReadImplCopyWith<$Res> {
-  __$$IRoleReadImplCopyWithImpl(_$IRoleReadImpl _value, $Res Function(_$IRoleReadImpl) _then)
+  __$$IRoleReadImplCopyWithImpl(
+      _$IRoleReadImpl _value, $Res Function(_$IRoleReadImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IRoleRead
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -112,9 +126,11 @@ class __$$IRoleReadImplCopyWithImpl<$Res> extends _$IRoleReadCopyWithImpl<$Res, 
 /// @nodoc
 @JsonSerializable()
 class _$IRoleReadImpl implements _IRoleRead {
-  const _$IRoleReadImpl({required this.name, required this.description, required this.id});
+  const _$IRoleReadImpl(
+      {required this.name, required this.description, required this.id});
 
-  factory _$IRoleReadImpl.fromJson(Map<String, dynamic> json) => _$$IRoleReadImplFromJson(json);
+  factory _$IRoleReadImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IRoleReadImplFromJson(json);
 
   @override
   final String name;
@@ -134,15 +150,18 @@ class _$IRoleReadImpl implements _IRoleRead {
         (other.runtimeType == runtimeType &&
             other is _$IRoleReadImpl &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) || other.description == description) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.id, id) || other.id == id));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, description, id);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IRoleRead
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IRoleReadImplCopyWith<_$IRoleReadImpl> get copyWith =>
@@ -162,7 +181,8 @@ abstract class _IRoleRead implements IRoleRead {
       required final String description,
       required final String id}) = _$IRoleReadImpl;
 
-  factory _IRoleRead.fromJson(Map<String, dynamic> json) = _$IRoleReadImpl.fromJson;
+  factory _IRoleRead.fromJson(Map<String, dynamic> json) =
+      _$IRoleReadImpl.fromJson;
 
   @override
   String get name;
@@ -170,7 +190,11 @@ abstract class _IRoleRead implements IRoleRead {
   String get description;
   @override
   String get id;
+
+  /// Create a copy of IRoleRead
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$IRoleReadImplCopyWith<_$IRoleReadImpl> get copyWith => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$IRoleReadImplCopyWith<_$IRoleReadImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

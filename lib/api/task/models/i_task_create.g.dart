@@ -6,10 +6,13 @@ part of 'i_task_create.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ITaskCreateImpl _$$ITaskCreateImplFromJson(Map<String, dynamic> json) => _$ITaskCreateImpl(
+_$ITaskCreateImpl _$$ITaskCreateImplFromJson(Map<String, dynamic> json) =>
+    _$ITaskCreateImpl(
       name: json['name'] as String,
       done: json['done'] as bool? ?? false,
-      deadline: json['deadline'] == null ? null : DateTime.parse(json['deadline'] as String),
+      deadline: json['deadline'] == null
+          ? null
+          : DateTime.parse(json['deadline'] as String),
       projectId: json['project_id'] as String?,
     );
 

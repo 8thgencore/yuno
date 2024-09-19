@@ -12,7 +12,7 @@ part of 'reset_password_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ResetPasswordEvent {
@@ -20,8 +20,10 @@ mixin _$ResetPasswordEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_PasswordChangedEvent value) passwordChanged,
     required TResult Function(_PasswordFocusLostEvent value) passwordFocusLost,
-    required TResult Function(_PasswordConfirmChangedEvent value) passwordConfirmChanged,
-    required TResult Function(_PasswordConfirmFocusLostEvent value) passwordConfirmFocusLost,
+    required TResult Function(_PasswordConfirmChangedEvent value)
+        passwordConfirmChanged,
+    required TResult Function(_PasswordConfirmFocusLostEvent value)
+        passwordConfirmFocusLost,
     required TResult Function(_ContinuedEvent value) continued,
     required TResult Function(_ClosedErrorEvent value) closedError,
   }) =>
@@ -30,8 +32,10 @@ mixin _$ResetPasswordEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PasswordChangedEvent value)? passwordChanged,
     TResult? Function(_PasswordFocusLostEvent value)? passwordFocusLost,
-    TResult? Function(_PasswordConfirmChangedEvent value)? passwordConfirmChanged,
-    TResult? Function(_PasswordConfirmFocusLostEvent value)? passwordConfirmFocusLost,
+    TResult? Function(_PasswordConfirmChangedEvent value)?
+        passwordConfirmChanged,
+    TResult? Function(_PasswordConfirmFocusLostEvent value)?
+        passwordConfirmFocusLost,
     TResult? Function(_ContinuedEvent value)? continued,
     TResult? Function(_ClosedErrorEvent value)? closedError,
   }) =>
@@ -40,8 +44,10 @@ mixin _$ResetPasswordEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PasswordChangedEvent value)? passwordChanged,
     TResult Function(_PasswordFocusLostEvent value)? passwordFocusLost,
-    TResult Function(_PasswordConfirmChangedEvent value)? passwordConfirmChanged,
-    TResult Function(_PasswordConfirmFocusLostEvent value)? passwordConfirmFocusLost,
+    TResult Function(_PasswordConfirmChangedEvent value)?
+        passwordConfirmChanged,
+    TResult Function(_PasswordConfirmFocusLostEvent value)?
+        passwordConfirmFocusLost,
     TResult Function(_ContinuedEvent value)? continued,
     TResult Function(_ClosedErrorEvent value)? closedError,
     required TResult orElse(),
@@ -78,8 +84,10 @@ class _$PasswordChangedEventImpl implements _PasswordChangedEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_PasswordChangedEvent value) passwordChanged,
     required TResult Function(_PasswordFocusLostEvent value) passwordFocusLost,
-    required TResult Function(_PasswordConfirmChangedEvent value) passwordConfirmChanged,
-    required TResult Function(_PasswordConfirmFocusLostEvent value) passwordConfirmFocusLost,
+    required TResult Function(_PasswordConfirmChangedEvent value)
+        passwordConfirmChanged,
+    required TResult Function(_PasswordConfirmFocusLostEvent value)
+        passwordConfirmFocusLost,
     required TResult Function(_ContinuedEvent value) continued,
     required TResult Function(_ClosedErrorEvent value) closedError,
   }) {
@@ -91,8 +99,10 @@ class _$PasswordChangedEventImpl implements _PasswordChangedEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PasswordChangedEvent value)? passwordChanged,
     TResult? Function(_PasswordFocusLostEvent value)? passwordFocusLost,
-    TResult? Function(_PasswordConfirmChangedEvent value)? passwordConfirmChanged,
-    TResult? Function(_PasswordConfirmFocusLostEvent value)? passwordConfirmFocusLost,
+    TResult? Function(_PasswordConfirmChangedEvent value)?
+        passwordConfirmChanged,
+    TResult? Function(_PasswordConfirmFocusLostEvent value)?
+        passwordConfirmFocusLost,
     TResult? Function(_ContinuedEvent value)? continued,
     TResult? Function(_ClosedErrorEvent value)? closedError,
   }) {
@@ -104,8 +114,10 @@ class _$PasswordChangedEventImpl implements _PasswordChangedEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PasswordChangedEvent value)? passwordChanged,
     TResult Function(_PasswordFocusLostEvent value)? passwordFocusLost,
-    TResult Function(_PasswordConfirmChangedEvent value)? passwordConfirmChanged,
-    TResult Function(_PasswordConfirmFocusLostEvent value)? passwordConfirmFocusLost,
+    TResult Function(_PasswordConfirmChangedEvent value)?
+        passwordConfirmChanged,
+    TResult Function(_PasswordConfirmFocusLostEvent value)?
+        passwordConfirmFocusLost,
     TResult Function(_ContinuedEvent value)? continued,
     TResult Function(_ClosedErrorEvent value)? closedError,
     required TResult orElse(),
@@ -118,7 +130,8 @@ class _$PasswordChangedEventImpl implements _PasswordChangedEvent {
 }
 
 abstract class _PasswordChangedEvent implements ResetPasswordEvent {
-  const factory _PasswordChangedEvent(final String text) = _$PasswordChangedEventImpl;
+  const factory _PasswordChangedEvent(final String text) =
+      _$PasswordChangedEventImpl;
 
   String get text;
 }
@@ -136,7 +149,8 @@ class _$PasswordFocusLostEventImpl implements _PasswordFocusLostEvent {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$PasswordFocusLostEventImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$PasswordFocusLostEventImpl);
   }
 
   @override
@@ -147,8 +161,10 @@ class _$PasswordFocusLostEventImpl implements _PasswordFocusLostEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_PasswordChangedEvent value) passwordChanged,
     required TResult Function(_PasswordFocusLostEvent value) passwordFocusLost,
-    required TResult Function(_PasswordConfirmChangedEvent value) passwordConfirmChanged,
-    required TResult Function(_PasswordConfirmFocusLostEvent value) passwordConfirmFocusLost,
+    required TResult Function(_PasswordConfirmChangedEvent value)
+        passwordConfirmChanged,
+    required TResult Function(_PasswordConfirmFocusLostEvent value)
+        passwordConfirmFocusLost,
     required TResult Function(_ContinuedEvent value) continued,
     required TResult Function(_ClosedErrorEvent value) closedError,
   }) {
@@ -160,8 +176,10 @@ class _$PasswordFocusLostEventImpl implements _PasswordFocusLostEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PasswordChangedEvent value)? passwordChanged,
     TResult? Function(_PasswordFocusLostEvent value)? passwordFocusLost,
-    TResult? Function(_PasswordConfirmChangedEvent value)? passwordConfirmChanged,
-    TResult? Function(_PasswordConfirmFocusLostEvent value)? passwordConfirmFocusLost,
+    TResult? Function(_PasswordConfirmChangedEvent value)?
+        passwordConfirmChanged,
+    TResult? Function(_PasswordConfirmFocusLostEvent value)?
+        passwordConfirmFocusLost,
     TResult? Function(_ContinuedEvent value)? continued,
     TResult? Function(_ClosedErrorEvent value)? closedError,
   }) {
@@ -173,8 +191,10 @@ class _$PasswordFocusLostEventImpl implements _PasswordFocusLostEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PasswordChangedEvent value)? passwordChanged,
     TResult Function(_PasswordFocusLostEvent value)? passwordFocusLost,
-    TResult Function(_PasswordConfirmChangedEvent value)? passwordConfirmChanged,
-    TResult Function(_PasswordConfirmFocusLostEvent value)? passwordConfirmFocusLost,
+    TResult Function(_PasswordConfirmChangedEvent value)?
+        passwordConfirmChanged,
+    TResult Function(_PasswordConfirmFocusLostEvent value)?
+        passwordConfirmFocusLost,
     TResult Function(_ContinuedEvent value)? continued,
     TResult Function(_ClosedErrorEvent value)? closedError,
     required TResult orElse(),
@@ -192,7 +212,8 @@ abstract class _PasswordFocusLostEvent implements ResetPasswordEvent {
 
 /// @nodoc
 
-class _$PasswordConfirmChangedEventImpl implements _PasswordConfirmChangedEvent {
+class _$PasswordConfirmChangedEventImpl
+    implements _PasswordConfirmChangedEvent {
   const _$PasswordConfirmChangedEventImpl(this.text);
 
   @override
@@ -219,8 +240,10 @@ class _$PasswordConfirmChangedEventImpl implements _PasswordConfirmChangedEvent 
   TResult map<TResult extends Object?>({
     required TResult Function(_PasswordChangedEvent value) passwordChanged,
     required TResult Function(_PasswordFocusLostEvent value) passwordFocusLost,
-    required TResult Function(_PasswordConfirmChangedEvent value) passwordConfirmChanged,
-    required TResult Function(_PasswordConfirmFocusLostEvent value) passwordConfirmFocusLost,
+    required TResult Function(_PasswordConfirmChangedEvent value)
+        passwordConfirmChanged,
+    required TResult Function(_PasswordConfirmFocusLostEvent value)
+        passwordConfirmFocusLost,
     required TResult Function(_ContinuedEvent value) continued,
     required TResult Function(_ClosedErrorEvent value) closedError,
   }) {
@@ -232,8 +255,10 @@ class _$PasswordConfirmChangedEventImpl implements _PasswordConfirmChangedEvent 
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PasswordChangedEvent value)? passwordChanged,
     TResult? Function(_PasswordFocusLostEvent value)? passwordFocusLost,
-    TResult? Function(_PasswordConfirmChangedEvent value)? passwordConfirmChanged,
-    TResult? Function(_PasswordConfirmFocusLostEvent value)? passwordConfirmFocusLost,
+    TResult? Function(_PasswordConfirmChangedEvent value)?
+        passwordConfirmChanged,
+    TResult? Function(_PasswordConfirmFocusLostEvent value)?
+        passwordConfirmFocusLost,
     TResult? Function(_ContinuedEvent value)? continued,
     TResult? Function(_ClosedErrorEvent value)? closedError,
   }) {
@@ -245,8 +270,10 @@ class _$PasswordConfirmChangedEventImpl implements _PasswordConfirmChangedEvent 
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PasswordChangedEvent value)? passwordChanged,
     TResult Function(_PasswordFocusLostEvent value)? passwordFocusLost,
-    TResult Function(_PasswordConfirmChangedEvent value)? passwordConfirmChanged,
-    TResult Function(_PasswordConfirmFocusLostEvent value)? passwordConfirmFocusLost,
+    TResult Function(_PasswordConfirmChangedEvent value)?
+        passwordConfirmChanged,
+    TResult Function(_PasswordConfirmFocusLostEvent value)?
+        passwordConfirmFocusLost,
     TResult Function(_ContinuedEvent value)? continued,
     TResult Function(_ClosedErrorEvent value)? closedError,
     required TResult orElse(),
@@ -259,14 +286,16 @@ class _$PasswordConfirmChangedEventImpl implements _PasswordConfirmChangedEvent 
 }
 
 abstract class _PasswordConfirmChangedEvent implements ResetPasswordEvent {
-  const factory _PasswordConfirmChangedEvent(final String text) = _$PasswordConfirmChangedEventImpl;
+  const factory _PasswordConfirmChangedEvent(final String text) =
+      _$PasswordConfirmChangedEventImpl;
 
   String get text;
 }
 
 /// @nodoc
 
-class _$PasswordConfirmFocusLostEventImpl implements _PasswordConfirmFocusLostEvent {
+class _$PasswordConfirmFocusLostEventImpl
+    implements _PasswordConfirmFocusLostEvent {
   const _$PasswordConfirmFocusLostEventImpl();
 
   @override
@@ -277,7 +306,8 @@ class _$PasswordConfirmFocusLostEventImpl implements _PasswordConfirmFocusLostEv
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$PasswordConfirmFocusLostEventImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$PasswordConfirmFocusLostEventImpl);
   }
 
   @override
@@ -288,8 +318,10 @@ class _$PasswordConfirmFocusLostEventImpl implements _PasswordConfirmFocusLostEv
   TResult map<TResult extends Object?>({
     required TResult Function(_PasswordChangedEvent value) passwordChanged,
     required TResult Function(_PasswordFocusLostEvent value) passwordFocusLost,
-    required TResult Function(_PasswordConfirmChangedEvent value) passwordConfirmChanged,
-    required TResult Function(_PasswordConfirmFocusLostEvent value) passwordConfirmFocusLost,
+    required TResult Function(_PasswordConfirmChangedEvent value)
+        passwordConfirmChanged,
+    required TResult Function(_PasswordConfirmFocusLostEvent value)
+        passwordConfirmFocusLost,
     required TResult Function(_ContinuedEvent value) continued,
     required TResult Function(_ClosedErrorEvent value) closedError,
   }) {
@@ -301,8 +333,10 @@ class _$PasswordConfirmFocusLostEventImpl implements _PasswordConfirmFocusLostEv
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PasswordChangedEvent value)? passwordChanged,
     TResult? Function(_PasswordFocusLostEvent value)? passwordFocusLost,
-    TResult? Function(_PasswordConfirmChangedEvent value)? passwordConfirmChanged,
-    TResult? Function(_PasswordConfirmFocusLostEvent value)? passwordConfirmFocusLost,
+    TResult? Function(_PasswordConfirmChangedEvent value)?
+        passwordConfirmChanged,
+    TResult? Function(_PasswordConfirmFocusLostEvent value)?
+        passwordConfirmFocusLost,
     TResult? Function(_ContinuedEvent value)? continued,
     TResult? Function(_ClosedErrorEvent value)? closedError,
   }) {
@@ -314,8 +348,10 @@ class _$PasswordConfirmFocusLostEventImpl implements _PasswordConfirmFocusLostEv
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PasswordChangedEvent value)? passwordChanged,
     TResult Function(_PasswordFocusLostEvent value)? passwordFocusLost,
-    TResult Function(_PasswordConfirmChangedEvent value)? passwordConfirmChanged,
-    TResult Function(_PasswordConfirmFocusLostEvent value)? passwordConfirmFocusLost,
+    TResult Function(_PasswordConfirmChangedEvent value)?
+        passwordConfirmChanged,
+    TResult Function(_PasswordConfirmFocusLostEvent value)?
+        passwordConfirmFocusLost,
     TResult Function(_ContinuedEvent value)? continued,
     TResult Function(_ClosedErrorEvent value)? closedError,
     required TResult orElse(),
@@ -328,7 +364,8 @@ class _$PasswordConfirmFocusLostEventImpl implements _PasswordConfirmFocusLostEv
 }
 
 abstract class _PasswordConfirmFocusLostEvent implements ResetPasswordEvent {
-  const factory _PasswordConfirmFocusLostEvent() = _$PasswordConfirmFocusLostEventImpl;
+  const factory _PasswordConfirmFocusLostEvent() =
+      _$PasswordConfirmFocusLostEventImpl;
 }
 
 /// @nodoc
@@ -355,8 +392,10 @@ class _$ContinuedEventImpl implements _ContinuedEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_PasswordChangedEvent value) passwordChanged,
     required TResult Function(_PasswordFocusLostEvent value) passwordFocusLost,
-    required TResult Function(_PasswordConfirmChangedEvent value) passwordConfirmChanged,
-    required TResult Function(_PasswordConfirmFocusLostEvent value) passwordConfirmFocusLost,
+    required TResult Function(_PasswordConfirmChangedEvent value)
+        passwordConfirmChanged,
+    required TResult Function(_PasswordConfirmFocusLostEvent value)
+        passwordConfirmFocusLost,
     required TResult Function(_ContinuedEvent value) continued,
     required TResult Function(_ClosedErrorEvent value) closedError,
   }) {
@@ -368,8 +407,10 @@ class _$ContinuedEventImpl implements _ContinuedEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PasswordChangedEvent value)? passwordChanged,
     TResult? Function(_PasswordFocusLostEvent value)? passwordFocusLost,
-    TResult? Function(_PasswordConfirmChangedEvent value)? passwordConfirmChanged,
-    TResult? Function(_PasswordConfirmFocusLostEvent value)? passwordConfirmFocusLost,
+    TResult? Function(_PasswordConfirmChangedEvent value)?
+        passwordConfirmChanged,
+    TResult? Function(_PasswordConfirmFocusLostEvent value)?
+        passwordConfirmFocusLost,
     TResult? Function(_ContinuedEvent value)? continued,
     TResult? Function(_ClosedErrorEvent value)? closedError,
   }) {
@@ -381,8 +422,10 @@ class _$ContinuedEventImpl implements _ContinuedEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PasswordChangedEvent value)? passwordChanged,
     TResult Function(_PasswordFocusLostEvent value)? passwordFocusLost,
-    TResult Function(_PasswordConfirmChangedEvent value)? passwordConfirmChanged,
-    TResult Function(_PasswordConfirmFocusLostEvent value)? passwordConfirmFocusLost,
+    TResult Function(_PasswordConfirmChangedEvent value)?
+        passwordConfirmChanged,
+    TResult Function(_PasswordConfirmFocusLostEvent value)?
+        passwordConfirmFocusLost,
     TResult Function(_ContinuedEvent value)? continued,
     TResult Function(_ClosedErrorEvent value)? closedError,
     required TResult orElse(),
@@ -422,8 +465,10 @@ class _$ClosedErrorEventImpl implements _ClosedErrorEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_PasswordChangedEvent value) passwordChanged,
     required TResult Function(_PasswordFocusLostEvent value) passwordFocusLost,
-    required TResult Function(_PasswordConfirmChangedEvent value) passwordConfirmChanged,
-    required TResult Function(_PasswordConfirmFocusLostEvent value) passwordConfirmFocusLost,
+    required TResult Function(_PasswordConfirmChangedEvent value)
+        passwordConfirmChanged,
+    required TResult Function(_PasswordConfirmFocusLostEvent value)
+        passwordConfirmFocusLost,
     required TResult Function(_ContinuedEvent value) continued,
     required TResult Function(_ClosedErrorEvent value) closedError,
   }) {
@@ -435,8 +480,10 @@ class _$ClosedErrorEventImpl implements _ClosedErrorEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PasswordChangedEvent value)? passwordChanged,
     TResult? Function(_PasswordFocusLostEvent value)? passwordFocusLost,
-    TResult? Function(_PasswordConfirmChangedEvent value)? passwordConfirmChanged,
-    TResult? Function(_PasswordConfirmFocusLostEvent value)? passwordConfirmFocusLost,
+    TResult? Function(_PasswordConfirmChangedEvent value)?
+        passwordConfirmChanged,
+    TResult? Function(_PasswordConfirmFocusLostEvent value)?
+        passwordConfirmFocusLost,
     TResult? Function(_ContinuedEvent value)? continued,
     TResult? Function(_ClosedErrorEvent value)? closedError,
   }) {
@@ -448,8 +495,10 @@ class _$ClosedErrorEventImpl implements _ClosedErrorEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PasswordChangedEvent value)? passwordChanged,
     TResult Function(_PasswordFocusLostEvent value)? passwordFocusLost,
-    TResult Function(_PasswordConfirmChangedEvent value)? passwordConfirmChanged,
-    TResult Function(_PasswordConfirmFocusLostEvent value)? passwordConfirmFocusLost,
+    TResult Function(_PasswordConfirmChangedEvent value)?
+        passwordConfirmChanged,
+    TResult Function(_PasswordConfirmFocusLostEvent value)?
+        passwordConfirmFocusLost,
     TResult Function(_ContinuedEvent value)? continued,
     TResult Function(_ClosedErrorEvent value)? closedError,
     required TResult orElse(),
@@ -471,11 +520,14 @@ mixin _$ResetPasswordState {
   String get passwordConfirm => throw _privateConstructorUsedError;
   ResetPasswordStatus get status => throw _privateConstructorUsedError;
   PasswordError? get passwordError => throw _privateConstructorUsedError;
-  PasswordConfirmError? get passwordConfirmError => throw _privateConstructorUsedError;
+  PasswordConfirmError? get passwordConfirmError =>
+      throw _privateConstructorUsedError;
   String? get serverError => throw _privateConstructorUsedError;
   bool get isValid => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ResetPasswordState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ResetPasswordStateCopyWith<ResetPasswordState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -506,6 +558,8 @@ class _$ResetPasswordStateCopyWithImpl<$Res, $Val extends ResetPasswordState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ResetPasswordState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -553,8 +607,8 @@ class _$ResetPasswordStateCopyWithImpl<$Res, $Val extends ResetPasswordState>
 /// @nodoc
 abstract class _$$ResetPasswordStateImplCopyWith<$Res>
     implements $ResetPasswordStateCopyWith<$Res> {
-  factory _$$ResetPasswordStateImplCopyWith(
-          _$ResetPasswordStateImpl value, $Res Function(_$ResetPasswordStateImpl) then) =
+  factory _$$ResetPasswordStateImplCopyWith(_$ResetPasswordStateImpl value,
+          $Res Function(_$ResetPasswordStateImpl) then) =
       __$$ResetPasswordStateImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -572,10 +626,12 @@ abstract class _$$ResetPasswordStateImplCopyWith<$Res>
 class __$$ResetPasswordStateImplCopyWithImpl<$Res>
     extends _$ResetPasswordStateCopyWithImpl<$Res, _$ResetPasswordStateImpl>
     implements _$$ResetPasswordStateImplCopyWith<$Res> {
-  __$$ResetPasswordStateImplCopyWithImpl(
-      _$ResetPasswordStateImpl _value, $Res Function(_$ResetPasswordStateImpl) _then)
+  __$$ResetPasswordStateImplCopyWithImpl(_$ResetPasswordStateImpl _value,
+      $Res Function(_$ResetPasswordStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ResetPasswordState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -659,7 +715,8 @@ class _$ResetPasswordStateImpl implements _ResetPasswordState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ResetPasswordStateImpl &&
-            (identical(other.password, password) || other.password == password) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
             (identical(other.passwordConfirm, passwordConfirm) ||
                 other.passwordConfirm == passwordConfirm) &&
             (identical(other.status, status) || other.status == status) &&
@@ -667,19 +724,23 @@ class _$ResetPasswordStateImpl implements _ResetPasswordState {
                 other.passwordError == passwordError) &&
             (identical(other.passwordConfirmError, passwordConfirmError) ||
                 other.passwordConfirmError == passwordConfirmError) &&
-            (identical(other.serverError, serverError) || other.serverError == serverError) &&
+            (identical(other.serverError, serverError) ||
+                other.serverError == serverError) &&
             (identical(other.isValid, isValid) || other.isValid == isValid));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, password, passwordConfirm, status, passwordError,
-      passwordConfirmError, serverError, isValid);
+  int get hashCode => Object.hash(runtimeType, password, passwordConfirm,
+      status, passwordError, passwordConfirmError, serverError, isValid);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ResetPasswordState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ResetPasswordStateImplCopyWith<_$ResetPasswordStateImpl> get copyWith =>
-      __$$ResetPasswordStateImplCopyWithImpl<_$ResetPasswordStateImpl>(this, _$identity);
+      __$$ResetPasswordStateImplCopyWithImpl<_$ResetPasswordStateImpl>(
+          this, _$identity);
 }
 
 abstract class _ResetPasswordState implements ResetPasswordState {
@@ -706,8 +767,11 @@ abstract class _ResetPasswordState implements ResetPasswordState {
   String? get serverError;
   @override
   bool get isValid;
+
+  /// Create a copy of ResetPasswordState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ResetPasswordStateImplCopyWith<_$ResetPasswordStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

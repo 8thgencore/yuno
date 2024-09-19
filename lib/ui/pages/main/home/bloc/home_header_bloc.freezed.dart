@@ -12,7 +12,7 @@ part of 'home_header_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$HomeHeaderEvent {
@@ -119,16 +119,24 @@ mixin _$HomeHeaderState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
-  $HomeHeaderStateCopyWith<HomeHeaderState> get copyWith => throw _privateConstructorUsedError;
+  /// Create a copy of HomeHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $HomeHeaderStateCopyWith<HomeHeaderState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $HomeHeaderStateCopyWith<$Res> {
-  factory $HomeHeaderStateCopyWith(HomeHeaderState value, $Res Function(HomeHeaderState) then) =
+  factory $HomeHeaderStateCopyWith(
+          HomeHeaderState value, $Res Function(HomeHeaderState) then) =
       _$HomeHeaderStateCopyWithImpl<$Res, HomeHeaderState>;
   @useResult
-  $Res call({String username, int taskLength, ITaskWithProjectName? task, Object? error});
+  $Res call(
+      {String username,
+      int taskLength,
+      ITaskWithProjectName? task,
+      Object? error});
 
   $ITaskWithProjectNameCopyWith<$Res>? get task;
 }
@@ -143,6 +151,8 @@ class _$HomeHeaderStateCopyWithImpl<$Res, $Val extends HomeHeaderState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of HomeHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -168,6 +178,8 @@ class _$HomeHeaderStateCopyWithImpl<$Res, $Val extends HomeHeaderState>
     ) as $Val);
   }
 
+  /// Create a copy of HomeHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ITaskWithProjectNameCopyWith<$Res>? get task {
@@ -182,13 +194,18 @@ class _$HomeHeaderStateCopyWithImpl<$Res, $Val extends HomeHeaderState>
 }
 
 /// @nodoc
-abstract class _$$InitialStateImplCopyWith<$Res> implements $HomeHeaderStateCopyWith<$Res> {
+abstract class _$$InitialStateImplCopyWith<$Res>
+    implements $HomeHeaderStateCopyWith<$Res> {
   factory _$$InitialStateImplCopyWith(
           _$InitialStateImpl value, $Res Function(_$InitialStateImpl) then) =
       __$$InitialStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String username, int taskLength, ITaskWithProjectName? task, Object? error});
+  $Res call(
+      {String username,
+      int taskLength,
+      ITaskWithProjectName? task,
+      Object? error});
 
   @override
   $ITaskWithProjectNameCopyWith<$Res>? get task;
@@ -202,6 +219,8 @@ class __$$InitialStateImplCopyWithImpl<$Res>
       _$InitialStateImpl _value, $Res Function(_$InitialStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HomeHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -254,17 +273,21 @@ class _$InitialStateImpl extends _InitialState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitialStateImpl &&
-            (identical(other.username, username) || other.username == username) &&
-            (identical(other.taskLength, taskLength) || other.taskLength == taskLength) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
+            (identical(other.taskLength, taskLength) ||
+                other.taskLength == taskLength) &&
             (identical(other.task, task) || other.task == task) &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, username, taskLength, task, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, username, taskLength, task,
+      const DeepCollectionEquality().hash(error));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HomeHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InitialStateImplCopyWith<_$InitialStateImpl> get copyWith =>
@@ -324,20 +347,28 @@ abstract class _InitialState extends HomeHeaderState {
   ITaskWithProjectName? get task;
   @override
   Object? get error;
+
+  /// Create a copy of HomeHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InitialStateImplCopyWith<_$InitialStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LoadingStateImplCopyWith<$Res> implements $HomeHeaderStateCopyWith<$Res> {
+abstract class _$$LoadingStateImplCopyWith<$Res>
+    implements $HomeHeaderStateCopyWith<$Res> {
   factory _$$LoadingStateImplCopyWith(
           _$LoadingStateImpl value, $Res Function(_$LoadingStateImpl) then) =
       __$$LoadingStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String username, int taskLength, ITaskWithProjectName? task, Object? error});
+  $Res call(
+      {String username,
+      int taskLength,
+      ITaskWithProjectName? task,
+      Object? error});
 
   @override
   $ITaskWithProjectNameCopyWith<$Res>? get task;
@@ -351,6 +382,8 @@ class __$$LoadingStateImplCopyWithImpl<$Res>
       _$LoadingStateImpl _value, $Res Function(_$LoadingStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HomeHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -403,17 +436,21 @@ class _$LoadingStateImpl extends _LoadingState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadingStateImpl &&
-            (identical(other.username, username) || other.username == username) &&
-            (identical(other.taskLength, taskLength) || other.taskLength == taskLength) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
+            (identical(other.taskLength, taskLength) ||
+                other.taskLength == taskLength) &&
             (identical(other.task, task) || other.task == task) &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, username, taskLength, task, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, username, taskLength, task,
+      const DeepCollectionEquality().hash(error));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HomeHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LoadingStateImplCopyWith<_$LoadingStateImpl> get copyWith =>
@@ -473,20 +510,28 @@ abstract class _LoadingState extends HomeHeaderState {
   ITaskWithProjectName? get task;
   @override
   Object? get error;
+
+  /// Create a copy of HomeHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadingStateImplCopyWith<_$LoadingStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LoadedStateImplCopyWith<$Res> implements $HomeHeaderStateCopyWith<$Res> {
+abstract class _$$LoadedStateImplCopyWith<$Res>
+    implements $HomeHeaderStateCopyWith<$Res> {
   factory _$$LoadedStateImplCopyWith(
           _$LoadedStateImpl value, $Res Function(_$LoadedStateImpl) then) =
       __$$LoadedStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String username, int taskLength, ITaskWithProjectName? task, Object? error});
+  $Res call(
+      {String username,
+      int taskLength,
+      ITaskWithProjectName? task,
+      Object? error});
 
   @override
   $ITaskWithProjectNameCopyWith<$Res>? get task;
@@ -496,9 +541,12 @@ abstract class _$$LoadedStateImplCopyWith<$Res> implements $HomeHeaderStateCopyW
 class __$$LoadedStateImplCopyWithImpl<$Res>
     extends _$HomeHeaderStateCopyWithImpl<$Res, _$LoadedStateImpl>
     implements _$$LoadedStateImplCopyWith<$Res> {
-  __$$LoadedStateImplCopyWithImpl(_$LoadedStateImpl _value, $Res Function(_$LoadedStateImpl) _then)
+  __$$LoadedStateImplCopyWithImpl(
+      _$LoadedStateImpl _value, $Res Function(_$LoadedStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HomeHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -528,7 +576,8 @@ class __$$LoadedStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedStateImpl extends _LoadedState {
-  const _$LoadedStateImpl({required this.username, required this.taskLength, this.task, this.error})
+  const _$LoadedStateImpl(
+      {required this.username, required this.taskLength, this.task, this.error})
       : super._();
 
   @override
@@ -550,17 +599,21 @@ class _$LoadedStateImpl extends _LoadedState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedStateImpl &&
-            (identical(other.username, username) || other.username == username) &&
-            (identical(other.taskLength, taskLength) || other.taskLength == taskLength) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
+            (identical(other.taskLength, taskLength) ||
+                other.taskLength == taskLength) &&
             (identical(other.task, task) || other.task == task) &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, username, taskLength, task, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, username, taskLength, task,
+      const DeepCollectionEquality().hash(error));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HomeHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LoadedStateImplCopyWith<_$LoadedStateImpl> get copyWith =>
@@ -620,19 +673,28 @@ abstract class _LoadedState extends HomeHeaderState {
   ITaskWithProjectName? get task;
   @override
   Object? get error;
+
+  /// Create a copy of HomeHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$LoadedStateImplCopyWith<_$LoadedStateImpl> get copyWith => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LoadedStateImplCopyWith<_$LoadedStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$FailureStateImplCopyWith<$Res> implements $HomeHeaderStateCopyWith<$Res> {
+abstract class _$$FailureStateImplCopyWith<$Res>
+    implements $HomeHeaderStateCopyWith<$Res> {
   factory _$$FailureStateImplCopyWith(
           _$FailureStateImpl value, $Res Function(_$FailureStateImpl) then) =
       __$$FailureStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String username, int taskLength, ITaskWithProjectName? task, Object? error});
+  $Res call(
+      {String username,
+      int taskLength,
+      ITaskWithProjectName? task,
+      Object? error});
 
   @override
   $ITaskWithProjectNameCopyWith<$Res>? get task;
@@ -646,6 +708,8 @@ class __$$FailureStateImplCopyWithImpl<$Res>
       _$FailureStateImpl _value, $Res Function(_$FailureStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HomeHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -698,17 +762,21 @@ class _$FailureStateImpl extends _FailureState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FailureStateImpl &&
-            (identical(other.username, username) || other.username == username) &&
-            (identical(other.taskLength, taskLength) || other.taskLength == taskLength) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
+            (identical(other.taskLength, taskLength) ||
+                other.taskLength == taskLength) &&
             (identical(other.task, task) || other.task == task) &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, username, taskLength, task, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, username, taskLength, task,
+      const DeepCollectionEquality().hash(error));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HomeHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FailureStateImplCopyWith<_$FailureStateImpl> get copyWith =>
@@ -768,8 +836,11 @@ abstract class _FailureState extends HomeHeaderState {
   ITaskWithProjectName? get task;
   @override
   Object? get error;
+
+  /// Create a copy of HomeHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FailureStateImplCopyWith<_$FailureStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

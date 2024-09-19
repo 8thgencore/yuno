@@ -38,7 +38,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
   final IProjectRepository projectRepository;
   final ITaskRepository taskRepository;
 
-  IProjectWithUsersTasks? _project;
+  late IProjectWithUsersTasks _project;
   String _projectId = '';
   final List<ITaskRead> _tasks = [];
   double _percentCompleted = 0;
@@ -94,7 +94,7 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
       emit(const ProjectDetailsState.keep());
       emit(
         ProjectDetailsState.loaded(
-          project: _project!,
+          project: _project,
           tasks: _tasks,
           isMember: _isMember,
           isOwner: _isOwner,
@@ -178,11 +178,11 @@ class ProjectDetailsBloc extends Bloc<ProjectDetailsEvent, ProjectDetailsState> 
     } else {
       _percentCompleted = 0;
     }
-    _project = _project!.copyWith(percentCompleted: _percentCompleted);
+    _project = _project.copyWith(percentCompleted: _percentCompleted);
 
     emit(
       ProjectDetailsState.loaded(
-        project: _project!,
+        project: _project,
         tasks: _tasks,
         isMember: _isMember,
         isOwner: _isOwner,

@@ -12,7 +12,7 @@ part of 'i_task_with_project_name.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ITaskWithProjectName _$ITaskWithProjectNameFromJson(Map<String, dynamic> json) {
   return _ITaskWithProjectName.fromJson(json);
@@ -29,16 +29,20 @@ mixin _$ITaskWithProjectName {
   @JsonKey(name: 'project_name')
   String? get projectName => throw _privateConstructorUsedError;
 
+  /// Serializes this ITaskWithProjectName to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ITaskWithProjectName
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ITaskWithProjectNameCopyWith<ITaskWithProjectName> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ITaskWithProjectNameCopyWith<$Res> {
-  factory $ITaskWithProjectNameCopyWith(
-          ITaskWithProjectName value, $Res Function(ITaskWithProjectName) then) =
+  factory $ITaskWithProjectNameCopyWith(ITaskWithProjectName value,
+          $Res Function(ITaskWithProjectName) then) =
       _$ITaskWithProjectNameCopyWithImpl<$Res, ITaskWithProjectName>;
   @useResult
   $Res call(
@@ -51,7 +55,8 @@ abstract class $ITaskWithProjectNameCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ITaskWithProjectNameCopyWithImpl<$Res, $Val extends ITaskWithProjectName>
+class _$ITaskWithProjectNameCopyWithImpl<$Res,
+        $Val extends ITaskWithProjectName>
     implements $ITaskWithProjectNameCopyWith<$Res> {
   _$ITaskWithProjectNameCopyWithImpl(this._value, this._then);
 
@@ -60,6 +65,8 @@ class _$ITaskWithProjectNameCopyWithImpl<$Res, $Val extends ITaskWithProjectName
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ITaskWithProjectName
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -102,8 +109,8 @@ class _$ITaskWithProjectNameCopyWithImpl<$Res, $Val extends ITaskWithProjectName
 /// @nodoc
 abstract class _$$ITaskWithProjectNameImplCopyWith<$Res>
     implements $ITaskWithProjectNameCopyWith<$Res> {
-  factory _$$ITaskWithProjectNameImplCopyWith(
-          _$ITaskWithProjectNameImpl value, $Res Function(_$ITaskWithProjectNameImpl) then) =
+  factory _$$ITaskWithProjectNameImplCopyWith(_$ITaskWithProjectNameImpl value,
+          $Res Function(_$ITaskWithProjectNameImpl) then) =
       __$$ITaskWithProjectNameImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -120,10 +127,12 @@ abstract class _$$ITaskWithProjectNameImplCopyWith<$Res>
 class __$$ITaskWithProjectNameImplCopyWithImpl<$Res>
     extends _$ITaskWithProjectNameCopyWithImpl<$Res, _$ITaskWithProjectNameImpl>
     implements _$$ITaskWithProjectNameImplCopyWith<$Res> {
-  __$$ITaskWithProjectNameImplCopyWithImpl(
-      _$ITaskWithProjectNameImpl _value, $Res Function(_$ITaskWithProjectNameImpl) _then)
+  __$$ITaskWithProjectNameImplCopyWithImpl(_$ITaskWithProjectNameImpl _value,
+      $Res Function(_$ITaskWithProjectNameImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ITaskWithProjectName
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -206,20 +215,28 @@ class _$ITaskWithProjectNameImpl implements _ITaskWithProjectName {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.done, done) || other.done == done) &&
-            (identical(other.deadline, deadline) || other.deadline == deadline) &&
-            (identical(other.projectId, projectId) || other.projectId == projectId) &&
-            (identical(other.projectName, projectName) || other.projectName == projectName));
+            (identical(other.deadline, deadline) ||
+                other.deadline == deadline) &&
+            (identical(other.projectId, projectId) ||
+                other.projectId == projectId) &&
+            (identical(other.projectName, projectName) ||
+                other.projectName == projectName));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, name, id, done, deadline, projectId, projectName);
+  int get hashCode => Object.hash(
+      runtimeType, name, id, done, deadline, projectId, projectName);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ITaskWithProjectName
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ITaskWithProjectNameImplCopyWith<_$ITaskWithProjectNameImpl> get copyWith =>
-      __$$ITaskWithProjectNameImplCopyWithImpl<_$ITaskWithProjectNameImpl>(this, _$identity);
+  _$$ITaskWithProjectNameImplCopyWith<_$ITaskWithProjectNameImpl>
+      get copyWith =>
+          __$$ITaskWithProjectNameImplCopyWithImpl<_$ITaskWithProjectNameImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -231,12 +248,13 @@ class _$ITaskWithProjectNameImpl implements _ITaskWithProjectName {
 
 abstract class _ITaskWithProjectName implements ITaskWithProjectName {
   const factory _ITaskWithProjectName(
-      {required final String name,
-      required final String id,
-      final bool? done,
-      final DateTime? deadline,
-      @JsonKey(name: 'project_id') final String? projectId,
-      @JsonKey(name: 'project_name') final String? projectName}) = _$ITaskWithProjectNameImpl;
+          {required final String name,
+          required final String id,
+          final bool? done,
+          final DateTime? deadline,
+          @JsonKey(name: 'project_id') final String? projectId,
+          @JsonKey(name: 'project_name') final String? projectName}) =
+      _$ITaskWithProjectNameImpl;
 
   factory _ITaskWithProjectName.fromJson(Map<String, dynamic> json) =
       _$ITaskWithProjectNameImpl.fromJson;
@@ -255,8 +273,11 @@ abstract class _ITaskWithProjectName implements ITaskWithProjectName {
   @override
   @JsonKey(name: 'project_name')
   String? get projectName;
+
+  /// Create a copy of ITaskWithProjectName
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$ITaskWithProjectNameImplCopyWith<_$ITaskWithProjectNameImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ITaskWithProjectNameImplCopyWith<_$ITaskWithProjectNameImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

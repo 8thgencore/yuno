@@ -12,7 +12,7 @@ part of 'task_edit_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$TaskEditEvent {
@@ -70,7 +70,8 @@ class _$StartedEventImpl implements _StartedEvent {
         (other.runtimeType == runtimeType &&
             other is _$StartedEventImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.projectId, projectId) || other.projectId == projectId));
+            (identical(other.projectId, projectId) ||
+                other.projectId == projectId));
   }
 
   @override
@@ -121,8 +122,9 @@ class _$StartedEventImpl implements _StartedEvent {
 }
 
 abstract class _StartedEvent implements TaskEditEvent {
-  const factory _StartedEvent({required final String id, required final String projectId}) =
-      _$StartedEventImpl;
+  const factory _StartedEvent(
+      {required final String id,
+      required final String projectId}) = _$StartedEventImpl;
 
   String get id;
   String get projectId;
@@ -220,7 +222,8 @@ class _$DeadlineChangedEventImpl implements _DeadlineChangedEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeadlineChangedEventImpl &&
-            (identical(other.dateTime, dateTime) || other.dateTime == dateTime));
+            (identical(other.dateTime, dateTime) ||
+                other.dateTime == dateTime));
   }
 
   @override
@@ -271,7 +274,8 @@ class _$DeadlineChangedEventImpl implements _DeadlineChangedEvent {
 }
 
 abstract class _DeadlineChangedEvent implements TaskEditEvent {
-  const factory _DeadlineChangedEvent(final DateTime dateTime) = _$DeadlineChangedEventImpl;
+  const factory _DeadlineChangedEvent(final DateTime dateTime) =
+      _$DeadlineChangedEventImpl;
 
   DateTime get dateTime;
 }
@@ -345,7 +349,8 @@ class _$ClickSwitchEventImpl implements _ClickSwitchEvent {
 }
 
 abstract class _ClickSwitchEvent implements TaskEditEvent {
-  const factory _ClickSwitchEvent({required final bool value}) = _$ClickSwitchEventImpl;
+  const factory _ClickSwitchEvent({required final bool value}) =
+      _$ClickSwitchEventImpl;
 
   bool get value;
 }
@@ -494,13 +499,17 @@ mixin _$TaskEditState {
   bool? get done => throw _privateConstructorUsedError;
   String? get serverError => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
-  $TaskEditStateCopyWith<TaskEditState> get copyWith => throw _privateConstructorUsedError;
+  /// Create a copy of TaskEditState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $TaskEditStateCopyWith<TaskEditState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TaskEditStateCopyWith<$Res> {
-  factory $TaskEditStateCopyWith(TaskEditState value, $Res Function(TaskEditState) then) =
+  factory $TaskEditStateCopyWith(
+          TaskEditState value, $Res Function(TaskEditState) then) =
       _$TaskEditStateCopyWithImpl<$Res, TaskEditState>;
   @useResult
   $Res call(
@@ -523,6 +532,8 @@ class _$TaskEditStateCopyWithImpl<$Res, $Val extends TaskEditState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TaskEditState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -568,7 +579,8 @@ class _$TaskEditStateCopyWithImpl<$Res, $Val extends TaskEditState>
 }
 
 /// @nodoc
-abstract class _$$TaskEditStateImplCopyWith<$Res> implements $TaskEditStateCopyWith<$Res> {
+abstract class _$$TaskEditStateImplCopyWith<$Res>
+    implements $TaskEditStateCopyWith<$Res> {
   factory _$$TaskEditStateImplCopyWith(
           _$TaskEditStateImpl value, $Res Function(_$TaskEditStateImpl) then) =
       __$$TaskEditStateImplCopyWithImpl<$Res>;
@@ -592,6 +604,8 @@ class __$$TaskEditStateImplCopyWithImpl<$Res>
       _$TaskEditStateImpl _value, $Res Function(_$TaskEditStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TaskEditState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -677,17 +691,22 @@ class _$TaskEditStateImpl implements _TaskEditState {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.deadline, deadline) || other.deadline == deadline) &&
-            (identical(other.projectId, projectId) || other.projectId == projectId) &&
+            (identical(other.deadline, deadline) ||
+                other.deadline == deadline) &&
+            (identical(other.projectId, projectId) ||
+                other.projectId == projectId) &&
             (identical(other.done, done) || other.done == done) &&
-            (identical(other.serverError, serverError) || other.serverError == serverError));
+            (identical(other.serverError, serverError) ||
+                other.serverError == serverError));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, status, deadline, projectId, done, serverError);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, status, deadline, projectId, done, serverError);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TaskEditState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TaskEditStateImplCopyWith<_$TaskEditStateImpl> get copyWith =>
@@ -718,8 +737,11 @@ abstract class _TaskEditState implements TaskEditState {
   bool? get done;
   @override
   String? get serverError;
+
+  /// Create a copy of TaskEditState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TaskEditStateImplCopyWith<_$TaskEditStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

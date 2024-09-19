@@ -6,7 +6,8 @@ part of 'i_project_read.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$IProjectReadImpl _$$IProjectReadImplFromJson(Map<String, dynamic> json) => _$IProjectReadImpl(
+_$IProjectReadImpl _$$IProjectReadImplFromJson(Map<String, dynamic> json) =>
+    _$IProjectReadImpl(
       name: json['name'] as String,
       description: json['description'] as String,
       link: json['link'] as String,
@@ -15,7 +16,8 @@ _$IProjectReadImpl _$$IProjectReadImplFromJson(Map<String, dynamic> json) => _$I
       createdBy: json['created_by_id'] as String?,
     );
 
-Map<String, dynamic> _$$IProjectReadImplToJson(_$IProjectReadImpl instance) => <String, dynamic>{
+Map<String, dynamic> _$$IProjectReadImplToJson(_$IProjectReadImpl instance) =>
+    <String, dynamic>{
       'name': instance.name,
       'description': instance.description,
       'link': instance.link,

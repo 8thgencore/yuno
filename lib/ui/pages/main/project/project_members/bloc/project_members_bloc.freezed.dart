@@ -12,7 +12,7 @@ part of 'project_members_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ProjectMembersEvent {
@@ -127,7 +127,9 @@ mixin _$ProjectMembersState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProjectMembersState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProjectMembersStateCopyWith<ProjectMembersState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -151,6 +153,8 @@ class _$ProjectMembersStateCopyWithImpl<$Res, $Val extends ProjectMembersState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProjectMembersState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -168,7 +172,8 @@ class _$ProjectMembersStateCopyWithImpl<$Res, $Val extends ProjectMembersState>
 }
 
 /// @nodoc
-abstract class _$$InitialStateImplCopyWith<$Res> implements $ProjectMembersStateCopyWith<$Res> {
+abstract class _$$InitialStateImplCopyWith<$Res>
+    implements $ProjectMembersStateCopyWith<$Res> {
   factory _$$InitialStateImplCopyWith(
           _$InitialStateImpl value, $Res Function(_$InitialStateImpl) then) =
       __$$InitialStateImplCopyWithImpl<$Res>;
@@ -185,6 +190,8 @@ class __$$InitialStateImplCopyWithImpl<$Res>
       _$InitialStateImpl _value, $Res Function(_$InitialStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProjectMembersState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -204,7 +211,8 @@ class __$$InitialStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitialStateImpl extends _InitialState {
-  const _$InitialStateImpl({required final List<IUserRead> projects, this.error})
+  const _$InitialStateImpl(
+      {required final List<IUserRead> projects, this.error})
       : _projects = projects,
         super._();
 
@@ -234,10 +242,14 @@ class _$InitialStateImpl extends _InitialState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_projects),
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_projects),
       const DeepCollectionEquality().hash(error));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProjectMembersState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InitialStateImplCopyWith<_$InitialStateImpl> get copyWith =>
@@ -282,22 +294,27 @@ class _$InitialStateImpl extends _InitialState {
 }
 
 abstract class _InitialState extends ProjectMembersState {
-  const factory _InitialState({required final List<IUserRead> projects, final Object? error}) =
-      _$InitialStateImpl;
+  const factory _InitialState(
+      {required final List<IUserRead> projects,
+      final Object? error}) = _$InitialStateImpl;
   const _InitialState._() : super._();
 
   @override
   List<IUserRead> get projects;
   @override
   Object? get error;
+
+  /// Create a copy of ProjectMembersState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InitialStateImplCopyWith<_$InitialStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LoadingStateImplCopyWith<$Res> implements $ProjectMembersStateCopyWith<$Res> {
+abstract class _$$LoadingStateImplCopyWith<$Res>
+    implements $ProjectMembersStateCopyWith<$Res> {
   factory _$$LoadingStateImplCopyWith(
           _$LoadingStateImpl value, $Res Function(_$LoadingStateImpl) then) =
       __$$LoadingStateImplCopyWithImpl<$Res>;
@@ -314,6 +331,8 @@ class __$$LoadingStateImplCopyWithImpl<$Res>
       _$LoadingStateImpl _value, $Res Function(_$LoadingStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProjectMembersState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -333,7 +352,8 @@ class __$$LoadingStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadingStateImpl extends _LoadingState {
-  const _$LoadingStateImpl({required final List<IUserRead> projects, this.error})
+  const _$LoadingStateImpl(
+      {required final List<IUserRead> projects, this.error})
       : _projects = projects,
         super._();
 
@@ -363,10 +383,14 @@ class _$LoadingStateImpl extends _LoadingState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_projects),
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_projects),
       const DeepCollectionEquality().hash(error));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProjectMembersState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LoadingStateImplCopyWith<_$LoadingStateImpl> get copyWith =>
@@ -411,22 +435,27 @@ class _$LoadingStateImpl extends _LoadingState {
 }
 
 abstract class _LoadingState extends ProjectMembersState {
-  const factory _LoadingState({required final List<IUserRead> projects, final Object? error}) =
-      _$LoadingStateImpl;
+  const factory _LoadingState(
+      {required final List<IUserRead> projects,
+      final Object? error}) = _$LoadingStateImpl;
   const _LoadingState._() : super._();
 
   @override
   List<IUserRead> get projects;
   @override
   Object? get error;
+
+  /// Create a copy of ProjectMembersState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadingStateImplCopyWith<_$LoadingStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LoadedStateImplCopyWith<$Res> implements $ProjectMembersStateCopyWith<$Res> {
+abstract class _$$LoadedStateImplCopyWith<$Res>
+    implements $ProjectMembersStateCopyWith<$Res> {
   factory _$$LoadedStateImplCopyWith(
           _$LoadedStateImpl value, $Res Function(_$LoadedStateImpl) then) =
       __$$LoadedStateImplCopyWithImpl<$Res>;
@@ -439,9 +468,12 @@ abstract class _$$LoadedStateImplCopyWith<$Res> implements $ProjectMembersStateC
 class __$$LoadedStateImplCopyWithImpl<$Res>
     extends _$ProjectMembersStateCopyWithImpl<$Res, _$LoadedStateImpl>
     implements _$$LoadedStateImplCopyWith<$Res> {
-  __$$LoadedStateImplCopyWithImpl(_$LoadedStateImpl _value, $Res Function(_$LoadedStateImpl) _then)
+  __$$LoadedStateImplCopyWithImpl(
+      _$LoadedStateImpl _value, $Res Function(_$LoadedStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProjectMembersState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -491,10 +523,14 @@ class _$LoadedStateImpl extends _LoadedState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_projects),
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_projects),
       const DeepCollectionEquality().hash(error));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProjectMembersState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LoadedStateImplCopyWith<_$LoadedStateImpl> get copyWith =>
@@ -539,21 +575,27 @@ class _$LoadedStateImpl extends _LoadedState {
 }
 
 abstract class _LoadedState extends ProjectMembersState {
-  const factory _LoadedState({required final List<IUserRead> projects, final Object? error}) =
-      _$LoadedStateImpl;
+  const factory _LoadedState(
+      {required final List<IUserRead> projects,
+      final Object? error}) = _$LoadedStateImpl;
   const _LoadedState._() : super._();
 
   @override
   List<IUserRead> get projects;
   @override
   Object? get error;
+
+  /// Create a copy of ProjectMembersState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$LoadedStateImplCopyWith<_$LoadedStateImpl> get copyWith => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LoadedStateImplCopyWith<_$LoadedStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$FailureStateImplCopyWith<$Res> implements $ProjectMembersStateCopyWith<$Res> {
+abstract class _$$FailureStateImplCopyWith<$Res>
+    implements $ProjectMembersStateCopyWith<$Res> {
   factory _$$FailureStateImplCopyWith(
           _$FailureStateImpl value, $Res Function(_$FailureStateImpl) then) =
       __$$FailureStateImplCopyWithImpl<$Res>;
@@ -570,6 +612,8 @@ class __$$FailureStateImplCopyWithImpl<$Res>
       _$FailureStateImpl _value, $Res Function(_$FailureStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProjectMembersState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -589,7 +633,8 @@ class __$$FailureStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FailureStateImpl extends _FailureState {
-  const _$FailureStateImpl({required final List<IUserRead> projects, this.error})
+  const _$FailureStateImpl(
+      {required final List<IUserRead> projects, this.error})
       : _projects = projects,
         super._();
 
@@ -619,10 +664,14 @@ class _$FailureStateImpl extends _FailureState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_projects),
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_projects),
       const DeepCollectionEquality().hash(error));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProjectMembersState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FailureStateImplCopyWith<_$FailureStateImpl> get copyWith =>
@@ -667,16 +716,20 @@ class _$FailureStateImpl extends _FailureState {
 }
 
 abstract class _FailureState extends ProjectMembersState {
-  const factory _FailureState({required final List<IUserRead> projects, final Object? error}) =
-      _$FailureStateImpl;
+  const factory _FailureState(
+      {required final List<IUserRead> projects,
+      final Object? error}) = _$FailureStateImpl;
   const _FailureState._() : super._();
 
   @override
   List<IUserRead> get projects;
   @override
   Object? get error;
+
+  /// Create a copy of ProjectMembersState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FailureStateImplCopyWith<_$FailureStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -6,7 +6,8 @@ part of 'i_user_create.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$IUserCreateImpl _$$IUserCreateImplFromJson(Map<String, dynamic> json) => _$IUserCreateImpl(
+_$IUserCreateImpl _$$IUserCreateImplFromJson(Map<String, dynamic> json) =>
+    _$IUserCreateImpl(
       firstName: json['first_name'] as String,
       lastName: json['last_name'] as String,
       username: json['username'] as String,
@@ -17,7 +18,8 @@ _$IUserCreateImpl _$$IUserCreateImplFromJson(Map<String, dynamic> json) => _$IUs
       password: json['password'] as String?,
     );
 
-Map<String, dynamic> _$$IUserCreateImplToJson(_$IUserCreateImpl instance) => <String, dynamic>{
+Map<String, dynamic> _$$IUserCreateImplToJson(_$IUserCreateImpl instance) =>
+    <String, dynamic>{
       'first_name': instance.firstName,
       'last_name': instance.lastName,
       'username': instance.username,

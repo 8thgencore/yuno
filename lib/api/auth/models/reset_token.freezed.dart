@@ -12,7 +12,7 @@ part of 'reset_token.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ResetToken _$ResetTokenFromJson(Map<String, dynamic> json) {
   return _ResetToken.fromJson(json);
@@ -23,21 +23,28 @@ mixin _$ResetToken {
   @JsonKey(name: 'reset_token')
   String get resetToken => throw _privateConstructorUsedError;
 
+  /// Serializes this ResetToken to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $ResetTokenCopyWith<ResetToken> get copyWith => throw _privateConstructorUsedError;
+
+  /// Create a copy of ResetToken
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ResetTokenCopyWith<ResetToken> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ResetTokenCopyWith<$Res> {
-  factory $ResetTokenCopyWith(ResetToken value, $Res Function(ResetToken) then) =
+  factory $ResetTokenCopyWith(
+          ResetToken value, $Res Function(ResetToken) then) =
       _$ResetTokenCopyWithImpl<$Res, ResetToken>;
   @useResult
   $Res call({@JsonKey(name: 'reset_token') String resetToken});
 }
 
 /// @nodoc
-class _$ResetTokenCopyWithImpl<$Res, $Val extends ResetToken> implements $ResetTokenCopyWith<$Res> {
+class _$ResetTokenCopyWithImpl<$Res, $Val extends ResetToken>
+    implements $ResetTokenCopyWith<$Res> {
   _$ResetTokenCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -45,6 +52,8 @@ class _$ResetTokenCopyWithImpl<$Res, $Val extends ResetToken> implements $ResetT
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ResetToken
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -60,8 +69,10 @@ class _$ResetTokenCopyWithImpl<$Res, $Val extends ResetToken> implements $ResetT
 }
 
 /// @nodoc
-abstract class _$$ResetTokenImplCopyWith<$Res> implements $ResetTokenCopyWith<$Res> {
-  factory _$$ResetTokenImplCopyWith(_$ResetTokenImpl value, $Res Function(_$ResetTokenImpl) then) =
+abstract class _$$ResetTokenImplCopyWith<$Res>
+    implements $ResetTokenCopyWith<$Res> {
+  factory _$$ResetTokenImplCopyWith(
+          _$ResetTokenImpl value, $Res Function(_$ResetTokenImpl) then) =
       __$$ResetTokenImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -69,11 +80,15 @@ abstract class _$$ResetTokenImplCopyWith<$Res> implements $ResetTokenCopyWith<$R
 }
 
 /// @nodoc
-class __$$ResetTokenImplCopyWithImpl<$Res> extends _$ResetTokenCopyWithImpl<$Res, _$ResetTokenImpl>
+class __$$ResetTokenImplCopyWithImpl<$Res>
+    extends _$ResetTokenCopyWithImpl<$Res, _$ResetTokenImpl>
     implements _$$ResetTokenImplCopyWith<$Res> {
-  __$$ResetTokenImplCopyWithImpl(_$ResetTokenImpl _value, $Res Function(_$ResetTokenImpl) _then)
+  __$$ResetTokenImplCopyWithImpl(
+      _$ResetTokenImpl _value, $Res Function(_$ResetTokenImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ResetToken
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -91,9 +106,11 @@ class __$$ResetTokenImplCopyWithImpl<$Res> extends _$ResetTokenCopyWithImpl<$Res
 /// @nodoc
 @JsonSerializable()
 class _$ResetTokenImpl implements _ResetToken {
-  const _$ResetTokenImpl({@JsonKey(name: 'reset_token') required this.resetToken});
+  const _$ResetTokenImpl(
+      {@JsonKey(name: 'reset_token') required this.resetToken});
 
-  factory _$ResetTokenImpl.fromJson(Map<String, dynamic> json) => _$$ResetTokenImplFromJson(json);
+  factory _$ResetTokenImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ResetTokenImplFromJson(json);
 
   @override
   @JsonKey(name: 'reset_token')
@@ -109,14 +126,17 @@ class _$ResetTokenImpl implements _ResetToken {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ResetTokenImpl &&
-            (identical(other.resetToken, resetToken) || other.resetToken == resetToken));
+            (identical(other.resetToken, resetToken) ||
+                other.resetToken == resetToken));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, resetToken);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ResetToken
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ResetTokenImplCopyWith<_$ResetTokenImpl> get copyWith =>
@@ -131,15 +151,21 @@ class _$ResetTokenImpl implements _ResetToken {
 }
 
 abstract class _ResetToken implements ResetToken {
-  const factory _ResetToken({@JsonKey(name: 'reset_token') required final String resetToken}) =
+  const factory _ResetToken(
+          {@JsonKey(name: 'reset_token') required final String resetToken}) =
       _$ResetTokenImpl;
 
-  factory _ResetToken.fromJson(Map<String, dynamic> json) = _$ResetTokenImpl.fromJson;
+  factory _ResetToken.fromJson(Map<String, dynamic> json) =
+      _$ResetTokenImpl.fromJson;
 
   @override
   @JsonKey(name: 'reset_token')
   String get resetToken;
+
+  /// Create a copy of ResetToken
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$ResetTokenImplCopyWith<_$ResetTokenImpl> get copyWith => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ResetTokenImplCopyWith<_$ResetTokenImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

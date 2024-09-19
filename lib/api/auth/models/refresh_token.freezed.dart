@@ -12,7 +12,7 @@ part of 'refresh_token.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 RefreshToken _$RefreshTokenFromJson(Map<String, dynamic> json) {
   return _RefreshToken.fromJson(json);
@@ -23,14 +23,20 @@ mixin _$RefreshToken {
   @JsonKey(name: 'refresh_token')
   String get refreshToken => throw _privateConstructorUsedError;
 
+  /// Serializes this RefreshToken to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $RefreshTokenCopyWith<RefreshToken> get copyWith => throw _privateConstructorUsedError;
+
+  /// Create a copy of RefreshToken
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $RefreshTokenCopyWith<RefreshToken> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $RefreshTokenCopyWith<$Res> {
-  factory $RefreshTokenCopyWith(RefreshToken value, $Res Function(RefreshToken) then) =
+  factory $RefreshTokenCopyWith(
+          RefreshToken value, $Res Function(RefreshToken) then) =
       _$RefreshTokenCopyWithImpl<$Res, RefreshToken>;
   @useResult
   $Res call({@JsonKey(name: 'refresh_token') String refreshToken});
@@ -46,6 +52,8 @@ class _$RefreshTokenCopyWithImpl<$Res, $Val extends RefreshToken>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of RefreshToken
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -61,7 +69,8 @@ class _$RefreshTokenCopyWithImpl<$Res, $Val extends RefreshToken>
 }
 
 /// @nodoc
-abstract class _$$RefreshTokenImplCopyWith<$Res> implements $RefreshTokenCopyWith<$Res> {
+abstract class _$$RefreshTokenImplCopyWith<$Res>
+    implements $RefreshTokenCopyWith<$Res> {
   factory _$$RefreshTokenImplCopyWith(
           _$RefreshTokenImpl value, $Res Function(_$RefreshTokenImpl) then) =
       __$$RefreshTokenImplCopyWithImpl<$Res>;
@@ -78,6 +87,8 @@ class __$$RefreshTokenImplCopyWithImpl<$Res>
       _$RefreshTokenImpl _value, $Res Function(_$RefreshTokenImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RefreshToken
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -95,7 +106,8 @@ class __$$RefreshTokenImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$RefreshTokenImpl implements _RefreshToken {
-  const _$RefreshTokenImpl({@JsonKey(name: 'refresh_token') required this.refreshToken});
+  const _$RefreshTokenImpl(
+      {@JsonKey(name: 'refresh_token') required this.refreshToken});
 
   factory _$RefreshTokenImpl.fromJson(Map<String, dynamic> json) =>
       _$$RefreshTokenImplFromJson(json);
@@ -114,14 +126,17 @@ class _$RefreshTokenImpl implements _RefreshToken {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RefreshTokenImpl &&
-            (identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken));
+            (identical(other.refreshToken, refreshToken) ||
+                other.refreshToken == refreshToken));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, refreshToken);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RefreshToken
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RefreshTokenImplCopyWith<_$RefreshTokenImpl> get copyWith =>
@@ -137,15 +152,20 @@ class _$RefreshTokenImpl implements _RefreshToken {
 
 abstract class _RefreshToken implements RefreshToken {
   const factory _RefreshToken(
-      {@JsonKey(name: 'refresh_token') required final String refreshToken}) = _$RefreshTokenImpl;
+      {@JsonKey(name: 'refresh_token')
+      required final String refreshToken}) = _$RefreshTokenImpl;
 
-  factory _RefreshToken.fromJson(Map<String, dynamic> json) = _$RefreshTokenImpl.fromJson;
+  factory _RefreshToken.fromJson(Map<String, dynamic> json) =
+      _$RefreshTokenImpl.fromJson;
 
   @override
   @JsonKey(name: 'refresh_token')
   String get refreshToken;
+
+  /// Create a copy of RefreshToken
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RefreshTokenImplCopyWith<_$RefreshTokenImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

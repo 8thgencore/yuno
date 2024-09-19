@@ -7,46 +7,67 @@
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart' as _svg;
+import 'package:vector_graphics/vector_graphics.dart' as _vg;
 
 class $AssetsAvatarsGen {
   const $AssetsAvatarsGen();
 
   /// File path: assets/avatars/avatar0.png
-  AssetGenImage get avatar0 => const AssetGenImage('assets/avatars/avatar0.png');
+  AssetGenImage get avatar0 =>
+      const AssetGenImage('assets/avatars/avatar0.png');
 
   /// File path: assets/avatars/avatar1.png
-  AssetGenImage get avatar1 => const AssetGenImage('assets/avatars/avatar1.png');
+  AssetGenImage get avatar1 =>
+      const AssetGenImage('assets/avatars/avatar1.png');
 
   /// File path: assets/avatars/avatar2.png
-  AssetGenImage get avatar2 => const AssetGenImage('assets/avatars/avatar2.png');
+  AssetGenImage get avatar2 =>
+      const AssetGenImage('assets/avatars/avatar2.png');
 
   /// File path: assets/avatars/avatar3.png
-  AssetGenImage get avatar3 => const AssetGenImage('assets/avatars/avatar3.png');
+  AssetGenImage get avatar3 =>
+      const AssetGenImage('assets/avatars/avatar3.png');
 
   /// File path: assets/avatars/avatar4.png
-  AssetGenImage get avatar4 => const AssetGenImage('assets/avatars/avatar4.png');
+  AssetGenImage get avatar4 =>
+      const AssetGenImage('assets/avatars/avatar4.png');
 
   /// File path: assets/avatars/avatar5.png
-  AssetGenImage get avatar5 => const AssetGenImage('assets/avatars/avatar5.png');
+  AssetGenImage get avatar5 =>
+      const AssetGenImage('assets/avatars/avatar5.png');
 
   /// File path: assets/avatars/avatar6.png
-  AssetGenImage get avatar6 => const AssetGenImage('assets/avatars/avatar6.png');
+  AssetGenImage get avatar6 =>
+      const AssetGenImage('assets/avatars/avatar6.png');
 
   /// File path: assets/avatars/avatar7.png
-  AssetGenImage get avatar7 => const AssetGenImage('assets/avatars/avatar7.png');
+  AssetGenImage get avatar7 =>
+      const AssetGenImage('assets/avatars/avatar7.png');
 
   /// File path: assets/avatars/avatar8.png
-  AssetGenImage get avatar8 => const AssetGenImage('assets/avatars/avatar8.png');
+  AssetGenImage get avatar8 =>
+      const AssetGenImage('assets/avatars/avatar8.png');
 
   /// File path: assets/avatars/avatar9.png
-  AssetGenImage get avatar9 => const AssetGenImage('assets/avatars/avatar9.png');
+  AssetGenImage get avatar9 =>
+      const AssetGenImage('assets/avatars/avatar9.png');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [avatar0, avatar1, avatar2, avatar3, avatar4, avatar5, avatar6, avatar7, avatar8, avatar9];
+  List<AssetGenImage> get values => [
+        avatar0,
+        avatar1,
+        avatar2,
+        avatar3,
+        avatar4,
+        avatar5,
+        avatar6,
+        avatar7,
+        avatar8,
+        avatar9
+      ];
 }
 
 class $AssetsFontsGen {
@@ -68,13 +89,15 @@ class $AssetsFontsGen {
   String get poppinsExtraBold => 'assets/fonts/Poppins-ExtraBold.ttf';
 
   /// File path: assets/fonts/Poppins-ExtraBoldItalic.ttf
-  String get poppinsExtraBoldItalic => 'assets/fonts/Poppins-ExtraBoldItalic.ttf';
+  String get poppinsExtraBoldItalic =>
+      'assets/fonts/Poppins-ExtraBoldItalic.ttf';
 
   /// File path: assets/fonts/Poppins-ExtraLight.ttf
   String get poppinsExtraLight => 'assets/fonts/Poppins-ExtraLight.ttf';
 
   /// File path: assets/fonts/Poppins-ExtraLightItalic.ttf
-  String get poppinsExtraLightItalic => 'assets/fonts/Poppins-ExtraLightItalic.ttf';
+  String get poppinsExtraLightItalic =>
+      'assets/fonts/Poppins-ExtraLightItalic.ttf';
 
   /// File path: assets/fonts/Poppins-Italic.ttf
   String get poppinsItalic => 'assets/fonts/Poppins-Italic.ttf';
@@ -136,23 +159,33 @@ class $AssetsImagesGen {
   AssetGenImage get avatar => const AssetGenImage('assets/images/avatar.jpg');
 
   /// File path: assets/images/checklist_empty.png
-  AssetGenImage get checklistEmpty => const AssetGenImage('assets/images/checklist_empty.png');
+  AssetGenImage get checklistEmpty =>
+      const AssetGenImage('assets/images/checklist_empty.png');
 
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
   /// File path: assets/images/sign_ornament.png
-  AssetGenImage get signOrnament => const AssetGenImage('assets/images/sign_ornament.png');
+  AssetGenImage get signOrnament =>
+      const AssetGenImage('assets/images/sign_ornament.png');
 
   /// File path: assets/images/splash_ornament.png
-  AssetGenImage get splashOrnament => const AssetGenImage('assets/images/splash_ornament.png');
+  AssetGenImage get splashOrnament =>
+      const AssetGenImage('assets/images/splash_ornament.png');
 
   /// File path: assets/images/statistics_empty.png
-  AssetGenImage get statisticsEmpty => const AssetGenImage('assets/images/statistics_empty.png');
+  AssetGenImage get statisticsEmpty =>
+      const AssetGenImage('assets/images/statistics_empty.png');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [avatar, checklistEmpty, logo, signOrnament, splashOrnament, statisticsEmpty];
+  List<AssetGenImage> get values => [
+        avatar,
+        checklistEmpty,
+        logo,
+        signOrnament,
+        splashOrnament,
+        statisticsEmpty
+      ];
 }
 
 class $AssetsSvgGen {
@@ -165,7 +198,8 @@ class $AssetsSvgGen {
   SvgGenImage get calendar => const SvgGenImage('assets/svg/calendar.svg');
 
   /// File path: assets/svg/calendar_filled.svg
-  SvgGenImage get calendarFilled => const SvgGenImage('assets/svg/calendar_filled.svg');
+  SvgGenImage get calendarFilled =>
+      const SvgGenImage('assets/svg/calendar_filled.svg');
 
   /// File path: assets/svg/edit.svg
   SvgGenImage get edit => const SvgGenImage('assets/svg/edit.svg');
@@ -183,7 +217,8 @@ class $AssetsSvgGen {
   SvgGenImage get gridFilled => const SvgGenImage('assets/svg/grid_filled.svg');
 
   /// File path: assets/svg/home_top_ornament.svg
-  SvgGenImage get homeTopOrnament => const SvgGenImage('assets/svg/home_top_ornament.svg');
+  SvgGenImage get homeTopOrnament =>
+      const SvgGenImage('assets/svg/home_top_ornament.svg');
 
   /// File path: assets/svg/ic_finger.svg
   SvgGenImage get icFinger => const SvgGenImage('assets/svg/ic_finger.svg');
@@ -204,13 +239,15 @@ class $AssetsSvgGen {
   SvgGenImage get roundCheck => const SvgGenImage('assets/svg/round_check.svg');
 
   /// File path: assets/svg/round_exclamation.svg
-  SvgGenImage get roundExclamation => const SvgGenImage('assets/svg/round_exclamation.svg');
+  SvgGenImage get roundExclamation =>
+      const SvgGenImage('assets/svg/round_exclamation.svg');
 
   /// File path: assets/svg/stats.svg
   SvgGenImage get stats => const SvgGenImage('assets/svg/stats.svg');
 
   /// File path: assets/svg/stats_filled.svg
-  SvgGenImage get statsFilled => const SvgGenImage('assets/svg/stats_filled.svg');
+  SvgGenImage get statsFilled =>
+      const SvgGenImage('assets/svg/stats_filled.svg');
 
   /// File path: assets/svg/user.svg
   SvgGenImage get user => const SvgGenImage('assets/svg/user.svg');
@@ -246,16 +283,27 @@ class $AssetsSvgGen {
 class Assets {
   Assets._();
 
+  static const String aEnv = '.env';
   static const $AssetsAvatarsGen avatars = $AssetsAvatarsGen();
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsSvgGen svg = $AssetsSvgGen();
+
+  /// List of all assets
+  static List<String> get values => [aEnv];
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName);
+  const AssetGenImage(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+  });
 
   final String _assetName;
+
+  final Size? size;
+  final Set<String> flavors;
 
   Image image({
     Key? key,
@@ -327,11 +375,24 @@ class AssetGenImage {
 }
 
 class SvgGenImage {
-  const SvgGenImage(this._assetName);
+  const SvgGenImage(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+  }) : _isVecFormat = false;
+
+  const SvgGenImage.vec(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+  }) : _isVecFormat = true;
 
   final String _assetName;
+  final Size? size;
+  final Set<String> flavors;
+  final bool _isVecFormat;
 
-  SvgPicture svg({
+  _svg.SvgPicture svg({
     Key? key,
     bool matchTextDirection = false,
     AssetBundle? bundle,
@@ -344,19 +405,32 @@ class SvgGenImage {
     WidgetBuilder? placeholderBuilder,
     String? semanticsLabel,
     bool excludeFromSemantics = false,
-    SvgTheme theme = const SvgTheme(),
+    _svg.SvgTheme? theme,
     ColorFilter? colorFilter,
     Clip clipBehavior = Clip.hardEdge,
     @deprecated Color? color,
     @deprecated BlendMode colorBlendMode = BlendMode.srcIn,
     @deprecated bool cacheColorFilter = false,
   }) {
-    return SvgPicture.asset(
-      _assetName,
+    final _svg.BytesLoader loader;
+    if (_isVecFormat) {
+      loader = _vg.AssetBytesLoader(
+        _assetName,
+        assetBundle: bundle,
+        packageName: package,
+      );
+    } else {
+      loader = _svg.SvgAssetLoader(
+        _assetName,
+        assetBundle: bundle,
+        packageName: package,
+        theme: theme,
+      );
+    }
+    return _svg.SvgPicture(
+      loader,
       key: key,
       matchTextDirection: matchTextDirection,
-      bundle: bundle,
-      package: package,
       width: width,
       height: height,
       fit: fit,
@@ -365,10 +439,8 @@ class SvgGenImage {
       placeholderBuilder: placeholderBuilder,
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
-      theme: theme,
-      colorFilter: colorFilter,
-      color: color,
-      colorBlendMode: colorBlendMode,
+      colorFilter: colorFilter ??
+          (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,
     );

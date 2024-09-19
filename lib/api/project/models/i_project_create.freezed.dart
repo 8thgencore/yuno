@@ -12,7 +12,7 @@ part of 'i_project_create.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 IProject _$IProjectFromJson(Map<String, dynamic> json) {
   return _IProject.fromJson(json);
@@ -24,9 +24,14 @@ mixin _$IProject {
   String get description => throw _privateConstructorUsedError;
   String get link => throw _privateConstructorUsedError;
 
+  /// Serializes this IProject to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $IProjectCopyWith<IProject> get copyWith => throw _privateConstructorUsedError;
+
+  /// Create a copy of IProject
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $IProjectCopyWith<IProject> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -38,7 +43,8 @@ abstract class $IProjectCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$IProjectCopyWithImpl<$Res, $Val extends IProject> implements $IProjectCopyWith<$Res> {
+class _$IProjectCopyWithImpl<$Res, $Val extends IProject>
+    implements $IProjectCopyWith<$Res> {
   _$IProjectCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -46,6 +52,8 @@ class _$IProjectCopyWithImpl<$Res, $Val extends IProject> implements $IProjectCo
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IProject
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -71,8 +79,10 @@ class _$IProjectCopyWithImpl<$Res, $Val extends IProject> implements $IProjectCo
 }
 
 /// @nodoc
-abstract class _$$IProjectImplCopyWith<$Res> implements $IProjectCopyWith<$Res> {
-  factory _$$IProjectImplCopyWith(_$IProjectImpl value, $Res Function(_$IProjectImpl) then) =
+abstract class _$$IProjectImplCopyWith<$Res>
+    implements $IProjectCopyWith<$Res> {
+  factory _$$IProjectImplCopyWith(
+          _$IProjectImpl value, $Res Function(_$IProjectImpl) then) =
       __$$IProjectImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -80,11 +90,15 @@ abstract class _$$IProjectImplCopyWith<$Res> implements $IProjectCopyWith<$Res> 
 }
 
 /// @nodoc
-class __$$IProjectImplCopyWithImpl<$Res> extends _$IProjectCopyWithImpl<$Res, _$IProjectImpl>
+class __$$IProjectImplCopyWithImpl<$Res>
+    extends _$IProjectCopyWithImpl<$Res, _$IProjectImpl>
     implements _$$IProjectImplCopyWith<$Res> {
-  __$$IProjectImplCopyWithImpl(_$IProjectImpl _value, $Res Function(_$IProjectImpl) _then)
+  __$$IProjectImplCopyWithImpl(
+      _$IProjectImpl _value, $Res Function(_$IProjectImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IProject
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -112,9 +126,11 @@ class __$$IProjectImplCopyWithImpl<$Res> extends _$IProjectCopyWithImpl<$Res, _$
 /// @nodoc
 @JsonSerializable()
 class _$IProjectImpl implements _IProject {
-  const _$IProjectImpl({required this.name, required this.description, required this.link});
+  const _$IProjectImpl(
+      {required this.name, required this.description, required this.link});
 
-  factory _$IProjectImpl.fromJson(Map<String, dynamic> json) => _$$IProjectImplFromJson(json);
+  factory _$IProjectImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IProjectImplFromJson(json);
 
   @override
   final String name;
@@ -134,15 +150,18 @@ class _$IProjectImpl implements _IProject {
         (other.runtimeType == runtimeType &&
             other is _$IProjectImpl &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) || other.description == description) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.link, link) || other.link == link));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, description, link);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IProject
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IProjectImplCopyWith<_$IProjectImpl> get copyWith =>
@@ -162,7 +181,8 @@ abstract class _IProject implements IProject {
       required final String description,
       required final String link}) = _$IProjectImpl;
 
-  factory _IProject.fromJson(Map<String, dynamic> json) = _$IProjectImpl.fromJson;
+  factory _IProject.fromJson(Map<String, dynamic> json) =
+      _$IProjectImpl.fromJson;
 
   @override
   String get name;
@@ -170,7 +190,11 @@ abstract class _IProject implements IProject {
   String get description;
   @override
   String get link;
+
+  /// Create a copy of IProject
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$IProjectImplCopyWith<_$IProjectImpl> get copyWith => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$IProjectImplCopyWith<_$IProjectImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -13,4 +13,6 @@ class ProfileEditEvent with _$ProfileEditEvent {
   const factory ProfileEditEvent.emailChanged(String text) = _EmailChangedEvent;
 
   const factory ProfileEditEvent.saved() = _SavedEvent;
+
+  const factory ProfileEditEvent.deleteMyAccount() = _DeleteMyAccountEvent;
 }

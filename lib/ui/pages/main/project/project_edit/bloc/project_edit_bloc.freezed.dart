@@ -12,7 +12,7 @@ part of 'project_edit_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ProjectEditEvent {
@@ -20,7 +20,8 @@ mixin _$ProjectEditEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
     required TResult Function(_NameChangedEvent value) nameChanged,
-    required TResult Function(_DescriptionChangedEvent value) descriptionChanged,
+    required TResult Function(_DescriptionChangedEvent value)
+        descriptionChanged,
     required TResult Function(_SavedEvent value) saved,
     required TResult Function(_UpdatedEvent value) updated,
   }) =>
@@ -75,7 +76,8 @@ class _$StartedEventImpl implements _StartedEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
     required TResult Function(_NameChangedEvent value) nameChanged,
-    required TResult Function(_DescriptionChangedEvent value) descriptionChanged,
+    required TResult Function(_DescriptionChangedEvent value)
+        descriptionChanged,
     required TResult Function(_SavedEvent value) saved,
     required TResult Function(_UpdatedEvent value) updated,
   }) {
@@ -146,7 +148,8 @@ class _$NameChangedEventImpl implements _NameChangedEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
     required TResult Function(_NameChangedEvent value) nameChanged,
-    required TResult Function(_DescriptionChangedEvent value) descriptionChanged,
+    required TResult Function(_DescriptionChangedEvent value)
+        descriptionChanged,
     required TResult Function(_SavedEvent value) saved,
     required TResult Function(_UpdatedEvent value) updated,
   }) {
@@ -217,7 +220,8 @@ class _$DescriptionChangedEventImpl implements _DescriptionChangedEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
     required TResult Function(_NameChangedEvent value) nameChanged,
-    required TResult Function(_DescriptionChangedEvent value) descriptionChanged,
+    required TResult Function(_DescriptionChangedEvent value)
+        descriptionChanged,
     required TResult Function(_SavedEvent value) saved,
     required TResult Function(_UpdatedEvent value) updated,
   }) {
@@ -254,7 +258,8 @@ class _$DescriptionChangedEventImpl implements _DescriptionChangedEvent {
 }
 
 abstract class _DescriptionChangedEvent implements ProjectEditEvent {
-  const factory _DescriptionChangedEvent(final String text) = _$DescriptionChangedEventImpl;
+  const factory _DescriptionChangedEvent(final String text) =
+      _$DescriptionChangedEventImpl;
 
   String get text;
 }
@@ -283,7 +288,8 @@ class _$SavedEventImpl implements _SavedEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
     required TResult Function(_NameChangedEvent value) nameChanged,
-    required TResult Function(_DescriptionChangedEvent value) descriptionChanged,
+    required TResult Function(_DescriptionChangedEvent value)
+        descriptionChanged,
     required TResult Function(_SavedEvent value) saved,
     required TResult Function(_UpdatedEvent value) updated,
   }) {
@@ -347,7 +353,8 @@ class _$UpdatedEventImpl implements _UpdatedEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
     required TResult Function(_NameChangedEvent value) nameChanged,
-    required TResult Function(_DescriptionChangedEvent value) descriptionChanged,
+    required TResult Function(_DescriptionChangedEvent value)
+        descriptionChanged,
     required TResult Function(_SavedEvent value) saved,
     required TResult Function(_UpdatedEvent value) updated,
   }) {
@@ -395,17 +402,25 @@ mixin _$ProjectEditState {
   ProjectEditStatus get status => throw _privateConstructorUsedError;
   String? get serverError => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
-  $ProjectEditStateCopyWith<ProjectEditState> get copyWith => throw _privateConstructorUsedError;
+  /// Create a copy of ProjectEditState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ProjectEditStateCopyWith<ProjectEditState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ProjectEditStateCopyWith<$Res> {
-  factory $ProjectEditStateCopyWith(ProjectEditState value, $Res Function(ProjectEditState) then) =
+  factory $ProjectEditStateCopyWith(
+          ProjectEditState value, $Res Function(ProjectEditState) then) =
       _$ProjectEditStateCopyWithImpl<$Res, ProjectEditState>;
   @useResult
   $Res call(
-      {String id, String name, String description, ProjectEditStatus status, String? serverError});
+      {String id,
+      String name,
+      String description,
+      ProjectEditStatus status,
+      String? serverError});
 }
 
 /// @nodoc
@@ -418,6 +433,8 @@ class _$ProjectEditStateCopyWithImpl<$Res, $Val extends ProjectEditState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProjectEditState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -453,24 +470,31 @@ class _$ProjectEditStateCopyWithImpl<$Res, $Val extends ProjectEditState>
 }
 
 /// @nodoc
-abstract class _$$ProjectEditStateImplCopyWith<$Res> implements $ProjectEditStateCopyWith<$Res> {
-  factory _$$ProjectEditStateImplCopyWith(
-          _$ProjectEditStateImpl value, $Res Function(_$ProjectEditStateImpl) then) =
+abstract class _$$ProjectEditStateImplCopyWith<$Res>
+    implements $ProjectEditStateCopyWith<$Res> {
+  factory _$$ProjectEditStateImplCopyWith(_$ProjectEditStateImpl value,
+          $Res Function(_$ProjectEditStateImpl) then) =
       __$$ProjectEditStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String id, String name, String description, ProjectEditStatus status, String? serverError});
+      {String id,
+      String name,
+      String description,
+      ProjectEditStatus status,
+      String? serverError});
 }
 
 /// @nodoc
 class __$$ProjectEditStateImplCopyWithImpl<$Res>
     extends _$ProjectEditStateCopyWithImpl<$Res, _$ProjectEditStateImpl>
     implements _$$ProjectEditStateImplCopyWith<$Res> {
-  __$$ProjectEditStateImplCopyWithImpl(
-      _$ProjectEditStateImpl _value, $Res Function(_$ProjectEditStateImpl) _then)
+  __$$ProjectEditStateImplCopyWithImpl(_$ProjectEditStateImpl _value,
+      $Res Function(_$ProjectEditStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProjectEditState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -539,19 +563,25 @@ class _$ProjectEditStateImpl implements _ProjectEditState {
             other is _$ProjectEditStateImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) || other.description == description) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.serverError, serverError) || other.serverError == serverError));
+            (identical(other.serverError, serverError) ||
+                other.serverError == serverError));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, description, status, serverError);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, description, status, serverError);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProjectEditState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProjectEditStateImplCopyWith<_$ProjectEditStateImpl> get copyWith =>
-      __$$ProjectEditStateImplCopyWithImpl<_$ProjectEditStateImpl>(this, _$identity);
+      __$$ProjectEditStateImplCopyWithImpl<_$ProjectEditStateImpl>(
+          this, _$identity);
 }
 
 abstract class _ProjectEditState implements ProjectEditState {
@@ -572,8 +602,11 @@ abstract class _ProjectEditState implements ProjectEditState {
   ProjectEditStatus get status;
   @override
   String? get serverError;
+
+  /// Create a copy of ProjectEditState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProjectEditStateImplCopyWith<_$ProjectEditStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

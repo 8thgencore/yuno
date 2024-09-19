@@ -12,7 +12,7 @@ part of 'i_auth_reset_password.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 IAuthResetPassword _$IAuthResetPasswordFromJson(Map<String, dynamic> json) {
   return _IAuthResetPassword.fromJson(json);
@@ -24,8 +24,12 @@ mixin _$IAuthResetPassword {
   String get resetToken => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
 
+  /// Serializes this IAuthResetPassword to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of IAuthResetPassword
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $IAuthResetPasswordCopyWith<IAuthResetPassword> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$IAuthResetPasswordCopyWithImpl<$Res, $Val extends IAuthResetPassword>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IAuthResetPassword
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -71,8 +77,8 @@ class _$IAuthResetPasswordCopyWithImpl<$Res, $Val extends IAuthResetPassword>
 /// @nodoc
 abstract class _$$IAuthResetPasswordImplCopyWith<$Res>
     implements $IAuthResetPasswordCopyWith<$Res> {
-  factory _$$IAuthResetPasswordImplCopyWith(
-          _$IAuthResetPasswordImpl value, $Res Function(_$IAuthResetPasswordImpl) then) =
+  factory _$$IAuthResetPasswordImplCopyWith(_$IAuthResetPasswordImpl value,
+          $Res Function(_$IAuthResetPasswordImpl) then) =
       __$$IAuthResetPasswordImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -83,10 +89,12 @@ abstract class _$$IAuthResetPasswordImplCopyWith<$Res>
 class __$$IAuthResetPasswordImplCopyWithImpl<$Res>
     extends _$IAuthResetPasswordCopyWithImpl<$Res, _$IAuthResetPasswordImpl>
     implements _$$IAuthResetPasswordImplCopyWith<$Res> {
-  __$$IAuthResetPasswordImplCopyWithImpl(
-      _$IAuthResetPasswordImpl _value, $Res Function(_$IAuthResetPasswordImpl) _then)
+  __$$IAuthResetPasswordImplCopyWithImpl(_$IAuthResetPasswordImpl _value,
+      $Res Function(_$IAuthResetPasswordImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IAuthResetPassword
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -110,7 +118,8 @@ class __$$IAuthResetPasswordImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$IAuthResetPasswordImpl implements _IAuthResetPassword {
   const _$IAuthResetPasswordImpl(
-      {@JsonKey(name: 'reset_token') required this.resetToken, required this.password});
+      {@JsonKey(name: 'reset_token') required this.resetToken,
+      required this.password});
 
   factory _$IAuthResetPasswordImpl.fromJson(Map<String, dynamic> json) =>
       _$$IAuthResetPasswordImplFromJson(json);
@@ -131,19 +140,24 @@ class _$IAuthResetPasswordImpl implements _IAuthResetPassword {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$IAuthResetPasswordImpl &&
-            (identical(other.resetToken, resetToken) || other.resetToken == resetToken) &&
-            (identical(other.password, password) || other.password == password));
+            (identical(other.resetToken, resetToken) ||
+                other.resetToken == resetToken) &&
+            (identical(other.password, password) ||
+                other.password == password));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, resetToken, password);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IAuthResetPassword
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IAuthResetPasswordImplCopyWith<_$IAuthResetPasswordImpl> get copyWith =>
-      __$$IAuthResetPasswordImplCopyWithImpl<_$IAuthResetPasswordImpl>(this, _$identity);
+      __$$IAuthResetPasswordImplCopyWithImpl<_$IAuthResetPasswordImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -166,8 +180,11 @@ abstract class _IAuthResetPassword implements IAuthResetPassword {
   String get resetToken;
   @override
   String get password;
+
+  /// Create a copy of IAuthResetPassword
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$IAuthResetPasswordImplCopyWith<_$IAuthResetPasswordImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

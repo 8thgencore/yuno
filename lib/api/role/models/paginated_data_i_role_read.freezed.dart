@@ -12,9 +12,10 @@ part of 'paginated_data_i_role_read.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-PaginatedDataIRoleRead _$PaginatedDataIRoleReadFromJson(Map<String, dynamic> json) {
+PaginatedDataIRoleRead _$PaginatedDataIRoleReadFromJson(
+    Map<String, dynamic> json) {
   return _PaginatedDataIRoleRead.fromJson(json);
 }
 
@@ -30,16 +31,20 @@ mixin _$PaginatedDataIRoleRead {
   @JsonKey(name: 'previous_page')
   int? get previousPage => throw _privateConstructorUsedError;
 
+  /// Serializes this PaginatedDataIRoleRead to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaginatedDataIRoleRead
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaginatedDataIRoleReadCopyWith<PaginatedDataIRoleRead> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PaginatedDataIRoleReadCopyWith<$Res> {
-  factory $PaginatedDataIRoleReadCopyWith(
-          PaginatedDataIRoleRead value, $Res Function(PaginatedDataIRoleRead) then) =
+  factory $PaginatedDataIRoleReadCopyWith(PaginatedDataIRoleRead value,
+          $Res Function(PaginatedDataIRoleRead) then) =
       _$PaginatedDataIRoleReadCopyWithImpl<$Res, PaginatedDataIRoleRead>;
   @useResult
   $Res call(
@@ -53,7 +58,8 @@ abstract class $PaginatedDataIRoleReadCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PaginatedDataIRoleReadCopyWithImpl<$Res, $Val extends PaginatedDataIRoleRead>
+class _$PaginatedDataIRoleReadCopyWithImpl<$Res,
+        $Val extends PaginatedDataIRoleRead>
     implements $PaginatedDataIRoleReadCopyWith<$Res> {
   _$PaginatedDataIRoleReadCopyWithImpl(this._value, this._then);
 
@@ -62,6 +68,8 @@ class _$PaginatedDataIRoleReadCopyWithImpl<$Res, $Val extends PaginatedDataIRole
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaginatedDataIRoleRead
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -110,7 +118,8 @@ class _$PaginatedDataIRoleReadCopyWithImpl<$Res, $Val extends PaginatedDataIRole
 abstract class _$$PaginatedDataIRoleReadImplCopyWith<$Res>
     implements $PaginatedDataIRoleReadCopyWith<$Res> {
   factory _$$PaginatedDataIRoleReadImplCopyWith(
-          _$PaginatedDataIRoleReadImpl value, $Res Function(_$PaginatedDataIRoleReadImpl) then) =
+          _$PaginatedDataIRoleReadImpl value,
+          $Res Function(_$PaginatedDataIRoleReadImpl) then) =
       __$$PaginatedDataIRoleReadImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -126,12 +135,16 @@ abstract class _$$PaginatedDataIRoleReadImplCopyWith<$Res>
 
 /// @nodoc
 class __$$PaginatedDataIRoleReadImplCopyWithImpl<$Res>
-    extends _$PaginatedDataIRoleReadCopyWithImpl<$Res, _$PaginatedDataIRoleReadImpl>
+    extends _$PaginatedDataIRoleReadCopyWithImpl<$Res,
+        _$PaginatedDataIRoleReadImpl>
     implements _$$PaginatedDataIRoleReadImplCopyWith<$Res> {
   __$$PaginatedDataIRoleReadImplCopyWithImpl(
-      _$PaginatedDataIRoleReadImpl _value, $Res Function(_$PaginatedDataIRoleReadImpl) _then)
+      _$PaginatedDataIRoleReadImpl _value,
+      $Res Function(_$PaginatedDataIRoleReadImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaginatedDataIRoleRead
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -230,20 +243,32 @@ class _$PaginatedDataIRoleReadImpl implements _PaginatedDataIRoleRead {
             (identical(other.page, page) || other.page == page) &&
             (identical(other.size, size) || other.size == size) &&
             (identical(other.pages, pages) || other.pages == pages) &&
-            (identical(other.nextPage, nextPage) || other.nextPage == nextPage) &&
-            (identical(other.previousPage, previousPage) || other.previousPage == previousPage));
+            (identical(other.nextPage, nextPage) ||
+                other.nextPage == nextPage) &&
+            (identical(other.previousPage, previousPage) ||
+                other.previousPage == previousPage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_items), total,
-      page, size, pages, nextPage, previousPage);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_items),
+      total,
+      page,
+      size,
+      pages,
+      nextPage,
+      previousPage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaginatedDataIRoleRead
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$PaginatedDataIRoleReadImplCopyWith<_$PaginatedDataIRoleReadImpl> get copyWith =>
-      __$$PaginatedDataIRoleReadImplCopyWithImpl<_$PaginatedDataIRoleReadImpl>(this, _$identity);
+  _$$PaginatedDataIRoleReadImplCopyWith<_$PaginatedDataIRoleReadImpl>
+      get copyWith => __$$PaginatedDataIRoleReadImplCopyWithImpl<
+          _$PaginatedDataIRoleReadImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -255,13 +280,14 @@ class _$PaginatedDataIRoleReadImpl implements _PaginatedDataIRoleRead {
 
 abstract class _PaginatedDataIRoleRead implements PaginatedDataIRoleRead {
   const factory _PaginatedDataIRoleRead(
-      {required final List<IRoleRead> items,
-      required final int total,
-      required final int page,
-      required final int size,
-      required final int pages,
-      @JsonKey(name: 'next_page') final int? nextPage,
-      @JsonKey(name: 'previous_page') final int? previousPage}) = _$PaginatedDataIRoleReadImpl;
+          {required final List<IRoleRead> items,
+          required final int total,
+          required final int page,
+          required final int size,
+          required final int pages,
+          @JsonKey(name: 'next_page') final int? nextPage,
+          @JsonKey(name: 'previous_page') final int? previousPage}) =
+      _$PaginatedDataIRoleReadImpl;
 
   factory _PaginatedDataIRoleRead.fromJson(Map<String, dynamic> json) =
       _$PaginatedDataIRoleReadImpl.fromJson;
@@ -282,8 +308,11 @@ abstract class _PaginatedDataIRoleRead implements PaginatedDataIRoleRead {
   @override
   @JsonKey(name: 'previous_page')
   int? get previousPage;
+
+  /// Create a copy of PaginatedDataIRoleRead
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$PaginatedDataIRoleReadImplCopyWith<_$PaginatedDataIRoleReadImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PaginatedDataIRoleReadImplCopyWith<_$PaginatedDataIRoleReadImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

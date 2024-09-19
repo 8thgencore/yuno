@@ -12,7 +12,7 @@ part of 'i_project_with_users.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 IProjectWithUsers _$IProjectWithUsersFromJson(Map<String, dynamic> json) {
   return _IProjectWithUsers.fromJson(json);
@@ -30,9 +30,14 @@ mixin _$IProjectWithUsers {
   String? get createdBy => throw _privateConstructorUsedError;
   List<IUserRead>? get users => throw _privateConstructorUsedError;
 
+  /// Serializes this IProjectWithUsers to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $IProjectWithUsersCopyWith<IProjectWithUsers> get copyWith => throw _privateConstructorUsedError;
+
+  /// Create a copy of IProjectWithUsers
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $IProjectWithUsersCopyWith<IProjectWithUsers> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -61,6 +66,8 @@ class _$IProjectWithUsersCopyWithImpl<$Res, $Val extends IProjectWithUsers>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IProjectWithUsers
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -106,9 +113,10 @@ class _$IProjectWithUsersCopyWithImpl<$Res, $Val extends IProjectWithUsers>
 }
 
 /// @nodoc
-abstract class _$$IProjectWithUsersImplCopyWith<$Res> implements $IProjectWithUsersCopyWith<$Res> {
-  factory _$$IProjectWithUsersImplCopyWith(
-          _$IProjectWithUsersImpl value, $Res Function(_$IProjectWithUsersImpl) then) =
+abstract class _$$IProjectWithUsersImplCopyWith<$Res>
+    implements $IProjectWithUsersCopyWith<$Res> {
+  factory _$$IProjectWithUsersImplCopyWith(_$IProjectWithUsersImpl value,
+          $Res Function(_$IProjectWithUsersImpl) then) =
       __$$IProjectWithUsersImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -126,10 +134,12 @@ abstract class _$$IProjectWithUsersImplCopyWith<$Res> implements $IProjectWithUs
 class __$$IProjectWithUsersImplCopyWithImpl<$Res>
     extends _$IProjectWithUsersCopyWithImpl<$Res, _$IProjectWithUsersImpl>
     implements _$$IProjectWithUsersImplCopyWith<$Res> {
-  __$$IProjectWithUsersImplCopyWithImpl(
-      _$IProjectWithUsersImpl _value, $Res Function(_$IProjectWithUsersImpl) _then)
+  __$$IProjectWithUsersImplCopyWithImpl(_$IProjectWithUsersImpl _value,
+      $Res Function(_$IProjectWithUsersImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IProjectWithUsers
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -225,25 +235,30 @@ class _$IProjectWithUsersImpl implements _IProjectWithUsers {
         (other.runtimeType == runtimeType &&
             other is _$IProjectWithUsersImpl &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) || other.description == description) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.link, link) || other.link == link) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.percentCompleted, percentCompleted) ||
                 other.percentCompleted == percentCompleted) &&
-            (identical(other.createdBy, createdBy) || other.createdBy == createdBy) &&
+            (identical(other.createdBy, createdBy) ||
+                other.createdBy == createdBy) &&
             const DeepCollectionEquality().equals(other._users, _users));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, name, description, link, id, percentCompleted,
-      createdBy, const DeepCollectionEquality().hash(_users));
+  int get hashCode => Object.hash(runtimeType, name, description, link, id,
+      percentCompleted, createdBy, const DeepCollectionEquality().hash(_users));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IProjectWithUsers
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IProjectWithUsersImplCopyWith<_$IProjectWithUsersImpl> get copyWith =>
-      __$$IProjectWithUsersImplCopyWithImpl<_$IProjectWithUsersImpl>(this, _$identity);
+      __$$IProjectWithUsersImplCopyWithImpl<_$IProjectWithUsersImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -259,11 +274,13 @@ abstract class _IProjectWithUsers implements IProjectWithUsers {
       required final String description,
       required final String link,
       required final String id,
-      @JsonKey(name: 'percent_completed') required final double percentCompleted,
+      @JsonKey(name: 'percent_completed')
+      required final double percentCompleted,
       @JsonKey(name: 'created_by_id') final String? createdBy,
       final List<IUserRead>? users}) = _$IProjectWithUsersImpl;
 
-  factory _IProjectWithUsers.fromJson(Map<String, dynamic> json) = _$IProjectWithUsersImpl.fromJson;
+  factory _IProjectWithUsers.fromJson(Map<String, dynamic> json) =
+      _$IProjectWithUsersImpl.fromJson;
 
   @override
   String get name;
@@ -281,8 +298,11 @@ abstract class _IProjectWithUsers implements IProjectWithUsers {
   String? get createdBy;
   @override
   List<IUserRead>? get users;
+
+  /// Create a copy of IProjectWithUsers
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$IProjectWithUsersImplCopyWith<_$IProjectWithUsersImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

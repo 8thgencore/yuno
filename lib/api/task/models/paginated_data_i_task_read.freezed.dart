@@ -12,9 +12,10 @@ part of 'paginated_data_i_task_read.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-PaginatedDataITaskRead _$PaginatedDataITaskReadFromJson(Map<String, dynamic> json) {
+PaginatedDataITaskRead _$PaginatedDataITaskReadFromJson(
+    Map<String, dynamic> json) {
   return _PaginatedDataITaskRead.fromJson(json);
 }
 
@@ -30,16 +31,20 @@ mixin _$PaginatedDataITaskRead {
   @JsonKey(name: 'previous_page')
   int? get previousPage => throw _privateConstructorUsedError;
 
+  /// Serializes this PaginatedDataITaskRead to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaginatedDataITaskRead
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaginatedDataITaskReadCopyWith<PaginatedDataITaskRead> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PaginatedDataITaskReadCopyWith<$Res> {
-  factory $PaginatedDataITaskReadCopyWith(
-          PaginatedDataITaskRead value, $Res Function(PaginatedDataITaskRead) then) =
+  factory $PaginatedDataITaskReadCopyWith(PaginatedDataITaskRead value,
+          $Res Function(PaginatedDataITaskRead) then) =
       _$PaginatedDataITaskReadCopyWithImpl<$Res, PaginatedDataITaskRead>;
   @useResult
   $Res call(
@@ -53,7 +58,8 @@ abstract class $PaginatedDataITaskReadCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PaginatedDataITaskReadCopyWithImpl<$Res, $Val extends PaginatedDataITaskRead>
+class _$PaginatedDataITaskReadCopyWithImpl<$Res,
+        $Val extends PaginatedDataITaskRead>
     implements $PaginatedDataITaskReadCopyWith<$Res> {
   _$PaginatedDataITaskReadCopyWithImpl(this._value, this._then);
 
@@ -62,6 +68,8 @@ class _$PaginatedDataITaskReadCopyWithImpl<$Res, $Val extends PaginatedDataITask
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaginatedDataITaskRead
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -110,7 +118,8 @@ class _$PaginatedDataITaskReadCopyWithImpl<$Res, $Val extends PaginatedDataITask
 abstract class _$$PaginatedDataITaskReadImplCopyWith<$Res>
     implements $PaginatedDataITaskReadCopyWith<$Res> {
   factory _$$PaginatedDataITaskReadImplCopyWith(
-          _$PaginatedDataITaskReadImpl value, $Res Function(_$PaginatedDataITaskReadImpl) then) =
+          _$PaginatedDataITaskReadImpl value,
+          $Res Function(_$PaginatedDataITaskReadImpl) then) =
       __$$PaginatedDataITaskReadImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -126,12 +135,16 @@ abstract class _$$PaginatedDataITaskReadImplCopyWith<$Res>
 
 /// @nodoc
 class __$$PaginatedDataITaskReadImplCopyWithImpl<$Res>
-    extends _$PaginatedDataITaskReadCopyWithImpl<$Res, _$PaginatedDataITaskReadImpl>
+    extends _$PaginatedDataITaskReadCopyWithImpl<$Res,
+        _$PaginatedDataITaskReadImpl>
     implements _$$PaginatedDataITaskReadImplCopyWith<$Res> {
   __$$PaginatedDataITaskReadImplCopyWithImpl(
-      _$PaginatedDataITaskReadImpl _value, $Res Function(_$PaginatedDataITaskReadImpl) _then)
+      _$PaginatedDataITaskReadImpl _value,
+      $Res Function(_$PaginatedDataITaskReadImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaginatedDataITaskRead
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -230,20 +243,32 @@ class _$PaginatedDataITaskReadImpl implements _PaginatedDataITaskRead {
             (identical(other.page, page) || other.page == page) &&
             (identical(other.size, size) || other.size == size) &&
             (identical(other.pages, pages) || other.pages == pages) &&
-            (identical(other.nextPage, nextPage) || other.nextPage == nextPage) &&
-            (identical(other.previousPage, previousPage) || other.previousPage == previousPage));
+            (identical(other.nextPage, nextPage) ||
+                other.nextPage == nextPage) &&
+            (identical(other.previousPage, previousPage) ||
+                other.previousPage == previousPage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_items), total,
-      page, size, pages, nextPage, previousPage);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_items),
+      total,
+      page,
+      size,
+      pages,
+      nextPage,
+      previousPage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaginatedDataITaskRead
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$PaginatedDataITaskReadImplCopyWith<_$PaginatedDataITaskReadImpl> get copyWith =>
-      __$$PaginatedDataITaskReadImplCopyWithImpl<_$PaginatedDataITaskReadImpl>(this, _$identity);
+  _$$PaginatedDataITaskReadImplCopyWith<_$PaginatedDataITaskReadImpl>
+      get copyWith => __$$PaginatedDataITaskReadImplCopyWithImpl<
+          _$PaginatedDataITaskReadImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -255,13 +280,14 @@ class _$PaginatedDataITaskReadImpl implements _PaginatedDataITaskRead {
 
 abstract class _PaginatedDataITaskRead implements PaginatedDataITaskRead {
   const factory _PaginatedDataITaskRead(
-      {required final List<ITaskRead> items,
-      required final int total,
-      required final int page,
-      required final int size,
-      required final int pages,
-      @JsonKey(name: 'next_page') final int? nextPage,
-      @JsonKey(name: 'previous_page') final int? previousPage}) = _$PaginatedDataITaskReadImpl;
+          {required final List<ITaskRead> items,
+          required final int total,
+          required final int page,
+          required final int size,
+          required final int pages,
+          @JsonKey(name: 'next_page') final int? nextPage,
+          @JsonKey(name: 'previous_page') final int? previousPage}) =
+      _$PaginatedDataITaskReadImpl;
 
   factory _PaginatedDataITaskRead.fromJson(Map<String, dynamic> json) =
       _$PaginatedDataITaskReadImpl.fromJson;
@@ -282,8 +308,11 @@ abstract class _PaginatedDataITaskRead implements PaginatedDataITaskRead {
   @override
   @JsonKey(name: 'previous_page')
   int? get previousPage;
+
+  /// Create a copy of PaginatedDataITaskRead
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$PaginatedDataITaskReadImplCopyWith<_$PaginatedDataITaskReadImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PaginatedDataITaskReadImplCopyWith<_$PaginatedDataITaskReadImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

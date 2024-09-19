@@ -12,7 +12,8 @@ _$IProjectUpdateImpl _$$IProjectUpdateImplFromJson(Map<String, dynamic> json) =>
       description: json['description'] as String,
     );
 
-Map<String, dynamic> _$$IProjectUpdateImplToJson(_$IProjectUpdateImpl instance) =>
+Map<String, dynamic> _$$IProjectUpdateImplToJson(
+        _$IProjectUpdateImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'description': instance.description,

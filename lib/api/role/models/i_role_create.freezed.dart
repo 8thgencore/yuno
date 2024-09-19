@@ -12,7 +12,7 @@ part of 'i_role_create.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 IRoleCreate _$IRoleCreateFromJson(Map<String, dynamic> json) {
   return _IRoleCreate.fromJson(json);
@@ -23,14 +23,20 @@ mixin _$IRoleCreate {
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
 
+  /// Serializes this IRoleCreate to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $IRoleCreateCopyWith<IRoleCreate> get copyWith => throw _privateConstructorUsedError;
+
+  /// Create a copy of IRoleCreate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $IRoleCreateCopyWith<IRoleCreate> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $IRoleCreateCopyWith<$Res> {
-  factory $IRoleCreateCopyWith(IRoleCreate value, $Res Function(IRoleCreate) then) =
+  factory $IRoleCreateCopyWith(
+          IRoleCreate value, $Res Function(IRoleCreate) then) =
       _$IRoleCreateCopyWithImpl<$Res, IRoleCreate>;
   @useResult
   $Res call({String name, String description});
@@ -46,6 +52,8 @@ class _$IRoleCreateCopyWithImpl<$Res, $Val extends IRoleCreate>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IRoleCreate
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -66,7 +74,8 @@ class _$IRoleCreateCopyWithImpl<$Res, $Val extends IRoleCreate>
 }
 
 /// @nodoc
-abstract class _$$IRoleCreateImplCopyWith<$Res> implements $IRoleCreateCopyWith<$Res> {
+abstract class _$$IRoleCreateImplCopyWith<$Res>
+    implements $IRoleCreateCopyWith<$Res> {
   factory _$$IRoleCreateImplCopyWith(
           _$IRoleCreateImpl value, $Res Function(_$IRoleCreateImpl) then) =
       __$$IRoleCreateImplCopyWithImpl<$Res>;
@@ -79,9 +88,12 @@ abstract class _$$IRoleCreateImplCopyWith<$Res> implements $IRoleCreateCopyWith<
 class __$$IRoleCreateImplCopyWithImpl<$Res>
     extends _$IRoleCreateCopyWithImpl<$Res, _$IRoleCreateImpl>
     implements _$$IRoleCreateImplCopyWith<$Res> {
-  __$$IRoleCreateImplCopyWithImpl(_$IRoleCreateImpl _value, $Res Function(_$IRoleCreateImpl) _then)
+  __$$IRoleCreateImplCopyWithImpl(
+      _$IRoleCreateImpl _value, $Res Function(_$IRoleCreateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IRoleCreate
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -106,7 +118,8 @@ class __$$IRoleCreateImplCopyWithImpl<$Res>
 class _$IRoleCreateImpl implements _IRoleCreate {
   const _$IRoleCreateImpl({required this.name, required this.description});
 
-  factory _$IRoleCreateImpl.fromJson(Map<String, dynamic> json) => _$$IRoleCreateImplFromJson(json);
+  factory _$IRoleCreateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IRoleCreateImplFromJson(json);
 
   @override
   final String name;
@@ -124,14 +137,17 @@ class _$IRoleCreateImpl implements _IRoleCreate {
         (other.runtimeType == runtimeType &&
             other is _$IRoleCreateImpl &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) || other.description == description));
+            (identical(other.description, description) ||
+                other.description == description));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, description);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IRoleCreate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IRoleCreateImplCopyWith<_$IRoleCreateImpl> get copyWith =>
@@ -146,16 +162,22 @@ class _$IRoleCreateImpl implements _IRoleCreate {
 }
 
 abstract class _IRoleCreate implements IRoleCreate {
-  const factory _IRoleCreate({required final String name, required final String description}) =
-      _$IRoleCreateImpl;
+  const factory _IRoleCreate(
+      {required final String name,
+      required final String description}) = _$IRoleCreateImpl;
 
-  factory _IRoleCreate.fromJson(Map<String, dynamic> json) = _$IRoleCreateImpl.fromJson;
+  factory _IRoleCreate.fromJson(Map<String, dynamic> json) =
+      _$IRoleCreateImpl.fromJson;
 
   @override
   String get name;
   @override
   String get description;
+
+  /// Create a copy of IRoleCreate
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$IRoleCreateImplCopyWith<_$IRoleCreateImpl> get copyWith => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$IRoleCreateImplCopyWith<_$IRoleCreateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

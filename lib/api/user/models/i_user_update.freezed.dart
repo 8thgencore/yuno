@@ -12,7 +12,7 @@ part of 'i_user_update.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 IUserUpdate _$IUserUpdateFromJson(Map<String, dynamic> json) {
   return _IUserUpdate.fromJson(json);
@@ -31,14 +31,20 @@ mixin _$IUserUpdate {
   @JsonKey(name: 'role_id')
   String? get roleId => throw _privateConstructorUsedError;
 
+  /// Serializes this IUserUpdate to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $IUserUpdateCopyWith<IUserUpdate> get copyWith => throw _privateConstructorUsedError;
+
+  /// Create a copy of IUserUpdate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $IUserUpdateCopyWith<IUserUpdate> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $IUserUpdateCopyWith<$Res> {
-  factory $IUserUpdateCopyWith(IUserUpdate value, $Res Function(IUserUpdate) then) =
+  factory $IUserUpdateCopyWith(
+          IUserUpdate value, $Res Function(IUserUpdate) then) =
       _$IUserUpdateCopyWithImpl<$Res, IUserUpdate>;
   @useResult
   $Res call(
@@ -61,6 +67,8 @@ class _$IUserUpdateCopyWithImpl<$Res, $Val extends IUserUpdate>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IUserUpdate
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -106,7 +114,8 @@ class _$IUserUpdateCopyWithImpl<$Res, $Val extends IUserUpdate>
 }
 
 /// @nodoc
-abstract class _$$IUserUpdateImplCopyWith<$Res> implements $IUserUpdateCopyWith<$Res> {
+abstract class _$$IUserUpdateImplCopyWith<$Res>
+    implements $IUserUpdateCopyWith<$Res> {
   factory _$$IUserUpdateImplCopyWith(
           _$IUserUpdateImpl value, $Res Function(_$IUserUpdateImpl) then) =
       __$$IUserUpdateImplCopyWithImpl<$Res>;
@@ -126,9 +135,12 @@ abstract class _$$IUserUpdateImplCopyWith<$Res> implements $IUserUpdateCopyWith<
 class __$$IUserUpdateImplCopyWithImpl<$Res>
     extends _$IUserUpdateCopyWithImpl<$Res, _$IUserUpdateImpl>
     implements _$$IUserUpdateImplCopyWith<$Res> {
-  __$$IUserUpdateImplCopyWithImpl(_$IUserUpdateImpl _value, $Res Function(_$IUserUpdateImpl) _then)
+  __$$IUserUpdateImplCopyWithImpl(
+      _$IUserUpdateImpl _value, $Res Function(_$IUserUpdateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IUserUpdate
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -185,7 +197,8 @@ class _$IUserUpdateImpl implements _IUserUpdate {
       this.phone,
       @JsonKey(name: 'role_id') this.roleId});
 
-  factory _$IUserUpdateImpl.fromJson(Map<String, dynamic> json) => _$$IUserUpdateImplFromJson(json);
+  factory _$IUserUpdateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IUserUpdateImplFromJson(json);
 
   @override
   @JsonKey(name: 'first_name')
@@ -215,21 +228,27 @@ class _$IUserUpdateImpl implements _IUserUpdate {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$IUserUpdateImpl &&
-            (identical(other.firstName, firstName) || other.firstName == firstName) &&
-            (identical(other.lastName, lastName) || other.lastName == lastName) &&
-            (identical(other.username, username) || other.username == username) &&
+            (identical(other.firstName, firstName) ||
+                other.firstName == firstName) &&
+            (identical(other.lastName, lastName) ||
+                other.lastName == lastName) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.birthdate, birthdate) || other.birthdate == birthdate) &&
+            (identical(other.birthdate, birthdate) ||
+                other.birthdate == birthdate) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.roleId, roleId) || other.roleId == roleId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, firstName, lastName, username, email, birthdate, phone, roleId);
+  int get hashCode => Object.hash(runtimeType, firstName, lastName, username,
+      email, birthdate, phone, roleId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IUserUpdate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IUserUpdateImplCopyWith<_$IUserUpdateImpl> get copyWith =>
@@ -253,7 +272,8 @@ abstract class _IUserUpdate implements IUserUpdate {
       final String? phone,
       @JsonKey(name: 'role_id') final String? roleId}) = _$IUserUpdateImpl;
 
-  factory _IUserUpdate.fromJson(Map<String, dynamic> json) = _$IUserUpdateImpl.fromJson;
+  factory _IUserUpdate.fromJson(Map<String, dynamic> json) =
+      _$IUserUpdateImpl.fromJson;
 
   @override
   @JsonKey(name: 'first_name')
@@ -272,7 +292,11 @@ abstract class _IUserUpdate implements IUserUpdate {
   @override
   @JsonKey(name: 'role_id')
   String? get roleId;
+
+  /// Create a copy of IUserUpdate
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$IUserUpdateImplCopyWith<_$IUserUpdateImpl> get copyWith => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$IUserUpdateImplCopyWith<_$IUserUpdateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

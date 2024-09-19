@@ -12,7 +12,7 @@ part of 'statistics_read.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 StatisticsRead _$StatisticsReadFromJson(Map<String, dynamic> json) {
   return _StatisticsRead.fromJson(json);
@@ -29,14 +29,20 @@ mixin _$StatisticsRead {
   @JsonKey(name: 'completed_count')
   int get completedCount => throw _privateConstructorUsedError;
 
+  /// Serializes this StatisticsRead to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $StatisticsReadCopyWith<StatisticsRead> get copyWith => throw _privateConstructorUsedError;
+
+  /// Create a copy of StatisticsRead
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $StatisticsReadCopyWith<StatisticsRead> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $StatisticsReadCopyWith<$Res> {
-  factory $StatisticsReadCopyWith(StatisticsRead value, $Res Function(StatisticsRead) then) =
+  factory $StatisticsReadCopyWith(
+          StatisticsRead value, $Res Function(StatisticsRead) then) =
       _$StatisticsReadCopyWithImpl<$Res, StatisticsRead>;
   @useResult
   $Res call(
@@ -56,6 +62,8 @@ class _$StatisticsReadCopyWithImpl<$Res, $Val extends StatisticsRead>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StatisticsRead
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,9 +94,10 @@ class _$StatisticsReadCopyWithImpl<$Res, $Val extends StatisticsRead>
 }
 
 /// @nodoc
-abstract class _$$StatisticsReadImplCopyWith<$Res> implements $StatisticsReadCopyWith<$Res> {
-  factory _$$StatisticsReadImplCopyWith(
-          _$StatisticsReadImpl value, $Res Function(_$StatisticsReadImpl) then) =
+abstract class _$$StatisticsReadImplCopyWith<$Res>
+    implements $StatisticsReadCopyWith<$Res> {
+  factory _$$StatisticsReadImplCopyWith(_$StatisticsReadImpl value,
+          $Res Function(_$StatisticsReadImpl) then) =
       __$$StatisticsReadImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -107,6 +116,8 @@ class __$$StatisticsReadImplCopyWithImpl<$Res>
       _$StatisticsReadImpl _value, $Res Function(_$StatisticsReadImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StatisticsRead
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -173,22 +184,27 @@ class _$StatisticsReadImpl implements _StatisticsRead {
             other is _$StatisticsReadImpl &&
             (identical(other.projectsCount, projectsCount) ||
                 other.projectsCount == projectsCount) &&
-            (identical(other.missingCount, missingCount) || other.missingCount == missingCount) &&
-            (identical(other.ongoingCount, ongoingCount) || other.ongoingCount == ongoingCount) &&
+            (identical(other.missingCount, missingCount) ||
+                other.missingCount == missingCount) &&
+            (identical(other.ongoingCount, ongoingCount) ||
+                other.ongoingCount == ongoingCount) &&
             (identical(other.completedCount, completedCount) ||
                 other.completedCount == completedCount));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, projectsCount, missingCount, ongoingCount, completedCount);
+  int get hashCode => Object.hash(
+      runtimeType, projectsCount, missingCount, ongoingCount, completedCount);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StatisticsRead
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StatisticsReadImplCopyWith<_$StatisticsReadImpl> get copyWith =>
-      __$$StatisticsReadImplCopyWithImpl<_$StatisticsReadImpl>(this, _$identity);
+      __$$StatisticsReadImplCopyWithImpl<_$StatisticsReadImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -203,9 +219,11 @@ abstract class _StatisticsRead implements StatisticsRead {
       {@JsonKey(name: 'projects_count') required final int projectsCount,
       @JsonKey(name: 'missing_count') required final int missingCount,
       @JsonKey(name: 'ongoing_count') required final int ongoingCount,
-      @JsonKey(name: 'completed_count') required final int completedCount}) = _$StatisticsReadImpl;
+      @JsonKey(name: 'completed_count')
+      required final int completedCount}) = _$StatisticsReadImpl;
 
-  factory _StatisticsRead.fromJson(Map<String, dynamic> json) = _$StatisticsReadImpl.fromJson;
+  factory _StatisticsRead.fromJson(Map<String, dynamic> json) =
+      _$StatisticsReadImpl.fromJson;
 
   @override
   @JsonKey(name: 'projects_count')
@@ -219,8 +237,11 @@ abstract class _StatisticsRead implements StatisticsRead {
   @override
   @JsonKey(name: 'completed_count')
   int get completedCount;
+
+  /// Create a copy of StatisticsRead
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StatisticsReadImplCopyWith<_$StatisticsReadImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

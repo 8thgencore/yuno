@@ -12,7 +12,7 @@ part of 'i_project_read.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 IProjectRead _$IProjectReadFromJson(Map<String, dynamic> json) {
   return _IProjectRead.fromJson(json);
@@ -29,14 +29,20 @@ mixin _$IProjectRead {
   @JsonKey(name: 'created_by_id')
   String? get createdBy => throw _privateConstructorUsedError;
 
+  /// Serializes this IProjectRead to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $IProjectReadCopyWith<IProjectRead> get copyWith => throw _privateConstructorUsedError;
+
+  /// Create a copy of IProjectRead
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $IProjectReadCopyWith<IProjectRead> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $IProjectReadCopyWith<$Res> {
-  factory $IProjectReadCopyWith(IProjectRead value, $Res Function(IProjectRead) then) =
+  factory $IProjectReadCopyWith(
+          IProjectRead value, $Res Function(IProjectRead) then) =
       _$IProjectReadCopyWithImpl<$Res, IProjectRead>;
   @useResult
   $Res call(
@@ -58,6 +64,8 @@ class _$IProjectReadCopyWithImpl<$Res, $Val extends IProjectRead>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IProjectRead
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -98,7 +106,8 @@ class _$IProjectReadCopyWithImpl<$Res, $Val extends IProjectRead>
 }
 
 /// @nodoc
-abstract class _$$IProjectReadImplCopyWith<$Res> implements $IProjectReadCopyWith<$Res> {
+abstract class _$$IProjectReadImplCopyWith<$Res>
+    implements $IProjectReadCopyWith<$Res> {
   factory _$$IProjectReadImplCopyWith(
           _$IProjectReadImpl value, $Res Function(_$IProjectReadImpl) then) =
       __$$IProjectReadImplCopyWithImpl<$Res>;
@@ -121,6 +130,8 @@ class __$$IProjectReadImplCopyWithImpl<$Res>
       _$IProjectReadImpl _value, $Res Function(_$IProjectReadImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IProjectRead
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -200,20 +211,24 @@ class _$IProjectReadImpl implements _IProjectRead {
         (other.runtimeType == runtimeType &&
             other is _$IProjectReadImpl &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) || other.description == description) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.link, link) || other.link == link) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.percentCompleted, percentCompleted) ||
                 other.percentCompleted == percentCompleted) &&
-            (identical(other.createdBy, createdBy) || other.createdBy == createdBy));
+            (identical(other.createdBy, createdBy) ||
+                other.createdBy == createdBy));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, name, description, link, id, percentCompleted, createdBy);
+  int get hashCode => Object.hash(
+      runtimeType, name, description, link, id, percentCompleted, createdBy);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IProjectRead
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IProjectReadImplCopyWith<_$IProjectReadImpl> get copyWith =>
@@ -229,14 +244,17 @@ class _$IProjectReadImpl implements _IProjectRead {
 
 abstract class _IProjectRead implements IProjectRead {
   const factory _IProjectRead(
-      {required final String name,
-      required final String description,
-      required final String link,
-      required final String id,
-      @JsonKey(name: 'percent_completed') required final double percentCompleted,
-      @JsonKey(name: 'created_by_id') final String? createdBy}) = _$IProjectReadImpl;
+          {required final String name,
+          required final String description,
+          required final String link,
+          required final String id,
+          @JsonKey(name: 'percent_completed')
+          required final double percentCompleted,
+          @JsonKey(name: 'created_by_id') final String? createdBy}) =
+      _$IProjectReadImpl;
 
-  factory _IProjectRead.fromJson(Map<String, dynamic> json) = _$IProjectReadImpl.fromJson;
+  factory _IProjectRead.fromJson(Map<String, dynamic> json) =
+      _$IProjectReadImpl.fromJson;
 
   @override
   String get name;
@@ -252,8 +270,11 @@ abstract class _IProjectRead implements IProjectRead {
   @override
   @JsonKey(name: 'created_by_id')
   String? get createdBy;
+
+  /// Create a copy of IProjectRead
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$IProjectReadImplCopyWith<_$IProjectReadImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

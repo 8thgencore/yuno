@@ -12,34 +12,41 @@ part of 'change_password_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ChangePasswordEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
-    required TResult Function(_CurrentPasswordChangedEvent value) currentPasswordChanged,
-    required TResult Function(_NewPasswordChangedEvent value) newPasswordChanged,
-    required TResult Function(_ConfirmNewPasswordChangedEvent value) confirmNewPasswordChanged,
+    required TResult Function(_CurrentPasswordChangedEvent value)
+        currentPasswordChanged,
+    required TResult Function(_NewPasswordChangedEvent value)
+        newPasswordChanged,
+    required TResult Function(_ConfirmNewPasswordChangedEvent value)
+        confirmNewPasswordChanged,
     required TResult Function(_SavedEvent value) saved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
-    TResult? Function(_CurrentPasswordChangedEvent value)? currentPasswordChanged,
+    TResult? Function(_CurrentPasswordChangedEvent value)?
+        currentPasswordChanged,
     TResult? Function(_NewPasswordChangedEvent value)? newPasswordChanged,
-    TResult? Function(_ConfirmNewPasswordChangedEvent value)? confirmNewPasswordChanged,
+    TResult? Function(_ConfirmNewPasswordChangedEvent value)?
+        confirmNewPasswordChanged,
     TResult? Function(_SavedEvent value)? saved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
-    TResult Function(_CurrentPasswordChangedEvent value)? currentPasswordChanged,
+    TResult Function(_CurrentPasswordChangedEvent value)?
+        currentPasswordChanged,
     TResult Function(_NewPasswordChangedEvent value)? newPasswordChanged,
-    TResult Function(_ConfirmNewPasswordChangedEvent value)? confirmNewPasswordChanged,
+    TResult Function(_ConfirmNewPasswordChangedEvent value)?
+        confirmNewPasswordChanged,
     TResult Function(_SavedEvent value)? saved,
     required TResult orElse(),
   }) =>
@@ -69,9 +76,12 @@ class _$StartedEventImpl implements _StartedEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
-    required TResult Function(_CurrentPasswordChangedEvent value) currentPasswordChanged,
-    required TResult Function(_NewPasswordChangedEvent value) newPasswordChanged,
-    required TResult Function(_ConfirmNewPasswordChangedEvent value) confirmNewPasswordChanged,
+    required TResult Function(_CurrentPasswordChangedEvent value)
+        currentPasswordChanged,
+    required TResult Function(_NewPasswordChangedEvent value)
+        newPasswordChanged,
+    required TResult Function(_ConfirmNewPasswordChangedEvent value)
+        confirmNewPasswordChanged,
     required TResult Function(_SavedEvent value) saved,
   }) {
     return started(this);
@@ -81,9 +91,11 @@ class _$StartedEventImpl implements _StartedEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
-    TResult? Function(_CurrentPasswordChangedEvent value)? currentPasswordChanged,
+    TResult? Function(_CurrentPasswordChangedEvent value)?
+        currentPasswordChanged,
     TResult? Function(_NewPasswordChangedEvent value)? newPasswordChanged,
-    TResult? Function(_ConfirmNewPasswordChangedEvent value)? confirmNewPasswordChanged,
+    TResult? Function(_ConfirmNewPasswordChangedEvent value)?
+        confirmNewPasswordChanged,
     TResult? Function(_SavedEvent value)? saved,
   }) {
     return started?.call(this);
@@ -93,9 +105,11 @@ class _$StartedEventImpl implements _StartedEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
-    TResult Function(_CurrentPasswordChangedEvent value)? currentPasswordChanged,
+    TResult Function(_CurrentPasswordChangedEvent value)?
+        currentPasswordChanged,
     TResult Function(_NewPasswordChangedEvent value)? newPasswordChanged,
-    TResult Function(_ConfirmNewPasswordChangedEvent value)? confirmNewPasswordChanged,
+    TResult Function(_ConfirmNewPasswordChangedEvent value)?
+        confirmNewPasswordChanged,
     TResult Function(_SavedEvent value)? saved,
     required TResult orElse(),
   }) {
@@ -112,7 +126,8 @@ abstract class _StartedEvent implements ChangePasswordEvent {
 
 /// @nodoc
 
-class _$CurrentPasswordChangedEventImpl implements _CurrentPasswordChangedEvent {
+class _$CurrentPasswordChangedEventImpl
+    implements _CurrentPasswordChangedEvent {
   const _$CurrentPasswordChangedEventImpl(this.text);
 
   @override
@@ -138,9 +153,12 @@ class _$CurrentPasswordChangedEventImpl implements _CurrentPasswordChangedEvent 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
-    required TResult Function(_CurrentPasswordChangedEvent value) currentPasswordChanged,
-    required TResult Function(_NewPasswordChangedEvent value) newPasswordChanged,
-    required TResult Function(_ConfirmNewPasswordChangedEvent value) confirmNewPasswordChanged,
+    required TResult Function(_CurrentPasswordChangedEvent value)
+        currentPasswordChanged,
+    required TResult Function(_NewPasswordChangedEvent value)
+        newPasswordChanged,
+    required TResult Function(_ConfirmNewPasswordChangedEvent value)
+        confirmNewPasswordChanged,
     required TResult Function(_SavedEvent value) saved,
   }) {
     return currentPasswordChanged(this);
@@ -150,9 +168,11 @@ class _$CurrentPasswordChangedEventImpl implements _CurrentPasswordChangedEvent 
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
-    TResult? Function(_CurrentPasswordChangedEvent value)? currentPasswordChanged,
+    TResult? Function(_CurrentPasswordChangedEvent value)?
+        currentPasswordChanged,
     TResult? Function(_NewPasswordChangedEvent value)? newPasswordChanged,
-    TResult? Function(_ConfirmNewPasswordChangedEvent value)? confirmNewPasswordChanged,
+    TResult? Function(_ConfirmNewPasswordChangedEvent value)?
+        confirmNewPasswordChanged,
     TResult? Function(_SavedEvent value)? saved,
   }) {
     return currentPasswordChanged?.call(this);
@@ -162,9 +182,11 @@ class _$CurrentPasswordChangedEventImpl implements _CurrentPasswordChangedEvent 
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
-    TResult Function(_CurrentPasswordChangedEvent value)? currentPasswordChanged,
+    TResult Function(_CurrentPasswordChangedEvent value)?
+        currentPasswordChanged,
     TResult Function(_NewPasswordChangedEvent value)? newPasswordChanged,
-    TResult Function(_ConfirmNewPasswordChangedEvent value)? confirmNewPasswordChanged,
+    TResult Function(_ConfirmNewPasswordChangedEvent value)?
+        confirmNewPasswordChanged,
     TResult Function(_SavedEvent value)? saved,
     required TResult orElse(),
   }) {
@@ -176,7 +198,8 @@ class _$CurrentPasswordChangedEventImpl implements _CurrentPasswordChangedEvent 
 }
 
 abstract class _CurrentPasswordChangedEvent implements ChangePasswordEvent {
-  const factory _CurrentPasswordChangedEvent(final String text) = _$CurrentPasswordChangedEventImpl;
+  const factory _CurrentPasswordChangedEvent(final String text) =
+      _$CurrentPasswordChangedEventImpl;
 
   String get text;
 }
@@ -209,9 +232,12 @@ class _$NewPasswordChangedEventImpl implements _NewPasswordChangedEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
-    required TResult Function(_CurrentPasswordChangedEvent value) currentPasswordChanged,
-    required TResult Function(_NewPasswordChangedEvent value) newPasswordChanged,
-    required TResult Function(_ConfirmNewPasswordChangedEvent value) confirmNewPasswordChanged,
+    required TResult Function(_CurrentPasswordChangedEvent value)
+        currentPasswordChanged,
+    required TResult Function(_NewPasswordChangedEvent value)
+        newPasswordChanged,
+    required TResult Function(_ConfirmNewPasswordChangedEvent value)
+        confirmNewPasswordChanged,
     required TResult Function(_SavedEvent value) saved,
   }) {
     return newPasswordChanged(this);
@@ -221,9 +247,11 @@ class _$NewPasswordChangedEventImpl implements _NewPasswordChangedEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
-    TResult? Function(_CurrentPasswordChangedEvent value)? currentPasswordChanged,
+    TResult? Function(_CurrentPasswordChangedEvent value)?
+        currentPasswordChanged,
     TResult? Function(_NewPasswordChangedEvent value)? newPasswordChanged,
-    TResult? Function(_ConfirmNewPasswordChangedEvent value)? confirmNewPasswordChanged,
+    TResult? Function(_ConfirmNewPasswordChangedEvent value)?
+        confirmNewPasswordChanged,
     TResult? Function(_SavedEvent value)? saved,
   }) {
     return newPasswordChanged?.call(this);
@@ -233,9 +261,11 @@ class _$NewPasswordChangedEventImpl implements _NewPasswordChangedEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
-    TResult Function(_CurrentPasswordChangedEvent value)? currentPasswordChanged,
+    TResult Function(_CurrentPasswordChangedEvent value)?
+        currentPasswordChanged,
     TResult Function(_NewPasswordChangedEvent value)? newPasswordChanged,
-    TResult Function(_ConfirmNewPasswordChangedEvent value)? confirmNewPasswordChanged,
+    TResult Function(_ConfirmNewPasswordChangedEvent value)?
+        confirmNewPasswordChanged,
     TResult Function(_SavedEvent value)? saved,
     required TResult orElse(),
   }) {
@@ -247,14 +277,16 @@ class _$NewPasswordChangedEventImpl implements _NewPasswordChangedEvent {
 }
 
 abstract class _NewPasswordChangedEvent implements ChangePasswordEvent {
-  const factory _NewPasswordChangedEvent(final String text) = _$NewPasswordChangedEventImpl;
+  const factory _NewPasswordChangedEvent(final String text) =
+      _$NewPasswordChangedEventImpl;
 
   String get text;
 }
 
 /// @nodoc
 
-class _$ConfirmNewPasswordChangedEventImpl implements _ConfirmNewPasswordChangedEvent {
+class _$ConfirmNewPasswordChangedEventImpl
+    implements _ConfirmNewPasswordChangedEvent {
   const _$ConfirmNewPasswordChangedEventImpl(this.text);
 
   @override
@@ -280,9 +312,12 @@ class _$ConfirmNewPasswordChangedEventImpl implements _ConfirmNewPasswordChanged
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
-    required TResult Function(_CurrentPasswordChangedEvent value) currentPasswordChanged,
-    required TResult Function(_NewPasswordChangedEvent value) newPasswordChanged,
-    required TResult Function(_ConfirmNewPasswordChangedEvent value) confirmNewPasswordChanged,
+    required TResult Function(_CurrentPasswordChangedEvent value)
+        currentPasswordChanged,
+    required TResult Function(_NewPasswordChangedEvent value)
+        newPasswordChanged,
+    required TResult Function(_ConfirmNewPasswordChangedEvent value)
+        confirmNewPasswordChanged,
     required TResult Function(_SavedEvent value) saved,
   }) {
     return confirmNewPasswordChanged(this);
@@ -292,9 +327,11 @@ class _$ConfirmNewPasswordChangedEventImpl implements _ConfirmNewPasswordChanged
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
-    TResult? Function(_CurrentPasswordChangedEvent value)? currentPasswordChanged,
+    TResult? Function(_CurrentPasswordChangedEvent value)?
+        currentPasswordChanged,
     TResult? Function(_NewPasswordChangedEvent value)? newPasswordChanged,
-    TResult? Function(_ConfirmNewPasswordChangedEvent value)? confirmNewPasswordChanged,
+    TResult? Function(_ConfirmNewPasswordChangedEvent value)?
+        confirmNewPasswordChanged,
     TResult? Function(_SavedEvent value)? saved,
   }) {
     return confirmNewPasswordChanged?.call(this);
@@ -304,9 +341,11 @@ class _$ConfirmNewPasswordChangedEventImpl implements _ConfirmNewPasswordChanged
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
-    TResult Function(_CurrentPasswordChangedEvent value)? currentPasswordChanged,
+    TResult Function(_CurrentPasswordChangedEvent value)?
+        currentPasswordChanged,
     TResult Function(_NewPasswordChangedEvent value)? newPasswordChanged,
-    TResult Function(_ConfirmNewPasswordChangedEvent value)? confirmNewPasswordChanged,
+    TResult Function(_ConfirmNewPasswordChangedEvent value)?
+        confirmNewPasswordChanged,
     TResult Function(_SavedEvent value)? saved,
     required TResult orElse(),
   }) {
@@ -347,9 +386,12 @@ class _$SavedEventImpl implements _SavedEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartedEvent value) started,
-    required TResult Function(_CurrentPasswordChangedEvent value) currentPasswordChanged,
-    required TResult Function(_NewPasswordChangedEvent value) newPasswordChanged,
-    required TResult Function(_ConfirmNewPasswordChangedEvent value) confirmNewPasswordChanged,
+    required TResult Function(_CurrentPasswordChangedEvent value)
+        currentPasswordChanged,
+    required TResult Function(_NewPasswordChangedEvent value)
+        newPasswordChanged,
+    required TResult Function(_ConfirmNewPasswordChangedEvent value)
+        confirmNewPasswordChanged,
     required TResult Function(_SavedEvent value) saved,
   }) {
     return saved(this);
@@ -359,9 +401,11 @@ class _$SavedEventImpl implements _SavedEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartedEvent value)? started,
-    TResult? Function(_CurrentPasswordChangedEvent value)? currentPasswordChanged,
+    TResult? Function(_CurrentPasswordChangedEvent value)?
+        currentPasswordChanged,
     TResult? Function(_NewPasswordChangedEvent value)? newPasswordChanged,
-    TResult? Function(_ConfirmNewPasswordChangedEvent value)? confirmNewPasswordChanged,
+    TResult? Function(_ConfirmNewPasswordChangedEvent value)?
+        confirmNewPasswordChanged,
     TResult? Function(_SavedEvent value)? saved,
   }) {
     return saved?.call(this);
@@ -371,9 +415,11 @@ class _$SavedEventImpl implements _SavedEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartedEvent value)? started,
-    TResult Function(_CurrentPasswordChangedEvent value)? currentPasswordChanged,
+    TResult Function(_CurrentPasswordChangedEvent value)?
+        currentPasswordChanged,
     TResult Function(_NewPasswordChangedEvent value)? newPasswordChanged,
-    TResult Function(_ConfirmNewPasswordChangedEvent value)? confirmNewPasswordChanged,
+    TResult Function(_ConfirmNewPasswordChangedEvent value)?
+        confirmNewPasswordChanged,
     TResult Function(_SavedEvent value)? saved,
     required TResult orElse(),
   }) {
@@ -401,7 +447,9 @@ mixin _$ChangePasswordState {
   bool get isValid => throw _privateConstructorUsedError;
   String? get serverError => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChangePasswordState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ChangePasswordStateCopyWith<ChangePasswordState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -435,6 +483,8 @@ class _$ChangePasswordStateCopyWithImpl<$Res, $Val extends ChangePasswordState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ChangePasswordState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -497,8 +547,8 @@ class _$ChangePasswordStateCopyWithImpl<$Res, $Val extends ChangePasswordState>
 /// @nodoc
 abstract class _$$ChangePasswordStateImplCopyWith<$Res>
     implements $ChangePasswordStateCopyWith<$Res> {
-  factory _$$ChangePasswordStateImplCopyWith(
-          _$ChangePasswordStateImpl value, $Res Function(_$ChangePasswordStateImpl) then) =
+  factory _$$ChangePasswordStateImplCopyWith(_$ChangePasswordStateImpl value,
+          $Res Function(_$ChangePasswordStateImpl) then) =
       __$$ChangePasswordStateImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -519,10 +569,12 @@ abstract class _$$ChangePasswordStateImplCopyWith<$Res>
 class __$$ChangePasswordStateImplCopyWithImpl<$Res>
     extends _$ChangePasswordStateCopyWithImpl<$Res, _$ChangePasswordStateImpl>
     implements _$$ChangePasswordStateImplCopyWith<$Res> {
-  __$$ChangePasswordStateImplCopyWithImpl(
-      _$ChangePasswordStateImpl _value, $Res Function(_$ChangePasswordStateImpl) _then)
+  __$$ChangePasswordStateImplCopyWithImpl(_$ChangePasswordStateImpl _value,
+      $Res Function(_$ChangePasswordStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChangePasswordState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -636,20 +688,25 @@ class _$ChangePasswordStateImpl implements _ChangePasswordState {
             other is _$ChangePasswordStateImpl &&
             (identical(other.currentPassword, currentPassword) ||
                 other.currentPassword == currentPassword) &&
-            (identical(other.newPassword, newPassword) || other.newPassword == newPassword) &&
+            (identical(other.newPassword, newPassword) ||
+                other.newPassword == newPassword) &&
             (identical(other.newPasswordConfirm, newPasswordConfirm) ||
                 other.newPasswordConfirm == newPasswordConfirm) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.isCurrentPasswordMoreLength, isCurrentPasswordMoreLength) ||
-                other.isCurrentPasswordMoreLength == isCurrentPasswordMoreLength) &&
-            (identical(other.isNewPasswordMoreLength, isNewPasswordMoreLength) ||
+            (identical(other.isCurrentPasswordMoreLength,
+                    isCurrentPasswordMoreLength) ||
+                other.isCurrentPasswordMoreLength ==
+                    isCurrentPasswordMoreLength) &&
+            (identical(
+                    other.isNewPasswordMoreLength, isNewPasswordMoreLength) ||
                 other.isNewPasswordMoreLength == isNewPasswordMoreLength) &&
             (identical(other.isPasswordHaveNumber, isPasswordHaveNumber) ||
                 other.isPasswordHaveNumber == isPasswordHaveNumber) &&
             (identical(other.isPasswordConfirm, isPasswordConfirm) ||
                 other.isPasswordConfirm == isPasswordConfirm) &&
             (identical(other.isValid, isValid) || other.isValid == isValid) &&
-            (identical(other.serverError, serverError) || other.serverError == serverError));
+            (identical(other.serverError, serverError) ||
+                other.serverError == serverError));
   }
 
   @override
@@ -666,11 +723,14 @@ class _$ChangePasswordStateImpl implements _ChangePasswordState {
       isValid,
       serverError);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChangePasswordState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChangePasswordStateImplCopyWith<_$ChangePasswordStateImpl> get copyWith =>
-      __$$ChangePasswordStateImplCopyWithImpl<_$ChangePasswordStateImpl>(this, _$identity);
+      __$$ChangePasswordStateImplCopyWithImpl<_$ChangePasswordStateImpl>(
+          this, _$identity);
 }
 
 abstract class _ChangePasswordState implements ChangePasswordState {
@@ -706,8 +766,11 @@ abstract class _ChangePasswordState implements ChangePasswordState {
   bool get isValid;
   @override
   String? get serverError;
+
+  /// Create a copy of ChangePasswordState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChangePasswordStateImplCopyWith<_$ChangePasswordStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

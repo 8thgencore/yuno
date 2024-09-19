@@ -6,7 +6,8 @@ part of 'i_auth_token.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$IAuthTokenImpl _$$IAuthTokenImplFromJson(Map<String, dynamic> json) => _$IAuthTokenImpl(
+_$IAuthTokenImpl _$$IAuthTokenImplFromJson(Map<String, dynamic> json) =>
+    _$IAuthTokenImpl(
       username: json['username'] as String,
       password: json['password'] as String,
       grantType: json['grant_type'] as String?,
@@ -15,7 +16,8 @@ _$IAuthTokenImpl _$$IAuthTokenImplFromJson(Map<String, dynamic> json) => _$IAuth
       clientSecret: json['client_secret'] as String?,
     );
 
-Map<String, dynamic> _$$IAuthTokenImplToJson(_$IAuthTokenImpl instance) => <String, dynamic>{
+Map<String, dynamic> _$$IAuthTokenImplToJson(_$IAuthTokenImpl instance) =>
+    <String, dynamic>{
       'username': instance.username,
       'password': instance.password,
       'grant_type': instance.grantType,

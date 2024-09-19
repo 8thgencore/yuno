@@ -38,7 +38,7 @@ _\*Yuno works on iOS, Android, Web, and Windows._
 ## Flutter format
 
 ```sh
-dart format --output=none --set-exit-if-changed --line-length=100 ./lib
+dart format --output=none --set-exit-if-changed --line-length=120 ./lib
 ```
 
 ## Running Tests 🧪

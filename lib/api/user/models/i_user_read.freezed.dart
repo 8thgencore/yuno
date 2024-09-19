@@ -12,7 +12,7 @@ part of 'i_user_read.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 IUserRead _$IUserReadFromJson(Map<String, dynamic> json) {
   return _IUserRead.fromJson(json);
@@ -34,9 +34,14 @@ mixin _$IUserRead {
   IRoleRead? get role => throw _privateConstructorUsedError;
   IImageMediaRead? get image => throw _privateConstructorUsedError;
 
+  /// Serializes this IUserRead to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $IUserReadCopyWith<IUserRead> get copyWith => throw _privateConstructorUsedError;
+
+  /// Create a copy of IUserRead
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $IUserReadCopyWith<IUserRead> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -61,7 +66,8 @@ abstract class $IUserReadCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$IUserReadCopyWithImpl<$Res, $Val extends IUserRead> implements $IUserReadCopyWith<$Res> {
+class _$IUserReadCopyWithImpl<$Res, $Val extends IUserRead>
+    implements $IUserReadCopyWith<$Res> {
   _$IUserReadCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -69,6 +75,8 @@ class _$IUserReadCopyWithImpl<$Res, $Val extends IUserRead> implements $IUserRea
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IUserRead
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -127,6 +135,8 @@ class _$IUserReadCopyWithImpl<$Res, $Val extends IUserRead> implements $IUserRea
     ) as $Val);
   }
 
+  /// Create a copy of IUserRead
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $IRoleReadCopyWith<$Res>? get role {
@@ -139,6 +149,8 @@ class _$IUserReadCopyWithImpl<$Res, $Val extends IUserRead> implements $IUserRea
     });
   }
 
+  /// Create a copy of IUserRead
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $IImageMediaReadCopyWith<$Res>? get image {
@@ -153,8 +165,10 @@ class _$IUserReadCopyWithImpl<$Res, $Val extends IUserRead> implements $IUserRea
 }
 
 /// @nodoc
-abstract class _$$IUserReadImplCopyWith<$Res> implements $IUserReadCopyWith<$Res> {
-  factory _$$IUserReadImplCopyWith(_$IUserReadImpl value, $Res Function(_$IUserReadImpl) then) =
+abstract class _$$IUserReadImplCopyWith<$Res>
+    implements $IUserReadCopyWith<$Res> {
+  factory _$$IUserReadImplCopyWith(
+          _$IUserReadImpl value, $Res Function(_$IUserReadImpl) then) =
       __$$IUserReadImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -177,11 +191,15 @@ abstract class _$$IUserReadImplCopyWith<$Res> implements $IUserReadCopyWith<$Res
 }
 
 /// @nodoc
-class __$$IUserReadImplCopyWithImpl<$Res> extends _$IUserReadCopyWithImpl<$Res, _$IUserReadImpl>
+class __$$IUserReadImplCopyWithImpl<$Res>
+    extends _$IUserReadCopyWithImpl<$Res, _$IUserReadImpl>
     implements _$$IUserReadImplCopyWith<$Res> {
-  __$$IUserReadImplCopyWithImpl(_$IUserReadImpl _value, $Res Function(_$IUserReadImpl) _then)
+  __$$IUserReadImplCopyWithImpl(
+      _$IUserReadImpl _value, $Res Function(_$IUserReadImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IUserRead
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -256,7 +274,8 @@ class _$IUserReadImpl implements _IUserRead {
       this.role,
       this.image});
 
-  factory _$IUserReadImpl.fromJson(Map<String, dynamic> json) => _$$IUserReadImplFromJson(json);
+  factory _$IUserReadImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IUserReadImplFromJson(json);
 
   @override
   @JsonKey(name: 'first_name')
@@ -292,24 +311,30 @@ class _$IUserReadImpl implements _IUserRead {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$IUserReadImpl &&
-            (identical(other.firstName, firstName) || other.firstName == firstName) &&
-            (identical(other.lastName, lastName) || other.lastName == lastName) &&
-            (identical(other.username, username) || other.username == username) &&
+            (identical(other.firstName, firstName) ||
+                other.firstName == firstName) &&
+            (identical(other.lastName, lastName) ||
+                other.lastName == lastName) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.birthdate, birthdate) || other.birthdate == birthdate) &&
+            (identical(other.birthdate, birthdate) ||
+                other.birthdate == birthdate) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.roleId, roleId) || other.roleId == roleId) &&
             (identical(other.role, role) || other.role == role) &&
             (identical(other.image, image) || other.image == image));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, firstName, lastName, username, email, id, birthdate, phone, roleId, role, image);
+  int get hashCode => Object.hash(runtimeType, firstName, lastName, username,
+      email, id, birthdate, phone, roleId, role, image);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IUserRead
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IUserReadImplCopyWith<_$IUserReadImpl> get copyWith =>
@@ -336,7 +361,8 @@ abstract class _IUserRead implements IUserRead {
       final IRoleRead? role,
       final IImageMediaRead? image}) = _$IUserReadImpl;
 
-  factory _IUserRead.fromJson(Map<String, dynamic> json) = _$IUserReadImpl.fromJson;
+  factory _IUserRead.fromJson(Map<String, dynamic> json) =
+      _$IUserReadImpl.fromJson;
 
   @override
   @JsonKey(name: 'first_name')
@@ -361,7 +387,11 @@ abstract class _IUserRead implements IUserRead {
   IRoleRead? get role;
   @override
   IImageMediaRead? get image;
+
+  /// Create a copy of IUserRead
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$IUserReadImplCopyWith<_$IUserReadImpl> get copyWith => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$IUserReadImplCopyWith<_$IUserReadImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

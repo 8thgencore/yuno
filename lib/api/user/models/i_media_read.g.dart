@@ -6,7 +6,8 @@ part of 'i_media_read.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$IMediaReadImpl _$$IMediaReadImplFromJson(Map<String, dynamic> json) => _$IMediaReadImpl(
+_$IMediaReadImpl _$$IMediaReadImplFromJson(Map<String, dynamic> json) =>
+    _$IMediaReadImpl(
       id: json['id'] as Object,
       title: json['title'] as String?,
       description: json['description'] as String?,
@@ -14,7 +15,8 @@ _$IMediaReadImpl _$$IMediaReadImplFromJson(Map<String, dynamic> json) => _$IMedi
       link: json['link'] as String?,
     );
 
-Map<String, dynamic> _$$IMediaReadImplToJson(_$IMediaReadImpl instance) => <String, dynamic>{
+Map<String, dynamic> _$$IMediaReadImplToJson(_$IMediaReadImpl instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
       'description': instance.description,

@@ -34,6 +34,7 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
         usernameChanged: (event) async => _onUsernameChanged(event, emit),
         emailChanged: (event) async => _onEmailChanged(event, emit),
         saved: (event) async => _onSaveProfile(event, emit),
+        deleteMyAccount: (event) async => _onDeleteMyAccount(event, emit),
       ),
       transformer: sequential(),
     );
@@ -41,7 +42,7 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
 
   final IUserRepository userRepository;
 
-  IUserRead? _user;
+  late IUserRead _user;
 
   bool _highlightUsernameError = false;
   ProfileEditUsernameError? _usernameError;
@@ -96,10 +97,10 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
       }
 
       final result = await userRepository.updateDataById(
-        firstName: _user!.firstName,
-        lastName: _user!.lastName,
-        email: _user!.email,
-        username: _user!.username,
+        firstName: _user.firstName,
+        lastName: _user.lastName,
+        email: _user.email,
+        username: _user.username,
       );
       emit(state.copyWith(status: ProfileEditStatus.loaded));
       if (result != null) {
@@ -121,21 +122,21 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
     _FirstNameChangedEvent event,
     Emitter<ProfileEditState> emit,
   ) async {
-    _user = _user!.copyWith(firstName: event.text);
+    _user = _user.copyWith(firstName: event.text);
   }
 
   FutureOr<void> _onLastNameChanged(
     _LastNameChangedEvent event,
     Emitter<ProfileEditState> emit,
   ) async {
-    _user = _user!.copyWith(lastName: event.text);
+    _user = _user.copyWith(lastName: event.text);
   }
 
   FutureOr<void> _onUsernameChanged(
     _UsernameChangedEvent event,
     Emitter<ProfileEditState> emit,
   ) async {
-    _user = _user!.copyWith(username: event.text);
+    _user = _user.copyWith(username: event.text);
     _usernameError = _validateUsername();
   }
 
@@ -143,17 +144,34 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
     _EmailChangedEvent event,
     Emitter<ProfileEditState> emit,
   ) async {
-    _user = _user!.copyWith(email: event.text);
+    _user = _user.copyWith(email: event.text);
     _emailError = _validateEmail();
+  }
+
+  FutureOr<void> _onDeleteMyAccount(
+    _DeleteMyAccountEvent event,
+    Emitter<ProfileEditState> emit,
+  ) async {
+    try {
+      await userRepository.deleteMyAccount();
+      emit(state.copyWith(status: ProfileEditStatus.deleted));
+    } on DioException catch (dioError) {
+      emit(
+        state.copyWith(
+          status: ProfileEditStatus.failure,
+          serverError: dioErrorInterceptor(dioError).toString(),
+        ),
+      );
+    }
   }
 
   void _calculateFieldsInfo(Emitter<ProfileEditState> emit) {
     emit(
       state.copyWith(
-        firstName: _user!.firstName,
-        lastName: _user!.lastName,
-        email: _user!.email,
-        username: _user!.username,
+        firstName: _user.firstName,
+        lastName: _user.lastName,
+        email: _user.email,
+        username: _user.username,
         emailError: _highlightEmailError ? _emailError : null,
         usernameError: _highlightUsernameError ? _usernameError : null,
       ),
@@ -161,20 +179,20 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
   }
 
   ProfileEditEmailError? _validateEmail() {
-    if (_user!.email.isEmpty) {
+    if (_user.email.isEmpty) {
       return ProfileEditEmailError.empty;
     }
-    if (!EmailValidator.validate(_user!.email)) {
+    if (!EmailValidator.validate(_user.email)) {
       return ProfileEditEmailError.invalid;
     }
     return null;
   }
 
   ProfileEditUsernameError? _validateUsername() {
-    if (_user!.username.isEmpty) {
+    if (_user.username.isEmpty) {
       return ProfileEditUsernameError.empty;
     }
-    if (_user!.username.length < 3) {
+    if (_user.username.length < 3) {
       return ProfileEditUsernameError.tooShort;
     }
     return null;

@@ -12,7 +12,7 @@ part of 'i_task_create.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ITaskCreate _$ITaskCreateFromJson(Map<String, dynamic> json) {
   return _ITaskCreate.fromJson(json);
@@ -27,14 +27,20 @@ mixin _$ITaskCreate {
   @JsonKey(name: 'project_id', includeIfNull: false)
   String? get projectId => throw _privateConstructorUsedError;
 
+  /// Serializes this ITaskCreate to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $ITaskCreateCopyWith<ITaskCreate> get copyWith => throw _privateConstructorUsedError;
+
+  /// Create a copy of ITaskCreate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ITaskCreateCopyWith<ITaskCreate> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ITaskCreateCopyWith<$Res> {
-  factory $ITaskCreateCopyWith(ITaskCreate value, $Res Function(ITaskCreate) then) =
+  factory $ITaskCreateCopyWith(
+          ITaskCreate value, $Res Function(ITaskCreate) then) =
       _$ITaskCreateCopyWithImpl<$Res, ITaskCreate>;
   @useResult
   $Res call(
@@ -54,6 +60,8 @@ class _$ITaskCreateCopyWithImpl<$Res, $Val extends ITaskCreate>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ITaskCreate
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -84,7 +92,8 @@ class _$ITaskCreateCopyWithImpl<$Res, $Val extends ITaskCreate>
 }
 
 /// @nodoc
-abstract class _$$ITaskCreateImplCopyWith<$Res> implements $ITaskCreateCopyWith<$Res> {
+abstract class _$$ITaskCreateImplCopyWith<$Res>
+    implements $ITaskCreateCopyWith<$Res> {
   factory _$$ITaskCreateImplCopyWith(
           _$ITaskCreateImpl value, $Res Function(_$ITaskCreateImpl) then) =
       __$$ITaskCreateImplCopyWithImpl<$Res>;
@@ -101,9 +110,12 @@ abstract class _$$ITaskCreateImplCopyWith<$Res> implements $ITaskCreateCopyWith<
 class __$$ITaskCreateImplCopyWithImpl<$Res>
     extends _$ITaskCreateCopyWithImpl<$Res, _$ITaskCreateImpl>
     implements _$$ITaskCreateImplCopyWith<$Res> {
-  __$$ITaskCreateImplCopyWithImpl(_$ITaskCreateImpl _value, $Res Function(_$ITaskCreateImpl) _then)
+  __$$ITaskCreateImplCopyWithImpl(
+      _$ITaskCreateImpl _value, $Res Function(_$ITaskCreateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ITaskCreate
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -142,7 +154,8 @@ class _$ITaskCreateImpl implements _ITaskCreate {
       @JsonKey(includeIfNull: false) this.deadline,
       @JsonKey(name: 'project_id', includeIfNull: false) this.projectId});
 
-  factory _$ITaskCreateImpl.fromJson(Map<String, dynamic> json) => _$$ITaskCreateImplFromJson(json);
+  factory _$ITaskCreateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ITaskCreateImplFromJson(json);
 
   @override
   final String name;
@@ -168,15 +181,19 @@ class _$ITaskCreateImpl implements _ITaskCreate {
             other is _$ITaskCreateImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.done, done) || other.done == done) &&
-            (identical(other.deadline, deadline) || other.deadline == deadline) &&
-            (identical(other.projectId, projectId) || other.projectId == projectId));
+            (identical(other.deadline, deadline) ||
+                other.deadline == deadline) &&
+            (identical(other.projectId, projectId) ||
+                other.projectId == projectId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, done, deadline, projectId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ITaskCreate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ITaskCreateImplCopyWith<_$ITaskCreateImpl> get copyWith =>
@@ -192,13 +209,14 @@ class _$ITaskCreateImpl implements _ITaskCreate {
 
 abstract class _ITaskCreate implements ITaskCreate {
   const factory _ITaskCreate(
-          {required final String name,
-          final bool? done,
-          @JsonKey(includeIfNull: false) final DateTime? deadline,
-          @JsonKey(name: 'project_id', includeIfNull: false) final String? projectId}) =
-      _$ITaskCreateImpl;
+      {required final String name,
+      final bool? done,
+      @JsonKey(includeIfNull: false) final DateTime? deadline,
+      @JsonKey(name: 'project_id', includeIfNull: false)
+      final String? projectId}) = _$ITaskCreateImpl;
 
-  factory _ITaskCreate.fromJson(Map<String, dynamic> json) = _$ITaskCreateImpl.fromJson;
+  factory _ITaskCreate.fromJson(Map<String, dynamic> json) =
+      _$ITaskCreateImpl.fromJson;
 
   @override
   String get name;
@@ -210,7 +228,11 @@ abstract class _ITaskCreate implements ITaskCreate {
   @override
   @JsonKey(name: 'project_id', includeIfNull: false)
   String? get projectId;
+
+  /// Create a copy of ITaskCreate
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$ITaskCreateImplCopyWith<_$ITaskCreateImpl> get copyWith => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ITaskCreateImplCopyWith<_$ITaskCreateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

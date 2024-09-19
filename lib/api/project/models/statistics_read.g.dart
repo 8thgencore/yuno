@@ -8,13 +8,14 @@ part of 'statistics_read.dart';
 
 _$StatisticsReadImpl _$$StatisticsReadImplFromJson(Map<String, dynamic> json) =>
     _$StatisticsReadImpl(
-      projectsCount: json['projects_count'] as int,
-      missingCount: json['missing_count'] as int,
-      ongoingCount: json['ongoing_count'] as int,
-      completedCount: json['completed_count'] as int,
+      projectsCount: (json['projects_count'] as num).toInt(),
+      missingCount: (json['missing_count'] as num).toInt(),
+      ongoingCount: (json['ongoing_count'] as num).toInt(),
+      completedCount: (json['completed_count'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$StatisticsReadImplToJson(_$StatisticsReadImpl instance) =>
+Map<String, dynamic> _$$StatisticsReadImplToJson(
+        _$StatisticsReadImpl instance) =>
     <String, dynamic>{
       'projects_count': instance.projectsCount,
       'missing_count': instance.missingCount,

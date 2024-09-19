@@ -12,7 +12,7 @@ part of 'i_project_update.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 IProjectUpdate _$IProjectUpdateFromJson(Map<String, dynamic> json) {
   return _IProjectUpdate.fromJson(json);
@@ -23,14 +23,20 @@ mixin _$IProjectUpdate {
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
 
+  /// Serializes this IProjectUpdate to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $IProjectUpdateCopyWith<IProjectUpdate> get copyWith => throw _privateConstructorUsedError;
+
+  /// Create a copy of IProjectUpdate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $IProjectUpdateCopyWith<IProjectUpdate> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $IProjectUpdateCopyWith<$Res> {
-  factory $IProjectUpdateCopyWith(IProjectUpdate value, $Res Function(IProjectUpdate) then) =
+  factory $IProjectUpdateCopyWith(
+          IProjectUpdate value, $Res Function(IProjectUpdate) then) =
       _$IProjectUpdateCopyWithImpl<$Res, IProjectUpdate>;
   @useResult
   $Res call({String name, String description});
@@ -46,6 +52,8 @@ class _$IProjectUpdateCopyWithImpl<$Res, $Val extends IProjectUpdate>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IProjectUpdate
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -66,9 +74,10 @@ class _$IProjectUpdateCopyWithImpl<$Res, $Val extends IProjectUpdate>
 }
 
 /// @nodoc
-abstract class _$$IProjectUpdateImplCopyWith<$Res> implements $IProjectUpdateCopyWith<$Res> {
-  factory _$$IProjectUpdateImplCopyWith(
-          _$IProjectUpdateImpl value, $Res Function(_$IProjectUpdateImpl) then) =
+abstract class _$$IProjectUpdateImplCopyWith<$Res>
+    implements $IProjectUpdateCopyWith<$Res> {
+  factory _$$IProjectUpdateImplCopyWith(_$IProjectUpdateImpl value,
+          $Res Function(_$IProjectUpdateImpl) then) =
       __$$IProjectUpdateImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -83,6 +92,8 @@ class __$$IProjectUpdateImplCopyWithImpl<$Res>
       _$IProjectUpdateImpl _value, $Res Function(_$IProjectUpdateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IProjectUpdate
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -126,18 +137,22 @@ class _$IProjectUpdateImpl implements _IProjectUpdate {
         (other.runtimeType == runtimeType &&
             other is _$IProjectUpdateImpl &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) || other.description == description));
+            (identical(other.description, description) ||
+                other.description == description));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, description);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IProjectUpdate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IProjectUpdateImplCopyWith<_$IProjectUpdateImpl> get copyWith =>
-      __$$IProjectUpdateImplCopyWithImpl<_$IProjectUpdateImpl>(this, _$identity);
+      __$$IProjectUpdateImplCopyWithImpl<_$IProjectUpdateImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -148,17 +163,22 @@ class _$IProjectUpdateImpl implements _IProjectUpdate {
 }
 
 abstract class _IProjectUpdate implements IProjectUpdate {
-  const factory _IProjectUpdate({required final String name, required final String description}) =
-      _$IProjectUpdateImpl;
+  const factory _IProjectUpdate(
+      {required final String name,
+      required final String description}) = _$IProjectUpdateImpl;
 
-  factory _IProjectUpdate.fromJson(Map<String, dynamic> json) = _$IProjectUpdateImpl.fromJson;
+  factory _IProjectUpdate.fromJson(Map<String, dynamic> json) =
+      _$IProjectUpdateImpl.fromJson;
 
   @override
   String get name;
   @override
   String get description;
+
+  /// Create a copy of IProjectUpdate
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$IProjectUpdateImplCopyWith<_$IProjectUpdateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
